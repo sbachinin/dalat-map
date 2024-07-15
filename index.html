@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Purely topographic map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <script src="
+https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl-dev.js
+"></script>
+    <link href="
+https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
+" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .my-button {
+            position: absolute;
+            right: 10px;
+            background: white;
+            width: 29px;
+            height: 29px;
+            border-radius: 4px;
+            box-shadow: 0 0 0 2px rgba(0,0,0,.1);
+            cursor: pointer;
+            user-select: none;
+            overflow: hidden;
+            box-sizing: border-box;
+            border: 2px solid white;
+        }
+
+        .my-button.active {
+            border-color: #7b7b7b;
+        }
+
+        .my-button img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .contour-switch {
+            top: 106px;
+        }
+
+        .countries-switch {
+            top: 143px;
+        }
+
+        .roads-switch {
+            top: 180px;
+        }
+
+        .fullwidth-scale-wrapper {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            border: 2px solid #333;
+            border-top: #333;
+            box-sizing: border-box;
+            color: #333;
+            visibility: hidden;
+            font-size: 12px;
+            font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+            user-select: none;
+        }
+
+        .fullwidth-scale {
+            display: flex;
+            width: max-content;
+        }
+
+        .fullwidth-scale>div {
+            height: 5px;
+            width: var(--scale-step-width);
+            border-right: 2px solid #333;
+            box-sizing: border-box;
+        }
+
+        .maplibregl-ctrl.maplibregl-ctrl-scale {
+            margin-left: -1000px;
+        }
+
+        .scale-item {
+            position: relative;
+        }
+
+        .scale-item.hidden {
+            visibility: hidden;
+        }
+
+        .scale-item-label {
+            position: absolute;
+            right: 0;
+            bottom: 100%;
+            width: 0;
+            display: flex;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .maplibregl-ctrl-bottom-right {
+            bottom: 26px;
+        }
+
+
+        .maplibregl-ctrl.maplibregl-ctrl-attrib {
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <div class="my-button contour-switch"><img src="./contours_icon.jpg"></div>
+    <div class="my-button countries-switch"><img src="./countries_icon.jpg"></div>
+    <div class="my-button roads-switch"><img src="./roads.jpg"></div>
+
+    <div class="fullwidth-scale-wrapper">
+        <div class="fullwidth-scale"></div>
+    </div>
+
+
+    <script type="module">
+        import { get_actual_layers } from './layers.mjs'
+        import { sources } from './sources.mjs'
+        import { get_switch } from './switch_layers_button.mjs'
+        import { manage_scale } from './manage_scale.mjs'
+        import { contour_layers } from './contour_layers.mjs'
+        import { countries_layers } from './countries_layers.mjs'
+        import { transport_layers } from './transport_layers.mjs'
+
+        const style = {
+            name: "Purely topographic map",
+
+            glyphs: "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=9C8cs9qKiCW3wSWdeUrN",
+            sprite: "https://api.maptiler.com/maps/topo-v2/sprite",
+
+            layers: get_actual_layers(),
+            sources,
+
+            light: {
+                anchor: "viewport",
+                color: "white",
+                intensity: 0.12,
+            },
+            version: 8,
+        }
+
+        const map = new maplibregl.Map({
+            container: 'map', // container id
+            hash: "map",
+            style,
+            center: [14.3, 44.61], // starting position [lng, lat]
+            zoom: 4, // starting zoom
+            antialias: true,
+        });
+
+        map.addControl(new maplibregl.ScaleControl());
+        map.addControl(new maplibregl.NavigationControl(), 'top-right');
+
+
+        manage_scale()
+
+        get_switch(map, 'contours', true, '.contour-switch')
+        get_switch(map, 'countries', false, '.countries-switch')
+        get_switch(map, 'transport', true, '.roads-switch')
+    </script>
+
+</body>
+
+</html>
