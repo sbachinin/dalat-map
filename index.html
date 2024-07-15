@@ -48,18 +48,6 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
             height: 100%;
         }
 
-        .contour-switch {
-            top: 106px;
-        }
-
-        .countries-switch {
-            top: 143px;
-        }
-
-        .roads-switch {
-            top: 180px;
-        }
-
         .fullwidth-scale-wrapper {
             position: fixed;
             bottom: 10px;
@@ -124,10 +112,6 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
 <body>
     <div id="map"></div>
 
-    <div class="my-button contour-switch"><img src="./contours_icon.jpg"></div>
-    <div class="my-button countries-switch"><img src="./countries_icon.jpg"></div>
-    <div class="my-button roads-switch"><img src="./roads.jpg"></div>
-
     <div class="fullwidth-scale-wrapper">
         <div class="fullwidth-scale"></div>
     </div>
@@ -136,7 +120,6 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
     <script type="module">
         import { get_actual_layers } from './layers.mjs'
         import { sources } from './sources.mjs'
-        import { get_switch } from './switch_layers_button.mjs'
         import { manage_scale } from './manage_scale.mjs'
         import { contour_layers } from './contour_layers.mjs'
         import { countries_layers } from './countries_layers.mjs'
@@ -173,10 +156,6 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
 
 
         manage_scale()
-
-        get_switch(map, 'contours', true, '.contour-switch')
-        get_switch(map, 'countries', false, '.countries-switch')
-        get_switch(map, 'transport', true, '.roads-switch')
     </script>
 
 </body>
