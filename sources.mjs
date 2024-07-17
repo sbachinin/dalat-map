@@ -8,6 +8,13 @@ export const sources = {
         "type": "vector"
     },
     
+    'dalat-tiles': {
+        type: 'vector',
+        tiles: ["http://localhost:8000/tiles/{z}/{x}/{y}.pbf"],
+        minzoom: 12,
+        maxzoom: 17
+    },
+
     "maptiler_attribution": {
         "attribution": "<a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\">&copy; MapTiler</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>",
         "type": "vector"

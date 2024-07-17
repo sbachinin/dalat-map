@@ -155,37 +155,6 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
             antialias: true,
         });
 
-        map.on('load', function () {
-            map.addSource('dalat-tiles', {
-                type: 'vector',
-                tiles: ["http://localhost:8080/tiles/{z}/{x}/{y}.pbf"],
-                minzoom: 12,
-                maxzoom: 17
-            });
-
-
-
-            map.addLayer({
-                "id": "Grass",
-                "type": "fill",
-                "source": "dalat-tiles",
-                "source-layer": "landcover",
-                "layout": {
-                    "visibility": "visible"
-                },
-                "paint": {
-                    "fill-color": "hsl(103, 68%, 70%)",
-                    "fill-opacity": 0.5,
-                    "fill-antialias": false
-                },
-                "metadata": {},
-                "filter": [
-                    "==",
-                    "class",
-                    "grass"
-                ]
-            },);
-        });
 
         map.addControl(new maplibregl.ScaleControl());
         map.addControl(new maplibregl.NavigationControl(), 'top-right');

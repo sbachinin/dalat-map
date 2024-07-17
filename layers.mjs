@@ -27,7 +27,7 @@ export const get_actual_layers = () => {
             "paint": {
                 "background-color": "hsl(0,0%,99%)"
             }
-        },/* 
+        }, 
         {
             "id": "Grass",
             "type": "fill",
@@ -48,7 +48,7 @@ export const get_actual_layers = () => {
                 "grass"
             ]
         },
- */
+ 
         {
             "id": "Pedestrian",
             "type": "fill",
