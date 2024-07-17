@@ -25,110 +25,30 @@ export const get_actual_layers = () => {
                 "visibility": "visible"
             },
             "paint": {
-                "background-color": "hsl(0,0%,93%)"
+                "background-color": "hsl(0,0%,99%)"
             }
-        },
+        },/* 
         {
-            "id": "Glacier",
+            "id": "Grass",
             "type": "fill",
-            "source": "maptiler_planet",
+            "source": "dalat-tiles",
             "source-layer": "landcover",
-            "minzoom": 0,
-            "maxzoom": 22,
             "layout": {
                 "visibility": "visible"
             },
             "paint": {
-                "fill-color": "hsl(0,0%,100%)",
-                "fill-opacity": 1,
+                "fill-color": "hsl(103, 68%, 70%)",
+                "fill-opacity": 0.5,
                 "fill-antialias": false
             },
             "metadata": {},
             "filter": [
                 "==",
                 "class",
-                "ice"
+                "grass"
             ]
         },
-        /*
-        {
-            "id": "Residential",
-            "type": "fill",
-            "source": "maptiler_planet",
-            "source-layer": "landuse",
-            "maxzoom": 16,
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "fill-color": "hsl(45,14%,71%)",
-                "fill-opacity": {
-                    "stops": [
-                        [
-                            4,
-                            0.6
-                        ],
-                        [
-                            16,
-                            0.1
-                        ]
-                    ]
-                }
-            },
-            "filter": [
-                "all",
-                [
-                    "==",
-                    "$type",
-                    "Polygon"
-                ],
-                [
-                    "in",
-                    "class",
-                    "residential",
-                    "suburb",
-                    "neighbourhood"
-                ]
-            ]
-        },
-         */
-        {
-            "id": "Industrial",
-            "type": "fill",
-            "source": "maptiler_planet",
-            "source-layer": "landuse",
-            "minzoom": 10,
-            "maxzoom": 22,
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "fill-color": {
-                    "stops": [
-                        [
-                            12,
-                            "hsl(0,0%,70%)"
-                        ],
-                        [
-                            16,
-                            "hsl(47,16%,89%)"
-                        ]
-                    ]
-                },
-                "fill-opacity": 0.5
-            },
-            "metadata": {},
-            "filter": [
-                "all",
-                [
-                    "in",
-                    "class",
-                    "industrial",
-                    "commercial",
-                    "retail"
-                ]
-            ]
-        },
+ */
         {
             "id": "Pedestrian",
             "type": "fill",
@@ -339,35 +259,6 @@ export const get_actual_layers = () => {
                 "stadium"
             ]
         },
-        {
-            "id": "Hillshade",
-            "type": "hillshade",
-            "source": "terrain_rgb",
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                // "hillshade-accent-color": "hsl(51, 30%, 79%)",
-                "hillshade-shadow-color": 'hsl(24, 20%, 60%)',
-                "hillshade-highlight-color": 'hsl(56, 30%, 88%)',
-                'hillshade-exaggeration': [
-                    "interpolate",
-                    [
-                        "linear",
-                        1
-                    ],
-                    [
-                        "zoom"
-                    ],
-                    1,
-                    0.8,
-                    16,
-                    0.5
-                ]
-            }
-        },
-
-
 
         {
             "id": "River tunnel",
@@ -694,106 +585,10 @@ export const get_actual_layers = () => {
                 "visibility": "visible"
             },
             "paint": {
-                "fill-color": "hsla(37, 11%, 60%, 20%)",
+                "fill-color": "red",
                 "fill-antialias": true,
-            }
+            },
         },
-        /* 
-        {
-            "id": "Building 3D",
-            "type": "fill-extrusion",
-            "source": "maptiler_planet",
-            "source-layer": "building",
-            "minzoom": 14,
-            "layout": {
-                "visibility": "visible"
-            },
-            "paint": {
-                "fill-extrusion-base": {
-                    "type": "identity",
-                    "property": "render_min_height"
-                },
-                "fill-extrusion-color": "hsl(36, 8%, 64%)",
-                "fill-extrusion-height": {
-                    "type": "identity",
-                    "property": "render_height"
-                },
-                "fill-extrusion-opacity": 0.5
-            },
-            "metadata": {}
-        },
-         */
-        {
-            "id": "Cablecar",
-            "type": "line",
-            "source": "maptiler_planet",
-            "source-layer": "transportation",
-            "minzoom": 13,
-            "maxzoom": 24,
-            "layout": {
-                "line-cap": "round",
-                "visibility": "visible"
-            },
-            "paint": {
-                "line-color": "hsl(0, 0%, 9%)",
-                "line-width": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            11,
-                            1
-                        ],
-                        [
-                            19,
-                            2.5
-                        ]
-                    ]
-                }
-            },
-            "filter": [
-                "==",
-                "class",
-                "aerialway"
-            ]
-        },
-        {
-            "id": "Cablecar dash",
-            "type": "line",
-            "source": "maptiler_planet",
-            "source-layer": "transportation",
-            "minzoom": 13,
-            "maxzoom": 24,
-            "layout": {
-                "line-cap": "round",
-                "visibility": "visible"
-            },
-            "paint": {
-                "line-color": "hsl(0, 0%, 96%)",
-                "line-width": {
-                    "base": 1,
-                    "stops": [
-                        [
-                            11,
-                            1
-                        ],
-                        [
-                            19,
-                            2.5
-                        ]
-                    ]
-                },
-                "line-dasharray": [
-                    2,
-                    3
-                ]
-            },
-            "filter": [
-                "==",
-                "class",
-                "aerialway"
-            ]
-        },
-
         {
             "id": "River labels",
             "type": "symbol",

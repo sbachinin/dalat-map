@@ -1,5 +1,5 @@
-const road_color = "hsl(267, 83%, 72%)"
-const railway_color = "hsl(30, 57%, 69%)"
+const road_color = "hsl(30, 57%, 69%)"
+const railway_color = "hsl(30, 57%, 29%)"
 import { brunnels } from './brunnels.mjs'
 
 export const transport_layers = [
@@ -915,23 +915,23 @@ export const transport_layers = [
         "paint": {
             "line-color": railway_color,
             "line-width": {
-                "base": 2.8,
+                "base": 2,
                 "stops": [
                     [
                         8,
-                        2
+                        1.5
                     ],
                     [
                         14,
-                        3
+                        2
                     ],
                     [
                         15,
-                        6
+                        4
                     ],
                     [
                         20,
-                        10
+                        6
                     ]
                 ]
             },
@@ -948,135 +948,6 @@ export const transport_layers = [
                 "==",
                 "class",
                 "rail"
-            ]
-        ]
-    },
-    {
-        "id": "Major railway hatching",
-        "type": "line",
-        "source": "maptiler_planet",
-        "source-layer": "transportation",
-        "layout": {
-            "visibility": "visible"
-        },
-        "paint": {
-            "line-color": railway_color,
-            "line-width": {
-                "base": 1.4,
-                "stops": [
-                    [
-                        14.5,
-                        0
-                    ],
-                    [
-                        15,
-                        3
-                    ],
-                    [
-                        20,
-                        8
-                    ]
-                ]
-            },
-            "line-dasharray": [
-                0.2,
-                9
-            ]
-        },
-        "metadata": {},
-        "filter": [
-            "all",
-            [
-                "!in",
-                "brunnel",
-                "tunnel"
-            ],
-            [
-                "==",
-                "class",
-                "rail"
-            ]
-        ]
-    },
-    {
-        "id": "Minor railway",
-        "type": "line",
-        "source": "maptiler_planet",
-        "source-layer": "transportation",
-        "layout": {
-            "visibility": "visible"
-        },
-        "paint": {
-            "line-color": railway_color,
-            "line-width": {
-                "base": 1.4,
-                "stops": [
-                    [
-                        14,
-                        0.4
-                    ],
-                    [
-                        15,
-                        0.75
-                    ],
-                    [
-                        20,
-                        2
-                    ]
-                ]
-            }
-        },
-        "metadata": {},
-        "filter": [
-            "all",
-            [
-                "in",
-                "subclass",
-                "tram",
-                "light_rail"
-            ]
-        ]
-    },
-    {
-        "id": "Minor railway hatching",
-        "type": "line",
-        "source": "maptiler_planet",
-        "source-layer": "transportation",
-        "layout": {
-            "visibility": "visible"
-        },
-        "paint": {
-            "line-color": "hsl(0,0%,73%)",
-            "line-width": {
-                "base": 1.4,
-                "stops": [
-                    [
-                        14.5,
-                        0
-                    ],
-                    [
-                        15,
-                        2
-                    ],
-                    [
-                        20,
-                        6
-                    ]
-                ]
-            },
-            "line-dasharray": [
-                0.2,
-                4
-            ]
-        },
-        "metadata": {},
-        "filter": [
-            "all",
-            [
-                "in",
-                "subclass",
-                "tram",
-                "light_rail"
             ]
         ]
     }

@@ -31,7 +31,7 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
             width: 29px;
             height: 29px;
             border-radius: 4px;
-            box-shadow: 0 0 0 2px rgba(0,0,0,.1);
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);
             cursor: pointer;
             user-select: none;
             overflow: hidden;
@@ -143,12 +143,48 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
         }
 
         const map = new maplibregl.Map({
-            container: 'map', // container id
-            hash: "map",
+            container: 'map',
             style,
-            center: [14.3, 44.61], // starting position [lng, lat]
-            zoom: 4, // starting zoom
+            hash: true,
+            center: [108.4419, 11.9404],
+            zoom: 10,
+            maxBounds: [
+                [108.39014, 11.88], // Southwest coordinates [longitude, latitude]
+                [108.52, 11.99]  // Northeast coordinates [longitude, latitude]
+            ],
             antialias: true,
+        });
+
+        map.on('load', function () {
+            map.addSource('dalat-tiles', {
+                type: 'vector',
+                tiles: ["http://localhost:8080/tiles/{z}/{x}/{y}.pbf"],
+                minzoom: 12,
+                maxzoom: 17
+            });
+
+
+
+            map.addLayer({
+                "id": "Grass",
+                "type": "fill",
+                "source": "dalat-tiles",
+                "source-layer": "landcover",
+                "layout": {
+                    "visibility": "visible"
+                },
+                "paint": {
+                    "fill-color": "hsl(103, 68%, 70%)",
+                    "fill-opacity": 0.5,
+                    "fill-antialias": false
+                },
+                "metadata": {},
+                "filter": [
+                    "==",
+                    "class",
+                    "grass"
+                ]
+            },);
         });
 
         map.addControl(new maplibregl.ScaleControl());
