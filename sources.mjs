@@ -10,9 +10,9 @@ export const sources = {
     
     'dalat-tiles': {
         type: 'vector',
-        tiles: ["http://localhost:8000/tiles/{z}/{x}/{y}.pbf"],
+        tiles: ["http://localhost:8080/tiles/{z}/{x}/{y}.pbf"],
         minzoom: 12,
-        maxzoom: 17
+        maxzoom: 24
     },
 
     "maptiler_attribution": {
