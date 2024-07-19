@@ -25,7 +25,8 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
     <script type="module">
         import { sources } from './sources.mjs'
         import { manage_scale } from './manage_scale.mjs'
-
+        import roadLayers from './road_layers.mjs'
+        console.log(roadLayers)
         const style = {
             name: "Purely topographic map",
 
@@ -48,157 +49,7 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
                         "fill-antialias": true,
                     },
                 },
-                {
-                    "id": "Highway",
-                    "type": "line",
-                    "source": "dalat-tiles",
-                    "source-layer": "highway",
-                    "minzoom": 6,
-                    "maxzoom": 24,
-                    "layout": {
-                        "line-cap": "round",
-                        "line-join": "round",
-                        "visibility": "visible"
-                    },
-                    "paint": {
-                        "line-color": 'hsl(30, 57%, 69%)',
-                        "line-width": [
-                            "interpolate",
-                            [
-                                "linear",
-                                2
-                            ],
-                            [
-                                "zoom"
-                            ],
-                            6,
-                            [
-                                "match",
-                                [
-                                    "get",
-                                    "class"
-                                ],
-                                [
-                                    "motorway"
-                                ],
-                                [
-                                    "match",
-                                    [
-                                        "get",
-                                        "brunnel"
-                                    ],
-                                    [
-                                        "bridge"
-                                    ],
-                                    0,
-                                    1.1
-                                ],
-                                0
-                            ],
-                            12,
-                            [
-                                "match",
-                                [
-                                    "get",
-                                    "class"
-                                ],
-                                [
-                                    "motorway"
-                                ],
-                                [
-                                    "match",
-                                    [
-                                        "get",
-                                        "ramp"
-                                    ],
-                                    1,
-                                    1.5,
-                                    3
-                                ],
-                                1.2
-                            ],
-                            14,
-                            [
-                                "match",
-                                [
-                                    "get",
-                                    "class"
-                                ],
-                                [
-                                    "motorway"
-                                ],
-                                4,
-                                2
-                            ],
-                            16,
-                            [
-                                "match",
-                                [
-                                    "get",
-                                    "class"
-                                ],
-                                [
-                                    "motorway"
-                                ],
-                                5,
-                                1.4
-                            ],
-                            20,
-                            [
-                                "match",
-                                [
-                                    "get",
-                                    "class"
-                                ],
-                                [
-                                    "motorway"
-                                ],
-                                14,
-                                9
-                            ]
-                        ],
-                        "line-opacity": 1
-                    },
-                    "metadata": {},
-                    "filter": [
-                        "all",
-                        [
-                            "any",
-                            [
-                                "!has",
-                                "brunnel"
-                            ],
-                            [
-                                "in",
-                                "brunnel",
-                                "bridge",
-                                "ford"
-                            ]
-                        ],
-                        [
-                            "any",
-                            [
-                                "!has",
-                                "class"
-                            ],
-                            [
-                                "in",
-                                "class",
-                                "bus_guideway",
-                                "busway",
-                                "courtyard",
-                                "minor",
-                                "path_construction",
-                                "raceway",
-                                "raceway_construction",
-                                "service",
-                                "storage_tank",
-                                "tertiary",
-                                "track"
-                            ]
-                        ]
-                    ]
-                },
+                ...roadLayers
             ],
             sources,
 
