@@ -9,7 +9,7 @@
     <link href="
 https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
 " rel="stylesheet">
-<link href="
+    <link href="
 ./mystyles.css
 " rel="stylesheet">
 </head>
@@ -26,7 +26,7 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
         import { sources } from './sources.mjs'
         import { manage_scale } from './manage_scale.mjs'
         import roadLayers from './road_layers.mjs'
-        console.log(roadLayers)
+
         const style = {
             name: "Purely topographic map",
 
@@ -35,11 +35,55 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
 
             layers: [
                 {
+                    id: 'cityBulk',
+                    type: 'fill',
+                    source: 'cityBulk',
+                    paint: {
+                        'fill-color': 'RGB(237, 195, 180)',
+                        'fill-antialias': true,
+                        "fill-opacity": [
+                            "interpolate",
+                            ["linear"],
+                            ["zoom"],
+                            13.6,  // Zoom level at which opacity should start decreasing
+                            1,   // Opacity at zoom level 14
+                            14.3,  // Zoom level just above 14
+                            0    // Opacity at zoom level 15 and higher
+                        ]
+                    }
+                },
+                {
+                    "id": "Water",
+                    "type": "fill",
+                    "source": "dalat-tiles",
+                    "source-layer": "water",
+                    "layout": {
+                        "visibility": "visible"
+                    },
+                    "paint": {
+                        "fill-color": 'RGB(77, 204, 241)'
+                    },
+                    "metadata": {},
+                    "filter": [
+                        "all",
+                        [
+                            "!=",
+                            "intermittent",
+                            1
+                        ],
+                        [
+                            "!=",
+                            "brunnel",
+                            "tunnel"
+                        ]
+                    ]
+                },
+                {
                     "id": "Building",
                     "type": "fill",
                     "source": "dalat-tiles",
                     "source-layer": "building",
-                    "minzoom": 12,
+                    "minzoom": 14,
                     "maxzoom": 24,
                     "layout": {
                         "visibility": "visible"
@@ -66,12 +110,13 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
             style,
             hash: true,
             center: [108.4419, 11.9404],
-            zoom: 10,
+            zoom: 12,
             maxBounds: [
-                [108.39014, 11.88], // Southwest coordinates [longitude, latitude]
-                [108.52, 11.99]  // Northeast coordinates [longitude, latitude]
+                [108.38014, 11.88], // Southwest coordinates [longitude, latitude]
+                [108.52, 12.01]  // Northeast coordinates [longitude, latitude]
             ],
             antialias: true,
+            maxZoom: 17.99
         });
 
 

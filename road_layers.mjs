@@ -1,11 +1,136 @@
-const road_color = "hsl(30, 57%, 69%)"
+const road_color = "hsl(30, 7%, 49%)"
+
+
+const tertiaryRoad = {
+    id: 'Tertiary road',
+    "type": "line",
+    "source": "dalat-tiles",
+    "source-layer": "highway",
+    "minzoom": 6,
+    "maxzoom": 24,
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+    },
+    "paint": {
+        "line-color": road_color, // `#EF8DD0`,
+        "line-width": [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            10,
+            1,
+            12,
+            1.5,
+            16,
+            2,
+            20,
+            6
+        ],
+        "line-opacity": 0.55
+    },
+    "metadata": {},
+    "filter": [
+        "all",
+        [
+            "in",
+            "highway",
+            "tertiary",
+        ]
+    ]
+}
+
+const majorRoadOutline = {
+    "id": "Major road outline",
+    "type": "line",
+    "source": "dalat-tiles",
+    "source-layer": "highway",
+    "minzoom": 6,
+    "maxzoom": 24,
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+    },
+    "paint": {
+        "line-color": road_color, // `#EF8DD0`,
+        "line-width": [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            10,
+            4.5,
+            12,
+            5.5,
+            16,
+            7,
+            20,
+            13
+        ]
+    },
+    "metadata": {},
+    "filter": [
+        "all",
+        [
+            "in",
+            "highway",
+            "primary",
+            "primary_link",
+            "secondary",
+            "trunk"
+        ]
+    ]
+}
+
+const majorRoad = {
+    "id": "Major road",
+    "type": "line",
+    "source": "dalat-tiles",
+    "source-layer": "highway",
+    "minzoom": 6,
+    "maxzoom": 24,
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+    },
+    "paint": {
+        "line-color": '#fff', // `#EF8DD0`,
+        "line-width": [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            10,
+            1.5,
+            12,
+            2.5,
+            16,
+            4,
+            20,
+            10
+        ]
+    },
+    "metadata": {},
+    "filter": [
+        "all",
+        [
+            "in",
+            "highway",
+            "primary",
+            "primary_link",
+            "secondary",
+            "trunk"
+        ]
+    ]
+}
 
 const minorRoad = {
     "id": "Minor road",
     "type": "line",
     "source": "dalat-tiles",
     "source-layer": "highway",
-    "minzoom": 12,
+    "minzoom": 14,
     "maxzoom": 24,
     "layout": {
         "line-cap": "butt",
@@ -106,7 +231,6 @@ const minorRoad = {
                 "raceway_construction",
                 "service",
                 "storage_tank",
-                "tertiary",
                 "track"
             ]
         ]
@@ -114,5 +238,8 @@ const minorRoad = {
 }
 
 export default [
+    tertiaryRoad,
+    majorRoadOutline,
+    majorRoad,
     minorRoad
 ]
