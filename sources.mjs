@@ -12,7 +12,7 @@ export const sources = {
     
     'dalat-tiles': {
         type: 'vector',
-        tiles: ["http://localhost:8080/tiles/{z}/{x}/{y}.pbf"],
+        tiles: [`${window.location.protocol}//${window.location.host}/tiles/{z}/{x}/{y}.pbf`],
         minzoom: 10,
         maxzoom: 24
     },
