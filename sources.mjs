@@ -24,7 +24,6 @@ export const sources = {
     "cityBulk": {
         "type": "geojson",
         "data": dalatBulkJSON,
-        minzoom: 10,
         maxzoom: 14.3
     }
 }
