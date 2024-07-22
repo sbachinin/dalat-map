@@ -2,3 +2,5 @@ dalat_from_overpass_api.geojson
 dalat_from_overpass_api.osm
 tiles
 maplibre-gl-450.js
+*.geojson
+*.osm
