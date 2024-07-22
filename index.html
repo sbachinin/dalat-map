@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Purely topographic map</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <script src="./maplibre-gl-dev.js"></script>
+    <script src="./maplibre-gl-450.js"></script>
     <link href="
 https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
 " rel="stylesheet">
@@ -60,14 +60,27 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
                     source: 'dalat-tiles',
                     'source-layer': 'grass',
                     paint: {
-                        'fill-color': 'hsl(70, 100%, 60%)',
+                        'fill-color': [
+                            "interpolate",
+                            ["linear"],
+                            ["zoom"],
+                            13.6,  // Zoom level at which opacity should start decreasing
+                            'hsl(70, 70%, 50%)',   // Opacity at zoom level 14
+                            14.3,  // Zoom level just above 14
+                            'hsl(70, 50%, 70%)'    // Opacity at zoom level 15 and higher
+                        ],
                         'fill-antialias': true,
                     },
                     "filter": [
                         "any",
-                        ["==", "leisure", "golf_course"],
+                        [
+                            "all",
+                            ["!=", "name", "Sacom Golf Club"],
+                            ["==", "leisure", "golf_course"]
+                        ],
                         ["==", "name:en", "Anh Sang"],
                         ["==", "name", "Công viên Yersin"]
+
                     ],
                 },
                 {
