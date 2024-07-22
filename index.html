@@ -35,6 +35,16 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
 
             layers: [
                 {
+                    id: 'Bg',
+                    type: 'background',
+                    "layout": {
+                        "visibility": "none"
+                    },
+                    "paint": {
+                        "background-color": "HSL(121.6, 11%, 73%)"
+                    }
+                },
+                {
                     id: 'cityBulk',
                     type: 'fill',
                     source: 'cityBulk',
@@ -84,6 +94,22 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
                     ],
                 },
                 {
+                    id: "River",
+                    type: 'line',
+                    source: 'dalat-tiles',
+                    'source-layer': 'river',
+                    "layout": {
+                        "visibility": "visible",
+                        "line-cap": "round",
+                        "line-join": "round",
+                    },
+                    "paint": {
+                        "line-color": 'RGB(77, 204, 241)',
+                        'line-width': 3,
+                    },
+                    "filter": ['==', 'name', 'Suối Cam Ly']
+                },
+                {
                     "id": "Water",
                     "type": "fill",
                     "source": "dalat-tiles",
@@ -94,7 +120,6 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
                     "paint": {
                         "fill-color": 'RGB(77, 204, 241)'
                     },
-                    "metadata": {},
                     "filter": [
                         "all",
                         [
