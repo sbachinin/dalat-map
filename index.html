@@ -38,6 +38,8 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
                     id: 'cityBulk',
                     type: 'fill',
                     source: 'cityBulk',
+                    minzoom: 10,
+                    maxzoom: 14.3,
                     paint: {
                         'fill-color': 'RGB(237, 195, 180)',
                         'fill-antialias': true,
@@ -51,6 +53,22 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@3.3.1/dist/maplibre-gl.min.css
                             0    // Opacity at zoom level 15 and higher
                         ]
                     }
+                },
+                {
+                    id: 'Grass',
+                    type: 'fill',
+                    source: 'dalat-tiles',
+                    'source-layer': 'grass',
+                    paint: {
+                        'fill-color': 'hsl(70, 100%, 60%)',
+                        'fill-antialias': true,
+                    },
+                    "filter": [
+                        "any",
+                        ["==", "leisure", "golf_course"],
+                        ["==", "name:en", "Anh Sang"],
+                        ["==", "name", "Công viên Yersin"]
+                    ],
                 },
                 {
                     "id": "Water",
