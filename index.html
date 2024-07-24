@@ -3,15 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Purely topographic map</title>
+    <title>Map of Dalat</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <script src="./maplibre-gl-450.js"></script>
-    <link href="
-https://cdn.jsdelivr.net/npm/maplibre-gl@latest/dist/maplibre-gl.min.css
-" rel="stylesheet">
-    <link href="
-./mystyles.css
-" rel="stylesheet">
+    <link href="./maplibre-styles-450.css" rel="stylesheet">
+    <link href="./mystyles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -30,19 +26,15 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@latest/dist/maplibre-gl.min.css
         const style = {
             name: "Purely topographic map",
 
-            glyphs: "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=9C8cs9qKiCW3wSWdeUrN",
-            sprite: "https://api.maptiler.com/maps/topo-v2/sprite",
+            // glyphs: "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=9C8cs9qKiCW3wSWdeUrN",
+            // sprite: "https://api.maptiler.com/maps/topo-v2/sprite",
 
             layers: [
                 {
                     id: 'Bg',
                     type: 'background',
-                    "layout": {
-                        "visibility": "none"
-                    },
-                    "paint": {
-                        "background-color": "HSL(121.6, 11%, 73%)"
-                    }
+                    "layout": { "visibility": "none" },
+                    "paint": { "background-color": "HSL(121.6, 11%, 73%)" }
                 },
                 {
                     id: 'cityBulk',
@@ -153,11 +145,6 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@latest/dist/maplibre-gl.min.css
             ],
             sources,
 
-            light: {
-                anchor: "viewport",
-                color: "white",
-                intensity: 0.12,
-            },
             version: 8,
         }
 
@@ -165,11 +152,11 @@ https://cdn.jsdelivr.net/npm/maplibre-gl@latest/dist/maplibre-gl.min.css
             container: 'map',
             style,
             hash: true,
-            center: [108.4419, 11.9404],
-            zoom: 12,
+            center: [108.45007,11.945],
+            zoom: 0,
             maxBounds: [
-                [108.38014, 11.88], // Southwest coordinates [longitude, latitude]
-                [108.52, 12.01]  // Northeast coordinates [longitude, latitude]
+                [108.38014, 11.88], // SW
+                [108.52, 12.01]  // NE
             ],
             antialias: true,
             maxZoom: 17.99
