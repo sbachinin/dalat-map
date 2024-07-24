@@ -3,3 +3,4 @@ dalat_from_overpass_api.osm
 *.geojson
 *.osm
 oldlayers
+tiles

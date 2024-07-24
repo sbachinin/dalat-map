@@ -30,12 +30,12 @@
             // sprite: "https://api.maptiler.com/maps/topo-v2/sprite",
 
             layers: [
-                {
-                    id: 'Bg',
-                    type: 'background',
-                    "layout": { "visibility": "none" },
-                    "paint": { "background-color": "HSL(121.6, 11%, 73%)" }
-                },
+                // {
+                //     id: 'Bg',
+                //     type: 'background',
+                //     "layout": { "visibility": "none" },
+                //     "paint": { "background-color": "HSL(121.6, 11%, 73%)" }
+                // },
                 {
                     id: 'cityBulk',
                     type: 'fill',
@@ -110,7 +110,22 @@
                         "visibility": "visible"
                     },
                     "paint": {
-                        "fill-color": 'RGB(77, 204, 241)'
+                        "fill-color": [
+                            // at low zoom levels show only main lakes
+                            "step",
+                            ["zoom"],
+                            [
+                                "match",
+                                ["get", "name"],
+                                "Hồ Xuân Hương", 'RGB(77, 204, 241)',
+                                "Hồ Tuyền Lâm", 'RGB(77, 204, 241)',
+                                "Hồ Chiến Thắng", 'RGB(77, 204, 241)',
+                                "Hồ Đa Thiện", 'RGB(77, 204, 241)',
+                                'transparent'
+                            ],
+                            13.6,
+                            'RGB(77, 204, 241)'
+                        ]
                     },
                     "filter": [
                         "all",
@@ -152,7 +167,7 @@
             container: 'map',
             style,
             hash: true,
-            center: [108.44409,11.945],
+            center: [108.44409, 11.945],
             zoom: 0,
             maxBounds: [
                 [108.37416, 11.88], // SW
