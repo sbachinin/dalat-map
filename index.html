@@ -24,6 +24,7 @@
         import roads from './layers/roads.mjs'
         import rivers from './layers/rivers.mjs'
         import lakes from './layers/lakes.mjs'
+        import buildings from './layers/buildings.mjs'
 
         const style = {
             name: "Purely topographic map",
@@ -89,29 +90,7 @@
                 },
                 ...rivers,
                 ...lakes,
-                {
-                    "id": "Building",
-                    "type": "fill",
-                    "source": "dalat-tiles",
-                    "source-layer": "building",
-                    "minzoom": 15,
-                    "maxzoom": 24,
-                    "layout": {
-                        "visibility": "visible"
-                    },
-                    "paint": {
-                        "fill-color": [
-                            "match",
-                            ["get", "building:architecture"],
-                            "french_colonial", 'hsl(43, 100%, 55%)',
-                            'hsl(43, 30%, 85%)'
-                        ]
-                        
-                        ,
-                        "fill-antialias": true,
-                        'fill-opacity': 0.7
-                    },
-                },
+                ...buildings,
                 ...roads
             ],
             sources,

@@ -28,10 +28,7 @@ const tertiaryRoad = {
         ],
         "line-opacity": 0.55
     },
-    "filter": [
-        "all",
-        ["in", "highway", "tertiary",]
-    ]
+    "filter": ["in", "highway", "tertiary",]
 }
 
 const majorRoadOutline = {
@@ -51,15 +48,12 @@ const majorRoadOutline = {
         ]
     },
     "filter": [
-        "all",
-        [
-            "in",
-            "highway",
-            "primary",
-            "primary_link",
-            "secondary",
-            "trunk"
-        ]
+        "in",
+        "highway",
+        "primary",
+        "primary_link",
+        "secondary",
+        "trunk"
     ]
 }
 
@@ -80,30 +74,34 @@ const majorRoad = {
         ]
     },
     "filter": [
-        "all",
-        [
-            "in",
-            "highway",
-            "primary",
-            "primary_link",
-            "secondary",
-            "trunk"
-        ]
+        "in",
+        "highway",
+        "primary",
+        "primary_link",
+        "secondary",
+        "trunk"
     ]
 }
 
 const minorRoad = {
     "id": "Minor road",
     ...common_road_props,
-    "minzoom": 15,
+    "minzoom": 14,
     "paint": {
         "line-color": road_color,
         "line-width": [
             "interpolate",
             ["linear", 2],
             ["zoom"],
-            15, 1.5,
+            14, 1,
             20, 6
+        ],
+        "line-opacity": [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            14, 0.3,
+            16, 1
         ]
     },
     "filter": [
