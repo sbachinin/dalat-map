@@ -21,7 +21,9 @@
     <script type="module">
         import { sources } from './sources.mjs'
         import { manage_scale } from './manage_scale.mjs'
-        import roadLayers from './road_layers.mjs'
+        import roads from './layers/roads.mjs'
+        import rivers from './layers/rivers.mjs'
+        import lakes from './layers/lakes.mjs'
 
         const style = {
             name: "Purely topographic map",
@@ -85,78 +87,32 @@
 
                     ],
                 },
-                {
-                    id: "River",
-                    type: 'line',
-                    source: 'dalat-tiles',
-                    'source-layer': 'river',
-                    "layout": {
-                        "visibility": "visible",
-                        "line-cap": "round",
-                        "line-join": "round",
-                    },
-                    "paint": {
-                        "line-color": 'RGB(77, 204, 241)',
-                        'line-width': 3,
-                    },
-                    "filter": ['==', 'name', 'Suối Cam Ly']
-                },
-                {
-                    "id": "Water",
-                    "type": "fill",
-                    "source": "dalat-tiles",
-                    "source-layer": "water",
-                    "layout": {
-                        "visibility": "visible"
-                    },
-                    "paint": {
-                        "fill-color": [
-                            // at low zoom levels show only main lakes
-                            "step",
-                            ["zoom"],
-                            [
-                                "match",
-                                ["get", "name"],
-                                "Hồ Xuân Hương", 'RGB(77, 204, 241)',
-                                "Hồ Tuyền Lâm", 'RGB(77, 204, 241)',
-                                "Hồ Chiến Thắng", 'RGB(77, 204, 241)',
-                                "Hồ Đa Thiện", 'RGB(77, 204, 241)',
-                                'transparent'
-                            ],
-                            13.6,
-                            'RGB(77, 204, 241)'
-                        ]
-                    },
-                    "filter": [
-                        "all",
-                        [
-                            "!=",
-                            "intermittent",
-                            1
-                        ],
-                        [
-                            "!=",
-                            "brunnel",
-                            "tunnel"
-                        ]
-                    ]
-                },
+                ...rivers,
+                ...lakes,
                 {
                     "id": "Building",
                     "type": "fill",
                     "source": "dalat-tiles",
                     "source-layer": "building",
-                    "minzoom": 14,
+                    "minzoom": 15,
                     "maxzoom": 24,
                     "layout": {
                         "visibility": "visible"
                     },
                     "paint": {
-                        "fill-color": "red",
+                        "fill-color": [
+                            "match",
+                            ["get", "building:architecture"],
+                            "french_colonial", 'hsl(43, 100%, 55%)',
+                            'hsl(43, 30%, 85%)'
+                        ]
+                        
+                        ,
                         "fill-antialias": true,
+                        'fill-opacity': 0.7
                     },
                 },
-                ...roadLayers
+                ...roads
             ],
             sources,
 
