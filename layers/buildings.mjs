@@ -1,6 +1,31 @@
 const frenchColor = 'hsl(300, 100%, 55%)'
 
 export default [
+
+    {
+        "id": "Plain building",
+        "type": "fill",
+        "source": "dalat-tiles",
+        "source-layer": "building",
+        "minzoom": 14,
+        "paint": {
+            "fill-color": 'hsl(43, 30%, 85%)',
+            "fill-antialias": true,
+            "fill-opacity": [
+                "interpolate",
+                ["linear", 2],
+                ["zoom"],
+                14, 0.5,
+                16, 1
+            ]
+        },
+        filter: [
+            "all",
+            ["!=", "building:architecture", "french_colonial"],
+            ["!=", "name", "Big C"]
+        ]
+    },
+
     {
         "id": "French building",
         "type": "fill",
@@ -34,28 +59,4 @@ export default [
         },
         filter: ["==", "building:architecture", "french_colonial"]
     },
-
-    {
-        "id": "Plain building",
-        "type": "fill",
-        "source": "dalat-tiles",
-        "source-layer": "building",
-        "minzoom": 14,
-        "paint": {
-            "fill-color": 'hsl(43, 30%, 85%)',
-            "fill-antialias": true,
-            "fill-opacity": [
-                "interpolate",
-                ["linear", 2],
-                ["zoom"],
-                14, 0.5,
-                16, 1
-            ]
-        },
-        filter: [
-            "all",
-            ["!=", "building:architecture", "french_colonial"],
-            ["!=", "name", "Big C"]
-        ]
-    }
 ]
