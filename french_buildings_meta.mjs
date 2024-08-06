@@ -32,12 +32,6 @@ export default {
             'IMG_20240719_110747_1'
         ]
     },
-    1302653946: {
-        images: [
-            "IMG_20240721_084722_1",
-            "IMG_20240721_084827_1"
-        ]
-    },
     777438901: {
         descr: `One of the 3 palaces of king Bao Dai. (All 3 in Dalat).
 This on was built in 1933-1937.

@@ -1,5 +1,9 @@
 import meta from './french_buildings_meta.mjs'
 
+const buildingHasDetails = featureMeta => {
+    return featureMeta && (featureMeta.images || featureMeta.descr)
+}
+
 export const addMouseStuff = map => {
     const detailsEl = document.querySelector('.details')
     const imagesEl = detailsEl.querySelector('.images')
@@ -30,9 +34,8 @@ export const addMouseStuff = map => {
         if (isAlreadySelected) return
 
         const featureMeta = meta[maybeFrenchBuilding?.id]
-        const hasDetails = featureMeta && (featureMeta.images || featureMeta.descr)
 
-        if (maybeFrenchBuilding && hasDetails) {
+        if (maybeFrenchBuilding && buildingHasDetails(featureMeta)) {
             selectedBuildingId = maybeFrenchBuilding?.id
             showFrenchDetails(featureMeta)
         } else {
@@ -42,39 +45,17 @@ export const addMouseStuff = map => {
         }
     })
 
-    // let hoveredBuildingId = null
 
-    // map.on('mousemove', 'French building', (e) => {
+    map.on('mousemove', 'French building', (e) => {
+        if (e.features.length > 0) {
+            if (map.getZoom() < 15.5) return
+            if (buildingHasDetails(meta[e.features[0].id])) {
+                map.getCanvas().style.cursor = 'pointer'
+            }
+        }
+    });
 
-    //     if (e.features.length > 0) {
-
-    //         if (hoveredBuildingId) {
-    //             map.setFeatureState(
-    //                 {source: 'dalat-tiles', sourceLayer: 'building', id: hoveredBuildingId},
-    //                 {hover: false}
-    //             );
-    //         }
-
-    //         if (map.getZoom() < 15.5) return
-            
-    //         map.getCanvas().style.cursor = 'pointer'
-
-    //         hoveredBuildingId = e.features[0].id
-    //         map.setFeatureState(
-    //             {source: 'dalat-tiles', sourceLayer: 'building', id: hoveredBuildingId},
-    //             {hover: true}
-    //         );
-    //     }
-    // });
-
-    // map.on('mouseleave', 'French building', () => {
-    //     map.getCanvas().style.cursor = ''
-    //     if (hoveredBuildingId) {
-    //         map.setFeatureState(
-    //             {source: 'dalat-tiles', sourceLayer: 'building', id: hoveredBuildingId},
-    //             {hover: false}
-    //         );
-    //     }
-    //     hoveredBuildingId = null;
-    // });
+    map.on('mouseleave', 'French building', () => {
+        map.getCanvas().style.cursor = ''
+    });
 }
