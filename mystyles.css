@@ -92,3 +92,37 @@ body {
     margin-bottom: 10px;
     margin-right: 10px;
 }
+
+
+
+
+
+
+
+
+.details {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 35%;
+    background: white;
+    display: flex;
+    box-shadow: 0px 1px 19px 0px #7a7a7a;
+}
+.details.hidden {
+    display: none;
+}
+
+.details .images {
+    max-height: 100%;
+    display: flex;
+    column-gap: 10px;
+    padding: 10px;
+}
+
+.details img {
+    max-width: 90%;
+    max-height: 100%;
+    object-fit: contain;
+}

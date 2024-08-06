@@ -14,7 +14,6 @@ export const sources = {
         type: 'vector',
         tiles: [`${window.location.origin}/${window.location.pathname}tiles/{z}/{x}/{y}.pbf`],
         minzoom: 10,
-        maxzoom: 24
     },
 
     "maptiler_attribution": {

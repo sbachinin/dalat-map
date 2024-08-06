@@ -17,6 +17,10 @@
         <div class="fullwidth-scale"></div>
     </div>
 
+    <div class="details hidden">
+        <div class="images"></div>
+        <div class="description"></div>
+    </div>
 
     <script type="module">
         import { sources } from './sources.mjs'
@@ -25,6 +29,8 @@
         import rivers from './layers/rivers.mjs'
         import lakes from './layers/lakes.mjs'
         import buildings from './layers/buildings.mjs'
+        import {addMouseStuff} from './mouse_stuff.mjs'
+        import meta from './french_buildings_meta.mjs'
 
         const style = {
             name: "Purely topographic map",
@@ -98,7 +104,7 @@
             version: 8,
         }
 
-        window.map = new maplibregl.Map({
+        const map = new maplibregl.Map({
             container: 'map',
             style,
             hash: true,
@@ -112,10 +118,19 @@
             maxZoom: 17.99
         });
 
+        addMouseStuff(map)
 
         map.addControl(new maplibregl.ScaleControl());
         map.addControl(new maplibregl.NavigationControl(), 'top-right');
-
+        
+        map.once('idle', () => {
+            for (let frenchBuildingId of Object.keys(meta)) {
+                map.setFeatureState(
+                    {source: 'dalat-tiles', sourceLayer: 'building', id: frenchBuildingId},
+                    {hasDetails: true}
+                );
+            }
+        })
 
         manage_scale()
     </script>
