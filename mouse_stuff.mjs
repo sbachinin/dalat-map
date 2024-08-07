@@ -7,6 +7,7 @@ const buildingHasDetails = featureMeta => {
 export const addMouseStuff = map => {
     const detailsEl = document.querySelector('.details')
     const imagesEl = detailsEl.querySelector('.images')
+    const fsPhotoEl = document.querySelector('.fullscreen-photo')
 
     const showFrenchDetails = (details) => {
 
@@ -58,4 +59,11 @@ export const addMouseStuff = map => {
     map.on('mouseleave', 'French building', () => {
         map.getCanvas().style.cursor = ''
     });
+
+    imagesEl.addEventListener('click', e => {
+        const imgEl = document.createElement('img')
+        imgEl.src = e.target.src
+        fsPhotoEl.appendChild(imgEl)
+        fsPhotoEl.classList.remove('hidden')
+    })
 }
