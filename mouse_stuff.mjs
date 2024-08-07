@@ -6,6 +6,7 @@ const buildingHasDetails = featureMeta => {
 
 
 const detailsEl = document.querySelector('.details')
+const detailsExpanderEl = document.querySelector('.details-expander')
 const imagesEl = detailsEl.querySelector('.images')
 const fsPhotoEl = document.querySelector('.fullscreen-photo')
 
@@ -22,7 +23,7 @@ const showFrenchDetails = (details) => {
 
     // show description
 
-    detailsEl.classList.remove('hidden')
+    detailsExpanderEl.classList.add('expanded')
 }
 
 
@@ -45,9 +46,9 @@ export const addMouseStuff = map => {
             selectedBuildingId = maybeFrenchBuilding?.id
             showFrenchDetails(featureMeta)
         } else {
-            imagesEl.innerHTML = ''
             selectedBuildingId = null
-            detailsEl.classList.add('hidden')
+            detailsExpanderEl.classList.remove('expanded')
+            setTimeout(() => { imagesEl.innerHTML = '' }, 250)
         }
     })
 

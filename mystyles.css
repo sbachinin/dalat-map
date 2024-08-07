@@ -102,14 +102,21 @@ body {
 
 
 
-
-
-.details {
+.details-expander {
+    height: 0;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 35%;
+    transition: height 0.16s ease-out;
+}
+.details-expander.expanded {
+    height: 35vh;
+}
+
+
+.details {
+    height: 35vh;
     background: white;
     display: flex;
     box-shadow: 0px 1px 19px 0px #7a7a7a;
