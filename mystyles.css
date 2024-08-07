@@ -1,11 +1,13 @@
+:root {
+    --image-fading-duration: 0.16s;
+}
+
 body {
     margin: 0;
     padding: 0;
 }
 
-.hidden {
-    display: none !important;
-}
+
 
 #map {
     position: absolute;
@@ -130,10 +132,16 @@ body {
     padding: 10px;
 }
 
-.details img {
+.details .images img {
     max-height: 100%;
-    object-fit: contain;
     cursor: pointer;
+    opacity: 1;
+    transition: opacity var(--image-fading-duration) ease-out;
+}
+
+
+.details .images img.hidden {
+    opacity: 0;
 }
 
 .fullscreen-photo {
@@ -148,6 +156,10 @@ body {
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(4px);
+}
+
+.fullscreen-photo.hidden {
+    display: none !important;
 }
 
 .fullscreen-photo img {

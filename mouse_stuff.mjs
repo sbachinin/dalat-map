@@ -4,6 +4,8 @@ const buildingHasDetails = featureMeta => {
     return featureMeta && (featureMeta.images || featureMeta.descr)
 }
 
+const imageFadingDuration = 160
+document.documentElement.style.setProperty('--image-fading-duration', `${imageFadingDuration / 1000}s`);
 
 const detailsEl = document.querySelector('.details')
 const detailsExpanderEl = document.querySelector('.details-expander')
@@ -12,18 +14,62 @@ const fsPhotoEl = document.querySelector('.fullscreen-photo')
 
 const showFrenchDetails = (details) => {
 
+    const expandDetailsPromise = new Promise(resolve => {
+        if (detailsExpanderEl.classList.contains('expanded')) {
+            resolve()
+        } else {
+            detailsExpanderEl.classList.add('expanded')
+            setTimeout(resolve, 210)
+        }
+    })
+
     if (details.images?.length) {
-        imagesEl.innerHTML = ''
+
+        const fadeOutPromise = new Promise(resolve => {
+            const oldImages = Array.from(imagesEl.querySelectorAll('img'))
+            if (oldImages.length === 0) {
+                resolve()
+                return
+            }
+
+            // transition old photos to 0 opacity
+            for (const oldImage of oldImages) {
+                oldImage.classList.add('hidden')
+            }
+            setTimeout(() => {
+                // remove old photos
+                for (const oldImage of oldImages) {
+                    oldImage.remove()
+                }
+                // allow to show new photos after old photos finish fading out
+                resolve()
+                // show loader IF new are not there yet
+                // if (!newImagesHaveArrived) {}
+            }, imageFadingDuration + 50)
+        })
+
+        // request new photos
         for (const imgName of details.images) {
             const imgEl = document.createElement('img')
+            imgEl.className = 'hidden'
             imgEl.src = `./buildings_photos/${imgName}.jpg`
-            imagesEl.appendChild(imgEl)
+            imgEl.onload = () => {
+                // make sure old ones has finished fading out
+                Promise.all([fadeOutPromise, expandDetailsPromise]).then(() => {
+                    // hide loader
+                    // ..................................
+                    // add new photos
+                    imagesEl.appendChild(imgEl)
+                    // transition new photos to 1 opacity
+                    setTimeout(() => {
+                        imgEl.classList.remove('hidden')
+                    }, 50)
+                })
+            };
         }
     }
 
     // show description
-
-    detailsExpanderEl.classList.add('expanded')
 }
 
 
@@ -48,7 +94,7 @@ export const addMouseStuff = map => {
         } else {
             selectedBuildingId = null
             detailsExpanderEl.classList.remove('expanded')
-            setTimeout(() => { imagesEl.innerHTML = '' }, 250)
+            setTimeout(() => { imagesEl.innerHTML = '' }, 170)
         }
     })
 
