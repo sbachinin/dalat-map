@@ -1,6 +1,9 @@
+import { getMainReveal, mainOpacityReveal } from './mainReveal.mjs'
+
 const frenchColor = 'hsl(300, 70%, 70%)'
 const frenchBorderColor = 'hsl(300, 70%, 30%)'
-
+const darkerBoringBuildingColor = 'hsl(43, 15%, 65%)'
+const boringBuildingColor = 'hsl(43, 15%, 90%)'
 
 export default [
 
@@ -9,17 +12,11 @@ export default [
         "type": "fill",
         "source": "dalat-tiles",
         "source-layer": "boring_building",
-        "minzoom": 14,
+        "minzoom": mainOpacityReveal[3],
         "paint": {
-            "fill-color": 'hsl(43, 30%, 85%)',
+            "fill-color": getMainReveal(darkerBoringBuildingColor, boringBuildingColor),
             "fill-antialias": true,
-            "fill-opacity": [
-                "interpolate",
-                ["linear", 2],
-                ["zoom"],
-                14, 0.5,
-                16, 1
-            ]
+            "fill-opacity": mainOpacityReveal
         },
         filter: ["!=", "name", "Big C"]
     },
@@ -30,10 +27,11 @@ export default [
         "type": "fill",
         "source": "dalat-tiles",
         "source-layer": "french_building",
-        "minzoom": 14,
+        "minzoom": mainOpacityReveal[3],
         "paint": {
             "fill-color": frenchColor,
             "fill-antialias": true,
+            "fill-opacity": mainOpacityReveal
         },
     },
 
@@ -42,7 +40,7 @@ export default [
         'type': 'line',
         "source": "dalat-tiles",
         "source-layer": "french_building",
-        "minzoom": 14,
+        "minzoom": mainOpacityReveal[3],
         'paint': {
             'line-color': frenchColor,
             'line-width': [
@@ -53,7 +51,8 @@ export default [
                 2,   // Opacity at zoom level 14
                 16,  // Zoom level just above 14
                 0    // Opacity at zoom level 15 and higher
-            ]
+            ],
+            "line-opacity": mainOpacityReveal
         },
     },
 
@@ -63,7 +62,7 @@ export default [
         'type': 'line',
         "source": "dalat-tiles",
         "source-layer": "french_building",
-        "minzoom": 14,
+        "minzoom": mainOpacityReveal[3],
         'paint': {
             'line-color': [
                 'case',
@@ -77,7 +76,8 @@ export default [
                 ["zoom"],
                 14, 0.5,
                 16, 2
-            ]
+            ],
+            "line-opacity": mainOpacityReveal
         },
     },
 
