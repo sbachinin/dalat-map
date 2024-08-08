@@ -151,7 +151,7 @@ body {
     left: 0;         
     width: 100vw;    
     height: 100vh;
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(100, 100, 100, .7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -163,6 +163,6 @@ body {
 }
 
 .fullscreen-photo img {
-    max-width: 100vw;
-    max-height: 100vh;
+    max-width: 98vw;
+    max-height: 98vh;
 }
