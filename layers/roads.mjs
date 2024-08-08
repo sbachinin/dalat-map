@@ -1,4 +1,6 @@
-const road_color = "hsl(30, 17%, 59%)"
+const road_color = "hsl(30, 0%, 59%)"
+const darker_tertiary_road_color = "hsl(30, 0%, 71%)"
+const minor_road_color = "hsl(30, 0%, 83%)"
 
 const common_road_props = {
     "type": "line",
@@ -16,17 +18,17 @@ const tertiaryRoad = {
     ...common_road_props,
     "minzoom": 10,
     "paint": {
-        "line-color": road_color,
+        
+        "line-color": darker_tertiary_road_color,
         "line-width": [
             "interpolate",
             ["linear", 2],
             ["zoom"],
             10, 1,
-            12, 1.5,
-            16, 2,
+            14, 1.5,
+            16, 3.5,
             20, 6
         ],
-        "line-opacity": 0.55
     },
     "filter": ["in", "highway", "tertiary",]
 }
@@ -41,10 +43,10 @@ const majorRoadOutline = {
             "interpolate",
             ["linear", 2],
             ["zoom"],
-            10, 3.5,
-            12, 4,
-            16, 5,
-            20, 9
+            10, 1.5,
+            12, 2,
+            16, 8,
+            20, 12
         ]
     },
     "filter": [
@@ -60,17 +62,23 @@ const majorRoadOutline = {
 const majorRoad = {
     "id": "Major road",
     ...common_road_props,
-    "minzoom": 10,
+    "minzoom": 13,
     "paint": {
-        "line-color": '#fff',
+        "line-color": '#d6d6d6',
         "line-width": [
             "interpolate",
             ["linear", 2],
             ["zoom"],
-            10, 1.5,
-            12, 2,
-            16, 3,
-            20, 7
+            14, 2,
+            16, 3.5,
+            20, 6
+        ],
+        "line-opacity": [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            13, 0,
+            15, 1
         ]
     },
     "filter": [
@@ -88,13 +96,13 @@ const minorRoad = {
     ...common_road_props,
     "minzoom": 14,
     "paint": {
-        "line-color": road_color,
+        "line-color": minor_road_color,
         "line-width": [
             "interpolate",
             ["linear", 2],
             ["zoom"],
-            14, 1,
-            20, 6
+            13, 1,
+            20, 3
         ],
         "line-opacity": [
             "interpolate",
@@ -138,8 +146,8 @@ const minorRoad = {
 }
 
 export default [
+    minorRoad,
     tertiaryRoad,
     majorRoadOutline,
     majorRoad,
-    minorRoad
 ]
