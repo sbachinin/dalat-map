@@ -5,10 +5,10 @@ const frenchBorderColor = 'hsl(300, 70%, 30%)'
 export default [
 
     {
-        "id": "Plain building",
+        "id": "Boring building",
         "type": "fill",
         "source": "dalat-tiles",
-        "source-layer": "building",
+        "source-layer": "boring_building",
         "minzoom": 14,
         "paint": {
             "fill-color": 'hsl(43, 30%, 85%)',
@@ -21,11 +21,7 @@ export default [
                 16, 1
             ]
         },
-        filter: [
-            "all",
-            ["!=", "building:architecture", "french_colonial"],
-            ["!=", "name", "Big C"]
-        ]
+        filter: ["!=", "name", "Big C"]
     },
 
 
@@ -33,20 +29,19 @@ export default [
         "id": "French building",
         "type": "fill",
         "source": "dalat-tiles",
-        "source-layer": "building",
+        "source-layer": "french_building",
         "minzoom": 14,
         "paint": {
             "fill-color": frenchColor,
             "fill-antialias": true,
         },
-        filter: ["==", "building:architecture", "french_colonial"]
     },
 
     {
         'id': 'Colonial thickening outline',
         'type': 'line',
         "source": "dalat-tiles",
-        "source-layer": "building",
+        "source-layer": "french_building",
         "minzoom": 14,
         'paint': {
             'line-color': frenchColor,
@@ -60,7 +55,6 @@ export default [
                 0    // Opacity at zoom level 15 and higher
             ]
         },
-        filter: ["==", "building:architecture", "french_colonial"]
     },
 
     
@@ -68,7 +62,7 @@ export default [
         'id': 'Colonial has-details outline',
         'type': 'line',
         "source": "dalat-tiles",
-        "source-layer": "building",
+        "source-layer": "french_building",
         "minzoom": 14,
         'paint': {
             'line-color': [
@@ -85,7 +79,6 @@ export default [
                 16, 2
             ]
         },
-        filter: ["==", "building:architecture", "french_colonial"]
     },
 
 
