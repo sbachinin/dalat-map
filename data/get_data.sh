@@ -44,7 +44,7 @@ jq '
 ' filtered_1.geojson > french_building0.geojson
 
 jq '.features | map(select(.properties.highway!= null))' filtered_1.geojson > highway.geojson
-jq '.features | map(select(.properties.natural == "water"))' filtered_1.geojson > water0.geojson
+jq '.features | map(select(.properties.natural == "water" and (.properties.name == "Hồ Xuân Hương" or .properties.name == "Hồ Tuyền Lâm" or .properties.name == "Hồ Chiến Thắng" or .properties.name == "Hồ Đa Thiện")))' filtered_1.geojson > lake0.geojson
 jq '.features | map(select(.properties.waterway == "stream"))' filtered_1.geojson > river0.geojson
 jq '.features | map(select(.properties.landuse == "grass" or .properties.leisure == "golf_course" or .properties.leisure == "park"))' filtered_1.geojson > grass0.geojson
 
@@ -53,7 +53,7 @@ jq '.features | map(select(.properties.landuse == "grass" or .properties.leisure
 
 jq 'map({type: .type, geometry: .geometry, id: .id, properties: {name: .properties.name}})' boring_building0.geojson > boring_building.geojson
 jq 'map({type: .type, geometry: .geometry, id: .id, properties: {name: .properties.name}})' french_building0.geojson > french_building.geojson
-jq 'map({type: .type, geometry: .geometry, id: .id, properties: {name: .properties.name}})' water0.geojson > water.geojson
+jq 'map({type: .type, geometry: .geometry, id: .id, properties: {name: .properties.name}})' lake0.geojson > lake.geojson
 jq 'map({type: .type, geometry: .geometry, id: .id, properties: {name: .properties.name}})' river0.geojson > river.geojson
 jq 'map({type: .type, geometry: .geometry, id: .id, properties: {name: .properties.name}})' grass0.geojson > grass.geojson
 
@@ -64,4 +64,4 @@ tippecanoe -e ../tiles \
 --minimum-zoom=10 --maximum-zoom=17 \
 --no-tile-compression -f \
 boring_building.geojson french_building.geojson highway.geojson \
-water.geojson river.geojson grass.geojson
+lake.geojson river.geojson grass.geojson
