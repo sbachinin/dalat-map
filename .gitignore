@@ -4,3 +4,5 @@ dalat_from_overpass_api.osm
 *.osm
 oldlayers
 tiles
+
+!data/french_building.geojson
