@@ -56,7 +56,7 @@ jq 'map({type: .type, geometry: .geometry, id: .id, properties: {name: .properti
 
 # MAKE MANY LAYERS FROM MANY JSON FILES
 
-tippecanoe -e ../tiles \
+tippecanoe -e ../../dalat-map-tiles/tiles \
 --minimum-zoom=10 --maximum-zoom=17 \
 --no-tile-compression -f \
 boring_building.geojson french_building.geojson highway.geojson \
