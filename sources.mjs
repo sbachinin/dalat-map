@@ -12,7 +12,7 @@ export const sources = {
     
     'dalat-tiles': {
         type: 'vector',
-        tiles: [`${window.location.origin}/${window.location.pathname}tiles/{z}/{x}/{y}.pbf`],
+        tiles: [`https://sbachinin.github.io/dalat-map-tiles/tiles/{z}/{x}/{y}.pbf`],
         minzoom: 10,
     },
 
