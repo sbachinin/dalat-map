@@ -1,0 +1,12 @@
+{
+  "name": "dalat-map",
+  "version": "1.0.0",
+  "description": "",
+  "main": "maplibre-gl-450.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "imggen": "python resize_images.py"
+  },
+  "author": "",
+  "license": "ISC"
+}
