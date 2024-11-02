@@ -53,7 +53,7 @@ const showFrenchDetails = (details) => {
             const imgEl = document.createElement('img')
             imgEl.className = 'hidden'
 
-            imgEl.src = `https://sbachinin.github.io/dalat-map-images/originals/${imgName}.jpg`
+            imgEl.src = `https://sbachinin.github.io/dalat-map-images/thumbs/${imgName}.jpg`
             imgEl.onload = () => {
                 // make sure old ones has finished fading out
                 Promise.all([fadeOutPromise, expandDetailsPromise]).then(() => {
