@@ -1,17 +1,24 @@
 // this is a dumbass way but it works.
+// (Though it's fragile and selectors might need to be adjusted every time)
 // A proper way perhaps will involve using google photos api.
 
 // open highlights album in chrome
 // enlarge first image
+// !open file info panel
 // run code in dev console:
 
 const names = []
-setInterval(() =>{
-    names.push(document.querySelectorAll('[aria-label^=Filename]')[3].innerText) // get filename
-    setTimeout(() => {
-        document.querySelectorAll('div.SxgK2b.Cwtbxf')[1].click() // navigate to next photo
-    }, 500)
+setInterval(() => {
+    const visibleFilename = Array.from(
+        document.querySelectorAll('[aria-label^=Filename]')
+    ).find(el => el.offsetWidth > 0 && el.offsetHeight > 0)
+    const filename = visibleFilename.innerText
+
+    if (!names.includes(filename)) names.push(filename)
+    document.querySelectorAll('[role="button"][aria-label="View next photo"]')[0].click()
 }, 1000)
 
-// names in the end will contain duplicates of 1st and last entry. Manually remove dupes.
-// Last image name will be missing. Add it.
+
+// Last image can be missing. Add it.
+
+// make sure all photos are used and there are no dupes
