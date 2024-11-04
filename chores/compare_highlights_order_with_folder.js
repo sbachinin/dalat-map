@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const highlights_images_list = require('./highlights_images_list.js');
+const highlights_images_list = require('../highlights_images_list.js');
 
 function compareArrayWithDirectory(dirPath, arrayToCompare) {
     const filesInDirectory = fs.readdirSync(dirPath)

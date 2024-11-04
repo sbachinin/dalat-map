@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "imggen": "python chores/resize_images.py",
-    "compare_highlights": "node ./compare_highlights_order_with_folder.js "
+    "compare_highlights": "node chores/compare_highlights_order_with_folder.js "
   },
   "author": "",
   "license": "ISC"
