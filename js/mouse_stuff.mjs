@@ -7,8 +7,8 @@ const buildingHasDetails = featureMeta => {
 const imageFadingDuration = 160
 document.documentElement.style.setProperty('--image-fading-duration', `${imageFadingDuration / 1000}s`);
 
-const detailsEl = document.querySelector('.details')
-const detailsExpanderEl = document.querySelector('.details-expander')
+const detailsEl = document.querySelector('.panel')
+const detailsExpanderEl = document.querySelector('.panel-expander')
 const imagesEl = detailsEl.querySelector('.images')
 const fsPhotoEl = document.querySelector('.fullscreen-photo')
 
