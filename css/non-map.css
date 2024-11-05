@@ -1,0 +1,33 @@
+#non-map {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0,0,0,.2);
+}
+
+
+@media (orientation: portrait) {
+    #non-map {
+        grid-template-rows: 1fr auto;
+    }
+    #non-map > * {
+        width: 100%;
+    }
+}
+@media (orientation: landscape) {
+    #non-map {
+        grid-template-columns: 1fr auto;
+    }
+    #non-map > * {
+        height: 100%;
+    }
+    #panel-expander {
+        order: 1;
+    }
+    #non-panel {
+        order: 2;
+    }
+}

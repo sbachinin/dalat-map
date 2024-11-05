@@ -8,6 +8,8 @@
     <script src="./maplibre-gl-450.js"></script>
     <link href="./maplibre-styles-450.css" rel="stylesheet">
     <link href="./allstyles.css" rel="stylesheet">
+    <link href="./css/non-map.css" rel="stylesheet">
+    <link href="./css/panel.css" rel="stylesheet">
 </head>
 
 <body>
@@ -17,8 +19,10 @@
         <div class="fullwidth-scale"></div>
     </div>
 
-    <div id="panel-expander" class="expanded">
-        <div id="panel">
+    <div id="non-map">
+        <div id="non-panel"></div>
+        <div id="panel-expander" class="expanded notransition">
+            <div id="panel"></div>
         </div>
     </div>
 
