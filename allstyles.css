@@ -104,15 +104,15 @@ body {
 
 
 
-.panel-expander {
+#panel-expander {
     height: 0;
     position: fixed;
-    bottom: 0;
+    bottom: -15px;
     left: 0;
     right: 0;
     transition: height 0.16s ease-out;
 }
-.panel-expander.expanded {
+#panel-expander.expanded {
     height: 35vh;
 }
 

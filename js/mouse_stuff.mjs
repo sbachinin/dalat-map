@@ -1,4 +1,6 @@
 import meta from './french_buildings_meta.mjs'
+import { panel } from './panel.mjs'
+
 
 const buildingHasDetails = featureMeta => {
     return featureMeta && (featureMeta.images || featureMeta.descr)
@@ -7,18 +9,16 @@ const buildingHasDetails = featureMeta => {
 const imageFadingDuration = 160
 document.documentElement.style.setProperty('--image-fading-duration', `${imageFadingDuration / 1000}s`);
 
-const detailsEl = document.querySelector('.panel')
-const detailsExpanderEl = document.querySelector('.panel-expander')
-const imagesEl = detailsEl.querySelector('.images')
+const detailsEl = document.querySelector('#building-details')
 const fsPhotoEl = document.querySelector('.fullscreen-photo')
 
 const showFrenchDetails = (details) => {
 
     const expandDetailsPromise = new Promise(resolve => {
-        if (detailsExpanderEl.classList.contains('expanded')) {
+        if (panel.isExpanded()) {
             resolve()
         } else {
-            detailsExpanderEl.classList.add('expanded')
+            panel.expand()
             setTimeout(resolve, 210)
         }
     })
@@ -77,6 +77,7 @@ const showFrenchDetails = (details) => {
 
 export const addMouseStuff = map => {
 
+    return
     // OPEN DETAILS OF A CLICKED BUILDING
     let selectedBuildingId = null
 
@@ -94,7 +95,7 @@ export const addMouseStuff = map => {
             showFrenchDetails(featureMeta)
         } else {
             selectedBuildingId = null
-            detailsExpanderEl.classList.remove('expanded')
+            panel.collapse()
             setTimeout(() => { imagesEl.innerHTML = '' }, 170)
         }
     })
