@@ -4,6 +4,14 @@
     }
 }
 
+@media (orientation: portrait) {
+    #custom-attribution {
+        order: 3;
+        width: max-content;
+        justify-self: end;
+    }
+}
+
 .maplibregl-map .maplibregl-ctrl-attrib {
     visibility: hidden;
     pointer-events: none;
@@ -11,6 +19,7 @@
 
 #custom-attribution {
     font: 12px / 20px Helvetica Neue, Arial, Helvetica, sans-serif;
+    height: 44px;
 }
 
 #custom-attribution details:not([open]) {
