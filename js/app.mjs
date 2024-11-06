@@ -14,7 +14,7 @@ const map = new maplibregl.Map({
         [108.52, 12.01]  // NE
     ],
     antialias: true,
-    maxZoom: 17.99
+    maxZoom: 17
 });
 
 addMouseStuff(map)
