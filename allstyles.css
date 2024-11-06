@@ -84,6 +84,10 @@ body {
     position: relative;
 }
 
+.scale-item:first-child {
+    box-shadow: 2px 0 0 0 #333 inset;
+}
+
 .scale-item.hidden {
     visibility: hidden;
 }
