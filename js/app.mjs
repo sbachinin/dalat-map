@@ -2,6 +2,7 @@ import { create_scale } from './manage_scale.mjs'
 import { addMouseStuff } from './mouse_stuff.mjs'
 import meta from './french_buildings_meta.mjs'
 import { style } from './style.mjs'
+import { panel } from './panel.mjs'
 
 const map = new maplibregl.Map({
     container: 'map',
@@ -35,6 +36,9 @@ map.on('load', function () {
     const attribution = document.querySelector(`details.maplibregl-ctrl-attrib`).outerHTML;
     const attributionElement = document.getElementById('custom-attribution');
     attributionElement.innerHTML = attribution;
+    document.querySelector('.maplibregl-canvas-container').addEventListener('click', function (event) {
+        panel.collapse()
+    });
 });
 
 create_scale()

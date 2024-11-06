@@ -26,13 +26,6 @@ export const panel = {
 
 const panel_expand_button = document.querySelector(`#panel-expand-button`)
 
-document.addEventListener('click', function (event) {
-    if (!panelEl.contains(event.target) && !panel_expand_button.contains(event.target)) {
-        panel.collapse()
-    }
-});
-
-
 panel_expand_button.addEventListener('click', () => {
     panel.is_expanded() ? panel.collapse() : panel.expand()
 })
