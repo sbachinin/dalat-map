@@ -44,10 +44,8 @@ body {
 }
 
 .fullwidth-scale-wrapper {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
+    margin: 0 10px;
+    width: calc(100% - 20px);
     border: 2px solid #333;
     border-top: #333;
     box-sizing: border-box;
@@ -56,6 +54,11 @@ body {
     font-size: 12px;
     font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
     user-select: none;
+    overflow: hidden;
+    height: 24px;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
 }
 
 .fullwidth-scale {

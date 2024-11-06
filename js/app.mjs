@@ -1,4 +1,4 @@
-import { manage_scale } from './manage_scale.mjs'
+import { create_scale } from './manage_scale.mjs'
 import { addMouseStuff } from './mouse_stuff.mjs'
 import meta from './french_buildings_meta.mjs'
 import { style } from './style.mjs'
@@ -31,4 +31,4 @@ map.once('idle', () => {
     }
 })
 
-manage_scale()
+create_scale()

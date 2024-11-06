@@ -87,13 +87,13 @@ const create_scale_item = (i) => {
 }
 
 
-export const manage_scale = () => {
+export const create_scale = () => {
 
     const native_scale_el = document.querySelector('.maplibregl-ctrl.maplibregl-ctrl-scale')
     if (native_scale_el === null) return
 
     fullwidth_scale_wr.style.visibility = 'visible'
-    for (let i = 0; i < max_scale_items_count; i++) {
+    for (let i = 0; i < MAX_SCALE_ITEMS_COUNT; i++) {
         fullwidth_scale_wr.firstElementChild.appendChild(create_scale_item(i))
     }
 
@@ -112,7 +112,7 @@ export const manage_scale = () => {
                 update_scale(native_scale_el)
             }
         )
-    ).observe(document.body)
+    ).observe(fullwidth_scale_wr)
 }
 
 

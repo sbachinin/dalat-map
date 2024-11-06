@@ -6,6 +6,11 @@
     height: 100vh;
     width: 100vw;
     background: rgba(0,0,0,.2);
+    pointer-events: none;
+}
+
+#non-map > * > * {
+    pointer-events: auto;
 }
 
 
@@ -19,7 +24,7 @@
 }
 @media (orientation: landscape) {
     #non-map {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: auto 1fr;
     }
     #non-map > * {
         height: 100%;
@@ -30,4 +35,10 @@
     #non-panel {
         order: 2;
     }
+}
+
+#non-panel {
+    overflow: hidden;
+    display: grid;
+    align-items: end;
 }
