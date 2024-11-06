@@ -42,3 +42,13 @@
     display: grid;
     align-items: end;
 }
+
+#panel-expand-button {
+    width: 20px;
+    height: 20px;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 0px 4px 1px rgba(60, 64, 67, 0.3);
+    /* border-left: 1px solid #dadce0; */
+    border-radius: 8px;
+}
