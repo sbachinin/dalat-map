@@ -2,6 +2,11 @@
     --image-fading-duration: 0.16s;
 }
 
+:root, body {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
