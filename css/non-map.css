@@ -5,11 +5,11 @@
     left: 0;
     right: 0;
     display: grid;
-    background: rgba(0,0,0,.2);
+    background: rgba(0, 0, 0, .2);
     pointer-events: none;
 }
 
-#non-map > * > * {
+#non-map>*>* {
     pointer-events: auto;
 }
 
@@ -18,20 +18,25 @@
     #non-map {
         grid-template-rows: 1fr auto;
     }
-    #non-map > * {
+
+    #non-map>* {
         width: 100%;
     }
 }
+
 @media (orientation: landscape) {
     #non-map {
         grid-template-columns: auto 1fr;
     }
-    #non-map > * {
+
+    #non-map>* {
         height: 100%;
     }
+
     #panel-expander {
         order: 1;
     }
+
     #non-panel {
         order: 2;
     }

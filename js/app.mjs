@@ -31,4 +31,10 @@ map.once('idle', () => {
     }
 })
 
+map.on('load', function () {
+    const attribution = document.querySelector(`details.maplibregl-ctrl-attrib`).outerHTML;
+    const attributionElement = document.getElementById('custom-attribution');
+    attributionElement.innerHTML = attribution;
+});
+
 create_scale()

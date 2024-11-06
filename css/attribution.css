@@ -1,0 +1,18 @@
+@media (orientation: landscape) {
+    #custom-attribution {
+        justify-self: flex-end;
+    }
+}
+
+.maplibregl-map .maplibregl-ctrl-attrib {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#custom-attribution {
+    font: 12px / 20px Helvetica Neue, Arial, Helvetica, sans-serif;
+}
+
+#custom-attribution details:not([open]) {
+    padding: 2px 24px 2px 0;
+}
