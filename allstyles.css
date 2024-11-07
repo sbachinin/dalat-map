@@ -51,6 +51,7 @@ body {
 .fullwidth-scale-wrapper {
     margin: 0 10px;
     width: calc(100% - 20px);
+    max-width: 400px;
     border-bottom: 2px solid #333;
     color: #333;
     visibility: hidden;
@@ -70,7 +71,7 @@ body {
 }
 
 .fullwidth-scale>div {
-    height: 5px;
+    height: 3px;
     width: var(--scale-step-width);
     border-right: 2px solid #333;
     box-sizing: border-box;
