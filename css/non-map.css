@@ -22,11 +22,6 @@
         width: 100%;
     }
 
-    .fullwidth-scale-wrapper {
-        order: 1;
-        width: calc(100% - 50px);
-    }
-
     #expand-button-wrapper {
         order: 2;
     }
@@ -76,14 +71,15 @@
 
 #expand-button-wrapper {
     pointer-events: none;
+    z-index: 1;
 }
 
 #panel-expand-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 23px;
-    width: 48px;
+    height: 32px;
+    width: 36px;
     background: white;
     border-radius: 8px 8px 0 0;
     border-bottom: 1px solid #dadce0;

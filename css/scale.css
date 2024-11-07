@@ -1,6 +1,5 @@
 .fullwidth-scale-wrapper {
-    margin: 0 10px;
-    width: calc(100% - 20px);
+    
     max-width: 400px;
     border-bottom: 2px solid #333;
     color: #333;
@@ -15,7 +14,24 @@
     margin-bottom: 10px;
 }
 
+@media (orientation: landscape) {
+    .fullwidth-scale-wrapper {
+        order: 1;
+        width: calc(100% - 20px);
+        margin: 0 10px 10px 10px;
+    }
+}
+
+@media (orientation: portrait) {
+    .fullwidth-scale-wrapper {
+        order: 1;
+        margin: 0 4vw 6px 10px;
+    }
+}
+
+
 .fullwidth-scale {
+    position: absolute;
     display: flex;
     width: max-content;
 }
