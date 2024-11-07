@@ -48,60 +48,6 @@ body {
     height: 100%;
 }
 
-.fullwidth-scale-wrapper {
-    margin: 0 10px;
-    width: calc(100% - 20px);
-    max-width: 400px;
-    border-bottom: 2px solid #333;
-    color: #333;
-    visibility: hidden;
-    font-size: 12px;
-    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
-    user-select: none;
-    overflow: hidden;
-    height: 24px;
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 10px;
-}
-
-.fullwidth-scale {
-    display: flex;
-    width: max-content;
-}
-
-.fullwidth-scale>div {
-    height: 3px;
-    width: var(--scale-step-width);
-    border-right: 2px solid #333;
-    box-sizing: border-box;
-}
-
-.maplibregl-ctrl.maplibregl-ctrl-scale {
-    margin-left: -1000px;
-}
-
-.scale-item {
-    position: relative;
-}
-
-.scale-item:first-child {
-    box-shadow: 2px 0 0 0 #333 inset;
-}
-
-.scale-item.hidden {
-    visibility: hidden;
-}
-
-.scale-item-label {
-    position: absolute;
-    right: 0;
-    bottom: 100%;
-    width: 0;
-    display: flex;
-    justify-content: center;
-    white-space: nowrap;
-}
 
 .maplibregl-ctrl-bottom-right {
     bottom: 26px;
