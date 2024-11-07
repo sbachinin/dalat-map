@@ -1,6 +1,9 @@
-const do_with_transition = (fn) => {
+const toggle_panel = (fn) => {
     panelEl.classList.remove('notransition')
-    setTimeout(fn)
+    setTimeout(() => {
+        fn()
+        panel_expand_button.classList[panel.is_expanded() ? 'add' : 'remove']('inward')
+    })
     setTimeout(() => {
         panelEl.classList.add('notransition')
     }, 250)
@@ -11,10 +14,10 @@ const panelEl = document.querySelector(`#panel-expander`)
 export const panel = {
     element: panelEl,
     expand() {
-        do_with_transition(() => { panelEl.classList.add('expanded') })
+        toggle_panel(() => { panelEl.classList.add('expanded') })
     },
     collapse() {
-        do_with_transition(() => { panelEl.classList.remove('expanded') })
+        toggle_panel(() => { panelEl.classList.remove('expanded') })
     },
     is_expanded() {
         return panelEl.classList.contains('expanded')
