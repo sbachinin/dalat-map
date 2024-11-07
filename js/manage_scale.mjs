@@ -56,12 +56,6 @@ const update_scale = (native_scale_el) => {
 
         l.parentElement.classList.remove('hidden')
 
-        if (i >= (visible_steps_count - 1.2)) {
-            // don't draw label too close to the right border
-            l.innerText = ''
-            return
-        }
-
         let text = String(value)
         if (i === 0) {
             text += ' ' + scale_units
