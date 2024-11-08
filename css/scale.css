@@ -1,17 +1,29 @@
 .fullwidth-scale-wrapper {
 
     max-width: 600px;
-    border-bottom: 2px solid #333;
     color: #333;
     visibility: hidden;
     font-size: 12px;
     font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
-    user-select: none;
-    overflow: visible;
+    overflow: hidden;
     height: 24px;
     display: flex;
     align-items: flex-end;
     margin-bottom: 10px;
+    user-select: none;
+    pointer-events: none;
+    position: relative;
+}
+
+/* draw a border that is a bit shorter on the right */
+.fullwidth-scale-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - var(--scale-right-offset));
+    height: 2px;
+    background-color: black;
 }
 
 @media (max-width: 768px) {
@@ -31,7 +43,7 @@
 @media (orientation: portrait) {
     .fullwidth-scale-wrapper {
         order: 1;
-        margin: 0 4vw 6px 10px;
+        margin: 0 10px 6px 10px;
     }
 }
 
@@ -69,4 +81,11 @@
     display: flex;
     justify-content: center;
     white-space: nowrap;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.15s ease-out;
+}
+
+.scale-item.hidden .scale-item-label {
+    opacity: 0;
 }

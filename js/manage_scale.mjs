@@ -1,5 +1,8 @@
 let root = document.documentElement
 
+const SCALE_RIGHT_OFFSET = 40; // offset where the scale labels can protrude and slowly fade in/out
+document.documentElement.style.setProperty('--scale-right-offset', SCALE_RIGHT_OFFSET + 'px');
+
 const possible_steps = [
     1, 2, 5, 10, 25, 50, 100, 250, 500, 1000, 2000, 5000
 ]
@@ -13,7 +16,7 @@ const fullwidth_scale_wr = document.querySelector('.fullwidth-scale-wrapper')
 let fullwidth_scale_width, items_viewport_limit, max_scale_items_count
 
 const measure_base_values = () => {
-    fullwidth_scale_width = fullwidth_scale_wr.getBoundingClientRect().width // fullwidth_scale_wr.clientWidth // clientWidth doesn't include padding, it's important for precision
+    fullwidth_scale_width = fullwidth_scale_wr.getBoundingClientRect().width - SCALE_RIGHT_OFFSET // fullwidth_scale_wr.clientWidth // clientWidth doesn't include padding, it's important for precision
     items_viewport_limit = Math.ceil(fullwidth_scale_width / MIN_SCALE_ITEM_WIDTH)
     max_scale_items_count = Math.min(items_viewport_limit, MAX_SCALE_ITEMS_COUNT)
 }
