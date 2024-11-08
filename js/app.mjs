@@ -20,7 +20,6 @@ const map = window.map = new maplibregl.Map({
 
 addMouseStuff(map)
 
-map.addControl(new maplibregl.ScaleControl());
 map.addControl(new maplibregl.NavigationControl(), 'top-right');
 
 map.once('idle', () => {

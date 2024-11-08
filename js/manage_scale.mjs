@@ -7,7 +7,7 @@ const possible_steps = [
 const scale_item_labels = []
 
 const MIN_SCALE_ITEM_WIDTH = 60
-const MAX_SCALE_ITEMS_COUNT = 15
+const MAX_SCALE_ITEMS_COUNT = 6
 
 const fullwidth_scale_wr = document.querySelector('.fullwidth-scale-wrapper')
 let fullwidth_scale_width, items_viewport_limit, max_scale_items_count
@@ -20,10 +20,16 @@ const measure_base_values = () => {
 
 measure_base_values()
 
-const update_scale = (native_scale_el) => {
+const update_scale = () => {
+    if (fullwidth_scale_wr.style.visibility !== 'visible') {
+        fullwidth_scale_wr.style.visibility = 'visible'
+    }
 
     const mPerPx = 1 / window.map.transform._pixelPerMeter
-    const min_step_value = mPerPx * MIN_SCALE_ITEM_WIDTH
+    // if scale element is wide, it might be necessary to increase min value:
+    const min_scale_item_width = Math.max(MIN_SCALE_ITEM_WIDTH, fullwidth_scale_width / max_scale_items_count)
+    const min_step_value = mPerPx * min_scale_item_width
+
     const total_scale_value = mPerPx * fullwidth_scale_width
 
     let step_value = possible_steps.find((s, i) => {
@@ -78,31 +84,18 @@ const create_scale_item = (i) => {
 
 
 export const create_scale = () => {
-
-    const native_scale_el = document.querySelector('.maplibregl-ctrl.maplibregl-ctrl-scale')
-    if (native_scale_el === null) return
-
-    fullwidth_scale_wr.style.visibility = 'visible'
     for (let i = 0; i < MAX_SCALE_ITEMS_COUNT; i++) {
         fullwidth_scale_wr.firstElementChild.appendChild(create_scale_item(i))
     }
 
-    update_scale(native_scale_el)
-
-    const observer = new MutationObserver(() => update_scale(native_scale_el))
-    observer.observe(
-        native_scale_el,
-        { attributes: true, childList: true, subtree: true }
-    )
-
-    new ResizeObserver(
-        debounce(
-            () => {
-                measure_base_values()
-                update_scale(native_scale_el)
-            }
-        )
-    ).observe(fullwidth_scale_wr)
+    window.map.once('render', () => {
+        const handle_resize = debounce(() => {
+            measure_base_values()
+            update_scale()
+        })
+        window.map.on('zoom', update_scale);
+        new ResizeObserver(handle_resize).observe(fullwidth_scale_wr)
+    })
 }
 
 
