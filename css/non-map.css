@@ -103,3 +103,7 @@
 .maplibregl-ctrl-group:not(:empty) {
     box-shadow: 0 0px 4px 1px rgba(60, 64, 67, 0.3) !important;
 }
+
+#fullscreen-btn.hidden {
+    display: none;
+}
