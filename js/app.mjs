@@ -31,7 +31,7 @@ map.once('idle', () => {
     }
 })
 
-map.on('load', function () {
+map.on('load', () => {
     const attribution = document.querySelector(`details.maplibregl-ctrl-attrib`).outerHTML;
     const attributionElement = document.getElementById('custom-attribution');
     attributionElement.innerHTML = attribution;
@@ -39,5 +39,12 @@ map.on('load', function () {
         panel.collapse()
     });
 });
+
+map.on('move',() => {
+    if (window.innerWidth < 768) {
+        document.querySelector(`#custom-attribution details`).removeAttribute('open')
+    }
+})
+
 
 create_scale()
