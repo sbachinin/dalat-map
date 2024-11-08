@@ -3,7 +3,7 @@ dalat_from_overpass_api.osm
 *.geojson
 *.osm
 oldlayers
-tiles
 __pycache__
+dalat-map-tiles
 
 !data/french_building.geojson
