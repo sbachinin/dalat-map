@@ -1,10 +1,10 @@
 const fullscreenBtn = document.getElementById('fullscreen-btn');
 
 if (
-    document.documentElement.requestFullscreen
-    || document.documentElement.mozRequestFullScreen
-    || document.documentElement.webkitRequestFullscreen
-    || document.documentElement.msRequestFullscreen
+    document.fullscreenEnabled || 
+    document.mozFullscreenEnabled ||
+    document.webkitFullscreenEnabled ||
+    document.msFullscreenEnabled
 ) {
     fullscreenBtn.addEventListener('click', function () {
         if (document.fullscreenElement) {
