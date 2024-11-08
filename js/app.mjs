@@ -4,7 +4,7 @@ import meta from './french_buildings_meta.mjs'
 import { style } from './style.mjs'
 import { panel } from './panel.mjs'
 
-const map = new maplibregl.Map({
+const map = window.map = new maplibregl.Map({
     container: 'map',
     style,
     hash: true,

@@ -6,14 +6,14 @@ const possible_steps = [
 
 const scale_item_labels = []
 
-const MIN_SCALE_ITEM_WIDTH = 80
+const MIN_SCALE_ITEM_WIDTH = 60
 const MAX_SCALE_ITEMS_COUNT = 15
 
 const fullwidth_scale_wr = document.querySelector('.fullwidth-scale-wrapper')
 let fullwidth_scale_width, items_viewport_limit, max_scale_items_count
 
 const measure_base_values = () => {
-    fullwidth_scale_width = fullwidth_scale_wr.clientWidth // clientWidth doesn't include padding, it's important for precision
+    fullwidth_scale_width = fullwidth_scale_wr.getBoundingClientRect().width // fullwidth_scale_wr.clientWidth // clientWidth doesn't include padding, it's important for precision
     items_viewport_limit = Math.ceil(fullwidth_scale_width / MIN_SCALE_ITEM_WIDTH)
     max_scale_items_count = Math.min(items_viewport_limit, MAX_SCALE_ITEMS_COUNT)
 }
@@ -22,46 +22,42 @@ measure_base_values()
 
 const update_scale = (native_scale_el) => {
 
-    // 1. set width
-    const ratio = fullwidth_scale_width / (parseFloat(native_scale_el.style.width))
-    const native_scale_value = parseInt(native_scale_el.innerText, 10)
-    const fullwidth_scale_value = native_scale_value * ratio
+    const mPerPx = 1 / window.map.transform._pixelPerMeter
+    const min_step_value = mPerPx * MIN_SCALE_ITEM_WIDTH
+    const total_scale_value = mPerPx * fullwidth_scale_width
 
-    const min_step_value = fullwidth_scale_value / max_scale_items_count
+    let step_value = possible_steps.find((s, i) => {
+        if (possible_steps[i + 1] > total_scale_value) { // if next value is wider than scale element, then take the current value even if it's too narrow
+            return true
+        }
+        return s > min_step_value
+    })
 
-    let step_value = possible_steps.find(s => s > min_step_value)
-
-    const visible_steps_count = fullwidth_scale_value / step_value
+    const visible_steps_count = Math.max(1, total_scale_value / step_value)
     const step_width = fullwidth_scale_width / visible_steps_count
 
     root.style.setProperty('--scale-step-width', step_width + 'px')
 
-
-    // 2. set labels & hide what's far on the right
-    let scale_units = native_scale_el.innerText.match(/[A-Za-z]+$/)[0]
-
-    // prevent change from '1000m' to '1km', use only '1km'
-    if (step_value === 1000 && scale_units === 'm') {
-        step_value = 1
-        scale_units = 'km'
-    }
-
     scale_item_labels.forEach((l, i) => {
         const value = step_value * (i + 1)
 
-        if (i >= (visible_steps_count - 1)) {
+        if (
+            (i > (visible_steps_count - 1))
+            || (value > 1000 && value % 500 > 0) // drop stuff like 1250
+        ) {
             l.parentElement.classList.add('hidden')
             return
         }
 
         l.parentElement.classList.remove('hidden')
 
-        let text = String(value)
-        if (i === 0) {
-            text += ' ' + scale_units
-        }
+        const num = value >= 1000 ? value / 1000 : value
+        const units = value >= 1000 ? 'km' : 'm'
+
+        let text = String(num) + `&#8201;` + units
+
         if (text !== l.innerText) {
-            l.innerText = text
+            l.innerHTML = text
         }
     })
 }
