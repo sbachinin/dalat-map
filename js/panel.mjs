@@ -1,3 +1,6 @@
+const EXPAND_TRANSITION_DURATION = 300
+document.documentElement.style.setProperty('--expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000 + 's');
+
 const toggle_panel = (fn) => {
     panelEl.classList.remove('notransition')
     setTimeout(() => {
@@ -6,7 +9,7 @@ const toggle_panel = (fn) => {
     })
     setTimeout(() => {
         panelEl.classList.add('notransition')
-    }, 250)
+    }, EXPAND_TRANSITION_DURATION + 50)
 }
 
 const panelEl = document.querySelector(`#panel-expander`)

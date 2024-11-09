@@ -1,6 +1,6 @@
 #panel-expander {
-    transition-timing-function: cubic-bezier(0,0,.2,1);
-    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.3,.3,.4,.9);
+    transition-duration: var(--expand-transition-duration);
 }
 
 @media (orientation: portrait) {
