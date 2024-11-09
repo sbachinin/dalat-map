@@ -22,3 +22,5 @@ setInterval(() => {
 // Last image can be missing. Add it.
 
 // make sure all photos are used and there are no dupes
+
+// save to highlights_images_list.js

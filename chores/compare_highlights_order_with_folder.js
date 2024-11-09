@@ -11,16 +11,23 @@ function compareArrayWithDirectory(dirPath, arrayToCompare) {
     const arraySet = new Set(arrayToCompare);
     const directorySet = new Set(filesInDirectory);
 
-    const isEqual = arraySet.size === directorySet.size && [...arraySet].every(file => {
-        return directorySet.has(file)
+    if (arraySet.size !== directorySet.size) {
+        console.log(`number of items in names array (${arraySet.size})
+        doesn't match the number of files in images folder (${directorySet.size})`)
+        return
+    }
+
+    const dirHasAllNames = [...arraySet].every(file => {
+        if (directorySet.has(file)) return true
+        console.log('no such file in images dir: ', file)
     });
 
-    if (isEqual) {
-        console.log("OK");
+    if (dirHasAllNames) {
+        console.log("EVERYTHING IS OK");
     } else {
         console.log("WARNING: The array does not match the directory contents.");
     }
 }
 
-const directoryPath = '../dalat-map-images/originals';
+const directoryPath = 'dalat-map-images/originals';
 compareArrayWithDirectory(directoryPath, highlights_images_list);
