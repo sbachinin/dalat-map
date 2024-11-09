@@ -1,4 +1,4 @@
-module.exports = [
+export const images_names = [
     "IMG_9766~3.jpg",
     "IMG_8385~2.jpg",
     "IMG_4047~2.jpg",

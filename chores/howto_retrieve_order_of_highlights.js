@@ -23,4 +23,4 @@ setInterval(() => {
 
 // make sure all photos are used and there are no dupes
 
-// save to highlights_images_list.js
+// save to highlights_images_list.mjs

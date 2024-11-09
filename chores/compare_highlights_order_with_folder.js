@@ -1,7 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const highlights_images_list = require('../js/highlights_images_list.js');
+async function loadImages() {
+    try {
+        const { images_names } = await import('../js/highlights_images_list.mjs');
+        return images_names
+    } catch (err) {
+        console.error('Error loading the module:', err);
+    }
+}
 
 function compareArrayWithDirectory(dirPath, arrayToCompare) {
     const filesInDirectory = fs.readdirSync(dirPath)
@@ -29,5 +36,10 @@ function compareArrayWithDirectory(dirPath, arrayToCompare) {
     }
 }
 
-const directoryPath = 'dalat-map-images/originals';
-compareArrayWithDirectory(directoryPath, highlights_images_list);
+loadImages().then((images_names) => {
+    compareArrayWithDirectory(
+        'dalat-map-images/originals',
+        images_names
+    );
+});
+
