@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Map of Dalat</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="./maplibre-gl-450.js"></script>
     <link href="./maplibre-styles-450.css" rel="stylesheet">
     <link href="./allstyles.css" rel="stylesheet">
@@ -31,16 +31,7 @@
                 <div class="fullwidth-scale"></div>
             </div>
             <div id="custom-attribution"></div>
-            <button id="fullscreen-btn" class="hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <g fill="none" stroke="currentColor" stroke-width="2">
-                      <!-- Arrow pointing to the northwest -->
-                      <path d="M5 5l4 0l0 4"/>
-                      <!-- Arrow pointing to the southeast -->
-                      <path d="M19 19l-4 0l0 -4"/>
-                    </g>
-                  </svg>
-            </button>
+            <div id="button-slot-1"></div>
         </div>
         <div id="panel-expander" class="expanded notransition">
             <div id="panel"></div>
@@ -55,7 +46,6 @@
     <div class="fullscreen-photo hidden"></div>
 
     <script type="module" src="js/app.mjs"></script>
-    <script type="module" src="js/fullscreen.mjs"></script>
 
 </body>
 
