@@ -1,4 +1,5 @@
-const EXPAND_TRANSITION_DURATION = 300
+const EXPAND_TRANSITION_DURATION = 350
+
 document.documentElement.style.setProperty('--expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000 + 's');
 
 const toggle_panel = (fn) => {
@@ -16,8 +17,16 @@ const panelEl = document.querySelector(`#panel-expander`)
 
 export const panel = {
     element: panelEl,
-    expand() {
-        toggle_panel(() => { panelEl.classList.add('expanded') })
+    expand(size) {
+        toggle_panel(() => {
+            if (size?.width !== undefined) {
+                document.documentElement.style.setProperty('--panel-width', size.width);
+            }
+            if (size?.height !== undefined) {
+                document.documentElement.style.setProperty('--panel-height', size.height);
+            }
+            panelEl.classList.add('expanded')
+        })
     },
     collapse() {
         toggle_panel(() => { panelEl.classList.remove('expanded') })
@@ -25,8 +34,8 @@ export const panel = {
     is_expanded() {
         return panelEl.classList.contains('expanded')
     },
-    insertContent() {
-
+    insert_HTML(html) {
+        panelEl.querySelector('#panel').innerHTML = html
     }
 }
 

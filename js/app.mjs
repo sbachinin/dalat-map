@@ -3,6 +3,7 @@ import { addMouseStuff } from './mouse_stuff.mjs'
 import meta from './french_buildings_meta.mjs'
 import { style } from './style.mjs'
 import { panel } from './panel.mjs'
+import { display_highlights } from './highlights.mjs'
 
 const map = window.map = new maplibregl.Map({
     container: 'map',
@@ -38,9 +39,10 @@ map.on('load', () => {
     document.querySelector('.maplibregl-canvas-container').addEventListener('click', function (event) {
         panel.collapse()
     });
+    setTimeout(display_highlights, 1000)
 });
 
-map.on('move',() => {
+map.on('move', () => {
     if (window.innerWidth < 768) {
         document.querySelector(`#custom-attribution details`).removeAttribute('open')
     }

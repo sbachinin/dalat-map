@@ -48,15 +48,11 @@
         height: 100%;
     }
 
-    #panel-expander {
-        order: 1;
-    }
-
     #non-panel {
         order: 2;
         /* expand button takes all free height */
         grid-template-rows: 1fr auto;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr auto;
     }
 
     /* place expand button at middle height */

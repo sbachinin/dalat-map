@@ -1,0 +1,13 @@
+@media (orientation: landscape) {
+    #highlights-list {
+        flex-wrap: wrap;
+    }
+}
+
+#highlights-list {
+    display: flex;
+    align-items: start;
+    gap: 4px;
+    padding: 4px;
+    overflow: hidden;
+}
