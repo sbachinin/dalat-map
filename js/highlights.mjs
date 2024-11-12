@@ -3,9 +3,6 @@ import { images_names } from './highlights_images_list.mjs'
 
 const THUMB_IDEAL_WIDTH = 215
 const THUMB_IDEAL_HEIGHT = 286
-// there are tiny differences btw actual images size, so i set their width and height in CSS
-document.documentElement.style.setProperty('--thumb-height', THUMB_IDEAL_HEIGHT + 'px')
-document.documentElement.style.setProperty('--thumb-width', THUMB_IDEAL_WIDTH + 'px')
 
 const THUMB_GAP = 4
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
@@ -16,10 +13,32 @@ const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
     I made it using something like grid-template-columns: repeat(...)
     But it failed in FF (it displayed always 1 column) that's why I switched to manual js solution
 */
+
+const mouse_media_query = window.matchMedia("(pointer: fine)");
+
 const update_size_variables = () => {
-    const two_column_width = THUMB_IDEAL_WIDTH * 2 + THUMB_GAP * 3
+    let thumb_actual_width = THUMB_IDEAL_WIDTH
+    let thumb_actual_height = THUMB_IDEAL_HEIGHT
+    const is_landscape = window.innerWidth > window.innerHeight
+    if (!is_landscape && mouse_media_query.matches) {
+        /* In portrait & desktop, shrink the thumbs to make a nice row without empty hor space */
+        const highlights_width_without_scrollbar = document.querySelector('#highlights-list').clientWidth
+        const row_default_length = Math.floor(
+            (highlights_width_without_scrollbar - THUMB_GAP) / (THUMB_IDEAL_WIDTH + THUMB_GAP)
+        )
+        thumb_actual_width = (highlights_width_without_scrollbar - THUMB_GAP) / (row_default_length + 1) - THUMB_GAP
+        thumb_actual_height = thumb_actual_width * (THUMB_IDEAL_HEIGHT / THUMB_IDEAL_WIDTH)
+    } else {
+        thumb_actual_height = Math.min(THUMB_IDEAL_HEIGHT, window.innerHeight - THUMB_GAP * 2) // should shrink if ideal height is > 100vw
+    }
+
+    // these vars have to be set anyway because there are (can be) tiny differences btw sizes of actual image files
+    document.documentElement.style.setProperty('--thumb-height', thumb_actual_height + 'px')
+    document.documentElement.style.setProperty('--thumb-width', thumb_actual_width + 'px')
+
+    const two_column_width = thumb_actual_width * 2 + THUMB_GAP * 3
     const enough_width_for_2_columns = two_column_width < window.innerWidth * MAX_HIGHLIGHTS_WIDTH_RATIO / 100
-    const highlights_width_in_lanscape = enough_width_for_2_columns ? two_column_width : (two_column_width - THUMB_IDEAL_WIDTH - THUMB_GAP)
+    const highlights_width_in_lanscape = enough_width_for_2_columns ? two_column_width : (two_column_width - thumb_actual_width - THUMB_GAP)
 
     document.documentElement.style.setProperty(
         '--highlights-width-in-landscape',
@@ -27,7 +46,7 @@ const update_size_variables = () => {
     )
     document.documentElement.style.setProperty(
         '--highlights-height-in-portrait',
-        (THUMB_IDEAL_HEIGHT + THUMB_GAP * 2) + 'px'
+        (thumb_actual_height + THUMB_GAP * 2) + 'px'
     )
 }
 
@@ -46,14 +65,14 @@ export const display_highlights = () => {
         return `<img src="${origin}/dalat-map-images/thumbs/${name}" />`
     }).join('')
 
-    update_size_variables()
-
     panel.set_content({
         update: update_size_variables,
         html: `<div id="highlights-list">`
             + imgs_html_list
             + `</div>`
     })
+
+    update_size_variables()
 
     panel.expand()
 }
