@@ -8,9 +8,22 @@
         height: var(--panel-height);
     }
 
-    #panel > :first-child {
-        height: var(--panel-height);
+    #panel {
+        top: 0;
         width: 100vw;
+        /*
+        The following means: on desktop+portrait #panel is not a scroller.
+        Content has to be able to scroll itself vertically.
+        */
+        height: max-content;
+    }
+}
+
+/* on portrait+mobile, scroll the content horizontally */
+@media (orientation: portrait) and (pointer: coarse) {
+    #panel {
+        overflow-x: scroll;
+        overflow-y: hidden;
     }
 }
 
@@ -27,13 +40,9 @@
 
     #panel {
         height: 100vh;
-        width: max-content;
         right: 0;
-    }
-
-    #panel > :first-child {
-        width: var(--panel-width);
-        height: 100vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 }
 
@@ -61,6 +70,7 @@
 #panel-expander.expanded #panel>* {
     opacity: 1;
 }
+
 /* 
 #panel .images {
     max-height: 100%;

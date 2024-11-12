@@ -1,13 +1,34 @@
-@media (orientation: landscape) {
-    #highlights-list {
-        flex-wrap: wrap;
-    }
-}
 
 #highlights-list {
     display: flex;
     align-items: start;
+    flex-wrap: wrap;
     gap: 4px;
     padding: 4px;
-    overflow: hidden;
+    box-sizing: border-box;
+}
+
+@media (orientation: landscape) {
+    #highlights-list {
+        flex-wrap: wrap;
+        width: var(--highlights-width-in-landscape);
+        height: max-content;
+    }
+}
+
+@media (orientation: portrait) {
+    #highlights-list {
+        height: var(--highlights-height-in-portrait);
+        width: 100vw;
+        /* This (portrait + desktop) is a special case where higlights scroll themselves instead of delegating it to #panel.
+        It's a bit inconsistent but difficult to solve. */
+        overflow-y: scroll;
+    }
+}
+
+@media (pointer: coarse) and (orientation: portrait) {
+    #highlights-list {
+        width: max-content;
+        flex-wrap: nowrap;
+    }
 }

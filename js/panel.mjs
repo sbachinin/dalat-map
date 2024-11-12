@@ -1,46 +1,62 @@
+const SCROLLBAR_WIDTH = 7
 const EXPAND_TRANSITION_DURATION = 350
 
 document.documentElement.style.setProperty('--expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000 + 's');
 
 const toggle_panel = (fn) => {
-    panelEl.classList.remove('notransition')
+    panel_expander_el.classList.remove('notransition')
     setTimeout(() => {
         fn()
         panel_expand_button.classList[panel.is_expanded() ? 'add' : 'remove']('inward')
     })
     setTimeout(() => {
-        panelEl.classList.add('notransition')
+        panel_expander_el.classList.add('notransition')
     }, EXPAND_TRANSITION_DURATION + 50)
 }
 
-const panelEl = document.querySelector(`#panel-expander`)
+const panel_expander_el = document.querySelector(`#panel-expander`)
+const panel_el = document.querySelector(`#panel`)
 
-export const panel = {
-    element: panelEl,
-    expand(size) {
-        toggle_panel(() => {
-            if (size?.width !== undefined) {
-                document.documentElement.style.setProperty('--panel-width', size.width);
-            }
-            if (size?.height !== undefined) {
-                document.documentElement.style.setProperty('--panel-height', size.height);
-            }
-            panelEl.classList.add('expanded')
-        })
-    },
-    collapse() {
-        toggle_panel(() => { panelEl.classList.remove('expanded') })
-    },
-    is_expanded() {
-        return panelEl.classList.contains('expanded')
-    },
-    insert_HTML(html) {
-        panelEl.querySelector('#panel').innerHTML = html
+const set_size_variables = () => {
+    const is_landscape = window.innerWidth > window.innerHeight
+    if (is_landscape) {
+        document.documentElement.style.setProperty('--panel-width', panel_el.offsetWidth + 'px');
+    } else {
+        document.documentElement.style.setProperty('--panel-height', panel_el.offsetHeight + 'px');
     }
 }
 
-const panel_expand_button = document.querySelector(`#panel-expand-button`)
+let content = null
 
+export const panel = {
+    element: panel_expander_el,
+    expand() {
+        toggle_panel(() => {
+            set_size_variables()
+            panel_expander_el.classList.add('expanded')
+        })
+    },
+    collapse() {
+        toggle_panel(() => { panel_expander_el.classList.remove('expanded') })
+    },
+    is_expanded() {
+        return panel_expander_el.classList.contains('expanded')
+    },
+    set_content(_content) {
+        content = _content
+        panel_expander_el.querySelector('#panel').innerHTML = _content.html
+    }
+}
+
+const handle_resize = () => {
+    content.update()
+    setTimeout(set_size_variables, 1) // after content has surely resized...
+}
+
+window.addEventListener('resize', handle_resize)
+window.addEventListener('orientationchange', handle_resize)
+
+const panel_expand_button = document.querySelector(`#panel-expand-button`)
 panel_expand_button.addEventListener('click', () => {
     panel.is_expanded() ? panel.collapse() : panel.expand()
 })

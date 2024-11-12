@@ -4,7 +4,6 @@ import { images_names } from './highlights_images_list.mjs'
 const THUMB_WIDTH = 215
 const THUMB_HEIGHT = 286
 const THUMB_GAP = 4
-const SCROLLBAR_WIDTH = 7
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
 /*
@@ -13,31 +12,36 @@ const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
     I made it using something like grid-template-columns: repeat(...)
     But it failed in FF (it displayed always 1 column) that's why I switched to manual js solution
 */
-const get_highlights_panel_size = () => {
-    // only on landscape
-    const two_column_width = THUMB_WIDTH * 2 + THUMB_GAP * 3 + SCROLLBAR_WIDTH
+const update_size_variables = () => {
+    const two_column_width = THUMB_WIDTH * 2 + THUMB_GAP * 3
     const enough_width_for_2_columns = two_column_width < window.innerWidth * MAX_HIGHLIGHTS_WIDTH_RATIO / 100
-    const width = enough_width_for_2_columns ? two_column_width : (two_column_width - THUMB_WIDTH - THUMB_GAP)
-
-    return {
-        width: width + 'px',
-        height: (THUMB_HEIGHT + THUMB_GAP * 2) + 'px'
-    }
+    const highlights_width_in_lanscape = enough_width_for_2_columns ? two_column_width : (two_column_width - THUMB_WIDTH - THUMB_GAP)
+    
+    document.documentElement.style.setProperty(
+        '--highlights-width-in-landscape',
+        highlights_width_in_lanscape + 'px'
+    )
+    document.documentElement.style.setProperty(
+        '--highlights-height-in-portrait',
+        (THUMB_HEIGHT + THUMB_GAP * 2) + 'px'
+    )
 }
 
 export const display_highlights = () => {
     const imgs_html_list = images_names.map(name => {
         name = name.replace('HEIC', 'jpg')
         const { origin } = window.location
-
         return `<img src="${origin}/dalat-map-images/thumbs/${name}" />`
     }).join('')
 
-    panel.insert_HTML(
-        `<div id="highlights-list">`
-        + imgs_html_list
-        + `</div>`
-    )
+    update_size_variables()
 
-    panel.expand(get_highlights_panel_size())
+    panel.set_content({
+        update: update_size_variables,
+        html: `<div id="highlights-list">`
+            + imgs_html_list
+            + `</div>`
+    })
+
+    panel.expand()
 }
