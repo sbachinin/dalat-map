@@ -50,6 +50,8 @@ export const panel = {
 
 const handle_resize = () => {
     content.update()
+    panel_el.scrollTop = 0
+    panel_el.scrollLeft = 0
     setTimeout(set_size_variables, 1) // after content has surely resized...
 }
 
