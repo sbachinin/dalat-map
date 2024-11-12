@@ -35,3 +35,9 @@
         flex-wrap: nowrap;
     }
 }
+
+
+#highlights-list img {
+    width: var(--thumb-width);
+    height: var(--thumb-height);
+}

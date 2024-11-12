@@ -3,6 +3,10 @@ import { images_names } from './highlights_images_list.mjs'
 
 const THUMB_WIDTH = 215
 const THUMB_HEIGHT = 286
+// there are tiny differences btw actual images size, so i set their width and height in CSS
+document.documentElement.style.setProperty('--thumb-height', THUMB_HEIGHT + 'px')
+document.documentElement.style.setProperty('--thumb-width', THUMB_WIDTH + 'px')
+
 const THUMB_GAP = 4
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
@@ -16,7 +20,7 @@ const update_size_variables = () => {
     const two_column_width = THUMB_WIDTH * 2 + THUMB_GAP * 3
     const enough_width_for_2_columns = two_column_width < window.innerWidth * MAX_HIGHLIGHTS_WIDTH_RATIO / 100
     const highlights_width_in_lanscape = enough_width_for_2_columns ? two_column_width : (two_column_width - THUMB_WIDTH - THUMB_GAP)
-    
+
     document.documentElement.style.setProperty(
         '--highlights-width-in-landscape',
         highlights_width_in_lanscape + 'px'
