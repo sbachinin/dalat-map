@@ -1,11 +1,9 @@
-
 #highlights-list {
     display: flex;
     align-items: start;
     flex-wrap: wrap;
     gap: 4px;
     padding: 4px;
-    box-sizing: border-box;
 }
 
 @media (orientation: landscape) {
@@ -19,14 +17,19 @@
 @media (orientation: portrait) {
     #highlights-list {
         height: var(--highlights-height-in-portrait);
-        width: 100vw;
-        /* This (portrait + desktop) is a special case where higlights scroll themselves instead of delegating it to #panel.
+    }
+}
+
+@media (orientation: portrait) and (pointer: fine) {
+    #highlights-list {
+        /* This (portrait + desktop) is a special case where higlights y-scroll themselves instead of delegating it to #panel.
         It's a bit inconsistent but difficult to solve. */
+        width: 100vw;
         overflow-y: scroll;
     }
 }
 
-@media (pointer: coarse) and (orientation: portrait) {
+@media (orientation: portrait) and (pointer: coarse) {
     #highlights-list {
         width: max-content;
         flex-wrap: nowrap;
