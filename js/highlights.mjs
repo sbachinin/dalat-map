@@ -12,6 +12,8 @@ const set_css_var = (name, value) => {
     document.documentElement.style.setProperty(name, value)
 }
 
+set_css_var('--thumb-gap', THUMB_GAP + 'px')
+
 const mouse_media_query = window.matchMedia("(pointer: fine)");
 const is_landscape = () => window.innerWidth > window.innerHeight
 let element = null
