@@ -1,5 +1,6 @@
 import { panel } from './panel.mjs'
 import { images_names } from './highlights_images_list.mjs'
+import { create_lazy_image } from './lazy-image.mjs'
 
 const THUMB_IDEAL_WIDTH = 215
 const THUMB_IDEAL_HEIGHT = 286
@@ -16,7 +17,7 @@ set_css_var('--thumb-gap', THUMB_GAP + 'px')
 
 const mouse_media_query = window.matchMedia("(pointer: fine)");
 const is_landscape = () => window.innerWidth > window.innerHeight
-let element = null
+let highlights_el = null
 
 const update_size_variables = () => {
     let thumb_width = THUMB_IDEAL_WIDTH
@@ -24,7 +25,7 @@ const update_size_variables = () => {
     const is_portrait_desktop = !is_landscape() && mouse_media_query.matches
     if (is_portrait_desktop) {
         /* In portrait & desktop, shrink the thumbs to avoid empty hor space */
-        const wrapper_width_without_scrollbar = element?.clientWidth
+        const wrapper_width_without_scrollbar = highlights_el?.clientWidth
         const row_initial_length = Math.floor(
             (wrapper_width_without_scrollbar - THUMB_GAP) / (THUMB_IDEAL_WIDTH + THUMB_GAP)
         )
@@ -69,22 +70,23 @@ const update_size_variables = () => {
     )
 }
 
-
 export const display_highlights = () => {
-    const imgs_html_list = images_names.map(name => {
+    const img_elements = images_names.map(name => {
         name = name.replace('HEIC', 'jpg')
-        const { origin } = window.location
-        return `<img src="${origin}/dalat-map-images/thumbs/${name}" />`
-    }).join('')
+        const src = `${/* window.location.origin */'https://sbachinin.github.io'}/dalat-map-images/thumbs/${name}`
+        return create_lazy_image(src)
+    })
+
+    highlights_el = document.createElement('div')
+    highlights_el.id = 'highlights-list'
+
+    img_elements.forEach(el => highlights_el.appendChild(el));
 
     panel.set_content({
         update: update_size_variables,
-        html: `<div id="highlights-list">`
-            + imgs_html_list
-            + `</div>`
+        element: highlights_el
     })
 
-    element = document.querySelector('#highlights-list')
     update_size_variables()
 
     panel.expand()

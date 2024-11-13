@@ -44,7 +44,7 @@ export const panel = {
     },
     set_content(_content) {
         content = _content
-        panel_expander_el.querySelector('#panel').innerHTML = _content.html
+        panel_expander_el.querySelector('#panel').appendChild(_content.element)
     }
 }
 
