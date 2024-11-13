@@ -21,7 +21,8 @@ let element = null
 const update_size_variables = () => {
     let thumb_width = THUMB_IDEAL_WIDTH
     let thumb_height = THUMB_IDEAL_HEIGHT
-    if (!is_landscape() && mouse_media_query.matches) {
+    const is_portrait_desktop = !is_landscape() && mouse_media_query.matches
+    if (is_portrait_desktop) {
         /* In portrait & desktop, shrink the thumbs to avoid empty hor space */
         const wrapper_width_without_scrollbar = element?.clientWidth
         const row_initial_length = Math.floor(
@@ -50,13 +51,21 @@ const update_size_variables = () => {
         wrapper_width_in_landscape -= (thumb_width + THUMB_GAP)
     }
 
+    let wrapper_height_in_portrait = (thumb_height + THUMB_GAP * 2)
+    if (is_portrait_desktop) { // try to show >1 row if enough height
+        wrapper_height_in_portrait = Math.min(
+            wrapper_height_in_portrait * 1.5,
+            window.innerHeight * 0.35
+        )
+    }
+
     set_css_var(
         '--highlights-width-in-landscape',
         wrapper_width_in_landscape + 'px'
     )
     set_css_var(
         '--highlights-height-in-portrait',
-        (thumb_height + THUMB_GAP * 2) + 'px'
+        wrapper_height_in_portrait + 'px'
     )
 }
 
