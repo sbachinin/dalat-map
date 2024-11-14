@@ -16,6 +16,8 @@ const activate_image = (el) => {
     img.src = img.dataset.src
     loader.style.display = 'block'
 
+    img.oncontextmenu = e => e.preventDefault()
+
     img.addEventListener('load', function () {
         loader.style.display = 'none'
         img.classList.add('loaded')
