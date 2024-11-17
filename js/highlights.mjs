@@ -1,6 +1,7 @@
 import { panel } from './panel.mjs'
 import { images_names } from './highlights_images_list.mjs'
 import { create_lazy_image } from './lazy-image.mjs'
+import { is_landscape, set_css_num_var } from './utils.mjs'
 
 const THUMB_IDEAL_WIDTH = 215
 const THUMB_IDEAL_HEIGHT = 286
@@ -9,14 +10,9 @@ const img_ratio = THUMB_IDEAL_WIDTH / THUMB_IDEAL_HEIGHT
 const THUMB_GAP = 4
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
-const set_css_var = (name, value) => {
-    document.documentElement.style.setProperty(name, value)
-}
-
-set_css_var('--thumb-gap', THUMB_GAP + 'px')
+set_css_num_var('--thumb-gap', THUMB_GAP, 'px')
 
 const mouse_media_query = window.matchMedia("(pointer: fine)");
-const is_landscape = () => window.innerWidth > window.innerHeight
 let highlights_el = null
 
 const update_size_variables = () => {
@@ -37,8 +33,8 @@ const update_size_variables = () => {
     }
 
     // thumb size vars have to be set anyway because there are (can be) tiny differences btw sizes of actual image files
-    set_css_var('--thumb-height', thumb_height + 'px')
-    set_css_var('--thumb-width', thumb_width + 'px')
+    set_css_num_var('--thumb-height', thumb_height, 'px')
+    set_css_num_var('--thumb-width', thumb_width, 'px')
 
     /*
     Here I manually decide whether to render 1 OR 2 columns but this actually can be achieved using CSS grid.
@@ -60,13 +56,15 @@ const update_size_variables = () => {
         )
     }
 
-    set_css_var(
+    set_css_num_var(
         '--highlights-width-in-landscape',
-        wrapper_width_in_landscape + 'px'
+        wrapper_width_in_landscape,
+        'px'
     )
-    set_css_var(
+    set_css_num_var(
         '--highlights-height-in-portrait',
-        wrapper_height_in_portrait + 'px'
+        wrapper_height_in_portrait,
+        'px'
     )
 }
 

@@ -1,11 +1,7 @@
 @media (orientation: portrait) {
     #panel-expander {
-        height: 0;
+        height: var(--panel-size);
         transition-property: height;
-    }
-
-    #panel-expander.expanded {
-        height: var(--panel-height);
     }
 
     #panel {
@@ -29,13 +25,9 @@
 
 @media (orientation: landscape) {
     #panel-expander {
-        width: 0;
+        width: var(--panel-size);
         transition-property: width;
         order: 1;
-    }
-
-    #panel-expander.expanded {
-        width: var(--panel-width);
     }
 
     #panel {
@@ -61,14 +53,10 @@
 }
 
 #panel>* {
-    opacity: 0;
+    opacity: 1; /* TODO fix content fade in out */
     transition: opacity var(--expand-transition-duration) cubic-bezier(.3, .3, .4, .9);
     transition-delay: var(--expand-transition-duration);
     box-sizing: border-box;
-}
-
-#panel-expander.expanded #panel>* {
-    opacity: 1;
 }
 
 /* 

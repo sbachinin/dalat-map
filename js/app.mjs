@@ -37,7 +37,7 @@ map.on('load', () => {
     const attributionElement = document.getElementById('custom-attribution');
     attributionElement.innerHTML = attribution;
     document.querySelector('.maplibregl-canvas-container').addEventListener('click', function (event) {
-        panel.collapse()
+        panel.set_size(0)
     });
     setTimeout(display_highlights, 1000)
 });
