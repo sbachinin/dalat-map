@@ -20,15 +20,17 @@ get_panel_el().addEventListener('scroll', () => {
     }
 })
 
-export const make_expandable_on_swipe = (set_size) => {
-    document.addEventListener('touchstart', (e) => {
+export const make_expandable_on_swipe = (panel) => {
+    document.addEventListener('touchstart', async (e) => {
         if (
             e.target.closest('#' + get_panel_el().id)
             || e.target.closest('#panel-expand-button')
         ) {
+            const panel_full_size = await panel.full_size_promise
+
             current_swipe = {
                 panel_start_size: get_css_var_num('--panel-size'),
-                panel_full_size: get_css_var_num('--panel-full-size'),
+                panel_full_size,
                 touch_start: e.changedTouches[0][is_landscape() ? 'clientX' : 'clientY'],
                 drag_start_threshold_was_passed: false,
                 initial_scroll_pos: get_panel_el()[is_landscape() ? 'scrollTop' : 'scrollLeft'],
@@ -68,7 +70,7 @@ export const make_expandable_on_swipe = (set_size) => {
             should_expand = end_delta > 0
         }
 
-        set_size(should_expand ? current_swipe.panel_full_size : 0)
+        panel.set_size(should_expand ? current_swipe.panel_full_size : 0)
     }, false);
 
     document.addEventListener('touchmove', (e) => {
@@ -95,6 +97,6 @@ export const make_expandable_on_swipe = (set_size) => {
             current_swipe.panel_full_size
         )
 
-        set_size(new_size);
+        panel.set_size(new_size);
     })
 }

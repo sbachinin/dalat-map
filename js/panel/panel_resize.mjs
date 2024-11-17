@@ -4,12 +4,12 @@ export const handle_resize = (panel) => {
         panel.content.update()
         panel.element.scrollTop = 0
         panel.element.scrollLeft = 0
-        const was_expanded = panel.is_expanded()
-        setTimeout(() => {  // after content has surely resized...
-            const full_size = panel.set_full_size()
-            // can just always collapse panel after resize, if it simplifies:
-            panel.set_size(was_expanded ? full_size : 0)
-        }, 1)
+        panel.cache_full_size()
+
+        Promise.all([panel.is_expanded(), panel.full_size_promise])
+            .then(([was_expanded, full_size]) => {
+                panel.set_size(was_expanded ? full_size : 0)
+            })
     }
 
     window.addEventListener('resize', onresize)
