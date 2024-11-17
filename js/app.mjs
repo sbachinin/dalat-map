@@ -2,7 +2,7 @@ import { create_scale } from './manage_scale.mjs'
 import { addMouseStuff } from './mouse_stuff.mjs'
 import meta from './french_buildings_meta.mjs'
 import { style } from './style.mjs'
-import { panel } from './panel.mjs'
+import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
 
 const map = window.map = new maplibregl.Map({

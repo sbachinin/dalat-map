@@ -2,10 +2,12 @@ import { make_expandable_on_swipe } from './panel_swipe.mjs'
 import {
     get_css_var_num,
     set_css_num_var,
+    debounce
+} from '../utils.mjs'
+import {
     get_panel_el,
     get_panel_intrinsic_size,
-    debounce
-} from './utils.mjs'
+} from './panel_utils.mjs'
 
 const EXPAND_TRANSITION_DURATION = 350
 const SCROLLBAR_WIDTH = 7

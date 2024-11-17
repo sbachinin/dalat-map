@@ -1,9 +1,12 @@
 import {
     is_landscape,
-    get_panel_el,
     within,
     get_css_var_num
-} from './utils.mjs'
+} from '../utils.mjs'
+
+import {
+    get_panel_el
+} from './panel_utils.mjs'
 
 const swipe_expand_threshold = 50
 const drag_start_threshold = 10

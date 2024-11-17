@@ -1,5 +1,5 @@
 import meta from './french_buildings_meta.mjs'
-import { panel } from './panel.mjs'
+import { panel } from './panel/panel.mjs'
 
 
 const buildingHasDetails = featureMeta => {

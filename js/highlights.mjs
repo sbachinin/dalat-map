@@ -1,4 +1,4 @@
-import { panel } from './panel.mjs'
+import { panel } from './panel/panel.mjs'
 import { images_names } from './highlights_images_list.mjs'
 import { create_lazy_image } from './lazy-image.mjs'
 import { is_landscape, set_css_num_var } from './utils.mjs'
