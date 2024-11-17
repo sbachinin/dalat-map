@@ -1,13 +1,7 @@
 import { make_expandable_on_swipe } from './panel_swipe.mjs'
-import {
-    get_css_var_num,
-    set_css_num_var,
-    debounce
-} from '../utils.mjs'
-import {
-    get_panel_el,
-    get_panel_intrinsic_size,
-} from './panel_utils.mjs'
+import { get_css_var_num, set_css_num_var, debounce } from '../utils.mjs'
+import { get_panel_intrinsic_size, } from './panel_utils.mjs'
+import { handle_resize } from './panel_resize.mjs'
 
 const EXPAND_TRANSITION_DURATION = 350
 const SCROLLBAR_WIDTH = 7
@@ -17,9 +11,6 @@ set_css_num_var('--panel-size', 0, 'px');
 
 const expand_button_el = document.querySelector(`#panel-expand-button`)
 const panel_expander_el = document.querySelector(`#panel-expander`)
-const panel_el = get_panel_el()
-
-let content = null
 
 const update_expand_button = debounce(() => {
     expand_button_el.classList[panel.is_expanded() ? 'add' : 'remove']('inward')
@@ -56,27 +47,15 @@ export const panel = {
     is_expanded() {
         return get_css_var_num('--panel-size') > get_css_var_num('--panel-full-size') / 2
     },
+    content: null,
     set_content(_content) {
-        content = _content
+        panel.content = _content
         panel_expander_el.querySelector('#panel').appendChild(_content.element)
         setTimeout(panel.set_full_size, 1)
     }
 }
 
-const handle_resize = () => {
-    content.update()
-    panel_el.scrollTop = 0
-    panel_el.scrollLeft = 0
-    const was_expanded = panel.is_expanded()
-    setTimeout(() => {  // after content has surely resized...
-        const full_size = panel.set_full_size()
-        // can just always collapse panel after resize, if it simplifies:
-        panel.set_size(was_expanded ? full_size : 0)
-    }, 1)
-}
-
-window.addEventListener('resize', handle_resize)
-window.addEventListener('orientationchange', handle_resize)
+handle_resize(panel)
 
 expand_button_el.addEventListener('click', panel.toggle)
 
