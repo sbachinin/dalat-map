@@ -37,21 +37,16 @@ export const panel = {
             console.warn('no size passed to panel.set_size')
         }
     },
-    expand() {
-        panel.full_size_promise
-            .then(full_size => {
-                panel.set_size(full_size)
-            })
+    async expand() {
+        panel.set_size(await panel.full_size_promise)
     },
-    toggle() {
-        panel.is_expanded().then(isexpanded => {
-            isexpanded ? panel.set_size(0) : panel.expand()
-        })
+    async toggle() {
+        const was_expanded = await panel.is_expanded()
+        was_expanded ? panel.set_size(0) : panel.expand()
     },
-    is_expanded() {
-        return panel.full_size_promise.then(full_size => {
-            return get_css_var_num('--panel-size') > full_size / 2
-        })
+    async is_expanded() {
+        const full_size = await panel.full_size_promise
+        return get_css_var_num('--panel-size') > full_size / 2
     },
     content: null,
     set_content(_content) {
