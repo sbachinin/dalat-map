@@ -22,6 +22,8 @@ get_panel_el().addEventListener('scroll', () => {
 
 export const make_expandable_on_swipe = (panel) => {
     document.addEventListener('touchstart', async (e) => {
+        // e.target.closest('#panel-expand-button') && e.preventDefault()
+
         if (
             e.target.closest('#' + get_panel_el().id)
             || e.target.closest('#panel-expand-button')
@@ -39,9 +41,11 @@ export const make_expandable_on_swipe = (panel) => {
                 had_touchmove: false
             }
         }
-    }, false)
+    }, { passive: false })
 
     document.addEventListener('touchend', (e) => {
+        // e.target.closest('#panel-expand-button') && e.preventDefault()
+
         get_panel_el().parentElement.classList.remove('notransition')
 
         setTimeout(() => { current_swipe = null })
@@ -71,9 +75,11 @@ export const make_expandable_on_swipe = (panel) => {
         }
 
         panel.set_size(should_expand ? current_swipe.panel_full_size : 0)
-    }, false);
+    }, { passive: false });
 
     document.addEventListener('touchmove', (e) => {
+        e.target.closest('#panel-expand-button') && e.preventDefault()
+
         if (!current_swipe || current_swipe.content_was_scrolled) return
 
         current_swipe.had_touchmove = true
@@ -98,5 +104,5 @@ export const make_expandable_on_swipe = (panel) => {
         )
 
         panel.set_size(new_size);
-    })
+    }, { passive: false })
 }
