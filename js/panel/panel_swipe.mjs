@@ -20,8 +20,29 @@ get_panel_el().addEventListener('scroll', () => {
     }
 })
 
+const handle_touch_events = (
+    on_touchstart,
+    on_touchmove,
+    on_touchend
+) => {
+    const get_this_coord = e => e.changedTouches[0][is_landscape() ? 'clientX' : 'clientY']
+    document.addEventListener(
+        'touchstart',
+        e => on_touchstart(e, get_this_coord(e))
+    )
+    document.addEventListener(
+        'touchmove',
+        e => on_touchmove(e, get_this_coord(e)),
+        { passive: false }
+    )
+    document.addEventListener(
+        'touchend',
+        e => on_touchend(e, get_this_coord(e))
+    )
+}
+
 export const make_expandable_on_swipe = (panel) => {
-    document.addEventListener('touchstart', async (e) => {
+    const on_touchstart = async (e, this_coord) => {
         if (
             e.target.closest('#' + get_panel_el().id)
             || e.target.closest('#panel-expand-button')
@@ -31,7 +52,7 @@ export const make_expandable_on_swipe = (panel) => {
             current_swipe = {
                 panel_start_size: get_css_var_num('--panel-size'),
                 panel_full_size,
-                touch_start: e.changedTouches[0][is_landscape() ? 'clientX' : 'clientY'],
+                touch_start: this_coord,
                 drag_start_threshold_was_passed: false,
                 // this was unused:
                 // initial_scroll_pos: get_panel_el()[is_landscape() ? 'scrollTop' : 'scrollLeft'],
@@ -40,41 +61,9 @@ export const make_expandable_on_swipe = (panel) => {
                 had_touchmove: false
             }
         }
-    }, { passive: false })
+    }
 
-    document.addEventListener('touchend', (e) => {
-        get_panel_el().parentElement.classList.remove('notransition')
-
-        requestAnimationFrame(() => { current_swipe = null })
-
-        if (
-            !current_swipe
-            || !current_swipe.had_touchmove
-            || current_swipe.content_was_scrolled
-        ) return
-
-        const touch_end = e.changedTouches[0][current_swipe.is_landscape ? 'clientX' : 'clientY']
-        // TODO is this final coord affecting the position?
-
-        const current_size = get_css_var_num('--panel-size')
-        if (current_size === current_swipe.panel_start_size) return // TODO maybe this can be safely removed now
-
-        // if swipe was tiny, try to return to original state:
-        let should_expand = current_size > (current_swipe.panel_full_size / 2)
-
-        // if swipe was long, change the state:
-        let end_delta = touch_end - current_swipe.touch_start
-        if (!current_swipe.is_landscape) end_delta = -end_delta
-
-        const has_swiped_far = Math.abs(end_delta) > swipe_expand_threshold
-        if (has_swiped_far) {
-            should_expand = end_delta > 0
-        }
-
-        panel.set_size(should_expand ? current_swipe.panel_full_size : 0)
-    }, { passive: false });
-
-    document.addEventListener('touchmove', (e) => {
+    const on_touchmove = (e, this_touch) => {
         e.target.closest('#panel-expand-button') && e.preventDefault()
 
         if (!current_swipe || current_swipe.content_was_scrolled) return
@@ -83,7 +72,6 @@ export const make_expandable_on_swipe = (panel) => {
 
         get_panel_el().parentElement.classList.add('notransition')
 
-        const this_touch = e.changedTouches[0][current_swipe.is_landscape ? 'clientX' : 'clientY']
         let delta = this_touch - current_swipe.touch_start
         if (!current_swipe.is_landscape) delta = -delta
 
@@ -105,5 +93,44 @@ export const make_expandable_on_swipe = (panel) => {
         )
 
         panel.set_size(new_size);
-    }, { passive: false })
+    }
+
+
+    const on_touchend = (_, touch_end) => {
+        get_panel_el().parentElement.classList.remove('notransition')
+
+        requestAnimationFrame(() => { current_swipe = null })
+
+        if (
+            !current_swipe
+            || !current_swipe.had_touchmove
+            || current_swipe.content_was_scrolled
+        ) return
+
+        // TODO is this final coord affecting the position?
+
+        const current_size = get_css_var_num('--panel-size')
+        if (current_size === current_swipe.panel_start_size) return // TODO maybe this can be safely removed now
+
+        // if swipe was tiny, try to return to original state:
+        let should_expand = current_size > (current_swipe.panel_full_size / 2)
+
+        // if swipe was long, change the state:
+        let end_delta = touch_end - current_swipe.touch_start
+        if (!current_swipe.is_landscape) end_delta = -end_delta
+
+        const has_swiped_far = Math.abs(end_delta) > swipe_expand_threshold
+        if (has_swiped_far) {
+            should_expand = end_delta > 0
+        }
+
+        panel.set_size(should_expand ? current_swipe.panel_full_size : 0)
+    }
+
+
+    handle_touch_events(
+        on_touchstart,
+        on_touchmove,
+        on_touchend
+    )
 }
