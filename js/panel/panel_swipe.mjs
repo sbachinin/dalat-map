@@ -22,8 +22,6 @@ get_panel_el().addEventListener('scroll', () => {
 
 export const make_expandable_on_swipe = (panel) => {
     document.addEventListener('touchstart', async (e) => {
-        // e.target.closest('#panel-expand-button') && e.preventDefault()
-
         if (
             e.target.closest('#' + get_panel_el().id)
             || e.target.closest('#panel-expand-button')
@@ -35,7 +33,8 @@ export const make_expandable_on_swipe = (panel) => {
                 panel_full_size,
                 touch_start: e.changedTouches[0][is_landscape() ? 'clientX' : 'clientY'],
                 drag_start_threshold_was_passed: false,
-                initial_scroll_pos: get_panel_el()[is_landscape() ? 'scrollTop' : 'scrollLeft'],
+                // this was unused:
+                // initial_scroll_pos: get_panel_el()[is_landscape() ? 'scrollTop' : 'scrollLeft'],
                 is_landscape: is_landscape(),
                 content_was_scrolled: false,
                 had_touchmove: false
@@ -44,11 +43,9 @@ export const make_expandable_on_swipe = (panel) => {
     }, { passive: false })
 
     document.addEventListener('touchend', (e) => {
-        // e.target.closest('#panel-expand-button') && e.preventDefault()
-
         get_panel_el().parentElement.classList.remove('notransition')
 
-        setTimeout(() => { current_swipe = null })
+        requestAnimationFrame(() => { current_swipe = null })
 
         if (
             !current_swipe
@@ -96,6 +93,10 @@ export const make_expandable_on_swipe = (panel) => {
             current_swipe.touch_start = this_touch
             return
         }
+
+        // panel dragging has surely begun
+        // so the default touch behaviours, especially pull-refresh, and scroll too, must be blocked
+        e.preventDefault()
 
         const new_size = within(
             current_swipe.panel_start_size + delta,
