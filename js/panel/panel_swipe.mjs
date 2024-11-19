@@ -53,7 +53,7 @@ export const make_expandable_on_swipe = (panel) => {
                 panel_start_size: get_css_var_num('--panel-size'),
                 panel_full_size,
                 touch_start: this_coord,
-                drag_start_threshold_was_passed: false,
+                drag_start: null,
                 // this was unused:
                 // initial_scroll_pos: get_panel_el()[is_landscape() ? 'scrollTop' : 'scrollLeft'],
                 is_landscape: is_landscape(),
@@ -61,6 +61,18 @@ export const make_expandable_on_swipe = (panel) => {
                 had_touchmove: false
             }
         }
+    }
+
+    const try_start_dragging = (this_touch) => {
+        if (current_swipe.drag_start !== null) return true
+
+        let delta = this_touch - current_swipe.touch_start
+        if (Math.abs(delta) < drag_start_threshold) return false
+
+        // here: thresh was passed in some dir
+
+        current_swipe.drag_start = current_swipe.touch_start + drag_start_threshold * Math.sign(delta)
+        return true
     }
 
     const on_touchmove = (e, this_touch) => {
@@ -72,15 +84,11 @@ export const make_expandable_on_swipe = (panel) => {
 
         get_panel_el().parentElement.classList.add('notransition')
 
-        let delta = this_touch - current_swipe.touch_start
-        if (!current_swipe.is_landscape) delta = -delta
+        const drag_has_begun = try_start_dragging(this_touch)
+        if (!drag_has_begun) return
 
-        if (!current_swipe.drag_start_threshold_was_passed && Math.abs(delta) < drag_start_threshold) return
-        if (!current_swipe.drag_start_threshold_was_passed) {
-            current_swipe.drag_start_threshold_was_passed = true
-            current_swipe.touch_start = this_touch
-            return
-        }
+        let delta = this_touch - current_swipe.drag_start
+        if (!current_swipe.is_landscape) delta = -delta
 
         // panel dragging has surely begun
         // so the default touch behaviours, especially pull-refresh, and scroll too, must be blocked
