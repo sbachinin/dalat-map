@@ -13,8 +13,12 @@ const drag_start_threshold = 10
 
 let current_swipe = null
 
-get_panel_el().addEventListener('scroll', () => {
+get_panel_el().addEventListener('scroll', e => {
     // TODO this will be fired all the time even if there was no swipe at all; even if it's not a touch devcice
+
+    if (current_swipe?.drag_start) {
+        e.preventDefault()
+    }
     if (current_swipe) {
         current_swipe.content_was_scrolled = true
     }
@@ -78,7 +82,12 @@ export const make_expandable_on_swipe = (panel) => {
     const on_touchmove = (e, this_touch) => {
         e.target.closest('#panel-expand-button') && e.preventDefault()
 
-        if (!current_swipe || current_swipe.content_was_scrolled) return
+        if (!current_swipe) return
+        if (current_swipe.content_was_scrolled
+            // Drag & scroll can start together (it's difficult to solve it).
+            // This condition allows them to happen in parallel, rather than stopping the drag which is uglier
+            && !current_swipe.drag_start
+        ) return
 
         current_swipe.had_touchmove = true
 
@@ -109,11 +118,9 @@ export const make_expandable_on_swipe = (panel) => {
 
         requestAnimationFrame(() => { current_swipe = null })
 
-        if (
-            !current_swipe
-            || !current_swipe.had_touchmove
-            || current_swipe.content_was_scrolled
-        ) return
+        if (!current_swipe) return
+        if (!current_swipe.had_touchmove) return
+        if (current_swipe.content_was_scrolled && !current_swipe.drag_start) return
 
         // TODO is this final coord affecting the position?
 
