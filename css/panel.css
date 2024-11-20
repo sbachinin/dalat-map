@@ -53,10 +53,12 @@
 }
 
 #panel>* {
-    opacity: 1; /* TODO fix content fade in out */
-    transition: opacity var(--expand-transition-duration) cubic-bezier(.3, .3, .4, .9);
-    transition-delay: var(--expand-transition-duration);
+    opacity: 0; /* TODO fix content fade in out */
+    transition: opacity .5s cubic-bezier(.3, .3, .4, .9);
     box-sizing: border-box;
+}
+#panel>*.opaque {
+    opacity: 1;
 }
 
 /* 
