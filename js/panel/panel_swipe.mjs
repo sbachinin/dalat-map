@@ -9,7 +9,7 @@ import {
 } from './panel_utils.mjs'
 
 const swipe_expand_threshold = 50
-const drag_start_threshold = 15
+const drag_start_threshold = 20
 
 let current_swipe = null
 
