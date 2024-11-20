@@ -70,6 +70,11 @@ export const make_expandable_on_swipe = (panel) => {
             e.target.closest('#' + get_panel_el().id)
             || e.target.closest('#panel-expand-button')
         ) {
+            if (e.touches.length > 1) {
+                e.preventDefault()
+                return
+            }
+
             const panel_full_size = await panel.full_size_promise
 
             current_swipe = {
@@ -105,9 +110,15 @@ export const make_expandable_on_swipe = (panel) => {
     }
 
     const on_touchmove = (e) => {
-        e.target.closest('#panel-expand-button') && e.preventDefault()
+        if (
+            e.target.closest('#panel-expand-button') // prevents "navigate back" action
+            || (e.target.closest('#' + get_panel_el().id) && e.touches.length > 1) // prevents pinch-related mess
+        ) {
+            e.preventDefault()
+        }
 
         if (!current_swipe) return
+
         if (current_swipe.content_was_scrolled
             // Drag & scroll can start together (it's difficult to solve it).
             // This condition allows them to happen in parallel, rather than stopping the drag which is uglier
@@ -139,13 +150,13 @@ export const make_expandable_on_swipe = (panel) => {
 
 
     const on_touchend = e => {
-        get_panel_el().parentElement.classList.remove('notransition')
-
         requestAnimationFrame(() => { current_swipe = null })
 
         if (!current_swipe) return
         if (!current_swipe.had_touchmove) return
         if (current_swipe.content_was_scrolled && !current_swipe.drag_start_coord) return
+
+        get_panel_el().parentElement.classList.remove('notransition')
 
         // TODO is this final coord affecting the position?
 
