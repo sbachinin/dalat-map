@@ -39,16 +39,16 @@ const handle_touch_events = (
 }
 
 const get_coord_on_drag_axis = xy => {
-    return xy[current_swipe.is_landscape ? 'clientX' : 'clientY']
+    return xy[current_swipe.drag_axis === 'x' ? 'clientX' : 'clientY']
 }
 
 const get_delta_on_drag_axis = (current_XY, start_coord) => {
-    const prop = current_swipe.is_landscape ? 'clientX' : 'clientY'
+    const prop = current_swipe.drag_axis === 'x' ? 'clientX' : 'clientY'
     return current_XY[prop] - start_coord
 }
 
 const get_delta_on_scroll_axis = (current_XY, current_swipe) => {
-    const prop = current_swipe.is_landscape ? 'clientY' : 'clientX'
+    const prop = current_swipe.drag_axis === 'x' ? 'clientY' : 'clientX'
     return current_XY[prop] - current_swipe.touch_start_XY[prop]
 }
 
@@ -77,7 +77,7 @@ export const make_expandable_on_swipe = (panel) => {
                 panel_full_size,
                 touch_start_XY: e.changedTouches[0],
                 drag_start_coord: null,
-                is_landscape: is_landscape(),
+                drag_axis: is_landscape() ? 'x' : 'y',
                 content_was_scrolled: false,
                 had_touchmove: false
             }
@@ -122,7 +122,7 @@ export const make_expandable_on_swipe = (panel) => {
         if (!drag_has_begun) return
 
         let delta = get_coord_on_drag_axis(e.changedTouches[0]) - current_swipe.drag_start_coord
-        if (!current_swipe.is_landscape) delta = -delta
+        if (current_swipe.drag_axis === 'y') delta = -delta
 
         // panel dragging has surely begun
         // so the default touch behaviours, especially pull-refresh, and scroll too, must be blocked
@@ -157,7 +157,7 @@ export const make_expandable_on_swipe = (panel) => {
 
         // if swipe was long, change the state:
         let end_delta = get_delta_on_drag_axis(e.changedTouches[0], current_swipe.drag_start_coord)
-        if (!current_swipe.is_landscape) end_delta = -end_delta
+        if (current_swipe.drag_axis === 'y') end_delta = -end_delta
 
         const has_swiped_far = Math.abs(end_delta) > swipe_expand_threshold
         if (has_swiped_far) {
