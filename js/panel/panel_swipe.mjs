@@ -42,9 +42,9 @@ const get_coord_on_drag_axis = xy => {
     return xy[current_swipe.is_landscape ? 'clientX' : 'clientY']
 }
 
-const get_delta_on_drag_axis = (current_XY, current_swipe) => {
+const get_delta_on_drag_axis = (current_XY, start_coord) => {
     const prop = current_swipe.is_landscape ? 'clientX' : 'clientY'
-    return current_XY[prop] - current_swipe.touch_start_XY[prop]
+    return current_XY[prop] - start_coord
 }
 
 const get_delta_on_scroll_axis = (current_XY, current_swipe) => {
@@ -52,9 +52,12 @@ const get_delta_on_scroll_axis = (current_XY, current_swipe) => {
     return current_XY[prop] - current_swipe.touch_start_XY[prop]
 }
 
-const orthogonal_swipe_is_greater_or_equal = xy => {
-    const scroll_delta = get_delta_on_scroll_axis(xy, current_swipe)
-    const drag_delta = get_delta_on_drag_axis(xy, current_swipe)
+const orthogonal_swipe_is_greater_or_equal = current_XY => {
+    const scroll_delta = get_delta_on_scroll_axis(current_XY, current_swipe)
+    const drag_delta = get_delta_on_drag_axis(
+        current_XY,
+        get_coord_on_drag_axis(current_swipe.touch_start_XY)
+    )
     return Math.abs(scroll_delta) >= Math.abs(drag_delta)
     // TODO: BUT if thing is unscrollable,
     // that is, e.g., scroll_delta is in a direction where scroll end is reached,
@@ -84,7 +87,11 @@ export const make_expandable_on_swipe = (panel) => {
     const try_start_dragging = (e) => {
         if (current_swipe.drag_start_coord !== null) return true
 
-        let delta = get_delta_on_drag_axis(e.changedTouches[0], current_swipe)
+        let delta = get_delta_on_drag_axis(
+            e.changedTouches[0],
+            get_coord_on_drag_axis(current_swipe.touch_start_XY)
+        )
+
         if (Math.abs(delta) < drag_start_threshold) return false
 
         // here: thresh was passed in some dir
@@ -149,7 +156,7 @@ export const make_expandable_on_swipe = (panel) => {
         let should_expand = current_size > (current_swipe.panel_full_size / 2)
 
         // if swipe was long, change the state:
-        let end_delta = get_delta_on_drag_axis(e.changedTouches[0], current_swipe)
+        let end_delta = get_delta_on_drag_axis(e.changedTouches[0], current_swipe.drag_start_coord)
         if (!current_swipe.is_landscape) end_delta = -end_delta
 
         const has_swiped_far = Math.abs(end_delta) > swipe_expand_threshold
