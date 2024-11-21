@@ -12,13 +12,13 @@ const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
 set_css_num_var('--thumb-gap', THUMB_GAP, 'px')
 
-const mouse_media_query = window.matchMedia("(pointer: fine)");
+const is_mouse_device = window.matchMedia("(pointer: fine)").matches
 let highlights_el = null
 
 const update_size_variables = () => {
     let thumb_width = THUMB_IDEAL_WIDTH
     let thumb_height = THUMB_IDEAL_HEIGHT
-    const is_portrait_desktop = !is_landscape() && mouse_media_query.matches
+    const is_portrait_desktop = !is_landscape() && is_mouse_device
     if (is_portrait_desktop) {
         /* In portrait & desktop, shrink the thumbs to avoid empty hor space */
         const wrapper_width_without_scrollbar = highlights_el?.clientWidth
@@ -94,6 +94,7 @@ export const display_highlights = () => {
     panel.expand()
 }
 
+// TODO benefits of this are not apparent; and it can slow the initial load too
 export const preload_some_images = () => {
     for (let i = 0; i < 10; i++) {
         if (images_names[i]) {

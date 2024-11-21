@@ -11,12 +11,14 @@ const drag_start_threshold = 10
 
 let current_swipe = null
 
-get_panel_el().addEventListener('scroll', e => {
-    // TODO this will be fired all the time even if there was no swipe at all; even if it's not a touch devcice
-    if (current_swipe) {
-        current_swipe.content_was_scrolled = true
-    }
-})
+if (window.matchMedia("(pointer: coarse)").matches) {
+    get_panel_el().addEventListener('scroll', e => {
+        if (current_swipe) {
+            current_swipe.content_was_scrolled = true
+        }
+    })
+}
+
 
 const handle_touch_events = (
     on_touchstart,
