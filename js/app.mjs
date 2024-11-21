@@ -3,7 +3,7 @@ import { addMouseStuff } from './mouse_stuff.mjs'
 import meta from './french_buildings_meta.mjs'
 import { style } from './style.mjs'
 import { panel } from './panel/panel.mjs'
-import { display_highlights } from './highlights.mjs'
+import { display_highlights, preload_some_images } from './highlights.mjs'
 
 const map = window.map = new maplibregl.Map({
     container: 'map',
@@ -18,6 +18,8 @@ const map = window.map = new maplibregl.Map({
     antialias: true,
     maxZoom: 17
 });
+
+preload_some_images()
 
 addMouseStuff(map)
 

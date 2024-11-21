@@ -68,10 +68,14 @@ const update_size_variables = () => {
     )
 }
 
+const get_image_url = name => {
+    return `${/* window.location.origin */'https://sbachinin.github.io'}/dalat-map-images/thumbs/${name}`
+}
+
 export const display_highlights = () => {
     const img_elements = images_names.map(name => {
         name = name.replace('HEIC', 'jpg')
-        const src = `${/* window.location.origin */'https://sbachinin.github.io'}/dalat-map-images/thumbs/${name}`
+        const src = get_image_url(name)
         return create_lazy_image(src)
     })
 
@@ -88,4 +92,13 @@ export const display_highlights = () => {
     update_size_variables()
 
     panel.expand()
+}
+
+export const preload_some_images = () => {
+    for (let i = 0; i < 10; i++) {
+        if (images_names[i]) {
+            let img = new Image()
+            img.src = get_image_url(images_names[i])
+        }
+    }
 }
