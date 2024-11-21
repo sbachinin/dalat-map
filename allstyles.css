@@ -13,6 +13,9 @@ body {
     padding: 0;
 }
 
+* {
+    -webkit-tap-highlight-color: transparent;
+}
 
 .notransition {
     transition: none !important;
