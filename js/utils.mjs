@@ -33,3 +33,8 @@ export const debounce = (func, delay = 100) => {
         }, delay);
     };
 };
+
+export const get_image_url = (name, folder) => {
+    return `${window.location.origin}/dalat-map-images/${folder}/${name.replace('HEIC', 'jpg')}`
+    // return `https://sbachinin.github.io/dalat-map-images/${folder}/${name.replace('HEIC', 'jpg')}`
+}

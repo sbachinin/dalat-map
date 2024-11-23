@@ -61,9 +61,6 @@ const orthogonal_swipe_is_greater_or_equal = current_XY => {
         get_coord_on_drag_axis(current_swipe.touch_start_XY)
     )
     return Math.abs(scroll_delta) >= Math.abs(drag_delta)
-    // TODO: BUT if thing is unscrollable,
-    // that is, e.g., scroll_delta is in a direction where scroll end is reached,
-    // it will lead to having to result???
 }
 
 export const make_expandable_on_swipe = (panel) => {
@@ -159,8 +156,6 @@ export const make_expandable_on_swipe = (panel) => {
         if (current_swipe.content_was_scrolled && !current_swipe.drag_start_coord) return
 
         get_panel_el().parentElement.classList.remove('notransition')
-
-        // TODO is this final coord affecting the position?
 
         const current_size = get_css_var_num('--panel-size')
         if (current_size === current_swipe.panel_start_size) return // TODO maybe this can be safely removed now

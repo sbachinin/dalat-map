@@ -1,7 +1,8 @@
 import { panel } from './panel/panel.mjs'
 import { images_names } from './highlights_images_list.mjs'
 import { create_lazy_image } from './lazy-image.mjs'
-import { is_landscape, set_css_num_var } from './utils.mjs'
+import { is_landscape, set_css_num_var, get_image_url } from './utils.mjs'
+import { open_slider } from './slider/slider.mjs'
 
 const THUMB_IDEAL_WIDTH = 215
 const THUMB_IDEAL_HEIGHT = 286
@@ -68,15 +69,9 @@ const update_size_variables = () => {
     )
 }
 
-const get_image_url = name => {
-    return `${/* window.location.origin */'https://sbachinin.github.io'}/dalat-map-images/thumbs/${name}`
-}
-
 export const display_highlights = () => {
     const img_elements = images_names.map(name => {
-        name = name.replace('HEIC', 'jpg')
-        const src = get_image_url(name)
-        return create_lazy_image(src)
+        return create_lazy_image(get_image_url(name, 'thumbs'))
     })
 
     highlights_el = document.createElement('div')
@@ -91,6 +86,28 @@ export const display_highlights = () => {
 
     update_size_variables()
 
+    highlights_el.addEventListener('click', e => {
+        const lazy_wrapper = e.target.closest('.lazy-image-wrapper')
+        if (e.target.tagName !== "IMG" || !lazy_wrapper) return
+       
+        const all_images_elements = Array.from(lazy_wrapper.parentElement.children)
+        open_slider({
+            current_index: all_images_elements.indexOf(lazy_wrapper),
+            max_index: images_names.length,
+            get_slide(i) {
+                return create_lazy_image(
+                    get_image_url(images_names[i], 'large')
+                )
+            }
+        }
+    )
+
+
+        
+        
+
+    })
+
     panel.expand()
 }
 
@@ -99,7 +116,7 @@ export const preload_some_images = () => {
     for (let i = 0; i < 10; i++) {
         if (images_names[i]) {
             let img = new Image()
-            img.src = get_image_url(images_names[i])
+            img.src = get_image_url(images_names[i], 'thumbs')
         }
     }
 }

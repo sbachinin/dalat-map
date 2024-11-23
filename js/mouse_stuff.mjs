@@ -10,7 +10,6 @@ const imageFadingDuration = 160
 document.documentElement.style.setProperty('--image-fading-duration', `${imageFadingDuration / 1000}s`);
 
 const detailsEl = document.querySelector('#building-details')
-const fsPhotoEl = document.querySelector('.fullscreen-photo')
 
 const showFrenchDetails = (details) => {
 
@@ -109,23 +108,5 @@ export const addMouseStuff = map => {
     })
     map.on('mouseleave', 'French building', () => {
         map.getCanvas().style.cursor = ''
-    })
-
-    // OPEN LARGER PHOTO ON CLICK
-    imagesEl.addEventListener('click', e => {
-        if (e.target.tagName !== "IMG") return
-        const imgEl = document.createElement('img')
-        imgEl.src = e.target.src
-        fsPhotoEl.appendChild(imgEl)
-        fsPhotoEl.classList.remove('hidden')
-    })
-
-    // CLOSE LARGE PHOTO WHEN CLICK OUTSIDE
-    fsPhotoEl.addEventListener('click', e => {
-        setTimeout(() => {
-            if (e.target.tagName === "IMG") return // OR SWITCH TO THE NEXT PHOTO?
-            fsPhotoEl.innerHTML = ''
-            fsPhotoEl.classList.add('hidden')
-        })
     })
 }
