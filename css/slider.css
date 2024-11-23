@@ -78,3 +78,32 @@
 .slider .left-button svg {
     transform: rotate(180deg);
 }
+
+
+.close-btn {
+    z-index: 11;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.close-btn svg {
+    pointer-events: none;
+    width: 26px;
+}
