@@ -89,23 +89,17 @@ export const display_highlights = () => {
     highlights_el.addEventListener('click', e => {
         const lazy_wrapper = e.target.closest('.lazy-image-wrapper')
         if (e.target.tagName !== "IMG" || !lazy_wrapper) return
-       
+
         const all_images_elements = Array.from(lazy_wrapper.parentElement.children)
         open_slider({
             current_index: all_images_elements.indexOf(lazy_wrapper),
-            max_index: images_names.length,
+            max_index: images_names.length - 1,
             get_slide(i) {
                 return create_lazy_image(
                     get_image_url(images_names[i], 'large')
                 )
             }
-        }
-    )
-
-
-        
-        
-
+        })
     })
 
     panel.expand()

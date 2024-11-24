@@ -1,11 +1,13 @@
-import { set_css_num_var } from '../utils.mjs'
+import { debounce, wrap, set_css_num_var, get_css_var_num } from '../utils.mjs'
 import { arrow_svg } from './arrow_svg.mjs'
+import { add_swipe } from './slider_swipe.mjs'
+import { activate_image } from '../lazy-image.mjs'
 
 const SLIDER_TRANSITION_DURATION = 350
-
 set_css_num_var('--slider-transition-duration', SLIDER_TRANSITION_DURATION / 1000, 's')
 
 const slider_el = document.querySelector('.slider')
+const all_slides_el = document.querySelector('#all-slides')
 
 slider_el.querySelector('.left-button').innerHTML = arrow_svg
 slider_el.querySelector('.right-button').innerHTML = arrow_svg
@@ -13,35 +15,65 @@ slider_el.querySelector('.right-button').innerHTML = arrow_svg
 let current_slider
 
 
-const switch_slide = (position_shift) => {
-    const old_slides = slider_el.querySelectorAll('.slide-wrapper')
+const insert_slide = index => {
+    const slide_el = document.createElement('div')
+    slide_el.className = 'slide-wrapper'
+    slide_el.style.setProperty('--slide-index', index);
+    slide_el.appendChild(
+        current_slider.get_slide(wrap(index, 0, current_slider.max_index))
+    )
+    all_slides_el.appendChild(slide_el)
 
-    const wrapper_el = document.createElement('div')
-    wrapper_el.className = 'slide-wrapper'
-    wrapper_el.style.left = 50 - position_shift + '%'
-    wrapper_el.appendChild(current_slider.get_slide(current_slider.current_index))
-    slider_el.appendChild(wrapper_el)
+    return {
+        wrapper_el: slide_el,
+        img_el: slide_el.querySelector('img')
+    }
+}
 
-    // Move all slides leftwards
-    requestAnimationFrame(() => {
-        document.querySelectorAll('.slide-wrapper').forEach(wr => {
-            wr.style.left = (parseInt(wr.style.left) + position_shift) + '%'
-        })
+const insert_slide_and_try_activate_img = i => {
+    const slide = insert_slide(i)
+    const lazy_wrapper = slide.wrapper_el.querySelector('.lazy-image-wrapper')
+    lazy_wrapper && activate_image(lazy_wrapper)
+    return slide
+}
+
+const remove_far_slides = debounce(() => {
+    const current_slide_index = get_css_var_num('--current-slide-index')
+    slider_el.querySelectorAll('.slide-wrapper').forEach(s => {
+        const slide_index = get_css_var_num('--slide-index', s)
+        const index_diff = Math.round(Math.abs(slide_index - current_slide_index))
+        const is_near = (
+            slide_index === current_slide_index
+            || index_diff === 1
+            || index_diff === current_slider.max_index
+        )
+        !is_near && s.remove()
     })
+}, 500)
 
-    setTimeout(() => old_slides.forEach(s => s.remove()),
-        SLIDER_TRANSITION_DURATION + 50)
+const _wrap = num => wrap(num, 0, current_slider.max_index)
+
+const switch_slide = a_change => {
+    const new_current_index = get_css_var_num('--current-slide-index') + a_change
+    set_css_num_var(
+        '--current-slide-index',
+        new_current_index,
+        '')
+
+    // insert new neighbor
+    insert_slide_and_try_activate_img(
+        new_current_index + a_change)
+
+    remove_far_slides()
 }
 
 const handle_clicks = e => {
     const { current_index, max_index } = current_slider
     if (e.target.closest('.right-button')) {
-        current_slider.current_index = (current_index + 1) % max_index
-        switch_slide(-100)
+        switch_slide(1)
     }
     if (e.target.closest('.left-button')) {
-        current_slider.current_index = (current_index - 1 + max_index) % max_index
-        switch_slide(100)
+        switch_slide(-1)
     }
 
     requestAnimationFrame(() => { // TODO why?
@@ -59,17 +91,19 @@ const handle_clicks = e => {
 
 slider_el.addEventListener('click', handle_clicks)
 
-
 export const open_slider = ({ current_index, max_index, get_slide }) => {
+
+    set_css_num_var('--current-slide-index', current_index, '')
+
     current_slider = { current_index, max_index, get_slide }
 
-    slider_el.querySelectorAll('.slide-wrapper').forEach(sw => sw.remove())
+    all_slides_el.querySelectorAll('.slide-wrapper').forEach(sw => sw.remove())
 
-    const wrapper_el = document.createElement('div')
-    wrapper_el.className = 'slide-wrapper'
-    wrapper_el.style.left = '50%'
-    wrapper_el.appendChild(get_slide(current_index))
-    slider_el.appendChild(wrapper_el)
+    const {img_el } = insert_slide(current_index)
+    img_el.onload = () => {
+        insert_slide_and_try_activate_img(_wrap(current_index - 1))
+        insert_slide_and_try_activate_img(_wrap(current_index + 1))
+    }
 
     if (max_index > 1) {
         slider_el.classList.add('with-buttons')

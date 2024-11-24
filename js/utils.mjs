@@ -1,7 +1,7 @@
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
-const get_css_var = (name) => {
-    const cvar = getComputedStyle(document.documentElement)
+const get_css_var = (name, element = document.documentElement) => {
+    const cvar = getComputedStyle(element)
         .getPropertyValue(name)
     
     if (cvar === '') {
@@ -10,8 +10,8 @@ const get_css_var = (name) => {
     return cvar
 }
 
-export const get_css_var_num = (name) => {
-    return parseInt(get_css_var(name))
+export const get_css_var_num = (name, element = document.documentElement) => {
+    return parseInt(get_css_var(name, element))
 }
 
 
@@ -34,7 +34,13 @@ export const debounce = (func, delay = 100) => {
     };
 };
 
+export const wrap = (num, min, max) => {
+    const range = max - min + 1
+    return ((num - min) % range + range) % range + min
+}
+
 export const get_image_url = (name, folder) => {
     return `${window.location.origin}/dalat-map-images/${folder}/${name.replace('HEIC', 'jpg')}`
     // return `https://sbachinin.github.io/dalat-map-images/${folder}/${name.replace('HEIC', 'jpg')}`
 }
+

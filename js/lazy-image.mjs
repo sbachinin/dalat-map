@@ -10,8 +10,10 @@ const do_once_visible = (el, cb) => {
     observer.observe(el)
 }
 
-const activate_image = (el) => {
+export const activate_image = (el) => {
     const img = el.querySelector('img')
+    if (img.classList.contains('loaded')) return
+
     const loader = el.querySelector('.img-loader')
     img.src = img.dataset.src
     loader.style.display = 'block'
