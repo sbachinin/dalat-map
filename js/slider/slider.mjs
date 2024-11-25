@@ -1,6 +1,6 @@
 import { debounce, wrap, set_css_num_var, get_css_var_num } from '../utils.mjs'
 import { arrow_svg } from './arrow_svg.mjs'
-import { add_swipe } from './slider_swipe.mjs'
+import { try_add_swipe } from './slider_swipe.mjs'
 import { activate_image } from '../lazy-image.mjs'
 
 const SLIDER_TRANSITION_DURATION = 350
@@ -109,4 +109,6 @@ export const open_slider = ({ current_index, max_index, get_slide }) => {
         slider_el.classList.add('with-buttons')
     }
     slider_el.classList.remove('hidden')
+
+    try_add_swipe(switch_slide)
 }

@@ -64,6 +64,8 @@ const orthogonal_swipe_is_greater_or_equal = current_XY => {
 }
 
 export const make_expandable_on_swipe = (panel) => {
+    if (window.matchMedia("(pointer: fine)").matches) return
+
     const on_touchstart = async (e) => {
         if (
             e.target.closest('#' + get_panel_el().id)

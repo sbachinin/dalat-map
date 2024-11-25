@@ -15,11 +15,11 @@ export const get_css_var_num = (name, element = document.documentElement) => {
 }
 
 
-export const set_css_num_var = (name, value, units) => {
+export const set_css_num_var = (name, value, units, element = document.documentElement) => {
     if (units === undefined) {
         console.warn('units not passed to set_css_num_var')
     }
-    document.documentElement.style.setProperty(name, String(value) + units)
+    element.style.setProperty(name, String(value) + units)
 }
 
 export const within = (number, min, max) => Math.max(min, Math.min(number, max));
