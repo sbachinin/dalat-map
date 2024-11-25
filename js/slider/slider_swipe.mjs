@@ -4,8 +4,10 @@ import {
 
 const slider_el = document.querySelector('.slider')
 const all_slides_el = document.querySelector('#all-slides')
-const switch_slide_threshold = 50
+const switch_slide_min_threshold = 35
+const force_switch_threshold = 50 // % of  when slides must be switched even if speed was low
 const drag_start_threshold = 10
+const speed_threshold = 0.5
 
 let current_swipe = null
 
@@ -51,7 +53,8 @@ export const try_add_swipe = (switch_slide) => {
             current_swipe = {
                 touch_start_XY: e.changedTouches[0],
                 drag_start_coord: null,
-                had_touchmove: false
+                had_touchmove: false,
+                start_time: e.timeStamp
             }
         }
     }
@@ -104,12 +107,8 @@ export const try_add_swipe = (switch_slide) => {
         all_slides_el.classList.remove('notransition')
         // maybe timeout needed
         set_css_num_var('--swipe-delta', '0', 'px', all_slides_el)
-
-        const end_delta = e.changedTouches[0].clientX - current_swipe.drag_start_coord
-
-        const has_swiped_far = Math.abs(end_delta) > switch_slide_threshold
-        if (!has_swiped_far) return
-        switch_slide(-1 * Math.sign(end_delta))
+ 
+        switch_slide(get_slide_index_delta(e))
     }
 
 
@@ -118,4 +117,30 @@ export const try_add_swipe = (switch_slide) => {
         on_touchmove,
         on_touchend
     )
+}
+
+
+
+
+
+
+const get_slide_index_delta = e => {
+    const end_swipe_delta = e.changedTouches[0].clientX - current_swipe.drag_start_coord
+    if (Math.abs(end_swipe_delta) > all_slides_el.clientWidth / 100 * force_switch_threshold) {
+        // switch slide because swipe was very long, even if slow
+        return -Math.sign(end_swipe_delta)
+    }
+
+    const end_touch_delta = e.changedTouches[0].clientX - current_swipe.touch_start_XY.clientX
+    const end_time = e.timeStamp
+    const time = end_time - current_swipe.start_time
+    const speed = Math.abs(end_touch_delta) / time
+    if (speed < speed_threshold) return 0
+    
+    const has_swiped_far = Math.abs(end_swipe_delta) > switch_slide_min_threshold
+    if (has_swiped_far) {
+        return -Math.sign(end_swipe_delta)
+    }
+    
+    return 0
 }

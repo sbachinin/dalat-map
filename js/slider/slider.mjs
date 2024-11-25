@@ -54,6 +54,8 @@ const remove_far_slides = debounce(() => {
 const _wrap = num => wrap(num, 0, current_slider.max_index)
 
 const switch_slide = a_change => {
+    if (a_change === 0) return
+
     const new_current_index = get_css_var_num('--current-slide-index') + a_change
     set_css_num_var(
         '--current-slide-index',
@@ -99,7 +101,7 @@ export const open_slider = ({ current_index, max_index, get_slide }) => {
 
     all_slides_el.querySelectorAll('.slide-wrapper').forEach(sw => sw.remove())
 
-    const {img_el } = insert_slide(current_index)
+    const { img_el } = insert_slide(current_index)
     img_el.onload = () => {
         insert_slide_and_try_activate_img(_wrap(current_index - 1))
         insert_slide_and_try_activate_img(_wrap(current_index + 1))
