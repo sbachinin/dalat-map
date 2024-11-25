@@ -92,7 +92,7 @@ export const try_add_swipe = (switch_slide) => {
 
         const delta = e.changedTouches[0].clientX - current_swipe.drag_start_coord
 
-        e.preventDefault()
+        // e.preventDefault()
 
         set_css_num_var('--swipe-delta', delta, 'px', all_slides_el)
     }
@@ -104,11 +104,19 @@ export const try_add_swipe = (switch_slide) => {
         if (!current_swipe) return
         if (!current_swipe.had_touchmove) return
 
-        all_slides_el.classList.remove('notransition')
-        // maybe timeout needed
+        const { should_animate, index_delta } = analyze_swipe(e)
+
+        if (should_animate) {
+            all_slides_el.classList.remove('notransition')
+        }
+
         set_css_num_var('--swipe-delta', '0', 'px', all_slides_el)
- 
-        switch_slide(get_slide_index_delta(e))
+
+        switch_slide(index_delta)
+
+        // requestAnimationFrame(() => {
+        //     all_slides_el.classList.remove('notransition')
+        // })
     }
 
 
@@ -124,23 +132,30 @@ export const try_add_swipe = (switch_slide) => {
 
 
 
-const get_slide_index_delta = e => {
+const analyze_swipe = e => {
     const end_swipe_delta = e.changedTouches[0].clientX - current_swipe.drag_start_coord
-    if (Math.abs(end_swipe_delta) > all_slides_el.clientWidth / 100 * force_switch_threshold) {
-        // switch slide because swipe was very long, even if slow
-        return -Math.sign(end_swipe_delta)
-    }
-
     const end_touch_delta = e.changedTouches[0].clientX - current_swipe.touch_start_XY.clientX
-    const end_time = e.timeStamp
-    const time = end_time - current_swipe.start_time
-    const speed = Math.abs(end_touch_delta) / time
-    if (speed < speed_threshold) return 0
-    
-    const has_swiped_far = Math.abs(end_swipe_delta) > switch_slide_min_threshold
-    if (has_swiped_far) {
-        return -Math.sign(end_swipe_delta)
+    const time_delta = e.timeStamp - current_swipe.start_time
+    const speed = Math.abs(end_touch_delta) / time_delta
+    const was_slow = speed < speed_threshold
+
+    const is_very_broad_swipe = Math.abs(end_swipe_delta) > all_slides_el.clientWidth / 100 * force_switch_threshold
+    const is_broad_enough_swipe = Math.abs(end_swipe_delta) > switch_slide_min_threshold
+
+    if (is_very_broad_swipe) {
+        return {
+            index_delta: -Math.sign(end_swipe_delta),
+            should_animate: was_slow
+        }
+    } else if (is_broad_enough_swipe && !was_slow) { // was fast and short, should switch without animation
+        return {
+            index_delta: -Math.sign(end_swipe_delta),
+            should_animate: false
+        }
+    } else { // was neither very broad nor very fast, should rollback smoothly
+        return {
+            index_delta: 0,
+            should_animate: true
+        }
     }
-    
-    return 0
 }
