@@ -49,13 +49,15 @@ const root_swiper_el = document.querySelector('.swiper-container')
 
 root_swiper_el.querySelector('.close-btn').addEventListener('click', () => {
     root_swiper_el.classList.remove('visible')
+    swiper.destroy()
+    swiper = null
 })
 
 let swiper = null
 
-export const open_slider = ({ current_index, max_index, get_slide, content_type }) => {
-    if (swiper && root_swiper_el.dataset.content_type === content_type) {
-        swiper.slideTo(current_index)
+export const open_slider = ({ initial_index, max_index, get_slide, content_type }) => {
+    if (swiper && !swiper.destroyed && root_swiper_el.dataset.content_type === content_type) {
+        swiper.slideTo(initial_index)
         root_swiper_el.classList.add('visible')
         return
     }
@@ -71,7 +73,7 @@ export const open_slider = ({ current_index, max_index, get_slide, content_type 
     })
 
     swiper = new Swiper('.swiper-container', {
-        initialSlide: current_index,
+        initialSlide: initial_index,
         loop: true,
         navigation: {
             nextEl: '.swiper-button-next',
@@ -84,7 +86,7 @@ export const open_slider = ({ current_index, max_index, get_slide, content_type 
     return
 
     // img_el.onload = () => {
-    //     insert_slide_and_try_activate_img(_wrap(current_index - 1))
-    //     insert_slide_and_try_activate_img(_wrap(current_index + 1))
+    //     insert_slide_and_try_activate_img(_wrap(initial_index - 1))
+    //     insert_slide_and_try_activate_img(_wrap(initial_index + 1))
     // }
 }
