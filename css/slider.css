@@ -42,6 +42,7 @@
         display: block;
         padding: 20px;
         display: flex;
+        outline: none;
     }
 
     .swiper-container .swiper-button-next:after,
