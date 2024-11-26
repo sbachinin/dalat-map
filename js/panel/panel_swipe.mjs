@@ -152,12 +152,12 @@ export const make_expandable_on_swipe = (panel) => {
 
     const on_touchend = e => {
         requestAnimationFrame(() => { current_swipe = null })
-
+        
+        get_panel_el().parentElement.classList.remove('notransition')
+        
         if (!current_swipe) return
         if (!current_swipe.had_touchmove) return
         if (current_swipe.content_was_scrolled && !current_swipe.drag_start_coord) return
-
-        get_panel_el().parentElement.classList.remove('notransition')
 
         const current_size = get_css_var_num('--panel-size')
         if (current_size === current_swipe.panel_start_size) return // TODO maybe this can be safely removed now

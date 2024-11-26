@@ -30,46 +30,30 @@
     box-sizing: border-box;
 }
 
-.swiper-button-next:after, .swiper-button-prev:after {
-    color: white;
-    padding: 20px;
+.swiper-container .swiper-button-next,
+.swiper-container .swiper-button-prev {
+    display: none;
 }
-
-
-
-
 
 @media (pointer: fine) {
 
-    .slider .left-button,
-    .slider .right-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        z-index: 10;
-    }
-
-    .slider.with-buttons .left-button,
-    .slider.with-buttons .right-button {
+    .swiper-container .swiper-button-next,
+    .swiper-container .swiper-button-prev {
         display: block;
+        padding: 20px;
+        display: flex;
     }
 
-    .slider .left-button {
-        left: 10px;
-    }
-
-    .slider .right-button {
-        right: 10px;
-    }
-
-    .slider .left-button svg {
-        transform: rotate(180deg);
+    .swiper-container .swiper-button-next:after,
+    .swiper-container .swiper-button-prev:after {
+        color: white;
     }
 }
+
+
+
+
+
 
 
 .close-btn {
@@ -99,4 +83,3 @@
     pointer-events: none;
     width: 26px;
 }
-

@@ -56,6 +56,7 @@ let swiper = null
 export const open_slider = ({ current_index, max_index, get_slide, content_type }) => {
     if (swiper && root_swiper_el.dataset.content_type === content_type) {
         swiper.slideTo(current_index)
+        root_swiper_el.classList.add('visible')
         return
     }
     
