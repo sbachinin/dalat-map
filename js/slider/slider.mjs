@@ -1,20 +1,10 @@
-import { debounce, wrap, set_css_num_var, get_css_var_num } from '../utils.mjs'
+import { debounce, wrap, set_css_num_var, get_css_var_num, do_n_times } from '../utils.mjs'
 import { arrow_svg } from './arrow_svg.mjs'
 import { try_add_swipe } from './slider_swipe.mjs'
 import { activate_image } from '../lazy-image.mjs'
 
-const SLIDER_TRANSITION_DURATION = 350
-set_css_num_var('--slider-transition-duration', SLIDER_TRANSITION_DURATION / 1000, 's')
 
-const slider_el = document.querySelector('.slider')
-const all_slides_el = document.querySelector('#all-slides')
-
-slider_el.querySelector('.left-button').innerHTML = arrow_svg
-slider_el.querySelector('.right-button').innerHTML = arrow_svg
-
-let current_slider
-
-
+/*
 const insert_slide = index => {
     const slide_el = document.createElement('div')
     slide_el.className = 'slide-wrapper'
@@ -37,6 +27,7 @@ const insert_slide_and_try_activate_img = i => {
     return slide
 }
 
+
 const remove_far_slides = debounce(() => {
     const current_slide_index = get_css_var_num('--current-slide-index')
     slider_el.querySelectorAll('.slide-wrapper').forEach(s => {
@@ -52,65 +43,47 @@ const remove_far_slides = debounce(() => {
 }, 500)
 
 const _wrap = num => wrap(num, 0, current_slider.max_index)
+ */
 
-const switch_slide = a_change => {
-    if (a_change === 0) return
+const root_swiper_el = document.querySelector('.swiper-container')
 
-    const new_current_index = get_css_var_num('--current-slide-index') + a_change
-    set_css_num_var(
-        '--current-slide-index',
-        new_current_index,
-        '')
+root_swiper_el.querySelector('.close-btn').addEventListener('click', () => {
+    root_swiper_el.classList.remove('visible')
+})
 
-    // insert new neighbor
-    insert_slide_and_try_activate_img(
-        new_current_index + a_change)
+let swiper = null
 
-    remove_far_slides()
-}
-
-const handle_clicks = e => {
-    const { current_index, max_index } = current_slider
-    if (e.target.closest('.right-button')) {
-        switch_slide(1)
+export const open_slider = ({ current_index, max_index, get_slide, content_type }) => {
+    if (swiper && root_swiper_el.dataset.content_type === content_type) {
+        swiper.slideTo(current_index)
+        return
     }
-    if (e.target.closest('.left-button')) {
-        switch_slide(-1)
-    }
+    
+    root_swiper_el.setAttribute('data-content_type', content_type)
+    const wr = document.querySelector('.swiper-wrapper')
 
-    requestAnimationFrame(() => { // TODO why?
-        if (
-            e.target.tagName === "IMG"
-            || e.target.closest('.right-button')
-            || e.target.closest('.left-button')
-        ) return
-        document.querySelectorAll('.slide-wrapper').forEach(el => el.remove())
-        slider_el.classList.remove('with-buttons')
-        slider_el.classList.add('hidden')
+    do_n_times(max_index, i => {
+        const swiper_slide_el = document.createElement('div')
+        swiper_slide_el.className = 'swiper-slide'
+        swiper_slide_el.appendChild(get_slide(wrap(i, 0, max_index)))
+        wr.appendChild(swiper_slide_el)
     })
-}
 
+    swiper = new Swiper('.swiper-container', {
+        initialSlide: current_index,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    })
 
-slider_el.addEventListener('click', handle_clicks)
+    root_swiper_el.classList.add('visible')
 
-export const open_slider = ({ current_index, max_index, get_slide }) => {
+    return
 
-    set_css_num_var('--current-slide-index', current_index, '')
-
-    current_slider = { current_index, max_index, get_slide }
-
-    all_slides_el.querySelectorAll('.slide-wrapper').forEach(sw => sw.remove())
-
-    const { img_el } = insert_slide(current_index)
-    img_el.onload = () => {
-        insert_slide_and_try_activate_img(_wrap(current_index - 1))
-        insert_slide_and_try_activate_img(_wrap(current_index + 1))
-    }
-
-    if (max_index > 1) {
-        slider_el.classList.add('with-buttons')
-    }
-    slider_el.classList.remove('hidden')
-
-    try_add_swipe(switch_slide)
+    // img_el.onload = () => {
+    //     insert_slide_and_try_activate_img(_wrap(current_index - 1))
+    //     insert_slide_and_try_activate_img(_wrap(current_index + 1))
+    // }
 }

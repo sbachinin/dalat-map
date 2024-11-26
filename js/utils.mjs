@@ -44,3 +44,8 @@ export const get_image_url = (name, folder) => {
     // return `https://sbachinin.github.io/dalat-map-images/${folder}/${name.replace('HEIC', 'jpg')}`
 }
 
+export const do_n_times = (n, fn) => {
+    for (let i = 0; i <= n; i++) {
+        fn(i)
+    }
+}

@@ -92,6 +92,7 @@ export const display_highlights = () => {
 
         const all_images_elements = Array.from(lazy_wrapper.parentElement.children)
         open_slider({
+            content_type: 'highlights',
             current_index: all_images_elements.indexOf(lazy_wrapper),
             max_index: images_names.length - 1,
             get_slide(i) {
