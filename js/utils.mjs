@@ -49,3 +49,11 @@ export const do_n_times = (n, fn) => {
         fn(i)
     }
 }
+
+export const toggle_class = (el, class_name, condition) => {
+    if (condition) {
+        el.classList.add(class_name)
+    } else {
+        el.classList.remove(class_name)
+    }
+}

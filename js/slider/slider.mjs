@@ -1,6 +1,5 @@
-import { wrap, do_n_times } from '../utils.mjs'
-import { activate_image } from '../lazy-image.mjs'
-
+import { toggle_class } from '../utils.mjs'
+import { append_slides, activate_adjacent_slides } from './slider_utils.mjs'
 
 const root_swiper_el = document.querySelector('.swiper-container')
 
@@ -24,72 +23,22 @@ export const open_slider = ({ initial_index, max_index, get_slide, content_type 
     // here: no swiper alive
 
     root_swiper_el.setAttribute('data-content_type', content_type)
-    const wr = document.querySelector('.swiper-wrapper')
 
-    if (content_has_changed) {
-        wr.innerHTML = ''
-        do_n_times(max_index, i => {
-            const swiper_slide_el = document.createElement('div')
-            swiper_slide_el.className = 'swiper-slide'
-            swiper_slide_el.appendChild(get_slide(wrap(i, 0, max_index))) // TODO no wrap here i think
-            wr.appendChild(swiper_slide_el)
-        })
+    content_has_changed && append_slides(get_slide, max_index)
 
-    }
+    toggle_class(root_swiper_el, 'with-buttons', max_index > 0)
 
-    if (max_index > 0) {
-        root_swiper_el.classList.add('with-buttons')
-    } else {
-        root_swiper_el.classList.remove('with-buttons')
-    }
     root_swiper_el.classList.add('visible') // important to do this before new Swiper, otherwise strange blinking on re-opening
-
-    const active_slide_finished_loading = active_slide => new Promise(resolve => {
-        // it can be already loaded, or is being loaded
-        const lazy_active_img = active_slide.querySelector('img.lazy')
-        if (lazy_active_img.classList.contains('loaded')) {
-            resolve()
-        } else {
-            lazy_active_img.onload = () => {
-                resolve()
-                lazy_active_img.onload = null
-            }
-        }
-
-    })
-
-    const activate_adjacent_slides = async () => {
-        const active_slide = document.querySelector('.swiper-slide-active')
-        if (!active_slide) return
-
-        await active_slide_finished_loading(active_slide)
-
-        // this is because swiper.activeSlide can hold outdated i:
-        const active_index = parseInt(
-            active_slide.getAttribute('data-swiper-slide-index')
-        )
-
-        const prev_index = wrap(active_index - 1, 0, max_index)
-        const prev_lazy_wr = document.querySelector(`[data-swiper-slide-index="${prev_index}"] .lazy-image-wrapper`)
-        prev_lazy_wr && activate_image(prev_lazy_wr)
-        const next_index = wrap(active_index + 1, 0, max_index)
-        const next_lazy_wr = document.querySelector(`[data-swiper-slide-index="${next_index}"] .lazy-image-wrapper`)
-        next_lazy_wr && activate_image(next_lazy_wr)
-    }
 
     const options = {
         initialSlide: initial_index,
         loop: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-        },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
         keyboard: { enabled: true, onlyInViewport: true }
     }
 
     swiper = new Swiper('.swiper-container', options)
 
-    swiper.on('slideChange', () => requestAnimationFrame(activate_adjacent_slides))
-
-    activate_adjacent_slides()
+    swiper.on('slideChange', () => requestAnimationFrame(() => activate_adjacent_slides(max_index)))
+    activate_adjacent_slides(max_index)
 }
