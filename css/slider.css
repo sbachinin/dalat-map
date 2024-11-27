@@ -37,8 +37,8 @@
 
 @media (pointer: fine) {
 
-    .swiper-container .swiper-button-next,
-    .swiper-container .swiper-button-prev {
+    .swiper-container.with-buttons .swiper-button-next,
+    .swiper-container.with-buttons .swiper-button-prev {
         display: block;
         padding: 20px;
         display: flex;

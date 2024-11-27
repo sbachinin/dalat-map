@@ -37,6 +37,11 @@ export const open_slider = ({ initial_index, max_index, get_slide, content_type 
 
     }
 
+    if (max_index > 0) {
+        root_swiper_el.classList.add('with-buttons')
+    } else {
+        root_swiper_el.classList.remove('with-buttons')
+    }
     root_swiper_el.classList.add('visible') // important to do this before new Swiper, otherwise strange blinking on re-opening
 
     const active_slide_finished_loading = active_slide => new Promise(resolve => {
@@ -55,6 +60,7 @@ export const open_slider = ({ initial_index, max_index, get_slide, content_type 
 
     const activate_adjacent_slides = async () => {
         const active_slide = document.querySelector('.swiper-slide-active')
+        if (!active_slide) return
 
         await active_slide_finished_loading(active_slide)
 
@@ -65,24 +71,23 @@ export const open_slider = ({ initial_index, max_index, get_slide, content_type 
 
         const prev_index = wrap(active_index - 1, 0, max_index)
         const prev_lazy_wr = document.querySelector(`[data-swiper-slide-index="${prev_index}"] .lazy-image-wrapper`)
-        activate_image(prev_lazy_wr)
+        prev_lazy_wr && activate_image(prev_lazy_wr)
         const next_index = wrap(active_index + 1, 0, max_index)
         const next_lazy_wr = document.querySelector(`[data-swiper-slide-index="${next_index}"] .lazy-image-wrapper`)
-        activate_image(next_lazy_wr)
+        next_lazy_wr && activate_image(next_lazy_wr)
     }
 
-    swiper = new Swiper('.swiper-container', {
+    const options = {
         initialSlide: initial_index,
         loop: true,
         navigation: {
             nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            prevEl: '.swiper-button-prev'
         },
-        keyboard: {
-            enabled: true,
-            onlyInViewport: true,
-        }
-    })
+        keyboard: { enabled: true, onlyInViewport: true }
+    }
+
+    swiper = new Swiper('.swiper-container', options)
 
     swiper.on('slideChange', () => requestAnimationFrame(activate_adjacent_slides))
 
