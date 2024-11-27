@@ -65,6 +65,7 @@ const showFrenchDetails = (details) => {
                         imgEl.classList.remove('hidden')
                     }, 50)
                 })
+                imgEl.onload = null
             };
         }
     }

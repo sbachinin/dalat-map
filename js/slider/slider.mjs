@@ -1,49 +1,6 @@
-import { debounce, wrap, set_css_num_var, get_css_var_num, do_n_times } from '../utils.mjs'
-import { arrow_svg } from './arrow_svg.mjs'
-import { try_add_swipe } from './slider_swipe.mjs'
+import { wrap, do_n_times } from '../utils.mjs'
 import { activate_image } from '../lazy-image.mjs'
 
-
-/*
-const insert_slide = index => {
-    const slide_el = document.createElement('div')
-    slide_el.className = 'slide-wrapper'
-    slide_el.style.setProperty('--slide-index', index);
-    slide_el.appendChild(
-        current_slider.get_slide(wrap(index, 0, current_slider.max_index))
-    )
-    all_slides_el.appendChild(slide_el)
-
-    return {
-        wrapper_el: slide_el,
-        img_el: slide_el.querySelector('img')
-    }
-}
-
-const insert_slide_and_try_activate_img = i => {
-    const slide = insert_slide(i)
-    const lazy_wrapper = slide.wrapper_el.querySelector('.lazy-image-wrapper')
-    lazy_wrapper && activate_image(lazy_wrapper)
-    return slide
-}
-
-
-const remove_far_slides = debounce(() => {
-    const current_slide_index = get_css_var_num('--current-slide-index')
-    slider_el.querySelectorAll('.slide-wrapper').forEach(s => {
-        const slide_index = get_css_var_num('--slide-index', s)
-        const index_diff = Math.round(Math.abs(slide_index - current_slide_index))
-        const is_near = (
-            slide_index === current_slide_index
-            || index_diff === 1
-            || index_diff === current_slider.max_index
-        )
-        !is_near && s.remove()
-    })
-}, 500)
-
-const _wrap = num => wrap(num, 0, current_slider.max_index)
- */
 
 const root_swiper_el = document.querySelector('.swiper-container')
 
@@ -74,13 +31,45 @@ export const open_slider = ({ initial_index, max_index, get_slide, content_type 
         do_n_times(max_index, i => {
             const swiper_slide_el = document.createElement('div')
             swiper_slide_el.className = 'swiper-slide'
-            swiper_slide_el.appendChild(get_slide(wrap(i, 0, max_index)))
+            swiper_slide_el.appendChild(get_slide(wrap(i, 0, max_index))) // TODO no wrap here i think
             wr.appendChild(swiper_slide_el)
         })
 
     }
 
     root_swiper_el.classList.add('visible') // important to do this before new Swiper, otherwise strange blinking on re-opening
+
+    const active_slide_finished_loading = active_slide => new Promise(resolve => {
+        // it can be already loaded, or is being loaded
+        const lazy_active_img = active_slide.querySelector('img.lazy')
+        if (lazy_active_img.classList.contains('loaded')) {
+            resolve()
+        } else {
+            lazy_active_img.onload = () => {
+                resolve()
+                lazy_active_img.onload = null
+            }
+        }
+
+    })
+
+    const activate_adjacent_slides = async () => {
+        const active_slide = document.querySelector('.swiper-slide-active')
+
+        await active_slide_finished_loading(active_slide)
+
+        // this is because swiper.activeSlide can hold outdated i:
+        const active_index = parseInt(
+            active_slide.getAttribute('data-swiper-slide-index')
+        )
+
+        const prev_index = wrap(active_index - 1, 0, max_index)
+        const prev_lazy_wr = document.querySelector(`[data-swiper-slide-index="${prev_index}"] .lazy-image-wrapper`)
+        activate_image(prev_lazy_wr)
+        const next_index = wrap(active_index + 1, 0, max_index)
+        const next_lazy_wr = document.querySelector(`[data-swiper-slide-index="${next_index}"] .lazy-image-wrapper`)
+        activate_image(next_lazy_wr)
+    }
 
     swiper = new Swiper('.swiper-container', {
         initialSlide: initial_index,
@@ -95,9 +84,7 @@ export const open_slider = ({ initial_index, max_index, get_slide, content_type 
         }
     })
 
+    swiper.on('slideChange', () => requestAnimationFrame(activate_adjacent_slides))
 
-    // img_el.onload = () => {
-    //     insert_slide_and_try_activate_img(_wrap(initial_index - 1))
-    //     insert_slide_and_try_activate_img(_wrap(initial_index + 1))
-    // }
+    activate_adjacent_slides()
 }
