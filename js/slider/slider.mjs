@@ -34,7 +34,12 @@ export const open_slider = ({ initial_index, max_index, get_slide, content_type 
         initialSlide: initial_index,
         loop: true,
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        keyboard: { enabled: true, onlyInViewport: true }
+        keyboard: { enabled: true, onlyInViewport: true },
+        zoom: {
+            maxRatio: 3,
+            minRatio: 1,
+            limitToOriginalSize: true
+        },
     }
 
     swiper = new Swiper('.swiper-container', options)

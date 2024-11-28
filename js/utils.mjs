@@ -1,5 +1,11 @@
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
+export const div = (class_name) => {
+    const el = document.createElement('div')
+    el.className = class_name
+    return el
+}
+
 const get_css_var = (name, element = document.documentElement) => {
     const cvar = getComputedStyle(element)
         .getPropertyValue(name)

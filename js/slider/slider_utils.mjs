@@ -1,14 +1,18 @@
 import { activate_image } from '../lazy-image.mjs'
-import { wrap, do_n_times } from '../utils.mjs'
+import { wrap, do_n_times, div } from '../utils.mjs'
 
 export const append_slides = (get_slide, max_index) => {
     const wr = document.querySelector('.swiper-wrapper')
     wr.innerHTML = ''
 
     do_n_times(max_index, i => {
-        const swiper_slide_el = document.createElement('div')
-        swiper_slide_el.className = 'swiper-slide'
-        swiper_slide_el.appendChild(get_slide(wrap(i, 0, max_index))) // TODO no wrap here i think
+        const swiper_slide_el = div('swiper-slide')
+        const zoom_wr = div('swiper-zoom-container')
+        const my_slide_el = get_slide(wrap(i, 0, max_index))
+        my_slide_el.classList.add('swiper-zoom-target')
+
+        zoom_wr.appendChild(my_slide_el)        
+        swiper_slide_el.appendChild(zoom_wr)
         wr.appendChild(swiper_slide_el)
     })
 }
