@@ -4,9 +4,9 @@ from heic_converter import convert_heic_to_jpg
 
 # if not installed, pip install Pillow
 
-source_folder = '../dalat-map-images/originals'
-thumbs_folder = '../dalat-map-images/thumbs'
-large_folder = '../dalat-map-images/large'
+source_folder = 'dalat-map-images/originals'
+thumbs_folder = 'dalat-map-images/thumbs'
+large_folder = 'dalat-map-images/large'
 
 os.makedirs(thumbs_folder, exist_ok=True)
 

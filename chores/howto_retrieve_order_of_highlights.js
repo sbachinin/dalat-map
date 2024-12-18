@@ -5,7 +5,7 @@
 // open highlights album in chrome
 // enlarge first image
 // !open file info panel
-// run code in dev console:
+// run code in dev console (better keep tab open):
 
 const names = []
 setInterval(() => {
@@ -20,7 +20,5 @@ setInterval(() => {
 
 
 // Last image can be missing. Add it.
-
-// make sure all photos are used and there are no dupes
 
 // save to highlights_images_list.mjs
