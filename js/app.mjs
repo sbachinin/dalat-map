@@ -52,3 +52,9 @@ map.on('move', () => {
 
 
 create_scale()
+
+if (window.location.hostname === 'localhost') {
+    const script = document.createElement('script')
+    script.src = 'js/DEV_handle_img_drag.mjs'
+    document.body.appendChild(script)
+}
