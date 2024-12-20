@@ -26,21 +26,21 @@ addMouseStuff(map)
 map.addControl(new maplibregl.NavigationControl(), 'top-right');
 
 map.once('idle', () => {
-    for (let frenchBuildingId of Object.keys(meta)) {
-        map.setFeatureState(
-            { source: 'dalat-tiles', sourceLayer: 'french_building', id: frenchBuildingId },
-            { hasDetails: true }
-        );
-    }
+
+    Object.entries(meta)
+        .filter(([_, bldg_meta]) => bldg_meta.images?.length)
+        .forEach(([bldg_id]) => {
+            map.setFeatureState(
+                { source: 'dalat-tiles', sourceLayer: 'french_building', id: bldg_id },
+                { hasDetails: true }
+            )
+        })
 })
 
 map.on('load', () => {
     const attribution = document.querySelector(`details.maplibregl-ctrl-attrib`).outerHTML;
     const attributionElement = document.getElementById('custom-attribution');
     attributionElement.innerHTML = attribution;
-    document.querySelector('.maplibregl-canvas-container').addEventListener('click', function (event) {
-        panel.set_size(0)
-    });
     setTimeout(display_highlights, 1000)
 });
 

@@ -1,0 +1,14 @@
+#building-details img {
+    width: var(--thumb-width);
+    height: var(--thumb-height);
+    cursor: pointer;
+    display: grid;
+    gap: var(--thumb-gap);
+    padding: var(--thumb-gap);
+}
+
+@media (orientation: landscape) {
+    #building-details {
+        width: max-content;
+    }
+}

@@ -1,6 +1,6 @@
 import { make_expandable_on_swipe } from './panel_swipe.mjs'
 import { get_css_var_num, set_css_num_var, debounce } from '../utils.mjs'
-import { get_panel_intrinsic_size } from './panel_utils.mjs'
+import { get_panel_intrinsic_size, get_panel_el } from './panel_utils.mjs'
 import { handle_resize } from './panel_resize.mjs'
 
 const EXPAND_TRANSITION_DURATION = 350
@@ -54,7 +54,8 @@ export const panel = {
     content: null,
     set_content(_content) {
         panel.content = _content
-        panel_expander_el.querySelector('#panel').appendChild(_content.element)
+        get_panel_el().innerHTML = ''
+        get_panel_el().appendChild(_content.element)
         panel.cache_full_size()
     }
 }
