@@ -106,6 +106,10 @@ export const display_highlights = () => {
     panel.expand()
 }
 
+document.querySelector('#highlights-opener').addEventListener('click', () => {
+    display_highlights()
+})
+
 // TODO benefits of this are not apparent; and it can slow the initial load too
 export const preload_some_images = () => {
     for (let i = 0; i < 10; i++) {

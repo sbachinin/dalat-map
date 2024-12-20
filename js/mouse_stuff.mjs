@@ -76,9 +76,6 @@ export const addMouseStuff = map => {
 
         if (!maybeFrenchBuilding) { panel.set_size(0); return }
 
-        const isAlreadySelected = maybeFrenchBuilding?.id === selectedBuildingId
-        if (isAlreadySelected) { panel.expand(); return }
-
         const featureMeta = meta[maybeFrenchBuilding?.id]
 
         if (maybeFrenchBuilding && buildingHasDetails(featureMeta)) {

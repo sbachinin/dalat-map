@@ -114,3 +114,10 @@
 .maplibregl-ctrl-group:not(:empty) {
     box-shadow: 0 0px 4px 1px rgba(60, 64, 67, 0.3) !important;
 }
+
+#highlights-opener {
+    width: 44px;
+    height: 44px;
+    margin-right: 3px;
+    cursor: pointer;
+}
