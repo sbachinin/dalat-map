@@ -38,7 +38,7 @@ function compareArrayWithDirectory(dirPath, arrayToCompare) {
 
 loadImages().then((images_names) => {
     compareArrayWithDirectory(
-        'dalat-map-images/originals',
+        'dalat-map-images/orig-highlights',
         images_names
     );
 });
