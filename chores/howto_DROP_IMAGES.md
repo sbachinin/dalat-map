@@ -7,6 +7,6 @@ check console for errors;
 if operation is successful, console prints how many entries are there in ids_to_imgs
 
 copy to french_buildings_meta.mjs:
-    window.merge_imgs_data_into_meta()
-    copy to clipboard the contents of window.french_building_details
+    window.get_updated_buildings_details()
+    copy the returned value to clipboard
     paste into french_buildings_meta.mjs

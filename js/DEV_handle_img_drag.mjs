@@ -10,7 +10,10 @@ document.querySelector('#map').addEventListener("drop", e => {
     if (!file) { console.warn('no file dropped'); return }
 
     const rf = map.queryRenderedFeatures([e.clientX, e.clientY])
-    if (rf[0].sourceLayer === "french_building" && rf[0].layer.type === 'fill') {
+    if (
+        rf[0].sourceLayer.includes('building')
+        && rf[0].layer.type === 'fill'
+    ) {
         const feat_id = rf[0].id
         const ids_to_imgs = JSON.parse(localStorage.getItem("ids_to_imgs"))
         const imgs = ids_to_imgs[feat_id] = ids_to_imgs[feat_id] || []
@@ -22,6 +25,6 @@ document.querySelector('#map').addEventListener("drop", e => {
             localStorage.setItem("ids_to_imgs", JSON.stringify(ids_to_imgs))
         }
     } else {
-        console.warn('not a french building')
+        console.warn('not a building')
     }
 })
