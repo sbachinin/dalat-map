@@ -1,7 +1,8 @@
 import { getMainReveal, mainOpacityReveal } from './mainReveal.mjs'
 
-const frenchColor = 'hsl(300, 70%, 70%)'
-const frenchBorderColor = 'hsl(300, 70%, 30%)'
+const french_color = 'hsl(300, 70%, 70%)'
+const french_highlighted_color = 'hsl(35, 97.80%, 63.50%)'
+const frenchBorderColor = 'hsl(0, 0.00%, 48.20%)'
 const darkerBoringBuildingColor = 'hsl(43, 15%, 65%)'
 const boringBuildingColor = 'hsl(43, 15%, 90%)'
 
@@ -29,7 +30,12 @@ export default [
         "source-layer": "french_building",
         "minzoom": mainOpacityReveal[3],
         "paint": {
-            "fill-color": frenchColor,
+            "fill-color": [
+                'case',
+                ['==', ['feature-state', 'selected'], true],
+                french_highlighted_color,
+                french_color,
+            ],
             "fill-antialias": true,
             "fill-opacity": mainOpacityReveal
         },
@@ -42,7 +48,7 @@ export default [
         "source-layer": "french_building",
         "minzoom": mainOpacityReveal[3],
         'paint': {
-            'line-color': frenchColor,
+            'line-color': french_color,
             'line-width': [
                 "interpolate",
                 ["linear"],
@@ -56,7 +62,7 @@ export default [
         },
     },
 
-    
+
     {
         'id': 'Colonial has-details outline',
         'type': 'line',
@@ -66,6 +72,8 @@ export default [
         'paint': {
             'line-color': [
                 'case',
+                /* ['==', ['feature-state', 'selected'], true],
+                'transparent', */
                 ['boolean', ['feature-state', 'hasDetails'], false],
                 frenchBorderColor,
                 'transparent',

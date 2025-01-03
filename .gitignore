@@ -6,7 +6,6 @@ oldlayers
 __pycache__
 dalat-map-tiles
 dalat-map-images
-log.md
 myenv
 
 !data/french_building.geojson
