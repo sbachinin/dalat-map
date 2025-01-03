@@ -57,6 +57,10 @@ export const panel = {
         get_panel_el().innerHTML = ''
         get_panel_el().appendChild(_content.element)
         panel.cache_full_size()
+        panel.element.scrollTop = 0
+        panel.element.scrollLeft = 0
+        panel.element.firstElementChild.scrollTop = 0
+        panel.element.firstElementChild.scrollLeft = 0
     }
 }
 
