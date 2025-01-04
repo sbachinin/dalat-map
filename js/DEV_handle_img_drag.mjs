@@ -15,7 +15,7 @@ document.querySelector('#map').addEventListener("drop", e => {
         && rf[0].layer.type === 'fill'
     ) {
         const feat_id = rf[0].id
-        const ids_to_imgs = JSON.parse(localStorage.getItem("ids_to_imgs"))
+        const ids_to_imgs = JSON.parse(localStorage.getItem("ids_to_imgs")) || {}
         const imgs = ids_to_imgs[feat_id] = ids_to_imgs[feat_id] || []
         if (imgs.includes(file.name)) {
             console.warn('already have such filename for this feature')

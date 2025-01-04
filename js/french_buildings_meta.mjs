@@ -41,6 +41,11 @@ const meta = {
             "IMG_3689~2.jpg"
         ]
     },
+    "515193502": {
+        "images": [
+            "IMG_4399.jpg"
+        ]
+    },
     "515193504": {
         "images": [
             "IMG_0398~3.jpg",
@@ -54,12 +59,27 @@ const meta = {
             "IMG_0601~3.jpg"
         ]
     },
+    "515193547": {
+        "images": [
+            "IMG_4216~2.jpg"
+        ]
+    },
     "515288591": {
-        "title": "National archives center"
+        "title": "National archives center",
+        "images": [
+            "IMG_4662~3.jpg",
+            "IMG_4768~2.jpg",
+            "IMG_4770~2.jpg"
+        ]
     },
     "542725574": {
         "images": [
             "IMG_0145~3.jpg"
+        ]
+    },
+    "542725609": {
+        "images": [
+            "IMG_3902~3.jpg"
         ]
     },
     "542728978": {
@@ -71,6 +91,11 @@ const meta = {
             "IMG_3488~2.jpg"
         ]
     },
+    "542728980": {
+        "images": [
+            "IMG_4015~2 Copy.JPG"
+        ]
+    },
     "542729017": {
         "images": [
             "IMG_3143~2.JPG",
@@ -80,7 +105,8 @@ const meta = {
     "542729021": {
         "images": [
             "IMG_3239~2.JPG",
-            "IMG_3252~2.JPG"
+            "IMG_3252~2.JPG",
+            "IMG_4747~2.jpg"
         ]
     },
     "542729023": {
@@ -95,7 +121,8 @@ const meta = {
         "images": [
             "IMG_0275~2.jpg",
             "IMG_0280.jpg",
-            "IMG_1172~3.jpg"
+            "IMG_1172~3.jpg",
+            "IMG_4422.jpg"
         ]
     },
     "543357209": {
@@ -113,7 +140,15 @@ const meta = {
             "IMG_1227~2.jpg",
             "IMG_1248.jpg",
             "IMG_1255~2.jpg",
-            "IMG_1259.jpg"
+            "IMG_1259.jpg",
+            "IMG_4022~2.jpg",
+            "IMG_4030.jpg",
+            "IMG_4050~4.jpg",
+            "IMG_4068~2.jpg",
+            "IMG_4087.jpg",
+            "IMG_4108~2.jpg",
+            "IMG_4113~2.jpg",
+            "IMG_4125~2.jpg"
         ]
     },
     "777432545": {
@@ -142,6 +177,12 @@ const meta = {
     "777432595": {
         "descr": "This is where the iconic Cafe de la Poste used to be. Bank replaced it in 2020 or so."
     },
+    "777438261": {
+        "images": [
+            "IMG_3842.jpg",
+            "IMG_3844~2.jpg"
+        ]
+    },
     "777438288": {
         "images": [
             "IMG_0102~2.JPG",
@@ -162,7 +203,6 @@ const meta = {
     "777438297": {
         "images": [
             "IMG_0110~2.JPG",
-            "IMG_0708~4.jpg",
             "IMG_0709~2.jpg"
         ]
     },
@@ -181,7 +221,8 @@ const meta = {
     },
     "777439882": {
         "images": [
-            "IMG_0970~2.jpg"
+            "IMG_0970~2.jpg",
+            "IMG_4471~4.jpg"
         ]
     },
     "777439883": {
@@ -262,7 +303,25 @@ const meta = {
     "971568008": {
         "images": [
             "IMG_1070.jpg",
-            "IMG_1468~5.jpg"
+            "IMG_1468~5.jpg",
+            "IMG_3974~2.jpg"
+        ]
+    },
+    "971568009": {
+        "images": [
+            "IMG_3962.jpg"
+        ]
+    },
+    "971568958": {
+        "images": [
+            "IMG_4069~2.jpg",
+            "IMG_4073~2.jpg"
+        ]
+    },
+    "971572384": {
+        "images": [
+            "IMG_5239~2.jpg",
+            "IMG_5231~2.jpg"
         ]
     },
     "971572385": {
@@ -278,7 +337,8 @@ const meta = {
             "IMG_0489~3.jpg",
             "IMG_1563~5.jpg",
             "IMG_1571~4.jpg",
-            "IMG_3531~2.jpg"
+            "IMG_3531~2.jpg",
+            "IMG_4500~2.jpg"
         ]
     },
     "971577493": {
@@ -293,10 +353,16 @@ const meta = {
             "IMG_3293~2.jpg"
         ]
     },
+    "971585501": {
+        "images": [
+            "IMG_4738~3.jpg"
+        ]
+    },
     "971585503": {
         "images": [
             "IMG_3147~3.JPG",
-            "IMG_3174~2.JPG"
+            "IMG_3174~2.JPG",
+            "IMG_4761~2.jpg"
         ]
     },
     "971589490": {
@@ -338,12 +404,14 @@ const meta = {
     "1302653950": {
         "images": [
             "IMG_0314~3 Copy.JPG",
-            "IMG_3444~8.jpg"
+            "IMG_3444~8.jpg",
+            "IMG_4169~3.jpg"
         ]
     },
     "1302653951": {
         "images": [
-            "IMG_0287~3.jpg"
+            "IMG_0287~3.jpg",
+            "IMG_4492~2.jpg"
         ]
     },
     "1302653952": {
@@ -370,7 +438,8 @@ const meta = {
         "images": [
             "IMG_3624~5.jpg",
             "IMG_3648~4.jpg",
-            "IMG_3668~2.jpg"
+            "IMG_3668~2.jpg",
+            "IMG_5121~2.jpg"
         ]
     },
     "1302812583": {
@@ -378,7 +447,9 @@ const meta = {
             "IMG_3230~2.JPG",
             "IMG_3234~2.JPG",
             "IMG_3236~2.JPG",
-            "IMG_3241~2.JPG"
+            "IMG_3241~2.JPG",
+            "IMG_4716.jpg",
+            "IMG_4717~2.jpg"
         ]
     },
     "1302812586": {
@@ -393,12 +464,40 @@ const meta = {
     },
     "1303227312": {
         "images": [
-            "IMG_1596.jpg"
+            "IMG_1596.jpg",
+            "IMG_4151.jpg"
+        ]
+    },
+    "1303227325": {
+        "images": [
+            "IMG_4173.jpg"
+        ]
+    },
+    "1303227326": {
+        "images": [
+            "IMG_4195~2.jpg"
         ]
     },
     "1303227327": {
         "images": [
-            "IMG_1750.jpg"
+            "IMG_1750.jpg",
+            "IMG_4203~2.jpg",
+            "IMG_4208.jpg",
+            "IMG_4210.jpg",
+            "IMG_4224.jpg",
+            "IMG_4230~2.jpg"
+        ]
+    },
+    "1303639969": {
+        "images": [
+            "IMG_4417.jpg"
+        ]
+    },
+    "1303821985": {
+        "images": [
+            "IMG_4957~2.jpg",
+            "IMG_4909~2.jpg",
+            "IMG_5086~2.jpg"
         ]
     },
     "1303821986": {
@@ -422,6 +521,11 @@ const meta = {
     "1304080964": {
         "images": [
             "IMG_1029~2.jpg"
+        ]
+    },
+    "1304080965": {
+        "images": [
+            "IMG_4632.jpg"
         ]
     },
     "1304080968": {
@@ -467,7 +571,8 @@ const meta = {
     "1304439920": {
         "images": [
             "IMG_1198~2.jpg",
-            "IMG_1199~2.jpg"
+            "IMG_1199~2.jpg",
+            "IMG_3995~2.jpg"
         ]
     },
     "1304439931": {
@@ -720,6 +825,32 @@ const meta = {
             "429.jpg"
         ]
     },
+    "1308432156": {
+        "images": [
+            "IMG_4267~2.jpg",
+            "IMG_4286~2.jpg",
+            "IMG_4291~2.jpg",
+            "IMG_4308~2.jpg"
+        ]
+    },
+    "1308548103": {
+        "images": [
+            "IMG_4520~2.jpg",
+            "IMG_4529~2.jpg"
+        ]
+    },
+    "1308548106": {
+        "images": [
+            "IMG_4345~2.jpg",
+            "IMG_4357~2.jpg"
+        ]
+    },
+    "1308548107": {
+        "images": [
+            "IMG_4297.jpg",
+            "IMG_4311~2.jpg"
+        ]
+    },
     "1308572388": {
         "images": [
             "IMG_3035.jpg",
@@ -733,12 +864,17 @@ const meta = {
         "images": [
             "IMG_3228~2.jpg",
             "IMG_3812~2.jpg",
-            "IMG_3822~2.jpg"
+            "IMG_3822~2.jpg",
+            "IMG_3902~2.jpg"
         ]
     },
     "1308572398": {
         "images": [
-            "IMG_3303~3.jpg"
+            "IMG_3303~3.jpg",
+            "IMG_3860~3.jpg",
+            "IMG_3862~2.jpg",
+            "IMG_3904~2.jpg",
+            "IMG_3928~2.jpg"
         ]
     },
     "1308572399": {
@@ -800,7 +936,21 @@ const meta = {
             "IMG_3130~4.jpg",
             "IMG_3179.jpg",
             "IMG_3183.jpg",
-            "IMG_3192~3.jpg"
+            "IMG_3192~3.jpg",
+            "IMG_3964~2 Copy.JPG",
+            "IMG_4060~2.jpg"
+        ]
+    },
+    "1309034418": {
+        "images": [
+            "IMG_4340~2.jpg"
+        ]
+    },
+    "1309034419": {
+        "images": [
+            "IMG_4550~2.jpg",
+            "IMG_4563.jpg",
+            "IMG_4621~2.jpg"
         ]
     },
     "1312411199": {
@@ -861,6 +1011,11 @@ const meta = {
             "IMG_1416~2",
             "IMG_1371~2"
         ]
+    },
+    "1348417560": {
+        "images": [
+            "IMG_4162~2.jpIMG_0110~2.JPGg"
+        ]
     }
 }
 
@@ -869,7 +1024,8 @@ const meta = {
 window.get_updated_buildings_details = () => {
     const ids_to_imgs = JSON.parse(localStorage.getItem('ids_to_imgs'))
     Object.entries(ids_to_imgs).forEach(([feat_id, imgs]) => {
-        meta[feat_id] = meta[feat_id] || { images: [] }
+        meta[feat_id] = meta[feat_id] || {}
+        meta[feat_id].images = meta[feat_id].images || []
         const new_imgs = imgs.filter(im => !meta[feat_id].images.includes(im))
         meta[feat_id].images.push(...new_imgs)
     })
