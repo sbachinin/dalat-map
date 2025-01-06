@@ -1,4 +1,4 @@
-import dalatBulkJSON from '../data/dalat-bulk-geometry.mjs'
+import dalatBulkJSON from '../data/static/dalat-bulk-geometry.mjs'
 
 export const sources = {
     // "contours": {

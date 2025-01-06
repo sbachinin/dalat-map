@@ -1,5 +1,5 @@
 import { mainOpacityReveal } from './layers/mainReveal.mjs'
-import dead_buildings_json from '../data/dead_buildings_json.mjs'
+import dead_buildings_json from '../data/static/dead_buildings_json.mjs'
 
 const french_dead_color = 'hsl(300, 30%, 95%)'
 

@@ -1,10 +1,8 @@
 CRITICAL
-    move dead buildings json to data place
-    
-    separate generated data from plain
-
 
     add that another dead bldg
+
+    generate images from stolen
 
     make bldgs linkable
     
@@ -23,3 +21,22 @@ CRITICAL
 GOOD TO HAVE
     look in pinterest
     open a building -> is it covered by panel -> shift map center
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    a lot of old crappy photos:
+        https://bois.com.vn/bo-suu-tap-100-tam-anh-biet-thu-co-da-lat-xua/
+
+    write to thi tuan, can they provide photos / info?
