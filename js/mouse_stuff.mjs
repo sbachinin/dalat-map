@@ -54,7 +54,9 @@ export const addMouseStuff = map => {
 
     map.on('click', (e) => {
         const maybeFrenchBuilding = map.queryRenderedFeatures(e.point)
-            .find(f => f.layer.id === 'French building')
+            .find(f => f.layer.id === 'French building'
+                || f.layer.id === 'Dead building fill'
+            )
 
         if (!maybeFrenchBuilding) {
             panel.set_size(0)
@@ -71,14 +73,17 @@ export const addMouseStuff = map => {
     })
 
     // ADD & REMOVE CURSOR POINTER ON BUILDINGS WITH DETAILS
-    map.on('mousemove', 'French building', (e) => {
-        if (e.features.length === 0) return
-        if (map.getZoom() < 15.5) return
-        if (!buildingHasDetails(meta[e.features[0].id])) return
-        map.getCanvas().style.cursor = 'pointer'
-    })
-    map.on('mouseleave', 'French building', () => {
-        map.getCanvas().style.cursor = ''
+    const clickable_layers = ['French building', 'Dead building fill']
+    clickable_layers.forEach(layer => {
+        map.on('mousemove', layer, (e) => {
+            if (e.features.length === 0) return
+            if (map.getZoom() < 15.5) return
+            if (!buildingHasDetails(meta[e.features[0].id])) return
+            map.getCanvas().style.cursor = 'pointer'
+        })
+        map.on('mouseleave', layer, () => {
+            map.getCanvas().style.cursor = ''
+        })
     })
 }
 

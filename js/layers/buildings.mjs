@@ -72,8 +72,6 @@ export default [
         'paint': {
             'line-color': [
                 'case',
-                /* ['==', ['feature-state', 'selected'], true],
-                'transparent', */
                 ['boolean', ['feature-state', 'hasDetails'], false],
                 frenchBorderColor,
                 'transparent',
@@ -88,6 +86,4 @@ export default [
             "line-opacity": mainOpacityReveal
         },
     },
-
-
 ]

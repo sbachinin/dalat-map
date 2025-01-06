@@ -2,7 +2,7 @@ import { create_scale } from './manage_scale.mjs'
 import { addMouseStuff } from './mouse_stuff.mjs'
 import meta from './french_buildings_meta.mjs'
 import { style } from './style.mjs'
-import { panel } from './panel/panel.mjs'
+import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
 
 const map = window.map = new maplibregl.Map({
@@ -16,7 +16,7 @@ const map = window.map = new maplibregl.Map({
         [108.52, 12.01]  // NE
     ],
     antialias: true,
-    maxZoom: 17
+    maxZoom: 17.5
 });
 
 preload_some_images()
@@ -28,11 +28,10 @@ map.addControl(new maplibregl.NavigationControl(), 'top-right');
 map.once('idle', () => {
 
     Object.entries(meta)
-        .filter(([_, bldg_meta]) => bldg_meta.images?.length)
-        .forEach(([bldg_id]) => {
+        .forEach(([bldg_id, bldg_meta]) => {
             map.setFeatureState(
                 { source: 'dalat-tiles', sourceLayer: 'french_building', id: bldg_id },
-                { hasDetails: true }
+                { hasDetails: bldg_meta.images?.length > 0 }
             )
         })
 })
@@ -42,6 +41,7 @@ map.on('load', () => {
     const attributionElement = document.getElementById('custom-attribution');
     attributionElement.innerHTML = attribution;
     setTimeout(display_highlights, 1000)
+    add_dead_buildings(map)
 });
 
 map.on('move', () => {
