@@ -1,9 +1,5 @@
 CRITICAL
 
-    add that another dead bldg
-
-    generate images from stolen
-
     make bldgs linkable
     
 

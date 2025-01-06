@@ -94,6 +94,12 @@ const meta = {
             "IMG_6814~2.jpg"
         ]
     },
+    "473088090": {
+        "images": [
+            "zoo2.jpg",
+            "zoo1.jpg"
+        ]
+    },
     "475362778": {
         "images": [
             "IMG_5462~4.jpg",
