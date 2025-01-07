@@ -50,6 +50,19 @@ const select_bldg = newid => {
     }
 }
 
+export const try_open_building = (id, should_push_history = false) => {
+    const featureMeta = meta[id]
+    if (buildingHasDetails(featureMeta)) {
+        show_french_details(featureMeta)
+        select_bldg(id)
+        should_push_history && history.pushState(
+            { id },
+            "",
+            `?id=${id}${window.location.hash}`
+        )
+    }
+}
+
 export const addMouseStuff = map => {
 
     map.on('click', (e) => {
@@ -63,13 +76,12 @@ export const addMouseStuff = map => {
             return
         }
 
-        const featureMeta = meta[maybeFrenchBuilding?.id]
-
-        if (maybeFrenchBuilding && buildingHasDetails(featureMeta)) {
-            show_french_details(featureMeta)
-            select_bldg(maybeFrenchBuilding.id)
-        }
+        try_open_building(maybeFrenchBuilding.id, true)
     })
+
+    window.addEventListener("popstate", (event) => {
+        try_open_building(event.state.id)
+    });
 
     // ADD & REMOVE CURSOR POINTER ON BUILDINGS WITH DETAILS
     const clickable_layers = ['French building', 'Dead building fill']
