@@ -60,7 +60,6 @@ export const addMouseStuff = map => {
 
         if (!maybeFrenchBuilding) {
             panel.set_size(0)
-            select_bldg(null)
             return
         }
 
