@@ -1,5 +1,7 @@
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
+export const is_mouse_device = () => window.matchMedia("(pointer: fine)").matches
+
 export const div = (class_name) => {
     const el = document.createElement('div')
     el.className = class_name

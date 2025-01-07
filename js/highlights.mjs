@@ -1,41 +1,16 @@
 import { panel } from './panel/panel.mjs'
 import { images_names } from './highlights_images_list.mjs'
 import { create_lazy_image } from './lazy-image.mjs'
-import { is_landscape, set_css_num_var, get_image_url } from './utils.mjs'
+import { set_css_num_var, get_image_url, is_landscape, is_mouse_device } from './utils.mjs'
 import { open_slider } from './slider/slider.mjs'
+import { THUMB_GAP, update_thumb_size_variables } from './thumb_size.mjs'
 
-const THUMB_IDEAL_WIDTH = 215
-const THUMB_IDEAL_HEIGHT = 286
-const img_ratio = THUMB_IDEAL_WIDTH / THUMB_IDEAL_HEIGHT
-
-const THUMB_GAP = 4
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
-set_css_num_var('--thumb-gap', THUMB_GAP, 'px')
-
-const is_mouse_device = window.matchMedia("(pointer: fine)").matches
 let highlights_el = null
 
 const update_size_variables = () => {
-    let thumb_width = THUMB_IDEAL_WIDTH
-    let thumb_height = THUMB_IDEAL_HEIGHT
-    const is_portrait_desktop = !is_landscape() && is_mouse_device
-    if (is_portrait_desktop) {
-        /* In portrait & desktop, shrink the thumbs to avoid empty hor space */
-        const wrapper_width_without_scrollbar = highlights_el?.clientWidth
-        const row_initial_length = Math.floor(
-            (wrapper_width_without_scrollbar - THUMB_GAP) / (THUMB_IDEAL_WIDTH + THUMB_GAP)
-        )
-        thumb_width = (wrapper_width_without_scrollbar - THUMB_GAP) / (row_initial_length + 1) - THUMB_GAP
-        thumb_height = thumb_width / img_ratio
-    } else { // otherwise it can be a small device where 1 image doesn't fit into viewport height...
-        thumb_height = Math.min(THUMB_IDEAL_HEIGHT, window.innerHeight - THUMB_GAP * 2)
-        thumb_width = thumb_height * img_ratio
-    }
-
-    // thumb size vars have to be set anyway because there are (can be) tiny differences btw sizes of actual image files
-    set_css_num_var('--thumb-height', thumb_height, 'px')
-    set_css_num_var('--thumb-width', thumb_width, 'px')
+    const { thumb_width, thumb_height } = update_thumb_size_variables()
 
     /*
     Here I manually decide whether to render 1 OR 2 columns but this actually can be achieved using CSS grid.
@@ -50,6 +25,8 @@ const update_size_variables = () => {
     }
 
     let wrapper_height_in_portrait = (thumb_height + THUMB_GAP * 2)
+
+    const is_portrait_desktop = !is_landscape() && is_mouse_device()
     if (is_portrait_desktop) { // try to show >1 row if enough height
         wrapper_height_in_portrait = Math.min(
             wrapper_height_in_portrait * 1.5,
