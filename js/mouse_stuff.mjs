@@ -80,7 +80,11 @@ export const addMouseStuff = map => {
     })
 
     window.addEventListener("popstate", (event) => {
+        if (event.state.id) {
         try_open_building(event.state.id)
+        } else {
+            display_highlights()
+        }
     });
 
     // ADD & REMOVE CURSOR POINTER ON BUILDINGS WITH DETAILS

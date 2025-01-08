@@ -1,7 +1,23 @@
 CRITICAL
+    extract show details
 
-    make bldgs linkable
+    rotated photo
+
+    add "HL" heading with a medal icon
+
+    1) make buildings linkable
     
+    2) allow to back forward
+
+
+
+
+    in details, a button to locate the bldg
+    ??? open in google?
+
+
+    
+    panel after-drag animation: quick from start
 
     after linking imgs done:
         check missing pictures in the resulting meta obj, compare to files

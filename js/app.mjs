@@ -1,5 +1,5 @@
 import { create_scale } from './manage_scale.mjs'
-import { addMouseStuff } from './mouse_stuff.mjs'
+import { try_open_building, addMouseStuff } from './mouse_stuff.mjs'
 import meta from './french_buildings_meta.mjs'
 import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
@@ -40,8 +40,17 @@ map.on('load', () => {
     const attribution = document.querySelector(`details.maplibregl-ctrl-attrib`).outerHTML;
     const attributionElement = document.getElementById('custom-attribution');
     attributionElement.innerHTML = attribution;
-    setTimeout(display_highlights, 1000)
     add_dead_buildings(map)
+
+    setTimeout(() => {
+        const url = new URL(window.location.href)
+        const id = url.searchParams.get('id')
+        if (id !== null) {
+            try_open_building(id, true)
+        } else {
+            display_highlights()
+        }
+    }, 1000)
 });
 
 map.on('move', () => {

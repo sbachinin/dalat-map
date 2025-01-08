@@ -81,6 +81,9 @@ export const display_highlights = () => {
     })
 
     panel.expand()
+
+    const url_without_id = window.location.origin + window.location.pathname + window.location.hash
+    history.pushState({ id: null }, "", url_without_id)
 }
 
 // TODO benefits of this are not apparent; and it can slow the initial load too
