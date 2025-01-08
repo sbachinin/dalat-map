@@ -14,9 +14,8 @@ const update_size_variables = () => {
     })
 }
 
-
 export const display_highlights = () => {
-    highlights_el = create_panel_thumbs_list({
+    highlights_el = highlights_el || create_panel_thumbs_list({
         content_type: 'highlights',
         images_names
     })
