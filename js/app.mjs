@@ -1,9 +1,10 @@
 import { create_scale } from './manage_scale.mjs'
-import { try_open_building, addMouseStuff } from './mouse_stuff.mjs'
+import { addMouseStuff } from './mouse_stuff.mjs'
 import meta from './french_buildings_meta.mjs'
 import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
+import { try_open_building } from './bldg_details.mjs'
 
 const map = window.map = new maplibregl.Map({
     container: 'map',
@@ -67,3 +68,11 @@ if (window.location.hostname === 'localhost') {
     script.src = 'js/DEV_handle_img_drag.mjs'
     document.body.appendChild(script)
 }
+
+window.addEventListener("popstate", (event) => {
+    if (event.state.id) {
+        try_open_building(event.state.id)
+    } else {
+        display_highlights()
+    }
+})

@@ -1,4 +1,4 @@
-#highlights-list {
+#panel-thumbs-list {
     display: flex;
     align-items: start;
     flex-wrap: wrap;
@@ -7,7 +7,7 @@
 }
 
 @media (orientation: landscape) {
-    #highlights-list {
+    #panel-thumbs-list {
         flex-wrap: wrap;
         width: var(--highlights-width-in-landscape);
         height: max-content;
@@ -15,13 +15,13 @@
 }
 
 @media (orientation: portrait) {
-    #highlights-list {
+    #panel-thumbs-list {
         height: var(--highlights-height-in-portrait);
     }
 }
 
 @media (orientation: portrait) and (pointer: fine) {
-    #highlights-list {
+    #panel-thumbs-list {
         /* This (portrait + desktop) is a special case where higlights y-scroll themselves instead of delegating it to #panel.
         It's a bit inconsistent but difficult to solve. */
         width: 100vw;
@@ -30,14 +30,14 @@
 }
 
 @media (orientation: portrait) and (pointer: coarse) {
-    #highlights-list {
+    #panel-thumbs-list {
         width: max-content;
         flex-wrap: nowrap;
     }
 }
 
 
-#highlights-list img {
+#panel-thumbs-list img {
     width: var(--thumb-width);
     height: var(--thumb-height);
     cursor: pointer;

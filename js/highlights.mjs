@@ -52,7 +52,7 @@ export const display_highlights = () => {
     })
 
     highlights_el = document.createElement('div')
-    highlights_el.id = 'highlights-list'
+    highlights_el.id = 'panel-thumbs-list'
 
     img_elements.forEach(el => highlights_el.appendChild(el));
 
