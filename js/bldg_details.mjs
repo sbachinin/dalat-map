@@ -1,32 +1,33 @@
-import { create_lazy_image } from './lazy-image.mjs'
-import { get_image_url } from './utils.mjs'
 import { panel } from './panel/panel.mjs'
 import meta from './french_buildings_meta.mjs'
 import { select_bldg } from './select_building.mjs'
-import { create_panel_thumbs_list } from './panel_thumbs_list.mjs'
+import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
+import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 
 export const building_has_details = featureMeta => {
     return featureMeta && (featureMeta.images/*  || featureMeta.descr */)
 }
 
+const update_size_variables = () => {
+    update_panel_thumbs_list_size_variables({
+        max_width_ratio: 40 // TODO just copied from highlights but need to think
+    })
+}
+
 export const show_bldg_details = (details) => {
     if (!details.images?.length) return
 
-    create_panel_thumbs_list()
-    
-    const img_elements = details.images.map(name => {
-        return create_lazy_image(get_image_url(name, 'thumbs'))
+    const details_el = create_panel_thumbs_list({
+        content_type: 'bldg_details',
+        images_names: details.images
     })
-
-    const details_el = document.createElement('div')
-    details_el.id = 'building-details'
-
-    img_elements.forEach(el => details_el.appendChild(el));
 
     panel.set_content({
-        update: () => { },
+        update: update_size_variables,
         element: details_el
     })
+
+    update_size_variables()
 
     panel.expand()
 }

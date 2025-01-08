@@ -1,5 +1,5 @@
-import { get_panel_el } from './panel/panel_utils.mjs'
-import { is_landscape, is_mouse_device, set_css_num_var } from './utils.mjs'
+import { set_css_num_var, is_landscape, is_mouse_device } from '../utils.mjs'
+import { get_panel_el } from './panel_utils.mjs'
 
 export const THUMB_GAP = 4
 set_css_num_var('--thumb-gap', THUMB_GAP, 'px')
@@ -9,7 +9,11 @@ const THUMB_IDEAL_HEIGHT = 286
 const img_ratio = THUMB_IDEAL_WIDTH / THUMB_IDEAL_HEIGHT
 
 
-export const update_thumb_size_variables = () => {
+export const update_panel_thumbs_list_size_variables = (
+    {
+        max_width_ratio
+    }
+) => {
     let thumb_width = THUMB_IDEAL_WIDTH
     let thumb_height = THUMB_IDEAL_HEIGHT
     const is_portrait_desktop = !is_landscape() && is_mouse_device()
@@ -37,5 +41,34 @@ export const update_thumb_size_variables = () => {
     set_css_num_var('--thumb-height', thumb_height, 'px')
     set_css_num_var('--thumb-width', thumb_width, 'px')
 
-    return { thumb_width, thumb_height }
+    /* Here I manually decide whether to render 1 OR 2 columns but this actually can be achieved using CSS grid.
+    I made it using something like grid-template-columns: repeat(...) + max-width
+    But it failed in FF (it displayed always 1 column) that's why I switched to manual js solution
+    */
+    const two_column_width = thumb_width * 2 + THUMB_GAP * 3
+    const enough_width_for_2_columns = two_column_width < window.innerWidth * max_width_ratio / 100
+    let wrapper_width_in_landscape = two_column_width
+    if (!enough_width_for_2_columns) {
+        wrapper_width_in_landscape -= (thumb_width + THUMB_GAP)
+    }
+
+    let wrapper_height_in_portrait = (thumb_height + THUMB_GAP * 2)
+
+    if (is_portrait_desktop) { // try to show >1 row if enough height
+        wrapper_height_in_portrait = Math.min(
+            wrapper_height_in_portrait * 1.5,
+            window.innerHeight * 0.35
+        )
+    }
+
+    set_css_num_var(
+        '--highlights-width-in-landscape',
+        wrapper_width_in_landscape,
+        'px'
+    )
+    set_css_num_var(
+        '--highlights-height-in-portrait',
+        wrapper_height_in_portrait,
+        'px'
+    )
 }

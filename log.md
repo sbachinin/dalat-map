@@ -1,5 +1,10 @@
 CRITICAL
-    extract show details
+    how content_type works?
+
+    desk-portrait: too low to show whole image
+
+    easy way not to recreate hl?
+        if they are stored somewhere, how heavy
 
     rotated photo
 
