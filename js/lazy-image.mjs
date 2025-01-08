@@ -1,3 +1,5 @@
+import { create_element_from_Html } from "./utils.mjs"
+
 const do_once_visible = (el, cb) => {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -27,10 +29,12 @@ export const activate_image = (el) => {
 }
 
 export const create_lazy_image = src => {
-    const el = document.createElement('div')
-    el.className = 'lazy-image-wrapper'
-    el.innerHTML = `<div class="img-loader" style="display: none"></div>`
-        + `<img data-src="${src}" class="lazy">`
+    const el = create_element_from_Html(
+        `<div class='lazy-image-wrapper'>
+            <div class="img-loader" style="display: none"></div>
+            <img data-src="${src}" class="lazy">
+        </div>`
+    )
     do_once_visible(el, () => activate_image(el))
     return el
 }

@@ -1,3 +1,5 @@
+import { create_element_from_Html } from "./utils.mjs";
+
 let root = document.documentElement
 
 const SCALE_RIGHT_OFFSET = 40; // offset where the scale labels can protrude and slowly fade in/out
@@ -73,12 +75,12 @@ const update_scale = () => {
 
 
 const create_scale_item = (i) => {
-    const scale_item_el = document.createElement('div')
-    scale_item_el.classList.add('scale-item')
-
-    const scale_item_label_el = document.createElement('div')
-    scale_item_label_el.classList.add('scale-item-label')
-
+    const scale_item_el = create_element_from_Html(
+        `<div class='scale-item'></div>`
+    )
+    const scale_item_label_el = create_element_from_Html(
+        `<div class='scale-item-label'></div>`
+    )
     scale_item_el.appendChild(scale_item_label_el)
     scale_item_labels.push(scale_item_label_el)
 

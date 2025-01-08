@@ -5,6 +5,7 @@ import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
 import { try_open_building } from './bldg_details.mjs'
+import { create_element_from_Html } from './utils.mjs'
 
 const map = window.map = new maplibregl.Map({
     container: 'map',
@@ -64,8 +65,8 @@ map.on('move', () => {
 create_scale()
 
 if (window.location.hostname === 'localhost') {
-    const script = document.createElement('script')
-    script.src = 'js/DEV_handle_img_drag.mjs'
+    const script = create_element_from_Html(
+        `<script src="js/DEV_handle_img_drag.mjs"></script>`)
     document.body.appendChild(script)
 }
 

@@ -1,7 +1,7 @@
 import { panel } from './panel/panel.mjs'
 import { images_names } from './highlights_images_list.mjs'
 import { create_lazy_image } from './lazy-image.mjs'
-import { set_css_num_var, get_image_url, is_landscape, is_mouse_device } from './utils.mjs'
+import { set_css_num_var, get_image_url, is_landscape, is_mouse_device, create_element_from_Html } from './utils.mjs'
 import { open_slider } from './slider/slider.mjs'
 import { THUMB_GAP, update_thumb_size_variables } from './thumb_size.mjs'
 
@@ -51,9 +51,9 @@ export const display_highlights = () => {
         return create_lazy_image(get_image_url(name, 'thumbs'))
     })
 
-    highlights_el = document.createElement('div')
-    highlights_el.id = 'panel-thumbs-list'
-
+    highlights_el = create_element_from_Html(
+        `<div id="panel-thumbs-list"></div>`
+    )
     img_elements.forEach(el => highlights_el.appendChild(el));
 
     panel.set_content({
