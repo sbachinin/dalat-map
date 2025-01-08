@@ -4,6 +4,7 @@ import { create_lazy_image } from './lazy-image.mjs'
 import { set_css_num_var, get_image_url, is_landscape, is_mouse_device, create_element_from_Html } from './utils.mjs'
 import { open_slider } from './slider/slider.mjs'
 import { THUMB_GAP, update_thumb_size_variables } from './thumb_size.mjs'
+import { create_panel_thumbs_list } from './panel_thumbs_list.mjs'
 
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
@@ -46,15 +47,11 @@ const update_size_variables = () => {
     )
 }
 
-export const display_highlights = () => {
-    const img_elements = images_names.map(name => {
-        return create_lazy_image(get_image_url(name, 'thumbs'))
-    })
 
-    highlights_el = create_element_from_Html(
-        `<div id="panel-thumbs-list"></div>`
+export const display_highlights = () => {
+    highlights_el = create_panel_thumbs_list(
+        images_names,
     )
-    img_elements.forEach(el => highlights_el.appendChild(el));
 
     panel.set_content({
         update: update_size_variables,
