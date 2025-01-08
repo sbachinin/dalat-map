@@ -54,12 +54,15 @@ export const update_panel_thumbs_list_size_variables = (
 
     let wrapper_height_in_portrait = (thumb_height + THUMB_GAP * 2)
 
-    if (is_portrait_desktop) { // try to show >1 row if enough height
-        wrapper_height_in_portrait = Math.min(
-            wrapper_height_in_portrait * 1.5,
-            window.innerHeight * 0.35
-        )
-    }
+    // ATTEMPT: try to show >1 row if enough height
+    // Problems: 1) This lead to less than 1 row sometimes
+    // 2) need to check if i actually have >1 row of content
+    // if (is_portrait_desktop) {
+    //     wrapper_height_in_portrait = Math.min(
+    //         wrapper_height_in_portrait * 1.5,
+    //         window.innerHeight * 0.35
+    //     )
+    // }
 
     set_css_num_var(
         '--highlights-width-in-landscape',
