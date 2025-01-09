@@ -9,7 +9,7 @@ document.querySelector('#map').addEventListener("drop", e => {
     const file = e.dataTransfer.files[0]
     if (!file) { console.warn('no file dropped'); return }
 
-    const rf = map.queryRenderedFeatures([e.clientX, e.clientY])
+    const rf = window.dalatmap.queryRenderedFeatures([e.clientX, e.clientY])
     if (
         rf[0].sourceLayer.includes('building')
         && rf[0].layer.type === 'fill'

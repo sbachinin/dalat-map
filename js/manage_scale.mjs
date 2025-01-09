@@ -30,7 +30,7 @@ const update_scale = () => {
         fullwidth_scale_wr.style.visibility = 'visible'
     }
 
-    const mPerPx = 1 / window.map.transform._pixelPerMeter
+    const mPerPx = 1 / window.dalatmap.transform._pixelPerMeter
     // if scale element is wide, it might be necessary to increase min value:
     const min_scale_item_width = Math.max(MIN_SCALE_ITEM_WIDTH, fullwidth_scale_width / max_scale_items_count)
     const min_step_value = mPerPx * min_scale_item_width
@@ -93,12 +93,12 @@ export const create_scale = () => {
         fullwidth_scale_wr.firstElementChild.appendChild(create_scale_item(i))
     }
 
-    window.map.once('render', () => {
+    window.dalatmap.once('render', () => {
         const handle_resize = debounce(() => {
             measure_base_values()
             update_scale()
         })
-        window.map.on('zoom', update_scale);
+        window.dalatmap.on('zoom', update_scale);
         new ResizeObserver(handle_resize).observe(fullwidth_scale_wr)
     })
 }

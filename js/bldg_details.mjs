@@ -34,7 +34,14 @@ export const show_bldg_details = (details) => {
 }
 
 
-export const try_open_building = (id, should_push_history = false) => {
+export const try_open_building = (
+    id,
+    should_push_history = false,
+    force_fly_to = false
+) => {
+    if (force_fly_to) {
+        window.dalatmap.easeTo()
+    }
     const featureMeta = meta[id]
     if (building_has_details(featureMeta)) {
         show_bldg_details(featureMeta)

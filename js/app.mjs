@@ -7,7 +7,7 @@ import { display_highlights, preload_some_images } from './highlights.mjs'
 import { try_open_building } from './bldg_details.mjs'
 import { create_element_from_Html } from './utils.mjs'
 
-const map = window.map = new maplibregl.Map({
+const map = window.dalatmap = new maplibregl.Map({
     container: 'map',
     style,
     hash: true,
@@ -23,7 +23,7 @@ const map = window.map = new maplibregl.Map({
 
 preload_some_images()
 
-addMouseStuff(map)
+addMouseStuff()
 
 map.addControl(new maplibregl.NavigationControl(), 'top-right');
 

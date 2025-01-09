@@ -3,16 +3,16 @@ import dead_buildings_json from '../data/static/dead_buildings_json.mjs'
 
 const french_dead_color = 'hsl(300, 30%, 95%)'
 
-export const add_dead_buildings = async (map) => {
-    const image = await map.loadImage(`${window.location.origin}/dalat-map-images/skull.png`)
-    map.addImage('skull-icon', image.data)
-    map.addSource('dead-buildings', {
+export const add_dead_buildings = async () => {
+    const image = await window.dalatmap.loadImage(`${window.location.origin}/dalat-map-images/skull.png`)
+    window.dalatmap.addImage('skull-icon', image.data)
+    window.dalatmap.addSource('dead-buildings', {
         type: 'geojson',
         data: dead_buildings_json
     })
 
 
-    map.addLayer({
+    window.dalatmap.addLayer({
         "id": "Dead building fill",
         "type": "fill",
         "source": "dead-buildings",
@@ -24,7 +24,7 @@ export const add_dead_buildings = async (map) => {
         },
     })
 
-    map.addLayer(
+    window.dalatmap.addLayer(
         {
             id: 'Dead building skull',
             type: 'symbol',

@@ -1,10 +1,10 @@
 import meta from './french_buildings_meta.mjs'
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
-import { building_has_details, try_open_building } from './bldg_details.mjs';
-import { select_bldg } from './select_building.mjs';
+import { building_has_details, try_open_building } from './bldg_details.mjs'
 
-export const addMouseStuff = map => {
+export const addMouseStuff = () => {
+    const map = window.dalatmap
 
     map.on('click', (e) => {
         const maybeFrenchBuilding = map.queryRenderedFeatures(e.point)
