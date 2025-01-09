@@ -1,8 +1,9 @@
 import { panel } from './panel/panel.mjs'
 import { images_names } from './highlights_images_list.mjs'
-import { get_image_url } from './utils.mjs'
+import { get_image_url, push_to_history } from './utils.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
+import { select_bldg } from './select_building.mjs'
 
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
@@ -14,7 +15,9 @@ const update_size_variables = () => {
     })
 }
 
-export const display_highlights = () => {
+export const display_highlights = (should_push_history = false) => {
+    select_bldg(null)
+
     highlights_el = highlights_el || create_panel_thumbs_list({
         content_type: 'highlights',
         images_names
@@ -30,7 +33,9 @@ export const display_highlights = () => {
     panel.expand()
 
     const url_without_id = window.location.origin + window.location.pathname + window.location.hash
-    history.pushState({ id: null }, "", url_without_id)
+    if (should_push_history) {
+        push_to_history({ id: null }, url_without_id)
+    }
 }
 
 // TODO benefits of this are not apparent; and it can slow the initial load too

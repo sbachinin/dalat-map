@@ -48,7 +48,7 @@ map.on('load', () => {
         const url = new URL(window.location.href)
         const id = url.searchParams.get('id')
         if (id !== null) {
-            try_open_building(id, true)
+            try_open_building(id)
         } else {
             display_highlights()
         }
@@ -71,9 +71,9 @@ if (window.location.hostname === 'localhost') {
 }
 
 window.addEventListener("popstate", (event) => {
-    if (event.state.id) {
+    if (event.state?.id) {
         try_open_building(event.state.id)
     } else {
-        display_highlights()
+        display_highlights(false)
     }
 })

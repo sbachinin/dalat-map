@@ -34,6 +34,5 @@ export const addMouseStuff = map => {
 }
 
 document.querySelector('#highlights-opener').addEventListener('click', () => {
-    select_bldg(null)
-    display_highlights()
+    display_highlights(true)
 })

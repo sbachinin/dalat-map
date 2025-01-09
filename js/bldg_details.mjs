@@ -3,6 +3,7 @@ import meta from './french_buildings_meta.mjs'
 import { select_bldg } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
+import { push_to_history } from './utils.mjs'
 
 export const building_has_details = featureMeta => {
     return featureMeta && (featureMeta.images/*  || featureMeta.descr */)
@@ -38,9 +39,8 @@ export const try_open_building = (id, should_push_history = false) => {
     if (building_has_details(featureMeta)) {
         show_bldg_details(featureMeta)
         select_bldg(id)
-        should_push_history && history.pushState(
+        should_push_history && push_to_history(
             { id },
-            "",
             `?id=${id}${window.location.hash}`
         )
     }

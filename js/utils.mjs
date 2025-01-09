@@ -80,3 +80,8 @@ export const create_element_from_Html = htmlString => {
     }
     return div.firstElementChild
 }
+
+export const push_to_history = (state, url) => {
+    console.log('pushing to history, ', state, url)
+    history.pushState(state, "", url)
+}

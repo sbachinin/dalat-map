@@ -1,13 +1,13 @@
 CRITICAL
-    desk-portrait: too low to show whole image
+    1) make buildings linkable
+    
+    2) allow to back forward
 
+    
     rotated photo
 
     add "HL" heading with a medal icon
 
-    1) make buildings linkable
-    
-    2) allow to back forward
 
 
 
