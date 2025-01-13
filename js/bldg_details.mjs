@@ -4,6 +4,7 @@ import { select_bldg } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import { push_to_history } from './utils.mjs'
+import turfCentroid from 'https://cdn.jsdelivr.net/npm/turf-centroid@3.0.12/+esm'
 
 export const building_has_details = featureMeta => {
     return featureMeta && (featureMeta.images/*  || featureMeta.descr */)
@@ -33,6 +34,20 @@ export const show_bldg_details = (details) => {
     panel.expand()
 }
 
+let french_bldgs_geojson = null
+
+const get_f_b_geojson = () => {
+    if (french_bldgs_geojson === null) {
+        return fetch('../data/french_building.geojson')
+            .then(response => response.json())
+            .then(geojson => {
+                french_bldgs_geojson = geojson
+                return geojson
+            })
+    } else {
+        return Promise.resolve(french_bldgs_geojson)
+    }
+}
 
 export const try_open_building = (
     id,
@@ -40,7 +55,12 @@ export const try_open_building = (
     force_fly_to = false
 ) => {
     if (force_fly_to) {
-        window.dalatmap.easeTo()
+        get_f_b_geojson().then(geojson => {
+            const cntrd = turfCentroid(geojson.find(f => f.id === id))
+            window.dalatmap.easeTo({
+                center: cntrd.geometry.coordinates
+            })
+        })
     }
     const featureMeta = meta[id]
     if (building_has_details(featureMeta)) {

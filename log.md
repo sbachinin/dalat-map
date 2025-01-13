@@ -1,21 +1,31 @@
 CRITICAL
-    1) make buildings linkable
-    
-    2) allow to back forward
 
+    make sure details are no re-fetched
+
+    test easing on mobile
+
+    repetitive clicks:
+        don't rerender;
+        avoid fade out;
+        not push to history
+
+    fly to a position that respects the panel;
+    fly on history / click / any_goto_details only when hidden by panel
+
+    are buildings now conveniently linkable?
     
     rotated photo
 
     add "HL" heading with a medal icon
 
-
+    should 2-col details be allowed on landsc?
 
 
 
     in details, a button to locate the bldg
     ??? open in google?
 
-
+    user location
     
     panel after-drag animation: quick from start
 
