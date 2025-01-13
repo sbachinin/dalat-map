@@ -82,6 +82,10 @@ export const create_element_from_Html = htmlString => {
 }
 
 export const push_to_history = (state, url) => {
+    if (JSON.stringify(history.state) === JSON.stringify(state)) {
+        console.log('state did not change, skip writing to history')
+        return
+    }
     console.log('pushing to history, ', state, url)
     history.pushState(state, "", url)
 }
