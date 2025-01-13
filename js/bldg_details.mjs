@@ -1,6 +1,6 @@
 import { panel } from './panel/panel.mjs'
 import meta from './french_buildings_meta.mjs'
-import { select_bldg } from './select_building.mjs'
+import { select_bldg, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import { push_to_history } from './utils.mjs'
@@ -54,6 +54,8 @@ export const try_open_building = (
     should_push_history = false,
     force_fly_to = false
 ) => {
+    if (id === selected_building_id) return
+
     if (force_fly_to) {
         get_f_b_geojson().then(geojson => {
             const cntrd = turfCentroid(geojson.find(f => f.id === id))
