@@ -111,9 +111,9 @@ export const get_map_center_shift = () => {
 }
 
 // Are coords within map "viewport" and not covered by panel?
-export const coords_are_in_view = coords => {
-    return coords.x > 0
-        && coords.x < window.innerWidth - get_panel_dimensions()[0]
-        && coords.y > 0
-        && coords.y < window.innerHeight - get_panel_dimensions()[1]
+export const coords_are_in_view = (coords, padding = 20) => {
+    return coords.x > padding
+        && coords.x < (window.innerWidth - get_panel_dimensions()[0] - padding)
+        && coords.y > padding
+        && coords.y < (window.innerHeight - get_panel_dimensions()[1] - padding)
 }
