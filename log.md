@@ -1,18 +1,27 @@
 CRITICAL
+    Had to remote-debug by serving from winodws
+        therefore:
+            develop in windows;
+            some commands run on linux 
+                and cp results via git
+                    copying via terminal breaks crlf:
+                        cp -r js /mnt/c/Users/Admin/projects/dalat-map
 
-    make sure details are no re-fetched
-
-    test easing on mobile
-
-    repetitive clicks:
-        don't rerender;
-        avoid fade out;
-        not push to history
-
-    fly to a position that respects the panel;
-    fly on history / click / any_goto_details only when hidden by panel
+    extract fns
+    add padding to coords_are_in_view
+    fuckup when panel was closed
+        maybe part of it: init -> bldg visible but under panel -> no ease
 
     are buildings now conveniently linkable?
+
+    disable map rotation?
+        (i guess it won't play well with map limits
+        + can be problems with offset)
+
+    is ml version fixed?
+
+
+
     
     rotated photo
 
