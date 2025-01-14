@@ -10,7 +10,6 @@ import { create_element_from_Html } from './utils.mjs'
 const map = window.dalatmap = new maplibregl.Map({
     container: 'map',
     style,
-    hash: true,
     center: [108.44409, 11.945],
     zoom: 0,
     maxBounds: [
@@ -76,4 +75,10 @@ window.addEventListener("popstate", (event) => {
     } else {
         display_highlights(false)
     }
+})
+
+map.on('moveend', () => {
+    const { lng, lat } = map.getCenter()
+    localStorage.setItem('map_center', JSON.stringify([lng, lat]))
+    localStorage.setItem('map_zoom', map.getZoom())
 })
