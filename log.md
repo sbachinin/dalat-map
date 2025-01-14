@@ -7,10 +7,22 @@ CRITICAL
                     copying via terminal breaks crlf:
                         cp -r js /mnt/c/Users/Admin/projects/dalat-map
 
-    extract fns
-    add padding to coords_are_in_view
     fuckup when panel was closed
+        is it solved by 50s?
+            y
+        can i solve by waiting for panel size promise?
         maybe part of it: init -> bldg visible but under panel -> no ease
+    seems that building tap causes touchend and then panel.setSize
+
+    if panel is closed
+        & you click on an already selected bldg,
+        panel must expand
+
+    any reason for different easing for panel expand and for easeTo?
+
+    check freeze after many popstate (served from gh)
+
+
 
     are buildings now conveniently linkable?
 

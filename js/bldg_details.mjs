@@ -3,7 +3,7 @@ import meta from './french_buildings_meta.mjs'
 import { select_bldg, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
-import { coords_are_in_view, get_css_var_num, get_map_center_shift, is_landscape, push_to_history } from './utils.mjs'
+import { coords_are_in_view, get_map_center_shift, push_to_history } from './utils.mjs'
 import turfCentroid from 'https://cdn.jsdelivr.net/npm/turf-centroid@3.0.12/+esm'
 
 export const building_has_details = featureMeta => {
@@ -49,8 +49,9 @@ const get_f_b_geojson = () => {
     }
 }
 
+get_f_b_geojson()
 
-export const try_open_building = (
+export const try_open_building = async (
     id,
     should_push_history = false,
     should_try_to_fly = false
@@ -67,17 +68,19 @@ export const try_open_building = (
         )
     }
 
-    if (should_try_to_fly) {
-        get_f_b_geojson().then(geojson => {
-            const feature_center_arr = turfCentroid(geojson.find(f => f.id === id))
-                .geometry.coordinates
-            const feature_screen_xy = window.dalatmap.project(feature_center_arr)
-            if (coords_are_in_view(feature_screen_xy)) return
-            window.dalatmap.easeTo({
-                center: feature_center_arr,
-                zoom: Math.max(window.dalatmap.getZoom(), 15),
-                offset: get_map_center_shift()
-            })
-        })
-    }
+
+
+
+    if (!should_try_to_fly) return
+    const geojson = await get_f_b_geojson()
+    await panel.full_size_promise // because panel setsize is async
+    const feature_center_arr = turfCentroid(geojson.find(f => f.id === id))
+        .geometry.coordinates
+    const feature_screen_xy = window.dalatmap.project(feature_center_arr)
+    if (coords_are_in_view(feature_screen_xy)) return
+    window.dalatmap.easeTo({
+        center: feature_center_arr,
+        zoom: Math.max(window.dalatmap.getZoom(), 15),
+        offset: get_map_center_shift()
+    })
 }

@@ -15,7 +15,7 @@ export const addMouseStuff = () => {
             panel.set_size(0)
             return
         }
-        try_open_building(maybeFrenchBuilding.id, true)
+        try_open_building(maybeFrenchBuilding.id, true, true)
     })
 
     // ADD & REMOVE CURSOR POINTER ON BUILDINGS WITH DETAILS

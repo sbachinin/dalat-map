@@ -11,7 +11,7 @@ export const div = (class_name) => {
 const get_css_var = (name, element = document.documentElement) => {
     const cvar = getComputedStyle(element)
         .getPropertyValue(name)
-    
+
     if (cvar === '') {
         console.warn('css var not set: ', name)
     }

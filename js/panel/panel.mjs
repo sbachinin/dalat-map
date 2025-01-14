@@ -19,7 +19,7 @@ const update_expand_button = debounce(async () => {
 export const panel = {
     element: panel_expander_el,
 
-    full_size_promise: null,
+    full_size_promise: Promise.resolve(),
     cache_full_size() {
         panel.full_size_promise = new Promise(resolve => {
             requestAnimationFrame(() => { // have to wait because content might not be rendered yet
