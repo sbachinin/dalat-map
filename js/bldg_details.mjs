@@ -4,7 +4,7 @@ import { select_bldg, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import { coords_are_in_view, get_map_center_shift, push_to_history } from './utils.mjs'
-import turfCentroid from 'https://cdn.jsdelivr.net/npm/turf-centroid@3.0.12/+esm'
+import { get_feature_center } from './french_buildings_data.mjs'
 
 export const building_has_details = featureMeta => {
     return featureMeta && (featureMeta.images/*  || featureMeta.descr */)
@@ -34,23 +34,6 @@ export const show_bldg_details = (details) => {
     panel.expand()
 }
 
-let french_bldgs_geojson = null
-
-const get_f_b_geojson = () => {
-    if (french_bldgs_geojson === null) {
-        return fetch('../data/french_building.geojson')
-            .then(response => response.json())
-            .then(geojson => {
-                french_bldgs_geojson = geojson
-                return geojson
-            })
-    } else {
-        return Promise.resolve(french_bldgs_geojson)
-    }
-}
-
-get_f_b_geojson()
-
 export const try_open_building = async (
     id,
     should_push_history = false,
@@ -68,14 +51,9 @@ export const try_open_building = async (
         )
     }
 
-
-
-
     if (!should_try_to_fly) return
-    const geojson = await get_f_b_geojson()
     await panel.full_size_promise // because panel setsize is async
-    const feature_center_arr = turfCentroid(geojson.find(f => f.id === id))
-        .geometry.coordinates
+    const feature_center_arr = await get_feature_center(id)
     const feature_screen_xy = window.dalatmap.project(feature_center_arr)
     if (coords_are_in_view(feature_screen_xy)) return
     window.dalatmap.easeTo({
