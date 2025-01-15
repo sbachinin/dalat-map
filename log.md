@@ -7,11 +7,14 @@ CRITICAL
                     copying via terminal breaks crlf:
                         cp -r js /mnt/c/Users/Admin/projects/dalat-map
 
-    fuckup when panel was closed
-        is it solved by 50s?
-            y
-        can i solve by waiting for panel size promise?
-        maybe part of it: init -> bldg visible but under panel -> no ease
+
+
+how heavy are centroids?
+
+does it make sense to store centroids FOR BUILDINGS WITHOUT PHOTOS?
+
+so centroids should be generated from dead file too
+
     seems that building tap causes touchend and then panel.setSize
 
     if panel is closed

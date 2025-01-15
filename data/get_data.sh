@@ -61,3 +61,7 @@ tippecanoe -e ../dalat-map-tiles/tiles \
 --no-tile-compression -f \
 boring_building.geojson french_building.geojson highway.geojson \
 lake.geojson river.geojson grass.geojson
+
+
+
+node save_bldgs_centroids.js

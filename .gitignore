@@ -7,5 +7,6 @@ __pycache__
 dalat-map-tiles
 dalat-map-images
 myenv
+node_modules
 
 !data/french_building.geojson
