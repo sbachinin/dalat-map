@@ -131,3 +131,11 @@ export const get_lnglat_per_px = () => {
         lat_per_px: dalatmap.unproject([0, 1]).lat - dalatmap.unproject([0, 0]).lat,
     }
 }
+
+export const add_disposable_transitionend_handler = (el, fn) => {
+    const handle_transition_end = _ => {
+        fn()
+        el.removeEventListener('transitionend', handle_transition_end)
+    }
+    el.addEventListener('transitionend', handle_transition_end)
+}

@@ -1,5 +1,5 @@
 import { make_expandable_on_swipe } from './panel_swipe.mjs'
-import { get_css_var_num, set_css_num_var, debounce } from '../utils.mjs'
+import { get_css_var_num, set_css_num_var, debounce, add_disposable_transitionend_handler } from '../utils.mjs'
 import { get_panel_intrinsic_size, get_panel_el } from './panel_utils.mjs'
 import { handle_resize } from './panel_resize.mjs'
 
@@ -69,3 +69,8 @@ handle_resize(panel)
 expand_button_el.addEventListener('click', panel.toggle)
 
 make_expandable_on_swipe(panel)
+
+add_disposable_transitionend_handler(
+    panel_expander_el,
+    () => { panel_expander_el.classList.add('first-animation-complete') }
+)

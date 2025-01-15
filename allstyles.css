@@ -28,7 +28,7 @@ body {
     bottom: 0;
     width: 100%;
     opacity: 1;
-    transition: opacity ease-out 0.2s;
+    transition: opacity ease-out 0.4s;
 }
 
 #map.hidden {

@@ -1,7 +1,6 @@
 @media (orientation: portrait) {
     #panel-expander {
         height: var(--panel-size);
-        transition-property: height;
     }
 
     #panel {
@@ -26,7 +25,6 @@
 @media (orientation: landscape) {
     #panel-expander {
         width: var(--panel-size);
-        transition-property: width;
         order: 1;
     }
 
@@ -42,7 +40,13 @@
 #panel-expander {
     transition-timing-function: cubic-bezier(.3, .3, .4, .9);
     transition-duration: var(--expand-transition-duration);
+    transition-property: width, height;
     position: relative;
+}
+
+#panel-expander:not(.first-animation-complete) {
+    transition-duration: 1s;
+    transition-delay: 0.5s;
 }
 
 #panel {
@@ -61,23 +65,3 @@
 #panel>*.opaque {
     opacity: 1;
 }
-
-/* 
-#panel .images {
-    max-height: 100%;
-    display: flex;
-    column-gap: 10px;
-    padding: 10px;
-}
-
-#panel .images img {
-    max-height: 100%;
-    cursor: pointer;
-    opacity: 1;
-    transition: opacity var(--image-fading-duration) ease-out;
-}
-
-
-#panel .images img.hidden {
-    opacity: 0;
-} */
