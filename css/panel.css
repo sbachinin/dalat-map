@@ -39,8 +39,8 @@
 
 #panel-expander {
     transition-timing-function: cubic-bezier(.3, .3, .4, .9);
-    transition-duration: var(--expand-transition-duration);
-    transition-property: width, height;
+    transition-duration: var(--panel-expand-transition-duration);
+    transition-property: opacity, width, height;
     position: relative;
 }
 
@@ -57,11 +57,5 @@
 }
 
 #panel>* {
-    opacity: 0;
-    transition: opacity .5s cubic-bezier(.3, .3, .4, .9);
     box-sizing: border-box;
-}
-
-#panel>*.opaque {
-    opacity: 1;
 }

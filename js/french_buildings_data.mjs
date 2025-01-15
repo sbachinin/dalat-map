@@ -1,4 +1,8 @@
-import turfCentroid from 'https://cdn.jsdelivr.net/npm/turf-centroid@3.0.12/+esm'
+// TODO this file is unused
+// get_feature_center was replaced by just reading the dictionary from centroids.mjs
+// but reading this geojson might be necessary later
+
+// import turfCentroid from 'https://cdn.jsdelivr.net/npm/turf-centroid@3.0.12/+esm'
 
 let french_bldgs_geojson = null
 
@@ -19,8 +23,10 @@ get_f_b_geojson()
 
 
 // Returns [lng, lat]
+/* 
 export const get_feature_center = async (id) => {
     const geojson = await get_f_b_geojson()
     return turfCentroid(geojson.find(f => String(f.id) === String(id)))
         .geometry.coordinates
 }
+ */

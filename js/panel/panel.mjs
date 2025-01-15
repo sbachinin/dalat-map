@@ -5,11 +5,12 @@ import { handle_resize } from './panel_resize.mjs'
 
 const EXPAND_TRANSITION_DURATION = 350
 
-set_css_num_var('--expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's');
+set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's');
 set_css_num_var('--panel-size', 0, 'px');
 
 const expand_button_el = document.querySelector(`#panel-expand-button`)
 const panel_expander_el = document.querySelector(`#panel-expander`)
+const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
 const update_expand_button = debounce(async () => {
     const was_expanded = await panel.is_rather_expanded()
@@ -31,10 +32,6 @@ export const panel = {
         if (size !== undefined) {
             set_css_num_var('--panel-size', size, 'px')
             update_expand_button()
-            panel.is_rather_expanded().then(was_expanded => {
-                const method = was_expanded ? 'add' : 'remove'
-                panel.content.element.classList[method]('opaque')
-            })
         } else {
             // TODO remove console warning
             console.warn('no size passed to panel.set_size')
@@ -42,6 +39,8 @@ export const panel = {
     },
     async expand() {
         panel.set_size(await panel.full_size_promise)
+        panel_expander_el.style.opacity = 1
+        panel_expand_button_el.style.opacity = 1
     },
     async toggle() {
         const was_expanded = await panel.is_rather_expanded()
