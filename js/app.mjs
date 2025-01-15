@@ -6,12 +6,24 @@ import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
 import { try_open_building } from './bldg_details.mjs'
 import { create_element_from_Html } from './utils.mjs'
+import { centroids } from '../data/centroids.mjs'
+
+
+const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
+
+const center = centroids[initial_bldg_id]
+    || JSON.parse(localStorage.getItem('map_center'))
+    || [0, 0]
+
+const zoom = (initial_bldg_id !== null && 15.5)
+    || localStorage.getItem('map_zoom')
+    || 0
 
 const map = window.dalatmap = new maplibregl.Map({
     container: 'map',
     style,
-    center: [108.44409, 11.945],
-    zoom: 0,
+    center,
+    zoom,
     maxBounds: [
         [108.37416, 11.88], // SW
         [108.52, 12.01]  // NE
@@ -44,10 +56,8 @@ map.on('load', () => {
     add_dead_buildings(map)
 
     setTimeout(() => {
-        const url = new URL(window.location.href)
-        const id = url.searchParams.get('id')
-        if (id !== null) {
-            try_open_building(id)
+        if (initial_bldg_id !== null) {
+            try_open_building(initial_bldg_id, false, false)
         } else {
             display_highlights()
         }
