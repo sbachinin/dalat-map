@@ -27,6 +27,12 @@ body {
     top: 0;
     bottom: 0;
     width: 100%;
+    opacity: 1;
+    transition: opacity ease-out 0.2s;
+}
+
+#map.hidden {
+    opacity: 0;
 }
 
 .my-button {

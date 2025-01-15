@@ -117,3 +117,17 @@ export const coords_are_in_view = (coords, padding = 20) => {
         && coords.y > padding
         && coords.y < (window.innerHeight - get_panel_dimensions()[1] - padding)
 }
+
+
+export const add_attrib = () => {
+    const attribution = document.querySelector(`details.maplibregl-ctrl-attrib`).outerHTML
+    const attributionElement = document.getElementById('custom-attribution')
+    attributionElement.innerHTML = attribution
+}
+
+export const get_lnglat_per_px = () => {
+    return {
+        lng_per_px: dalatmap.unproject([1, 0]).lng - dalatmap.unproject([0, 0]).lng,
+        lat_per_px: dalatmap.unproject([0, 1]).lat - dalatmap.unproject([0, 0]).lat,
+    }
+}

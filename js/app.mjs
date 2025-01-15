@@ -5,13 +5,28 @@ import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
 import { try_open_building } from './bldg_details.mjs'
-import { create_element_from_Html } from './utils.mjs'
+import { add_attrib, create_element_from_Html, get_lnglat_per_px, get_map_center_shift } from './utils.mjs'
 import { centroids } from '../data/centroids.mjs'
+import { panel } from './panel/panel.mjs'
 
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
-const center = centroids[initial_bldg_id]
+// Return [lng, lat] or null
+const get_center_for_building = (id) => {
+    const cntrd = centroids[id]
+    if (!cntrd) return null
+
+
+    // nonsense, this shift has to be translated to lng lat first
+    const cntr_shift = get_map_center_shift()
+    return [
+        cntrd[0] + cntr_shift[0],
+        cntrd[1] + cntr_shift[1]
+    ]
+}
+
+const center = get_center_for_building(initial_bldg_id)
     || JSON.parse(localStorage.getItem('map_center'))
     || [0, 0]
 
@@ -49,19 +64,25 @@ map.once('idle', () => {
         })
 })
 
-map.on('load', () => {
-    const attribution = document.querySelector(`details.maplibregl-ctrl-attrib`).outerHTML;
-    const attributionElement = document.getElementById('custom-attribution');
-    attributionElement.innerHTML = attribution;
+map.on('load', async () => {
+    add_attrib()
     add_dead_buildings(map)
 
-    setTimeout(() => {
-        if (initial_bldg_id !== null) {
-            try_open_building(initial_bldg_id, false, false)
-        } else {
-            display_highlights()
-        }
-    }, 1000)
+    if (initial_bldg_id !== null) {
+        try_open_building(initial_bldg_id, false, false)
+    } else {
+        display_highlights()
+    }
+
+    await panel.full_size_promise
+
+    const { lng_per_px, lat_per_px } = get_lnglat_per_px()
+    dalatmap.setCenter([
+        dalatmap.getCenter().lng - lng_per_px * get_map_center_shift()[0],
+        dalatmap.getCenter().lat - lat_per_px * get_map_center_shift()[1],
+    ])
+
+    document.querySelector('#map').classList.remove('hidden')
 });
 
 map.on('move', () => {
