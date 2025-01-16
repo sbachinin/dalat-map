@@ -39,7 +39,10 @@ export const try_open_building = async (
     should_push_history = false,
     should_try_to_fly = false
 ) => {
-    if (id === selected_building_id) return
+    if (id === selected_building_id) {
+        panel.expand()
+        return
+    }
 
     const featureMeta = meta[id]
     if (building_has_details(featureMeta)) {
