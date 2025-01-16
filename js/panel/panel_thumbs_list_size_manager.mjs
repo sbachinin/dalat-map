@@ -65,12 +65,12 @@ export const update_panel_thumbs_list_size_variables = (
     // }
 
     set_css_num_var(
-        '--highlights-width-in-landscape',
+        '--thumbs-list-width-in-landscape',
         wrapper_width_in_landscape,
         'px'
     )
     set_css_num_var(
-        '--highlights-height-in-portrait',
+        '--thumbs-list-height-in-portrait',
         wrapper_height_in_portrait,
         'px'
     )

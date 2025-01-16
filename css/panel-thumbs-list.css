@@ -9,14 +9,14 @@
 @media (orientation: landscape) {
     #panel-thumbs-list {
         flex-wrap: wrap;
-        width: var(--highlights-width-in-landscape);
+        width: var(--thumbs-list-width-in-landscape);
         height: max-content;
     }
 }
 
 @media (orientation: portrait) {
     #panel-thumbs-list {
-        height: var(--highlights-height-in-portrait);
+        height: var(--thumbs-list-height-in-portrait);
     }
 }
 

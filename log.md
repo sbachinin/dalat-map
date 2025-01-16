@@ -9,25 +9,30 @@ CRITICAL
 
 
 
-how heavy are centroids?
+check adequacy of full_size_promise
+    replaceable with wait(0)?
 
-does it make sense to store centroids FOR BUILDINGS WITHOUT PHOTOS?
+seems that building tap causes touchend and then panel.setSize
 
-so centroids should be generated from dead file too
+any reason for different easing for panel expand and for easeTo?
 
-    seems that building tap causes touchend and then panel.setSize
+check freeze after many popstate (served from gh, on xia)
 
-    if panel is closed
-        & you click on an already selected bldg,
-        panel must expand
-
-    any reason for different easing for panel expand and for easeTo?
-
-    check freeze after many popstate (served from gh)
+are buildings now conveniently linkable?
 
 
 
-    are buildings now conveniently linkable?
+
+need to organize photos, the workflow
+    how borrowed get into thumbs/large?
+    why not copy the interesting borrowed to "dalat architecture" and thus to originals-other?
+    is zoo shown?
+    dinh 1 needs photos
+        there is 1 photo in borrowed, not processed yet
+    also in wsl dalat-map-images repo was deleted and clone failed, hopefully just because of bad connection
+
+
+
 
     disable map rotation?
         (i guess it won't play well with map limits
@@ -35,7 +40,10 @@ so centroids should be generated from dead file too
 
     is ml version fixed?
 
+would be great to load swiper bundle only when necessary
 
+marking french bldgs via setFeatureState is perhaps performance not nice.   
+    try to save isFrenchBldg into tiles
 
     
     rotated photo
@@ -64,10 +72,29 @@ so centroids should be generated from dead file too
 
     ghost in mercure: needs a historical brother
         IMG_4783~2
-GOOD TO HAVE
-    look in pinterest
-    open a building -> is it covered by panel -> shift map center
 
+
+
+
+to think:
+return to hash
+    use id in url only when "copying link" and on page init
+    BUT: does it mean that when the bldg is opened (photos seen in the panel but map is panned away), refresh -> bldg photos lost
+
+
+
+
+GOOD TO HAVE
+    IF IT'S EASY:
+        rm sel bldg from url when panel collapsed
+        restore it to url when expanded
+        REASON WHY:
+            now if you open a buliding, -> collapse panel, -> forget the bldg, -> refresh, -> forgotten bldg gets focused and it makes little sense. Doesn't look like a big problem
+
+    originals, including "borrowed" should be gitignored.
+        Backed up via google photos
+
+    look in pinterest
 
 
 
