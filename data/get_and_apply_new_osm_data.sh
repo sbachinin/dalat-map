@@ -64,4 +64,4 @@ lake.geojson river.geojson grass.geojson
 
 
 
-node save_bldgs_centroids.js
+node save_bldgs_centroids.mjs
