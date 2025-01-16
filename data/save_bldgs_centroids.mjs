@@ -1,15 +1,22 @@
-const fs = require('fs')
-const path = require('path')
-const turf = require('@turf/turf')
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import * as turf from '@turf/turf'
+import dead_buildings_json from './static/dead_buildings_json.mjs'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const centroids = {}
 
 fs.readFile(
     path.join(__dirname, 'french_building.geojson'),
     'utf8',
-    (_, data) => {
-        const geojson = JSON.parse(data)
-        geojson.forEach(feature => {
+    (_, live_buildings_data) => {
+        ([
+            ...JSON.parse(live_buildings_data),
+            ...dead_buildings_json.features
+        ]).forEach(feature => {
             const id = feature.id
             const geometry = feature.geometry
 
