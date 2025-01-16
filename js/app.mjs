@@ -5,7 +5,7 @@ import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
 import { try_open_building } from './bldg_details.mjs'
-import { add_attrib, create_element_from_Html, get_lnglat_per_px, get_map_center_shift } from './utils.mjs'
+import { create_element_from_Html, get_lnglat_per_px, get_map_center_shift } from './utils.mjs'
 import { centroids } from '../data/centroids.mjs'
 import { panel } from './panel/panel.mjs'
 
@@ -65,7 +65,6 @@ map.once('idle', () => {
 })
 
 map.on('load', async () => {
-    add_attrib()
     add_dead_buildings(map)
 
     if (initial_bldg_id !== null) {
