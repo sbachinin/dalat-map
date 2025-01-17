@@ -7,7 +7,13 @@ CRITICAL
                     copying via terminal breaks crlf:
                         cp -r js /mnt/c/Users/Admin/projects/dalat-map
 
+CURRENT STATE:
+ on wsl i've created a play script to add proper names to buildings geojson
+    need to integrate it into the big "get_and..." sh script
+    + add "bottom_lat" property to position labels under
+    think how to organize this data, static french data is already in 2 places i believe
 
+dead is currently not on map on localhost
 
 how heavy are centroids?
 
