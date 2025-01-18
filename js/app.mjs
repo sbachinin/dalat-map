@@ -8,7 +8,7 @@ import { try_open_building } from './bldg_details.mjs'
 import { create_element_from_Html, get_lnglat_per_px, get_map_center_shift } from './utils.mjs'
 import { centroids } from '../data/centroids.mjs'
 import { panel } from './panel/panel.mjs'
-
+import '../data/static/DEV_get_updated_buildings_data.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
