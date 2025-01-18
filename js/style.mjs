@@ -74,4 +74,5 @@ export const style = {
     sources,
 
     version: 8,
+    "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"
 }

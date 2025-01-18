@@ -86,4 +86,20 @@ export default [
             "line-opacity": mainOpacityReveal
         },
     },
+    {
+        "id": "French names",
+        "type": "symbol",
+        "source": "dalat-tiles",
+        "source-layer": "french_building",
+        "layout": {
+            "text-field": ["get", "title"],
+            "text-size": 12,
+            "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
+            "text-anchor": "bottom",
+            "text-offset": [0, 3]
+        },
+        "paint": {
+            "text-color": "#000000"
+        }
+    }
 ]
