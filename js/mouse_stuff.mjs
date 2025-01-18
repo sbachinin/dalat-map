@@ -1,4 +1,4 @@
-import meta from './french_buildings_meta.mjs'
+import meta from '../data/static/buildings_handmade_data.mjs'
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
 import { building_has_details, try_open_building } from './bldg_details.mjs'

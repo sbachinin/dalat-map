@@ -6,7 +6,7 @@ drop image on a building.
 check console for errors;
 if operation is successful, console prints how many entries are there in ids_to_imgs
 
-copy to french_buildings_meta.mjs:
-    window.get_updated_buildings_details()
+update buildings_handmade_data.mjs:
+    window.get_updated_buildings_data()
     copy the returned value to clipboard
-    paste into french_buildings_meta.mjs
+    paste into buildings_handmade_data.mjs

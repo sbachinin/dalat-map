@@ -1,5 +1,5 @@
 import { panel } from './panel/panel.mjs'
-import meta from './french_buildings_meta.mjs'
+import meta from '../data/static/buildings_handmade_data.mjs'
 import { select_bldg, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'

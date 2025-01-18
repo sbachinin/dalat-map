@@ -42,7 +42,7 @@ export default [
     },
 
     {
-        'id': 'Colonial thickening outline',
+        'id': 'French thickening outline',
         'type': 'line',
         "source": "dalat-tiles",
         "source-layer": "french_building",
@@ -64,7 +64,7 @@ export default [
 
 
     {
-        'id': 'Colonial has-details outline',
+        'id': 'French has-details outline',
         'type': 'line',
         "source": "dalat-tiles",
         "source-layer": "french_building",

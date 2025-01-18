@@ -1,6 +1,6 @@
 import { create_scale } from './manage_scale.mjs'
 import { addMouseStuff } from './mouse_stuff.mjs'
-import meta from './french_buildings_meta.mjs'
+import meta from '../data/static/buildings_handmade_data.mjs'
 import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
@@ -82,7 +82,7 @@ map.on('load', async () => {
     ])
 
     document.querySelector('#map').classList.remove('hidden')
-});
+})
 
 map.on('move', () => {
     if (window.innerWidth < 768) {

@@ -56,6 +56,7 @@ const meta = {
         ]
     },
     "361851915": {
+        "title": 'Yersin College',
         "descr": "Built in 1935 . female students from wealthy families in Dalat and southern Vietnam were educated between 1940 and 1975. Queen Nam Phuong was reportedly a student of this school as well.\n        I entered the campus without a problem. The building stands next to an old pine grove.",
         "images": [
             "IMG_0218~2.jpg",
@@ -1575,7 +1576,7 @@ const meta = {
 
 // TODO: highlight and allow to click non-colonial too
 
-window.get_updated_buildings_details = () => {
+window.get_updated_buildings_data = () => {
     const ids_to_imgs = JSON.parse(localStorage.getItem('ids_to_imgs'))
     Object.entries(ids_to_imgs).forEach(([feat_id, imgs]) => {
         meta[feat_id] = meta[feat_id] || {}
