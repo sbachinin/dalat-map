@@ -8,7 +8,8 @@ const meta = {
             "IMG_6065~2.jpg",
             "IMG_6099~3.jpg",
             "IMG_8948~2.jpg"
-        ]
+        ],
+        title: 'Railway station'
     },
     "17929361": {
         "images": [
@@ -330,6 +331,7 @@ const meta = {
         ]
     },
     "777438901": {
+        title: 'Bao Dai Palace №2',
         "descr": "One of the 3 palaces of king Bao Dai. (All 3 in Dalat).\nThis on was built in 1933-1937.\nNow it's possibly used as an event space by some bosses of Lam Dong province.\nThe building is massive and rather clumsy and bureaucratic to my taste. One explanation of this is that Palace II was designed as headquarters of the French ruling apparatus in Indochina. (Though this fact comes from a dubious source in the web).\nHowever clumsiness is redeemed by the setting: a vast pine forest on the very top of the hill. A really tranquil and enigmatic place.\nThe palace is well maintained but still shows a bit of historical shabbiness which is nice. At the time of my visit the surrounding area was completely deserted.\nAccess seems to be unrestricted, I just walked through the entrance from the south. (Not from main street).",
         "images": [
             "IMG_6864~3.jpg",

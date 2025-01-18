@@ -2,7 +2,7 @@ import { sources } from './sources.mjs'
 import roads from './layers/roads.mjs'
 import rivers from './layers/rivers.mjs'
 import lakes from './layers/lakes.mjs'
-import buildings from './layers/buildings.mjs'
+import { french_building_layers, boring_building_layers } from './layers/buildings.mjs'
 
 export const style = {
     name: "Purely topographic map",
@@ -68,8 +68,9 @@ export const style = {
         },
         ...rivers,
         ...lakes,
-        ...buildings,
-        ...roads
+        ...boring_building_layers,
+        ...roads,
+        ...french_building_layers
     ],
     sources,
 

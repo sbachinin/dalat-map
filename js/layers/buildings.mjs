@@ -6,7 +6,7 @@ const frenchBorderColor = 'hsl(0, 0.00%, 48.20%)'
 const darkerBoringBuildingColor = 'hsl(43, 15%, 65%)'
 const boringBuildingColor = 'hsl(43, 15%, 90%)'
 
-export default [
+export const boring_building_layers = [
 
     {
         "id": "Boring building",
@@ -20,9 +20,10 @@ export default [
             "fill-opacity": mainOpacityReveal
         },
         filter: ["!=", "name", "Big C"]
-    },
+    }
+]
 
-
+export const french_building_layers = [
     {
         "id": "French building",
         "type": "fill",
