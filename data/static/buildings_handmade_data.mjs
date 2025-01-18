@@ -1589,4 +1589,4 @@ window.get_updated_buildings_data = () => {
 // TODO. merge was destructive at some point.
 // In the end i need to compare details object with imgs in folders
 
-export default meta
+export const buildings_handmade_data = meta
