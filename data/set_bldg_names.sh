@@ -8,6 +8,6 @@ echo "$BLDGS_JSON"
 jq --argjson bldgs_data "$BLDGS_JSON" '
     map(
         del(.properties.name) |
-        .properties.name = ($bldgs_data[(.id | tostring)].name // .properties.name)
+        .properties.title = $bldgs_data[(.id | tostring)].title
     )
 ' french_building.geojson > french_building_with_proper_names.geojson
