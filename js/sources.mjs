@@ -36,7 +36,7 @@ export const main_sources = {
     buildings_titles
 }
 
-export const buildings_tiny_squares_source = {
+export const buildings_centroids_with_titles_source = {
     type: 'geojson',
     data: {
         "type": "FeatureCollection",

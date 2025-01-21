@@ -9,8 +9,8 @@ import { create_element_from_Html, get_lnglat_per_px, get_map_center_shift } fro
 import { centroids_etc } from '../data/centroids_etc.mjs'
 import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
-import { buildings_tiny_squares_source } from './sources.mjs'
-import { building_tiny_square_layer } from './layers/buildings.mjs'
+import { buildings_centroids_with_titles_source } from './sources.mjs'
+import { buildings_titles_with_squares_layer } from './layers/buildings.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
@@ -77,8 +77,8 @@ map.once('idle', () => {
 map.loadImage(`${window.location.origin}/dalat-map-images/tiny_square.png`)
     .then(image => {
         map.addImage('tiny_square', image.data)
-        map.addSource('buildings_tiny_squares', buildings_tiny_squares_source)
-        map.addLayer(building_tiny_square_layer)
+        map.addSource('buildings_tiny_squares', buildings_centroids_with_titles_source)
+        map.addLayer(buildings_titles_with_squares_layer)
     })
 
 map.on('load', async () => {

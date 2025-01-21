@@ -111,7 +111,7 @@ const buildings_titles = {
     ...titles_common_props
 }
 
-export const building_tiny_square_layer = {
+export const buildings_titles_with_squares_layer = {
     id: "Building tiny square",
     type: "symbol",
     source: "buildings_tiny_squares",
