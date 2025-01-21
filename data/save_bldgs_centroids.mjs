@@ -31,7 +31,7 @@ fs.readFile(
 
         const outputContent = `export const centroids = ${JSON.stringify(centroids, null, 2)};`
 
-        fs.writeFileSync('centroids.mjs', outputContent)
+        fs.writeFileSync('centroids_etc.mjs', outputContent)
 
         console.log('centroids.mjs has been generated!')
     })
