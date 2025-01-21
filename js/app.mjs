@@ -41,19 +41,26 @@ const map = window.dalatmap = new maplibregl.Map({
     style,
     center,
     zoom,
+    dragRotate: false,
+    keyboard: false, // also to prevent rotation
     maxBounds: [
         [108.37416, 11.88], // SW
         [108.52, 12.01]  // NE
     ],
     antialias: true,
     maxZoom: 17.5
-});
+})
+
+map.touchZoomRotate.disableRotation()
 
 preload_some_images()
 
 addMouseStuff()
 
-map.addControl(new maplibregl.NavigationControl(), 'top-right');
+map.addControl(
+    new maplibregl.NavigationControl({ showCompass: false, showZoom: true }),
+    'top-right'
+)
 
 map.once('idle', () => {
 
@@ -68,11 +75,11 @@ map.once('idle', () => {
 
 
 map.loadImage(`${window.location.origin}/dalat-map-images/tiny_square.png`)
-.then(image => {
-    map.addImage('tiny_square', image.data)
-    map.addSource('buildings_tiny_squares', buildings_tiny_squares_source)
-    map.addLayer(building_tiny_square_layer)
-})
+    .then(image => {
+        map.addImage('tiny_square', image.data)
+        map.addSource('buildings_tiny_squares', buildings_tiny_squares_source)
+        map.addLayer(building_tiny_square_layer)
+    })
 
 map.on('load', async () => {
     add_dead_buildings(map)
