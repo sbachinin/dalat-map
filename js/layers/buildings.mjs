@@ -88,19 +88,22 @@ export const french_building_layers = [
         },
     },
     {
-        "id": "French names",
+        "id": "French building titles",
         "type": "symbol",
-        "source": "dalat-tiles",
-        "source-layer": "french_building",
+        "source": "buildings_titles",
         "layout": {
             "text-field": ["get", "title"],
             "text-size": 12,
             "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
-            "text-anchor": "bottom",
-            "text-offset": [0, 3]
+            "text-anchor": "top",
+            "text-offset": [0, 0.2],
+            
         },
         "paint": {
-            "text-color": "#000000"
+            "text-color": "#000000",
+            "text-halo-color": "rgba(255, 255, 255, 0.5)",
+            "text-halo-width": 2,
+            "text-halo-blur": 1
         }
     }
 ]
