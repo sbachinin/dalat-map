@@ -14,7 +14,7 @@ const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
 // Return [lng, lat] or null
 const get_center_for_building = (id) => {
-    const cntrd = centroids_etc[id].centroid
+    const cntrd = centroids_etc[id]?.centroid
     if (!cntrd) return null
 
 
