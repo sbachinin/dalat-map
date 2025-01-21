@@ -1,4 +1,4 @@
-import { sources } from './sources.mjs'
+import { main_sources } from './sources.mjs'
 import roads from './layers/roads.mjs'
 import rivers from './layers/rivers.mjs'
 import lakes from './layers/lakes.mjs'
@@ -72,7 +72,7 @@ export const style = {
         ...roads,
         ...french_building_layers
     ],
-    sources,
+    sources: main_sources,
 
     version: 8,
     "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"

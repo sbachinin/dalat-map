@@ -23,87 +23,111 @@ export const boring_building_layers = [
     }
 ]
 
-export const french_building_layers = [
-    {
-        "id": "French building",
-        "type": "fill",
-        "source": "dalat-tiles",
-        "source-layer": "french_building",
-        "minzoom": mainOpacityReveal[3],
-        "paint": {
-            "fill-color": [
-                'case',
-                ['==', ['feature-state', 'selected'], true],
-                french_highlighted_color,
-                french_color,
-            ],
-            "fill-antialias": true,
-            "fill-opacity": mainOpacityReveal
-        },
+const french_building_fill = {
+    "id": "French building",
+    "type": "fill",
+    "source": "dalat-tiles",
+    "source-layer": "french_building",
+    "minzoom": mainOpacityReveal[3],
+    "paint": {
+        "fill-color": [
+            'case',
+            ['==', ['feature-state', 'selected'], true],
+            french_highlighted_color,
+            french_color,
+        ],
+        "fill-antialias": true,
+        "fill-opacity": mainOpacityReveal
     },
+}
 
-    {
-        'id': 'French thickening outline',
-        'type': 'line',
-        "source": "dalat-tiles",
-        "source-layer": "french_building",
-        "minzoom": mainOpacityReveal[3],
-        'paint': {
-            'line-color': french_color,
-            'line-width': [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                14,  // Zoom level at which opacity should start decreasing
-                2,   // Opacity at zoom level 14
-                16,  // Zoom level just above 14
-                0    // Opacity at zoom level 15 and higher
-            ],
-            "line-opacity": mainOpacityReveal
-        },
+const french_thickening_outline = {
+    'id': 'French thickening outline',
+    'type': 'line',
+    "source": "dalat-tiles",
+    "source-layer": "french_building",
+    "minzoom": mainOpacityReveal[3],
+    'paint': {
+        'line-color': french_color,
+        'line-width': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            14,  // Zoom level at which opacity should start decreasing
+            2,   // Opacity at zoom level 14
+            16,  // Zoom level just above 14
+            0    // Opacity at zoom level 15 and higher
+        ],
+        "line-opacity": mainOpacityReveal
     },
+}
 
-
-    {
-        'id': 'French has-details outline',
-        'type': 'line',
-        "source": "dalat-tiles",
-        "source-layer": "french_building",
-        "minzoom": mainOpacityReveal[3],
-        'paint': {
-            'line-color': [
-                'case',
-                ['boolean', ['feature-state', 'hasDetails'], false],
-                frenchBorderColor,
-                'transparent',
-            ],
-            'line-width': [
-                "interpolate",
-                ["linear", 2],
-                ["zoom"],
-                14, 0.5,
-                16, 2
-            ],
-            "line-opacity": mainOpacityReveal
-        },
+const french_has_details_outline = {
+    'id': 'French has-details outline',
+    'type': 'line',
+    "source": "dalat-tiles",
+    "source-layer": "french_building",
+    "minzoom": mainOpacityReveal[3],
+    'paint': {
+        'line-color': [
+            'case',
+            ['boolean', ['feature-state', 'hasDetails'], false],
+            frenchBorderColor,
+            'transparent',
+        ],
+        'line-width': [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            14, 0.5,
+            16, 2
+        ],
+        "line-opacity": mainOpacityReveal
     },
-    {
-        "id": "French building titles",
-        "type": "symbol",
-        "source": "buildings_titles",
-        "layout": {
-            "text-field": ["get", "title"],
-            "text-size": 12,
-            "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
-            "text-anchor": "top",
-            "text-offset": [0, 0.2],
-            
-        },
-        "paint": {
-            "text-color": "#000000",
-            "text-halo-color": "rgba(255, 255, 255, 0.5)",
-            "text-halo-width": 2,
-            "text-halo-blur": 1
-        }
+}
+
+const titles_common_props = {
+    layout: {
+        "text-field": ["get", "title"],
+        "text-size": 12,
+        "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
+        "text-anchor": "top",
+        "text-offset": [0, 0.2]
+    },
+    paint: {
+        "text-color": "#000000",
+        "text-halo-color": "rgba(255, 255, 255, 0.5)",
+        "text-halo-width": 2,
+        "text-halo-blur": 1
     }
+}
+
+
+const buildings_titles = {
+    "id": "Buildings titles",
+    "type": "symbol",
+    "source": "buildings_titles",
+    minzoom: 14,
+    ...titles_common_props
+}
+
+export const building_tiny_square_layer = {
+    id: "Building tiny square",
+    type: "symbol",
+    source: "buildings_tiny_squares",
+    minzoom: 12.4,
+    maxzoom: 14,
+    layout: {
+        ...titles_common_props.layout,
+        "icon-image": "tiny_square",
+        "icon-size": 0.6,
+    },
+    paint: titles_common_props.paint
+}
+
+export const french_building_layers = [
+    french_building_fill,
+    french_thickening_outline,
+    french_has_details_outline,
+    buildings_titles
 ]
