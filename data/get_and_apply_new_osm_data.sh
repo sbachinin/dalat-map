@@ -45,7 +45,7 @@ jq '.features | map(select(.properties.waterway == "stream"))' filtered.geojson 
 jq '.features | map(select(.properties.landuse == "grass" or .properties.leisure == "golf_course" or .properties.leisure == "park"))' filtered.geojson > grass0.geojson
 
 
-# REMOVE UNUSED FEATURE PROPERTIES (HIGHWAYS UNTOUCHED HERE SO FAR NOT TO BREAK STYLE FILTERS)
+# TAKE ONLY REQUIRED FEATURE PROPERTIES (HIGHWAYS UNTOUCHED HERE SO FAR NOT TO BREAK STYLE FILTERS)
 
 jq 'map({type: .type, geometry: .geometry, id: .id, properties: {name: .properties.name}})' boring_building0.geojson > boring_building.geojson
 jq 'map({type: .type, geometry: .geometry, id: .id, properties: {name: .properties.name}})' french_building0.geojson > french_building.geojson

@@ -12,9 +12,9 @@ const centroids = {}
 fs.readFile(
     path.join(__dirname, 'french_building.geojson'),
     'utf8',
-    (_, live_buildings_data) => {
+    (_, alive_buildings_data) => {
         ([
-            ...JSON.parse(live_buildings_data),
+            ...JSON.parse(alive_buildings_data),
             ...dead_buildings_json.features
         ]).forEach(feature => {
             const id = feature.id

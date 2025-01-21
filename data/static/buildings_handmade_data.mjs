@@ -23,6 +23,7 @@ const meta = {
         ]
     },
     "308446691": {
+        title: 'Hoa Binh (ex)cinema',
         "images": [
             "IMG_1791.jpg"
         ]
@@ -34,6 +35,7 @@ const meta = {
         ]
     },
     "361692265": {
+        title: "Domaine de Marie",
         "images": [
             "IMG_7957~4.jpg",
             "IMG_7957~3.jpg"
@@ -57,7 +59,8 @@ const meta = {
         ]
     },
     "361851915": {
-        "title": 'Yersin College',
+        "title": 'Lycée Yersin',
+        subtitle: 'Currently Pedagogical College',
         "descr": "Built in 1935 . female students from wealthy families in Dalat and southern Vietnam were educated between 1940 and 1975. Queen Nam Phuong was reportedly a student of this school as well.\n        I entered the campus without a problem. The building stands next to an old pine grove.",
         "images": [
             "IMG_0218~2.jpg",
@@ -75,6 +78,7 @@ const meta = {
         ]
     },
     "407699702": {
+        title: 'Dalat Palace Hotel',
         "images": [
             "IMG_5439~2.jpg",
             "IMG_5457~2.jpg",
@@ -82,6 +86,7 @@ const meta = {
         ]
     },
     "452519411": {
+        title: 'St. Nicholas Cathedral',
         "images": [
             "IMG_5520.jpg",
             "IMG_5531.jpg",
@@ -97,12 +102,14 @@ const meta = {
         ]
     },
     "473088090": {
+        title: 'Zoology museum in ex-monastery',
         "images": [
             "zoo2.jpg",
             "zoo1.jpg"
         ]
     },
     "475362778": {
+        title: 'Du Park Hotel',
         "images": [
             "IMG_5462~4.jpg",
             "IMG_9001~2.jpg",
@@ -140,6 +147,7 @@ const meta = {
         ]
     },
     "515193507": {
+        title: 'Queen Nam Phương Palace',
         "images": [
             "IMG_0567~3.jpg",
             "IMG_0573~3.jpg",
@@ -153,7 +161,6 @@ const meta = {
         ]
     },
     "515288591": {
-        "title": "National archives center",
         "images": [
             "IMG_4662~3.jpg",
             "IMG_4768~2.jpg",
@@ -233,6 +240,7 @@ const meta = {
         ]
     },
     "618049072": {
+        title: "Governor's Palace",
         "images": [
             "IMG_1227~2.jpg",
             "IMG_1248.jpg",
@@ -757,6 +765,18 @@ const meta = {
         ]
     },
     "1303825522": {
+        title: "Former Franciscan mission",
+        subtitle: 'Also former "Vietnam\'s coolest ruin"',
+        links: [
+            {
+                description: 'Rusty Compass\' great video',
+                url: 'https://www.youtube.com/watch?v=oTT2QylDoyk&t=18s'
+            },
+            {
+                description: 'Article on Saigoneer',
+                url: 'https://saigoneer.com/vietnam-travel/10162-photos-a-peek-inside-da-lat-s-abandoned-franciscan-mission'
+            }
+        ],
         "images": [
             "IMG_0737.jpg",
             "IMG_0742.jpg"
@@ -898,6 +918,9 @@ const meta = {
             "IMG_1571~2.jpg"
         ]
     },
+    "543357207": {
+        title: 'Bao Dai Palace №1'
+    },
     "1304439965": {
         "images": [
             "IMG_1584~3.jpg"
@@ -955,10 +978,14 @@ const meta = {
         ]
     },
     "1305208733": {
+        title: "Institut Pasteur",
         "images": [
             "IMG_2878~2.jpg",
             "IMG_2876~3.jpg"
         ]
+    },
+    "463866431": {
+        title: 'Bao Dai Palace №3',
     },
     "1305230699": {},
     "1305703497": {
