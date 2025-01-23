@@ -16,7 +16,8 @@ const buildings_titles = {
                     coordinates: [centroid[0], title_lat]
                 },
                 properties: {
-                    title: buildings_handmade_data[fid].title
+                    title: buildings_handmade_data[fid].title,
+                    priority: buildings_handmade_data[fid]?.priority
                 }
             }))
     }
@@ -49,7 +50,8 @@ export const buildings_centroids_with_titles_source = {
                     coordinates: centroid
                 },
                 properties: {
-                    title: buildings_handmade_data[fid]?.title
+                    title: buildings_handmade_data[fid]?.title,
+                    priority: buildings_handmade_data[fid]?.priority
                 }
             }))
     }

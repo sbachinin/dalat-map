@@ -85,7 +85,8 @@ const titles_common_props = {
         "text-size": 12,
         "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
         "text-anchor": "top",
-        "text-offset": [0, 0.2]
+        "text-offset": [0, 0.2],
+        "symbol-sort-key": ["get", "priority"]
     },
     paint: {
         "text-color": "#000000",
@@ -113,7 +114,7 @@ export const buildings_titles_with_squares_layer = {
     layout: {
         ...titles_common_props.layout,
         "icon-image": "tiny_square",
-        "icon-size": 0.6,
+        "icon-size": 0.6
     },
     paint: titles_common_props.paint
 }

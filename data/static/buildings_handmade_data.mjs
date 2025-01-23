@@ -83,7 +83,8 @@ const meta = {
             "IMG_5439~2.jpg",
             "IMG_5457~2.jpg",
             "IMG_5448~2.jpg"
-        ]
+        ],
+        priority: 10
     },
     "452519411": {
         title: 'St. Nicholas Cathedral',
@@ -93,7 +94,8 @@ const meta = {
             "IMG_5539~2.jpg",
             "IMG_5541.jpg",
             "IMG_5543~3.jpg"
-        ]
+        ],
+        priority: 9
     },
     "469578958": {
         "images": [
@@ -115,7 +117,8 @@ const meta = {
             "IMG_9001~2.jpg",
             "IMG_9013~2.jpg",
             "IMG_9020~2.jpg"
-        ]
+        ],
+        priority: 11
     },
     "515193502": {
         "images": [
@@ -350,7 +353,8 @@ const meta = {
             "IMG_6915~2.jpg",
             "IMG_20240730_103431_1~4.jpg",
             "IMG_20240730_103646_1~2.jpg"
-        ]
+        ],
+        priority: 10
     },
     "777439802": {
         "images": [
@@ -780,7 +784,8 @@ const meta = {
         "images": [
             "IMG_0737.jpg",
             "IMG_0742.jpg"
-        ]
+        ],
+        priority: 10
     },
     "1304080964": {
         "images": [
@@ -919,7 +924,8 @@ const meta = {
         ]
     },
     "543357207": {
-        title: 'Bao Dai Palace №1'
+        title: 'Bao Dai Palace №1',
+        priority: 11
     },
     "1304439965": {
         "images": [
