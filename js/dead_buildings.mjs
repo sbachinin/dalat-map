@@ -1,4 +1,3 @@
-import { mainOpacityReveal } from './layers/mainReveal.mjs'
 import dead_buildings_json from '../data/static/dead_buildings_json.mjs'
 
 const french_dead_color = 'hsl(300, 30%, 95%)'
@@ -16,11 +15,10 @@ export const add_dead_buildings = async () => {
         "id": "Dead building fill",
         "type": "fill",
         "source": "dead-buildings",
-        "minzoom": mainOpacityReveal[3],
+        "minzoom": 14,
         "paint": {
             "fill-color": french_dead_color,
-            "fill-antialias": true,
-            "fill-opacity": mainOpacityReveal
+            "fill-antialias": true
         },
     })
 

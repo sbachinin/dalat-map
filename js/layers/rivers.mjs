@@ -1,5 +1,3 @@
-import { mainOpacityReveal } from './mainReveal.mjs'
-
 export default [
     {
         id: "River Cam Ly",
@@ -30,7 +28,7 @@ export default [
         type: 'line',
         source: 'dalat-tiles',
         'source-layer': 'river',
-        minzoom: mainOpacityReveal[3],
+        minzoom: 14,
         "layout": {
             "visibility": "visible",
             "line-cap": "round",
@@ -44,8 +42,7 @@ export default [
                 ["zoom"],
                 14, 1,
                 18, 4
-            ],
-            'line-opacity': mainOpacityReveal
+            ]
         },
         "filter": ['!=', 'name', 'Suối Cam Ly']
     }

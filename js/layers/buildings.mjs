@@ -1,9 +1,6 @@
-import { getMainReveal, mainOpacityReveal } from './mainReveal.mjs'
-
 const french_color = 'hsl(300, 70%, 70%)'
 const french_highlighted_color = 'hsl(35, 97.80%, 63.50%)'
 const frenchBorderColor = 'hsl(0, 0.00%, 48.20%)'
-const darkerBoringBuildingColor = 'hsl(43, 15%, 65%)'
 const boringBuildingColor = 'hsl(43, 15%, 90%)'
 
 export const boring_building_layers = [
@@ -13,11 +10,10 @@ export const boring_building_layers = [
         "type": "fill",
         "source": "dalat-tiles",
         "source-layer": "boring_building",
-        "minzoom": mainOpacityReveal[3],
+        "minzoom": 14,
         "paint": {
-            "fill-color": getMainReveal(darkerBoringBuildingColor, boringBuildingColor),
+            "fill-color": boringBuildingColor,
             "fill-antialias": true,
-            "fill-opacity": mainOpacityReveal
         },
         filter: ["!=", "name", "Big C"]
     }
@@ -28,7 +24,7 @@ const french_building_fill = {
     "type": "fill",
     "source": "dalat-tiles",
     "source-layer": "french_building",
-    "minzoom": mainOpacityReveal[3],
+    "minzoom": 14,
     "paint": {
         "fill-color": [
             'case',
@@ -36,8 +32,7 @@ const french_building_fill = {
             french_highlighted_color,
             french_color,
         ],
-        "fill-antialias": true,
-        "fill-opacity": mainOpacityReveal
+        "fill-antialias": true
     },
 }
 
@@ -46,7 +41,7 @@ const french_thickening_outline = {
     'type': 'line',
     "source": "dalat-tiles",
     "source-layer": "french_building",
-    "minzoom": mainOpacityReveal[3],
+    "minzoom": 14,
     'paint': {
         'line-color': french_color,
         'line-width': [
@@ -57,8 +52,7 @@ const french_thickening_outline = {
             2,   // Opacity at zoom level 14
             16,  // Zoom level just above 14
             0    // Opacity at zoom level 15 and higher
-        ],
-        "line-opacity": mainOpacityReveal
+        ]
     },
 }
 
@@ -67,7 +61,7 @@ const french_has_details_outline = {
     'type': 'line',
     "source": "dalat-tiles",
     "source-layer": "french_building",
-    "minzoom": mainOpacityReveal[3],
+    "minzoom": 14,
     'paint': {
         'line-color': [
             'case',
@@ -81,8 +75,7 @@ const french_has_details_outline = {
             ["zoom"],
             14, 0.5,
             16, 2
-        ],
-        "line-opacity": mainOpacityReveal
+        ]
     },
 }
 
@@ -96,7 +89,7 @@ const titles_common_props = {
     },
     paint: {
         "text-color": "#000000",
-        "text-halo-color": "rgba(255, 255, 255, 0.5)",
+        "text-halo-color": "rgba(255, 255, 255, 1)",
         "text-halo-width": 2,
         "text-halo-blur": 1
     }
