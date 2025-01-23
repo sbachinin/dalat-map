@@ -6,7 +6,7 @@ const imageFadingDuration = 160
 document.documentElement.style.setProperty('--image-fading-duration', `${imageFadingDuration / 1000}s`);
 
 export const create_panel_thumbs_list = ({
-    content_type,
+    content_description,
     images_names
 }) => {
     const img_elements = images_names.map(
@@ -24,7 +24,7 @@ export const create_panel_thumbs_list = ({
 
         const all_images_elements = Array.from(lazy_wrapper.parentElement.children)
         open_slider({
-            content_type,
+            content_description,
             initial_index: all_images_elements.indexOf(lazy_wrapper),
             max_index: images_names.length - 1,
             get_slide(i) {

@@ -16,11 +16,11 @@ const update_size_variables = () => {
     })
 }
 
-export const show_bldg_details = (details) => {
+const show_bldg_details = (details, id) => {
     if (!details.images?.length) return
 
     const details_el = create_panel_thumbs_list({
-        content_type: 'bldg_details',
+        content_description: 'building_' + id,
         images_names: details.images
     })
 
@@ -46,7 +46,7 @@ export const try_open_building = async (
 
     const featureMeta = meta[id]
     if (building_has_details(featureMeta)) {
-        show_bldg_details(featureMeta)
+        show_bldg_details(featureMeta, id)
         select_bldg(id)
         should_push_history && push_to_history(
             { id },
