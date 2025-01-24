@@ -150,7 +150,7 @@ const meta = {
         ]
     },
     "515193507": {
-        title: 'Queen Nam Phương Palace',
+        title: 'Queen Nam Phuong Palace',
         "images": [
             "IMG_0567~3.jpg",
             "IMG_0573~3.jpg",

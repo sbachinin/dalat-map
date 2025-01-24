@@ -83,7 +83,7 @@ const titles_common_props = {
     layout: {
         "text-field": ["get", "title"],
         "text-size": 12,
-        "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
+        "text-font": ["Baskervville Regular"],
         "text-anchor": "top",
         "text-offset": [0, 0.2],
         "symbol-sort-key": ["get", "priority"]

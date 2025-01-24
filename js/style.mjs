@@ -5,18 +5,9 @@ import lakes from './layers/lakes.mjs'
 import { french_building_layers, boring_building_layers } from './layers/buildings.mjs'
 
 export const style = {
-    name: "Purely topographic map",
-
-    // glyphs: "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key=9C8cs9qKiCW3wSWdeUrN",
-    // sprite: "https://api.maptiler.com/maps/topo-v2/sprite",
+    name: "Dalat map",
 
     layers: [
-        // {
-        //     id: 'Bg',
-        //     type: 'background',
-        //     "layout": { "visibility": "none" },
-        //     "paint": { "background-color": "HSL(121.6, 11%, 73%)" }
-        // },
         {
             id: 'cityBulk',
             type: 'fill',
@@ -75,5 +66,6 @@ export const style = {
     sources: main_sources,
 
     version: 8,
-    "glyphs": "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf"
+
+    "glyphs": `${window.location.origin}/fonts/{fontstack}/{range}.pbf`
 }
