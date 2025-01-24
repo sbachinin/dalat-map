@@ -92,11 +92,13 @@ map.on('load', async () => {
 
     await panel.full_size_promise
 
-    const { lng_per_px, lat_per_px } = get_lnglat_per_px()
-    dalatmap.setCenter([
-        dalatmap.getCenter().lng - lng_per_px * get_map_center_shift()[0],
-        dalatmap.getCenter().lat - lat_per_px * get_map_center_shift()[1],
-    ])
+    if (initial_bldg_id !== null) {
+        const { lng_per_px, lat_per_px } = get_lnglat_per_px()
+        dalatmap.setCenter([
+            dalatmap.getCenter().lng - lng_per_px * get_map_center_shift()[0],
+            dalatmap.getCenter().lat - lat_per_px * get_map_center_shift()[1],
+        ])
+    }
 
     document.querySelector('#map').classList.remove('hidden')
 })
