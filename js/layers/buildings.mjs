@@ -90,9 +90,6 @@ const titles_common_props = {
     },
     paint: {
         "text-color": "#000000",
-        "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-halo-width": 2,
-        "text-halo-blur": 1
     }
 }
 
