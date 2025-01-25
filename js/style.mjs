@@ -2,7 +2,7 @@ import { main_sources } from './sources.mjs'
 import roads from './layers/roads.mjs'
 import rivers from './layers/rivers.mjs'
 import lakes from './layers/lakes.mjs'
-import { french_building_layers, boring_building_layers } from './layers/buildings.mjs'
+import { french_building_layers, boring_building_layers, buildings_titles } from './layers/buildings.mjs'
 
 export const style = {
     name: "Dalat map",
@@ -60,8 +60,9 @@ export const style = {
         ...rivers,
         ...lakes,
         ...boring_building_layers,
+        ...french_building_layers,
         ...roads,
-        ...french_building_layers
+        buildings_titles
     ],
     sources: main_sources,
 

@@ -96,7 +96,7 @@ const titles_common_props = {
 }
 
 
-const buildings_titles = {
+export const buildings_titles = {
     "id": "Buildings titles",
     "type": "symbol",
     "source": "buildings_titles",
@@ -121,6 +121,5 @@ export const buildings_titles_with_squares_layer = {
 export const french_building_layers = [
     french_building_fill,
     french_thickening_outline,
-    french_has_details_outline,
-    buildings_titles
+    french_has_details_outline
 ]
