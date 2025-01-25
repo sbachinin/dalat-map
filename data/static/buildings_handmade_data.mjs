@@ -26,7 +26,8 @@ const meta = {
         title: 'Hoa Binh (ex)cinema',
         "images": [
             "IMG_1791.jpg"
-        ]
+        ],
+        priority: 11
     },
     "361692216": {
         "images": [
@@ -111,7 +112,7 @@ const meta = {
         ]
     },
     "475362778": {
-        title: 'Du Park Hotel',
+        title: 'Du Parc Hotel',
         "images": [
             "IMG_5462~4.jpg",
             "IMG_9001~2.jpg",
@@ -257,7 +258,8 @@ const meta = {
             "IMG_4108~2.jpg",
             "IMG_4113~2.jpg",
             "IMG_4125~2.jpg"
-        ]
+        ],
+        priority: 10
     },
     "777432491": {
         "images": [
