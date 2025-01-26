@@ -11,6 +11,7 @@ import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
 import { buildings_centroids_with_titles_source } from './sources.mjs'
 import { buildings_titles_with_squares_layer } from './layers/buildings.mjs'
+import { handle_zoom_to_show_in_debug_el } from './js/DEV_debug_el.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
@@ -102,6 +103,8 @@ map.on('load', async () => {
 
     document.querySelector('#map').classList.remove('hidden')
 })
+
+handle_zoom_to_show_in_debug_el()
 
 map.on('move', () => {
     if (window.innerWidth < 768) {
