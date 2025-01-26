@@ -1,5 +1,3 @@
-import { buildings_handmade_data as meta } from "./buildings_handmade_data.mjs"
-
 window.get_updated_buildings_data = () => {
     const ids_to_imgs = JSON.parse(localStorage.getItem('ids_to_imgs'))
     Object.entries(ids_to_imgs).forEach(([feat_id, imgs]) => {

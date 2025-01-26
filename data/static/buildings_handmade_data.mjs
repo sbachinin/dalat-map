@@ -1,4 +1,4 @@
-const meta = {
+export const french_bldgs_handmade_data = {
     "17877171": {
         "images": [
             "IMG_0673.jpg",
@@ -1609,14 +1609,19 @@ const meta = {
             "IMG_9304~2.JPG"
         ]
     },
+}
+
+const non_french_bldgs_handmade_data = {
     463866449: {
         title: 'Bus Station'
     }
 }
-
 // TODO: highlight and allow to click non-colonial too
 
 // TODO. merge was destructive at some point.
 // In the end i need to compare details object with imgs in folders
 
-export const buildings_handmade_data = meta
+export const all_buildings_handmade_data = {
+    ...french_bldgs_handmade_data,
+    ...non_french_bldgs_handmade_data
+}

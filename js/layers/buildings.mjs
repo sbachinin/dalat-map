@@ -1,6 +1,6 @@
-const french_color = 'hsl(300, 70%, 70%)'
+const french_color = 'hsl(300, 35%, 60%)'
 const french_highlighted_color = 'hsl(35, 97.80%, 63.50%)'
-const frenchBorderColor = 'hsl(0, 0.00%, 48.20%)'
+const frenchBorderColor = 'hsl(265, 35.30%, 50.00%)'
 const boringBuildingColor = 'hsl(43, 15%, 90%)'
 const french_geometry_minzoom = 13.3
 
@@ -80,18 +80,30 @@ const french_has_details_outline = {
     },
 }
 
+const french_titles_text_color = 'hsl(300, 20%, 20.40%)'
+const non_french_titles_text_color = 'hsl(0, 0.00%, 40.40%)'
+
 const titles_common_props = {
     layout: {
         "text-field": ["get", "title"],
         "text-size": 12,
-        "text-font": ["Libre Bodoni Italic"],
+        'text-font': [
+            'case',
+            ['boolean', ['get', 'is_french'], /* fallback value: */false],
+            ['literal', ['Libre Bodoni Italic']],
+            ['literal', ['Lato Regular']]
+        ],
         "text-anchor": "top",
         "text-offset": [0, 0.2],
         "symbol-sort-key": ["get", "priority"],
-        // "text-transform": "uppercase"
     },
     paint: {
-        "text-color": "#000000",
+        "text-color": [
+            'case',
+            ['boolean', ['get', 'is_french'], false],
+            ['literal', french_titles_text_color],
+            ['literal', non_french_titles_text_color]
+        ]
     }
 }
 
