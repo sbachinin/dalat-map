@@ -7,6 +7,9 @@ export const addMouseStuff = () => {
     const map = window.dalatmap
 
     map.on('click', (e) => {
+        navigator.clipboard?.writeText?.(
+            map.queryRenderedFeatures(e.point)[0].id
+        )
         const maybeFrenchBuilding = map.queryRenderedFeatures(e.point)
             .find(f => f.layer.id === 'French building'
                 || f.layer.id === 'Dead building fill'

@@ -1,4 +1,11 @@
 export const centroids_etc = {
+  "4119185": {
+    "centroid": [
+      108.437135,
+      11.94328
+    ],
+    "title_lat": 11.9429442
+  },
   "17877171": {
     "centroid": [
       108.454425,
@@ -96,7 +103,8 @@ export const centroids_etc = {
     "centroid": [
       108.430174,
       11.939742
-    ]
+    ],
+    "title_lat": 11.939603
   },
   "361851874": {
     "centroid": [
@@ -108,7 +116,8 @@ export const centroids_etc = {
     "centroid": [
       108.42291,
       11.938698
-    ]
+    ],
+    "title_lat": 11.9382237
   },
   "361851915": {
     "centroid": [

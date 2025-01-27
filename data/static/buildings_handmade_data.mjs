@@ -51,7 +51,8 @@ export const french_bldgs_handmade_data = {
         "images": [
             "IMG_5894~2.jpg",
             "IMG_5908~2.jpg"
-        ]
+        ],
+        title: "Former power station"
     },
     "361851888": {
         "images": [
@@ -1609,13 +1610,26 @@ export const french_bldgs_handmade_data = {
             "IMG_9304~2.JPG"
         ]
     },
+    "361851888": {
+        title: "Couvent des Oiseaux",
+        images: []
+    }
 }
 
 const non_french_bldgs_handmade_data = {
-    463866449: {
+    "463866449": {
         title: 'Bus Station'
+    },
+    "4119185": {
+        title: 'Da Lat Market',
+        use_middle_lat: true
     }
 }
+
+const non_bldgs_handmade_data = {
+
+}
+
 // TODO: highlight and allow to click non-colonial too
 
 // TODO. merge was destructive at some point.
@@ -1623,5 +1637,6 @@ const non_french_bldgs_handmade_data = {
 
 export const all_buildings_handmade_data = {
     ...french_bldgs_handmade_data,
-    ...non_french_bldgs_handmade_data
+    ...non_french_bldgs_handmade_data,
+    ...non_bldgs_handmade_data
 }

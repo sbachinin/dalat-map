@@ -15,14 +15,22 @@ const buildings_titles = {
         "type": "FeatureCollection",
         "features": Object.entries(centroids_etc)
             .filter(([fid]) => Boolean(all_buildings_handmade_data[fid]?.title))
-            .map(([fid, { centroid, title_lat }]) => ({
-                type: "Feature",
-                geometry: {
-                    type: "Point",
-                    coordinates: [centroid[0], title_lat]
-                },
-                properties: get_titles_props(fid)
-            }))
+            .map(([fid, { centroid, title_lat }]) => {
+                const lat = all_buildings_handmade_data[fid]?.use_middle_lat
+                    ? centroid[1]
+                    : title_lat
+                // TODO use_middle_lat is actually underimplemented;
+                // Feature only gets a middle coord
+                // but text-anchor is "top" and therefore title will be slightly below the middle
+                return {
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: [centroid[0], lat]
+                    },
+                    properties: get_titles_props(fid)
+                }
+            })
     }
 }
 

@@ -39,7 +39,6 @@ export const try_open_building = async (
     should_push_history = false,
     should_try_to_fly = false
 ) => {
-    // navigator.clipboard.writeText(id)
     if (id === selected_building_id) {
         panel.expand()
         return
