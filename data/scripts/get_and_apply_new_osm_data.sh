@@ -106,7 +106,7 @@ jq "$JQ_FILTER" ../temp/grass0.geojson > ../temp/grass.geojson
 
 # MAKE MANY LAYERS FROM MANY JSON FILES
 
-tippecanoe -e ../dalat-map-tiles/tiles \
+tippecanoe -e ../../dalat-map-tiles/tiles \
 --minimum-zoom=10 --maximum-zoom=17 \
 --no-tile-compression -f \
 --layer boring_building ../temp/boring_building.geojson \
