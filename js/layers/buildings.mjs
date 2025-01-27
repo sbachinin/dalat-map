@@ -83,54 +83,118 @@ const french_has_details_outline = {
 const french_titles_text_color = 'hsl(300, 20%, 20.40%)'
 const non_french_titles_text_color = 'hsl(0, 0.00%, 40.40%)'
 
-const titles_common_props = {
+const all_titles_common_props = {
     layout: {
         "text-field": ["get", "title"],
-        "text-size": 12,
-        'text-font': [
-            'case',
-            ['boolean', ['get', 'is_french'], /* fallback value: */false],
-            ['literal', ['Libre Bodoni Italic']],
-            ['literal', ['Lato Regular']]
-        ],
         "text-anchor": "top",
         "text-offset": [0, 0.2],
         "symbol-sort-key": ["get", "priority"],
     },
     paint: {
-        "text-color": [
-            'case',
-            ['boolean', ['get', 'is_french'], false],
-            ['literal', french_titles_text_color],
-            ['literal', non_french_titles_text_color]
-        ]
+
+    }
+}
+
+const french_titles_common_props = {
+    layout: {
+        'text-size': 12,
+        'text-font': ['Libre Bodoni Italic']
+    },
+    paint: {
+        'text-color': french_titles_text_color
+    }
+}
+
+const shit_titles_common_props = {
+    layout: {
+        'text-size': 11,
+        'text-font': ['Lato Regular']
+    },
+    paint: {
+        'text-color': non_french_titles_text_color
     }
 }
 
 
-export const buildings_titles = {
-    "id": "Buildings titles",
+
+export const french_buildings_titles = {
+    "id": "French buildings titles",
     "type": "symbol",
     "source": "buildings_titles",
     minzoom: french_geometry_minzoom,
-    ...titles_common_props
+    layout: {
+        ...all_titles_common_props.layout,
+        'text-size': french_titles_common_props.layout['text-size'],
+        'text-font': french_titles_common_props.layout['text-font']
+    },
+    paint: {
+        ...all_titles_common_props.paint,
+        'text-color': french_titles_common_props.paint['text-color']
+    },
+    filter: ['==', ['get', 'is_french'], true]
 }
 
-export const buildings_titles_with_squares_layer = {
-    id: "Building tiny square",
+export const shit_buildings_titles = {
+    "id": "Shit buildings titles",
+    "type": "symbol",
+    "source": "buildings_titles",
+    minzoom: french_geometry_minzoom,
+    layout: {
+        ...all_titles_common_props.layout,
+        ...shit_titles_common_props.layout
+    },
+    paint: {
+        ...all_titles_common_props.paint,
+        ...shit_titles_common_props.paint
+
+    },
+    filter: ['==', ['get', 'is_french'], false]
+}
+
+const tiny_squares_zoom_levels = {
+    minzoom: 12.2,
+    maxzoom: french_geometry_minzoom
+}
+
+
+export const french_buildings_tiny_squares_with_titles = {
+    id: "French buildings tiny squares with titles",
     type: "symbol",
     source: "buildings_tiny_squares",
-    minzoom: 12.2,
-    maxzoom: french_geometry_minzoom,
+    ...tiny_squares_zoom_levels,
     layout: {
-        ...titles_common_props.layout,
-        "icon-image": "tiny_square",
-        "icon-size": 0.6
+        ...all_titles_common_props.layout,
+        'text-size': french_titles_common_props.layout['text-size'],
+        'text-font': french_titles_common_props.layout['text-font'],
+        "icon-image": "tiny_french_square",
+        "icon-size": 0.6,
     },
-    paint: titles_common_props.paint
+    paint: {
+        ...all_titles_common_props.paint,
+        'text-color': french_titles_common_props.paint['text-color']
+    },
+    filter: ['==', ['get', 'is_french'], true]
 }
 
-export const french_building_layers = [
+export const shit_buildings_tiny_squares_with_titles = {
+    id: 'Shit building tiny squares with titles',
+    type: 'symbol',
+    source: "buildings_tiny_squares",
+    ...tiny_squares_zoom_levels,
+    layout: {
+        ...all_titles_common_props.layout,
+        ...shit_titles_common_props.layout,
+        "icon-image": "tiny_non_french_square",
+        "icon-size": 0.4
+    },
+    paint: {
+        ...all_titles_common_props.paint,
+        ...shit_titles_common_props.paint
+    },
+    filter: ['==', ['get', 'is_french'], false]
+}
+
+export const buildings_layers = [
     french_building_fill,
     french_thickening_outline,
     french_has_details_outline

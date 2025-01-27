@@ -48,7 +48,8 @@ export const wrap = (num, min, max) => {
 }
 
 export const get_image_url = (name, folder) => {
-    return `${window.location.origin}/dalat-map-images/${folder}/${name.replace('HEIC', 'jpg')}`
+    const folder_part = folder ? `${folder}/` : ''
+    return `${window.location.origin}/dalat-map-images/${folder_part}${name.replace('HEIC', 'jpg')}`
     // return `https://sbachinin.github.io/dalat-map-images/${folder}/${name.replace('HEIC', 'jpg')}`
 }
 
