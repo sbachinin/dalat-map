@@ -1,5 +1,5 @@
 import dalatBulkJSON from '../data/static/dalat-bulk-geometry.mjs'
-import { centroids_etc } from '../data/centroids_etc.mjs'
+import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 import { all_buildings_handmade_data, french_bldgs_handmade_data } from '../data/static/buildings_handmade_data.mjs'
 
 

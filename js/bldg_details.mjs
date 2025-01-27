@@ -4,7 +4,7 @@ import { select_bldg, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import { coords_are_in_view, get_map_center_shift, push_to_history } from './utils.mjs'
-import { centroids_etc } from '../data/centroids_etc.mjs'
+import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 
 export const building_has_details = featureMeta => {
     return featureMeta && (featureMeta.images/*  || featureMeta.descr */)

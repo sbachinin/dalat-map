@@ -2,8 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import * as turf from '@turf/turf'
-import dead_buildings_json from './static/dead_buildings_json.mjs'
-import { all_buildings_handmade_data } from './static/buildings_handmade_data.mjs'
+import dead_buildings_json from '../static/dead_buildings_json.mjs'
+import { all_buildings_handmade_data } from '../static/buildings_handmade_data.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -43,7 +43,7 @@ const feature_has_title = f => all_buildings_handmade_data[f.id]?.title
 
 
 
-const alive_french_path = path.join(__dirname, 'french_building.geojson')
+const alive_french_path = path.join(__dirname, '../temp/french_building.geojson')
 const alive_buildings_data = fs.readFileSync(alive_french_path, 'utf8');
 ([
     ...JSON.parse(alive_buildings_data),
@@ -58,7 +58,7 @@ const alive_buildings_data = fs.readFileSync(alive_french_path, 'utf8');
 })
 
 
-const boring_path = path.join(__dirname, 'boring_building.geojson')
+const boring_path = path.join(__dirname, '../temp/boring_building.geojson')
 const boring_buildings_data = fs.readFileSync(boring_path, 'utf8')
 JSON.parse(boring_buildings_data)
     .filter(feature_has_title)
@@ -70,5 +70,5 @@ JSON.parse(boring_buildings_data)
     })
 
 const outputContent = `export const centroids_etc = ${JSON.stringify(data, null, 2)};`
-fs.writeFileSync('centroids_etc.mjs', outputContent)
+fs.writeFileSync('../for_runtime/centroids_etc.mjs', outputContent)
 console.log('centroids.mjs has been generated!')
