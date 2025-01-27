@@ -76,10 +76,9 @@ jq '
 jq '
   .features | map(
     select(
-      .properties.landuse == "grass" 
-      or .properties.leisure == "golf_course"
-      or .properties.leisure == "park")
+      .id == 99661171
     )
+  )
 ' ../temp/filtered.geojson > ../temp/grass0.geojson
 
 
