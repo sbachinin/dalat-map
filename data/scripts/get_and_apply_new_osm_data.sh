@@ -109,11 +109,12 @@ jq "$JQ_FILTER" ../temp/grass0.geojson > ../temp/grass.geojson
 tippecanoe -e ../../dalat-map-tiles/tiles \
 --minimum-zoom=10 --maximum-zoom=17 \
 --no-tile-compression -f \
---layer boring_building ../temp/boring_building.geojson \
---layer french_building ../temp/french_building.geojson \
---layer lake ../temp/lake.geojson \
---layer river ../temp/river.geojson \
---layer grass ../temp/grass.geojson
+../temp/boring_building.geojson \
+../temp/french_building.geojson \
+../temp/lake.geojson \
+../temp/river.geojson \
+../temp/grass.geojson \
+../temp/highway.geojson \
 
 
 
