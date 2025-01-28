@@ -1,6 +1,6 @@
 import dalatBulkJSON from '../data/static/dalat-bulk-geometry.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
-import { all_buildings_handmade_data, french_bldgs_handmade_data } from '../data/static/buildings_handmade_data.mjs'
+import { all_buildings_handmade_data, french_bldgs_handmade_data, non_bldgs_handmade_data } from '../data/static/buildings_handmade_data.mjs'
 
 
 const get_titles_props = fid => ({
@@ -8,6 +8,29 @@ const get_titles_props = fid => ({
     priority: all_buildings_handmade_data[fid]?.priority,
     is_french: !!french_bldgs_handmade_data[fid]
 })
+
+
+const land_areas_titles = {
+    type: 'geojson',
+    data: {
+        "type": "FeatureCollection",
+        "features":
+            Object.entries(non_bldgs_handmade_data)
+                .map(([fid, fdata]) => {
+                    return {
+                        type: "Feature",
+                        geometry: {
+                            type: "Point",
+                            coordinates: fdata.title_coords
+                        },
+                        properties: {
+                            title: all_buildings_handmade_data[fid].title
+                        }
+                    }
+                })
+    }
+}
+
 
 const buildings_titles = {
     type: 'geojson',
@@ -45,6 +68,7 @@ export const main_sources = {
         "data": dalatBulkJSON,
         maxzoom: 14.3
     },
+    land_areas_titles,
     buildings_titles
 }
 

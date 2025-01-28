@@ -79,13 +79,22 @@ jq '
       .id == 99661171
       or .id == 361692208
       or .id == 1307493492
+      or .id == 473556887
+      or .id == 99660966
+      or .id == 99660916
+      or .id == 969458761
     )
   )
 ' ../temp/filtered.geojson > ../temp/land_areas0.geojson
+# TODO list of areas ids above could be obtained from handmade data
 
 
 
-
+# TODO unused
+handmade_data=$(node -e "
+  import { all_buildings_handmade_data } from '../static/buildings_handmade_data.mjs';
+  console.log(JSON.stringify(all_buildings_handmade_data));
+")
 
 
 
@@ -95,7 +104,7 @@ JQ_FILTER='map({
   type: .type,
   geometry: .geometry,
   id: .id,
-  properties: {name: .properties.name}
+  properties: {}
 })'
 jq "$JQ_FILTER" ../temp/boring_building0.geojson > ../temp/boring_building.geojson
 jq "$JQ_FILTER" ../temp/french_building0.geojson > ../temp/french_building.geojson
@@ -103,6 +112,8 @@ jq "$JQ_FILTER" ../temp/lake0.geojson > ../temp/lake.geojson
 jq "$JQ_FILTER" ../temp/river0.geojson > ../temp/river.geojson
 jq "$JQ_FILTER" ../temp/land_areas0.geojson > ../temp/land_areas.geojson
 
+# generated centroids didn't provide good-looking titles so I switched to manual title_coords
+# ./generate_centroids.sh ../temp/land_areas00.geojson ../temp/land_areas.geojson
 
 
 # MAKE MANY LAYERS FROM MANY JSON FILES

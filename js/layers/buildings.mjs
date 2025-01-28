@@ -1,3 +1,5 @@
+import { PALE_TITLES_COLOR, PALE_TITLES_SIZE } from "./constants.mjs"
+
 const french_color = 'hsl(300, 35%, 60%)'
 const french_highlighted_color = 'hsl(35, 97.80%, 63.50%)'
 const frenchBorderColor = 'hsl(265, 35.30%, 50.00%)'
@@ -81,9 +83,8 @@ const french_has_details_outline = {
 }
 
 const french_titles_text_color = 'hsl(300, 20%, 20.40%)'
-const non_french_titles_text_color = 'hsl(0, 0.00%, 40.40%)'
 
-const all_titles_common_props = {
+export const all_titles_common_props = {
     layout: {
         "text-field": ["get", "title"],
         "text-anchor": "top",
@@ -95,7 +96,7 @@ const all_titles_common_props = {
     }
 }
 
-const french_titles_common_props = {
+export const french_titles_common_props = {
     layout: {
         'text-size': 12,
         'text-font': ['Libre Bodoni Italic']
@@ -105,13 +106,13 @@ const french_titles_common_props = {
     }
 }
 
-const shit_titles_common_props = {
+export const shit_titles_common_props = {
     layout: {
-        'text-size': 11,
+        'text-size': PALE_TITLES_SIZE,
         'text-font': ['Lato Regular']
     },
     paint: {
-        'text-color': non_french_titles_text_color
+        'text-color': PALE_TITLES_COLOR
     }
 }
 

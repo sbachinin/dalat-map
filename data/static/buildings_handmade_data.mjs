@@ -1,3 +1,5 @@
+import { INSTITUTION_FILL_COLOR } from "../../js/layers/constants.mjs"
+
 export const french_bldgs_handmade_data = {
     "17877171": {
         "images": [
@@ -1616,7 +1618,7 @@ export const french_bldgs_handmade_data = {
     }
 }
 
-const non_french_bldgs_handmade_data = {
+export const non_french_bldgs_handmade_data = {
     "463866449": {
         title: 'Bus Station'
     },
@@ -1629,12 +1631,27 @@ const non_french_bldgs_handmade_data = {
     }
 }
 
-const non_bldgs_handmade_data = {
+export const non_bldgs_handmade_data = {
     1307493492: {
-        title: 'Ana Mandara Hotel'
+        title: 'Ana Mandara Hotel',
+        title_coords: [108.42334360188636, 11.945547511756317]
     },
     99661171: {
-        title: 'Golf course'
+        title: 'Golf course',
+        title_coords: [108.44587, 11.94727]
+    },
+    473556887: {
+        title: 'Hospital',
+        title_coords: [108.43045966699538, 11.946530838356935]
+    },
+    99660966: {
+        title: 'Anh Sang park',
+        title_coords: [108.43695899199463, 11.93885673022271]
+    },
+    969458761: {
+        title: 'Da Lat University',
+        title_coords: [108.445401, 11.956080],
+        fill_color: INSTITUTION_FILL_COLOR
     }
 }
 
