@@ -77,9 +77,11 @@ jq '
   .features | map(
     select(
       .id == 99661171
+      or .id == 361692208
+      or .id == 1307493492
     )
   )
-' ../temp/filtered.geojson > ../temp/grass0.geojson
+' ../temp/filtered.geojson > ../temp/land_areas0.geojson
 
 
 
@@ -99,7 +101,7 @@ jq "$JQ_FILTER" ../temp/boring_building0.geojson > ../temp/boring_building.geojs
 jq "$JQ_FILTER" ../temp/french_building0.geojson > ../temp/french_building.geojson
 jq "$JQ_FILTER" ../temp/lake0.geojson > ../temp/lake.geojson
 jq "$JQ_FILTER" ../temp/river0.geojson > ../temp/river.geojson
-jq "$JQ_FILTER" ../temp/grass0.geojson > ../temp/grass.geojson
+jq "$JQ_FILTER" ../temp/land_areas0.geojson > ../temp/land_areas.geojson
 
 
 
@@ -112,7 +114,7 @@ tippecanoe -e ../../dalat-map-tiles/tiles \
 ../temp/french_building.geojson \
 ../temp/lake.geojson \
 ../temp/river.geojson \
-../temp/grass.geojson \
+../temp/land_areas.geojson \
 ../temp/highway.geojson \
 
 

@@ -1623,11 +1623,19 @@ const non_french_bldgs_handmade_data = {
     "4119185": {
         title: 'Da Lat Market',
         use_middle_lat: true
+    },
+    1244767000: {
+        title: 'Nguyen Huu Hao Tomb'
     }
 }
 
 const non_bldgs_handmade_data = {
-
+    1307493492: {
+        title: 'Ana Mandara Hotel'
+    },
+    99661171: {
+        title: 'Golf course'
+    }
 }
 
 // TODO: highlight and allow to click non-colonial too

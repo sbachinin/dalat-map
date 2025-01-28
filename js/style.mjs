@@ -29,34 +29,21 @@ export const style = {
             }
         },
         {
-            id: 'Grass',
+            id: 'Land areas fill',
             type: 'fill',
             source: 'dalat-tiles',
-            'source-layer': 'grass',
+            'source-layer': 'land_areas',
             paint: {
                 'fill-color': [
-                    "interpolate",
-                    ["linear"],
-                    ["zoom"],
-                    13.6,  // Zoom level at which opacity should start decreasing
-                    'hsl(70, 70%, 50%)',   // Opacity at zoom level 14
-                    14.3,  // Zoom level just above 14
-                    'hsl(70, 50%, 70%)'    // Opacity at zoom level 15 and higher
+                    "case",
+                    ["==", ["id"], 1307493492], 'hsl(70, 30%, 83%)', // ana mandara
+                    'hsl(70, 50%, 70%)',
                 ],
                 'fill-antialias': true,
-            },
-            "filter": [
-                "any",
-                [
-                    "all",
-                    ["!=", "name", "Sacom Golf Club"],
-                    ["==", "leisure", "golf_course"]
-                ],
-                ["==", "name:en", "Anh Sang"],
-                ["==", "name", "Công viên Yersin"]
-
-            ],
+            }
         },
+
+        // areas titles layer, in the middle of geometry
         ...rivers,
         ...lakes,
         ...boring_building_layers,
