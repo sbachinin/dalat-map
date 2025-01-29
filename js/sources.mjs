@@ -3,54 +3,72 @@ import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 import { all_handmade_data, french_bldgs_handmade_data, land_areas_handmade_data } from '../data/static/handmade_data.mjs'
 
 
-const get_titles_props = fid => ({
-    title: all_handmade_data[fid].title,
-    priority: all_handmade_data[fid]?.priority,
-    is_french: !!french_bldgs_handmade_data[fid]
-})
+const get_titles_props = fid => {
+    const fdata = all_handmade_data[fid]
+    if (!fdata) return {}
 
+    let priority = null
+    if (typeof fdata.priority === 'number') {
+        priority = fdata.priority
+    } else if (fdata.second_rate) {
+        priority = 12
+    }
+
+    return {
+        title: fdata.title,
+        priority,
+        second_rate: fdata.second_rate,
+        is_french: !!french_bldgs_handmade_data[fid]
+    }
+}
+
+const get_title_final_coords = fid => {
+    // either hardcoded coords
+    // or coords just below the feature's polygon.
+    // It's for plain high-zoom titles, not for tiny_squares
+    const hardcoded_coords = all_handmade_data[fid]?.title_coords
+    const generated_coords = centroids_etc[fid]
+    if (!hardcoded_coords && !generated_coords) {
+        console.warn('title coords cannot be found; maybe something is going wrong')
+    }
+    return hardcoded_coords
+        || [generated_coords.centroid[0], generated_coords.title_lat]
+}
 
 const land_areas_titles = {
     type: 'geojson',
     data: {
         "type": "FeatureCollection",
         "features":
-            Object.entries(land_areas_handmade_data)
-                .filter(([_, fdata]) => !!fdata.title)
-                .map(([fid, fdata]) => {
+            Object.keys(land_areas_handmade_data)
+                .filter(fid => !!land_areas_handmade_data[fid].title)
+                .map(fid => {
                     return {
                         type: "Feature",
                         geometry: {
                             type: "Point",
-                            coordinates: fdata.title_coords
+                            coordinates: get_title_final_coords(fid)
                         },
                         properties: {
-                            title: all_handmade_data[fid].title
+                            ...get_titles_props(fid)
                         }
                     }
                 })
     }
 }
 
-console.log(land_areas_titles)
 const buildings_titles = {
     type: 'geojson',
     data: {
         "type": "FeatureCollection",
-        "features": Object.entries(centroids_etc)
-            .filter(([fid]) => Boolean(all_handmade_data[fid]?.title))
-            .map(([fid, { centroid, title_lat }]) => {
-                const lat = all_handmade_data[fid]?.use_middle_lat
-                    ? centroid[1]
-                    : title_lat
-                // TODO use_middle_lat is actually underimplemented;
-                // Feature only gets a middle coord
-                // but text-anchor is "top" and therefore title will be slightly below the middle
+        "features": Object.keys(centroids_etc)
+            .filter(fid => Boolean(all_handmade_data[fid]?.title))
+            .map(fid => {
                 return {
                     type: "Feature",
                     geometry: {
                         type: "Point",
-                        coordinates: [centroid[0], lat]
+                        coordinates: get_title_final_coords(fid)
                     },
                     properties: get_titles_props(fid)
                 }

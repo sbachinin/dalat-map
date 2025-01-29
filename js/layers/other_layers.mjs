@@ -1,5 +1,5 @@
 import { all_titles_common_props, shit_titles_common_props } from "./buildings.mjs"
-import { AREA_TYPES, GRASS_COLOR, INSTITUTION_FILL_COLOR } from "./constants.mjs"
+import { AREA_TYPES, GRASS_COLOR, INSTITUTION_FILL_COLOR, VARYING_TITLE_OPACITY } from "./constants.mjs"
 
 export const city_bulk = {
     id: 'cityBulk',
@@ -34,9 +34,9 @@ export const land_areas_fill = {
             INSTITUTION_FILL_COLOR,
             GRASS_COLOR
         ],
-        
+
         // 'hsl(70, 30%, 83%)', // ana mandara
-        
+
         'fill-antialias': true,
     }
 }
@@ -54,6 +54,7 @@ export const land_areas_titles = {
     },
     paint: {
         ...all_titles_common_props.paint,
-        ...shit_titles_common_props.paint
+        ...shit_titles_common_props.paint,
+        "text-opacity": VARYING_TITLE_OPACITY
     }
 }

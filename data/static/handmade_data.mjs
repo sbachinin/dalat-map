@@ -25,7 +25,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "308446691": {
-        title: 'Hoa Binh (ex)cinema',
+        title: 'Hoa Binh \n(ex)cinema',
         "images": [
             "IMG_1791.jpg"
         ],
@@ -54,7 +54,7 @@ export const french_bldgs_handmade_data = {
             "IMG_5894~2.jpg",
             "IMG_5908~2.jpg"
         ],
-        title: "Former power station"
+        title: "Former \npower station"
     },
     "361851888": {
         "images": [
@@ -82,7 +82,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "407699702": {
-        title: 'Dalat Palace Hotel',
+        title: 'Dalat Palace \nHotel',
         "images": [
             "IMG_5439~2.jpg",
             "IMG_5457~2.jpg",
@@ -91,7 +91,7 @@ export const french_bldgs_handmade_data = {
         priority: 10
     },
     "452519411": {
-        title: 'St. Nicholas Cathedral',
+        title: 'St. Nicholas \nCathedral',
         "images": [
             "IMG_5520.jpg",
             "IMG_5531.jpg",
@@ -108,7 +108,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "473088090": {
-        title: 'Zoology museum in ex-monastery',
+        title: 'Zoology museum \nin ex-monastery',
         "images": [
             "zoo2.jpg",
             "zoo1.jpg"
@@ -242,9 +242,11 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "618049068": {
+        title: 'Tin Lanh\n(protestant) church',
         "images": [
             "IMG_1339.jpg"
-        ]
+        ],
+        second_rate: true
     },
     "618049072": {
         title: "Governor's Palace",
@@ -774,7 +776,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "1303825522": {
-        title: "Former Franciscan mission",
+        title: "Former \nFranciscan \nmission",
         subtitle: 'Also former "Vietnam\'s coolest ruin"',
         links: [
             {
@@ -929,7 +931,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "543357207": {
-        title: 'Bao Dai Palace №1',
+        title: 'Bao Dai \nPalace №1',
         priority: 11
     },
     "1304439965": {
@@ -998,7 +1000,6 @@ export const french_bldgs_handmade_data = {
     "463866431": {
         title: 'Bao Dai Palace №3',
     },
-    "1305230699": {},
     "1305703497": {
         "images": [
             "IMG_7760~3.jpg"
@@ -1615,6 +1616,11 @@ export const french_bldgs_handmade_data = {
     "361851888": {
         title: "Couvent des Oiseaux",
         images: []
+    },
+    "1238335794": {
+        title: "Nguyen Viet Xuan Palace",
+        second_rate: true,
+        images: []
     }
 }
 
@@ -1624,20 +1630,39 @@ export const non_french_bldgs_handmade_data = {
     },
     "4119185": {
         title: 'Da Lat Market',
-        use_middle_lat: true
+        title_coords: [108.437235183175, 11.943377916577973]
+    },
+    525191979: {
+        title: "Dalat Center",
+        title_coords: [108.43802289203188, 11.943982270113395]
     },
     1244767000: {
-        title: 'Nguyen Huu Hao Tomb'
-    }
+        title: 'Nguyen Huu \nHao Tomb'
+    },
+    1305230699: {
+        title: '"Madame \nde Dalat"',
+        subtitle: 'Vietnamese modernist villa'
+    },
+    515288597: {
+        title: 'Labor \nCulture House'
+    },
 }
 
 export const land_areas_handmade_data = {
     // !!! empty items are needed here in order to generate land_areas tile layer
+    1232634198: {
+        title: 'Lam Dong \nStadium',
+        title_coords: [108.432371, 11.959375]
+    },
     361692208: {},
     99660916: {},
+        473547288: {
+        title: 'Nuclear \nResearch \nInstitute',
+        title_coords: [108.452563, 11.955891]
+    },
     1307493492: {
-        title: 'Ana Mandara Hotel',
-        title_coords: [108.42334360188636, 11.945547511756317],
+        title: 'Ana Mandara \nResort',
+        title_coords: [108.4233402669314, 11.945999359025265],
         area_type: AREA_TYPES.INSTITUTION
     },
     99661171: {
@@ -1650,20 +1675,18 @@ export const land_areas_handmade_data = {
         area_type: AREA_TYPES.INSTITUTION
     },
     99660966: {
-        title: 'Anh Sang park',
-        title_coords: [108.43695899199463, 11.93885673022271]
+        title: 'Anh Sang \npark',
+        title_coords: [108.43695899199463, 11.93885673022271],
+        second_rate: true
     },
     969458761: {
-        title: 'Da Lat University',
+        title: 'Da Lat \nUniversity',
         title_coords: [108.445401, 11.956080],
         area_type: AREA_TYPES.INSTITUTION
     }
 }
 
-// TODO: highlight and allow to click non-colonial too
-
-// TODO. merge was destructive at some point.
-// In the end i need to compare details object with imgs in folders
+// TODO: ?? highlight and allow to click non-colonial too
 
 export const all_handmade_data = {
     ...french_bldgs_handmade_data,

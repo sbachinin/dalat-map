@@ -3,7 +3,8 @@ import {
     FRENCH_BORDER_COLOR,
     FRENCH_FILL_COLOR,
     FRENCH_SELECTED_FILL_COLOR,
-    PALE_TITLES_COLOR, PALE_TITLES_SIZE
+    PALE_TITLES_COLOR, PALE_TITLES_SIZE,
+    VARYING_TITLE_OPACITY
 } from "./constants.mjs"
 
 const french_geometry_minzoom = 13.3
@@ -132,7 +133,8 @@ export const french_buildings_titles = {
     },
     paint: {
         ...all_titles_common_props.paint,
-        'text-color': french_titles_common_props.paint['text-color']
+        'text-color': french_titles_common_props.paint['text-color'],
+        "text-opacity": VARYING_TITLE_OPACITY
     },
     filter: ['==', ['get', 'is_french'], true]
 }

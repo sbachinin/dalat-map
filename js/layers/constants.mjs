@@ -10,3 +10,12 @@ export const INSTITUTION_FILL_COLOR = 'hsl(164, 20.30%, 85.00%)'
 export const AREA_TYPES = {
     INSTITUTION: 'institution'
 }
+
+// provides that normal titles appear early and second_rate only from z15
+export const VARYING_TITLE_OPACITY = [
+    "step",
+    ["zoom"],
+    ["case", ["get", "second_rate"], 0, 1],
+    15,
+    1
+]
