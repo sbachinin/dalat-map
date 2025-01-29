@@ -1,4 +1,5 @@
 import { all_titles_common_props, shit_titles_common_props } from "./buildings.mjs"
+import { AREA_TYPES, GRASS_COLOR, INSTITUTION_FILL_COLOR } from "./constants.mjs"
 
 export const city_bulk = {
     id: 'cityBulk',
@@ -27,7 +28,12 @@ export const land_areas_fill = {
     source: 'dalat-tiles',
     'source-layer': 'land_areas',
     paint: {
-        'fill-color': ["coalesce", ["get", "color"], 'hsl(70, 50%, 70%)'],
+        'fill-color': [
+            "case",
+            ["==", ["get", "area_type"], AREA_TYPES.INSTITUTION],
+            INSTITUTION_FILL_COLOR,
+            GRASS_COLOR
+        ],
         
         // 'hsl(70, 30%, 83%)', // ana mandara
         
