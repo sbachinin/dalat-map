@@ -6,7 +6,7 @@ drop image on a building.
 check console for errors;
 if operation is successful, console prints how many entries are there in ids_to_imgs
 
-update buildings_handmade_data.mjs:
+update handmade_data.mjs:
     window.get_updated_buildings_data()
     copy the returned value to clipboard
-    paste into buildings_handmade_data.mjs
+    paste into handmade_data.mjs

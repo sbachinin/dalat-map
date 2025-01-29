@@ -1,5 +1,5 @@
 import { panel } from './panel/panel.mjs'
-import { all_buildings_handmade_data } from '../data/static/buildings_handmade_data.mjs'
+import { all_handmade_data } from '../data/static/handmade_data.mjs'
 import { select_bldg, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
@@ -44,7 +44,7 @@ export const try_open_building = async (
         return
     }
 
-    const featureMeta = all_buildings_handmade_data[id]
+    const featureMeta = all_handmade_data[id]
     if (building_has_details(featureMeta)) {
         show_bldg_details(featureMeta, id)
         select_bldg(id)

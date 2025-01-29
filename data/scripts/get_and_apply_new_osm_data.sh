@@ -77,13 +77,6 @@ jq '
     )
   )
 ' ../temp/filtered.geojson >../temp/land_areas0.geojson
-# TODO list of areas ids above could be obtained from handmade data
-
-# TODO unused
-handmade_data=$(node -e "
-  import { all_buildings_handmade_data } from '../static/buildings_handmade_data.mjs';
-  console.log(JSON.stringify(all_buildings_handmade_data));
-")
 
 # TAKE ONLY REQUIRED FEATURE PROPERTIES
 # TODO: HIGHWAYS UNTOUCHED HERE SO FAR NOT TO BREAK STYLE FILTERS)
@@ -98,6 +91,15 @@ jq "$JQ_FILTER" ../temp/french_building0.geojson >../temp/french_building.geojso
 jq "$JQ_FILTER" ../temp/lake0.geojson >../temp/lake.geojson
 jq "$JQ_FILTER" ../temp/river0.geojson >../temp/river.geojson
 jq "$JQ_FILTER" ../temp/land_areas0.geojson >../temp/land_areas00.geojson
+
+
+
+
+
+handmade_data=$(node -e "
+  import { all_handmade_data } from '../static/handmade_data.mjs';
+  console.log(JSON.stringify(all_handmade_data));
+")
 
 jq --argjson handmade_data "$handmade_data" '
   map(

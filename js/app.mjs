@@ -1,6 +1,6 @@
 import { create_scale } from './manage_scale.mjs'
 import { addMouseStuff } from './mouse_stuff.mjs'
-import { all_buildings_handmade_data } from '../data/static/buildings_handmade_data.mjs'
+import { french_bldgs_handmade_data } from '../data/static/handmade_data.mjs'
 import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
@@ -64,7 +64,7 @@ map.addControl(
 
 map.once('idle', () => {
 
-    Object.entries(all_buildings_handmade_data)
+    Object.entries(french_bldgs_handmade_data)
         .forEach(([bldg_id, bldg_meta]) => {
             map.setFeatureState(
                 { source: 'dalat-tiles', sourceLayer: 'french_building', id: bldg_id },

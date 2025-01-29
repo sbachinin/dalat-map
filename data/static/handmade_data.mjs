@@ -1662,7 +1662,7 @@ export const non_bldgs_handmade_data = {
 // TODO. merge was destructive at some point.
 // In the end i need to compare details object with imgs in folders
 
-export const all_buildings_handmade_data = {
+export const all_handmade_data = {
     ...french_bldgs_handmade_data,
     ...non_french_bldgs_handmade_data,
     ...non_bldgs_handmade_data

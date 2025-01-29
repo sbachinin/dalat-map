@@ -1,4 +1,4 @@
-import { all_buildings_handmade_data } from '../data/static/buildings_handmade_data.mjs'
+import { all_handmade_data } from '../data/static/handmade_data.mjs'
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
 import { building_has_details, try_open_building } from './bldg_details.mjs'
@@ -28,7 +28,7 @@ export const addMouseStuff = () => {
         map.on('mousemove', layer, (e) => {
             if (e.features.length === 0) return
             if (map.getZoom() < 15.5) return
-            if (!building_has_details(all_buildings_handmade_data[e.features[0].id])) return
+            if (!building_has_details(all_handmade_data[e.features[0].id])) return
             map.getCanvas().style.cursor = 'pointer'
         })
         map.on('mouseleave', layer, () => {

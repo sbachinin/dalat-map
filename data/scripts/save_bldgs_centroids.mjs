@@ -3,7 +3,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import * as turf from '@turf/turf'
 import dead_buildings_json from '../static/dead_buildings_json.mjs'
-import { all_buildings_handmade_data } from '../static/buildings_handmade_data.mjs'
+import { all_handmade_data } from '../static/handmade_data.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -38,7 +38,7 @@ const get_centroid = f => {
     ]
 }
 
-const feature_has_title = f => all_buildings_handmade_data[f.id]?.title
+const feature_has_title = f => all_handmade_data[f.id]?.title
 
 
 

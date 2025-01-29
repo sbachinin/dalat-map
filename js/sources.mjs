@@ -1,11 +1,11 @@
 import dalatBulkJSON from '../data/static/dalat-bulk-geometry.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
-import { all_buildings_handmade_data, french_bldgs_handmade_data, non_bldgs_handmade_data } from '../data/static/buildings_handmade_data.mjs'
+import { all_handmade_data, french_bldgs_handmade_data, non_bldgs_handmade_data } from '../data/static/handmade_data.mjs'
 
 
 const get_titles_props = fid => ({
-    title: all_buildings_handmade_data[fid].title,
-    priority: all_buildings_handmade_data[fid]?.priority,
+    title: all_handmade_data[fid].title,
+    priority: all_handmade_data[fid]?.priority,
     is_french: !!french_bldgs_handmade_data[fid]
 })
 
@@ -24,7 +24,7 @@ const land_areas_titles = {
                             coordinates: fdata.title_coords
                         },
                         properties: {
-                            title: all_buildings_handmade_data[fid].title
+                            title: all_handmade_data[fid].title
                         }
                     }
                 })
@@ -37,9 +37,9 @@ const buildings_titles = {
     data: {
         "type": "FeatureCollection",
         "features": Object.entries(centroids_etc)
-            .filter(([fid]) => Boolean(all_buildings_handmade_data[fid]?.title))
+            .filter(([fid]) => Boolean(all_handmade_data[fid]?.title))
             .map(([fid, { centroid, title_lat }]) => {
-                const lat = all_buildings_handmade_data[fid]?.use_middle_lat
+                const lat = all_handmade_data[fid]?.use_middle_lat
                     ? centroid[1]
                     : title_lat
                 // TODO use_middle_lat is actually underimplemented;
@@ -77,7 +77,7 @@ export const buildings_centroids_with_titles_source = {
     data: {
         "type": "FeatureCollection",
         "features": Object.entries(centroids_etc)
-            .filter(([fid]) => Boolean(all_buildings_handmade_data[fid]?.title))
+            .filter(([fid]) => Boolean(all_handmade_data[fid]?.title))
             .map(([fid, { centroid }]) => ({
                 type: "Feature",
                 geometry: {
