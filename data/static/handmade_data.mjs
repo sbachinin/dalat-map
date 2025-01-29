@@ -1631,7 +1631,10 @@ export const non_french_bldgs_handmade_data = {
     }
 }
 
-export const non_bldgs_handmade_data = {
+export const land_areas_handmade_data = {
+    // !!! empty items are needed here in order to generate land_areas tile layer
+    361692208: {},
+    99660916: {},
     1307493492: {
         title: 'Ana Mandara Hotel',
         title_coords: [108.42334360188636, 11.945547511756317],
@@ -1665,5 +1668,5 @@ export const non_bldgs_handmade_data = {
 export const all_handmade_data = {
     ...french_bldgs_handmade_data,
     ...non_french_bldgs_handmade_data,
-    ...non_bldgs_handmade_data
+    ...land_areas_handmade_data
 }

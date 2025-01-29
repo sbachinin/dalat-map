@@ -64,19 +64,20 @@ jq '
     select(.properties.waterway == "stream")
   )
 ' ../temp/filtered.geojson >../temp/river0.geojson
-jq '
+
+
+
+land_areas_handmade_data=$(node -e "
+  import { land_areas_handmade_data } from '../static/handmade_data.mjs';
+  console.log(JSON.stringify(land_areas_handmade_data));
+")
+
+
+jq --argjson land_areas_handmade_data "$land_areas_handmade_data" '
   .features | map(
-    select(
-      .id == 99661171
-      or .id == 361692208
-      or .id == 1307493492
-      or .id == 473556887
-      or .id == 99660966
-      or .id == 99660916
-      or .id == 969458761
-    )
+    select(.id | tostring | IN($land_areas_handmade_data | keys_unsorted[]))
   )
-' ../temp/filtered.geojson >../temp/land_areas0.geojson
+' ../temp/filtered.geojson > ../temp/land_areas0.geojson
 
 # TAKE ONLY REQUIRED FEATURE PROPERTIES
 # TODO: HIGHWAYS UNTOUCHED HERE SO FAR NOT TO BREAK STYLE FILTERS)
@@ -96,15 +97,11 @@ jq "$JQ_FILTER" ../temp/land_areas0.geojson >../temp/land_areas00.geojson
 
 
 
-handmade_data=$(node -e "
-  import { all_handmade_data } from '../static/handmade_data.mjs';
-  console.log(JSON.stringify(all_handmade_data));
-")
 
-jq --argjson handmade_data "$handmade_data" '
+jq --argjson land_areas_handmade_data "$land_areas_handmade_data" '
   map(
-    if ($handmade_data[(.id | tostring)] and $handmade_data[(.id | tostring)].area_type) then
-      .properties.area_type = $handmade_data[(.id | tostring)].area_type
+    if ($land_areas_handmade_data[(.id | tostring)] and $land_areas_handmade_data[(.id | tostring)].area_type) then
+      .properties.area_type = $land_areas_handmade_data[(.id | tostring)].area_type
     else
       .
     end
