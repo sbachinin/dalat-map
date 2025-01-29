@@ -1,9 +1,11 @@
-import { PALE_TITLES_COLOR, PALE_TITLES_SIZE } from "./constants.mjs"
+import {
+    BORING_BLDG_FILL_COLOR,
+    FRENCH_BORDER_COLOR,
+    FRENCH_FILL_COLOR,
+    FRENCH_SELECTED_FILL_COLOR,
+    PALE_TITLES_COLOR, PALE_TITLES_SIZE
+} from "./constants.mjs"
 
-const french_color = 'hsl(300, 35%, 60%)'
-const french_highlighted_color = 'hsl(35, 97.80%, 63.50%)'
-const frenchBorderColor = 'hsl(265, 35.30%, 50.00%)'
-const boringBuildingColor = 'hsl(43, 15%, 90%)'
 const french_geometry_minzoom = 13.3
 
 export const boring_building_layers = [
@@ -15,7 +17,7 @@ export const boring_building_layers = [
         "source-layer": "boring_building",
         "minzoom": 14,
         "paint": {
-            "fill-color": boringBuildingColor,
+            "fill-color": BORING_BLDG_FILL_COLOR,
             "fill-antialias": true,
         },
         filter: ["!=", "name", "Big C"]
@@ -32,8 +34,8 @@ const french_building_fill = {
         "fill-color": [
             'case',
             ['==', ['feature-state', 'selected'], true],
-            french_highlighted_color,
-            french_color,
+            FRENCH_SELECTED_FILL_COLOR,
+            FRENCH_FILL_COLOR,
         ],
         "fill-antialias": true
     },
@@ -46,7 +48,7 @@ const french_thickening_outline = {
     "source-layer": "french_building",
     "minzoom": french_geometry_minzoom,
     'paint': {
-        'line-color': french_color,
+        'line-color': FRENCH_FILL_COLOR,
         'line-width': [
             "interpolate",
             ["linear"],
@@ -69,7 +71,7 @@ const french_has_details_outline = {
         'line-color': [
             'case',
             ['boolean', ['feature-state', 'hasDetails'], false],
-            frenchBorderColor,
+            FRENCH_BORDER_COLOR,
             'transparent',
         ],
         'line-width': [
