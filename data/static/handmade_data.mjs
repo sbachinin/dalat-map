@@ -6,7 +6,10 @@ import { AREA_TYPES, TITLES_PRIORITY } from "../../js/layers/constants.mjs"
         
         title,
 
-        subtitle, // TODO show them
+        subtitle, // TODO show them;
+        // but it's complicated;
+        // i need to push subtitles down with text-offset
+        // but titles' height is variable so text-offset has to be too
 
         description,
       
