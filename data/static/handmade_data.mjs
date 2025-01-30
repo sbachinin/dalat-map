@@ -1,5 +1,31 @@
 import { AREA_TYPES, TITLES_PRIORITY } from "../../js/layers/constants.mjs"
 
+/*
+    {
+        images: string[],
+        
+        title,
+
+        subtitle, // TODO show them
+
+        description,
+      
+        links: string[],
+
+        title_coords (for areas with complex geometry where centerOfMass looks bad),
+        
+        area_type (for areas),
+        
+        myhint,
+
+        // if second_rate is true, feature gets higher minzoom
+        // and (if priority not set here) lowest priority
+        second_rate: boolean,
+    
+        priority: TITLES_PRIORITY,
+    }
+*/
+
 export const french_bldgs_handmade_data = {
     "17877171": {
         "images": [
