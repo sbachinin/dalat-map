@@ -1,6 +1,11 @@
 import dalatBulkJSON from '../data/static/dalat-bulk-geometry.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
-import { all_handmade_data, french_bldgs_handmade_data, land_areas_handmade_data } from '../data/static/handmade_data.mjs'
+import {
+    all_handmade_data,
+    french_bldgs_handmade_data,
+    land_areas_handmade_data,
+    non_french_bldgs_handmade_data
+} from '../data/static/handmade_data.mjs'
 import { TITLES_PRIORITY } from './layers/constants.mjs'
 
 
@@ -30,7 +35,7 @@ const get_title_final_coords = fid => {
     const hardcoded_coords = all_handmade_data[fid]?.title_coords
     const generated_coords = centroids_etc[fid]
     if (!hardcoded_coords && !generated_coords) {
-        console.warn('title coords cannot be found; maybe something is going wrong')
+        throw new Error('title coords cannot be found; maybe something is going wrong')
     }
     return hardcoded_coords
         || [generated_coords.centroid[0], generated_coords.title_lat]
@@ -63,7 +68,9 @@ const buildings_titles = {
     data: {
         "type": "FeatureCollection",
         "features": Object.keys(centroids_etc)
-            .filter(fid => Boolean(all_handmade_data[fid]?.title))
+            .filter(fid => french_bldgs_handmade_data[fid]?.title
+                || non_french_bldgs_handmade_data[fid]?.title
+            )
             .map(fid => {
                 return {
                     type: "Feature",

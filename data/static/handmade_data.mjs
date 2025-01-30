@@ -1655,8 +1655,11 @@ export const land_areas_handmade_data = {
         title_coords: [108.432371, 11.959375]
     },
     361692208: {},
-    99660916: {},
-        473547288: {
+    99660916: {
+        title: 'Yersin Park',
+        second_rate: true
+    },
+    473547288: {
         title: 'Nuclear \nResearch \nInstitute',
         title_coords: [108.452563, 11.955891]
     },

@@ -31,7 +31,7 @@ function get_southmost_lat(feature) {
 }
 
 const get_centroid = f => {
-    const raw_centroid = turf.centroid(f)
+    const raw_centroid = turf.centerOfMass(f)
     return [
         Number(raw_centroid.geometry.coordinates[0].toFixed(6)),
         Number(raw_centroid.geometry.coordinates[1].toFixed(6))
@@ -66,6 +66,17 @@ JSON.parse(boring_buildings_data)
         data[f.id] = {
             centroid: get_centroid(f),
             title_lat: get_southmost_lat(f)
+        }
+    })
+
+const land_areas_path = path.join(__dirname, '../temp/land_areas.geojson')
+const land_areas_data = fs.readFileSync(land_areas_path, 'utf8')
+JSON.parse(land_areas_data)
+    .filter(feature_has_title)
+    .forEach(f => {
+        data[f.id] = {
+            centroid: get_centroid(f),
+            title_lat: get_centroid(f)[1] // because areas titles are in the center, not under
         }
     })
 
