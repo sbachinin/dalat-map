@@ -2,6 +2,7 @@ export const FRENCH_FILL_COLOR = 'hsl(340, 35.30%, 60.00%)'
 export const FRENCH_SELECTED_FILL_COLOR = 'hsl(35, 97.80%, 63.50%)'
 export const FRENCH_BORDER_COLOR = 'hsl(340, 35.30%, 35.00%)'
 export const BORING_BLDG_FILL_COLOR = 'hsl(43, 15%, 90%)'
+export const IMPORTANT_BORING_BLDG_FILL_COLOR = 'hsl(43, 25%, 65%)'
 
 export const PALE_TITLES_COLOR = 'hsl(0, 0.00%, 40.40%)'
 export const PALE_TITLES_SIZE = 11

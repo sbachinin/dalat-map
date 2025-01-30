@@ -1656,11 +1656,12 @@ export const non_french_bldgs_handmade_data = {
     },
     "4119185": {
         title: 'Da Lat Market',
-        title_coords: [108.437235183175, 11.943377916577973]
+        title_coords: [108.4373759000099, 11.943643357953377]
     },
     525191979: {
         title: "Dalat Center",
-        title_coords: [108.43802289203188, 11.943982270113395]
+        title_coords: [108.43798094315969, 11.944096065149296],
+        second_rate: true
     },
     1244767000: {
         title: 'Nguyen Huu \nHao Tomb'
@@ -1670,7 +1671,8 @@ export const non_french_bldgs_handmade_data = {
         subtitle: 'Vietnamese modernist villa'
     },
     515288597: {
-        title: 'Labor \nCulture House'
+        title: 'Labor \nCulture House',
+        second_rate: true
     },
 }
 

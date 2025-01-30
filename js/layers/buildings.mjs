@@ -3,6 +3,7 @@ import {
     FRENCH_BORDER_COLOR,
     FRENCH_FILL_COLOR,
     FRENCH_SELECTED_FILL_COLOR,
+    IMPORTANT_BORING_BLDG_FILL_COLOR,
     PALE_TITLES_COLOR, PALE_TITLES_SIZE,
     VARYING_TITLE_OPACITY
 } from "./constants.mjs"
@@ -18,7 +19,12 @@ export const boring_building_layers = [
         "source-layer": "boring_building",
         "minzoom": 14,
         "paint": {
-            "fill-color": BORING_BLDG_FILL_COLOR,
+            "fill-color": [
+                "case",
+                ["boolean", ["get", "has_title"], false],
+                IMPORTANT_BORING_BLDG_FILL_COLOR,
+                BORING_BLDG_FILL_COLOR
+            ],
             "fill-antialias": true,
         },
         filter: ["!=", "name", "Big C"]
@@ -95,7 +101,7 @@ export const all_titles_common_props = {
         "symbol-sort-key": ["get", "priority"],
     },
     paint: {
-
+        "text-opacity": VARYING_TITLE_OPACITY
     }
 }
 
@@ -134,7 +140,6 @@ export const french_buildings_titles = {
     paint: {
         ...all_titles_common_props.paint,
         'text-color': french_titles_common_props.paint['text-color'],
-        "text-opacity": VARYING_TITLE_OPACITY
     },
     filter: ['==', ['get', 'is_french'], true]
 }
@@ -151,7 +156,6 @@ export const shit_buildings_titles = {
     paint: {
         ...all_titles_common_props.paint,
         ...shit_titles_common_props.paint
-
     },
     filter: ['==', ['get', 'is_french'], false]
 }

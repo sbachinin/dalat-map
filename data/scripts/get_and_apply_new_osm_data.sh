@@ -8,6 +8,22 @@ for arg in "$@"; do
   fi
 done
 
+
+
+
+non_french_bldgs_handmade_data=$(node -e "
+  import { non_french_bldgs_handmade_data } from '../static/handmade_data.mjs';
+  console.log(JSON.stringify(non_french_bldgs_handmade_data));
+")
+
+land_areas_handmade_data=$(node -e "
+  import { land_areas_handmade_data } from '../static/handmade_data.mjs';
+  console.log(JSON.stringify(land_areas_handmade_data));
+")
+
+
+
+
 # REMOVE OLD
 rm ../temp/*.geojson
 
@@ -67,17 +83,16 @@ jq '
 
 
 
-land_areas_handmade_data=$(node -e "
-  import { land_areas_handmade_data } from '../static/handmade_data.mjs';
-  console.log(JSON.stringify(land_areas_handmade_data));
-")
 
-
+# COPY ALL LAND_AREAS FROM HANDMADE DATA TO A DEDICATED GEOJSON
 jq --argjson land_areas_handmade_data "$land_areas_handmade_data" '
   .features | map(
     select(.id | tostring | IN($land_areas_handmade_data | keys_unsorted[]))
   )
 ' ../temp/filtered.geojson > ../temp/land_areas0.geojson
+
+
+
 
 # TAKE ONLY REQUIRED FEATURE PROPERTIES
 # TODO: HIGHWAYS UNTOUCHED HERE SO FAR NOT TO BREAK STYLE FILTERS)
@@ -87,17 +102,25 @@ JQ_FILTER='map({
   id: .id,
   properties: {}
 })'
-jq "$JQ_FILTER" ../temp/boring_building0.geojson >../temp/boring_building.geojson
+jq "$JQ_FILTER" ../temp/boring_building0.geojson >../temp/boring_building00.geojson
 jq "$JQ_FILTER" ../temp/french_building0.geojson >../temp/french_building.geojson
 jq "$JQ_FILTER" ../temp/lake0.geojson >../temp/lake.geojson
 jq "$JQ_FILTER" ../temp/river0.geojson >../temp/river.geojson
 jq "$JQ_FILTER" ../temp/land_areas0.geojson >../temp/land_areas00.geojson
 
 
+# ADD HAS_TITLE PROP TO ALL SHIT BLDGS THAT HAVE HANDMADE TITLES
+jq --argjson handmade_data "$non_french_bldgs_handmade_data" 'map(
+    if (.id | tostring) as $id | $handmade_data[$id].title then
+      .properties += { has_title: true }
+    else
+      .
+    end
+  )
+' ../temp/boring_building00.geojson > ../temp/boring_building.geojson
 
 
-
-
+# COPY AREA_TYPE PROPERTY FROM HANDMADE DATA TO A GEOJSON FEATURE
 jq --argjson land_areas_handmade_data "$land_areas_handmade_data" '
   map(
     if ($land_areas_handmade_data[(.id | tostring)] and $land_areas_handmade_data[(.id | tostring)].area_type) then
