@@ -13,7 +13,7 @@ const get_titles_props = fid => {
     const fdata = all_handmade_data[fid]
     if (!fdata) return {}
 
-    let priority = null
+    let priority = TITLES_PRIORITY.LOW
     if (typeof fdata.priority === 'number') {
         priority = fdata.priority
     } else if (fdata.second_rate) {
@@ -23,7 +23,7 @@ const get_titles_props = fid => {
     return {
         title: fdata.title,
         priority,
-        second_rate: fdata.second_rate,
+        second_rate: !!fdata.second_rate,
         is_french: !!french_bldgs_handmade_data[fid]
     }
 }
