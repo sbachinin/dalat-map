@@ -1,4 +1,4 @@
-import { AREA_TYPES } from "../../js/layers/constants.mjs"
+import { AREA_TYPES, TITLES_PRIORITY } from "../../js/layers/constants.mjs"
 
 export const french_bldgs_handmade_data = {
     "17877171": {
@@ -29,7 +29,7 @@ export const french_bldgs_handmade_data = {
         "images": [
             "IMG_1791.jpg"
         ],
-        priority: 11
+        priority: TITLES_PRIORITY.LOW
     },
     "361692216": {
         "images": [
@@ -88,7 +88,7 @@ export const french_bldgs_handmade_data = {
             "IMG_5457~2.jpg",
             "IMG_5448~2.jpg"
         ],
-        priority: 10
+        priority: TITLES_PRIORITY.HIGH
     },
     "452519411": {
         title: 'St. Nicholas \nCathedral',
@@ -99,7 +99,7 @@ export const french_bldgs_handmade_data = {
             "IMG_5541.jpg",
             "IMG_5543~3.jpg"
         ],
-        priority: 9
+        priority: TITLES_PRIORITY.VERY_HIGH
     },
     "469578958": {
         "images": [
@@ -122,7 +122,7 @@ export const french_bldgs_handmade_data = {
             "IMG_9013~2.jpg",
             "IMG_9020~2.jpg"
         ],
-        priority: 11
+        priority: TITLES_PRIORITY.LOW
     },
     "515193502": {
         "images": [
@@ -264,7 +264,7 @@ export const french_bldgs_handmade_data = {
             "IMG_4113~2.jpg",
             "IMG_4125~2.jpg"
         ],
-        priority: 10
+        priority: TITLES_PRIORITY.HIGH
     },
     "777432491": {
         "images": [
@@ -361,7 +361,7 @@ export const french_bldgs_handmade_data = {
             "IMG_20240730_103431_1~4.jpg",
             "IMG_20240730_103646_1~2.jpg"
         ],
-        priority: 10
+        priority: TITLES_PRIORITY.HIGH
     },
     "777439802": {
         "images": [
@@ -792,7 +792,7 @@ export const french_bldgs_handmade_data = {
             "IMG_0737.jpg",
             "IMG_0742.jpg"
         ],
-        priority: 10
+        priority: TITLES_PRIORITY.HIGH
     },
     "1304080964": {
         "images": [
@@ -932,7 +932,7 @@ export const french_bldgs_handmade_data = {
     },
     "543357207": {
         title: 'Bao Dai \nPalace №1',
-        priority: 11
+        priority: TITLES_PRIORITY.LOW
     },
     "1304439965": {
         "images": [

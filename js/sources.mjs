@@ -1,6 +1,7 @@
 import dalatBulkJSON from '../data/static/dalat-bulk-geometry.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 import { all_handmade_data, french_bldgs_handmade_data, land_areas_handmade_data } from '../data/static/handmade_data.mjs'
+import { TITLES_PRIORITY } from './layers/constants.mjs'
 
 
 const get_titles_props = fid => {
@@ -11,7 +12,7 @@ const get_titles_props = fid => {
     if (typeof fdata.priority === 'number') {
         priority = fdata.priority
     } else if (fdata.second_rate) {
-        priority = 12
+        priority = TITLES_PRIORITY.VERY_LOW
     }
 
     return {
