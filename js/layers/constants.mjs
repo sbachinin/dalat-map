@@ -17,11 +17,13 @@ export const TITLES_PRIORITY = {
     VERY_LOW: 12
 }
 
+export const SECONDARY_TITLES_MINZOOM = 15
+
 // provides that normal titles appear early and second_rate only from z15
 export const VARYING_TITLE_OPACITY = [
     "step",
     ["zoom"],
     ["case", ["get", "second_rate"], 0, 1],
-    15,
+    SECONDARY_TITLES_MINZOOM,
     1
 ]

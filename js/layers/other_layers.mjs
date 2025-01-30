@@ -14,10 +14,10 @@ export const city_bulk = {
             "interpolate",
             ["linear"],
             ["zoom"],
-            13.6,  // Zoom level at which opacity should start decreasing
-            1,   // Opacity at zoom level 14
-            14.3,  // Zoom level just above 14
-            0    // Opacity at zoom level 15 and higher
+            13.6,
+            1,
+            14.3,
+            0
         ]
     }
 }
