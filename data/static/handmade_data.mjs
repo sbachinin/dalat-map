@@ -1042,7 +1042,6 @@ export const french_bldgs_handmade_data = {
     },
     "1307259193": {
         "images": [
-            "IMG_1172~3.jpg",
             "IMG_2943~2.jpg",
             "IMG_2950.jpg"
         ]
@@ -1654,6 +1653,11 @@ export const french_bldgs_handmade_data = {
 }
 
 export const non_french_bldgs_handmade_data = {
+    361851700: {
+        title: "Lam Dong\nAdministrative\nCenter",
+        second_rate: true,
+        title_coords: [108.43185217531817, 11.937238686542074]
+    },
     "463866449": {
         title: 'Bus Station'
     },
@@ -1684,6 +1688,15 @@ export const land_areas_handmade_data = {
     1232634198: {
         title: 'Lam Dong \nStadium',
         title_coords: [108.432371, 11.959375]
+    },
+    1086020940: {
+        title: "College",
+        area_type: AREA_TYPES.INSTITUTION,
+        title_coords: [108.42800380452292, 11.938586878593512]
+    },
+    "1355564844": {
+        title: "Military Academy",
+        area_type: AREA_TYPES.INSTITUTION
     },
     361692208: {},
     99660916: {

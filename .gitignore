@@ -1,6 +1,6 @@
 dalat_from_overpass_api.geojson
 dalat_from_overpass_api.osm
-*.geojson
+data/temp/*.geojson
 *.osm
 oldlayers
 __pycache__

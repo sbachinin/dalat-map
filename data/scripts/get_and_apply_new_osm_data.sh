@@ -34,7 +34,16 @@ if [ "$no_download" == false ]; then
 fi
 
 # CONVERT TO GEOJSON
-osmtogeojson ../temp/output.osm >../temp/all.geojson
+osmtogeojson ../temp/output.osm >../temp/from_osm.geojson
+
+
+# merge my custom geojson into osm's geojson,
+# prioritize custom features in case of duplicate ids
+jq -s '{
+  type: "FeatureCollection",
+  features: (map(.features) | add | reverse | unique_by(.id) | reverse)
+}' ../temp/from_osm.geojson ../static/all_custom_features.geojson > ../temp/all.geojson
+
 
 # DROP NON-NUMERIC PART OF FEATURE ID SUCH AS "way/"
 jq '
