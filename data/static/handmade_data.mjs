@@ -451,10 +451,9 @@ export const french_bldgs_handmade_data = {
     },
     "971558882": {
         "images": [
+            "IMG_3592~2.jpg",
             "IMG_1980.jpg",
             "IMG_1999.jpg",
-            "IMG_3576~3.jpg",
-            "IMG_3592~2.jpg",
             "IMG_8096.jpg"
         ]
     },
@@ -1320,7 +1319,7 @@ export const french_bldgs_handmade_data = {
     "1308572398": {
         "images": [
             "IMG_3303~3.jpg",
-            "IMG_3860~3.jpg",
+            // "IMG_3860~3.jpg",
             "IMG_3862~2.jpg",
             "IMG_3904~2.jpg",
             "IMG_3928~2.jpg"
