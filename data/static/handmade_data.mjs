@@ -558,11 +558,11 @@ export const french_bldgs_handmade_data = {
     "971577493": {
         "dead": true,
         "images": [
+            "IMG_9176.jpg",
+            "IMG_9188.jpg",
             "427_2.jpg",
             "IMG_0469~2.jpg",
-            "IMG_0475~2.jpg",
-            "IMG_9176.jpg",
-            "IMG_9188.jpg"
+            // "IMG_0475~2.jpg",
         ]
     },
     "971578055": {

@@ -1,4 +1,3 @@
-import dalatBulkJSON from '../data/static/dalat-bulk-geometry.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 import {
     all_handmade_data,
@@ -89,11 +88,6 @@ export const main_sources = {
         type: 'vector',
         tiles: [`${window.location.origin}/dalat-map-tiles/tiles/{z}/{x}/{y}.pbf`],
         minzoom: 10,
-    },
-    "cityBulk": {
-        "type": "geojson",
-        "data": dalatBulkJSON,
-        maxzoom: 14.3
     },
     land_areas_titles,
     buildings_titles

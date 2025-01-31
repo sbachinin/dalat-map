@@ -4,7 +4,8 @@ import { AREA_TYPES, GRASS_COLOR, INSTITUTION_FILL_COLOR, VARYING_TITLE_OPACITY 
 export const city_bulk = {
     id: 'cityBulk',
     type: 'fill',
-    source: 'cityBulk',
+    source: 'dalat-tiles',
+    "source-layer": 'dalat_bulk_geometry',
     minzoom: 10,
     maxzoom: 14.3,
     paint: {
