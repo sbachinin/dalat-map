@@ -153,6 +153,7 @@ tippecanoe -e ../../dalat-map-tiles/tiles \
   ../temp/lake.geojson \
   ../temp/river.geojson \
   ../temp/land_areas.geojson \
-  ../temp/highway.geojson
+  ../temp/highway.geojson \
+  ../static/dead_buildings.geojson
 
 node save_bldgs_centroids.mjs

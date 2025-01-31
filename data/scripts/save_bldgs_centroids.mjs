@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import * as turf from '@turf/turf'
-import dead_buildings_json from '../static/dead_buildings_json.mjs'
 import { all_handmade_data } from '../static/handmade_data.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -44,11 +43,14 @@ const feature_has_title = f => all_handmade_data[f.id]?.title
 
 
 const alive_french_path = path.join(__dirname, '../temp/french_building.geojson')
-const alive_buildings_data = fs.readFileSync(alive_french_path, 'utf8');
-([
-    ...JSON.parse(alive_buildings_data),
-    ...dead_buildings_json.features
-]).forEach(f => {
+const alive_buildings_json = fs.readFileSync(alive_french_path, 'utf8')
+const dead_french_path = path.join(__dirname, '../static/dead_buildings.geojson')
+const dead_buildings_json = fs.readFileSync(dead_french_path, 'utf8')
+const all_buildings = [
+    ...JSON.parse(alive_buildings_json),
+    ...JSON.parse(dead_buildings_json)
+]
+all_buildings.forEach(f => {
     data[f.id] = {
         centroid: get_centroid(f)
     }
