@@ -1688,10 +1688,23 @@ export const land_areas_handmade_data = {
         title: 'Lam Dong \nStadium',
         title_coords: [108.432371, 11.959375]
     },
+    1355656405: {
+        area_type: AREA_TYPES.INSTITUTION,
+        title: 'Vinh Son Parish',
+        second_rate: true
+    },
+    521598336: {},
+    99660971: {},
+    1355659863: {},
+    1355661170: {},
+    788097430: {},
+    1355662100: {},
+    1355663200: {},
     1086020940: {
         title: "College",
         area_type: AREA_TYPES.INSTITUTION,
-        title_coords: [108.42800380452292, 11.938586878593512]
+        title_coords: [108.42800380452292, 11.938586878593512],
+        second_rate: true
     },
     "1355564844": {
         title: "Military Academy",

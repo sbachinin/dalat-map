@@ -7,7 +7,7 @@ export const addMouseStuff = () => {
     const map = window.dalatmap
 
     map.on('click', (e) => {
-        navigator.clipboard?.writeText?.(
+        navigator?.clipboard?.writeText?.(
             `[${e.lngLat.lng}, ${e.lngLat.lat}]`
             // map.queryRenderedFeatures(e.point)?.[0]?.id
         )
