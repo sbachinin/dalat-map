@@ -6,6 +6,7 @@ oldlayers
 __pycache__
 dalat-map-tiles
 dalat-map-images
+dalat-map-fonts
 myenv
 node_modules
 

@@ -24,5 +24,5 @@ export const style = {
 
     version: 8,
 
-    "glyphs": `${window.location.origin}/fonts/{fontstack}/{range}.pbf`
+    "glyphs": `${window.location.origin}/dalat-map-fonts/{fontstack}/{range}.pbf`
 }
