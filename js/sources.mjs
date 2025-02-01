@@ -93,17 +93,22 @@ export const main_sources = {
     buildings_titles
 }
 
+const is_a_building_with_title = fid => {
+    return Boolean(french_bldgs_handmade_data[fid]?.title)
+    || Boolean(non_french_bldgs_handmade_data[fid]?.title)
+}
+
 export const buildings_centroids_with_titles_source = {
     type: 'geojson',
     data: {
         "type": "FeatureCollection",
-        "features": Object.entries(centroids_etc)
-            .filter(([fid]) => Boolean(all_handmade_data[fid]?.title))
-            .map(([fid, { centroid }]) => ({
+        "features": Object.keys(centroids_etc)
+            .filter(is_a_building_with_title)
+            .map(fid => ({
                 type: "Feature",
                 geometry: {
                     type: "Point",
-                    coordinates: centroid
+                    coordinates: centroids_etc[fid].centroid
                 },
                 properties: get_titles_props(fid)
             }))
