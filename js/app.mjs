@@ -9,7 +9,7 @@ import { create_element_from_Html, get_lnglat_per_px, get_map_center_shift } fro
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
-import { handle_zoom_to_show_in_debug_el } from './_DEV/debug_el.mjs'
+import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { initialize_tiny_squares } from './initialize_tiny_squares.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
@@ -111,7 +111,7 @@ create_scale()
 
 if (window.location.hostname === 'localhost') {
     const script = create_element_from_Html(
-        `<script src="js/_DEV/handle_img_drag.mjs"></script>`)
+        `<script src="js/DEV/handle_img_drag.mjs"></script>`)
     document.body.appendChild(script)
 }
 
