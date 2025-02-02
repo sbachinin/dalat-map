@@ -1652,6 +1652,10 @@ export const french_bldgs_handmade_data = {
 }
 
 export const non_french_bldgs_handmade_data = {
+    1308414641: {
+        title: "Minh Hoa\nseminary",
+        second_rate: true
+    },
     361851700: {
         title: "Lam Dong\nAdministrative\nCenter",
         second_rate: true,
@@ -1680,10 +1684,36 @@ export const non_french_bldgs_handmade_data = {
         title: 'Labor \nCulture House',
         second_rate: true
     },
+    17873628: {
+        title: 'Pontifical College of St. Pius X',
+        second_rate: true
+    },
+    232458166: {
+        title: 'Linh Quang\nPagoda'
+    },
+    361851927: {
+        title: 'Linh Son\nPagoda'
+    },
+    7758125: {
+        title: 'Youth Prison\nmuseum'
+    }
 }
 
 export const land_areas_handmade_data = {
     // !!! empty items are needed here in order to generate land_areas tile layer
+    1356068490: {},
+    1353912255: {
+        title: `Lam Dong\nchildren's hospital`,
+        second_rate: true,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+    473556897: {},
+    473547263: {
+        title: 'Flower garden',
+        second_rate: true
+    },
+    1356150764: {},
+    1356152943: {},
     1232634198: {
         title: 'Lam Dong \nStadium',
         title_coords: [108.432371, 11.959375]
@@ -1693,6 +1723,16 @@ export const land_areas_handmade_data = {
         title: 'Vinh Son Parish',
         second_rate: true
     },
+    99661160: {},
+
+    971585499: {
+        title: "Da Lat Pedagogy College",
+        area_type: AREA_TYPES.INSTITUTION,
+        second_rate: true
+    },
+    99661351: {},
+    1356080427: {},
+    1356080833: {},
     521598336: {},
     99660971: {},
     1355659863: {},
@@ -1742,6 +1782,21 @@ export const land_areas_handmade_data = {
         title: 'Da Lat \nUniversity',
         title_coords: [108.445401, 11.956080],
         area_type: AREA_TYPES.INSTITUTION
+    },
+    521598340: {
+        title: 'Yersin \nUniversity',
+        area_type: AREA_TYPES.INSTITUTION
+    }
+}
+
+export const lakes_handmade_data = {
+    99660972: {
+        title: 'Xuan Huong\nLake',
+        title_coords: [108.44579, 11.94145]
+    },
+    125165263: {
+        title: 'Tuyen Lam Lake',
+        title_coords: [108.42535285552634, 11.893930932153538]
     }
 }
 

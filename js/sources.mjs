@@ -2,6 +2,7 @@ import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 import {
     all_handmade_data,
     french_bldgs_handmade_data,
+    lakes_handmade_data,
     land_areas_handmade_data,
     non_french_bldgs_handmade_data
 } from '../data/static/handmade_data.mjs'
@@ -62,6 +63,25 @@ const land_areas_titles = {
     }
 }
 
+const lakes_titles = {
+    type: 'geojson',
+    data: {
+        "type": "FeatureCollection",
+        "features": Object.keys(lakes_handmade_data).map(fid => {
+            return {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: lakes_handmade_data[fid].title_coords
+                },
+                properties: {
+                    title: lakes_handmade_data[fid].title
+                }
+            }
+        })
+    }
+}
+
 const buildings_titles = {
     type: 'geojson',
     data: {
@@ -90,12 +110,13 @@ export const main_sources = {
         minzoom: 10,
     },
     land_areas_titles,
-    buildings_titles
+    buildings_titles,
+    lakes_titles
 }
 
 const is_a_building_with_title = fid => {
     return Boolean(french_bldgs_handmade_data[fid]?.title)
-    || Boolean(non_french_bldgs_handmade_data[fid]?.title)
+        || Boolean(non_french_bldgs_handmade_data[fid]?.title)
 }
 
 export const buildings_centroids_with_titles_source = {

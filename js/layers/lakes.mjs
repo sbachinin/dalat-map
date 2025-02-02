@@ -1,3 +1,5 @@
+import { PALE_TITLES_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
+
 export default [
     {
         "id": "Primary Water",
@@ -14,4 +16,19 @@ export default [
             ]
         }
     },
+
+    {
+        id: 'Lakes titles',
+        type: 'symbol',
+        "source": "lakes_titles",
+        minzoom: 13, // TODO ok??
+        layout: {
+            "text-field": ["get", "title"],
+            'text-size': PALE_TITLES_SIZE,
+            'text-font': ['Lato Regular']            
+        },
+        paint: {
+            'text-color': PALE_TITLES_COLOR
+        }
+    }
 ]
