@@ -1652,6 +1652,10 @@ export const french_bldgs_handmade_data = {
 }
 
 export const non_french_bldgs_handmade_data = {
+    542728983: {
+        title: 'Chi Lang church',
+        second_rate: true
+    },
     1308414641: {
         title: "Minh Hoa\nseminary",
         second_rate: true
@@ -1663,6 +1667,10 @@ export const non_french_bldgs_handmade_data = {
     },
     "463866449": {
         title: 'Bus Station'
+    },
+    475362782: {
+        title: 'Lam Dong\nLibrary',
+        second_rate: true
     },
     "4119185": {
         title: 'Da Lat Market',
@@ -1706,6 +1714,15 @@ export const non_french_bldgs_handmade_data = {
 export const land_areas_handmade_data = {
     // !!! empty items are needed here in order to generate land_areas tile layer
     1356068490: {},
+    1303695917: {
+        title: "High school\nfor the gifted",
+        area_type: AREA_TYPES.INSTITUTION,
+        second_rate: true
+    },
+    473755163: {
+        title: 'Du Sinh\ncemetery',
+        area_type: AREA_TYPES.CEMETERY
+    },
     1353912255: {
         title: `Lam Dong\nchildren's hospital`,
         second_rate: true,
@@ -1813,6 +1830,14 @@ export const lakes_handmade_data = {
     125165263: {
         title: 'Tuyen Lam Lake',
         title_coords: [108.42535285552634, 11.893930932153538]
+    },
+    141724748: {
+        title: 'Da Thien\nlake',
+        title_coords: [108.45115998514689, 11.982616688724448]
+    },
+    141724891: {
+        title: 'Chien Thang\nlake',
+        title_coords: [108.46564657614073, 11.974080820149084]
     }
 }
 
