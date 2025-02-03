@@ -1696,6 +1696,10 @@ export const non_french_bldgs_handmade_data = {
     },
     7758125: {
         title: 'Youth Prison\nmuseum'
+    },
+    1303678469: {
+        title: 'Don Bosco parish',
+        second_rate: true
     }
 }
 
@@ -1740,6 +1744,12 @@ export const land_areas_handmade_data = {
     788097430: {},
     1355662100: {},
     1355663200: {},
+    473540518: {},
+    1303678437: {
+        title: 'Something\nmilitary',
+        second_rate: true,
+        area_type: AREA_TYPES.INSTITUTION
+    },
     1086020940: {
         title: "College",
         area_type: AREA_TYPES.INSTITUTION,
