@@ -1711,6 +1711,20 @@ export const non_french_bldgs_handmade_data = {
     },
     18645373: {
         title: 'Thien Vuong\nCo Sat\nPagoda'
+    },
+    475362774: {
+        title: 'Radio and\nTV station',
+        second_rate: true
+    },
+    361851706: {
+        title: 'Saigon\nhotel',
+        second_rate: true,
+        title_coords: [108.42945860977937, 11.939266235240353]
+    },
+    1301446697: {
+        title: 'MerPerle\nhotel',
+        second_rate: true,
+        title_coords: [108.45841503948003, 11.941198360637713]
     }
 }
 
