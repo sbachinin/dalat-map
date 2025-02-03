@@ -1,14 +1,12 @@
-import { FIRST_DETAILS_MINZOOM, PALE_TITLES_COLOR } from "./constants.mjs";
+import { FIRST_DETAILS_MINZOOM, PALE_TITLES_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
 
-export const transportation_other = [
+const cable_car_layers = [
     {
         "id": "Cable car",
         type: 'line',
         source: 'dalat-tiles',
         'source-layer': 'transportation_other',
         "layout": {
-            // "line-cap": "round",
-            // "line-join": "round"
         },
         "paint": {
             "line-color": "#6666ff",
@@ -49,8 +47,8 @@ export const transportation_other = [
         "source-layer": "transportation_other",
         "layout": {
             "icon-image": "tiny_non_french_square",
-            "icon-size": 0.6,
-            'icon-allow-overlap': true,            
+            "icon-size": 0.4,
+            'icon-allow-overlap': true,
         },
         "filter": [
             'all',
@@ -58,4 +56,51 @@ export const transportation_other = [
             ["==", ["geometry-type"], "Point"]
         ]
     }
+]
+
+const railway_layers = [
+    {
+        "id": "railway",
+        "type": "line",
+        "source": "dalat-tiles",
+        "source-layer": "railway",
+        "layout": {
+            "line-cap": "round",
+            "line-join": "round"
+        },
+        "paint": {
+            "line-color": "#a58c6f",
+            "line-width": [
+                "interpolate", ["linear"], ["zoom"],
+                10, 1,
+                14, 2,
+                16, 3
+            ],
+        }
+    },
+
+    {
+        id: 'Train station tiny squares with titles',
+        type: 'symbol',
+        source: "dalat-tiles",
+        'source-layer': 'railway',
+        layout: {
+            "text-anchor": "top",
+            "text-offset": [0, 0.2],
+            'text-size': PALE_TITLES_SIZE,
+            'text-font': ['Lato Regular'],
+            'text-field': 'Trai Mat\nstation',
+            "icon-image": "railway_tiny_square",
+            "icon-size": 0.4,
+        },
+        paint: {
+            'text-color': PALE_TITLES_COLOR
+        },
+        "filter": ["==", "$id", 3377406129]  // only Trai Mat
+    }
+]
+
+export const transportation_other = [
+    ...cable_car_layers,
+    ...railway_layers
 ]

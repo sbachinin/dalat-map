@@ -1742,6 +1742,7 @@ export const land_areas_handmade_data = {
         title: 'Truc Lam\nmonastery',
         area_type: AREA_TYPES.INSTITUTION
     },
+    1356337559: {},
     99660971: {},
     1355659863: {},
     1355661170: {},

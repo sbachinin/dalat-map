@@ -77,6 +77,16 @@ jq '
 jq '
   .features | map(
     select(
+      .properties.railway == "rail"
+      or .properties.railway == "station"
+    )
+  )
+' ../temp/filtered.geojson >../temp/railway.geojson
+
+
+jq '
+  .features | map(
+    select(
       .properties.aerialway == "cable_car"
       or .properties.aerialway == "station"
     )
@@ -163,6 +173,7 @@ tippecanoe -e ../../dalat-map-tiles/tiles \
   ../temp/river.geojson \
   ../temp/land_areas.geojson \
   ../temp/highway.geojson \
+  ../temp/railway.geojson \
   ../temp/transportation_other.geojson \
   ../static/dead_buildings.geojson \
   ../static/dalat_bulk_geometry.geojson
