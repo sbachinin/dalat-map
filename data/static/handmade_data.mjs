@@ -1801,7 +1801,8 @@ export const land_areas_handmade_data = {
     521598340: {
         title: 'Yersin \nUniversity',
         area_type: AREA_TYPES.INSTITUTION
-    }
+    },
+    1356369848: {}
 }
 
 export const lakes_handmade_data = {

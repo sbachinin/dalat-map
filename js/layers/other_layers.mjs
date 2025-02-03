@@ -39,7 +39,8 @@ export const land_areas_fill = {
         // 'hsl(70, 30%, 83%)', // ana mandara
 
         'fill-antialias': true,
-    }
+    },
+    filter: ["!=", "$id", 1307493492]
 }
 
 
