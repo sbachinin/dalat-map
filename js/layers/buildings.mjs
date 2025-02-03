@@ -206,7 +206,6 @@ export const shit_buildings_tiny_squares_with_titles = {
         ['==', ['get', 'is_french'], false],
         ['==', ['get', 'second_rate'], false]
     ]
-   
 }
 
 export const buildings_layers = [

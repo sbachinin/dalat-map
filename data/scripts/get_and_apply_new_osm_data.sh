@@ -85,6 +85,11 @@ jq '
 
 
 jq '
+  .features | map(select(.properties.natural == "peak"))
+' ../temp/filtered.geojson >../temp/peaks.geojson
+
+
+jq '
   .features | map(
     select(
       .properties.aerialway == "cable_car"
@@ -174,6 +179,7 @@ tippecanoe -e ../../dalat-map-tiles/tiles \
   ../temp/land_areas.geojson \
   ../temp/highway.geojson \
   ../temp/railway.geojson \
+  ../temp/peaks.geojson \
   ../temp/transportation_other.geojson \
   ../static/dead_buildings.geojson \
   ../static/dalat_bulk_geometry.geojson

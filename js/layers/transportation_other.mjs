@@ -84,6 +84,7 @@ const railway_layers = [
         type: 'symbol',
         source: "dalat-tiles",
         'source-layer': 'railway',
+        minzoom: FIRST_DETAILS_MINZOOM,
         layout: {
             "text-anchor": "top",
             "text-offset": [0, 0.2],
