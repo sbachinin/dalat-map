@@ -200,7 +200,12 @@ export const shit_buildings_tiny_squares_with_titles = {
         ...all_titles_common_props.paint,
         ...shit_titles_common_props.paint
     },
-    filter: ['==', ['get', 'is_french'], false]
+    filter: [
+        "all",
+        ['==', ['get', 'is_french'], false],
+        ['==', ['get', 'second_rate'], false]
+    ]
+   
 }
 
 export const buildings_layers = [
