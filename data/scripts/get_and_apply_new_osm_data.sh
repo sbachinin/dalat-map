@@ -76,6 +76,15 @@ jq '
 
 jq '
   .features | map(
+    select(
+      .properties.aerialway == "cable_car"
+      or .properties.aerialway == "station"
+    )
+  )
+' ../temp/filtered.geojson >../temp/transportation_other.geojson
+
+jq '
+  .features | map(
     select(.properties.natural == "water"
     and (
       .properties.name == "Hồ Xuân Hương"
@@ -154,6 +163,7 @@ tippecanoe -e ../../dalat-map-tiles/tiles \
   ../temp/river.geojson \
   ../temp/land_areas.geojson \
   ../temp/highway.geojson \
+  ../temp/transportation_other.geojson \
   ../static/dead_buildings.geojson \
   ../static/dalat_bulk_geometry.geojson
 

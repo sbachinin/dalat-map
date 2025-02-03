@@ -1,5 +1,6 @@
 import {
     BORING_BLDG_FILL_COLOR,
+    FIRST_DETAILS_MINZOOM,
     FRENCH_BORDER_COLOR,
     FRENCH_FILL_COLOR,
     FRENCH_SELECTED_FILL_COLOR,
@@ -161,7 +162,7 @@ export const shit_buildings_titles = {
 }
 
 const tiny_squares_zoom_levels = {
-    minzoom: 12.2,
+    minzoom: FIRST_DETAILS_MINZOOM,
     maxzoom: french_geometry_minzoom
 }
 

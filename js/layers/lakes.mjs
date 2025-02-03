@@ -21,7 +21,7 @@ export default [
         id: 'Lakes titles',
         type: 'symbol',
         "source": "lakes_titles",
-        minzoom: 13, // TODO ok??
+        minzoom: 12.5,
         layout: {
             "text-field": ["get", "title"],
             'text-size': PALE_TITLES_SIZE,

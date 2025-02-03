@@ -18,6 +18,7 @@ export const TITLES_PRIORITY = {
     VERY_LOW: 12
 }
 
+export const FIRST_DETAILS_MINZOOM = 12.2
 export const SECONDARY_TITLES_MINZOOM = 15
 
 // provides that normal titles appear early and second_rate only from z15
