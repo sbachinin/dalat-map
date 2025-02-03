@@ -60,6 +60,7 @@ jq '
       select(
         .properties.building != null
         and (.properties."building:architecture" != "french_colonial")
+        and (.id != 1275206355)
       )
     )
 ' ../temp/filtered.geojson >../temp/boring_building0.geojson

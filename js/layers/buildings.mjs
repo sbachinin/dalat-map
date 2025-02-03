@@ -27,8 +27,7 @@ export const boring_building_layers = [
                 BORING_BLDG_FILL_COLOR
             ],
             "fill-antialias": true,
-        },
-        filter: ["!=", "name", "Big C"]
+        }
     }
 ]
 

@@ -1708,6 +1708,9 @@ export const non_french_bldgs_handmade_data = {
     1303678469: {
         title: 'Don Bosco parish',
         second_rate: true
+    },
+    18645373: {
+        title: 'Thien Vuong\nCo Sat\nPagoda'
     }
 }
 
@@ -1722,6 +1725,10 @@ export const land_areas_handmade_data = {
     473755163: {
         title: 'Du Sinh\ncemetery',
         area_type: AREA_TYPES.CEMETERY
+    },
+    1303837487: {
+        title: "Lam Vien square",
+        area_type: AREA_TYPES.SQUARE
     },
     1353912255: {
         title: `Lam Dong\nchildren's hospital`,
