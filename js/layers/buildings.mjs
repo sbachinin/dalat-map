@@ -126,7 +126,15 @@ export const all_titles_common_props = {
 
 export const french_titles_common_props = {
     layout: {
-        'text-size': 11,
+        'text-size': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            14,
+            11,
+            17.5,
+            15
+        ],
         'text-font': ['Merriweather Italic']
     },
     paint: {
