@@ -96,8 +96,21 @@ const french_titles_text_color = 'hsl(300, 20%, 20.40%)'
 export const all_titles_common_props = {
     layout: {
         "text-field": ["get", "title"],
-        "text-anchor": "top",
-        "text-offset": [0, 0.2],
+        "text-anchor": ["case",
+            ["==", ["get", "title_side"], "top"],
+            "bottom",
+            ["==", ["get", "title_side"], "right"],
+            'left',
+            "top"
+        ],
+        "text-offset": [
+            "case",
+            ["==", ["get", "title_side"], "top"],
+            ["literal", [0, -0.2]],
+            ["==", ["get", "title_side"], "right"],
+            ["literal", [0.2, 0]],
+            ["literal", [0, 0.2]]
+        ],
         "symbol-sort-key": ["get", "priority"],
     },
     paint: {

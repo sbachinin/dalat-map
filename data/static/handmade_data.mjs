@@ -40,7 +40,7 @@ export const french_bldgs_handmade_data = {
             "IMG_6099~3.jpg",
             "IMG_8948~2.jpg"
         ],
-        title: 'Railway station'
+        title: 'Railway\nstation'
     },
     "17929361": {
         "images": [
@@ -111,13 +111,15 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "407699702": {
-        title: 'Dalat Palace \nHotel',
+        title: 'Dalat\nPalace Hotel',
         "images": [
             "IMG_5439~2.jpg",
             "IMG_5457~2.jpg",
             "IMG_5448~2.jpg"
         ],
-        priority: TITLES_PRIORITY.HIGH
+        priority: TITLES_PRIORITY.HIGH,
+        title_coords: [108.44021450444011, 11.937946013869598],
+        title_side: 'top'
     },
     "452519411": {
         title: 'St. Nicholas \nCathedral',
@@ -151,7 +153,9 @@ export const french_bldgs_handmade_data = {
             "IMG_9013~2.jpg",
             "IMG_9020~2.jpg"
         ],
-        priority: TITLES_PRIORITY.LOW
+        priority: TITLES_PRIORITY.LOW,
+        title_coords: [108.43941017124001, 11.936592586225473],
+        title_side: 'right'
     },
     "515193502": {
         "images": [
@@ -278,7 +282,7 @@ export const french_bldgs_handmade_data = {
         second_rate: true
     },
     "618049072": {
-        title: "Governor's Palace",
+        title: "Governor's\nPalace",
         "images": [
             "IMG_1227~2.jpg",
             "IMG_1248.jpg",
@@ -378,7 +382,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "777438901": {
-        title: 'Bao Dai Palace №2',
+        title: 'Bao Dai\nPalace №2',
         "descr": "One of the 3 palaces of king Bao Dai. (All 3 in Dalat).\nThis on was built in 1933-1937.\nNow it's possibly used as an event space by some bosses of Lam Dong province.\nThe building is massive and rather clumsy and bureaucratic to my taste. One explanation of this is that Palace II was designed as headquarters of the French ruling apparatus in Indochina. (Though this fact comes from a dubious source in the web).\nHowever clumsiness is redeemed by the setting: a vast pine forest on the very top of the hill. A really tranquil and enigmatic place.\nThe palace is well maintained but still shows a bit of historical shabbiness which is nice. At the time of my visit the surrounding area was completely deserted.\nAccess seems to be unrestricted, I just walked through the entrance from the south. (Not from main street).",
         "images": [
             "IMG_6864~3.jpg",
@@ -959,7 +963,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "543357207": {
-        title: 'Bao Dai \nPalace №1',
+        title: 'Bao Dai\nPalace №1',
         priority: TITLES_PRIORITY.LOW
     },
     "1304439965": {
@@ -1026,7 +1030,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "463866431": {
-        title: 'Bao Dai Palace №3',
+        title: 'Bao Dai\nPalace №3',
     },
     "1305703497": {
         "images": [
@@ -1645,7 +1649,7 @@ export const french_bldgs_handmade_data = {
         images: []
     },
     "1238335794": {
-        title: "Nguyen Viet Xuan Palace",
+        title: "Nguyen Viet\nXuan Palace",
         second_rate: true,
         images: []
     }
@@ -1673,7 +1677,7 @@ export const non_french_bldgs_handmade_data = {
         second_rate: true
     },
     "4119185": {
-        title: 'Da Lat Market',
+        title: 'Da Lat\nMarket',
         title_coords: [108.4373759000099, 11.943643357953377]
     },
     525191979: {
@@ -1682,10 +1686,10 @@ export const non_french_bldgs_handmade_data = {
         second_rate: true
     },
     1244767000: {
-        title: 'Nguyen Huu \nHao Tomb'
+        title: 'Nguyen Huu\nHao Tomb'
     },
     1305230699: {
-        title: '"Madame \nde Dalat"',
+        title: '"Madame\nde Dalat"',
         subtitle: 'Vietnamese modernist villa'
     },
     515288597: {
