@@ -91,7 +91,7 @@ const french_has_details_outline = {
     },
 }
 
-const french_titles_text_color = 'hsl(300, 20%, 20.40%)'
+const french_titles_text_color = 'hsl(300, 20%, 25.40%)'
 
 export const all_titles_common_props = {
     layout: {
@@ -120,8 +120,8 @@ export const all_titles_common_props = {
 
 export const french_titles_common_props = {
     layout: {
-        'text-size': 12,
-        'text-font': ['Libre Bodoni Italic']
+        'text-size': 11,
+        'text-font': ['Merriweather Italic']
     },
     paint: {
         'text-color': french_titles_text_color
