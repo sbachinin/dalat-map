@@ -1,4 +1,4 @@
-import { FIRST_DETAILS_MINZOOM, PALE_TITLES_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
+import { FIRST_DETAILS_MINZOOM, PALE_TITLES_COLOR, PALE_TITLES_SIZE, RAILWAY_LINE_COLOR } from "./constants.mjs";
 
 const cable_car_layers = [
     {
@@ -69,7 +69,7 @@ const railway_layers = [
             "line-join": "round"
         },
         "paint": {
-            "line-color": "#a58c6f",
+            "line-color": RAILWAY_LINE_COLOR,
             "line-width": [
                 "interpolate", ["linear"], ["zoom"],
                 10, 1,

@@ -1,17 +1,5 @@
-import {
-    BORING_BLDG_FILL_COLOR,
-    CITY_BULK_DISAPPEARANCE_ZOOM,
-    DARKER_FRENCH_FILL_COLOR,
-    FIRST_DETAILS_MINZOOM,
-    FRENCH_BORDER_COLOR,
-    FRENCH_FILL_COLOR,
-    FRENCH_SELECTED_FILL_COLOR,
-    IMPORTANT_BORING_BLDG_FILL_COLOR,
-    PALE_TITLES_COLOR, PALE_TITLES_SIZE,
-    VARYING_TITLE_OPACITY
-} from "./constants.mjs"
+import * as c from "./constants.mjs"
 
-const french_geometry_minzoom = 13.3
 
 export const boring_building_layers = [
 
@@ -25,8 +13,8 @@ export const boring_building_layers = [
             "fill-color": [
                 "case",
                 ["boolean", ["get", "has_title"], false],
-                IMPORTANT_BORING_BLDG_FILL_COLOR,
-                BORING_BLDG_FILL_COLOR
+                c.IMPORTANT_BORING_BLDG_FILL_COLOR,
+                c.BORING_BLDG_FILL_COLOR
             ],
             "fill-antialias": true,
         }
@@ -38,20 +26,20 @@ const french_building_fill = {
     "type": "fill",
     "source": "dalat-tiles",
     "source-layer": "french_building",
-    "minzoom": french_geometry_minzoom,
+    "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
     "paint": {
         "fill-color": [
             "interpolate",
             ["linear"],
             ["zoom"],
-            french_geometry_minzoom,
-            DARKER_FRENCH_FILL_COLOR,
-            CITY_BULK_DISAPPEARANCE_ZOOM,
+            c.FRENCH_GEOMETRY_MINZOOM,
+            c.DARKER_FRENCH_FILL_COLOR,
+            c.CITY_BULK_DISAPPEARANCE_ZOOM,
             [
                 'case',
                 ['==', ['feature-state', 'selected'], true],
-                FRENCH_SELECTED_FILL_COLOR,
-                FRENCH_FILL_COLOR
+                c.FRENCH_SELECTED_FILL_COLOR,
+                c.FRENCH_FILL_COLOR
             ]
         ],
         "fill-antialias": true
@@ -63,24 +51,24 @@ const french_thickening_outline = {
     'type': 'line',
     "source": "dalat-tiles",
     "source-layer": "french_building",
-    "minzoom": french_geometry_minzoom,
+    "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
     'paint': {
         'line-color': [
             "interpolate",
             ["linear"],
             ["zoom"],
-            french_geometry_minzoom - 1, // when french just appear, a slightly darker border makes them more substantial
-            DARKER_FRENCH_FILL_COLOR,
-            CITY_BULK_DISAPPEARANCE_ZOOM,
-            FRENCH_FILL_COLOR
+            c.FRENCH_GEOMETRY_MINZOOM - 1, // when french just appear, a slightly darker border makes them more substantial
+            c.DARKER_FRENCH_FILL_COLOR,
+            c.CITY_BULK_DISAPPEARANCE_ZOOM,
+            c.FRENCH_FILL_COLOR
         ],
         'line-width': [
             "interpolate",
             ["linear"],
             ["zoom"],
-            french_geometry_minzoom,  // Zoom level at which line-width should start decreasing
-            1,   // line-width at french_geometry_minzoom
-            16,  // Zoom level just above french_geometry_minzoom
+            c.FRENCH_GEOMETRY_MINZOOM,  // Zoom level at which line-width should start decreasing
+            1,   // line-width at FRENCH_GEOMETRY_MINZOOM
+            16,  // Zoom level just above FRENCH_GEOMETRY_MINZOOM
             0    // line-width at zoom level 15 and higher
         ]
     },
@@ -96,7 +84,7 @@ const french_has_details_outline = {
         'line-color': [
             'case',
             ['boolean', ['feature-state', 'hasDetails'], false],
-            FRENCH_BORDER_COLOR,
+            c.FRENCH_BORDER_COLOR,
             'transparent',
         ],
         'line-width': [
@@ -132,7 +120,7 @@ export const all_titles_common_props = {
         "symbol-sort-key": ["get", "priority"],
     },
     paint: {
-        "text-opacity": VARYING_TITLE_OPACITY
+        "text-opacity": c.VARYING_TITLE_OPACITY
     }
 }
 
@@ -148,11 +136,11 @@ export const french_titles_common_props = {
 
 export const shit_titles_common_props = {
     layout: {
-        'text-size': PALE_TITLES_SIZE,
+        'text-size': c.PALE_TITLES_SIZE,
         'text-font': ['Lato Regular']
     },
     paint: {
-        'text-color': PALE_TITLES_COLOR
+        'text-color': c.PALE_TITLES_COLOR
     }
 }
 
@@ -162,7 +150,7 @@ export const french_buildings_titles = {
     "id": "French buildings titles",
     "type": "symbol",
     "source": "buildings_titles",
-    minzoom: french_geometry_minzoom,
+    minzoom: c.FRENCH_GEOMETRY_MINZOOM,
     layout: {
         ...all_titles_common_props.layout,
         'text-size': french_titles_common_props.layout['text-size'],
@@ -179,7 +167,7 @@ export const shit_buildings_titles = {
     "id": "Shit buildings titles",
     "type": "symbol",
     "source": "buildings_titles",
-    minzoom: french_geometry_minzoom,
+    minzoom: c.FRENCH_GEOMETRY_MINZOOM,
     layout: {
         ...all_titles_common_props.layout,
         ...shit_titles_common_props.layout
@@ -192,8 +180,8 @@ export const shit_buildings_titles = {
 }
 
 const tiny_squares_zoom_levels = {
-    minzoom: FIRST_DETAILS_MINZOOM,
-    maxzoom: french_geometry_minzoom
+    minzoom: c.FIRST_DETAILS_MINZOOM,
+    maxzoom: c.FRENCH_GEOMETRY_MINZOOM
 }
 
 

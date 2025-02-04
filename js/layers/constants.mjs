@@ -17,6 +17,8 @@ export const GRASS_COLOR = 'hsl(70, 50%, 70%)'
 export const INSTITUTION_FILL_COLOR = 'hsl(164, 20.30%, 85.00%)'
 export const CEMETERY_FILL_COLOR = 'hsl(0, 0.00%, 88.20%)'
 export const SQUARE_FILL_COLOR = 'hsl(54, 80.10%, 87.00%)'
+export const RAILWAY_LINE_COLOR = "hsl(24, 34%, 54%)"
+
 
 export const CITY_BULK_FULL_OPACITY_MAXZOOM = 12
 export const CITY_BULK_DISAPPEARANCE_ZOOM = 14
@@ -34,6 +36,8 @@ export const TITLES_PRIORITY = {
 }
 
 export const FIRST_DETAILS_MINZOOM = 12.2
+export const FRENCH_GEOMETRY_MINZOOM = 13.3
+
 export const SECONDARY_TITLES_MINZOOM = 15
 
 // provides that normal titles appear early and second_rate only from z15
