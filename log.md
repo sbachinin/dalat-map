@@ -7,6 +7,33 @@ CRITICAL
                     copying via terminal breaks crlf:
                         cp -r js /mnt/c/Users/Admin/projects/dalat-map
 
+Lake and waterfall titles
+Titles can get bigger on > z
+distinguish peaks
+
+
+dont' tile ana mandara
+anything around trac mai?
+
+push all repos
+transfer log
+open in mobile
+
+default low priority for all non-french?
+default high for all french
+
+sort out highways
+    remove unused props from json
+
+show french with question
+
+in landcape desktop, slider gives too enlarged images
+
+
+
+// TODO. merge was destructive at some point.
+// In the end i need to compare details object with imgs in folders
+
 
 
 check adequacy of full_size_promise
@@ -32,11 +59,6 @@ need to organize photos, the workflow
     also in wsl dalat-map-images repo was deleted and clone failed, hopefully just because of bad connection
 
 
-
-
-    disable map rotation?
-        (i guess it won't play well with map limits
-        + can be problems with offset)
 
     is ml version fixed?
 

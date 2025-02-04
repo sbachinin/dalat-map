@@ -1,4 +1,4 @@
-import { FIRST_DETAILS_MINZOOM, PALE_TITLES_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
+import { FIRST_DETAILS_MINZOOM, LAKE_TITLE_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
 
 export default [
     {
@@ -68,6 +68,6 @@ export const datanla_waterfall_layer = {
         "text-allow-overlap": true,
     },
     paint: {
-        'text-color': PALE_TITLES_COLOR
+        'text-color': LAKE_TITLE_COLOR
     },
 }

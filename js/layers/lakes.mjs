@@ -1,4 +1,4 @@
-import { PALE_TITLES_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
+import { BRIGHT_LAKE_COLOR, LAKE_TITLE_COLOR, PALE_LAKE_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
 
 export default [
     {
@@ -11,8 +11,8 @@ export default [
                 "interpolate",
                 ["linear", 2],
                 ["zoom"],
-                10, 'hsl(193.5, 100%, 62.4%)',
-                13.7, 'hsl(193.5, 70%, 75%)',
+                10, BRIGHT_LAKE_COLOR,
+                13.7, PALE_LAKE_COLOR,
             ]
         }
     },
@@ -28,7 +28,7 @@ export default [
             'text-font': ['Lato Regular']            
         },
         paint: {
-            'text-color': PALE_TITLES_COLOR
+            'text-color': LAKE_TITLE_COLOR
         }
     }
 ]

@@ -1,5 +1,5 @@
 import { all_titles_common_props, shit_titles_common_props } from "./buildings.mjs"
-import { AREA_TYPES, CEMETERY_FILL_COLOR, FIRST_DETAILS_MINZOOM, GRASS_COLOR, INSTITUTION_FILL_COLOR, PALE_TITLES_COLOR, PALE_TITLES_SIZE, SQUARE_FILL_COLOR, VARYING_TITLE_OPACITY } from "./constants.mjs"
+import { AREA_TYPES, CEMETERY_FILL_COLOR, FIRST_DETAILS_MINZOOM, GRASS_COLOR, INSTITUTION_FILL_COLOR, PALE_TITLES_COLOR, PALE_TITLES_SIZE, PEAK_TTTLE_COLOR, SQUARE_FILL_COLOR, VARYING_TITLE_OPACITY } from "./constants.mjs"
 
 export const city_bulk = {
     id: 'cityBulk',
@@ -81,6 +81,6 @@ export const peaks_triangles_with_titles = {
         "icon-size": 0.01,
     },
     paint: {
-        'text-color': PALE_TITLES_COLOR
+        'text-color': PEAK_TTTLE_COLOR
     }
 }
