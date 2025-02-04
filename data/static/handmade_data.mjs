@@ -1731,6 +1731,7 @@ export const non_french_bldgs_handmade_data = {
 export const land_areas_handmade_data = {
     // !!! empty items are needed here in order to generate land_areas tile layer
     1356068490: {},
+    1356539899: {},
     1303695917: {
         title: "High school\nfor the gifted",
         area_type: AREA_TYPES.INSTITUTION,

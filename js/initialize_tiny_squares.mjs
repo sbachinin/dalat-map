@@ -1,6 +1,7 @@
 import { french_buildings_tiny_squares_with_titles, shit_buildings_tiny_squares_with_titles } from "./layers/buildings.mjs"
+import { datanla_waterfall_layer } from "./layers/rivers.mjs"
 import { buildings_centroids_with_titles_source } from "./sources.mjs"
-import { get_image_url } from "./utils.mjs"
+import { get_geojson_source, get_image_url } from "./utils.mjs"
 
 const loadImageAsync = url => {
     return new Promise((resolve) => {
@@ -20,6 +21,16 @@ export const initialize_tiny_squares = async () => {
     window.dalatmap.addImage('railway_tiny_square', image3.data)
     window.dalatmap.addImage('peak_triangle', image4.data)
     window.dalatmap.addSource('buildings_tiny_squares', buildings_centroids_with_titles_source)
+    window.dalatmap.addSource('datanla_waterfall', get_geojson_source(
+        [{
+            type: "Feature",
+            geometry: {
+                type: "Point",
+                coordinates: [108.4488444, 11.9011774]
+            }
+        }]
+    ))
     window.dalatmap.addLayer(french_buildings_tiny_squares_with_titles)
     window.dalatmap.addLayer(shit_buildings_tiny_squares_with_titles)
+    window.dalatmap.addLayer(datanla_waterfall_layer)
 }

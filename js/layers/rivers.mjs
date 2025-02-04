@@ -1,3 +1,5 @@
+import { FIRST_DETAILS_MINZOOM, PALE_TITLES_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
+
 export default [
     {
         id: "River Cam Ly",
@@ -47,3 +49,25 @@ export default [
         "filter": ['!=', 'name', 'Suối Cam Ly']
     }
 ]
+
+export const datanla_waterfall_layer = {
+    id: "Datanla waterfall",
+    type: 'symbol',
+    source: 'datanla_waterfall',
+    minzoom: FIRST_DETAILS_MINZOOM,
+    layout: {
+        "icon-image": "tiny_non_french_square",
+        "icon-size": 0.4,
+        "text-field": "Datanla\nwaterfall",
+        "text-anchor": "top",
+        "text-offset": [0, 0.2],
+        'text-size': PALE_TITLES_SIZE,
+        'text-font': ['Lato Regular'],
+        "symbol-sort-key": 1,
+        "icon-allow-overlap": true,
+        "text-allow-overlap": true,
+    },
+    paint: {
+        'text-color': PALE_TITLES_COLOR
+    },
+}

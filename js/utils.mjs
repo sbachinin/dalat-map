@@ -133,3 +133,13 @@ export const add_disposable_transitionend_handler = (el, fn) => {
     }
     el.addEventListener('transitionend', handle_transition_end)
 }
+
+export const get_geojson_source = (features) => {
+    return {
+        type: "geojson",
+        data: {
+            "type": "FeatureCollection",
+            features
+        }
+    }
+}
