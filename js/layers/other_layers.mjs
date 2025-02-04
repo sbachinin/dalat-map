@@ -23,6 +23,27 @@ export const city_bulk = {
     }
 }
 
+export const city_bulk_border = {
+    id: 'cityBulk border',
+    type: 'line',
+    source: 'dalat-tiles',
+    "source-layer": 'dalat_bulk_geometry',
+    paint: {
+        'line-color': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            CITY_BULK_FULL_OPACITY_MAXZOOM,
+            'RGB(237, 195, 180)',
+            13.475,
+            '#FAEFEB'
+        ],
+        'line-width': 10
+    }
+}
+
+
+
 export const land_areas_fill = {
     id: 'Land areas fill',
     type: 'fill',
