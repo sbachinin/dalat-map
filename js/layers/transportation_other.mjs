@@ -76,7 +76,8 @@ const railway_layers = [
                 14, 2,
                 16, 3
             ],
-        }
+        },
+        filter: ["==", ["get", "railway"], "rail"]
     },
 
     {

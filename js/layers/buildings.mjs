@@ -1,5 +1,7 @@
 import {
     BORING_BLDG_FILL_COLOR,
+    CITY_BULK_DISAPPEARANCE_ZOOM,
+    DARKER_FRENCH_FILL_COLOR,
     FIRST_DETAILS_MINZOOM,
     FRENCH_BORDER_COLOR,
     FRENCH_FILL_COLOR,
@@ -39,10 +41,18 @@ const french_building_fill = {
     "minzoom": french_geometry_minzoom,
     "paint": {
         "fill-color": [
-            'case',
-            ['==', ['feature-state', 'selected'], true],
-            FRENCH_SELECTED_FILL_COLOR,
-            FRENCH_FILL_COLOR,
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            french_geometry_minzoom,
+            DARKER_FRENCH_FILL_COLOR,
+            CITY_BULK_DISAPPEARANCE_ZOOM,
+            [
+                'case',
+                ['==', ['feature-state', 'selected'], true],
+                FRENCH_SELECTED_FILL_COLOR,
+                FRENCH_FILL_COLOR
+            ]
         ],
         "fill-antialias": true
     },
@@ -55,7 +65,15 @@ const french_thickening_outline = {
     "source-layer": "french_building",
     "minzoom": french_geometry_minzoom,
     'paint': {
-        'line-color': FRENCH_FILL_COLOR,
+        'line-color': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            french_geometry_minzoom - 1, // when french just appear, a slightly darker border makes them more substantial
+            DARKER_FRENCH_FILL_COLOR,
+            CITY_BULK_DISAPPEARANCE_ZOOM,
+            FRENCH_FILL_COLOR
+        ],
         'line-width': [
             "interpolate",
             ["linear"],

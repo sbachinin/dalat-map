@@ -1,5 +1,5 @@
 import { all_titles_common_props, shit_titles_common_props } from "./buildings.mjs"
-import { AREA_TYPES, CEMETERY_FILL_COLOR, FIRST_DETAILS_MINZOOM, GRASS_COLOR, INSTITUTION_FILL_COLOR, PALE_TITLES_COLOR, PALE_TITLES_SIZE, PEAK_TTTLE_COLOR, SQUARE_FILL_COLOR, VARYING_TITLE_OPACITY } from "./constants.mjs"
+import { AREA_TYPES, CEMETERY_FILL_COLOR, CITY_BULK_DISAPPEARANCE_ZOOM, CITY_BULK_FULL_OPACITY_MAXZOOM, FIRST_DETAILS_MINZOOM, GRASS_COLOR, INSTITUTION_FILL_COLOR, PALE_TITLES_SIZE, PEAK_TTTLE_COLOR, SQUARE_FILL_COLOR, VARYING_TITLE_OPACITY } from "./constants.mjs"
 
 export const city_bulk = {
     id: 'cityBulk',
@@ -15,9 +15,9 @@ export const city_bulk = {
             "interpolate",
             ["linear"],
             ["zoom"],
-            13.6,
+            CITY_BULK_FULL_OPACITY_MAXZOOM,
             1,
-            14.3,
+            CITY_BULK_DISAPPEARANCE_ZOOM,
             0
         ]
     }
