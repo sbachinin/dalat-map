@@ -94,6 +94,7 @@ const buildings_titles = {
             .map(fid => {
                 return {
                     type: "Feature",
+                    id: fid,
                     geometry: {
                         type: "Point",
                         coordinates: get_title_final_coords(fid)
@@ -128,6 +129,7 @@ export const buildings_centroids_with_titles_source = {
             .filter(is_a_building_with_title)
             .map(fid => ({
                 type: "Feature",
+                id: fid,
                 geometry: {
                     type: "Point",
                     coordinates: centroids_etc[fid].centroid

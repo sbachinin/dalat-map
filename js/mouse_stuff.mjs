@@ -6,29 +6,35 @@ import { building_has_details, try_open_building } from './bldg_details.mjs'
 export const addMouseStuff = () => {
     const map = window.dalatmap
 
+    const clickable_layers = ['French building',
+        'Dead building fill',
+        'French buildings titles',
+        'French buildings tiny squares with titles'
+    ]
+
     map.on('click', (e) => {
-        navigator?.clipboard?.writeText?.(
-            `[${e.lngLat.lng}, ${e.lngLat.lat}]`
-            // map.queryRenderedFeatures(e.point)?.[0]?.id
-        )
-        const maybeFrenchBuilding = map.queryRenderedFeatures(e.point)
-            .find(f => f.layer.id === 'French building'
-                || f.layer.id === 'Dead building fill'
-            )
-        if (!maybeFrenchBuilding) {
+        // navigator?.clipboard?.writeText?.(
+        //     `[${e.lngLat.lng}, ${e.lngLat.lat}]`
+        //     // map.queryRenderedFeatures(e.point)?.[0]?.id
+        // )
+        const rfs = map.queryRenderedFeatures(e.point)
+        const clicked_french_polygon = rfs.find(f => (
+            clickable_layers.includes(f.layer.id)
+        ))
+        if (clicked_french_polygon) {
+            try_open_building(clicked_french_polygon.id, true, true)
+        } else {
             panel.set_size(0)
-            return
         }
-        try_open_building(maybeFrenchBuilding.id, true, true)
     })
 
     // ADD & REMOVE CURSOR POINTER ON BUILDINGS WITH DETAILS
-    const clickable_layers = ['French building', 'Dead building fill']
     clickable_layers.forEach(layer => {
         map.on('mousemove', layer, (e) => {
             if (e.features.length === 0) return
             if (map.getZoom() < 15.5) return
-            if (!building_has_details(all_handmade_data[e.features[0].id])) return
+            const fid = all_handmade_data[e.features[0].id]
+            if (!building_has_details(fid)) return
             map.getCanvas().style.cursor = 'pointer'
         })
         map.on('mouseleave', layer, () => {

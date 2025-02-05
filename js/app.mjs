@@ -14,6 +14,8 @@ import { initialize_tiny_squares } from './initialize_tiny_squares.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
+const DEV_should_open_panel = true
+
 // Return [lng, lat] or null
 const get_center_for_building = (id) => {
     const cntrd = centroids_etc[id]?.centroid
@@ -79,10 +81,12 @@ initialize_tiny_squares()
 map.on('load', async () => {
     add_dead_buildings(map)
 
-    if (initial_bldg_id !== null) {
-        try_open_building(initial_bldg_id, false, false)
-    } else {
-        display_highlights()
+    if (DEV_should_open_panel) {
+        if (initial_bldg_id !== null) {
+            try_open_building(initial_bldg_id, false, false)
+        } else {
+            display_highlights()
+        }
     }
 
     await panel.full_size_promise
