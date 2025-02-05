@@ -61,7 +61,7 @@ export const try_open_building = async (
     if (coords_are_in_view(feature_screen_xy)) return
     window.dalatmap.easeTo({
         center: feature_center_arr,
-        zoom: Math.max(window.dalatmap.getZoom(), 15),
+        // zoom: Math.max(window.dalatmap.getZoom(), 15),
         offset: get_map_center_shift()
     })
 }
