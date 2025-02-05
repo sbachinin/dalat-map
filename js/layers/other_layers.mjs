@@ -105,7 +105,8 @@ export const land_areas_titles = {
         ...all_titles_common_props.paint,
         ...shit_titles_common_props.paint,
         "text-opacity": VARYING_TITLE_OPACITY
-    }
+    },
+    "filter": [">=", ["zoom"], ["coalesce", ["get", "minzoom"], 0]]
 }
 
 export const peaks_triangles_with_titles = {

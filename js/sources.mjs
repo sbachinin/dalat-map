@@ -25,7 +25,8 @@ const get_titles_props = fid => {
         priority,
         second_rate: !!fdata.second_rate,
         is_french: !!french_bldgs_handmade_data[fid],
-        title_side: all_handmade_data[fid].title_side
+        title_side: all_handmade_data[fid].title_side,
+        minzoom: all_handmade_data[fid].minzoom
     }
 }
 

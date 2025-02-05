@@ -1748,8 +1748,9 @@ export const land_areas_handmade_data = {
         area_type: AREA_TYPES.CEMETERY
     },
     1303837487: {
-        title: "Lam Vien square",
-        area_type: AREA_TYPES.SQUARE
+        title: "Lam Vien\nsquare",
+        area_type: AREA_TYPES.SQUARE,
+        minzoom: 14
     },
     1353912255: {
         title: `Lam Dong\nchildren's hospital`,
@@ -1853,7 +1854,7 @@ export const land_areas_handmade_data = {
 export const lakes_handmade_data = {
     99660972: {
         title: 'Xuan Huong\nLake',
-        title_coords: [108.44579, 11.94145]
+        title_coords: [108.44589, 11.94145]
     },
     125165263: {
         title: 'Tuyen Lam Lake',
