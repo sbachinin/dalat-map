@@ -1,8 +1,13 @@
 export const FRENCH_SELECTED_FILL_COLOR = 'hsl(42, 97.80%, 53.50%)'
+
+// TODO this one is actually outdated, purplish
+export const FRENCH_TITLES_TEXT_COLOR = 'hsl(300, 20%, 25.40%)'
+
 export const FRENCH_SELECTED_TITLE_HALO_COLOR = 'hsl(44, 98%, 77%)'
 export const DARKER_FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 87.50%)'
 export const FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 63.50%)'
-export const FRENCH_BORDER_COLOR = 'hsl(340, 35.30%, 35.00%)'
+export const FRENCH_DARK_BORDER_COLOR = 'hsl(340, 35.30%, 35.00%)'
+export const FRENCH_LIGHTER_BORDER_COLOR = 'hsl(340, 0%, 50.00%)'
 export const BORING_BLDG_FILL_COLOR = 'hsl(43, 15%, 90%)'
 export const IMPORTANT_BORING_BLDG_FILL_COLOR = 'hsl(55, 30%, 75%)'
 
@@ -17,7 +22,7 @@ export const PALE_TITLES_SIZE = 11
 export const GRASS_COLOR = 'hsl(70, 50%, 70%)'
 export const INSTITUTION_FILL_COLOR = 'hsl(164, 20.30%, 85.00%)'
 export const CEMETERY_FILL_COLOR = 'hsl(0, 0.00%, 88.20%)'
-export const SQUARE_FILL_COLOR = 'hsl(54, 80.10%, 87.00%)'
+export const SQUARE_FILL_COLOR = 'hsl(308, 69.10%, 92.90%)'
 export const RAILWAY_LINE_COLOR = "hsl(24, 34%, 54%)"
 
 

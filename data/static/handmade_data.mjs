@@ -1651,7 +1651,9 @@ export const french_bldgs_handmade_data = {
     "1238335794": {
         title: "Nguyen Viet\nXuan Palace",
         second_rate: true,
-        images: []
+        images: [],
+        title_coords: [108.42982046800888, 11.934000182972318],
+        title_side: 'right'
     }
 }
 

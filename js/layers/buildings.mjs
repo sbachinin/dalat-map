@@ -29,18 +29,10 @@ const french_building_fill = {
     "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
     "paint": {
         "fill-color": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            c.FRENCH_GEOMETRY_MINZOOM,
-            c.DARKER_FRENCH_FILL_COLOR,
-            c.CITY_BULK_DISAPPEARANCE_ZOOM,
-            [
-                'case',
-                ['==', ['feature-state', 'selected'], true],
-                c.FRENCH_SELECTED_FILL_COLOR,
-                c.FRENCH_FILL_COLOR
-            ]
+            'case',
+            ['==', ['feature-state', 'selected'], true],
+            c.FRENCH_SELECTED_FILL_COLOR,
+            c.FRENCH_FILL_COLOR
         ],
         "fill-antialias": true
     },
@@ -53,7 +45,7 @@ const french_thickening_outline = {
     "source-layer": "french_building",
     "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
     'paint': {
-        'line-color': [
+        'line-color': c.FRENCH_FILL_COLOR, /* [
             "interpolate",
             ["linear"],
             ["zoom"],
@@ -61,7 +53,7 @@ const french_thickening_outline = {
             c.DARKER_FRENCH_FILL_COLOR,
             c.CITY_BULK_DISAPPEARANCE_ZOOM,
             c.FRENCH_FILL_COLOR
-        ],
+        ], */
         'line-width': [
             "interpolate",
             ["linear"],
@@ -74,30 +66,30 @@ const french_thickening_outline = {
     },
 }
 
+// TODO maybe rename; it's just a border; it can be a replacement for thickening 
 const french_has_details_outline = {
     'id': 'French has-details outline',
     'type': 'line',
     "source": "dalat-tiles",
     "source-layer": "french_building",
-    "minzoom": 14,
+    "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
     'paint': {
-        'line-color': [
-            'case',
-            ['boolean', ['feature-state', 'hasDetails'], false],
-            c.FRENCH_BORDER_COLOR,
-            'transparent',
-        ],
+        'line-color': c.FRENCH_DARK_BORDER_COLOR,
         'line-width': [
             "interpolate",
             ["linear", 2],
             ["zoom"],
             14, 0.5,
-            15.5, 2
+            15.5, [
+                'case',
+                ['boolean', ['feature-state', 'hasDetails'], false],
+                2,
+                0.5 // no-details border will remain narrow
+            ]
         ]
     },
 }
 
-const french_titles_text_color = 'hsl(300, 20%, 25.40%)'
 
 export const all_titles_common_props = {
     layout: {
@@ -138,7 +130,7 @@ export const french_titles_common_props = {
         'text-font': ['Merriweather Italic']
     },
     paint: {
-        'text-color': french_titles_text_color
+        'text-color': c.FRENCH_TITLES_TEXT_COLOR
     }
 }
 
