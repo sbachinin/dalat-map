@@ -282,7 +282,7 @@ export const french_bldgs_handmade_data = {
         second_rate: true
     },
     "618049072": {
-        title: "Governor's\nPalace",
+        title: "Governor's Palace",
         "images": [
             "IMG_1227~2.jpg",
             "IMG_1248.jpg",

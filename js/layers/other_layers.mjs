@@ -1,7 +1,10 @@
 import { all_titles_common_props, shit_titles_common_props } from "./buildings.mjs"
 import { AREA_TYPES, CEMETERY_FILL_COLOR, CITY_BULK_DISAPPEARANCE_ZOOM, CITY_BULK_FULL_OPACITY_MAXZOOM, FIRST_DETAILS_MINZOOM, GRASS_COLOR, INSTITUTION_FILL_COLOR, PALE_TITLES_SIZE, PEAK_TTTLE_COLOR, SQUARE_FILL_COLOR, VARYING_TITLE_OPACITY } from "./constants.mjs"
 
-export const city_bulk = {
+const CITY_BULK_FULL_COLOR = 'hsl(16, 66%, 82%)'
+const CITY_BULK_TITLE_COLOR = 'hsl(16, 66%, 70%)'
+
+export const city_bulk_fill = {
     id: 'cityBulk',
     type: 'fill',
     source: 'dalat-tiles',
@@ -9,7 +12,7 @@ export const city_bulk = {
     minzoom: 10,
     maxzoom: 14.3,
     paint: {
-        'fill-color': 'RGB(237, 195, 180)',
+        'fill-color': CITY_BULK_FULL_COLOR,
         'fill-antialias': true,
         "fill-opacity": [
             "interpolate",
@@ -34,7 +37,7 @@ export const city_bulk_border = {
             ["linear"],
             ["zoom"],
             CITY_BULK_FULL_OPACITY_MAXZOOM,
-            'RGB(237, 195, 180)',
+            CITY_BULK_FULL_COLOR,
             13.475,
             '#FAEFEB'
         ],
@@ -43,6 +46,25 @@ export const city_bulk_border = {
 }
 
 
+export const city_bulk_title = {
+    id: 'cityBulk title',
+    type: 'symbol',
+    source: 'dalat-tiles',
+    "source-layer": 'dalat_bulk_geometry_as_linestring',
+    minzoom: 14.2,
+    layout: {
+        'text-field': 'Approximate residential limits of Dalat',
+        'text-size': PALE_TITLES_SIZE,
+        'text-font': ['Lato Regular'],
+        'symbol-placement': 'line',
+        "symbol-spacing": 300,
+        "text-offset": [0, 1],
+        "text-letter-spacing": 0.1
+    },
+    paint: {
+        'text-color': CITY_BULK_TITLE_COLOR
+    }
+}
 
 export const land_areas_fill = {
     id: 'Land areas fill',
