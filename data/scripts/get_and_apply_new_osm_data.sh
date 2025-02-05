@@ -37,6 +37,17 @@ fi
 osmtogeojson ../temp/output.osm >../temp/from_osm.geojson
 
 
+# create a lineString feature from dalat_bulk_geometry
+jq '.[0] | { 
+    type: "Feature", 
+    id: (.id | tostring + "_line"), 
+    properties: .properties, 
+    geometry: { 
+        type: "LineString", 
+        coordinates: .geometry.coordinates[0] 
+    } 
+}' ../static/all_custom_features.geojson > ../temp/dalat_bulk_geometry_as_linestring.geojson
+
 # merge my custom geojson into osm's geojson,
 # prioritize custom features in case of duplicate ids
 jq -s '{
@@ -182,6 +193,7 @@ tippecanoe -e ../../dalat-map-tiles/tiles \
   ../temp/railway.geojson \
   ../temp/peaks.geojson \
   ../temp/transportation_other.geojson \
+  ../temp/dalat_bulk_geometry_as_linestring.geojson
   ../static/dead_buildings.geojson \
   ../static/dalat_bulk_geometry.geojson
 
