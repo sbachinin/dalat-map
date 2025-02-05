@@ -50,7 +50,8 @@ const map = window.dalatmap = new maplibregl.Map({
         [108.52, 12.01]  // NE
     ],
     antialias: true,
-    maxZoom: 17.5
+    maxZoom: 17.5,
+    fadeDuration: 0
 })
 
 map.touchZoomRotate.disableRotation()
