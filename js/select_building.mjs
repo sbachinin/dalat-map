@@ -8,10 +8,18 @@ export const select_bldg = newid => {
             { source: 'dalat-tiles', sourceLayer: 'french_building', id: oldid },
             { selected: false }
         )
+        window.dalatmap.setFeatureState(
+            { source: 'buildings_titles', id: oldid },
+            { selected: false }
+        )
     }
     if (newid) {
         window.dalatmap.setFeatureState(
             { source: 'dalat-tiles', sourceLayer: 'french_building', id: newid },
+            { selected: true }
+        )
+        window.dalatmap.setFeatureState(
+            { source: 'buildings_titles', id: newid },
             { selected: true }
         )
     }

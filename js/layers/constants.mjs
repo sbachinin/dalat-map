@@ -1,4 +1,5 @@
 export const FRENCH_SELECTED_FILL_COLOR = 'hsl(42, 97.80%, 53.50%)'
+export const FRENCH_SELECTED_TITLE_HALO_COLOR = 'hsl(44, 98%, 77%)'
 export const DARKER_FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 87.50%)'
 export const FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 63.50%)'
 export const FRENCH_BORDER_COLOR = 'hsl(340, 35.30%, 35.00%)'

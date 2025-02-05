@@ -167,6 +167,14 @@ export const french_buildings_titles = {
     paint: {
         ...all_titles_common_props.paint,
         'text-color': french_titles_common_props.paint['text-color'],
+        "text-halo-color": [
+            "case",
+            ['==', ['feature-state', 'selected'], true],
+            c.FRENCH_SELECTED_TITLE_HALO_COLOR,
+            'transparent'
+        ],
+        "text-halo-width": 5,
+        "text-halo-blur": 0
     },
     filter: ['==', ['get', 'is_french'], true]
 }
