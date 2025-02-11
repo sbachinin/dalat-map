@@ -21,8 +21,7 @@ export const boring_building_layers = [
     }
 ]
 
-const french_building_fill = {
-    "id": "French building",
+const french_fill_common_props = {
     "type": "fill",
     "source": "dalat-tiles",
     "source-layer": "french_building",
@@ -36,6 +35,18 @@ const french_building_fill = {
         ],
         "fill-antialias": true
     },
+}
+
+const french_unimportant_building_fill = {
+    "id": "French unimportant building fill",
+    ...french_fill_common_props,
+    filter: ["==", ["coalesce", ["get", "has_details"], false], false]
+}
+
+const french_important_building_fill = {
+    "id": "French important building",
+    ...french_fill_common_props,
+    filter: ["==", ["coalesce", ["get", "has_details"], false], true]
 }
 
 const FRENCH_POLYGONS_MAX_THICKENING = 0.7
@@ -232,7 +243,11 @@ export const shit_buildings_tiny_squares_with_titles = {
 }
 
 export const buildings_layers = [
+    // unimortant fill is extracted and goes first
+    // because otherwise it can cover
+    // the adjacent important buildings' outlines
+    french_unimportant_building_fill,
     french_has_details_outline,
     french_thickening_outline,
-    french_building_fill
+    french_important_building_fill
 ]
