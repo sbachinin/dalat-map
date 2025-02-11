@@ -38,6 +38,8 @@ const french_building_fill = {
     },
 }
 
+const FRENCH_POLYGONS_MAX_THICKENING = 0.7
+
 const french_thickening_outline = {
     'id': 'French thickening outline',
     'type': 'line',
@@ -45,23 +47,15 @@ const french_thickening_outline = {
     "source-layer": "french_building",
     "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
     'paint': {
-        'line-color': c.FRENCH_FILL_COLOR, /* [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            c.FRENCH_GEOMETRY_MINZOOM - 1, // when french just appear, a slightly darker border makes them more substantial
-            c.DARKER_FRENCH_FILL_COLOR,
-            c.CITY_BULK_DISAPPEARANCE_ZOOM,
-            c.FRENCH_FILL_COLOR
-        ], */
+        'line-color': c.FRENCH_FILL_COLOR,
         'line-width': [
             "interpolate",
             ["linear"],
             ["zoom"],
-            c.FRENCH_GEOMETRY_MINZOOM,  // Zoom level at which line-width should start decreasing
-            1,   // line-width at FRENCH_GEOMETRY_MINZOOM
-            16,  // Zoom level just above FRENCH_GEOMETRY_MINZOOM
-            0    // line-width at zoom level 15 and higher
+            14,
+            FRENCH_POLYGONS_MAX_THICKENING,
+            15.5,
+            0
         ]
     },
 }
@@ -79,12 +73,15 @@ const french_has_details_outline = {
             "interpolate",
             ["linear", 2],
             ["zoom"],
-            14, 0.5,
+            // at low zoom, this outline has only visual purpose
+            // (it's very narrow behind the thickening and adds some clarity to polygons)
+            14,
+            FRENCH_POLYGONS_MAX_THICKENING + 0.7,
             15.5, [
                 'case',
                 ['boolean', ['feature-state', 'hasDetails'], false],
-                2,
-                0.5 // no-details border will remain narrow
+                3,
+                0.8
             ]
         ]
     },
@@ -235,7 +232,7 @@ export const shit_buildings_tiny_squares_with_titles = {
 }
 
 export const buildings_layers = [
-    french_building_fill,
+    french_has_details_outline,
     french_thickening_outline,
-    french_has_details_outline
+    french_building_fill
 ]
