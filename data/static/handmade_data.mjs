@@ -275,11 +275,13 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "618049068": {
-        title: 'Tin Lanh\n(protestant) church',
+        title: 'Tin Lanh church',
         "images": [
             "IMG_1339.jpg"
         ],
-        second_rate: true
+        second_rate: true,
+        title_coords: [108.4363520549162, 11.946952708206821],
+        title_side: 'top',
     },
     "618049072": {
         title: "Governor's Palace",

@@ -203,7 +203,7 @@ export const french_buildings_tiny_squares_with_titles = {
         'text-size': french_titles_common_props.layout['text-size'],
         'text-font': french_titles_common_props.layout['text-font'],
         "icon-image": "tiny_french_square",
-        "icon-size": 0.6,
+        "icon-size": 0.4,
     },
     paint: {
         ...all_titles_common_props.paint,
