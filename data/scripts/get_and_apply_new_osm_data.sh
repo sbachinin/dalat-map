@@ -9,7 +9,10 @@ for arg in "$@"; do
 done
 
 
-
+french_bldgs_handmade_data=$(node -e "
+  import { french_bldgs_handmade_data } from '../static/handmade_data.mjs';
+  console.log(JSON.stringify(french_bldgs_handmade_data));
+")
 
 non_french_bldgs_handmade_data=$(node -e "
   import { non_french_bldgs_handmade_data } from '../static/handmade_data.mjs';
@@ -147,10 +150,18 @@ JQ_FILTER='map({
   properties: {}
 })'
 jq "$JQ_FILTER" ../temp/boring_building0.geojson >../temp/boring_building00.geojson
-jq "$JQ_FILTER" ../temp/french_building0.geojson >../temp/french_building.geojson
+jq "$JQ_FILTER" ../temp/french_building0.geojson >../temp/french_building00.geojson
 jq "$JQ_FILTER" ../temp/lake0.geojson >../temp/lake.geojson
 jq "$JQ_FILTER" ../temp/river0.geojson >../temp/river.geojson
 jq "$JQ_FILTER" ../temp/land_areas0.geojson >../temp/land_areas00.geojson
+
+jq --argjson handmade_data "$french_bldgs_handmade_data" '
+  map(
+    .properties.has_details = (
+      ($handmade_data[.id] | .images // []) | length > 0
+    )
+  )
+' ../temp/french_building00.geojson > ../temp/french_building.geojson
 
 
 # ADD HAS_TITLE PROP TO ALL SHIT BLDGS THAT HAVE HANDMADE TITLES
