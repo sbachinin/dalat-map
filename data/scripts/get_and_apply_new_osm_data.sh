@@ -158,7 +158,7 @@ jq "$JQ_FILTER" ../temp/land_areas0.geojson >../temp/land_areas00.geojson
 jq --argjson handmade_data "$french_bldgs_handmade_data" '
   map(
     .properties.has_details = (
-      ($handmade_data[.id] | .images // []) | length > 0
+      ($handmade_data[(.id | tostring)] | .images // []) | length > 0
     )
   )
 ' ../temp/french_building00.geojson > ../temp/french_building.geojson

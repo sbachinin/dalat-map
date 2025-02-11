@@ -29,7 +29,9 @@
       ]
     },
     "id": 971589490,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -61,7 +63,9 @@
       ]
     },
     "id": 971585503,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -93,7 +97,9 @@
       ]
     },
     "id": 971585501,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -125,7 +131,9 @@
       ]
     },
     "id": 971582174,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -157,7 +165,9 @@
       ]
     },
     "id": 971578055,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -189,7 +199,9 @@
       ]
     },
     "id": 971577580,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -221,7 +233,9 @@
       ]
     },
     "id": 971577551,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -253,7 +267,9 @@
       ]
     },
     "id": 971572480,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -285,7 +301,9 @@
       ]
     },
     "id": 971572470,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -317,7 +335,9 @@
       ]
     },
     "id": 971572467,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -349,7 +369,9 @@
       ]
     },
     "id": 971572466,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -381,7 +403,9 @@
       ]
     },
     "id": 971572395,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -413,7 +437,9 @@
       ]
     },
     "id": 971572386,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -445,7 +471,9 @@
       ]
     },
     "id": 971572385,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -493,7 +521,9 @@
       ]
     },
     "id": 971572384,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -525,7 +555,9 @@
       ]
     },
     "id": 971568958,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -561,7 +593,9 @@
       ]
     },
     "id": 971568916,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -593,7 +627,9 @@
       ]
     },
     "id": 971568913,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -625,7 +661,9 @@
       ]
     },
     "id": 971568009,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -657,7 +695,9 @@
       ]
     },
     "id": 971568008,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -689,7 +729,9 @@
       ]
     },
     "id": 971568007,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -721,7 +763,9 @@
       ]
     },
     "id": 971568005,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -753,7 +797,9 @@
       ]
     },
     "id": 971568004,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -785,7 +831,9 @@
       ]
     },
     "id": 971563667,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -817,7 +865,9 @@
       ]
     },
     "id": 971563633,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -849,7 +899,9 @@
       ]
     },
     "id": 971563631,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -881,7 +933,9 @@
       ]
     },
     "id": 971563630,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -937,7 +991,9 @@
       ]
     },
     "id": 971558885,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -985,7 +1041,9 @@
       ]
     },
     "id": 971558884,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1025,7 +1083,9 @@
       ]
     },
     "id": 971558882,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1057,7 +1117,9 @@
       ]
     },
     "id": 971558880,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1089,7 +1151,9 @@
       ]
     },
     "id": 971558874,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1121,7 +1185,9 @@
       ]
     },
     "id": 971558867,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1153,7 +1219,9 @@
       ]
     },
     "id": 971549876,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1201,7 +1269,9 @@
       ]
     },
     "id": 971549873,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1233,7 +1303,9 @@
       ]
     },
     "id": 971546790,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1265,7 +1337,9 @@
       ]
     },
     "id": 971546789,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1297,7 +1371,9 @@
       ]
     },
     "id": 971545940,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1329,7 +1405,9 @@
       ]
     },
     "id": 777439883,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1369,7 +1447,9 @@
       ]
     },
     "id": 777439882,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1401,7 +1481,9 @@
       ]
     },
     "id": 777439875,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1433,7 +1515,9 @@
       ]
     },
     "id": 777439864,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1465,7 +1549,9 @@
       ]
     },
     "id": 777439813,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1497,7 +1583,9 @@
       ]
     },
     "id": 777439805,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1529,7 +1617,9 @@
       ]
     },
     "id": 777439802,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1577,7 +1667,9 @@
       ]
     },
     "id": 777438910,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1641,7 +1733,9 @@
       ]
     },
     "id": 777438901,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1693,7 +1787,9 @@
       ]
     },
     "id": 777438305,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1741,7 +1837,9 @@
       ]
     },
     "id": 777438297,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1773,7 +1871,9 @@
       ]
     },
     "id": 777438291,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1805,7 +1905,9 @@
       ]
     },
     "id": 777438290,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1837,7 +1939,9 @@
       ]
     },
     "id": 777438289,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1869,7 +1973,9 @@
       ]
     },
     "id": 777438288,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1901,7 +2007,9 @@
       ]
     },
     "id": 777438286,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1933,7 +2041,9 @@
       ]
     },
     "id": 777438261,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -1965,7 +2075,9 @@
       ]
     },
     "id": 777437082,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -1997,7 +2109,9 @@
       ]
     },
     "id": 777432601,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -2029,7 +2143,9 @@
       ]
     },
     "id": 777432595,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2061,7 +2177,9 @@
       ]
     },
     "id": 777432585,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2101,7 +2219,9 @@
       ]
     },
     "id": 777432576,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2133,7 +2253,9 @@
       ]
     },
     "id": 777432568,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2173,7 +2295,9 @@
       ]
     },
     "id": 777432563,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -2205,7 +2329,9 @@
       ]
     },
     "id": 777432556,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -2261,7 +2387,9 @@
       ]
     },
     "id": 777432545,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2293,7 +2421,9 @@
       ]
     },
     "id": 777432541,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2325,7 +2455,9 @@
       ]
     },
     "id": 777432533,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -2357,7 +2489,9 @@
       ]
     },
     "id": 777432491,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2405,7 +2539,9 @@
       ]
     },
     "id": 618049072,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2437,7 +2573,9 @@
       ]
     },
     "id": 618049068,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2469,7 +2607,9 @@
       ]
     },
     "id": 543357209,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2517,7 +2657,9 @@
       ]
     },
     "id": 543357207,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -2549,7 +2691,9 @@
       ]
     },
     "id": 543357200,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -2581,7 +2725,9 @@
       ]
     },
     "id": 543357192,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2613,7 +2759,9 @@
       ]
     },
     "id": 542729023,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2645,7 +2793,9 @@
       ]
     },
     "id": 542729022,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -2677,7 +2827,9 @@
       ]
     },
     "id": 542729021,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2709,7 +2861,9 @@
       ]
     },
     "id": 542729020,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -2741,7 +2895,9 @@
       ]
     },
     "id": 542729017,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2785,7 +2941,9 @@
       ]
     },
     "id": 542728980,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2817,7 +2975,9 @@
       ]
     },
     "id": 542728978,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2885,7 +3045,9 @@
       ]
     },
     "id": 542725609,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2917,7 +3079,9 @@
       ]
     },
     "id": 542725574,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -2953,7 +3117,9 @@
       ]
     },
     "id": 542486137,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -2993,7 +3159,9 @@
       ]
     },
     "id": 542486117,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3041,7 +3209,9 @@
       ]
     },
     "id": 542486101,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -3073,7 +3243,9 @@
       ]
     },
     "id": 525188857,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -3129,7 +3301,9 @@
       ]
     },
     "id": 515288613,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -3161,7 +3335,9 @@
       ]
     },
     "id": 515288591,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3201,7 +3377,9 @@
       ]
     },
     "id": 515193547,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3249,7 +3427,9 @@
       ]
     },
     "id": 515193507,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3309,7 +3489,9 @@
       ]
     },
     "id": 515193505,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3357,7 +3539,9 @@
       ]
     },
     "id": 515193504,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3389,7 +3573,9 @@
       ]
     },
     "id": 515193503,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3421,7 +3607,9 @@
       ]
     },
     "id": 515193502,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3453,7 +3641,9 @@
       ]
     },
     "id": 515193501,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -3485,7 +3675,9 @@
       ]
     },
     "id": 475362778,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3541,7 +3733,9 @@
       ]
     },
     "id": 473088090,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3589,7 +3783,9 @@
       ]
     },
     "id": 469578958,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3677,7 +3873,9 @@
       ]
     },
     "id": 463866431,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -3765,7 +3963,9 @@
       ]
     },
     "id": 452519411,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3845,7 +4045,9 @@
       ]
     },
     "id": 407699702,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -3925,7 +4127,9 @@
       ]
     },
     "id": 361851915,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4005,7 +4209,9 @@
       ]
     },
     "id": 361851888,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4037,7 +4243,9 @@
       ]
     },
     "id": 361851874,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4069,7 +4277,9 @@
       ]
     },
     "id": 361851837,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4109,7 +4319,9 @@
       ]
     },
     "id": 361851749,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4141,7 +4353,9 @@
       ]
     },
     "id": 361851747,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4173,7 +4387,9 @@
       ]
     },
     "id": 361851736,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4205,7 +4421,9 @@
       ]
     },
     "id": 361692327,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4245,7 +4463,9 @@
       ]
     },
     "id": 361692322,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4277,7 +4497,9 @@
       ]
     },
     "id": 361692296,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4309,7 +4531,9 @@
       ]
     },
     "id": 361692287,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4345,7 +4569,9 @@
       ]
     },
     "id": 361692265,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4377,7 +4603,9 @@
       ]
     },
     "id": 361692248,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4409,7 +4637,9 @@
       ]
     },
     "id": 361692216,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4441,7 +4671,9 @@
       ]
     },
     "id": 361692209,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4473,7 +4705,9 @@
       ]
     },
     "id": 308446691,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4505,7 +4739,9 @@
       ]
     },
     "id": 263418649,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4537,7 +4773,9 @@
       ]
     },
     "id": 1348647899,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4569,7 +4807,9 @@
       ]
     },
     "id": 1348417560,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4601,7 +4841,9 @@
       ]
     },
     "id": 1343679057,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4633,7 +4875,9 @@
       ]
     },
     "id": 1343678316,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4665,7 +4909,9 @@
       ]
     },
     "id": 1323820704,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4697,7 +4943,9 @@
       ]
     },
     "id": 1323379561,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4729,7 +4977,9 @@
       ]
     },
     "id": 1323379560,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4761,7 +5011,9 @@
       ]
     },
     "id": 1318953170,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4809,7 +5061,9 @@
       ]
     },
     "id": 1318953169,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4841,7 +5095,9 @@
       ]
     },
     "id": 1318953168,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4873,7 +5129,9 @@
       ]
     },
     "id": 1317896198,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4905,7 +5163,9 @@
       ]
     },
     "id": 1317896197,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -4937,7 +5197,9 @@
       ]
     },
     "id": 1317896196,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -4969,7 +5231,9 @@
       ]
     },
     "id": 1317896195,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5001,7 +5265,9 @@
       ]
     },
     "id": 1317896193,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5033,7 +5299,9 @@
       ]
     },
     "id": 1317896192,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5069,7 +5337,9 @@
       ]
     },
     "id": 1317896191,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5101,7 +5371,9 @@
       ]
     },
     "id": 1317896190,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5133,7 +5405,9 @@
       ]
     },
     "id": 1317896189,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5165,7 +5439,9 @@
       ]
     },
     "id": 1317896188,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5197,7 +5473,9 @@
       ]
     },
     "id": 1317896187,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5229,7 +5507,9 @@
       ]
     },
     "id": 1317896186,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5261,7 +5541,9 @@
       ]
     },
     "id": 1317896184,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5293,7 +5575,9 @@
       ]
     },
     "id": 1317896183,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5325,7 +5609,9 @@
       ]
     },
     "id": 1317896182,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5357,7 +5643,9 @@
       ]
     },
     "id": 1317115283,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5389,7 +5677,9 @@
       ]
     },
     "id": 1316659600,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5421,7 +5711,9 @@
       ]
     },
     "id": 1316357923,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5453,7 +5745,9 @@
       ]
     },
     "id": 1316150320,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5485,7 +5779,9 @@
       ]
     },
     "id": 1316150319,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5517,7 +5813,9 @@
       ]
     },
     "id": 1316150318,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5557,7 +5855,9 @@
       ]
     },
     "id": 1316150317,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5605,7 +5905,9 @@
       ]
     },
     "id": 1316150315,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5637,7 +5939,9 @@
       ]
     },
     "id": 1316150313,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5669,7 +5973,9 @@
       ]
     },
     "id": 1316150312,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5701,7 +6007,9 @@
       ]
     },
     "id": 1316150311,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5733,7 +6041,9 @@
       ]
     },
     "id": 1316150310,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5765,7 +6075,9 @@
       ]
     },
     "id": 1316150309,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5797,7 +6109,9 @@
       ]
     },
     "id": 1316150308,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5829,7 +6143,9 @@
       ]
     },
     "id": 1316150307,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -5861,7 +6177,9 @@
       ]
     },
     "id": 1316150306,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5893,7 +6211,9 @@
       ]
     },
     "id": 1316150305,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5925,7 +6245,9 @@
       ]
     },
     "id": 1316150303,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -5977,7 +6299,9 @@
       ]
     },
     "id": 1315691248,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6009,7 +6333,9 @@
       ]
     },
     "id": 1315333435,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6041,7 +6367,9 @@
       ]
     },
     "id": 1315333434,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6073,7 +6401,9 @@
       ]
     },
     "id": 1315333433,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6105,7 +6435,9 @@
       ]
     },
     "id": 1314624469,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6137,7 +6469,9 @@
       ]
     },
     "id": 1314624468,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6169,7 +6503,9 @@
       ]
     },
     "id": 1314624467,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6201,7 +6537,9 @@
       ]
     },
     "id": 1314383324,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6241,7 +6579,9 @@
       ]
     },
     "id": 1314383323,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6273,7 +6613,9 @@
       ]
     },
     "id": 1314383322,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6305,7 +6647,9 @@
       ]
     },
     "id": 1314383321,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6337,7 +6681,9 @@
       ]
     },
     "id": 1314383319,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6369,7 +6715,9 @@
       ]
     },
     "id": 1314373900,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6401,7 +6749,9 @@
       ]
     },
     "id": 1314373899,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6433,7 +6783,9 @@
       ]
     },
     "id": 1314373898,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6465,7 +6817,9 @@
       ]
     },
     "id": 1314373897,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6497,7 +6851,9 @@
       ]
     },
     "id": 1314373895,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6529,7 +6885,9 @@
       ]
     },
     "id": 1314373894,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6561,7 +6919,9 @@
       ]
     },
     "id": 1314373893,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6593,7 +6953,9 @@
       ]
     },
     "id": 1314373892,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6625,7 +6987,9 @@
       ]
     },
     "id": 1314373891,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6665,7 +7029,9 @@
       ]
     },
     "id": 1314373889,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6697,7 +7063,9 @@
       ]
     },
     "id": 1314373888,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6729,7 +7097,9 @@
       ]
     },
     "id": 1314373886,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6761,7 +7131,9 @@
       ]
     },
     "id": 1314373885,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6793,7 +7165,9 @@
       ]
     },
     "id": 1314373883,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6825,7 +7199,9 @@
       ]
     },
     "id": 1314373882,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6857,7 +7233,9 @@
       ]
     },
     "id": 1314373881,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6889,7 +7267,9 @@
       ]
     },
     "id": 1314373879,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6921,7 +7301,9 @@
       ]
     },
     "id": 1313447827,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -6953,7 +7335,9 @@
       ]
     },
     "id": 1313042162,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -6985,7 +7369,9 @@
       ]
     },
     "id": 1313042161,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7017,7 +7403,9 @@
       ]
     },
     "id": 1313042159,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7049,7 +7437,9 @@
       ]
     },
     "id": 1312561791,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7081,7 +7471,9 @@
       ]
     },
     "id": 1312561788,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7113,7 +7505,9 @@
       ]
     },
     "id": 1312561787,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7145,7 +7539,9 @@
       ]
     },
     "id": 1312517100,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -7177,7 +7573,9 @@
       ]
     },
     "id": 1312517099,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -7217,7 +7615,9 @@
       ]
     },
     "id": 1312411199,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -7249,7 +7649,9 @@
       ]
     },
     "id": 1312411197,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7281,7 +7683,9 @@
       ]
     },
     "id": 1312204706,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7313,7 +7717,9 @@
       ]
     },
     "id": 1312204705,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7345,7 +7751,9 @@
       ]
     },
     "id": 1312204703,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7377,7 +7785,9 @@
       ]
     },
     "id": 1312204702,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7409,7 +7819,9 @@
       ]
     },
     "id": 1312204701,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -7441,7 +7853,9 @@
       ]
     },
     "id": 1312204700,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7473,7 +7887,9 @@
       ]
     },
     "id": 1312204699,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7505,7 +7921,9 @@
       ]
     },
     "id": 1312204697,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7545,7 +7963,9 @@
       ]
     },
     "id": 1312204696,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -7585,7 +8005,9 @@
       ]
     },
     "id": 1312204693,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7617,7 +8039,9 @@
       ]
     },
     "id": 1312204692,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -7649,7 +8073,9 @@
       ]
     },
     "id": 1312204690,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -7681,7 +8107,9 @@
       ]
     },
     "id": 1312204689,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7713,7 +8141,9 @@
       ]
     },
     "id": 1312204688,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7765,7 +8195,9 @@
       ]
     },
     "id": 1312204687,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7797,7 +8229,9 @@
       ]
     },
     "id": 1311924393,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7829,7 +8263,9 @@
       ]
     },
     "id": 1311924390,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7869,7 +8305,9 @@
       ]
     },
     "id": 1309529214,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7901,7 +8339,9 @@
       ]
     },
     "id": 1309529212,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7933,7 +8373,9 @@
       ]
     },
     "id": 1309529209,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -7965,7 +8407,9 @@
       ]
     },
     "id": 1309034419,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8005,7 +8449,9 @@
       ]
     },
     "id": 1309034418,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8037,7 +8483,9 @@
       ]
     },
     "id": 1309030776,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8077,7 +8525,9 @@
       ]
     },
     "id": 1308812263,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8109,7 +8559,9 @@
       ]
     },
     "id": 1308812262,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8141,7 +8593,9 @@
       ]
     },
     "id": 1308812261,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8173,7 +8627,9 @@
       ]
     },
     "id": 1308812260,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8205,7 +8661,9 @@
       ]
     },
     "id": 1308812259,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8237,7 +8695,9 @@
       ]
     },
     "id": 1308812258,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8269,7 +8729,9 @@
       ]
     },
     "id": 1308812257,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8301,7 +8763,9 @@
       ]
     },
     "id": 1308608811,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8333,7 +8797,9 @@
       ]
     },
     "id": 1308586858,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8365,7 +8831,9 @@
       ]
     },
     "id": 1308586857,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8397,7 +8865,9 @@
       ]
     },
     "id": 1308586856,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8429,7 +8899,9 @@
       ]
     },
     "id": 1308586855,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8461,7 +8933,9 @@
       ]
     },
     "id": 1308586854,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8493,7 +8967,9 @@
       ]
     },
     "id": 1308586852,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8541,7 +9017,9 @@
       ]
     },
     "id": 1308584834,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8573,7 +9051,9 @@
       ]
     },
     "id": 1308583489,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8605,7 +9085,9 @@
       ]
     },
     "id": 1308572404,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8637,7 +9119,9 @@
       ]
     },
     "id": 1308572403,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8669,7 +9153,9 @@
       ]
     },
     "id": 1308572402,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8701,7 +9187,9 @@
       ]
     },
     "id": 1308572401,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8733,7 +9221,9 @@
       ]
     },
     "id": 1308572400,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8765,7 +9255,9 @@
       ]
     },
     "id": 1308572399,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8797,7 +9289,9 @@
       ]
     },
     "id": 1308572398,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8829,7 +9323,9 @@
       ]
     },
     "id": 1308572397,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -8861,7 +9357,9 @@
       ]
     },
     "id": 1308572396,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8893,7 +9391,9 @@
       ]
     },
     "id": 1308572395,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8925,7 +9425,9 @@
       ]
     },
     "id": 1308572394,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8957,7 +9459,9 @@
       ]
     },
     "id": 1308572393,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -8989,7 +9493,9 @@
       ]
     },
     "id": 1308572392,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9021,7 +9527,9 @@
       ]
     },
     "id": 1308572391,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9053,7 +9561,9 @@
       ]
     },
     "id": 1308572390,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9085,7 +9595,9 @@
       ]
     },
     "id": 1308572389,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9149,7 +9661,9 @@
       ]
     },
     "id": 1308572388,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -9181,7 +9695,9 @@
       ]
     },
     "id": 1308572387,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9213,7 +9729,9 @@
       ]
     },
     "id": 1308548111,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9245,7 +9763,9 @@
       ]
     },
     "id": 1308548110,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9293,7 +9813,9 @@
       ]
     },
     "id": 1308548109,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9341,7 +9863,9 @@
       ]
     },
     "id": 1308548108,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9381,7 +9905,9 @@
       ]
     },
     "id": 1308548107,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -9417,7 +9943,9 @@
       ]
     },
     "id": 1308548106,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -9449,7 +9977,9 @@
       ]
     },
     "id": 1308548105,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9489,7 +10019,9 @@
       ]
     },
     "id": 1308548103,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -9521,7 +10053,9 @@
       ]
     },
     "id": 1308548102,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9553,7 +10087,9 @@
       ]
     },
     "id": 1308548101,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9605,7 +10141,9 @@
       ]
     },
     "id": 1308548098,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9637,7 +10175,9 @@
       ]
     },
     "id": 1308432157,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9697,7 +10237,9 @@
       ]
     },
     "id": 1308432156,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -9737,7 +10279,9 @@
       ]
     },
     "id": 1308427747,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9769,7 +10313,9 @@
       ]
     },
     "id": 1308427746,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9825,7 +10371,9 @@
       ]
     },
     "id": 1308427745,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -9857,7 +10405,9 @@
       ]
     },
     "id": 1308413679,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9889,7 +10439,9 @@
       ]
     },
     "id": 1308413678,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9921,7 +10473,9 @@
       ]
     },
     "id": 1308413677,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9953,7 +10507,9 @@
       ]
     },
     "id": 1308413676,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -9985,7 +10541,9 @@
       ]
     },
     "id": 1308413675,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10017,7 +10575,9 @@
       ]
     },
     "id": 1308413674,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10049,7 +10609,9 @@
       ]
     },
     "id": 1308413673,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10081,7 +10643,9 @@
       ]
     },
     "id": 1308413672,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10113,7 +10677,9 @@
       ]
     },
     "id": 1308413671,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10145,7 +10711,9 @@
       ]
     },
     "id": 1308413670,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10177,7 +10745,9 @@
       ]
     },
     "id": 1308413669,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10209,7 +10779,9 @@
       ]
     },
     "id": 1308413667,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10241,7 +10813,9 @@
       ]
     },
     "id": 1308413665,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10273,7 +10847,9 @@
       ]
     },
     "id": 1308413664,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10305,7 +10881,9 @@
       ]
     },
     "id": 1308413663,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10337,7 +10915,9 @@
       ]
     },
     "id": 1308413662,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10369,7 +10949,9 @@
       ]
     },
     "id": 1308355821,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10409,7 +10991,9 @@
       ]
     },
     "id": 1308353562,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10441,7 +11025,9 @@
       ]
     },
     "id": 1308353561,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10481,7 +11067,9 @@
       ]
     },
     "id": 1308353560,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10513,7 +11101,9 @@
       ]
     },
     "id": 1308277168,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10553,7 +11143,9 @@
       ]
     },
     "id": 1308277167,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10593,7 +11185,9 @@
       ]
     },
     "id": 1308277166,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10625,7 +11219,9 @@
       ]
     },
     "id": 1308277165,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10657,7 +11253,9 @@
       ]
     },
     "id": 1308277164,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10689,7 +11287,9 @@
       ]
     },
     "id": 1308264124,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10721,7 +11321,9 @@
       ]
     },
     "id": 1308264118,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10753,7 +11355,9 @@
       ]
     },
     "id": 1308264117,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10785,7 +11389,9 @@
       ]
     },
     "id": 1308264116,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -10817,7 +11423,9 @@
       ]
     },
     "id": 1308264115,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10873,7 +11481,9 @@
       ]
     },
     "id": 1308258984,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10905,7 +11515,9 @@
       ]
     },
     "id": 1307743139,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -10969,7 +11581,9 @@
       ]
     },
     "id": 1307743138,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11001,7 +11615,9 @@
       ]
     },
     "id": 1307704579,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11033,7 +11649,9 @@
       ]
     },
     "id": 1307704578,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11065,7 +11683,9 @@
       ]
     },
     "id": 1307704577,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11097,7 +11717,9 @@
       ]
     },
     "id": 1307704576,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11137,7 +11759,9 @@
       ]
     },
     "id": 1307704575,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11169,7 +11793,9 @@
       ]
     },
     "id": 1307704574,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11201,7 +11827,9 @@
       ]
     },
     "id": 1307704573,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11233,7 +11861,9 @@
       ]
     },
     "id": 1307704571,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11265,7 +11895,9 @@
       ]
     },
     "id": 1307704570,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11297,7 +11929,9 @@
       ]
     },
     "id": 1307704569,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11329,7 +11963,9 @@
       ]
     },
     "id": 1307704568,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11369,7 +12005,9 @@
       ]
     },
     "id": 1307704567,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11401,7 +12039,9 @@
       ]
     },
     "id": 1307704566,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11441,7 +12081,9 @@
       ]
     },
     "id": 1307704565,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11473,7 +12115,9 @@
       ]
     },
     "id": 1307526071,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11505,7 +12149,9 @@
       ]
     },
     "id": 1307526070,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11537,7 +12183,9 @@
       ]
     },
     "id": 1307526069,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11569,7 +12217,9 @@
       ]
     },
     "id": 1307526068,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11601,7 +12251,9 @@
       ]
     },
     "id": 1307526066,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11633,7 +12285,9 @@
       ]
     },
     "id": 1307526065,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11665,7 +12319,9 @@
       ]
     },
     "id": 1307493483,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11729,7 +12385,9 @@
       ]
     },
     "id": 1307493477,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11769,7 +12427,9 @@
       ]
     },
     "id": 1307493475,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11801,7 +12461,9 @@
       ]
     },
     "id": 1307264376,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11833,7 +12495,9 @@
       ]
     },
     "id": 1307264375,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11865,7 +12529,9 @@
       ]
     },
     "id": 1307264373,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -11897,7 +12563,9 @@
       ]
     },
     "id": 1307264372,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11929,7 +12597,9 @@
       ]
     },
     "id": 1307264371,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11961,7 +12631,9 @@
       ]
     },
     "id": 1307259193,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -11993,7 +12665,9 @@
       ]
     },
     "id": 1306297157,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12025,7 +12699,9 @@
       ]
     },
     "id": 1306297156,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12061,7 +12737,9 @@
       ]
     },
     "id": 1305703497,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12093,7 +12771,9 @@
       ]
     },
     "id": 1305518534,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12125,7 +12805,9 @@
       ]
     },
     "id": 1305518533,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12157,7 +12839,9 @@
       ]
     },
     "id": 1305403412,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12189,7 +12873,9 @@
       ]
     },
     "id": 1305403411,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12221,7 +12907,9 @@
       ]
     },
     "id": 1305403410,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12253,7 +12941,9 @@
       ]
     },
     "id": 1305403409,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12317,7 +13007,9 @@
       ]
     },
     "id": 1305208733,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12349,7 +13041,9 @@
       ]
     },
     "id": 1304439982,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12381,7 +13075,9 @@
       ]
     },
     "id": 1304439979,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12413,7 +13109,9 @@
       ]
     },
     "id": 1304439977,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12445,7 +13143,9 @@
       ]
     },
     "id": 1304439976,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12477,7 +13177,9 @@
       ]
     },
     "id": 1304439974,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12509,7 +13211,9 @@
       ]
     },
     "id": 1304439971,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12541,7 +13245,9 @@
       ]
     },
     "id": 1304439970,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12573,7 +13279,9 @@
       ]
     },
     "id": 1304439969,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12605,7 +13313,9 @@
       ]
     },
     "id": 1304439968,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12637,7 +13347,9 @@
       ]
     },
     "id": 1304439967,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12669,7 +13381,9 @@
       ]
     },
     "id": 1304439966,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12709,7 +13423,9 @@
       ]
     },
     "id": 1304439965,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12741,7 +13457,9 @@
       ]
     },
     "id": 1304439964,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12773,7 +13491,9 @@
       ]
     },
     "id": 1304439963,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12805,7 +13525,9 @@
       ]
     },
     "id": 1304439962,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12837,7 +13559,9 @@
       ]
     },
     "id": 1304439961,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12873,7 +13597,9 @@
       ]
     },
     "id": 1304439958,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12917,7 +13643,9 @@
       ]
     },
     "id": 1304439957,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -12961,7 +13689,9 @@
       ]
     },
     "id": 1304439956,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -12993,7 +13723,9 @@
       ]
     },
     "id": 1304439952,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13025,7 +13757,9 @@
       ]
     },
     "id": 1304439951,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13057,7 +13791,9 @@
       ]
     },
     "id": 1304439950,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13105,7 +13841,9 @@
       ]
     },
     "id": 1304439948,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13137,7 +13875,9 @@
       ]
     },
     "id": 1304439944,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13169,7 +13909,9 @@
       ]
     },
     "id": 1304439943,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13201,7 +13943,9 @@
       ]
     },
     "id": 1304439942,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13233,7 +13977,9 @@
       ]
     },
     "id": 1304439939,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13265,7 +14011,9 @@
       ]
     },
     "id": 1304439937,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13297,7 +14045,9 @@
       ]
     },
     "id": 1304439935,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13329,7 +14079,9 @@
       ]
     },
     "id": 1304439934,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13365,7 +14117,9 @@
       ]
     },
     "id": 1304439933,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13397,7 +14151,9 @@
       ]
     },
     "id": 1304439932,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13429,7 +14185,9 @@
       ]
     },
     "id": 1304439931,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13461,7 +14219,9 @@
       ]
     },
     "id": 1304439930,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13493,7 +14253,9 @@
       ]
     },
     "id": 1304439929,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13525,7 +14287,9 @@
       ]
     },
     "id": 1304439928,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13557,7 +14321,9 @@
       ]
     },
     "id": 1304439927,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13589,7 +14355,9 @@
       ]
     },
     "id": 1304439926,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13621,7 +14389,9 @@
       ]
     },
     "id": 1304439925,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13653,7 +14423,9 @@
       ]
     },
     "id": 1304439924,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13685,7 +14457,9 @@
       ]
     },
     "id": 1304439923,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13717,7 +14491,9 @@
       ]
     },
     "id": 1304439922,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13749,7 +14525,9 @@
       ]
     },
     "id": 1304439920,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13781,7 +14559,9 @@
       ]
     },
     "id": 1304217001,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13813,7 +14593,9 @@
       ]
     },
     "id": 1304216999,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13853,7 +14635,9 @@
       ]
     },
     "id": 1304203774,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13885,7 +14669,9 @@
       ]
     },
     "id": 1304203773,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -13917,7 +14703,9 @@
       ]
     },
     "id": 1304080972,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13957,7 +14745,9 @@
       ]
     },
     "id": 1304080971,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -13989,7 +14779,9 @@
       ]
     },
     "id": 1304080970,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14037,7 +14829,9 @@
       ]
     },
     "id": 1304080968,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14069,7 +14863,9 @@
       ]
     },
     "id": 1304080967,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14101,7 +14897,9 @@
       ]
     },
     "id": 1304080966,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14133,7 +14931,9 @@
       ]
     },
     "id": 1304080965,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14165,7 +14965,9 @@
       ]
     },
     "id": 1304080964,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14197,7 +14999,9 @@
       ]
     },
     "id": 1303825522,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14229,7 +15033,9 @@
       ]
     },
     "id": 1303825521,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14265,7 +15071,9 @@
       ]
     },
     "id": 1303825519,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14297,7 +15105,9 @@
       ]
     },
     "id": 1303821987,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14329,7 +15139,9 @@
       ]
     },
     "id": 1303821986,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14369,7 +15181,9 @@
       ]
     },
     "id": 1303821985,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14449,7 +15263,9 @@
       ]
     },
     "id": 1303695921,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14529,7 +15345,9 @@
       ]
     },
     "id": 1303639969,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14565,7 +15383,9 @@
       ]
     },
     "id": 1303249019,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14609,7 +15429,9 @@
       ]
     },
     "id": 1303249018,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14657,7 +15479,9 @@
       ]
     },
     "id": 1303227327,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14705,7 +15529,9 @@
       ]
     },
     "id": 1303227326,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14737,7 +15563,9 @@
       ]
     },
     "id": 1303227325,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14769,7 +15597,9 @@
       ]
     },
     "id": 1303227324,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -14805,7 +15635,9 @@
       ]
     },
     "id": 1303227323,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14837,7 +15669,9 @@
       ]
     },
     "id": 1303227318,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14869,7 +15703,9 @@
       ]
     },
     "id": 1303227317,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14905,7 +15741,9 @@
       ]
     },
     "id": 1303227316,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14937,7 +15775,9 @@
       ]
     },
     "id": 1303227313,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -14973,7 +15813,9 @@
       ]
     },
     "id": 1303227312,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15005,7 +15847,9 @@
       ]
     },
     "id": 1303019058,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -15053,7 +15897,9 @@
       ]
     },
     "id": 1303019057,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15085,7 +15931,9 @@
       ]
     },
     "id": 1303019056,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15125,7 +15973,9 @@
       ]
     },
     "id": 1303019055,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15157,7 +16007,9 @@
       ]
     },
     "id": 1302812586,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15189,7 +16041,9 @@
       ]
     },
     "id": 1302812585,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -15221,7 +16075,9 @@
       ]
     },
     "id": 1302812584,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -15253,7 +16109,9 @@
       ]
     },
     "id": 1302812583,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15285,7 +16143,9 @@
       ]
     },
     "id": 1302812582,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15317,7 +16177,9 @@
       ]
     },
     "id": 1302812581,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -15349,7 +16211,9 @@
       ]
     },
     "id": 1302812580,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15381,7 +16245,9 @@
       ]
     },
     "id": 1302812573,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15413,7 +16279,9 @@
       ]
     },
     "id": 1302812571,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -15445,7 +16313,9 @@
       ]
     },
     "id": 1302656774,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15485,7 +16355,9 @@
       ]
     },
     "id": 1302656772,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15525,7 +16397,9 @@
       ]
     },
     "id": 1302653954,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15565,7 +16439,9 @@
       ]
     },
     "id": 1302653952,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15597,7 +16473,9 @@
       ]
     },
     "id": 1302653951,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15629,7 +16507,9 @@
       ]
     },
     "id": 1302653950,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15661,7 +16541,9 @@
       ]
     },
     "id": 1302653949,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -15693,7 +16575,9 @@
       ]
     },
     "id": 1302653947,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15725,7 +16609,9 @@
       ]
     },
     "id": 1302653946,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -15789,7 +16675,9 @@
       ]
     },
     "id": 1301437305,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15833,7 +16721,9 @@
       ]
     },
     "id": 1301437304,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15881,7 +16771,9 @@
       ]
     },
     "id": 1243929950,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -15957,7 +16849,9 @@
       ]
     },
     "id": 1238335794,
-    "properties": {}
+    "properties": {
+      "has_details": false
+    }
   },
   {
     "type": "Feature",
@@ -16011,7 +16905,9 @@
       ]
     },
     "id": 17929361,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   },
   {
     "type": "Feature",
@@ -16181,6 +17077,8 @@
       ]
     },
     "id": 17877171,
-    "properties": {}
+    "properties": {
+      "has_details": true
+    }
   }
 ]
