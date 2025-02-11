@@ -51,8 +51,7 @@ const french_important_building_fill = {
 
 const FRENCH_POLYGONS_MAX_THICKENING = 0.7
 
-const french_thickening_outline = {
-    'id': 'French thickening outline',
+const french_thickening_outline_common_props = {
     'type': 'line',
     "source": "dalat-tiles",
     "source-layer": "french_building",
@@ -71,31 +70,51 @@ const french_thickening_outline = {
     },
 }
 
-// TODO maybe rename; it's just a border; it can be a replacement for thickening 
-const french_has_details_outline = {
-    'id': 'French has-details outline',
-    'type': 'line',
-    "source": "dalat-tiles",
-    "source-layer": "french_building",
-    "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
-    'paint': {
-        'line-color': c.FRENCH_DARK_BORDER_COLOR,
-        'line-width': [
-            "interpolate",
-            ["linear", 2],
-            ["zoom"],
-            // at low zoom, this outline has only visual purpose
-            // (it's very narrow behind the thickening and adds some clarity to polygons)
-            14,
-            FRENCH_POLYGONS_MAX_THICKENING + 0.7,
-            15.5, [
-                'case',
-                ['boolean', ['feature-state', 'hasDetails'], false],
-                3,
-                0.8
+const french_without_details_thickening_outline = {
+    id: 'French bldg without details thickening outline',
+    ...french_thickening_outline_common_props,
+    filter: ["==", ["coalesce", ["get", "has_details"], false], false]
+}
+
+const french_with_details_thickening_outline = {
+    id: 'French bldg with details thickening outline',
+    ...french_thickening_outline_common_props,
+    filter: ["==", ["coalesce", ["get", "has_details"], false], true]
+}
+
+const get_dark_outline_props = high_zoom_thickness => {
+    return {
+        'type': 'line',
+        "source": "dalat-tiles",
+        "source-layer": "french_building",
+        "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
+        'paint': {
+            'line-color': c.FRENCH_DARK_BORDER_COLOR,
+            'line-width': [
+                "interpolate",
+                ["linear", 2],
+                ["zoom"],
+                // at low zoom, this outline has only visual purpose
+                // (it's very narrow behind the thickening and adds some clarity to polygons)
+                14,
+                FRENCH_POLYGONS_MAX_THICKENING + 0.7,
+                15.5,
+                high_zoom_thickness
             ]
-        ]
-    },
+        }
+    }
+}
+
+const french_without_details_dark_outline = {
+    'id': 'French buildings without details dark outline',
+    ...get_dark_outline_props(0.8),
+    filter: ["==", ["coalesce", ["get", "has_details"], false], false]
+}
+
+const french_with_details_dark_outline = {
+    'id': 'French buildings with details dark outline',
+    ...get_dark_outline_props(3),
+    filter: ["==", ["coalesce", ["get", "has_details"], false], true]
 }
 
 
@@ -243,11 +262,15 @@ export const shit_buildings_tiny_squares_with_titles = {
 }
 
 export const buildings_layers = [
-    // unimortant fill is extracted and goes first
+    // detailless bldgs go first
     // because otherwise it can cover
     // the adjacent important buildings' outlines
+    // leading to "missing borders" appearance
+    french_without_details_dark_outline,
+    french_without_details_thickening_outline,
     french_unimportant_building_fill,
-    french_has_details_outline,
-    french_thickening_outline,
+
+    french_with_details_dark_outline,
+    french_with_details_thickening_outline,
     french_important_building_fill
 ]

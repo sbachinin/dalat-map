@@ -67,13 +67,6 @@ map.addControl(
 
 map.once('idle', () => {
 
-    Object.entries(french_bldgs_handmade_data)
-        .forEach(([bldg_id, bldg_meta]) => {
-            map.setFeatureState(
-                { source: 'dalat-tiles', sourceLayer: 'french_building', id: bldg_id },
-                { hasDetails: bldg_meta.images?.length > 0 }
-            )
-        })
 })
 
 initialize_tiny_squares()
