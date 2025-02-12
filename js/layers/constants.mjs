@@ -28,6 +28,8 @@ export const RAILWAY_LINE_COLOR = "hsl(24, 34%, 54%)"
 
 export const CITY_BULK_FULL_OPACITY_MAXZOOM = 12
 export const CITY_BULK_DISAPPEARANCE_ZOOM = 14
+export const CITY_BULK_FULL_COLOR = 'hsl(16, 66%, 82%)'
+export const CITY_BULK_TITLE_COLOR = 'hsl(16, 66%, 70%)'
 
 export const AREA_TYPES = {
     INSTITUTION: 'institution',

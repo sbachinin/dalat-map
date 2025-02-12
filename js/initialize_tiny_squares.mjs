@@ -1,4 +1,7 @@
-import { french_buildings_tiny_squares_with_titles, shit_buildings_tiny_squares_with_titles } from "./layers/buildings.mjs"
+import {
+    french_buildings_tiny_squares_with_titles,
+    shit_buildings_tiny_squares_with_titles
+} from "./layers/titles.mjs"
 import { datanla_waterfall_layer } from "./layers/rivers.mjs"
 import { buildings_centroids_with_titles_source } from "./sources.mjs"
 import { get_geojson_source, get_image_url } from "./utils.mjs"
