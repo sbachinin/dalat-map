@@ -62,9 +62,17 @@ const majorRoadOutline = {
 const majorRoad = {
     "id": "Major road",
     ...common_road_props,
-    "minzoom": 13,
+    "minzoom": 12.8,
     "paint": {
-        "line-color": '#d6d6d6',
+        "line-color": [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            12.8,
+            road_color,
+            13.8,
+            '#e4e4e4'
+        ],
         "line-width": [
             "interpolate",
             ["linear", 2],
@@ -72,13 +80,6 @@ const majorRoad = {
             14, 2,
             16, 3.5,
             20, 6
-        ],
-        "line-opacity": [
-            "interpolate",
-            ["linear", 2],
-            ["zoom"],
-            13, 0,
-            15, 1
         ]
     },
     "filter": [
