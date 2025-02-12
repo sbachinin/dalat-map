@@ -16,18 +16,25 @@ import {
     french_buildings_titles
 } from './layers/titles.mjs'
 
-export const addMouseStuff = () => {
-    const map = window.dalatmap
 
-    const clickable_layers = [
-        french_important_building_fill.id,
-        french_with_details_thickening_outline.id,
-        french_with_details_dark_outline.id,
-        dead_building_fill.id,
-        dead_building_skull.id,
-        french_buildings_titles.id,
-        french_buildings_tiny_squares_with_titles.id
-    ]
+
+
+const clickable_layers = [
+    french_important_building_fill.id,
+    french_with_details_thickening_outline.id,
+    french_with_details_dark_outline.id,
+    dead_building_fill.id,
+    dead_building_skull.id,
+    french_buildings_titles.id,
+    french_buildings_tiny_squares_with_titles.id
+]
+
+const is_clickable_feat = f => {
+    return clickable_layers.includes(f.layer.id)
+}
+
+export const add_mouse_stuff = () => {
+    const map = window.dalatmap
 
     map.on('click', (e) => {
         // navigator?.clipboard?.writeText?.(
@@ -35,9 +42,7 @@ export const addMouseStuff = () => {
         //     // map.queryRenderedFeatures(e.point)?.[0]?.id
         // )
         const rfs = map.queryRenderedFeatures(e.point)
-        const clicked_french_polygon = rfs.find(f => (
-            clickable_layers.includes(f.layer.id)
-        ))
+        const clicked_french_polygon = rfs.find(is_clickable_feat)
         if (clicked_french_polygon) {
             try_open_building(clicked_french_polygon.id, true, true)
         } else {
@@ -54,8 +59,12 @@ export const addMouseStuff = () => {
             if (!building_has_details(fid)) return
             map.getCanvas().style.cursor = 'pointer'
         })
-        map.on('mouseleave', layer, () => {
-            map.getCanvas().style.cursor = ''
+
+        map.on('mouseleave', layer, (e) => {
+            const rfs = map.queryRenderedFeatures(e.point)
+            if (!rfs.find(is_clickable_feat)) {
+                map.getCanvas().style.cursor = ''
+            }
         })
     })
 }

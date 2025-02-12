@@ -1,5 +1,5 @@
 import { create_scale } from './manage_scale.mjs'
-import { addMouseStuff } from './mouse_stuff.mjs'
+import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
@@ -57,7 +57,7 @@ map.touchZoomRotate.disableRotation()
 
 preload_some_images()
 
-addMouseStuff()
+add_mouse_stuff()
 
 map.addControl(
     new maplibregl.NavigationControl({ showCompass: false, showZoom: true }),
