@@ -22,7 +22,7 @@ const french_unimportant_building_fill = {
     filter: ["==", ["coalesce", ["get", "has_details"], false], false]
 }
 
-const french_important_building_fill = {
+export const french_important_building_fill = {
     "id": "French important building",
     ...french_fill_common_props,
     filter: ["==", ["coalesce", ["get", "has_details"], false], true]
@@ -55,7 +55,7 @@ const french_without_details_thickening_outline = {
     filter: ["==", ["coalesce", ["get", "has_details"], false], false]
 }
 
-const french_with_details_thickening_outline = {
+export const french_with_details_thickening_outline = {
     id: 'French bldg with details thickening outline',
     ...french_thickening_outline_common_props,
     filter: ["==", ["coalesce", ["get", "has_details"], false], true]
@@ -90,7 +90,7 @@ const french_without_details_dark_outline = {
     filter: ["==", ["coalesce", ["get", "has_details"], false], false]
 }
 
-const french_with_details_dark_outline = {
+export const french_with_details_dark_outline = {
     'id': 'French buildings with details dark outline',
     ...get_dark_outline_props(4),
     filter: ["==", ["coalesce", ["get", "has_details"], false], true]

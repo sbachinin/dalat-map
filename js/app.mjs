@@ -1,6 +1,5 @@
 import { create_scale } from './manage_scale.mjs'
 import { addMouseStuff } from './mouse_stuff.mjs'
-import { french_bldgs_handmade_data } from '../data/static/handmade_data.mjs'
 import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'

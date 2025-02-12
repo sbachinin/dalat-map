@@ -34,7 +34,7 @@ export const french_bldgs_handmade_data = {
         "images": [
             "IMG_0673.jpg",
             "IMG_0790~4.jpg",
-            "IMG_0808.jpg",
+            // "IMG_0808.jpg",
             "IMG_2901~3.jpg",
             "IMG_6065~2.jpg",
             "IMG_6099~3.jpg",

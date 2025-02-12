@@ -2,14 +2,31 @@ import { all_handmade_data } from '../data/static/handmade_data.mjs'
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
 import { building_has_details, try_open_building } from './bldg_details.mjs'
+import {
+    french_important_building_fill,
+    french_with_details_dark_outline,
+    french_with_details_thickening_outline
+} from './layers/french_polygons.mjs'
+import {
+    dead_building_fill,
+    dead_building_skull
+} from './dead_buildings.mjs'
+import {
+    french_buildings_tiny_squares_with_titles,
+    french_buildings_titles
+} from './layers/titles.mjs'
 
 export const addMouseStuff = () => {
     const map = window.dalatmap
 
-    const clickable_layers = ['French building',
-        'Dead building fill',
-        'French buildings titles',
-        'French buildings tiny squares with titles'
+    const clickable_layers = [
+        french_important_building_fill.id,
+        french_with_details_thickening_outline.id,
+        french_with_details_dark_outline.id,
+        dead_building_fill.id,
+        dead_building_skull.id,
+        french_buildings_titles.id,
+        french_buildings_tiny_squares_with_titles.id
     ]
 
     map.on('click', (e) => {
