@@ -1,10 +1,11 @@
+import { SOURCES_NAMES } from "../sources.mjs";
 import { FIRST_DETAILS_MINZOOM, LAKE_TITLE_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
 
 export default [
     {
         id: "River Cam Ly",
         type: 'line',
-        source: 'dalat-tiles',
+        source: SOURCES_NAMES.DALAT_TILES,
         'source-layer': 'river',
         "layout": {
             "visibility": "visible",
@@ -28,7 +29,7 @@ export default [
     {
         id: "All rivers but Cam Ly",
         type: 'line',
-        source: 'dalat-tiles',
+        source: SOURCES_NAMES.DALAT_TILES,
         'source-layer': 'river',
         minzoom: 14,
         "layout": {

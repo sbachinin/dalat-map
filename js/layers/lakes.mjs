@@ -1,10 +1,11 @@
+import { SOURCES_NAMES } from "../sources.mjs";
 import { BRIGHT_LAKE_COLOR, LAKE_TITLE_COLOR, PALE_LAKE_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
 
 export default [
     {
         "id": "Primary Water",
         "type": "fill",
-        "source": "dalat-tiles",
+        "source": SOURCES_NAMES.DALAT_TILES,
         "source-layer": "lake",
         "paint": {
             "fill-color": [

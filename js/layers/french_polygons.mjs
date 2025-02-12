@@ -1,8 +1,9 @@
+import { SOURCES_NAMES } from "../sources.mjs"
 import * as c from "./constants.mjs"
 
 const french_fill_common_props = {
     "type": "fill",
-    "source": "dalat-tiles",
+    "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "french_building",
     "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
     "paint": {
@@ -32,7 +33,7 @@ const FRENCH_POLYGONS_MAX_THICKENING = 0.7
 
 const french_thickening_outline_common_props = {
     'type': 'line',
-    "source": "dalat-tiles",
+    "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "french_building",
     "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
     'paint': {
@@ -64,7 +65,7 @@ export const french_with_details_thickening_outline = {
 const get_dark_outline_props = high_zoom_thickness => {
     return {
         'type': 'line',
-        "source": "dalat-tiles",
+        "source": SOURCES_NAMES.DALAT_TILES,
         "source-layer": "french_building",
         "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
         'paint': {

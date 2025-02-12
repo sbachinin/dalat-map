@@ -3,11 +3,12 @@ import {
     shit_titles_common_props
 } from "./titles.mjs"
 import * as c from "./constants.mjs"
+import { SOURCES_NAMES } from "../sources.mjs"
 
 export const city_bulk_fill = {
     id: 'cityBulk',
     type: 'fill',
-    source: 'dalat-tiles',
+    source: SOURCES_NAMES.DALAT_TILES,
     "source-layer": 'dalat_bulk_geometry',
     minzoom: 10,
     maxzoom: 14.3,
@@ -29,7 +30,7 @@ export const city_bulk_fill = {
 export const city_bulk_border = {
     id: 'cityBulk border',
     type: 'line',
-    source: 'dalat-tiles',
+    source: SOURCES_NAMES.DALAT_TILES,
     "source-layer": 'dalat_bulk_geometry',
     paint: {
         'line-color': [
@@ -49,7 +50,7 @@ export const city_bulk_border = {
 export const city_bulk_title = {
     id: 'cityBulk title',
     type: 'symbol',
-    source: 'dalat-tiles',
+    source: SOURCES_NAMES.DALAT_TILES,
     "source-layer": 'dalat_bulk_geometry_as_linestring',
     minzoom: 14.2,
     layout: {
@@ -69,7 +70,7 @@ export const city_bulk_title = {
 export const land_areas_fill = {
     id: 'Land areas fill',
     type: 'fill',
-    source: 'dalat-tiles',
+    source: SOURCES_NAMES.DALAT_TILES,
     'source-layer': 'land_areas',
     paint: {
         'fill-color': [
@@ -112,7 +113,7 @@ export const land_areas_titles = {
 export const peaks_triangles_with_titles = {
     id: 'Peaks triangles with titles',
     type: 'symbol',
-    source: "dalat-tiles",
+    source: SOURCES_NAMES.DALAT_TILES,
     'source-layer': 'peaks',
     minzoom: c.FIRST_DETAILS_MINZOOM,
     layout: {
@@ -133,7 +134,7 @@ export const peaks_triangles_with_titles = {
 export const boring_building_fill = {
     "id": "Boring building fill",
     "type": "fill",
-    "source": "dalat-tiles",
+    "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "boring_building",
     "minzoom": 14,
     "paint": {

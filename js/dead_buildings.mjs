@@ -1,9 +1,11 @@
+import { SOURCES_NAMES } from "./sources.mjs"
+
 const french_dead_color = 'hsl(300, 30%, 95%)'
 
 export const dead_building_fill = {
     "id": "Dead building fill",
     "type": "fill",
-    "source": "dalat-tiles",
+    "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "dead_buildings",
     "minzoom": 14,
     "paint": {
@@ -15,7 +17,7 @@ export const dead_building_fill = {
 export const dead_building_skull = {
     id: 'Dead building skull',
     type: 'symbol',
-    "source": "dalat-tiles",
+    "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "dead_buildings",
     "minzoom": 15.5,
     layout: {

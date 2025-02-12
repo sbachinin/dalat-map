@@ -1,10 +1,12 @@
+import { SOURCES_NAMES } from "../sources.mjs"
+
 const road_color = "hsl(30, 0%, 59%)"
 const darker_tertiary_road_color = "hsl(30, 0%, 71%)"
 const minor_road_color = "hsl(30, 0%, 73%)"
 
 const common_road_props = {
     "type": "line",
-    "source": "dalat-tiles",
+    "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "highway",
     "layout": {
         "line-cap": "round",

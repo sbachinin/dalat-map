@@ -1,3 +1,4 @@
+import { SOURCES_NAMES } from "../sources.mjs"
 import * as c from "./constants.mjs"
 
 export const all_titles_common_props = {
@@ -53,12 +54,21 @@ export const shit_titles_common_props = {
     }
 }
 
-
+const halo_if_selected = {
+    "text-halo-color": [
+        "case",
+        ['==', ['feature-state', 'selected'], true],
+        c.FRENCH_SELECTED_TITLE_HALO_COLOR,
+        'transparent'
+    ],
+    "text-halo-width": 5,
+    "text-halo-blur": 0
+}
 
 export const french_buildings_titles = {
     "id": "French buildings titles",
     "type": "symbol",
-    "source": "buildings_titles",
+    "source": SOURCES_NAMES.BUILDING_TITLE,
     minzoom: c.FRENCH_GEOMETRY_MINZOOM,
     layout: {
         ...all_titles_common_props.layout,
@@ -68,14 +78,7 @@ export const french_buildings_titles = {
     paint: {
         ...all_titles_common_props.paint,
         'text-color': french_titles_common_props.paint['text-color'],
-        "text-halo-color": [
-            "case",
-            ['==', ['feature-state', 'selected'], true],
-            c.FRENCH_SELECTED_TITLE_HALO_COLOR,
-            'transparent'
-        ],
-        "text-halo-width": 5,
-        "text-halo-blur": 0
+        ...halo_if_selected
     },
     filter: ['==', ['get', 'is_french'], true]
 }
@@ -83,7 +86,7 @@ export const french_buildings_titles = {
 export const shit_buildings_titles = {
     "id": "Shit buildings titles",
     "type": "symbol",
-    "source": "buildings_titles",
+    "source": SOURCES_NAMES.BUILDING_TITLE,
     minzoom: c.FRENCH_GEOMETRY_MINZOOM,
     layout: {
         ...all_titles_common_props.layout,
@@ -105,7 +108,7 @@ const tiny_squares_zoom_levels = {
 export const french_buildings_tiny_squares_with_titles = {
     id: "French buildings tiny squares with titles",
     type: "symbol",
-    source: "buildings_tiny_squares",
+    source: SOURCES_NAMES.BUILDING_TITLE_WITH_SQUARE,
     ...tiny_squares_zoom_levels,
     layout: {
         ...all_titles_common_props.layout,
@@ -116,7 +119,8 @@ export const french_buildings_tiny_squares_with_titles = {
     },
     paint: {
         ...all_titles_common_props.paint,
-        'text-color': french_titles_common_props.paint['text-color']
+        'text-color': french_titles_common_props.paint['text-color'],
+        ...halo_if_selected
     },
     filter: ['==', ['get', 'is_french'], true]
 }
@@ -124,7 +128,7 @@ export const french_buildings_tiny_squares_with_titles = {
 export const shit_buildings_tiny_squares_with_titles = {
     id: 'Shit building tiny squares with titles',
     type: 'symbol',
-    source: "buildings_tiny_squares",
+    source: SOURCES_NAMES.BUILDING_TITLE_WITH_SQUARE,
     ...tiny_squares_zoom_levels,
     layout: {
         ...all_titles_common_props.layout,

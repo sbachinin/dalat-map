@@ -1,10 +1,11 @@
+import { SOURCES_NAMES } from "../sources.mjs";
 import { FIRST_DETAILS_MINZOOM, PALE_TITLES_COLOR, PALE_TITLES_SIZE, RAILWAY_LINE_COLOR } from "./constants.mjs";
 
 const cable_car_layers = [
     {
         "id": "Cable car",
         type: 'line',
-        source: 'dalat-tiles',
+        source: SOURCES_NAMES.DALAT_TILES,
         'source-layer': 'transportation_other',
         "layout": {
         },
@@ -22,7 +23,7 @@ const cable_car_layers = [
     {
         "id": "Cable car name",
         type: 'symbol',
-        source: 'dalat-tiles',
+        source: SOURCES_NAMES.DALAT_TILES,
         'source-layer': 'transportation_other',
         minzoom: FIRST_DETAILS_MINZOOM,
         "filter": ["==", ["get", "aerialway"], "cable_car"],
@@ -43,7 +44,7 @@ const cable_car_layers = [
     {
         "id": "cable-car-endpoints",
         "type": "symbol",
-        "source": "dalat-tiles",
+        "source": SOURCES_NAMES.DALAT_TILES,
         "source-layer": "transportation_other",
         "layout": {
             "icon-image": "tiny_non_french_square",
@@ -62,7 +63,7 @@ const railway_layers = [
     {
         "id": "railway",
         "type": "line",
-        "source": "dalat-tiles",
+        "source": SOURCES_NAMES.DALAT_TILES,
         "source-layer": "railway",
         "layout": {
             "line-cap": "round",
@@ -83,7 +84,7 @@ const railway_layers = [
     {
         id: 'Train station tiny squares with titles',
         type: 'symbol',
-        source: "dalat-tiles",
+        source: SOURCES_NAMES.DALAT_TILES,
         'source-layer': 'railway',
         minzoom: FIRST_DETAILS_MINZOOM,
         layout: {

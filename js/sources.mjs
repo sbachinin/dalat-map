@@ -8,6 +8,12 @@ import {
 } from '../data/static/handmade_data.mjs'
 import { TITLES_PRIORITY } from './layers/constants.mjs'
 
+export const SOURCES_NAMES = {
+    DALAT_TILES: 'dalat_tiles',
+    BUILDING_TITLE: 'building_title',
+    BUILDING_TITLE_WITH_SQUARE: 'building_title_with_square'
+}
+
 
 const get_titles_props = fid => {
     const fdata = all_handmade_data[fid]
@@ -84,7 +90,7 @@ const lakes_titles = {
     }
 }
 
-const buildings_titles = {
+const building_title = {
     type: 'geojson',
     data: {
         "type": "FeatureCollection",
@@ -107,13 +113,13 @@ const buildings_titles = {
 }
 
 export const main_sources = {
-    'dalat-tiles': {
+    [SOURCES_NAMES.DALAT_TILES]: {
         type: 'vector',
         tiles: [`${window.location.origin}/dalat-map-tiles/tiles/{z}/{x}/{y}.pbf`],
         minzoom: 10,
     },
     land_areas_titles,
-    buildings_titles,
+    [SOURCES_NAMES.BUILDING_TITLE]: building_title,
     lakes_titles
 }
 
