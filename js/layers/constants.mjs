@@ -44,7 +44,8 @@ export const TITLES_PRIORITY = {
 }
 
 export const FIRST_DETAILS_MINZOOM = 12.2
-export const FRENCH_GEOMETRY_MINZOOM = 13.3
+
+export const SECONDARY_BLDGS_MINZOOM = 13.3
 
 export const SECONDARY_TITLES_MINZOOM = 15
 

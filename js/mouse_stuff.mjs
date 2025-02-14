@@ -12,7 +12,6 @@ import {
     dead_building_skull
 } from './dead_buildings.mjs'
 import {
-    french_buildings_tiny_squares_with_titles,
     french_buildings_titles
 } from './layers/titles.mjs'
 
@@ -26,7 +25,6 @@ const clickable_layers = [
     dead_building_fill.id,
     dead_building_skull.id,
     french_buildings_titles.id,
-    french_buildings_tiny_squares_with_titles.id
 ]
 
 const is_clickable_feat = f => {

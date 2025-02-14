@@ -11,7 +11,6 @@ import { TITLES_PRIORITY } from './layers/constants.mjs'
 export const SOURCES_NAMES = {
     DALAT_TILES: 'dalat_tiles',
     BUILDING_TITLE: 'building_title',
-    BUILDING_TITLE_WITH_SQUARE: 'building_title_with_square'
 }
 
 

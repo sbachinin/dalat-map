@@ -1,11 +1,43 @@
 import { SOURCES_NAMES } from "../sources.mjs"
 import * as c from "./constants.mjs"
 
+// show important french buildings from lowest z,
+// show unimportant french buildings from "secondary" minZ
+const zoom_filter = [
+    "any",
+    [">=", ["zoom"], c.SECONDARY_BLDGS_MINZOOM],
+    [
+        "all",
+        [
+            "==",
+            ["coalesce", ["get", "second_rate"], false],
+            false
+        ],
+        [
+            "==",
+            ["coalesce", ["get", "has_title"], false],
+            true
+        ]
+    ]
+]
+
+const get_filter = ({ must_have_details }) => {
+    return [
+        "all",
+        zoom_filter,
+        [
+            "==",
+            ["coalesce", ["get", "has_details"], false],
+            must_have_details
+        ]
+    ]
+}
+
 const french_fill_common_props = {
     "type": "fill",
     "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "french_building",
-    "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
+    "minzoom": c.FIRST_DETAILS_MINZOOM,
     "paint": {
         "fill-color": [
             'case',
@@ -20,13 +52,13 @@ const french_fill_common_props = {
 const french_unimportant_building_fill = {
     "id": "French unimportant building fill",
     ...french_fill_common_props,
-    filter: ["==", ["coalesce", ["get", "has_details"], false], false]
+    filter: get_filter({ must_have_details: false })
 }
 
 export const french_important_building_fill = {
     "id": "French important building",
     ...french_fill_common_props,
-    filter: ["==", ["coalesce", ["get", "has_details"], false], true]
+    filter: get_filter({ must_have_details: true })
 }
 
 const FRENCH_POLYGONS_MAX_THICKENING = 0.7
@@ -35,7 +67,7 @@ const french_thickening_outline_common_props = {
     'type': 'line',
     "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "french_building",
-    "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
+    "minzoom": c.FIRST_DETAILS_MINZOOM,
     'paint': {
         'line-color': c.FRENCH_FILL_COLOR,
         'line-width': [
@@ -53,13 +85,13 @@ const french_thickening_outline_common_props = {
 const french_without_details_thickening_outline = {
     id: 'French bldg without details thickening outline',
     ...french_thickening_outline_common_props,
-    filter: ["==", ["coalesce", ["get", "has_details"], false], false]
+    filter: get_filter({ must_have_details: false })
 }
 
 export const french_with_details_thickening_outline = {
     id: 'French bldg with details thickening outline',
     ...french_thickening_outline_common_props,
-    filter: ["==", ["coalesce", ["get", "has_details"], false], true]
+    filter: get_filter({ must_have_details: true })
 }
 
 const get_dark_outline_props = high_zoom_thickness => {
@@ -67,7 +99,7 @@ const get_dark_outline_props = high_zoom_thickness => {
         'type': 'line',
         "source": SOURCES_NAMES.DALAT_TILES,
         "source-layer": "french_building",
-        "minzoom": c.FRENCH_GEOMETRY_MINZOOM,
+        "minzoom": c.FIRST_DETAILS_MINZOOM,
         'paint': {
             'line-color': c.FRENCH_DARK_BORDER_COLOR,
             'line-width': [
@@ -88,13 +120,13 @@ const get_dark_outline_props = high_zoom_thickness => {
 const french_without_details_dark_outline = {
     'id': 'French buildings without details dark outline',
     ...get_dark_outline_props(0.8),
-    filter: ["==", ["coalesce", ["get", "has_details"], false], false]
+    filter: get_filter({ must_have_details: false })
 }
 
 export const french_with_details_dark_outline = {
     'id': 'French buildings with details dark outline',
     ...get_dark_outline_props(4),
-    filter: ["==", ["coalesce", ["get", "has_details"], false], true]
+    filter: get_filter({ must_have_details: true })
 }
 
 export const french_polygons_layers = [

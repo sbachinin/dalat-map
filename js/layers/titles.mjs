@@ -69,7 +69,7 @@ export const french_buildings_titles = {
     "id": "French buildings titles",
     "type": "symbol",
     "source": SOURCES_NAMES.BUILDING_TITLE,
-    minzoom: c.FRENCH_GEOMETRY_MINZOOM,
+    minzoom: c.FIRST_DETAILS_MINZOOM,
     layout: {
         ...all_titles_common_props.layout,
         'text-size': french_titles_common_props.layout['text-size'],
@@ -87,7 +87,7 @@ export const shit_buildings_titles = {
     "id": "Shit buildings titles",
     "type": "symbol",
     "source": SOURCES_NAMES.BUILDING_TITLE,
-    minzoom: c.FRENCH_GEOMETRY_MINZOOM,
+    minzoom: c.SECONDARY_BLDGS_MINZOOM,
     layout: {
         ...all_titles_common_props.layout,
         ...shit_titles_common_props.layout
@@ -97,52 +97,4 @@ export const shit_buildings_titles = {
         ...shit_titles_common_props.paint
     },
     filter: ['==', ['get', 'is_french'], false]
-}
-
-const tiny_squares_zoom_levels = {
-    minzoom: c.FIRST_DETAILS_MINZOOM,
-    maxzoom: c.FRENCH_GEOMETRY_MINZOOM
-}
-
-
-export const french_buildings_tiny_squares_with_titles = {
-    id: "French buildings tiny squares with titles",
-    type: "symbol",
-    source: SOURCES_NAMES.BUILDING_TITLE_WITH_SQUARE,
-    ...tiny_squares_zoom_levels,
-    layout: {
-        ...all_titles_common_props.layout,
-        'text-size': french_titles_common_props.layout['text-size'],
-        'text-font': french_titles_common_props.layout['text-font'],
-        "icon-image": "tiny_french_square",
-        "icon-size": 0.4,
-    },
-    paint: {
-        ...all_titles_common_props.paint,
-        'text-color': french_titles_common_props.paint['text-color'],
-        ...halo_if_selected
-    },
-    filter: ['==', ['get', 'is_french'], true]
-}
-
-export const shit_buildings_tiny_squares_with_titles = {
-    id: 'Shit building tiny squares with titles',
-    type: 'symbol',
-    source: SOURCES_NAMES.BUILDING_TITLE_WITH_SQUARE,
-    ...tiny_squares_zoom_levels,
-    layout: {
-        ...all_titles_common_props.layout,
-        ...shit_titles_common_props.layout,
-        "icon-image": "tiny_non_french_square",
-        "icon-size": 0.4
-    },
-    paint: {
-        ...all_titles_common_props.paint,
-        ...shit_titles_common_props.paint
-    },
-    filter: [
-        "all",
-        ['==', ['get', 'is_french'], false],
-        ['==', ['get', 'second_rate'], false]
-    ]
 }
