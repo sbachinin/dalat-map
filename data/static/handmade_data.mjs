@@ -58,7 +58,8 @@ export const french_bldgs_handmade_data = {
         "images": [
             "IMG_1791.jpg"
         ],
-        priority: TITLES_PRIORITY.LOW
+        priority: TITLES_PRIORITY.LOW,
+        second_rate: true
     },
     "361692216": {
         "images": [
@@ -1647,7 +1648,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "361851888": {
-        title: "Couvent des Oiseaux",
+        title: "Couvent\ndes Oiseaux",
         images: []
     },
     "1238335794": {

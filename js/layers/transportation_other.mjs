@@ -65,6 +65,7 @@ const railway_layers = [
         "type": "line",
         "source": SOURCES_NAMES.DALAT_TILES,
         "source-layer": "railway",
+        minzoom: FIRST_DETAILS_MINZOOM,
         "layout": {
             "line-cap": "round",
             "line-join": "round"
