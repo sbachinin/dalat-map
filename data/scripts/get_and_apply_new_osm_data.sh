@@ -8,7 +8,6 @@ for arg in "$@"; do
   fi
 done
 
-
 french_bldgs_handmade_data=$(node -e "
   import { french_bldgs_handmade_data } from '../static/handmade_data.mjs';
   console.log(JSON.stringify(french_bldgs_handmade_data));
@@ -24,9 +23,6 @@ land_areas_handmade_data=$(node -e "
   console.log(JSON.stringify(land_areas_handmade_data));
 ")
 
-
-
-
 # REMOVE OLD
 rm ../temp/*.geojson
 
@@ -39,7 +35,6 @@ fi
 # CONVERT TO GEOJSON
 osmtogeojson ../temp/output.osm >../temp/from_osm.geojson
 
-
 # create a lineString feature from dalat_bulk_geometry
 jq '.[0] | { 
     type: "Feature", 
@@ -48,15 +43,14 @@ jq '.[0] | {
         type: "LineString", 
         coordinates: .geometry.coordinates[0] 
     } 
-}' ../static/dalat_bulk_geometry.geojson > ../temp/dalat_bulk_geometry_as_linestring.geojson
+}' ../static/dalat_bulk_geometry.geojson >../temp/dalat_bulk_geometry_as_linestring.geojson
 
 # merge my custom geojson into osm's geojson,
 # prioritize custom features in case of duplicate ids
 jq -s '{
   type: "FeatureCollection",
   features: (map(.features) | add | reverse | unique_by(.id) | reverse)
-}' ../temp/from_osm.geojson ../static/all_custom_features.geojson > ../temp/all.geojson
-
+}' ../temp/from_osm.geojson ../static/all_custom_features.geojson >../temp/all.geojson
 
 # DROP NON-NUMERIC PART OF FEATURE ID SUCH AS "way/"
 jq '
@@ -97,11 +91,9 @@ jq '
   )
 ' ../temp/filtered.geojson >../temp/railway.geojson
 
-
 jq '
   .features | map(select(.properties.natural == "peak"))
 ' ../temp/filtered.geojson >../temp/peaks.geojson
-
 
 jq '
   .features | map(
@@ -128,18 +120,12 @@ jq '
   )
 ' ../temp/filtered.geojson >../temp/river0.geojson
 
-
-
-
 # COPY ALL LAND_AREAS FROM HANDMADE DATA TO A DEDICATED GEOJSON
 jq --argjson land_areas_handmade_data "$land_areas_handmade_data" '
   .features | map(
     select(.id | tostring | IN($land_areas_handmade_data | keys_unsorted[]))
   )
-' ../temp/filtered.geojson > ../temp/land_areas0.geojson
-
-
-
+' ../temp/filtered.geojson >../temp/land_areas0.geojson
 
 # TAKE ONLY REQUIRED FEATURE PROPERTIES
 # TODO: HIGHWAYS UNTOUCHED HERE SO FAR NOT TO BREAK STYLE FILTERS)
@@ -157,12 +143,12 @@ jq "$JQ_FILTER" ../temp/land_areas0.geojson >../temp/land_areas00.geojson
 
 jq --argjson handmade_data "$french_bldgs_handmade_data" '
   map(
-    .properties.has_details = (
-      ($handmade_data[(.id | tostring)] | .images // []) | length > 0
-    )
-  )
-' ../temp/french_building00.geojson > ../temp/french_building.geojson
-
+    .properties |= {
+      has_details: (($handmade_data[(.id | tostring)] | .images // []) | length) > 0,
+      has_title: ($handmade_data[(.id | tostring)] | has("title")),
+      is_important: ($handmade_data[(.id | tostring)] | .second_rate != true)
+    }
+  )' ../temp/french_building00.geojson >../temp/french_building.geojson
 
 # ADD HAS_TITLE PROP TO ALL SHIT BLDGS THAT HAVE HANDMADE TITLES
 jq --argjson handmade_data "$non_french_bldgs_handmade_data" 'map(
@@ -172,8 +158,7 @@ jq --argjson handmade_data "$non_french_bldgs_handmade_data" 'map(
       .
     end
   )
-' ../temp/boring_building00.geojson > ../temp/boring_building.geojson
-
+' ../temp/boring_building00.geojson >../temp/boring_building.geojson
 
 # COPY AREA_TYPE PROPERTY FROM HANDMADE DATA TO A GEOJSON FEATURE
 jq --argjson land_areas_handmade_data "$land_areas_handmade_data" '
