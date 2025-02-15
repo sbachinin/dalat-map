@@ -8,16 +8,8 @@ const zoom_filter = [
     [">=", ["zoom"], c.SECONDARY_BLDGS_MINZOOM],
     [
         "all",
-        [
-            "==",
-            ["coalesce", ["get", "second_rate"], false],
-            false
-        ],
-        [
-            "==",
-            ["coalesce", ["get", "has_title"], false],
-            true
-        ]
+        ["==", ["get", "is_important"], true],
+        ["==", ["get", "has_title"], true]
     ]
 ]
 
@@ -25,11 +17,7 @@ const get_filter = ({ must_have_details }) => {
     return [
         "all",
         zoom_filter,
-        [
-            "==",
-            ["coalesce", ["get", "has_details"], false],
-            must_have_details
-        ]
+        ["==", ["get", "has_details"], must_have_details]
     ]
 }
 

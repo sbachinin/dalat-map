@@ -141,14 +141,15 @@ jq "$JQ_FILTER" ../temp/lake0.geojson >../temp/lake.geojson
 jq "$JQ_FILTER" ../temp/river0.geojson >../temp/river.geojson
 jq "$JQ_FILTER" ../temp/land_areas0.geojson >../temp/land_areas00.geojson
 
-jq --argjson handmade_data "$french_bldgs_handmade_data" '
+jq --argjson hmdata__ "$french_bldgs_handmade_data" '
   map(
-    .properties |= {
-      has_details: (($handmade_data[(.id | tostring)] | .images // []) | length) > 0,
-      has_title: ($handmade_data[(.id | tostring)] | has("title")),
-      is_important: ($handmade_data[(.id | tostring)] | .second_rate != true)
+    .properties = {
+      has_details: (($hmdata__[(.id | tostring)] | .images // []) | length > 0),
+      has_title: ($hmdata__[(.id | tostring)] | (has("title") and .title != null)),
+      is_important: ($hmdata__[(.id | tostring)] | (.second_rate // false) != true)
     }
-  )' ../temp/french_building00.geojson >../temp/french_building.geojson
+  )' ../temp/french_building00.geojson > ../temp/french_building.geojson
+
 
 # ADD HAS_TITLE PROP TO ALL SHIT BLDGS THAT HAVE HANDMADE TITLES
 jq --argjson handmade_data "$non_french_bldgs_handmade_data" 'map(
