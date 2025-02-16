@@ -176,7 +176,7 @@ export const french_bldgs_handmade_data = {
         "images": [
             "IMG_0398~3.jpg",
             "IMG_0405~3.jpg",
-            "IMG_9668~2.jpg"
+            // "IMG_9668~2.jpg" (dupe)
         ]
     },
     "515193505": {

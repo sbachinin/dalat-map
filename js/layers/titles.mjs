@@ -26,24 +26,6 @@ export const all_titles_common_props = {
     }
 }
 
-export const french_titles_common_props = {
-    layout: {
-        'text-size': [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            14,
-            11,
-            17.5,
-            15
-        ],
-        'text-font': ['Merriweather Italic']
-    },
-    paint: {
-        'text-color': c.FRENCH_TITLES_TEXT_COLOR
-    }
-}
-
 export const shit_titles_common_props = {
     layout: {
         'text-size': c.PALE_TITLES_SIZE,
@@ -72,12 +54,20 @@ export const french_buildings_titles = {
     minzoom: c.FIRST_DETAILS_MINZOOM,
     layout: {
         ...all_titles_common_props.layout,
-        'text-size': french_titles_common_props.layout['text-size'],
-        'text-font': french_titles_common_props.layout['text-font']
+        'text-size': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            14,
+            11,
+            17.5,
+            15
+        ],
+        'text-font': ['Merriweather Italic']
     },
     paint: {
         ...all_titles_common_props.paint,
-        'text-color': french_titles_common_props.paint['text-color'],
+        'text-color': c.FRENCH_TITLES_TEXT_COLOR,
         ...halo_if_selected
     },
     filter: ['==', ['get', 'is_french'], true]
