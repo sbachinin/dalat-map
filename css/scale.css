@@ -11,7 +11,7 @@
     align-items: flex-end;
     margin-bottom: 10px;
     user-select: none;
-    pointer-events: none;
+    pointer-events: none !important;
     position: relative;
 }
 

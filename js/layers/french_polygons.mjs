@@ -1,26 +1,6 @@
 import { SOURCES_NAMES } from "../sources.mjs"
 import * as c from "./constants.mjs"
 
-// show important french buildings from lowest z,
-// show unimportant french buildings from "secondary" minZ
-const zoom_filter = [
-    "any",
-    [">=", ["zoom"], c.SECONDARY_BLDGS_MINZOOM],
-    [
-        "all",
-        ["==", ["get", "is_important"], true],
-        ["==", ["get", "has_title"], true]
-    ]
-]
-
-const get_filter = ({ must_have_details }) => {
-    return [
-        "all",
-        zoom_filter,
-        ["==", ["get", "has_details"], must_have_details]
-    ]
-}
-
 const french_fill_common_props = {
     "type": "fill",
     "source": SOURCES_NAMES.DALAT_TILES,
@@ -37,17 +17,23 @@ const french_fill_common_props = {
     },
 }
 
-const french_unimportant_building_fill = {
+
+
+// the following separation was necessary
+// in order to render all detailful bldgs after all detailless,
+// to prevent the detailful bldgs' border from being covered by borderless buildings' parts
+const french_detailless_bldg_fill = {
     "id": "French unimportant building fill",
     ...french_fill_common_props,
-    filter: get_filter({ must_have_details: false })
+    filter: ["==", ["get", "has_details"], false]
 }
-
-export const french_important_building_fill = {
+export const french_detailful_bldg_fill = {
     "id": "French important building",
     ...french_fill_common_props,
-    filter: get_filter({ must_have_details: true })
+    filter: ["==", ["get", "has_details"], true]
 }
+
+
 
 const FRENCH_POLYGONS_MAX_THICKENING = 0.7
 
@@ -70,16 +56,16 @@ const french_thickening_outline_common_props = {
     },
 }
 
-const french_without_details_thickening_outline = {
+const french_detailless_thickening_outline = {
     id: 'French bldg without details thickening outline',
     ...french_thickening_outline_common_props,
-    filter: get_filter({ must_have_details: false })
+    filter: ["==", ["get", "has_details"], false]
 }
 
-export const french_with_details_thickening_outline = {
+export const french_detailful_thickening_outline = {
     id: 'French bldg with details thickening outline',
     ...french_thickening_outline_common_props,
-    filter: get_filter({ must_have_details: true })
+    filter: ["==", ["get", "has_details"], true]
 }
 
 const get_dark_outline_props = high_zoom_thickness => {
@@ -105,28 +91,58 @@ const get_dark_outline_props = high_zoom_thickness => {
     }
 }
 
-const french_without_details_dark_outline = {
+const french_detailless_dark_outline = {
     'id': 'French buildings without details dark outline',
-    ...get_dark_outline_props(0.8),
-    filter: get_filter({ must_have_details: false })
+    ...get_dark_outline_props(1),
+    filter: ["==", ["get", "has_details"], false]
 }
 
-export const french_with_details_dark_outline = {
+export const french_detailful_dark_outline = {
     'id': 'French buildings with details dark outline',
     ...get_dark_outline_props(4),
-    filter: get_filter({ must_have_details: true })
+    filter: ["==", ["get", "has_details"], true]
 }
+
+const first_class_bldg_filter = ["all",
+    ["==", ["get", "is_important"], true],
+    ["==", ["get", "has_title"], true]
+]
+const non_first_class_bldg_filter = ["any",
+    ["==", ["get", "is_important"], false],
+    ["==", ["get", "has_title"], false]
+]
 
 export const french_polygons_layers = [
     // detailless bldgs go first
     // because otherwise it can cover
     // the adjacent important buildings' outlines
     // leading to "missing borders" appearance
-    french_without_details_dark_outline,
-    french_without_details_thickening_outline,
-    french_unimportant_building_fill,
+    french_detailless_dark_outline,
+    french_detailless_thickening_outline,
+    french_detailless_bldg_fill,
 
-    french_with_details_dark_outline,
-    french_with_details_thickening_outline,
-    french_important_building_fill
-]
+    french_detailful_dark_outline,
+    french_detailful_thickening_outline,
+    french_detailful_bldg_fill
+].flatMap(l => ([
+    {
+        ...l,
+        id: l.id + ' - 1st class',
+        filter: [
+            "all",
+            l.filter,
+            first_class_bldg_filter
+        ],
+        minzoom: c.FIRST_DETAILS_MINZOOM
+    },
+    {
+        ...l,
+        id: l.id + ' - non-1st class',
+        filter: [
+            "all",
+            l.filter,
+            non_first_class_bldg_filter
+        ],
+        minzoom: c.SECONDARY_BLDGS_MINZOOM
+    }
+]))

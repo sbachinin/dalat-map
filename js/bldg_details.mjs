@@ -6,9 +6,13 @@ import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_li
 import { coords_are_in_view, get_map_center_shift, push_to_history } from './utils.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 
-export const building_has_details = featureMeta => {
-    return featureMeta && (featureMeta.images/*  || featureMeta.descr */)
+export const building_has_details = id => {
+    if (id === undefined) {
+        console.warn('Trying to get building details but id is undefined')
+    }
+    return all_handmade_data[id]?.images?.length
 }
+
 
 const update_size_variables = () => {
     update_panel_thumbs_list_size_variables({
@@ -16,12 +20,10 @@ const update_size_variables = () => {
     })
 }
 
-const show_bldg_details = (details, id) => {
-    if (!details.images?.length) return
-
+const show_bldg_details = (id) => {
     const details_el = create_panel_thumbs_list({
         content_description: 'building_' + id,
-        images_names: details.images
+        images_names: all_handmade_data[id].images
     })
 
     panel.set_content({
@@ -44,9 +46,8 @@ export const try_open_building = async (
         return
     }
 
-    const featureMeta = all_handmade_data[id]
-    if (building_has_details(featureMeta)) {
-        show_bldg_details(featureMeta, id)
+    if (building_has_details(id)) {
+        show_bldg_details(id)
         select_bldg(id)
         should_push_history && push_to_history(
             { id },
