@@ -4,7 +4,7 @@ import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
 import { try_open_building } from './bldg_details.mjs'
-import { create_element_from_Html, get_lnglat_per_px, get_map_center_shift } from './utils.mjs'
+import { get_lnglat_per_px, get_map_center_shift } from './utils.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
@@ -107,8 +107,9 @@ map.on('move', () => {
 create_scale()
 
 if (window.location.hostname === 'localhost') {
-    const script = create_element_from_Html(
-        `<script src="js/DEV/handle_img_drag.mjs"></script>`)
+    const script = document.createElement('script')
+    script.src = 'js/DEV/handle_img_drag.mjs'
+    script.async = true
     document.body.appendChild(script)
 }
 
