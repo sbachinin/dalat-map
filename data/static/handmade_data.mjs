@@ -1,4 +1,4 @@
-import { AREA_TYPES, TITLES_PRIORITY } from "../../js/layers/constants.mjs"
+import { AREA_TYPES } from "../../js/layers/constants.mjs"
 
 /*
     {
@@ -34,13 +34,12 @@ export const french_bldgs_handmade_data = {
         "images": [
             "IMG_0673.jpg",
             "IMG_0790~4.jpg",
-            // "IMG_0808.jpg",
             "IMG_2901~3.jpg",
             "IMG_6065~2.jpg",
             "IMG_6099~3.jpg",
             "IMG_8948~2.jpg"
         ],
-        title: 'Railway\nstation'
+        "title": "Railway\nstation"
     },
     "17929361": {
         "images": [
@@ -54,12 +53,12 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "308446691": {
-        title: 'Hoa Binh \n(ex)cinema',
+        "title": "Hoa Binh \n(ex)cinema",
         "images": [
             "IMG_1791.jpg"
         ],
-        priority: TITLES_PRIORITY.LOW,
-        second_rate: true
+        "priority": 11,
+        "second_rate": true
     },
     "361692216": {
         "images": [
@@ -68,7 +67,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "361692265": {
-        title: "Domaine de Marie",
+        "title": "Domaine de Marie",
         "images": [
             "IMG_7957~4.jpg",
             "IMG_7957~3.jpg"
@@ -84,17 +83,18 @@ export const french_bldgs_handmade_data = {
             "IMG_5894~2.jpg",
             "IMG_5908~2.jpg"
         ],
-        title: "Former \npower station"
+        "title": "Former \npower station"
     },
     "361851888": {
+        "title": "Couvent\ndes Oiseaux",
         "images": [
             "IMG_7976~3.jpg",
             "IMG_7981~2.jpg"
         ]
     },
     "361851915": {
-        "title": 'Lycée Yersin',
-        subtitle: 'Currently Pedagogical College',
+        "title": "Lycée Yersin",
+        "subtitle": "Currently Pedagogical College",
         "descr": "Built in 1935 . female students from wealthy families in Dalat and southern Vietnam were educated between 1940 and 1975. Queen Nam Phuong was reportedly a student of this school as well.\n        I entered the campus without a problem. The building stands next to an old pine grove.",
         "images": [
             "IMG_0218~2.jpg",
@@ -108,22 +108,26 @@ export const french_bldgs_handmade_data = {
             "IMG_8802~2.jpg",
             "IMG_8807~2.jpg",
             "IMG_8818~3.jpg",
-            "IMG_20240721_111036~2.jpg"
+            "IMG_20240721_111036~2.jpg",
+            "IMG_3689.jpg"
         ]
     },
     "407699702": {
-        title: 'Dalat\nPalace Hotel',
+        "title": "Dalat\nPalace Hotel",
         "images": [
             "IMG_5439~2.jpg",
             "IMG_5457~2.jpg",
             "IMG_5448~2.jpg"
         ],
-        priority: TITLES_PRIORITY.HIGH,
-        title_coords: [108.44021450444011, 11.937946013869598],
-        title_side: 'top'
+        "priority": 10,
+        "title_coords": [
+            108.4402145044401,
+            11.937946013869597
+        ],
+        "title_side": "top"
     },
     "452519411": {
-        title: 'St. Nicholas \nCathedral',
+        "title": "St. Nicholas \nCathedral",
         "images": [
             "IMG_5520.jpg",
             "IMG_5531.jpg",
@@ -131,7 +135,10 @@ export const french_bldgs_handmade_data = {
             "IMG_5541.jpg",
             "IMG_5543~3.jpg"
         ],
-        priority: TITLES_PRIORITY.VERY_HIGH
+        "priority": 9
+    },
+    "463866431": {
+        "title": "Bao Dai\nPalace №3"
     },
     "469578958": {
         "images": [
@@ -140,23 +147,26 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "473088090": {
-        title: 'Zoology museum \nin ex-monastery',
+        "title": "Zoology museum \nin ex-monastery",
         "images": [
             "zoo2.jpg",
             "zoo1.jpg"
         ]
     },
     "475362778": {
-        title: 'Du Parc Hotel',
+        "title": "Du Parc Hotel",
         "images": [
             "IMG_5462~4.jpg",
             "IMG_9001~2.jpg",
             "IMG_9013~2.jpg",
             "IMG_9020~2.jpg"
         ],
-        priority: TITLES_PRIORITY.LOW,
-        title_coords: [108.43941017124001, 11.936592586225473],
-        title_side: 'right'
+        "priority": 11,
+        "title_coords": [
+            108.43941017124001,
+            11.936592586225473
+        ],
+        "title_side": "right"
     },
     "515193502": {
         "images": [
@@ -175,8 +185,7 @@ export const french_bldgs_handmade_data = {
     "515193504": {
         "images": [
             "IMG_0398~3.jpg",
-            "IMG_0405~3.jpg",
-            // "IMG_9668~2.jpg" (dupe)
+            "IMG_0405~3.jpg"
         ]
     },
     "515193505": {
@@ -188,7 +197,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "515193507": {
-        title: 'Queen Nam Phuong Palace',
+        "title": "Queen Nam Phuong Palace",
         "images": [
             "IMG_0567~3.jpg",
             "IMG_0573~3.jpg",
@@ -270,22 +279,29 @@ export const french_bldgs_handmade_data = {
             "IMG_4422.jpg"
         ]
     },
+    "543357207": {
+        "title": "Bao Dai\nPalace №1",
+        "priority": 11
+    },
     "543357209": {
         "images": [
             "IMG_0587~2.jpg"
         ]
     },
     "618049068": {
-        title: 'Tin Lanh church',
+        "title": "Tin Lanh church",
         "images": [
             "IMG_1339.jpg"
         ],
-        second_rate: true,
-        title_coords: [108.4363520549162, 11.946952708206821],
-        title_side: 'top',
+        "second_rate": true,
+        "title_coords": [
+            108.4363520549162,
+            11.94695270820682
+        ],
+        "title_side": "top"
     },
     "618049072": {
-        title: "Governor's Palace",
+        "title": "Governor's Palace",
         "images": [
             "IMG_1227~2.jpg",
             "IMG_1248.jpg",
@@ -300,7 +316,7 @@ export const french_bldgs_handmade_data = {
             "IMG_4113~2.jpg",
             "IMG_4125~2.jpg"
         ],
-        priority: TITLES_PRIORITY.HIGH
+        "priority": 10
     },
     "777432491": {
         "images": [
@@ -365,7 +381,8 @@ export const french_bldgs_handmade_data = {
     },
     "777438291": {
         "images": [
-            "IMG_0082~2.JPG"
+            "IMG_0082~2.JPG",
+            "IMG_2089~3.jpg"
         ]
     },
     "777438297": {
@@ -383,7 +400,7 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "777438901": {
-        title: 'Bao Dai\nPalace №2',
+        "title": "Bao Dai\nPalace №2",
         "descr": "One of the 3 palaces of king Bao Dai. (All 3 in Dalat).\nThis on was built in 1933-1937.\nNow it's possibly used as an event space by some bosses of Lam Dong province.\nThe building is massive and rather clumsy and bureaucratic to my taste. One explanation of this is that Palace II was designed as headquarters of the French ruling apparatus in Indochina. (Though this fact comes from a dubious source in the web).\nHowever clumsiness is redeemed by the setting: a vast pine forest on the very top of the hill. A really tranquil and enigmatic place.\nThe palace is well maintained but still shows a bit of historical shabbiness which is nice. At the time of my visit the surrounding area was completely deserted.\nAccess seems to be unrestricted, I just walked through the entrance from the south. (Not from main street).",
         "images": [
             "IMG_6864~3.jpg",
@@ -395,7 +412,7 @@ export const french_bldgs_handmade_data = {
             "IMG_20240730_103431_1~4.jpg",
             "IMG_20240730_103646_1~2.jpg"
         ],
-        priority: TITLES_PRIORITY.HIGH
+        "priority": 10
     },
     "777439802": {
         "images": [
@@ -459,7 +476,8 @@ export const french_bldgs_handmade_data = {
             "IMG_3592~2.jpg",
             "IMG_1980.jpg",
             "IMG_1999.jpg",
-            "IMG_8096.jpg"
+            "IMG_8096.jpg",
+            "IMG_3576~3.jpg"
         ]
     },
     "971558884": {
@@ -477,7 +495,6 @@ export const french_bldgs_handmade_data = {
             "IMG_0876.jpg",
             "IMG_0885.jpg",
             "IMG_2021~3.jpg",
-            "IMG_3019~2.jpg",
             "IMG_3039~3.JPG",
             "IMG_3048~3.JPG",
             "IMG_3061~2.JPG",
@@ -508,8 +525,8 @@ export const french_bldgs_handmade_data = {
     "971568008": {
         "images": [
             "IMG_1070.jpg",
-            "IMG_1468~5.jpg",
-            "IMG_3974~2.jpg"
+            "IMG_3974~2.jpg",
+            "16_1.jpg"
         ]
     },
     "971568009": {
@@ -535,7 +552,8 @@ export const french_bldgs_handmade_data = {
     "971572385": {
         "images": [
             "IMG_3116~4.jpg",
-            "IMG_9135~2.jpg"
+            "IMG_9135~2.jpg",
+            "IMG_9137~2.jpg"
         ]
     },
     "971572395": {
@@ -557,7 +575,8 @@ export const french_bldgs_handmade_data = {
             "IMG_6323~5.jpg",
             "IMG_6354~3.jpg",
             "IMG_6415~2.jpg",
-            "IMG_6419~2.jpg"
+            "IMG_6419~2.jpg",
+            "IMG_2134~3.jpg"
         ]
     },
     "971577493": {
@@ -566,8 +585,7 @@ export const french_bldgs_handmade_data = {
             "IMG_9176.jpg",
             "IMG_9188.jpg",
             "427_2.jpg",
-            "IMG_0469~2.jpg",
-            // "IMG_0475~2.jpg",
+            "IMG_0469~2.jpg"
         ]
     },
     "971578055": {
@@ -601,9 +619,16 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "1238335794": {
+        "title": "Nguyen Viet\nXuan Palace",
+        "second_rate": true,
         "images": [
             "IMG_2546.jpg"
-        ]
+        ],
+        "title_coords": [
+            108.42982046800888,
+            11.934000182972317
+        ],
+        "title_side": "right"
     },
     "1243929950": {
         "images": [
@@ -614,7 +639,8 @@ export const french_bldgs_handmade_data = {
             "IMG_2065.jpg",
             "IMG_2069.jpg",
             "IMG_3054.jpg",
-            "IMG_8067~2.jpg"
+            "IMG_8067~2.jpg",
+            "IMG_2090.jpg"
         ]
     },
     "1301437304": {
@@ -653,7 +679,8 @@ export const french_bldgs_handmade_data = {
             "IMG_0314~3 Copy.JPG",
             "IMG_3444~8.jpg",
             "IMG_4169~3.jpg",
-            "IMG_9069~4.jpg"
+            "IMG_9069~4.jpg",
+            "IMG_4161~2.jpg"
         ]
     },
     "1302653951": {
@@ -722,7 +749,8 @@ export const french_bldgs_handmade_data = {
     "1302812586": {
         "images": [
             "IMG_0894.jpg",
-            "IMG_9045~2.jpg"
+            "IMG_9045~2.jpg",
+            "IMG_9029.jpg"
         ]
     },
     "1303019055": {
@@ -764,7 +792,8 @@ export const french_bldgs_handmade_data = {
     "1303227326": {
         "images": [
             "IMG_4195~2.jpg",
-            "IMG_7080~2.jpg"
+            "IMG_7080~2.jpg",
+            "IMG_7083.jpg"
         ]
     },
     "1303227327": {
@@ -803,33 +832,33 @@ export const french_bldgs_handmade_data = {
     },
     "1303825521": {
         "images": [
-            // "IMG_0724.jpg",
             "IMG_0724~2.jpg",
-            "IMG_0733.jpg"
+            "IMG_0733.jpg",
+            "IMG_0730.jpg"
         ]
     },
     "1303825522": {
-        title: "Former \nFranciscan \nmission",
-        subtitle: 'Also former "Vietnam\'s coolest ruin"',
-        links: [
+        "title": "Former \nFranciscan \nmission",
+        "subtitle": "Also former \"Vietnam's coolest ruin\"",
+        "links": [
             {
-                description: 'Rusty Compass\' great video',
-                url: 'https://www.youtube.com/watch?v=oTT2QylDoyk&t=18s'
+                "description": "Rusty Compass' great video",
+                "url": "https://www.youtube.com/watch?v=oTT2QylDoyk&t=18s"
             },
             {
-                description: 'Article on Saigoneer',
-                url: 'https://saigoneer.com/vietnam-travel/10162-photos-a-peek-inside-da-lat-s-abandoned-franciscan-mission'
+                "description": "Article on Saigoneer",
+                "url": "https://saigoneer.com/vietnam-travel/10162-photos-a-peek-inside-da-lat-s-abandoned-franciscan-mission"
             }
         ],
         "images": [
             "IMG_0737.jpg",
             "IMG_0742.jpg"
         ],
-        priority: TITLES_PRIORITY.HIGH
+        "priority": 10
     },
     "1304080964": {
         "images": [
-            "IMG_1029~2.jpg"
+            "IMG_2237~2.jpg"
         ]
     },
     "1304080965": {
@@ -838,7 +867,8 @@ export const french_bldgs_handmade_data = {
             "IMG_6383~4.jpg",
             "IMG_6390_exported_4558690983960884771~3.jpg",
             "IMG_6407~2.jpg",
-            "IMG_6413~3.jpg"
+            "IMG_6413~3.jpg",
+            "IMG_2206~2.jpg"
         ]
     },
     "1304080968": {
@@ -851,7 +881,8 @@ export const french_bldgs_handmade_data = {
         "images": [
             "432.jpg",
             "IMG_1887.jpg",
-            "IMG_8588.jpg"
+            "IMG_8588.jpg",
+            "IMG_8570~3.jpg"
         ]
     },
     "1304080972": {
@@ -879,7 +910,8 @@ export const french_bldgs_handmade_data = {
             "IMG_8154~2.jpg",
             "IMG_9809~2.jpg",
             "IMG_9818~2.jpg",
-            "IMG_9829~2.jpg"
+            "IMG_9829~2.jpg",
+            "IMG_9804~3.jpg"
         ]
     },
     "1304217001": {
@@ -963,10 +995,6 @@ export const french_bldgs_handmade_data = {
             "IMG_1571~2.jpg"
         ]
     },
-    "543357207": {
-        title: 'Bao Dai\nPalace №1',
-        priority: TITLES_PRIORITY.LOW
-    },
     "1304439965": {
         "images": [
             "IMG_1584~3.jpg"
@@ -1009,12 +1037,14 @@ export const french_bldgs_handmade_data = {
     },
     "1304439976": {
         "images": [
-            "IMG_1986~2.jpg"
+            "IMG_1986~2.jpg",
+            "IMG_8551~3.jpg"
         ]
     },
     "1304439977": {
         "images": [
-            "IMG_2016~2.jpg"
+            "IMG_2016~2.jpg",
+            "IMG_8558 Copy~3.JPG"
         ]
     },
     "1304439982": {
@@ -1024,14 +1054,11 @@ export const french_bldgs_handmade_data = {
         ]
     },
     "1305208733": {
-        title: "Institut Pasteur",
+        "title": "Institut Pasteur",
         "images": [
             "IMG_2878~2.jpg",
             "IMG_2876~3.jpg"
         ]
-    },
-    "463866431": {
-        title: 'Bao Dai\nPalace №3',
     },
     "1305703497": {
         "images": [
@@ -1047,7 +1074,8 @@ export const french_bldgs_handmade_data = {
     "1307259193": {
         "images": [
             "IMG_2943~2.jpg",
-            "IMG_2950.jpg"
+            "IMG_2950.jpg",
+            "IMG_1195~4.jpg"
         ]
     },
     "1307264371": {
@@ -1104,7 +1132,8 @@ export const french_bldgs_handmade_data = {
         "images": [
             "IMG_0210~2.jpg",
             "IMG_0220~2.jpg",
-            "IMG_1811~2.jpg"
+            "IMG_1811~2.jpg",
+            "426.jpg"
         ]
     },
     "1307526071": {
@@ -1121,7 +1150,8 @@ export const french_bldgs_handmade_data = {
     "1307704573": {
         "images": [
             "IMG_0017~2.jpg",
-            "IMG_2046~2.jpg"
+            "IMG_2046~2.jpg",
+            "13~~4.jpg"
         ]
     },
     "1307704574": {
@@ -1130,7 +1160,8 @@ export const french_bldgs_handmade_data = {
             "IMG_0008~2.jpg",
             "IMG_1959~4.jpg",
             "IMG_9944~2.jpg",
-            "IMG_9983~2.jpg"
+            "IMG_9983~2.jpg",
+            "IMG_9965~2.jpg"
         ]
     },
     "1307704578": {
@@ -1195,12 +1226,13 @@ export const french_bldgs_handmade_data = {
     "1308277167": {
         "images": [
             "IMG_2502~2.jpg",
-            "IMG_2786.jpg"
+            "IMG_2786.jpg",
+            "IMG_2479~3.jpg"
         ]
     },
     "1308277168": {
         "images": [
-            "IMG_2628~2.jpg"
+            "IMG_2718.jpg"
         ]
     },
     "1308353560": {
@@ -1235,7 +1267,8 @@ export const french_bldgs_handmade_data = {
     },
     "1308413669": {
         "images": [
-            "IMG_9506~3.jpg"
+            "IMG_9506~3.jpg",
+            "IMG_9499.jpg"
         ]
     },
     "1308413670": {
@@ -1283,7 +1316,8 @@ export const french_bldgs_handmade_data = {
             "IMG_4308~2.jpg",
             "IMG_5713~2.jpg",
             "IMG_5697.jpg",
-            "IMG_5694~6.jpg"
+            "IMG_5694~6.jpg",
+            "IMG_5666.jpg"
         ]
     },
     "1308548103": {
@@ -1301,7 +1335,8 @@ export const french_bldgs_handmade_data = {
     "1308548107": {
         "images": [
             "IMG_4297.jpg",
-            "IMG_4311~2.jpg"
+            "IMG_4311~2.jpg",
+            "IMG_4293~2.jpg"
         ]
     },
     "1308572388": {
@@ -1324,7 +1359,6 @@ export const french_bldgs_handmade_data = {
     "1308572398": {
         "images": [
             "IMG_3303~3.jpg",
-            // "IMG_3860~3.jpg",
             "IMG_3862~2.jpg",
             "IMG_3904~2.jpg",
             "IMG_3928~2.jpg"
@@ -1396,7 +1430,12 @@ export const french_bldgs_handmade_data = {
             "IMG_3183.jpg",
             "IMG_3192~3.jpg",
             "IMG_3964~2 Copy.JPG",
-            "IMG_4060~2.jpg"
+            "IMG_4060~2.jpg",
+            "IMG_3157.jpg",
+            "IMG_3170.jpg",
+            "IMG_4047~2.jpg",
+            "IMG_4053.jpg",
+            "IMG_4050~2.jpg"
         ]
     },
     "1309034418": {
@@ -1494,7 +1533,8 @@ export const french_bldgs_handmade_data = {
             "IMG_2532.jpg",
             "IMG_2536.jpg",
             "IMG_7572~5.jpg",
-            "IMG_7593~3.jpg"
+            "IMG_7593~3.jpg",
+            "IMG_7572~3.jpg"
         ]
     },
     "1314373895": {
@@ -1627,13 +1667,6 @@ export const french_bldgs_handmade_data = {
             "IMG_1837~3.jpg"
         ]
     },
-    "1348155895": {
-        "myhint": "post-colonial near that strange dark tower",
-        "images": [
-            "IMG_1416~2",
-            "IMG_1371~2"
-        ]
-    },
     "1348417560": {
         "images": [
             "IMG_4162~2.jpg",
@@ -1644,30 +1677,41 @@ export const french_bldgs_handmade_data = {
         "images": [
             "IMG_9304~2.JPG"
         ]
-    },
-    "361851888": {
-        title: "Couvent\ndes Oiseaux",
-        images: []
-    },
-    "1238335794": {
-        title: "Nguyen Viet\nXuan Palace",
-        second_rate: true,
-        images: [],
-        title_coords: [108.42982046800888, 11.934000182972318],
-        title_side: 'right'
     }
 }
 
 export const non_french_bldgs_handmade_data = {
-    542728983: {
+    "777438312": {
+        "myhint": "A ghost of a french building in Mercure hotel",
+        "images": [
+            "IMG_4783~2.jpg"
+        ]
+    },
+    "1348155895": {
+        "myhint": "post-colonial near that strange dark tower",
+        "images": [
+            "IMG_1416~2",
+            "IMG_1371~2",
+            "IMG_1371~2.jpg",
+            "IMG_1416~2.jpg"
+        ]
+    },
+    "1307493490": {
+        "myhint": 'Ana Mandara 22',
+        "images": [
+            "IMG_1775~2.jpg",
+            "IMG_1761~2.jpg"
+        ]
+    },
+    "542728983": {
         title: 'Chi Lang church',
         second_rate: true
     },
-    1308414641: {
+    "1308414641": {
         title: "Minh Hoa\nseminary",
         second_rate: true
     },
-    361851700: {
+    "361851700": {
         title: "Lam Dong\nAdministrative\nCenter",
         second_rate: true,
         title_coords: [108.43185217531817, 11.937238686542074]
@@ -1675,7 +1719,7 @@ export const non_french_bldgs_handmade_data = {
     "463866449": {
         title: 'Bus Station'
     },
-    475362782: {
+    "475362782": {
         title: 'Lam Dong\nLibrary',
         second_rate: true
     },
@@ -1683,52 +1727,52 @@ export const non_french_bldgs_handmade_data = {
         title: 'Da Lat\nMarket',
         title_coords: [108.4373759000099, 11.943643357953377]
     },
-    525191979: {
+    "525191979": {
         title: "Dalat Center",
         title_coords: [108.43798094315969, 11.944096065149296],
         second_rate: true
     },
-    1244767000: {
+    "1244767000": {
         title: 'Nguyen Huu\nHao Tomb'
     },
-    1305230699: {
+    "1305230699": {
         title: '"Madame\nde Dalat"',
         subtitle: 'Vietnamese modernist villa'
     },
-    515288597: {
+    "515288597": {
         title: 'Labor \nCulture House',
         second_rate: true
     },
-    17873628: {
+    "17873628": {
         title: 'Pontifical College of St. Pius X',
         second_rate: true
     },
-    232458166: {
+    "232458166": {
         title: 'Linh Quang\nPagoda'
     },
-    361851927: {
+    "361851927": {
         title: 'Linh Son\nPagoda'
     },
-    7758125: {
+    "7758125": {
         title: 'Youth Prison\nmuseum'
     },
-    1303678469: {
+    "1303678469": {
         title: 'Don Bosco parish',
         second_rate: true
     },
-    18645373: {
+    "18645373": {
         title: 'Thien Vuong\nCo Sat\nPagoda'
     },
-    475362774: {
+    "475362774": {
         title: 'Radio and\nTV station',
         second_rate: true
     },
-    361851706: {
+    "361851706": {
         title: 'Saigon\nhotel',
         second_rate: true,
         title_coords: [108.42945860977937, 11.939266235240353]
     },
-    1301446697: {
+    "1301446697": {
         title: 'MerPerle\nhotel',
         second_rate: true,
         title_coords: [108.45841503948003, 11.941198360637713]

@@ -2,7 +2,7 @@ export const handle_resize = (panel) => {
 
     const onresize = () => {
         panel.element.classList.add('notransition')
-        panel.content.update()
+        panel.content?.update()
         panel.element.scrollTop = 0
         panel.element.scrollLeft = 0
         panel.cache_full_size()

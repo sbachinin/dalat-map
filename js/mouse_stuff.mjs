@@ -28,8 +28,9 @@ export const add_mouse_stuff = () => {
         // )
         const rfs = map.queryRenderedFeatures(e.point)
         const clickable_feat = rfs.find(f => potentially_clickable_layers.includes(f.layer.id))
-        const has_details = building_has_details(clickable_feat?.id)
-        if (clickable_feat && has_details) {
+        if (clickable_feat
+            && building_has_details(clickable_feat.id)
+        ) {
             try_open_building(clickable_feat.id, true, true)
         } else {
             panel.set_size(0)

@@ -8,7 +8,7 @@ import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 
 export const building_has_details = id => {
     if (id === undefined) {
-        console.warn('Trying to get building details but id is undefined')
+        console.warn('Trying to get building details but id is undefined. Hmm')
     }
     return all_handmade_data[id]?.images?.length
 }
