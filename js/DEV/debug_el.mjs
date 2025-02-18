@@ -6,8 +6,9 @@ if (window.location.hostname === 'localhost'
     || window.location.hostname.match('192.168')
 ) {
     debugel = create_element_from_Html(`
-            <div style="position: fixed; z-index: 100;">
+            <div style="position: fixed; z-index: 100; background: white;">
                 <div id="debug-zoom"></div>
+                <div id="debug-other"></div>
             </div>`)
     document.body.append(debugel)
 }
@@ -24,5 +25,5 @@ export const handle_zoom_to_show_in_debug_el = () => {
 
 export const write_to_debug_el = (text) => {
     if (debugel === null) return
-    debugel.innerHTML += text
+    document.querySelector('#debug-other').innerHTML = text
 }

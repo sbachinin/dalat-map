@@ -42,7 +42,8 @@ const get_title_final_coords = fid => {
     const hardcoded_coords = all_handmade_data[fid]?.title_coords
     const generated_coords = centroids_etc[fid]
     if (!hardcoded_coords && !generated_coords) {
-        throw new Error('title coords cannot be found; maybe something is going wrong')
+        console.warn('title coords cannot be found; maybe something is going wrong')
+        return
     }
     return hardcoded_coords
         || [generated_coords.centroid[0], generated_coords.title_lat]
