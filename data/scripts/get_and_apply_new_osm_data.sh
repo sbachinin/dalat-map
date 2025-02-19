@@ -193,4 +193,4 @@ tippecanoe -e ../../dalat-map-tiles/tiles \
   ../static/dead_buildings.geojson \
   ../static/dalat_bulk_geometry.geojson
 
-node save_bldgs_centroids.mjs
+node save_polygons_centroids.mjs
