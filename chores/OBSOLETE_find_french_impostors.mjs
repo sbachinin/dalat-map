@@ -8,6 +8,10 @@ const geojsonPath = path.resolve('../data/temp/french_building.geojson')
 // THIS ANSWERS THE QUESTION:
 // What bldgs I mistakenly added to french_bldgs_handmade_data whereas they are not french?
 
+// OBSOLETE BECAUSE
+// all bldgs data (french and not) were merged into one obj,
+// so there is no question of frenchness in this unified obj
+
 async function check_french_impostors() {
     try {
         const { french_bldgs_handmade_data } = await import(pathToFileURL(handmadeDataPath))

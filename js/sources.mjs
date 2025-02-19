@@ -1,18 +1,17 @@
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
+
 import {
     all_handmade_data,
-    french_bldgs_handmade_data,
     lakes_handmade_data,
     land_areas_handmade_data,
-    non_french_bldgs_handmade_data
 } from '../data/static/handmade_data.mjs'
 import { TITLES_PRIORITY } from './layers/constants.mjs'
+import { is_a_building, is_french_building } from './utils.mjs'
 
 export const SOURCES_NAMES = {
     DALAT_TILES: 'dalat_tiles',
     BUILDING_TITLE: 'building_title',
 }
-
 
 const get_titles_props = fid => {
     const fdata = all_handmade_data[fid]
@@ -29,7 +28,7 @@ const get_titles_props = fid => {
         title: fdata.title,
         priority,
         second_rate: !!fdata.second_rate,
-        is_french: !!french_bldgs_handmade_data[fid],
+        is_french: is_french_building(fid),
         title_side: all_handmade_data[fid].title_side,
         minzoom: all_handmade_data[fid].minzoom
     }
@@ -95,9 +94,8 @@ const building_title = {
     data: {
         "type": "FeatureCollection",
         "features": Object.keys(centroids_etc)
-            .filter(fid => french_bldgs_handmade_data[fid]?.title
-                || non_french_bldgs_handmade_data[fid]?.title
-            )
+            .map(Number)
+            .filter(is_a_building)
             .map(fid => {
                 return {
                     type: "Feature",
@@ -122,26 +120,3 @@ export const main_sources = {
     [SOURCES_NAMES.BUILDING_TITLE]: building_title,
     lakes_titles
 }
-
-// const is_a_building_with_title = fid => {
-//     return Boolean(french_bldgs_handmade_data[fid]?.title)
-//         || Boolean(non_french_bldgs_handmade_data[fid]?.title)
-// }
-
-// export const buildings_centroids_with_titles_source = {
-//     type: 'geojson',
-//     data: {
-//         "type": "FeatureCollection",
-//         "features": Object.keys(centroids_etc)
-//             .filter(is_a_building_with_title)
-//             .map(fid => ({
-//                 type: "Feature",
-//                 id: fid,
-//                 geometry: {
-//                     type: "Point",
-//                     coordinates: centroids_etc[fid].centroid
-//                 },
-//                 properties: get_titles_props(fid)
-//             }))
-//     }
-// }

@@ -8,14 +8,9 @@ for arg in "$@"; do
   fi
 done
 
-french_bldgs_handmade_data=$(node -e "
-  import { french_bldgs_handmade_data } from '../static/handmade_data.mjs';
-  console.log(JSON.stringify(french_bldgs_handmade_data));
-")
-
-non_french_bldgs_handmade_data=$(node -e "
-  import { non_french_bldgs_handmade_data } from '../static/handmade_data.mjs';
-  console.log(JSON.stringify(non_french_bldgs_handmade_data));
+bldgs_handmade_data=$(node -e "
+  import { bldgs_handmade_data } from '../static/bldgs_handmade_data.mjs';
+  console.log(JSON.stringify(bldgs_handmade_data));
 ")
 
 land_areas_handmade_data=$(node -e "
@@ -141,19 +136,19 @@ jq "$JQ_FILTER" ../temp/lake0.geojson >../temp/lake.geojson
 jq "$JQ_FILTER" ../temp/river0.geojson >../temp/river.geojson
 jq "$JQ_FILTER" ../temp/land_areas0.geojson >../temp/land_areas00.geojson
 
-jq --argjson hmdata__ "$french_bldgs_handmade_data" '
+jq --argjson bldgs_hmd__ "$bldgs_handmade_data" '
   map(
     .properties = {
-      has_details: (($hmdata__[(.id | tostring)] | .images // []) | length > 0),
-      has_title: ($hmdata__[(.id | tostring)] | (has("title") and .title != null)),
-      is_important: ($hmdata__[(.id | tostring)] | (.second_rate // false) != true)
+      has_details: (($bldgs_hmd__[(.id | tostring)] | .images // []) | length > 0),
+      has_title: ($bldgs_hmd__[(.id | tostring)] | (has("title") and .title != null)),
+      is_important: ($bldgs_hmd__[(.id | tostring)] | (.second_rate // false) != true)
     }
   )' ../temp/french_building00.geojson > ../temp/french_building.geojson
 
 
 # ADD HAS_TITLE PROP TO ALL SHIT BLDGS THAT HAVE HANDMADE TITLES
-jq --argjson handmade_data "$non_french_bldgs_handmade_data" 'map(
-    if (.id | tostring) as $id | $handmade_data[$id].title then
+jq --argjson bldgs_hmd__ "$bldgs_handmade_data" 'map(
+    if (.id | tostring) as $id | $bldgs_hmd__[$id].title then
       .properties += { has_title: true }
     else
       .
@@ -194,3 +189,4 @@ tippecanoe -e ../../dalat-map-tiles/tiles \
   ../static/dalat_bulk_geometry.geojson
 
 node save_polygons_centroids.mjs
+node save_some_features_ids.mjs

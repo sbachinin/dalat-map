@@ -1,3 +1,5 @@
+import { french_ids, shit_ids } from '../data/for_runtime/bldgs_ids.mjs'
+
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
 export const is_mouse_device = () => window.matchMedia("(pointer: fine)").matches
@@ -143,3 +145,11 @@ export const get_geojson_source = (features) => {
         }
     }
 }
+
+export const is_french_building = fid => french_ids.includes(fid)
+export const is_shit_building = fid => shit_ids.includes(fid)
+
+export const is_a_building = fid => {
+    return is_french_building(fid) || is_shit_building(fid)
+}
+
