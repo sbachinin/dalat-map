@@ -123,25 +123,25 @@ export const main_sources = {
     lakes_titles
 }
 
-const is_a_building_with_title = fid => {
-    return Boolean(french_bldgs_handmade_data[fid]?.title)
-        || Boolean(non_french_bldgs_handmade_data[fid]?.title)
-}
+// const is_a_building_with_title = fid => {
+//     return Boolean(french_bldgs_handmade_data[fid]?.title)
+//         || Boolean(non_french_bldgs_handmade_data[fid]?.title)
+// }
 
-export const buildings_centroids_with_titles_source = {
-    type: 'geojson',
-    data: {
-        "type": "FeatureCollection",
-        "features": Object.keys(centroids_etc)
-            .filter(is_a_building_with_title)
-            .map(fid => ({
-                type: "Feature",
-                id: fid,
-                geometry: {
-                    type: "Point",
-                    coordinates: centroids_etc[fid].centroid
-                },
-                properties: get_titles_props(fid)
-            }))
-    }
-}
+// export const buildings_centroids_with_titles_source = {
+//     type: 'geojson',
+//     data: {
+//         "type": "FeatureCollection",
+//         "features": Object.keys(centroids_etc)
+//             .filter(is_a_building_with_title)
+//             .map(fid => ({
+//                 type: "Feature",
+//                 id: fid,
+//                 geometry: {
+//                     type: "Point",
+//                     coordinates: centroids_etc[fid].centroid
+//                 },
+//                 properties: get_titles_props(fid)
+//             }))
+//     }
+// }
