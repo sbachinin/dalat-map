@@ -1,4 +1,5 @@
 import { set_css_num_var, is_landscape, is_mouse_device } from '../utils.mjs'
+import { panel_thumbs_list_id } from './panel_thumbs_list.mjs'
 import { get_panel_el } from './panel_utils.mjs'
 
 export const THUMB_GAP = 4
@@ -45,11 +46,11 @@ export const update_panel_thumbs_list_size_variables = (
     I made it using something like grid-template-columns: repeat(...) + max-width
     But it failed in FF (it displayed always 1 column) that's why I switched to manual js solution
     */
-    const two_column_width = thumb_width * 2 + THUMB_GAP * 3
-    const enough_width_for_2_columns = two_column_width < window.innerWidth * max_width_ratio / 100
-    let wrapper_width_in_landscape = two_column_width
-    if (!enough_width_for_2_columns) {
-        wrapper_width_in_landscape -= (thumb_width + THUMB_GAP)
+    let width_in_landscape = thumb_width + THUMB_GAP * 2 // default - 1 column
+    const enough_width_for_2cols = width_in_landscape < window.innerWidth * max_width_ratio / 100
+    const should_try_to_expand_to_2_cols = document.querySelectorAll(`#${panel_thumbs_list_id} img`).length > 5
+    if (should_try_to_expand_to_2_cols && enough_width_for_2cols) {
+        width_in_landscape += thumb_width + THUMB_GAP
     }
 
     let wrapper_height_in_portrait = (thumb_height + THUMB_GAP * 2)
@@ -66,7 +67,7 @@ export const update_panel_thumbs_list_size_variables = (
 
     set_css_num_var(
         '--thumbs-list-width-in-landscape',
-        wrapper_width_in_landscape,
+        width_in_landscape,
         'px'
     )
     set_css_num_var(
