@@ -39,7 +39,9 @@ export const land_areas_handmade_data = {
         area_type: AREA_TYPES.INSTITUTION,
     },
     18721003: {
-        title: 'Mercure hotel'
+        title: 'Mercure hotel',
+        title_coords: [108.45915576, 11.94629814],
+        area_type: AREA_TYPES.INSTITUTION
     },
     99661190: {
         title: 'Nguyen Du Park',

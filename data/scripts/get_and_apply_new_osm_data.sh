@@ -170,8 +170,11 @@ jq --argjson land_areas_handmade_data "$land_areas_handmade_data" '
 # generated centroids didn't provide good-looking titles so I switched to manual title_coords
 # ./generate_centroids.sh ../temp/land_areas00.geojson ../temp/land_areas.geojson
 
-# MAKE MANY LAYERS FROM MANY JSON FILES
 
+node save_polygons_centroids.mjs
+node save_some_features_ids.mjs
+
+# MAKE MANY LAYERS FROM MANY JSON FILES
 tippecanoe -e ../../dalat-map-tiles/tiles \
   --minimum-zoom=10 --maximum-zoom=17 \
   --no-tile-compression -f \
@@ -187,6 +190,3 @@ tippecanoe -e ../../dalat-map-tiles/tiles \
   ../temp/dalat_bulk_geometry_as_linestring.geojson \
   ../static/dead_buildings.geojson \
   ../static/dalat_bulk_geometry.geojson
-
-node save_polygons_centroids.mjs
-node save_some_features_ids.mjs
