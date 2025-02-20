@@ -35,7 +35,7 @@ import { bldgs_handmade_data } from "./bldgs_handmade_data.mjs"
 export const land_areas_handmade_data = {
     // !!! empty items are needed here in order to generate land_areas tile layer
     696794335: {
-        title: "SOS Children's village",
+        title: "SOS Children's\nvillage",
         area_type: AREA_TYPES.INSTITUTION,
     },
     18721003: {

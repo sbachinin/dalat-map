@@ -1,4 +1,5 @@
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
+import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
 
 import {
     all_handmade_data,
@@ -93,9 +94,9 @@ const building_title = {
     type: 'geojson',
     data: {
         "type": "FeatureCollection",
-        "features": Object.keys(centroids_etc)
+        "features": Object.keys(bldgs_handmade_data)
+            .filter(id => Boolean(bldgs_handmade_data[id].title))
             .map(Number)
-            .filter(is_a_building)
             .map(fid => {
                 return {
                     type: "Feature",

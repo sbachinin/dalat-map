@@ -1627,8 +1627,8 @@ export const bldgs_handmade_data = {
         title_coords: [108.4599121, 11.9404590]
     },
     "542725651": {
-        title: "Hermann Gmeiner school",
-        title_coords: [108.4707259, 11.9507021]
+        title: "Hermann\nGmeiner\nschool",
+        title_coords: [108.4706259, 11.9509021]
     },
     "777438312": {
         "myhint": "A ghost of a french building in Mercure hotel",
