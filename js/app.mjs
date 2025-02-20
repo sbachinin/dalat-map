@@ -4,8 +4,7 @@ import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, preload_some_images } from './highlights.mjs'
 import { try_open_building } from './bldg_details.mjs'
-import { get_lnglat_per_px, get_map_center_shift } from './utils.mjs'
-import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
+import { get_center_for_bldg_with_offset } from './utils.mjs'
 import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
@@ -67,15 +66,7 @@ map.on('load', async () => {
 
     let center = JSON.parse(localStorage.getItem('map_center')) || [0, 0]
     if (initial_bldg_id !== null) {
-        const cntrd = centroids_etc[initial_bldg_id]?.centroid
-        if (!cntrd) {
-            console.warn(`no centroid for ${initial_bldg_id}`)
-            return
-        }
-        const { lng_per_px, lat_per_px } = get_lnglat_per_px()
-        const center_x = cntrd[0] - lng_per_px * get_map_center_shift()[0]
-        const center_y = cntrd[1] - lat_per_px * get_map_center_shift()[1]
-        center = [center_x, center_y]
+        center = get_center_for_bldg_with_offset(initial_bldg_id)
     }
 
     map.setCenter(center)

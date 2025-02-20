@@ -1,4 +1,5 @@
 import { french_ids, shit_ids } from '../data/for_runtime/bldgs_ids.mjs'
+import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
@@ -153,3 +154,15 @@ export const is_a_building = fid => {
     return is_french_building(fid) || is_shit_building(fid)
 }
 
+
+export function get_center_for_bldg_with_offset(id) {
+    const cntrd = centroids_etc[id]?.centroid
+    if (!cntrd) {
+        console.warn(`no centroid for ${id}`)
+        return
+    }
+    const { lng_per_px, lat_per_px } = get_lnglat_per_px()
+    const center_x = cntrd[0] - lng_per_px * get_map_center_shift()[0]
+    const center_y = cntrd[1] - lat_per_px * get_map_center_shift()[1]
+    return [center_x, center_y]
+}
