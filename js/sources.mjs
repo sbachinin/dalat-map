@@ -7,7 +7,7 @@ import {
     land_areas_handmade_data,
 } from '../data/static/handmade_data.mjs'
 import { TITLES_PRIORITY } from './layers/constants.mjs'
-import { is_a_building, is_french_building } from './utils.mjs'
+import { is_french_building } from './utils.mjs'
 
 export const SOURCES_NAMES = {
     DALAT_TILES: 'dalat_tiles',

@@ -15,24 +15,6 @@ const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
 const DEV_should_open_panel = true
 
-// Return [lng, lat] or null
-const get_center_for_building = (id) => {
-    const cntrd = centroids_etc[id]?.centroid
-    if (!cntrd) return null
-
-
-    // nonsense, this shift has to be translated to lng lat first
-    const cntr_shift = get_map_center_shift()
-    return [
-        cntrd[0] + cntr_shift[0],
-        cntrd[1] + cntr_shift[1]
-    ]
-}
-
-const center = get_center_for_building(initial_bldg_id)
-    || JSON.parse(localStorage.getItem('map_center'))
-    || [0, 0]
-
 const zoom = (initial_bldg_id !== null && 15.5)
     || localStorage.getItem('map_zoom')
     || 0
@@ -40,7 +22,6 @@ const zoom = (initial_bldg_id !== null && 15.5)
 const map = window.dalatmap = new maplibregl.Map({
     container: 'map',
     style,
-    center,
     zoom,
     dragRotate: false,
     keyboard: false, // also to prevent rotation
@@ -84,13 +65,20 @@ map.on('load', async () => {
 
     await panel.full_size_promise
 
+    let center = JSON.parse(localStorage.getItem('map_center')) || [0, 0]
     if (initial_bldg_id !== null) {
+        const cntrd = centroids_etc[initial_bldg_id]?.centroid
+        if (!cntrd) {
+            console.warn(`no centroid for ${initial_bldg_id}`)
+            return
+        }
         const { lng_per_px, lat_per_px } = get_lnglat_per_px()
-        dalatmap.setCenter([
-            dalatmap.getCenter().lng - lng_per_px * get_map_center_shift()[0],
-            dalatmap.getCenter().lat - lat_per_px * get_map_center_shift()[1],
-        ])
+        const center_x = cntrd[0] - lng_per_px * get_map_center_shift()[0]
+        const center_y = cntrd[1] - lat_per_px * get_map_center_shift()[1]
+        center = [center_x, center_y]
     }
+
+    map.setCenter(center)
 
     document.querySelector('#map').classList.remove('hidden')
 })

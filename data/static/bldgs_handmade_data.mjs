@@ -1653,7 +1653,7 @@ export const bldgs_handmade_data = {
         ]
     },
     "542728983": {
-        title: 'Chi Lang church',
+        title: 'Chi Lang\nchurch',
         second_rate: true
     },
     "1308414641": {
