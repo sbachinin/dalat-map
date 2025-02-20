@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "imggen": "python3 chores/resize_all_images.py",
-    "compare_highlights": "node chores/compare_highlights_order_with_folder.js "
+    "compare_highlights": "node chores/compare_highlights_order_with_folder.js",
+    "copy_tiles_to_windows": "cp -r dalat-map-tiles/ /mnt/c/Users/Admin/projects/dalat-map/"
   },
   "author": "",
   "license": "ISC",
