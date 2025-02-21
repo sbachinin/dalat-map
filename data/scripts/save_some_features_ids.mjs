@@ -1,5 +1,7 @@
 import fs from 'fs'
 
+// TODO This better be merged with centroids etc to save kb
+
 const french_data = JSON.parse(
     fs.readFileSync(
         '../temp/french_building.geojson',

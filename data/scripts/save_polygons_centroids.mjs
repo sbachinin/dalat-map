@@ -46,11 +46,16 @@ const alive_french_path = path.join(__dirname, '../temp/french_building.geojson'
 const alive_buildings_json = fs.readFileSync(alive_french_path, 'utf8')
 const dead_french_path = path.join(__dirname, '../static/dead_buildings.geojson')
 const dead_buildings_json = fs.readFileSync(dead_french_path, 'utf8')
-const all_buildings = [
+const all_french_buildings = [
     ...JSON.parse(alive_buildings_json),
     ...JSON.parse(dead_buildings_json)
 ]
-all_buildings.forEach(f => {
+all_french_buildings.forEach(f => {
+    /* 
+        save centroids for all french bldgs in order to fly to selected ones
+        TODO: Possibly can reduce the size of cntrds by taking only detailful ones
+            (but first need to decide if only detailful are selectable)
+    */
     data[f.id] = {
         centroid: get_centroid(f)
     }
@@ -61,6 +66,9 @@ all_buildings.forEach(f => {
 
 
 const boring_path = path.join(__dirname, '../temp/boring_building.geojson')
+// TODO this might be useless in case I decide to render boring titles at center
+// (in such case titles can be rendered from polygon features)
+// It depends also on how I solve the titles priority order (this might necessitate having all titles as separate entities)
 const boring_buildings_data = fs.readFileSync(boring_path, 'utf8')
 JSON.parse(boring_buildings_data)
     .filter(feature_has_title)
