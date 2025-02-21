@@ -7,6 +7,7 @@ import {
     dead_building_skull
 } from './dead_buildings.mjs'
 import { french_buildings_titles } from './layers/titles.mjs'
+import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
 
 
 
@@ -40,7 +41,7 @@ export const add_mouse_stuff = () => {
     // ADD & REMOVE CURSOR POINTER ON BUILDINGS WITH DETAILS
     potentially_clickable_layers.forEach(layer => {
         map.on('mousemove', layer, (e) => {
-            if (map.getZoom() > 15
+            if (map.getZoom() > CURSOR_POINTER_MINZOOM
                 && e.features[0].layer.id !== french_buildings_titles.id
                 && building_has_details(e.features[0].id)
             ) {

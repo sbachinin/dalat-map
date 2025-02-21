@@ -7,121 +7,211 @@ CRITICAL
                     copying via terminal breaks crlf:
                         cp -r js /mnt/c/Users/Admin/projects/dalat-map
 
-Lake and waterfall titles
-Titles can get bigger on > z
-distinguish peaks
+**********************************************************************************
 
 
-dont' tile ana mandara
-anything around trac mai?
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+IMPORTANT
+MPORTANT
 
-push all repos
-transfer log
-open in mobile
 
-default low priority for all non-french?
-default high for all french
+
+
+horizontal pictures
+	lycee yersin
+
+	add mandara central old
+		figure out workflow for new images
+
+
+low-zoom tile size:
+    ensure no roads and no secondary buildings, check size diff
+
+
+MAKE BLDGS MORE EASILY CLICKABLE AT LOW Z
+    ? extend clickable area
+
+
+PRIORITY OF TITLES
+    - those visible at low z must remain at higher z,
+        - need a classification of importance, ideally to show (auto) as much as there is space
+    - selected should be protected from disappearance
+        symbol-z-order:
+            1) check if it works at all
+                (is it only per-layer btw? Though french might be enough)
+            2) ensure that it's not adjustable by feature state
+            3) try to create another layer/source with selected title & title+square
+
 
 sort out highways
     remove unused props from json
 
-show french with question
-
-in landcape desktop, slider gives too enlarged images
 
 
 
-// TODO. merge was destructive at some point.
-// In the end i need to compare details object with imgs in folders
+OTHER PANEL CONTENT
+	are buildings now conveniently linkable?
 
 
+	Some bldgs need at least some info:
+		google link or wikipedia link
+			bao dai 1, 3
 
-check adequacy of full_size_promise
-    replaceable with wait(0)?
-
-seems that building tap causes touchend and then panel.setSize
-
-any reason for different easing for panel expand and for easeTo?
-
-check freeze after many popstate (served from gh, on xia)
-
-are buildings now conveniently linkable?
+	add "HL" heading with a medal icon
+	google link, wikipedia, "fly to bldg", copy link,
+      	bldg name, ?suggest an edit
 
 
 
 
-need to organize photos, the workflow
-    how borrowed get into thumbs/large?
-    why not copy the interesting borrowed to "dalat architecture" and thus to originals-other?
-    is zoo shown?
-    dinh 1 needs photos
-        there is 1 photo in borrowed, not processed yet
-    also in wsl dalat-map-images repo was deleted and clone failed, hopefully just because of bad connection
+PANEL EXPAND EASING CURVE - more dynamic
+    how this curve plays with map.easeTo?
+    after-drag: quick from start, spring-like
+	any 3rd party solutions for panels?
+    
 
 
 
-    is ml version fixed?
+
+SORT OUT HOW TO SHOW 1-IMG DETAILS
+
+
+
+SLIDER
+    in landcape desktop, gives too enlarged images
+    sort out zoom
+    show link to bldg
+
+
+
+**** 
+CLASSIFY BLDGS
+A lot of kinds of bldgs that need diff rendering and diff interaction:
+	french
+		first-class and not
+		titled and not
+	dead french
+	maybe french
+	non french
+
+
+
+
+Check all boring titles positions
+	Fix them
+	Are there any left that need to be rendered under?
+
+
+
+
+
+PHOTOS WORKFLOW
+    merge images scripts into one build_images
+            (generate, check if all used etc)    
+    How to add new without rebuilding all?
+    How much i borrow?
+        (very possible that little)
+            dinh 1,3? More Domaine? Ankroet? Just a google link might better, need think
+        Currently, i remember only zoo
+            (pics are already shown but they are not processed)
+        If a lot,
+            Should i keep borrowed in a separate folder?
+                If y,
+                    need to fix imggen script
+
+
+? one build script
+
+
+is ml version fixed?
 
 would be great to load swiper bundle only when necessary
 
-marking french bldgs via setFeatureState is perhaps performance not nice.   
-    try to save isFrenchBldg into tiles
-
-    
-    rotated photo
-
-    add "HL" heading with a medal icon
-
-    should 2-col details be allowed on landsc?
-
-
-
-    in details, a button to locate the bldg
-    ??? open in google?
-
-    user location
-    
-    panel after-drag animation: quick from start
-
-    after linking imgs done:
-        check missing pictures in the resulting meta obj, compare to files
-        render all imgs, check broken, dupes and reorder
-            render bldg id, img names, look in mobile
-
-    restrict details height
-    where else i reset panel scroll pos?
-        can be broken
-
-    ghost in mercure: needs a historical brother
-        IMG_4783~2
 
 
 
 
-to think:
-return to hash
-    use id in url only when "copying link" and on page init
-    BUT: does it mean that when the bldg is opened (photos seen in the panel but map is panned away), refresh -> bldg photos lost
+========================================================================
+
+NICE TO HAVE
+NICE TO HAVE
+NICE TO HAVE
+NICE TO HAVE
+NICE TO HAVE
+NICE TO HAVE
+NICE TO HAVE
+NICE TO HAVE
+NICE TO HAVE
+NICE TO HAVE
+NICE TO HAVE
+
+
+user location
+
+swipe down - close slider (my intuitive gesture)
+
+
+MAKE NON-FRENCH with details CLICKABLE
+	A bunch of bldgs from non_french_bldgs_handmade_data have images but not clickable and not selectable
+	E.g., ana mandara big elegant bldg,
+		light green one near weird tower
+	First decide how many of detailful non-french I have - it will add complexity and must be justified
 
 
 
+RENDER DOUBT
+	Currently there are 2 possible source of truth about doubt:
+	1) maybe_french_colonial in osm (these are just ignored now)
+	2) doubt prop in handmade data (i like this more)
+	
 
-GOOD TO HAVE
-    IF IT'S EASY:
+IF IT'S EASY:
         rm sel bldg from url when panel collapsed
         restore it to url when expanded
         REASON WHY:
             now if you open a buliding, -> collapse panel, -> forget the bldg, -> refresh, -> forgotten bldg gets focused and it makes little sense. Doesn't look like a big problem
 
-    originals, including "borrowed" should be gitignored.
-        Backed up via google photos
 
-    look in pinterest
-
+should check:
+	bldgs with 0-length images array may get dark border
 
 
 
 
+perhaps render a star for bldgs from "highlights"
+
+
+OPTIMIZE FOR_RUNTIME DATA
+	** todos in script files
+
+
+tiny_non_french_square is used by datanla and cable car
+    should be renamed at least
+
+
+ankroet
+
+dont' add ana mandara geometry to tiles
+    (if it still happens)
+
+
+CURSOR_POINTER_MINZOOM - adequate?
+
+
+check adequacy of full_size_promise
+    replaceable with wait(0)?
 
 
 
@@ -131,7 +221,46 @@ GOOD TO HAVE
 
 
 
+
+
+
+
+UNCATEGORIZED
+UNCATEGORIZED
+UNCATEGORIZED
+UNCATEGORIZED
+UNCATEGORIZED
+UNCATEGORIZED
+UNCATEGORIZED
+UNCATEGORIZED
+UNCATEGORIZED
+UNCATEGORIZED
+
+peaks and land areas titles are still in other layers
+
+minzoom:
+    (IF GOOD A CONCEPT)
+    works only for land_areas,
+    need for all titles
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+
+
+        
+    
+    
     a lot of old crappy photos:
         https://bois.com.vn/bo-suu-tap-100-tam-anh-biet-thu-co-da-lat-xua/
-
-    write to thi tuan, can they provide photos / info?
+    
+    write to thi tuan, can they provide photos / info

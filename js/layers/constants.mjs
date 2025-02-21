@@ -59,3 +59,5 @@ export const VARYING_TITLE_OPACITY = [
     SECONDARY_TITLES_MINZOOM,
     1
 ]
+
+export const CURSOR_POINTER_MINZOOM = 15
