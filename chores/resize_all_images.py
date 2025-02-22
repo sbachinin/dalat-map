@@ -1,6 +1,7 @@
 import os
 from PIL import Image
 from heic_converter import convert_heic_to_jpg
+from process_1_image import process_image
 
 # HOW TO RUN THIS
 # in project root, "source myenv/bin/activate"
@@ -45,27 +46,7 @@ def resize_from_folder(source_folder):
         
         if filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
             img_path = os.path.join(source_folder, filename)
-            with Image.open(img_path) as img:
-                
-                # !has to be done in resize_new... too
-                if img.width > img.height:
-                    img = img.rotate(-90, expand=True)
-                
-                # 1. thumb
-
-                width_percent = (215 / float(img.size[0]))
-                new_height = int((float(img.size[1]) * float(width_percent)))
-                img1 = img.resize((215, new_height), Image.LANCZOS)
-                optimized_img_path = os.path.join(thumbs_folder, filename)
-                img1.save(optimized_img_path, quality=95)
-
-                # 2. big
-
-                width_percent = (800 / float(img.size[0]))
-                new_height = int((float(img.size[1]) * float(width_percent)))
-                img2 = img.resize((800, new_height), Image.LANCZOS)
-                large_img_path = os.path.join(large_folder, filename)
-                img2.save(large_img_path, quality=95)
+            process_image(img_path)
 
 resize_from_folder(orig_highlights_folder)
 resize_from_folder(orig_other_folder)

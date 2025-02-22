@@ -11,6 +11,14 @@ export const bldgs_handmade_data = {
         "title": "Railway\nstation",
         year: 1932
     },
+    1307493475: {
+        myhint: 'Ana Mandara, ugly but the only one that is reliably old (seen on frayed bw photos at least)',
+        images: [
+            "IMG_1648~2.jpg",
+            "IMG_1642~2.jpg",
+            "IMG_1645~2.jpg"
+        ]
+    },
     "17929361": {
         "images": [
             "IMG_1302~4.jpg",
