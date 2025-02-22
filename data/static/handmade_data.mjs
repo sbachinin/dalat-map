@@ -29,6 +29,8 @@ import { bldgs_handmade_data } from "./bldgs_handmade_data.mjs"
         priority: TITLES_PRIORITY,
 
         doubt: bool // is it really colonial?
+
+        year: number
     }
 */
 

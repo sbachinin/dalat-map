@@ -8,7 +8,8 @@ export const bldgs_handmade_data = {
             "IMG_6099~3.jpg",
             "IMG_8948~2.jpg"
         ],
-        "title": "Railway\nstation"
+        "title": "Railway\nstation",
+        year: 1932
     },
     "17929361": {
         "images": [
@@ -39,7 +40,8 @@ export const bldgs_handmade_data = {
         "title": "Domaine de Marie",
         "images": [
             "IMG_7957~4.jpg",
-        ]
+        ],
+        year: 1943
     },
     "361692327": {
         "images": [
@@ -58,7 +60,8 @@ export const bldgs_handmade_data = {
         "images": [
             "IMG_7976~3.jpg",
             "IMG_7981~2.jpg"
-        ]
+        ],
+        year: 1935
     },
     "361851915": {
         "title": "Lycée Yersin",
@@ -78,7 +81,8 @@ export const bldgs_handmade_data = {
             "IMG_2095~2.jpg",
             "IMG_20240721_111036~2.jpg",
             "IMG_3689.jpg"
-        ]
+        ],
+        year: 1935
     },
     "407699702": {
         "title": "Dalat\nPalace Hotel",
@@ -103,10 +107,12 @@ export const bldgs_handmade_data = {
             "IMG_5541.jpg",
             "IMG_5543~3.jpg"
         ],
-        "priority": 9
+        "priority": 9,
+        year: 1942
     },
     "463866431": {
-        "title": "Bao Dai\nPalace №3"
+        "title": "Bao Dai\nPalace №3",
+        year: 1938
     },
     "469578958": {
         "images": [
@@ -134,7 +140,8 @@ export const bldgs_handmade_data = {
             108.43941017124001,
             11.936592586225473
         ],
-        "title_side": "right"
+        "title_side": "right",
+        year: 1932
     },
     "515193502": {
         "images": [
@@ -575,7 +582,8 @@ export const bldgs_handmade_data = {
         "title": "Nguyen Viet\nXuan Palace",
         "second_rate": true,
         "images": [
-            "IMG_2546.jpg"
+            "IMG_2546.jpg",
+            "AF1QipMIbIYucZ3kYV9EOUWpeuaNmvbW5nLUHjDTvS8=s1536 Copy.JPG"
         ],
         "title_coords": [
             108.42982046800888,
@@ -1007,7 +1015,8 @@ export const bldgs_handmade_data = {
         "images": [
             "IMG_2878~2.jpg",
             "IMG_2876~3.jpg"
-        ]
+        ],
+        year: 1936
     },
     "1305703497": {
         "images": [

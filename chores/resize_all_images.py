@@ -2,7 +2,9 @@ import os
 from PIL import Image
 from heic_converter import convert_heic_to_jpg
 
-# if not installed, pip install Pillow
+# HOW TO RUN THIS
+# in project root, "source myenv/bin/activate"
+# python chores/resize_all_images.py
 
 orig_other_folder = 'dalat-map-images/orig-other'
 orig_highlights_folder = 'dalat-map-images/orig-highlights'
