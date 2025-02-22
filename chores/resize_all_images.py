@@ -45,6 +45,10 @@ def resize_from_folder(source_folder):
             img_path = os.path.join(source_folder, filename)
             with Image.open(img_path) as img:
                 
+                # !has to be done in resize_new... too
+                if img.width > img.height:
+                    img = img.rotate(-90, expand=True)
+                
                 # 1. thumb
 
                 width_percent = (215 / float(img.size[0]))
