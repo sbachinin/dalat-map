@@ -5,7 +5,9 @@
   "main": "maplibre-gl-450.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "imggen": "python3 chores/process_all_images.py",
+    "check_missing_imgs": "node chores/check_images_missing_in_handmade_data.mjs ",
+    "process_fresh_images": "python3 chores/process_all_images.py && npm run check_missing_imgs",
+    "process_all_images": "python3 chores/process_all_images.py -force && npm run check_missing_imgs",
     "compare_highlights": "node chores/compare_highlights_order_with_folder.js",
     "copy_tiles_to_windows": "cp -r dalat-map-tiles/tiles /mnt/c/Users/Admin/projects/dalat-map/dalat-map-tiles/"
   },

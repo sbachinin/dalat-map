@@ -72,8 +72,8 @@ const rejected_imgs = [
 const json_imgs = Object.values(all_handmade_data)
   .flatMap(feature => feature.images || [])
 
-const largeImgDir = path.resolve('../dalat-map-images/large')
-const missingImgDir = path.resolve('../dalat-map-images/missing')
+const largeImgDir = path.resolve('./dalat-map-images/large')
+const missingImgDir = path.resolve('./dalat-map-images/missing')
 
 if (!fs.existsSync(missingImgDir)) { fs.mkdirSync(missingImgDir) }
 
@@ -86,7 +86,7 @@ const missingInJson = file_imgs.filter(img => {
 })
 
 if (missingInJson.length === 0) {
-  console.log('all ok')
+  console.log('All generated images are used in handmade data (excluding those explicitly rejected)')
 }
 
 missingInJson.forEach(img => {
