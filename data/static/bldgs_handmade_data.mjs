@@ -1656,8 +1656,6 @@ export const bldgs_handmade_data = {
     "1348155895": {
         "myhint": "post-colonial near that strange dark tower",
         "images": [
-            "IMG_1416~2",
-            "IMG_1371~2",
             "IMG_1371~2.jpg",
             "IMG_1416~2.jpg"
         ]
