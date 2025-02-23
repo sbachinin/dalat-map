@@ -13062,7 +13062,7 @@
     },
     "id": 1307493475,
     "properties": {
-      "has_details": false,
+      "has_details": true,
       "has_title": false,
       "is_important": true
     }

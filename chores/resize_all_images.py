@@ -1,5 +1,6 @@
+import argparse
 import os
-from PIL import Image
+import pdb
 from heic_converter import convert_heic_to_jpg
 from process_1_image import process_image
 
@@ -13,42 +14,31 @@ thumbs_folder = 'dalat-map-images/thumbs'
 large_folder = 'dalat-map-images/large'
 
 os.makedirs(thumbs_folder, exist_ok=True)
-
-for filename in os.listdir(thumbs_folder):
-    file_path = os.path.join(thumbs_folder, filename)
-    if os.path.isfile(file_path):
-        os.remove(file_path)
-
-for filename in os.listdir(large_folder):
-    file_path = os.path.join(large_folder, filename)
-    if os.path.isfile(file_path):
-        os.remove(file_path)
+os.makedirs(large_folder, exist_ok=True)
 
 
 
-def resize_from_folder(source_folder):
-    
-    for root, dirs, files in os.walk(source_folder):
-        for file in files:
-            if file.endswith(":Zone.Identifier"):
-                file_path = os.path.join(root, file)
-                os.remove(file_path)
+def resize_from_folder(source_folder, force=False):        
     
     for filename in os.listdir(source_folder):
-        
-        if filename.lower().endswith('.heic'):
-            heic_file_path = os.path.join(source_folder, filename)
-            filename_without_extension, _ = os.path.splitext(filename)
-            jpg_filename = filename_without_extension + '.jpg'
-            jpg_file_path = os.path.join(source_folder, jpg_filename)
-            convert_heic_to_jpg(heic_file_path, jpg_file_path)
-            filename = jpg_filename
-        
-        if filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif')):
-            img_path = os.path.join(source_folder, filename)
-            process_image(img_path)
+        process_image(source_folder, filename, force)
 
-resize_from_folder(orig_highlights_folder)
-resize_from_folder(orig_other_folder)
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Resize images')
+    parser.add_argument('-force', action='store_true', help='Resize all images, overwriting existing files')
+    args = parser.parse_args()
+    
+    if args.force:
+        for filename in os.listdir(thumbs_folder):
+            file_path = os.path.join(thumbs_folder, filename)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+        for filename in os.listdir(large_folder):
+            file_path = os.path.join(large_folder, filename)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
 
-print("Images have been resized")
+    resize_from_folder(orig_highlights_folder, args.force)
+    resize_from_folder(orig_other_folder, args.force)
+
+    print("Images have been resized")

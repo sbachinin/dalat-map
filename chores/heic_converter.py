@@ -1,11 +1,8 @@
 # heic_converter.py
-
 import pyheif
 from PIL import Image
 
 def convert_heic_to_jpg(heic_path, jpg_path):
-    """Convert HEIC file to JPG format."""
-    # Read the HEIC file
     heif_file = pyheif.read(heic_path)
     
     # Convert to a Pillow Image
