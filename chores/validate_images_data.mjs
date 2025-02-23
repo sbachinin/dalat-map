@@ -87,15 +87,16 @@ const missing_in_json = file_imgs.filter(img => {
 
 if (missing_in_json.length === 0) {
   console.log('All generated images are used in handmade data (excluding those explicitly rejected)')
+} else {
+  missing_in_json.forEach(img => {
+    console.log(img + ' is missing in handmade data and was copied to "missing" folder')
+    const oldPath = path.join(largeImgDir, img)
+    const missing_path = path.join(missingImgDir, img)
+    fs.copyFileSync(oldPath, missing_path)
+  })
+  process.exit(1)
 }
 
-missing_in_json.forEach(img => {
-  console.log(img + ' is missing in handmade data')
-  const oldPath = path.join(largeImgDir, img)
-  const newPath = path.join(missingImgDir, img)
-
-  fs.copyFileSync(oldPath, newPath)
-})
 
 
 
@@ -108,6 +109,9 @@ const missing_in_files = json_imgs.filter(img => {
     return true
   }
 })
+
 if (missing_in_files.length === 0) {
   console.log('All handmade data images are present in files')
-}
+} else {
+  process.exit(1)
+} 

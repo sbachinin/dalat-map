@@ -1,5 +1,5 @@
 import argparse
-import pdb
+import sys
 from PIL import Image
 import os
 from heic_converter import convert_heic_to_jpg
@@ -9,8 +9,8 @@ large_folder = 'dalat-map-images/large'
 
 def process_image(source_folder, filename, force=False):
     if not filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.heic')):
-        print('Not an image: ', filename)
-        return
+        print('Not an image of supported format: ', filename)
+        sys.exit(1)
     
     file_path = os.path.join(source_folder, filename)
     

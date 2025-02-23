@@ -30,7 +30,7 @@ function compare_array_with_directory(dir_path, highlights_list) {
     if (data_set.size !== directory_set.size) {
         console.log(`number of items in names array (${data_set.size})
         doesn't match the number of files in images folder (${directory_set.size})`)
-        return
+        process.exit(1)
     }
 
     const dir_has_all_names = [...data_set].every(file => {
@@ -39,9 +39,10 @@ function compare_array_with_directory(dir_path, highlights_list) {
     })
 
     if (dir_has_all_names) {
-        console.log("EVERYTHING IS OK")
+        console.log("All images from highlights list are present in directory.")
     } else {
         console.log("WARNING: The array does not match the directory contents.")
+        process.exit(1)
     }
 }
 

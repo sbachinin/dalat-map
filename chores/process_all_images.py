@@ -1,7 +1,6 @@
 import argparse
 import os
-import pdb
-from heic_converter import convert_heic_to_jpg
+import sys
 from process_1_image import process_image
 
 # HOW TO RUN THIS
