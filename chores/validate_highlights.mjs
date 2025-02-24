@@ -1,22 +1,9 @@
-const fs = require('fs')
-const path = require('path')
-
-async function load_highlights_list() {
-    try {
-        const { images_names } = await import('../js/highlights_images_list.mjs');
-        return images_names
-    } catch (err) {
-        console.error('Error loading the module:', err);
-    }
-}
+import fs from 'fs'
+import path from 'path';
 
 // To be run after images have been processed
 // (=> heic is already converted to jpg)
-function compare_array_with_directory(dir_path, highlights_list) {
-
-    highlights_list = highlights_list.map(name => {
-        return name.replace('heic', 'jpg').replace('HEIC', 'jpg')
-    })
+function compare_highlights_with_directory(dir_path, highlights_list) {
 
     const file_in_directory = fs.readdirSync(dir_path)
         .map(file => path.basename(file))
@@ -46,10 +33,40 @@ function compare_array_with_directory(dir_path, highlights_list) {
     }
 }
 
-load_highlights_list().then((images_names) => {
-    compare_array_with_directory(
-        'dalat-map-images/orig-highlights',
-        images_names
-    );
-});
+const compare_highlights_with_bldgs_data = (highlights_list, bldgs_handmade_data) => {
+    const all_images_names_in_handmade_data = Object.values(bldgs_handmade_data)
+        .flatMap(feature => feature.images || [])
+    const missing_highlights = highlights_list.filter(
+        hl_name => !all_images_names_in_handmade_data.includes(hl_name)
+    )
+    if (missing_highlights.length > 0) {
+        console.log('Missing highlights:')
+        missing_highlights.forEach(hl => console.log(hl))
+        process.exit(1)
+    } else {
+        console.log('All highlights are present in buildings handmade data.')
+    }
+}
 
+
+
+
+Promise.all([
+    import('../js/highlights_images_list.mjs'),
+    import('../data/static/bldgs_handmade_data.mjs')
+]).then(([highlights_list, { bldgs_handmade_data }]) => {
+    highlights_list = highlights_list.images_names.map(name => {
+        return name.replace('heic', 'jpg').replace('HEIC', 'jpg')
+    })
+
+    compare_highlights_with_directory(
+        'dalat-map-images/orig-highlights',
+        highlights_list
+    )
+
+    compare_highlights_with_bldgs_data(
+        highlights_list,
+        bldgs_handmade_data
+    )
+    
+})
