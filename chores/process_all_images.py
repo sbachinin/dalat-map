@@ -9,6 +9,7 @@ from process_1_image import process_image
 
 orig_other_folder = 'dalat-map-images/orig-other'
 orig_highlights_folder = 'dalat-map-images/orig-highlights'
+borrowed_folder = 'dalat-map-images/borrowed'
 thumbs_folder = 'dalat-map-images/thumbs'
 large_folder = 'dalat-map-images/large'
 
@@ -39,5 +40,6 @@ if __name__ == '__main__':
 
     resize_from_folder(orig_highlights_folder, args.force)
     resize_from_folder(orig_other_folder, args.force)
-
+    resize_from_folder(borrowed_folder, args.force)
+    
     print("Images have been resized")

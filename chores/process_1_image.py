@@ -43,10 +43,14 @@ def process_image(source_folder, filename, force=False):
 
     # 2. big
     if force or not os.path.exists(large_img_path):
-        width_percent = (800 / float(img.size[0]))
-        new_height = int((float(img.size[1]) * float(width_percent)))
-        img2 = img.resize((800, new_height), Image.LANCZOS)
-        img2.save(large_img_path, quality=95)
+        file_size = os.path.getsize(file_path)
+        if file_size > 350 * 1024:
+            width_percent = (800 / float(img.size[0]))
+            new_height = int((float(img.size[1]) * float(width_percent)))
+            img2 = img.resize((800, new_height), Image.LANCZOS)
+            img2.save(large_img_path, quality=95)
+        else:
+            img.save(large_img_path, quality=95)
     
     
     

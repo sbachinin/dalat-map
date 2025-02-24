@@ -591,7 +591,7 @@ export const bldgs_handmade_data = {
         "second_rate": true,
         "images": [
             "IMG_2546.jpg",
-            "AF1QipMIbIYucZ3kYV9EOUWpeuaNmvbW5nLUHjDTvS8=s1536 Copy.JPG"
+            "ugly_little_palace.JPG"
         ],
         "title_coords": [
             108.42982046800888,
