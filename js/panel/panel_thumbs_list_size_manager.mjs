@@ -46,8 +46,10 @@ export const update_panel_thumbs_list_size_variables = (
     I made it using something like grid-template-columns: repeat(...) + max-width
     But it failed in FF (it displayed always 1 column) that's why I switched to manual js solution
     */
-    let width_in_landscape = thumb_width + THUMB_GAP * 2 // default - 1 column
-    const enough_width_for_2cols = width_in_landscape < window.innerWidth * max_width_ratio / 100
+    const one_column_width = thumb_width + THUMB_GAP * 2
+    const two_columns_width = thumb_width * 2 + THUMB_GAP * 3
+    let width_in_landscape = one_column_width
+    const enough_width_for_2cols = two_columns_width < window.innerWidth * max_width_ratio / 100
     const should_try_to_expand_to_2_cols = document.querySelectorAll(`#${panel_thumbs_list_id} img`).length > 5
     if (should_try_to_expand_to_2_cols && enough_width_for_2cols) {
         width_in_landscape += thumb_width + THUMB_GAP
