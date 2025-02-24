@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "validate_images_data": "node chores/validate_images_data.mjs ",
-    "validate_highlights": "node chores/compare_highlights_order_with_folder.js",
+    "validate_highlights": "node chores/validate_highlights.mjs",
     "process_fresh_images": "python3 chores/process_all_images.py",
     "process_all_images": "python3 chores/process_all_images.py -force",
     "full_build_images": "npm run process_all_images && npm run validate_images_data && npm run validate_highlights",
