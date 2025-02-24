@@ -33,6 +33,9 @@ function compare_highlights_with_directory(dir_path, highlights_list) {
     }
 }
 
+
+// WHY?
+// because by highlight image name I (supposedly) will look up the bldg
 const compare_highlights_with_bldgs_data = (highlights_list, bldgs_handmade_data) => {
     const all_images_names_in_handmade_data = Object.values(bldgs_handmade_data)
         .flatMap(feature => feature.images || [])

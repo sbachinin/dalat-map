@@ -414,7 +414,7 @@ export const bldgs_handmade_data = {
         "images": [
             "IMG_0970~2.jpg",
             "IMG_4471~4.jpg",
-            "IMG_6464~2.jpg"
+            'IMG_6464~3.jpg',
         ]
     },
     "777439883": {
@@ -441,7 +441,7 @@ export const bldgs_handmade_data = {
     },
     "971558874": {
         "images": [
-            "IMG_0615~2.jpg",
+            "IMG_0596~3.jpg",
             "IMG_0594~2.jpg",
             "IMG_0613.jpg",
             "IMG_5380~2.jpg"
@@ -465,7 +465,7 @@ export const bldgs_handmade_data = {
     },
     "971558885": {
         "images": [
-            "IMG_9858~3.jpg",
+            "424.jpg",
             "IMG_2021~3.jpg",
             "IMG_0550~2.jpg",
             "IMG_0561~2.jpg",
@@ -505,9 +505,9 @@ export const bldgs_handmade_data = {
     },
     "971568009": {
         "images": [
+            'IMG_9601~3.jpg',
             "IMG_3962.jpg",
             "IMG_9608~3.jpg",
-            "IMG_9608~4.jpg",
             "IMG_9614~4.jpg"
         ]
     },
@@ -601,7 +601,7 @@ export const bldgs_handmade_data = {
     },
     "1243929950": {
         "images": [
-            "IMG_2069.jpg",
+            'IMG_2070~2.jpg',
             "IMG_8067~2.jpg",
             "IMG_2090.jpg",
             "IMG_0769~2.jpg",
@@ -639,7 +639,7 @@ export const bldgs_handmade_data = {
     },
     "1302653947": {
         "images": [
-            "IMG_9748~2.jpg",
+            'IMG_9747~2.jpg',
             "IMG_20240801_150336~2.jpg"
         ]
     },
@@ -742,6 +742,7 @@ export const bldgs_handmade_data = {
     },
     "1303227312": {
         "images": [
+            'IMG_7702~2.jpg',
             "IMG_1596.jpg",
             "IMG_4151.jpg"
         ]
@@ -948,8 +949,7 @@ export const bldgs_handmade_data = {
         "images": [
             "IMG_0289~2.jpg",
             "IMG_1547~3.jpg",
-
-            "IMG_8514~3.jpg"
+            "IMG_1855~3.jpg",
         ]
     },
     "1304439964": {
@@ -1234,12 +1234,12 @@ export const bldgs_handmade_data = {
     "1308413670": {
         "images": [
             "IMG_9473~3.jpg",
-            "IMG_9487~2.jpg"
+            'IMG_9495~2.jpg',
         ]
     },
     "1308413673": {
         "images": [
-            "IMG_9516~2.jpg",
+            "429.jpg",
             "IMG_9513~2.jpg"
         ]
     },
@@ -1434,7 +1434,7 @@ export const bldgs_handmade_data = {
     },
     "1312411199": {
         "images": [
-            "IMG_1358.jpg",
+            'IMG_6681~2 Copy~5.JPG',
             "IMG_1371.jpg",
             "IMG_6665.jpg",
             "IMG_6681~2 Copy~3.JPG",
@@ -1444,7 +1444,7 @@ export const bldgs_handmade_data = {
     },
     "1312517099": {
         "images": [
-            "IMG_9319~3.jpg",
+            "IMG_9314~4.jpg",
             "IMG_9329~2.jpg"
         ]
     },
@@ -1595,7 +1595,7 @@ export const bldgs_handmade_data = {
     "1317896197": {
         "images": [
             "IMG_9533~3.jpg",
-            "IMG_9547~2.jpg",
+            'IMG_9547~3.jpg',
             "IMG_9540.jpg",
             "IMG_9558~2.jpg",
             "IMG_9556~2.jpg",
