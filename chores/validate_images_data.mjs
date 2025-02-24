@@ -65,33 +65,48 @@ const rejected_imgs = [
   "IMG_3108~3.jpg",
   "IMG_1172~3.jpg",
 
-
-
 ]
 
+const largeImgDir = path.resolve('./dalat-map-images/large')
+const missing_imgs_dir = path.resolve('./dalat-map-images/missing')
+
+
+// make or empty the "missing" folder
+if (!fs.existsSync(missing_imgs_dir)) {
+  fs.mkdirSync(missing_imgs_dir)
+} else {
+  fs.readdirSync(missing_imgs_dir).forEach(file => {
+    fs.unlinkSync(path.join(missing_imgs_dir, file))
+  })
+}
+
+
+
+const file_imgs = fs.readdirSync(largeImgDir)
 const json_imgs = Object.values(all_handmade_data)
   .flatMap(feature => feature.images || [])
 
-const largeImgDir = path.resolve('./dalat-map-images/large')
-const missingImgDir = path.resolve('./dalat-map-images/missing')
 
-if (!fs.existsSync(missingImgDir)) { fs.mkdirSync(missingImgDir) }
 
-const file_imgs = fs.readdirSync(largeImgDir)
 
+
+
+
+
+// Check if I failed to add all available images to handmade data
+// copy them to "missing" folder
 const json_set = new Set(json_imgs)
 const missing_in_json = file_imgs.filter(img => {
   return !rejected_imgs.includes(img)
     && !json_set.has(img)
 })
-
 if (missing_in_json.length === 0) {
   console.log('All generated images are used in handmade data (excluding those explicitly rejected)')
 } else {
   missing_in_json.forEach(img => {
     console.log(img + ' is missing in handmade data and was copied to "missing" folder')
     const oldPath = path.join(largeImgDir, img)
-    const missing_path = path.join(missingImgDir, img)
+    const missing_path = path.join(missing_imgs_dir, img)
     fs.copyFileSync(oldPath, missing_path)
   })
   process.exit(1)
@@ -101,17 +116,14 @@ if (missing_in_json.length === 0) {
 
 
 
-
+// complain if handmade data contains nonexistent filenames
 const file_set = new Set(file_imgs)
-const missing_in_files = json_imgs.filter(img => {
-  if (!file_set.has(img)) {
-    console.log(img + ' is missing in files')
-    return true
-  }
-})
-
+const missing_in_files = json_imgs.filter(img => !file_set.has(img))
 if (missing_in_files.length === 0) {
   console.log('All handmade data images are present in files')
 } else {
+  missing_in_files.forEach(img => {
+    console.log(img + ' is missing in files')
+  })
   process.exit(1)
 } 
