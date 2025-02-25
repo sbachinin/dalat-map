@@ -30,10 +30,14 @@ export const activate_image = (el) => {
 
 export const create_lazy_image = src => {
     const el = create_element_from_Html(
-        `<div class='lazy-image-wrapper'>
+        `<a class='lazy-image-wrapper'
+            data-pswp-src="${src.replace('thumbs', 'large')}"
+            data-pswp-width="800"
+            data-pswp-height="1066"
+        >
             <div class="img-loader" style="display: none"></div>
             <img data-src="${src}" class="lazy">
-        </div>`
+        </a>`
     )
     do_once_visible(el, () => activate_image(el))
     return el

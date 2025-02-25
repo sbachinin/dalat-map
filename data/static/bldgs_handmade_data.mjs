@@ -1070,7 +1070,8 @@ export const bldgs_handmade_data = {
             "IMG_1673~2.jpg",
             "IMG_1680~2.jpg",
             "IMG_1684.jpg"
-        ]
+        ],
+        doubt: true
     },
     "1307493483": {
         "images": [
@@ -1208,7 +1209,8 @@ export const bldgs_handmade_data = {
             "IMG_2766~2.jpg",
             "IMG_2775~3.jpg",
             "IMG_2780.jpg"
-        ]
+        ],
+        doubt: true
     },
     "1308353562": {
         "images": [
