@@ -9,29 +9,31 @@ import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { initialize_tiny_squares } from './initialize_tiny_squares.mjs'
+import { DEV_skip_map_rendering, DEV_should_open_panel, DEV_map_mock } from './DEV/constants.mjs'  
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
-
-const DEV_should_open_panel = true
 
 const zoom = (initial_bldg_id !== null && 15.5)
     || localStorage.getItem('map_zoom')
     || 0
 
-const map = window.dalatmap = new maplibregl.Map({
-    container: 'map',
-    style,
-    zoom,
-    dragRotate: false,
-    keyboard: false, // also to prevent rotation
-    maxBounds: [
-        [108.37416, 11.88], // SW
-        [108.52, 12.01]  // NE
-    ],
-    antialias: true,
-    maxZoom: 17.5,
-    fadeDuration: 0
-})
+
+const map = window.dalatmap = DEV_skip_map_rendering
+    ? DEV_map_mock
+    : new maplibregl.Map({
+        container: 'map',
+        style,
+        zoom,
+        dragRotate: false,
+        keyboard: false, // also to prevent rotation
+        maxBounds: [
+            [108.37416, 11.88], // SW
+            [108.52, 12.01]  // NE
+        ],
+        antialias: true,
+        maxZoom: 17.5,
+        fadeDuration: 0
+    })
 
 map.touchZoomRotate.disableRotation()
 
@@ -43,10 +45,6 @@ map.addControl(
     new maplibregl.NavigationControl({ showCompass: false, showZoom: true }),
     'top-right'
 )
-
-map.once('idle', () => {
-
-})
 
 initialize_tiny_squares()
 
