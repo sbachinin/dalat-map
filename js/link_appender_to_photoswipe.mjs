@@ -1,3 +1,5 @@
+import { try_open_building } from "./bldg_details.mjs"
+import { lightbox } from "./panel/init_photoswipe.mjs"
 import { panel, PANEL_CONTENT_TYPES } from "./panel/panel.mjs"
 import { create_element_from_Html, find_bldg_id_by_image_filename, observe_dom_mutations } from "./utils.mjs"
 
@@ -39,6 +41,8 @@ document.body.addEventListener('click', e => {
         const img_name = img_src.split('/').pop()
         const bldg_id = find_bldg_id_by_image_filename(decodeURIComponent(img_name))
         console.log(bldg_id)
+        try_open_building(bldg_id, true, true)
+        lightbox.pswp.close()
     }
 
 

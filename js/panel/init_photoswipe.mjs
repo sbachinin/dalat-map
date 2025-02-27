@@ -1,6 +1,6 @@
 import PhotoSwipeLightbox from '../../photoswipe/dist/photoswipe-lightbox.esm.min.js';
 
-let lightbox = null
+export let lightbox = null
 export const init_photoswipe = () => {
     if (lightbox) {
         lightbox.init()

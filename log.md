@@ -28,12 +28,37 @@ MPORTANT
 
 
 
+SLIDER
 
-horizontal pictures
-	lycee yersin
+	scroll thumbs list as pswp changes?
+		or at least switch to fade animation on pswp close?
+		on('change', () => scrollLeft/Top = lb.pswp.currentIndex
 
-	add mandara central old
-		figure out workflow for new images
+
+	alongside thumbs on large landscape
+	
+	desktop: try fadein
+	
+
+
+Try slideable panel from swiper;
+	if not, remove swiper's remains
+
+
+
+
+
+
+
+
+button zoom with open panel -> should consider panel
+	(or just remove the button huh)
+
+
+can i find de marie good photos?
+
+ui goodie: on desktop, on hover thumb, show a link to "go to bldg"
+
 
 
 low-zoom tile size:
@@ -88,11 +113,6 @@ PANEL EXPAND EASING CURVE - more dynamic
 SORT OUT HOW TO SHOW 1-IMG DETAILS
 
 
-
-SLIDER
-    in landcape desktop, gives too enlarged images
-    sort out zoom
-    show link to bldg
 
 
 
