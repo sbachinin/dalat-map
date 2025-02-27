@@ -1,4 +1,6 @@
 import PhotoSwipeLightbox from '../../photoswipe/dist/photoswipe-lightbox.esm.min.js';
+import { is_landscape } from '../utils.mjs';
+import { get_panel_el } from './panel_utils.mjs';
 
 export let lightbox = null
 export const init_photoswipe = () => {
@@ -25,8 +27,20 @@ export const init_photoswipe = () => {
         })
     })
 
+    lightbox.on('close', () => {
+        const slide_i = lightbox.pswp.currIndex
 
-    // lightbox.on('change', () => {
-    //     document.querySelector('#panel-thumbs-list').scrollLeft = lightbox.currIndex * 100
-    // })
+        const panel = get_panel_el()
+        const thumb_i = document.querySelectorAll(`#panel-thumbs-list > *`)[slide_i]
+
+        let top = undefined
+        let left = undefined
+        if (is_landscape()) {
+            top = thumb_i.offsetTop - (panel.offsetHeight - thumb_i.offsetHeight) / 2
+        } else {
+            left = thumb_i.offsetLeft - (panel.offsetWidth - thumb_i.offsetWidth) / 2
+        }
+
+        panel.scrollTo({ top, left, behavior: 'auto' })
+    })
 }
