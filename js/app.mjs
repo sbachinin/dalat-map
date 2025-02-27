@@ -10,6 +10,7 @@ import '../data/static/DEV_get_updated_buildings_data.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { initialize_tiny_squares } from './initialize_tiny_squares.mjs'
 import { DEV_skip_map_rendering, DEV_should_open_panel, DEV_map_mock } from './DEV/constants.mjs'  
+import './link_appender_to_photoswipe.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 

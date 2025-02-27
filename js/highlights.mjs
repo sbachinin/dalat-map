@@ -1,4 +1,4 @@
-import { panel } from './panel/panel.mjs'
+import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
 import { images_names } from './highlights_images_list.mjs'
 import { get_image_url, push_to_history } from './utils.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
@@ -25,7 +25,8 @@ export const display_highlights = (should_push_history = false) => {
 
     panel.set_content({
         update: update_size_variables,
-        element: highlights_el
+        element: highlights_el,
+        type: PANEL_CONTENT_TYPES.HIGHLIGHTS
     })
 
     update_size_variables()

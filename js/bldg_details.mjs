@@ -1,4 +1,4 @@
-import { panel } from './panel/panel.mjs'
+import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
 import { all_handmade_data } from '../data/static/handmade_data.mjs'
 import { select_bldg, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
@@ -29,7 +29,8 @@ const show_bldg_details = (id) => {
 
     panel.set_content({
         update: update_size_variables,
-        element: details_el
+        element: details_el,
+        type: PANEL_CONTENT_TYPES.BUILDING
     })
 
     update_size_variables()

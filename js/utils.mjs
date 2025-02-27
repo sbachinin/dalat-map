@@ -1,5 +1,6 @@
 import { french_ids, shit_ids } from '../data/for_runtime/bldgs_ids.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
+import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
 
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
@@ -165,4 +166,23 @@ export function get_center_for_bldg_with_offset(id) {
     const center_x = cntrd[0] - lng_per_px * get_map_center_shift()[0]
     const center_y = cntrd[1] - lat_per_px * get_map_center_shift()[1]
     return [center_x, center_y]
+}
+
+export const find_bldg_id_by_image_filename = (filename) => {
+    const [bldg_id] = Object.entries(bldgs_handmade_data).find(([feat_id, feat]) => {
+        return feat.images?.includes(filename)
+    }) || [null]
+    return bldg_id
+}
+
+export const observe_dom_mutations = (selector, cb) => {
+
+    const container = document.querySelector(selector)
+    const observer = new MutationObserver((...args) => cb(...args))
+
+    observer.observe(container, {
+        childList: true,
+        subtree: true
+    })
+    return observer
 }

@@ -75,3 +75,8 @@ add_disposable_transitionend_handler(
     panel_expander_el,
     () => { panel_expander_el.classList.add('first-animation-complete') }
 )
+
+export const PANEL_CONTENT_TYPES = Object.freeze({
+    HIGHLIGHTS: 0,
+    BUILDING: 1
+})
