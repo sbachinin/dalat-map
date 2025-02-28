@@ -22,6 +22,10 @@ export const display_highlights = (should_push_history = false) => {
         images_names
     })
 
+    highlights_el.querySelectorAll('.bldg-link').forEach(bldg_link => {
+        bldg_link.remove()
+    })
+
     panel.set_content({
         update: update_size_variables,
         element: highlights_el,
