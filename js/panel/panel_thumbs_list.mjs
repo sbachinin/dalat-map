@@ -1,6 +1,7 @@
 import { create_lazy_image } from "../lazy-image.mjs";
 import { bldg_link_html } from "../link_appender_to_photoswipe.mjs";
 import { create_element_from_Html, get_image_url, is_mouse_device } from "../utils.mjs";
+import { panel, PANEL_CONTENT_TYPES } from "./panel.mjs";
 
 const imageFadingDuration = 160
 document.documentElement.style.setProperty('--image-fading-duration', `${imageFadingDuration / 1000}s`);
@@ -9,8 +10,10 @@ export const panel_thumbs_list_id = 'panel-thumbs-list'
 
 const initialize_bldg_link_appender = el => {
     el.addEventListener('mouseenter', () => {
-        console.log('mouseenter')
+        if (panel.content.type !== PANEL_CONTENT_TYPES.HIGHLIGHTS) return
+
         const bldg_link_el = create_element_from_Html(bldg_link_html)
+        bldg_link_el.setAttribute('img-src', el.querySelector('img').src)
         el.appendChild(bldg_link_el)
         setTimeout(() => {
             bldg_link_el.style.opacity = 1
@@ -18,6 +21,7 @@ const initialize_bldg_link_appender = el => {
     })
     el.addEventListener('mouseleave', () => {
         const bldg_link_el = el.querySelector('.bldg-link')
+        if (!bldg_link_el) return
         bldg_link_el.style.opacity = 0
         setTimeout(() => bldg_link_el.remove(), 400)
     })

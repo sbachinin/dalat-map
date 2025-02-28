@@ -75,7 +75,7 @@ document.body.addEventListener('click', e => {
         }
         const img_name = img_src.split('/').pop()
         const bldg_id = find_bldg_id_by_image_filename(decodeURIComponent(img_name))
-        lightbox.pswp.close() // must do it before try_open_building, otherwise failure when scrolling the thumb list to current index
+        lightbox?.pswp?.close() // must do it before try_open_building, otherwise failure when scrolling the thumb list to current index
         try_open_building(bldg_id, true, true)
     }
 })
