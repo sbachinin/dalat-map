@@ -8,6 +8,8 @@ import {
 } from './dead_buildings.mjs'
 import { french_buildings_titles } from './layers/titles.mjs'
 import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
+import { find_bldg_id_by_image_filename } from './utils.mjs'
+import { lightbox } from './panel/init_photoswipe.mjs'
 
 
 
@@ -60,4 +62,20 @@ export const add_mouse_stuff = () => {
 
 document.querySelector('#highlights-opener').addEventListener('click', () => {
     display_highlights(true)
+})
+
+
+// On click on any .bldg-link (in slider or thumbs-list), go to a bldg that owns the image
+document.body.addEventListener('click', e => {
+    if (e.target.closest('.bldg-link')) {
+        const img_src = e.target.getAttribute('img-src')
+        if (!img_src) {
+            console.warn(`handling click on .bldg-link, img-src attr is empty, it's not normal`)
+            return
+        }
+        const img_name = img_src.split('/').pop()
+        const bldg_id = find_bldg_id_by_image_filename(decodeURIComponent(img_name))
+        lightbox.pswp.close() // must do it before try_open_building, otherwise failure when scrolling the thumb list to current index
+        try_open_building(bldg_id, true, true)
+    }
 })
