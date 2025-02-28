@@ -13,5 +13,9 @@ export const DEV_map_mock = {
     addImage: () => { },
     addLayer: () => { },
     addSource: () => { },
-    setCenter: () => { }
+    setCenter: () => { },
+    setFeatureState: () => { },
+    project: () => ({ x: 0, y: 0 }),
+    unproject: () => ({ lng: 0, lat: 0 }),
+    easeTo: () => { },
 }
