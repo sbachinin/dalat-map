@@ -19,11 +19,8 @@ export const display_highlights = (should_push_history = false) => {
     select_bldg(null)
 
     highlights_el = highlights_el || create_panel_thumbs_list({
-        images_names
-    })
-
-    highlights_el.querySelectorAll('.bldg-link').forEach(bldg_link => {
-        bldg_link.remove()
+        images_names,
+        content_type: PANEL_CONTENT_TYPES.HIGHLIGHTS
     })
 
     panel.set_content({

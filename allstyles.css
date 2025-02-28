@@ -129,11 +129,15 @@ body {
 }
 
 @media (pointer: fine) {
+    #panel-thumbs-list .slide-wrapper:hover .bldg-link {
+        opacity: 1;
+    }
+    
     #panel-thumbs-list .bldg-link {
         transform: translateX(-50%) scale(0.75);
     }
 
     #panel-thumbs-list .bldg-link:hover {
-        transform: translateX(-50%) scale(0.85);
+        transform: translateX(-50%) scale(0.8);
     }
 }

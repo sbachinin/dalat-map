@@ -21,10 +21,8 @@ export const init_photoswipe = () => {
     lightbox.init()
 
     lightbox.on('closingAnimationStart', () => {
-        const bldg_links = document.querySelectorAll('.bldg-link')
-        bldg_links.forEach(bldg_link => {
-            bldg_link.style.opacity = 0
-        })
+        const bldg_links = document.querySelectorAll('.pswp .bldg-link')
+        bldg_links.forEach(bldg_link => { bldg_link.style.opacity = 0 })
     })
 
     lightbox.on('close', () => {

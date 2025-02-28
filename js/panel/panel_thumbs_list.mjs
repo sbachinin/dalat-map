@@ -8,29 +8,7 @@ document.documentElement.style.setProperty('--image-fading-duration', `${imageFa
 
 export const panel_thumbs_list_id = 'panel-thumbs-list'
 
-const initialize_bldg_link_appender = el => {
-    el.addEventListener('mouseenter', () => {
-        if (
-            panel.content.type !== PANEL_CONTENT_TYPES.HIGHLIGHTS
-            || el.querySelector('.bldg-link')
-        ) return
-
-        const bldg_link_el = create_element_from_Html(bldg_link_html)
-        bldg_link_el.setAttribute('img-src', el.querySelector('img').src)
-        el.appendChild(bldg_link_el)
-        setTimeout(() => {
-            bldg_link_el.style.opacity = 1
-        }, 50)
-    })
-    el.addEventListener('mouseleave', () => {
-        const bldg_link_el = el.querySelector('.bldg-link')
-        if (!bldg_link_el) return
-        bldg_link_el.style.opacity = 0
-        setTimeout(() => bldg_link_el.remove(), 400)
-    })
-}
-
-export const create_panel_thumbs_list = ({ images_names }) => {
+export const create_panel_thumbs_list = ({ images_names, content_type = PANEL_CONTENT_TYPES.BUILDING }) => {
     const slide_els = images_names.map(
         name => {
             const wr = create_element_from_Html(`<div class="slide-wrapper"></div>`)
@@ -41,10 +19,15 @@ export const create_panel_thumbs_list = ({ images_names }) => {
     const list_el = create_element_from_Html(
         `<div id="${panel_thumbs_list_id}"></div>`
     )
-    slide_els.forEach(el => {
-        if (is_mouse_device()) initialize_bldg_link_appender(el)
 
+    slide_els.forEach(el => {
         list_el.appendChild(el)
+        if (is_mouse_device() && content_type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
+            const bldg_link_el = create_element_from_Html(bldg_link_html)
+            const img = el.querySelector('img')
+            bldg_link_el.setAttribute('img-src', img.src || img.dataset.src)
+            el.appendChild(bldg_link_el)
+        }
     })
 
     return list_el
