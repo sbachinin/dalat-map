@@ -98,9 +98,10 @@ body {
 
 
 
+
 .bldg-link {
     position: absolute;
-    bottom: 13px;
+    bottom: 2%;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(19, 19, 19, 0.8);
@@ -110,14 +111,29 @@ body {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity ease-out 0.4s;
+    transition: opacity ease-out 0.4s, transform ease-out 0.1s;
     z-index: 1;
     user-select: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
+
+.bldg-link>* {
+    pointer-events: none;
+}
+
 .bldg-link svg {
     width: 90%;
     height: 90%;
+}
+
+@media (pointer: fine) {
+    #panel-thumbs-list .bldg-link {
+        transform: translateX(-50%) scale(0.75);
+    }
+
+    #panel-thumbs-list .bldg-link:hover {
+        transform: translateX(-50%) scale(0.85);
+    }
 }

@@ -19,7 +19,6 @@ export const display_highlights = (should_push_history = false) => {
     select_bldg(null)
 
     highlights_el = highlights_el || create_panel_thumbs_list({
-        content_description: 'highlights',
         images_names
     })
 

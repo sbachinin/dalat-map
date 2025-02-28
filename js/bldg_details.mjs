@@ -23,7 +23,6 @@ const update_size_variables = () => {
 
 const show_bldg_details = (id) => {
     const details_el = create_panel_thumbs_list({
-        content_description: 'building_' + id,
         images_names: all_handmade_data[id].images
     })
 
