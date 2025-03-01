@@ -31,6 +31,11 @@ export const init_photoswipe = () => {
         const panel = get_panel_el()
         const thumb_i = document.querySelectorAll(`#panel-thumbs-list > *`)[slide_i]
 
+        if (!thumb_i) {
+            console.warn('Bug. No thumb found at an index of last slide. Cancel trying to auto-scroll the thumb list.')
+            return
+        }
+
         let top = undefined
         let left = undefined
         if (is_landscape()) {

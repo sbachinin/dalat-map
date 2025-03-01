@@ -17,7 +17,7 @@ observe_dom_mutations('body', mutations => {
 
         // TODO: this is unrelated to bldg_links, perhaps should rename this file to just "photoswipe observer"
         if (added_node.classList?.contains('pswp') && is_mouse_device()) {
-            // Be default photoswipe opens desktop slider abruptly,this fixes it
+            // By default photoswipe opens desktop slider abruptly,this fixes it
             added_node.style.opacity = 1
         }
 
