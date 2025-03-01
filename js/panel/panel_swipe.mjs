@@ -6,7 +6,7 @@ import {
 
 import { get_panel_el } from './panel_utils.mjs'
 
-const swipe_expand_threshold = 50
+const swipe_expand_threshold = 35
 const drag_start_threshold = 10
 
 let current_swipe = null

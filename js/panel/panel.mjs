@@ -4,7 +4,7 @@ import { get_panel_intrinsic_size, get_panel_el } from './panel_utils.mjs'
 import { handle_resize } from './panel_resize.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs';
 
-const EXPAND_TRANSITION_DURATION = 350
+const EXPAND_TRANSITION_DURATION = 250
 
 set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's');
 set_css_num_var('--panel-size', 0, 'px');
