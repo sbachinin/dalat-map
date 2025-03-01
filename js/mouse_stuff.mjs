@@ -8,8 +8,8 @@ import {
 } from './dead_buildings.mjs'
 import { french_buildings_titles } from './layers/titles.mjs'
 import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
-import { find_bldg_id_by_image_filename } from './utils.mjs'
-import { lightbox } from './panel/init_photoswipe.mjs'
+import { find_bldg_id_by_image_filename, is_mouse_device } from './utils.mjs'
+import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 
 
 
@@ -75,7 +75,14 @@ document.body.addEventListener('click', e => {
         }
         const img_name = img_src.split('/').pop()
         const bldg_id = find_bldg_id_by_image_filename(decodeURIComponent(img_name))
-        lightbox?.pswp?.close() // must do it before try_open_building, otherwise failure when scrolling the thumb list to current index
-        try_open_building(bldg_id, true, true)
+
+        const open_building_delay = is_mouse_device()
+            ? 0 // because pswp has no closing animation on desktop
+            : PSWP_HIDE_ANIMATION_DURATION + 200
+        setTimeout(
+            () => try_open_building(bldg_id, true, true),
+            open_building_delay
+        )
+        lightbox?.pswp?.close()
     }
 })

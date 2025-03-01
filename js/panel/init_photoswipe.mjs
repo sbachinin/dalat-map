@@ -3,6 +3,9 @@ import { is_landscape } from '../utils.mjs';
 import { get_panel_el } from './panel_utils.mjs';
 
 export let lightbox = null
+
+export const PSWP_HIDE_ANIMATION_DURATION = 333
+
 export const init_photoswipe = () => {
     if (lightbox) {
         lightbox.init()
@@ -15,7 +18,8 @@ export const init_photoswipe = () => {
         pswpModule: () => import('../../photoswipe/dist/photoswipe.esm.min.js'),
         wheelToZoom: true,
         zoom: false,
-        counter: false
+        counter: false,
+        hideAnimationDuration: PSWP_HIDE_ANIMATION_DURATION
     })
 
     lightbox.init()
