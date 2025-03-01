@@ -7,7 +7,6 @@ const bldg_svg = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width=
 
 export const bldg_link_html = `<div class="bldg-link">${bldg_svg}</div>`
 
-// 1. On any mutations in (and within) .pswp, append .bldg-link to each .pswp__item
 observe_dom_mutations('body', mutations => {
     if (panel.content?.type !== PANEL_CONTENT_TYPES.HIGHLIGHTS) return
 
@@ -15,7 +14,6 @@ observe_dom_mutations('body', mutations => {
 
     all_added_nodes.forEach(added_node => {
 
-        // TODO: this is unrelated to bldg_links, perhaps should rename this file to just "photoswipe observer"
         if (added_node.classList?.contains('pswp') && is_mouse_device()) {
             // By default photoswipe opens desktop slider abruptly,this fixes it
             added_node.style.opacity = 1
@@ -31,15 +29,18 @@ observe_dom_mutations('body', mutations => {
     })
 })
 
+// On any mutations in (and within) .pswp, append .bldg-link to each .pswp__item
 const append_all_bldg_links = debounce(() => {
     document.querySelectorAll('.pswp .pswp__item')
-    .forEach(pi => {
-        const bldg_img = pi.querySelector('img.pswp__img')
-        if (!bldg_img) return
+        .forEach(pi => {
+            const bldg_img = pi.querySelector('img.pswp__img')
+            if (!bldg_img) return
 
-        const bldg_link = create_element_from_Html(bldg_link_html)
-        bldg_link.setAttribute('img-src', bldg_img.src)
-        pi.appendChild(bldg_link)
-        setTimeout(() => { bldg_link.style.opacity = 1 }, 50) // shows up without transition if no timeout or 0 timeout, don't know why        
-    })
+            const old_link = pi.querySelector('.bldg-link')
+            const bldg_link = old_link || create_element_from_Html(bldg_link_html)
+            bldg_link.setAttribute('img-src', bldg_img.src)
+            !old_link && pi.appendChild(bldg_link)
+
+            setTimeout(() => { bldg_link.style.opacity = 1 }, 50) // shows up without transition if no timeout or 0 timeout, don't know why        
+        })
 }, 50)
