@@ -1,7 +1,7 @@
 import { create_lazy_image } from "../lazy-image.mjs";
-import { bldg_link_html } from "../link_appender_to_photoswipe.mjs";
+import { bldg_link_html } from "../photoswipe_mutations_observer.mjs";
 import { create_element_from_Html, get_image_url, is_mouse_device } from "../utils.mjs";
-import { panel, PANEL_CONTENT_TYPES } from "./panel.mjs";
+import { PANEL_CONTENT_TYPES } from "./panel.mjs";
 
 const imageFadingDuration = 160
 document.documentElement.style.setProperty('--image-fading-duration', `${imageFadingDuration / 1000}s`);
