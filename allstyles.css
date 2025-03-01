@@ -141,7 +141,48 @@ body {
         opacity: 1;
     }
 
-    #panel-thumbs-list .bldg-link:hover {
-        transform: translateX(-50%) scale(0.8);
+
+
+
+    /* TOOLTIP: */
+
+    .bldg-link__tooltip {
+        visibility: hidden;
+        white-space: pre;
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 4px 6px;
+        line-height: 1.1em;
+        position: absolute;
+        z-index: 1;
+
+        top: 50%;
+        left: 100%;
+        transform: translateY(-50%);
+        margin-left: 10px;
+
+        opacity: 0;
+        transition: opacity 0.3s, visibility 0.3s;
+        text-transform: uppercase;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 13px;
+    }
+
+    .bldg-link__tooltip::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 99%;
+        margin-top: -7px;
+        border-width: 7px;
+        border-style: solid;
+        border-color: transparent #000 transparent transparent;
+    }
+
+    .bldg-link:hover .bldg-link__tooltip {
+        visibility: visible;
+        opacity: 0.8;
     }
 }
