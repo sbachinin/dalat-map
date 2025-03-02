@@ -6,7 +6,8 @@ import {
 
 import { get_panel_el } from './panel_utils.mjs'
 
-const swipe_expand_threshold = 35
+const fast_swipe_toggle_threshold = 25
+const fast_swipe_max_duration = 150
 const drag_start_threshold = 10
 
 let current_swipe = null
@@ -85,7 +86,8 @@ export const make_expandable_on_swipe = (panel) => {
                 drag_start_coord: null,
                 drag_axis: is_landscape() ? 'x' : 'y',
                 content_was_scrolled: false,
-                had_touchmove: false
+                had_touchmove: false,
+                touch_start_timestamp: Date.now()
             }
         }
     }
@@ -152,9 +154,10 @@ export const make_expandable_on_swipe = (panel) => {
 
     const on_touchend = e => {
         requestAnimationFrame(() => { current_swipe = null })
-        
+
+
         get_panel_el().parentElement.classList.remove('notransition')
-        
+
         if (!current_swipe) return
         if (!current_swipe.had_touchmove) return
         if (current_swipe.content_was_scrolled && !current_swipe.drag_start_coord) return
@@ -169,7 +172,13 @@ export const make_expandable_on_swipe = (panel) => {
         let end_delta = get_delta_on_drag_axis(e.changedTouches[0], current_swipe.drag_start_coord)
         if (current_swipe.drag_axis === 'y') end_delta = -end_delta
 
-        const has_swiped_far = Math.abs(end_delta) > swipe_expand_threshold
+        const swipe_was_fast = (Date.now() - current_swipe.touch_start_timestamp) < fast_swipe_max_duration
+
+        const actual_threshold = swipe_was_fast
+            ? fast_swipe_toggle_threshold
+            : (current_swipe.panel_full_size / 2)
+        const has_swiped_far = Math.abs(end_delta) > actual_threshold
+
         if (has_swiped_far) {
             should_expand = end_delta > 0
         }
