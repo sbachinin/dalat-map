@@ -35,6 +35,9 @@ export const panel = {
     set_size(size) {
         if (size !== undefined) {
             set_css_num_var('--panel-size', size, 'px')
+            this.full_size_promise.then(fsize => {
+                get_panel_el().firstElementChild.style.opacity = (size > fsize * 0.2) ? 1 : 0
+            })
             update_expand_button()
         } else {
             // TODO remove console warning

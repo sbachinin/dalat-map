@@ -72,6 +72,7 @@
 
 #panel>* {
     box-sizing: border-box;
+    transition: opacity ease-out calc(var(--panel-expand-transition-duration) + 0.2s);
 }
 
 #panel-expand-extra-margin {
