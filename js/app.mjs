@@ -50,7 +50,7 @@ map.addControl(
 initialize_tiny_squares()
 
 
-map.on('load', async () => {
+map.once('idle', async () => {
     add_dead_buildings(map)
 
     if (DEV_should_open_panel) {
