@@ -7,7 +7,7 @@ import {
 import { get_panel_el } from './panel_utils.mjs'
 
 const fast_swipe_toggle_threshold = 25
-const fast_swipe_max_duration = 150
+const fast_swipe_max_duration = 250
 const drag_start_threshold = 10
 
 let current_swipe = null
@@ -71,6 +71,7 @@ export const make_expandable_on_swipe = (panel) => {
         if (
             e.target.closest('#' + get_panel_el().id)
             || e.target.closest('#panel-expand-button')
+            || e.target.closest('#panel-expand-extra-margin')
         ) {
             if (e.touches.length > 1) {
                 e.preventDefault()

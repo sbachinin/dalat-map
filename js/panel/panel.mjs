@@ -5,11 +5,14 @@ import { handle_resize } from './panel_resize.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs';
 
 const EXPAND_TRANSITION_DURATION = 250
+const PANEL_EXPAND_BUTTON_SIZE = 40
 
 set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's');
 set_css_num_var('--panel-size', 0, 'px');
+set_css_num_var('--panel-expand-button-size', PANEL_EXPAND_BUTTON_SIZE, 'px');
 
 const expand_button_el = document.querySelector(`#panel-expand-button`)
+const expand_extra_margin = document.querySelector(`#panel-expand-extra-margin`)
 const panel_expander_el = document.querySelector(`#panel-expander`)
 const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
@@ -68,6 +71,7 @@ export const panel = {
 handle_resize(panel)
 
 expand_button_el.addEventListener('click', panel.toggle)
+expand_extra_margin.addEventListener('click', panel.toggle)
 
 make_expandable_on_swipe(panel)
 
