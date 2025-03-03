@@ -36,7 +36,7 @@
             <div id="expand-button-wrapper">
                 <div id="panel-expand-button" style="opacity: 0;">
                     <svg width="14" height="6" xmlns="http://www.w3.org/2000/svg">
-                        <polygon points="7,0 14,6 0,6" fill="RGB(112, 117, 122)"></polygon>
+                        <polygon points="7,0 14,6 0,6" fill="#000"></polygon>
                     </svg>
                 </div>
             </div>
@@ -75,8 +75,17 @@
     </div>
 
     <div class="custom-zoom-control">
-        <div class="zoom-button zoom-in" id="zoom-in">+</div>
-        <div class="zoom-button zoom-out" id="zoom-out">−</div>
+        <div class="zoom-button zoom-in" id="zoom-in">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <line x1="2" y1="12" x2="22" y2="12" stroke="black" stroke-width="4" />
+                <line x1="12" y1="2" x2="12" y2="22" stroke="black" stroke-width="4" />
+            </svg>
+        </div>
+        <div class="zoom-button zoom-out" id="zoom-out">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <line x1="2" y1="12" x2="22" y2="12" stroke="black" stroke-width="4" />
+            </svg>
+        </div>
     </div>
 
 

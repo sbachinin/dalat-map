@@ -12,14 +12,14 @@
     display: block;
     width: 30px;
     height: 30px;
-    line-height: 30px;
-    font-size: 20px;
-    text-align: center;
-    font-weight: bold;
     cursor: pointer;
     user-select: none;
     transition: background-color 0.2s;
-    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+}
+.zoom-button svg {
+    width: 16px;
 }
 
 .zoom-button:active {
@@ -32,8 +32,7 @@
 
 @media (max-width: 600px) {
     .zoom-button {
-        width: 36px;
-        height: 36px;
-        line-height: 36px;
+        width: 40px;
+        height: 40px;
     }
 }
