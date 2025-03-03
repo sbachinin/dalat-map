@@ -9,7 +9,7 @@ import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { initialize_tiny_squares } from './initialize_tiny_squares.mjs'
-import { DEV_skip_map_rendering, DEV_should_open_panel, DEV_map_mock } from './DEV/constants.mjs'  
+import { DEV_skip_map_rendering, DEV_should_open_panel, DEV_map_mock } from './DEV/constants.mjs'
 import './photoswipe_mutations_observer.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
@@ -40,7 +40,7 @@ map.touchZoomRotate.disableRotation()
 
 preload_some_images()
 
-add_mouse_stuff()
+map.on('load', () => add_mouse_stuff())
 
 map.addControl(
     new maplibregl.NavigationControl({ showCompass: false, showZoom: true }),

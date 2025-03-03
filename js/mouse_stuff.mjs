@@ -58,31 +58,40 @@ export const add_mouse_stuff = () => {
             }
         })
     })
-}
-
-document.querySelector('#highlights-opener').addEventListener('click', () => {
-    display_highlights(true)
-})
 
 
-// On click on any .bldg-link (in slider or thumbs-list), go to a bldg that owns the image
-document.body.addEventListener('click', e => {
-    if (e.target.closest('.bldg-link')) {
-        const img_src = e.target.getAttribute('img-src')
-        if (!img_src) {
-            console.warn(`handling click on .bldg-link, img-src attr is empty, it's not normal`)
-            return
+
+
+
+
+
+    document.querySelector('#highlights-opener').addEventListener('click', () => {
+        display_highlights(true)
+    })
+
+
+
+
+
+    // On click on any .bldg-link (in slider or thumbs-list), go to a bldg that owns the image
+    document.body.addEventListener('click', e => {
+        if (e.target.closest('.bldg-link')) {
+            const img_src = e.target.getAttribute('img-src')
+            if (!img_src) {
+                console.warn(`handling click on .bldg-link, img-src attr is empty, it's not normal`)
+                return
+            }
+            const img_name = img_src.split('/').pop()
+            const bldg_id = find_bldg_id_by_image_filename(decodeURIComponent(img_name))
+
+            const open_building_delay = is_mouse_device()
+                ? 0 // because pswp has no closing animation on desktop
+                : PSWP_HIDE_ANIMATION_DURATION + 200
+            setTimeout(
+                () => try_open_building(bldg_id, true, true),
+                open_building_delay
+            )
+            lightbox?.pswp?.close()
         }
-        const img_name = img_src.split('/').pop()
-        const bldg_id = find_bldg_id_by_image_filename(decodeURIComponent(img_name))
-
-        const open_building_delay = is_mouse_device()
-            ? 0 // because pswp has no closing animation on desktop
-            : PSWP_HIDE_ANIMATION_DURATION + 200
-        setTimeout(
-            () => try_open_building(bldg_id, true, true),
-            open_building_delay
-        )
-        lightbox?.pswp?.close()
-    }
-})
+    })
+}
