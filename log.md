@@ -30,35 +30,22 @@ MPORTANT
 
 SLIDER
 
-	scroll thumbs list as pswp changes?
-		or at least switch to fade animation on pswp close?
-		on('change', () => scrollLeft/Top = lb.pswp.currentIndex
+transition btw hl and bldg is very sharp
 
 
-	alongside thumbs on large landscape
-	
-	desktop: try fadein
-	
+easeTo on bldg select is ugly because of loading tiles
 
 
-Try slideable panel from swiper;
-	if not, remove swiper's remains
+sometimes laggy panel reveal from github
+	already took measures:
+		panel is initialized on 'idle',
+			need to TEST the effect later from github
+	Other possible improvements:
+		request less thumbs
+		|| request them only after panel finished expanding
 
 
-
-
-
-
-
-
-button zoom with open panel -> should consider panel
-	(or just remove the button huh)
-
-
-can i find de marie good photos?
-
-ui goodie: on desktop, on hover thumb, show a link to "go to bldg"
-
+indicate that hl are opened
 
 
 low-zoom tile size:

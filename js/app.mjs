@@ -42,11 +42,6 @@ preload_some_images()
 
 map.on('load', () => add_mouse_stuff())
 
-map.addControl(
-    new maplibregl.NavigationControl({ showCompass: false, showZoom: true }),
-    'top-right'
-)
-
 initialize_tiny_squares()
 
 

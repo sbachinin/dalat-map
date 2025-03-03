@@ -1,0 +1,39 @@
+.custom-zoom-control {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.zoom-button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+    font-family: sans-serif;
+}
+
+.zoom-button:active {
+    background-color: #e0e0e0;
+}
+
+.zoom-in {
+    border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 600px) {
+    .zoom-button {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+    }
+}
