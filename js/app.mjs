@@ -12,6 +12,7 @@ import { initialize_tiny_squares } from './initialize_tiny_squares.mjs'
 import { DEV_skip_map_rendering, DEV_should_open_panel, DEV_map_mock } from './DEV/constants.mjs'
 import './photoswipe_mutations_observer.mjs'
 import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
+import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
@@ -81,6 +82,14 @@ map.on('zoom', () => {
     update_scale()
     update_zoom_buttons()
 })
+
+const onresize = () => {
+    adjust_panel_on_resize()
+    // adjust zoom buttons
+    // scale
+}
+window.addEventListener('resize', onresize)
+window.addEventListener('orientationchange', onresize)
 
 create_scale()
 

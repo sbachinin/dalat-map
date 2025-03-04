@@ -1,7 +1,6 @@
 import { make_expandable_on_swipe } from './panel_swipe.mjs'
 import { get_css_var_num, set_css_num_var, debounce, add_disposable_transitionend_handler } from '../utils.mjs'
 import { get_panel_intrinsic_size, get_panel_el } from './panel_utils.mjs'
-import { handle_resize } from './panel_resize.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs';
 
 const EXPAND_TRANSITION_DURATION = 250
@@ -70,8 +69,6 @@ export const panel = {
         init_photoswipe()
     }
 }
-
-handle_resize(panel)
 
 expand_button_el.addEventListener('click', panel.toggle)
 expand_extra_margin.addEventListener('click', panel.toggle)
