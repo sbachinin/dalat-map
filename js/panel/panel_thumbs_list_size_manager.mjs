@@ -1,6 +1,6 @@
 import { set_css_num_var, is_landscape, is_mouse_device } from '../utils.mjs'
+import { panel } from './panel.mjs'
 import { panel_thumbs_list_id } from './panel_thumbs_list.mjs'
-import { get_panel_el } from './panel_utils.mjs'
 
 export const THUMB_GAP = 4
 set_css_num_var('--thumb-gap', THUMB_GAP, 'px')
@@ -10,18 +10,15 @@ const THUMB_IDEAL_HEIGHT = 286
 const img_ratio = THUMB_IDEAL_WIDTH / THUMB_IDEAL_HEIGHT
 
 
-export const update_panel_thumbs_list_size_variables = (
-    {
-        max_width_ratio
-    }
-) => {
+export const update_panel_thumbs_list_size_variables = ({
+    max_width_ratio
+}) => {
     let thumb_width = THUMB_IDEAL_WIDTH
     let thumb_height = THUMB_IDEAL_HEIGHT
     const is_portrait_desktop = !is_landscape() && is_mouse_device
-    const panel_content_el = get_panel_el().firstElementChild
-    if (is_portrait_desktop && !!panel_content_el) {
+    if (is_portrait_desktop && panel.content?.element) {
         /* In portrait & desktop, shrink the thumbs to avoid empty hor space */
-        const wrapper_width_without_scrollbar = panel_content_el.clientWidth
+        const wrapper_width_without_scrollbar = panel.content.element.clientWidth
         const row_initial_length = Math.floor(
             (wrapper_width_without_scrollbar - THUMB_GAP) / (THUMB_IDEAL_WIDTH + THUMB_GAP)
         )

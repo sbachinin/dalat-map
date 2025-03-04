@@ -4,9 +4,9 @@ import {
     set_css_num_var,
     debounce,
     add_disposable_transitionend_handler,
-    is_mouse_device
+    is_mouse_device,
+    is_landscape,
 } from '../utils.mjs'
-import { get_panel_intrinsic_size, get_panel_el } from './panel_utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs';
 
 const EXPAND_TRANSITION_DURATION = 250
@@ -20,6 +20,10 @@ const expand_button_el = document.querySelector(`#panel-expand-button`)
 const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
 const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
+const get_panel_intrinsic_size = _ => { // height/width with scrollbar
+    return panel.body_element[is_landscape() ? 'offsetWidth' : 'offsetHeight']
+}
+
 const update_expand_button = debounce(async () => {
     const was_expanded = await panel.is_rather_expanded()
     expand_button_el.classList[was_expanded ? 'add' : 'remove']('inward')
@@ -27,6 +31,7 @@ const update_expand_button = debounce(async () => {
 
 export const panel = {
     wrapper_element: document.querySelector(`#panel-expander`),
+    body_element: document.querySelector(`#panel`),
 
     full_size_promise: Promise.resolve(),
     cache_full_size() {
@@ -40,7 +45,7 @@ export const panel = {
         if (size !== undefined) {
             set_css_num_var('--panel-size', size, 'px')
             const fsize = await this.full_size_promise
-            get_panel_el().firstElementChild.style.opacity = (size > fsize * 0.2) ? 1 : 0
+            panel.content.element.style.opacity = (size > fsize * 0.2) ? 1 : 0
             tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
             update_expand_button()
         } else {
@@ -67,8 +72,8 @@ export const panel = {
         
 
         panel.content = _content
-        get_panel_el().innerHTML = ''
-        get_panel_el().appendChild(_content.element)
+        panel.body_element.innerHTML = ''
+        panel.body_element.appendChild(_content.element)
         panel.cache_full_size()
         panel.wrapper_element.scrollTop = 0
         panel.wrapper_element.scrollLeft = 0

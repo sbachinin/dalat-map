@@ -4,21 +4,11 @@ import {
     get_css_var_num
 } from '../utils.mjs'
 
-import { get_panel_el } from './panel_utils.mjs'
-
 const fast_swipe_toggle_threshold = 25
 const fast_swipe_max_duration = 250
 const drag_start_threshold = 10
 
 let current_swipe = null
-
-if (window.matchMedia("(pointer: coarse)").matches) {
-    get_panel_el().addEventListener('scroll', e => {
-        if (current_swipe) {
-            current_swipe.content_was_scrolled = true
-        }
-    })
-}
 
 
 const handle_touch_events = (
@@ -67,9 +57,15 @@ const orthogonal_swipe_is_greater_or_equal = current_XY => {
 export const make_expandable_on_swipe = (panel) => {
     if (window.matchMedia("(pointer: fine)").matches) return
 
+    panel.body_element.addEventListener('scroll', _ => {
+        if (current_swipe) {
+            current_swipe.content_was_scrolled = true
+        }
+    })
+
     const on_touchstart = async (e) => {
         if (
-            e.target.closest('#' + get_panel_el().id)
+            e.target.closest('#' + panel.body_element.id)
             || e.target.closest('#panel-expand-button')
             || e.target.closest('#panel-expand-tappable-margin')
         ) {
@@ -116,7 +112,7 @@ export const make_expandable_on_swipe = (panel) => {
     const on_touchmove = (e) => {
         if (
             e.target.closest('#panel-expand-button') // prevents "navigate back" action
-            || (e.target.closest('#' + get_panel_el().id) && e.touches.length > 1) // prevents pinch-related mess
+            || (e.target.closest('#' + panel.body_element.id) && e.touches.length > 1) // prevents pinch-related mess
         ) {
             e.preventDefault()
         }
@@ -131,7 +127,7 @@ export const make_expandable_on_swipe = (panel) => {
 
         current_swipe.had_touchmove = true
 
-        get_panel_el().parentElement.classList.add('notransition')
+        panel.wrapper_element.classList.add('notransition')
 
         const drag_has_begun = try_start_dragging(e)
         if (!drag_has_begun) return
@@ -156,8 +152,7 @@ export const make_expandable_on_swipe = (panel) => {
     const on_touchend = e => {
         requestAnimationFrame(() => { current_swipe = null })
 
-
-        get_panel_el().parentElement.classList.remove('notransition')
+        panel.wrapper_element.classList.remove('notransition')
 
         if (!current_swipe) return
         if (!current_swipe.had_touchmove) return
