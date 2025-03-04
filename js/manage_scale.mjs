@@ -25,7 +25,7 @@ const measure_base_values = () => {
 
 measure_base_values()
 
-const update_scale = () => {
+export const update_scale = () => {
     if (fullwidth_scale_wr.style.visibility !== 'visible') {
         fullwidth_scale_wr.style.visibility = 'visible'
     }
@@ -98,7 +98,6 @@ export const create_scale = () => {
             measure_base_values()
             update_scale()
         })
-        window.dalatmap.on('zoom', update_scale);
         new ResizeObserver(handle_resize).observe(fullwidth_scale_wr)
     })
 }

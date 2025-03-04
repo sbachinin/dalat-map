@@ -10,6 +10,7 @@ import { french_buildings_titles } from './layers/titles.mjs'
 import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
 import { find_bldg_id_by_image_filename, get_map_center_shift, is_mouse_device } from './utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
+import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 
 
 
@@ -95,19 +96,6 @@ export const add_mouse_stuff = () => {
         }
     })
 
-
-    document.querySelector('.zoom-button.zoom-in')
-        .addEventListener('click', () => {
-            map.zoomIn({
-                offset: get_map_center_shift()
-            })
-        })
-
-    document.querySelector('.zoom-button.zoom-out')
-        .addEventListener('click', () => {
-            map.zoomOut({
-                offset: get_map_center_shift()
-            })
-        })
+    initialize_custom_zoom_buttons()
 
 }

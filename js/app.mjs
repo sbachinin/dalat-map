@@ -1,4 +1,4 @@
-import { create_scale } from './manage_scale.mjs'
+import { create_scale, update_scale } from './manage_scale.mjs'
 import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
@@ -11,6 +11,7 @@ import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { initialize_tiny_squares } from './initialize_tiny_squares.mjs'
 import { DEV_skip_map_rendering, DEV_should_open_panel, DEV_map_mock } from './DEV/constants.mjs'
 import './photoswipe_mutations_observer.mjs'
+import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
@@ -76,6 +77,10 @@ map.on('move', () => {
     }
 })
 
+map.on('zoom', () => {
+    update_scale()
+    update_zoom_buttons()
+})
 
 create_scale()
 
