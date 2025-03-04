@@ -71,7 +71,7 @@ export const make_expandable_on_swipe = (panel) => {
         if (
             e.target.closest('#' + get_panel_el().id)
             || e.target.closest('#panel-expand-button')
-            || e.target.closest('#panel-expand-extra-margin')
+            || e.target.closest('#panel-expand-tappable-margin')
         ) {
             if (e.touches.length > 1) {
                 e.preventDefault()

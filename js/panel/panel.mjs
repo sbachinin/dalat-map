@@ -11,7 +11,7 @@ set_css_num_var('--panel-size', 0, 'px');
 set_css_num_var('--panel-expand-button-size', PANEL_EXPAND_BUTTON_SIZE, 'px');
 
 const expand_button_el = document.querySelector(`#panel-expand-button`)
-const expand_extra_margin = document.querySelector(`#panel-expand-extra-margin`)
+const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
 const panel_expander_el = document.querySelector(`#panel-expander`)
 const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
@@ -31,12 +31,11 @@ export const panel = {
             })
         })
     },
-    set_size(size) {
+    async set_size(size) {
         if (size !== undefined) {
             set_css_num_var('--panel-size', size, 'px')
-            this.full_size_promise.then(fsize => {
-                get_panel_el().firstElementChild.style.opacity = (size > fsize * 0.2) ? 1 : 0
-            })
+            const fsize = await this.full_size_promise
+            get_panel_el().firstElementChild.style.opacity = (size > fsize * 0.2) ? 1 : 0
             update_expand_button()
         } else {
             // TODO remove console warning
@@ -58,6 +57,8 @@ export const panel = {
     },
     content: null,
     set_content(_content) {
+        
+        if (panel.content === _content) return    
         panel.content = _content
         get_panel_el().innerHTML = ''
         get_panel_el().appendChild(_content.element)
@@ -71,7 +72,7 @@ export const panel = {
 }
 
 expand_button_el.addEventListener('click', panel.toggle)
-expand_extra_margin.addEventListener('click', panel.toggle)
+tappable_margin.addEventListener('click', panel.toggle)
 
 make_expandable_on_swipe(panel)
 

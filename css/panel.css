@@ -13,7 +13,7 @@
         height: max-content;
     }
 
-    #panel-expand-extra-margin {
+    #panel-expand-tappable-margin {
         height: var(--panel-expand-button-size);
         width: 100%;
         bottom: 100%;
@@ -42,10 +42,10 @@
         overflow-x: hidden;
     }
 
-    #panel-expand-extra-margin {
+    #panel-expand-tappable-margin {
         height: 100%;
         width: var(--panel-expand-button-size);
-        left: 100;
+        left: 100%;
         top: 0;
     }
 }
@@ -75,6 +75,12 @@
     transition: opacity ease-out calc(var(--panel-expand-transition-duration) + 0.2s);
 }
 
-#panel-expand-extra-margin {
+#panel-expand-tappable-margin {
     position: absolute;
+}
+
+@media (pointer: fine) {
+    #panel-expand-tappable-margin {
+        display: none !important;
+    }
 }
