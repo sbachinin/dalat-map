@@ -83,15 +83,16 @@ map.on('zoom', () => {
     update_zoom_buttons()
 })
 
+const { adjust_scale_on_resize } = create_scale()
+
 const onresize = () => {
     adjust_panel_on_resize()
-    // adjust zoom buttons
-    // scale
+    adjust_scale_on_resize()
+    update_zoom_buttons()
 }
 window.addEventListener('resize', onresize)
 window.addEventListener('orientationchange', onresize)
 
-create_scale()
 
 if (window.location.hostname === 'localhost') {
     const script = document.createElement('script')

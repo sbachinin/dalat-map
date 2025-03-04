@@ -93,13 +93,13 @@ export const create_scale = () => {
         fullwidth_scale_wr.firstElementChild.appendChild(create_scale_item(i))
     }
 
-    window.dalatmap.once('render', () => {
-        const handle_resize = debounce(() => {
-            measure_base_values()
-            update_scale()
-        })
-        new ResizeObserver(handle_resize).observe(fullwidth_scale_wr)
+    const adjust_scale_on_resize = debounce(() => {
+        measure_base_values()
+        update_scale()
     })
+
+    adjust_scale_on_resize()
+    return { adjust_scale_on_resize }
 }
 
 
