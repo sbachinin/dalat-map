@@ -7,7 +7,7 @@ const bldg_svg = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width=
 
 export const bldg_link_html = `<div class="bldg-link">
     ${bldg_svg}
-    ${is_mouse_device() ? '<div class="bldg-link__tooltip">Go to this<br>building</div>' : ''}
+    ${is_mouse_device ? '<div class="bldg-link__tooltip">Go to this<br>building</div>' : ''}
 </div>`
 
 observe_dom_mutations('body', mutations => {
@@ -17,7 +17,7 @@ observe_dom_mutations('body', mutations => {
 
     all_added_nodes.forEach(added_node => {
 
-        if (added_node.classList?.contains('pswp') && is_mouse_device()) {
+        if (added_node.classList?.contains('pswp') && is_mouse_device) {
             // By default photoswipe opens desktop slider abruptly,this fixes it
             added_node.style.opacity = 1
         }

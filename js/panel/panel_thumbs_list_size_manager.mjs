@@ -17,7 +17,7 @@ export const update_panel_thumbs_list_size_variables = (
 ) => {
     let thumb_width = THUMB_IDEAL_WIDTH
     let thumb_height = THUMB_IDEAL_HEIGHT
-    const is_portrait_desktop = !is_landscape() && is_mouse_device()
+    const is_portrait_desktop = !is_landscape() && is_mouse_device
     const panel_content_el = get_panel_el().firstElementChild
     if (is_portrait_desktop && !!panel_content_el) {
         /* In portrait & desktop, shrink the thumbs to avoid empty hor space */

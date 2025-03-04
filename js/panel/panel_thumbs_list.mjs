@@ -22,7 +22,7 @@ export const create_panel_thumbs_list = ({ images_names, content_type = PANEL_CO
 
     slide_els.forEach(el => {
         list_el.appendChild(el)
-        if (is_mouse_device() && content_type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
+        if (is_mouse_device && content_type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
             const bldg_link_el = create_element_from_Html(bldg_link_html)
             const img = el.querySelector('img')
             bldg_link_el.setAttribute('img-src', img.src || img.dataset.src)

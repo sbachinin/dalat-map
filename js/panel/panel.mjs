@@ -42,7 +42,7 @@ export const panel = {
             set_css_num_var('--panel-size', size, 'px')
             const fsize = await this.full_size_promise
             get_panel_el().firstElementChild.style.opacity = (size > fsize * 0.2) ? 1 : 0
-            tappable_margin.style.display = (size === 0 && !is_mouse_device()) ? 'block' : 'none'
+            tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
             update_expand_button()
         } else {
             // TODO remove console warning

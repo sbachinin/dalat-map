@@ -8,7 +8,7 @@ import {
 } from './dead_buildings.mjs'
 import { french_buildings_titles } from './layers/titles.mjs'
 import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
-import { find_bldg_id_by_image_filename, get_map_center_shift, is_mouse_device } from './utils.mjs'
+import { find_bldg_id_by_image_filename, is_mouse_device } from './utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 
@@ -85,7 +85,7 @@ export const add_mouse_stuff = () => {
             const img_name = img_src.split('/').pop()
             const bldg_id = find_bldg_id_by_image_filename(decodeURIComponent(img_name))
 
-            const open_building_delay = is_mouse_device()
+            const open_building_delay = is_mouse_device
                 ? 0 // because pswp has no closing animation on desktop
                 : PSWP_HIDE_ANIMATION_DURATION + 200
             setTimeout(
