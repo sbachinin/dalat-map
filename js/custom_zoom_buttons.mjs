@@ -1,3 +1,11 @@
+/* 
+    Rationale
+    These buttons are to zoom in/out with respect of the panel size.
+    When the panel is expanded, default zooming to the map center looks weird
+    because the visible center is elsewhere.
+    Therefore it was necessary to manually call zoomIn / zoomOut with "offset" option.
+*/
+
 import { debounce, get_map_center_shift } from "./utils.mjs"
 
 const zoomin_button = document.querySelector('.zoom-button.zoom-in')
