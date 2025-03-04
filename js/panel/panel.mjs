@@ -1,5 +1,11 @@
 import { make_expandable_on_swipe } from './panel_swipe.mjs'
-import { get_css_var_num, set_css_num_var, debounce, add_disposable_transitionend_handler } from '../utils.mjs'
+import {
+    get_css_var_num,
+    set_css_num_var,
+    debounce,
+    add_disposable_transitionend_handler,
+    is_mouse_device
+} from '../utils.mjs'
 import { get_panel_intrinsic_size, get_panel_el } from './panel_utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs';
 
@@ -36,6 +42,7 @@ export const panel = {
             set_css_num_var('--panel-size', size, 'px')
             const fsize = await this.full_size_promise
             get_panel_el().firstElementChild.style.opacity = (size > fsize * 0.2) ? 1 : 0
+            tappable_margin.style.display = (size === 0 && !is_mouse_device()) ? 'block' : 'none'
             update_expand_button()
         } else {
             // TODO remove console warning
@@ -57,8 +64,7 @@ export const panel = {
     },
     content: null,
     set_content(_content) {
-        
-        if (panel.content === _content) return    
+        if (panel.content === _content) return
         panel.content = _content
         get_panel_el().innerHTML = ''
         get_panel_el().appendChild(_content.element)
