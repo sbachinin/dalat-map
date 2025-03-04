@@ -18,7 +18,6 @@ set_css_num_var('--panel-expand-button-size', PANEL_EXPAND_BUTTON_SIZE, 'px');
 
 const expand_button_el = document.querySelector(`#panel-expand-button`)
 const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
-const panel_expander_el = document.querySelector(`#panel-expander`)
 const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
 const update_expand_button = debounce(async () => {
@@ -27,7 +26,7 @@ const update_expand_button = debounce(async () => {
 })
 
 export const panel = {
-    element: panel_expander_el,
+    wrapper_element: document.querySelector(`#panel-expander`),
 
     full_size_promise: Promise.resolve(),
     cache_full_size() {
@@ -51,7 +50,7 @@ export const panel = {
     },
     async expand() {
         panel.set_size(await panel.full_size_promise)
-        panel_expander_el.style.opacity = 1
+        panel.wrapper_element.style.opacity = 1
         panel_expand_button_el.style.opacity = 1
     },
     async toggle() {
@@ -65,14 +64,16 @@ export const panel = {
     content: null,
     set_content(_content) {
         if (panel.content === _content) return
+        
+
         panel.content = _content
         get_panel_el().innerHTML = ''
         get_panel_el().appendChild(_content.element)
         panel.cache_full_size()
-        panel.element.scrollTop = 0
-        panel.element.scrollLeft = 0
-        panel.element.firstElementChild.scrollTop = 0
-        panel.element.firstElementChild.scrollLeft = 0
+        panel.wrapper_element.scrollTop = 0
+        panel.wrapper_element.scrollLeft = 0
+        panel.wrapper_element.firstElementChild.scrollTop = 0
+        panel.wrapper_element.firstElementChild.scrollLeft = 0
         init_photoswipe()
     }
 }
@@ -83,8 +84,8 @@ tappable_margin.addEventListener('click', panel.toggle)
 make_expandable_on_swipe(panel)
 
 add_disposable_transitionend_handler(
-    panel_expander_el,
-    () => { panel_expander_el.classList.add('first-animation-complete') }
+    panel.wrapper_element,
+    () => { panel.wrapper_element.classList.add('first-animation-complete') }
 )
 
 export const PANEL_CONTENT_TYPES = Object.freeze({
