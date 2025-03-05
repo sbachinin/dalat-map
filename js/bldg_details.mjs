@@ -21,12 +21,12 @@ const update_size_variables = () => {
 }
 
 
-const show_bldg_details = (id) => {
+const show_bldg_details = async (id) => {
     const details_el = create_panel_thumbs_list({
         images_names: all_handmade_data[id].images
     })
 
-    panel.set_content({
+    await panel.set_content({
         update: update_size_variables,
         element: details_el,
         type: PANEL_CONTENT_TYPES.BUILDING

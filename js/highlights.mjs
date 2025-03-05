@@ -15,7 +15,7 @@ const update_size_variables = () => {
     })
 }
 
-export const display_highlights = (should_push_history = false) => {
+export const display_highlights = async (should_push_history = false) => {
     select_bldg(null)
 
     highlights_el = highlights_el || create_panel_thumbs_list({
@@ -23,7 +23,7 @@ export const display_highlights = (should_push_history = false) => {
         content_type: PANEL_CONTENT_TYPES.HIGHLIGHTS
     })
 
-    panel.set_content({
+    await panel.set_content({
         update: update_size_variables,
         element: highlights_el,
         type: PANEL_CONTENT_TYPES.HIGHLIGHTS

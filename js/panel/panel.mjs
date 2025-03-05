@@ -7,14 +7,16 @@ import {
     is_mouse_device,
     is_landscape,
 } from '../utils.mjs'
-import { init_photoswipe } from './init_photoswipe.mjs';
+import { init_photoswipe } from './init_photoswipe.mjs'
 
 const EXPAND_TRANSITION_DURATION = 250
+const CONTENT_FADE_DURATION = 150
 const PANEL_EXPAND_BUTTON_SIZE = 40
 
-set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's');
-set_css_num_var('--panel-size', 0, 'px');
-set_css_num_var('--panel-expand-button-size', PANEL_EXPAND_BUTTON_SIZE, 'px');
+set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's')
+set_css_num_var('--panel-size', 0, 'px')
+set_css_num_var('--panel-expand-button-size', PANEL_EXPAND_BUTTON_SIZE, 'px')
+set_css_num_var('--panel-content-fade-duration', CONTENT_FADE_DURATION / 1000, 's')
 
 const expand_button_el = document.querySelector(`#panel-expand-button`)
 const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
@@ -67,19 +69,37 @@ export const panel = {
         return get_css_var_num('--panel-size') > full_size / 2
     },
     content: null,
-    set_content(_content) {
-        if (panel.content === _content) return
+    async set_content(_content) {
+        if (panel.content?.element === _content?.element) {
+            console.log('panel already has this content')   
+            return
+        }
         
+        await fade_out_content_if_present()
 
         panel.content = _content
         panel.body_element.innerHTML = ''
         panel.body_element.appendChild(_content.element)
+
+        panel.content.element.style.opacity = 0
+        await new Promise(resolve => requestAnimationFrame(resolve))
+        panel.content.element.style.opacity = 1
+        
         panel.cache_full_size()
         panel.wrapper_element.scrollTop = 0
         panel.wrapper_element.scrollLeft = 0
         panel.wrapper_element.firstElementChild.scrollTop = 0
         panel.wrapper_element.firstElementChild.scrollLeft = 0
         init_photoswipe()
+    }
+}
+
+const fade_out_content_if_present = async () => {
+    if (!panel.content) {
+        return Promise.resolve()
+    } else {
+        panel.content.element.style.opacity = 0
+        await new Promise(resolve => setTimeout(resolve, CONTENT_FADE_DURATION))       
     }
 }
 

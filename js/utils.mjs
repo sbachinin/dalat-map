@@ -91,7 +91,6 @@ export const push_to_history = (state, url) => {
         console.log('state did not change, skip writing to history')
         return
     }
-    console.log('pushing to history, ', state, url)
     history.pushState(state, "", url)
 }
 

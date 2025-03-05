@@ -72,7 +72,7 @@
 
 #panel>* {
     box-sizing: border-box;
-    transition: opacity ease-out calc(var(--panel-expand-transition-duration) + 0.2s);
+    transition: opacity ease-in var(--panel-content-fade-duration);
 }
 
 #panel-expand-tappable-margin {
