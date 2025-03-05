@@ -37,14 +37,14 @@ export const set_css_num_var = (name, value, units, element = document.documentE
 export const within = (number, min, max) => Math.max(min, Math.min(number, max));
 
 export const debounce = (func, delay = 100) => {
-    let timeout;
+    let timeout
     return (...args) => {
-        clearTimeout(timeout);
+        clearTimeout(timeout)
         timeout = setTimeout(() => {
-            func(...args);
-        }, delay);
-    };
-};
+            func(...args)
+        }, delay)
+    }
+}
 
 export const wrap = (num, min, max) => {
     const range = max - min + 1

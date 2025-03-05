@@ -1,4 +1,4 @@
-import { create_element_from_Html } from "./utils.mjs";
+import { create_element_from_Html, debounce } from "./utils.mjs";
 
 let root = document.documentElement
 
@@ -74,7 +74,7 @@ export const update_scale = () => {
 }
 
 
-const create_scale_item = (i) => {
+const create_scale_item = _ => {
     const scale_item_el = create_element_from_Html(
         `<div class='scale-item'></div>`
     )
@@ -100,16 +100,4 @@ export const create_scale = () => {
 
     adjust_scale_on_resize()
     return { adjust_scale_on_resize }
-}
-
-
-function debounce(func, timeout = 100) {
-    let timer
-    return () => {
-        clearTimeout(timer)
-        timer = setTimeout(
-            () => { func() },
-            timeout
-        )
-    }
 }

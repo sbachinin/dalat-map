@@ -30,7 +30,21 @@ MPORTANT
 
 SLIDER
 
-transition btw hl and bldg is very sharp
+
+Highlights
+	indicate that open
+	remember scroll pos
+	Show title in panel
+
+try handle pswp close on desktop, providing fadeout
+	but only if there are pswp options to disable closing func
+
+
+indicate better the geometry that was just chosen
+
+
+fadein lazy loader
+	because it blinks badly sometimes
 
 
 easeTo on bldg select is ugly because of loading tiles
@@ -44,6 +58,10 @@ sometimes laggy panel reveal from github
 		request less thumbs
 		|| request them only after panel finished expanding
 
+
+
+!!
+1-thumb-high thumb list on portrait desktop looks weird, most of the time you see only parts of images, never whole images
 
 indicate that hl are opened
 
