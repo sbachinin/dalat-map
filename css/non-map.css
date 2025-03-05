@@ -123,4 +123,12 @@
     margin-right: 3px;
     margin-bottom: -6px;
     cursor: pointer;
+    transition: opacity ease-out 0.7s;
+}
+
+#highlights-opener.disabled {
+    pointer-events: none;
+}
+#highlights-opener.disabled path {
+    stroke: #777777;
 }

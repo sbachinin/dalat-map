@@ -23,6 +23,8 @@ const expand_button_el = document.querySelector(`#panel-expand-button`)
 const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
 const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
+const before_set_content_subscribers = []
+
 const get_panel_intrinsic_size = _ => { // height/width with scrollbar
     return panel.body_element[is_landscape() ? 'offsetWidth' : 'offsetHeight']
 }
@@ -76,6 +78,8 @@ export const panel = {
             return
         }
         
+        Object.values(before_set_content_subscribers).forEach(s => s(_content))
+        
         await fade_out_content_if_present()
 
         panel.content = _content
@@ -92,6 +96,10 @@ export const panel = {
         panel.wrapper_element.firstElementChild.scrollTop = 0
         panel.wrapper_element.firstElementChild.scrollLeft = 0
         init_photoswipe()
+    },
+
+    on_before_set_content(s_name, subscriber) {
+        before_set_content_subscribers[s_name] = subscriber
     }
 }
 

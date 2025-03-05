@@ -15,7 +15,14 @@ const update_size_variables = () => {
     })
 }
 
+const highlights_opener = document.getElementById('highlights-opener')
+
 export const display_highlights = async (should_push_history = false) => {
+    panel.on_before_set_content('highlights', new_content => {
+        const should_dim = new_content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS
+        highlights_opener.classList[should_dim ? 'add' : 'remove']('disabled')
+    })
+
     select_bldg(null)
 
     highlights_el = highlights_el || create_panel_thumbs_list({
