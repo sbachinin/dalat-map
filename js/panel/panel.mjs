@@ -10,7 +10,7 @@ import {
 import { init_photoswipe } from './init_photoswipe.mjs'
 
 const EXPAND_TRANSITION_DURATION = 250
-const CONTENT_FADE_DURATION = 150
+const CONTENT_FADE_DURATION = 200
 const PANEL_EXPAND_BUTTON_SIZE = 40
 
 set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's')
@@ -47,7 +47,7 @@ export const panel = {
         if (size !== undefined) {
             set_css_num_var('--panel-size', size, 'px')
             const fsize = await this.full_size_promise
-            panel.content.element.style.opacity = (size > fsize * 0.2) ? 1 : 0
+            panel.body_element.style.opacity = (size > fsize * 0.2) ? 1 : 0
             tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
             update_expand_button()
         } else {
@@ -81,9 +81,9 @@ export const panel = {
         panel.body_element.innerHTML = ''
         panel.body_element.appendChild(_content.element)
 
-        panel.content.element.style.opacity = 0
+        panel.body_element.style.opacity = 0
         await new Promise(resolve => requestAnimationFrame(resolve))
-        panel.content.element.style.opacity = 1
+        panel.body_element.style.opacity = 1
         
         panel.cache_full_size()
         panel.wrapper_element.scrollTop = 0
@@ -98,7 +98,7 @@ const fade_out_content_if_present = async () => {
     if (!panel.content) {
         return Promise.resolve()
     } else {
-        panel.content.element.style.opacity = 0
+        panel.body_element.style.opacity = 0
         await new Promise(resolve => setTimeout(resolve, CONTENT_FADE_DURATION))       
     }
 }

@@ -86,11 +86,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #acacac;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #929292;
 }
 
 
