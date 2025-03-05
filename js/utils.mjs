@@ -137,6 +137,10 @@ export const add_disposable_transitionend_handler = (el, fn) => {
     el.addEventListener('transitionend', handle_transition_end)
 }
 
+export const wait_once_for_transitionend = (el) => {
+    return new Promise(resolve => add_disposable_transitionend_handler(el, resolve))
+}
+
 export const get_geojson_source = (features) => {
     return {
         type: "geojson",

@@ -6,6 +6,7 @@ import {
     add_disposable_transitionend_handler,
     is_mouse_device,
     is_landscape,
+    wait_once_for_transitionend,
 } from '../utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 
@@ -99,7 +100,7 @@ const fade_out_content_if_present = async () => {
         return Promise.resolve()
     } else {
         panel.body_element.style.opacity = 0
-        await new Promise(resolve => setTimeout(resolve, CONTENT_FADE_DURATION))       
+        await wait_once_for_transitionend(panel.body_element)
     }
 }
 
