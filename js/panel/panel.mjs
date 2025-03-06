@@ -7,6 +7,7 @@ import {
     is_landscape,
     wait_once_for_transitionend,
     get_panel_current_breadth,
+    wait_1frame,
 } from '../utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 
@@ -59,7 +60,8 @@ export const panel = {
         }
     },
     async expand() {
-        panel.set_size(await panel.full_size_promise)
+        const fsize = await panel.full_size_promise
+        panel.set_size(fsize)
         panel.wrapper_element.style.opacity = 1
         panel_expand_button_el.style.opacity = 1
     },
@@ -85,16 +87,18 @@ export const panel = {
         panel.content = _content
         panel.body_element.innerHTML = ''
         panel.body_element.appendChild(_content.element)
-
         panel.body_element.style.opacity = 0
-        await new Promise(resolve => requestAnimationFrame(resolve))
-        panel.body_element.style.opacity = 1
         
+        await wait_1frame()
+        
+        _content.update_size()
         panel.cache_full_size()
-        panel.wrapper_element.scrollTop = 0
-        panel.wrapper_element.scrollLeft = 0
-        panel.wrapper_element.firstElementChild.scrollTop = 0
-        panel.wrapper_element.firstElementChild.scrollLeft = 0
+        panel.expand()
+        
+        panel.body_element.style.opacity = 1
+
+        panel.body_element.scrollTop = 0
+        panel.body_element.scrollLeft = 0
         init_photoswipe()
     },
 

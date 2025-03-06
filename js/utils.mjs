@@ -189,3 +189,5 @@ export const observe_dom_mutations = (selector, cb) => {
     })
     return observer
 }
+
+export const wait_1frame = () => new Promise(resolve => requestAnimationFrame(resolve))

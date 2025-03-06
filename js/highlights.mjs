@@ -17,7 +17,7 @@ const update_size_variables = () => {
 
 const highlights_opener = document.getElementById('highlights-opener')
 
-export const display_highlights = async (should_push_history = false) => {
+export const display_highlights = (should_push_history = false) => {
     panel.on_before_set_content('highlights', new_content => {
         const should_dim = new_content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS
         highlights_opener.classList[should_dim ? 'add' : 'remove']('disabled')
@@ -30,15 +30,11 @@ export const display_highlights = async (should_push_history = false) => {
         content_type: PANEL_CONTENT_TYPES.HIGHLIGHTS
     })
 
-    await panel.set_content({
-        update: update_size_variables,
+    panel.set_content({
+        update_size: update_size_variables,
         element: highlights_el,
         type: PANEL_CONTENT_TYPES.HIGHLIGHTS
     })
-
-    update_size_variables()
-
-    panel.expand()
 
     const url_without_id = window.location.origin + window.location.pathname + window.location.hash
     if (should_push_history) {
