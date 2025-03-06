@@ -7,6 +7,7 @@ import {
     is_mouse_device,
     is_landscape,
     wait_once_for_transitionend,
+    get_panel_current_thickness as get_panel_current_thickness,
 } from '../utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 
@@ -69,7 +70,7 @@ export const panel = {
     },
     async is_rather_expanded() {
         const full_size = await panel.full_size_promise
-        return get_css_var_num('--panel-size') > full_size / 2
+        return get_panel_current_thickness() > full_size / 2
     },
     content: null,
     async set_content(_content) {
@@ -104,7 +105,7 @@ export const panel = {
 }
 
 const fade_out_content_if_present = async () => {
-    if (!panel.content) {
+    if (!panel.content || get_panel_current_thickness() === 0) {
         return Promise.resolve()
     } else {
         panel.body_element.style.opacity = 0

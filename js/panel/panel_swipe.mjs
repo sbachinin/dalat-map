@@ -1,7 +1,7 @@
 import {
     is_landscape,
     within,
-    get_css_var_num
+    get_panel_current_thickness
 } from '../utils.mjs'
 
 const fast_swipe_toggle_threshold = 25
@@ -77,7 +77,7 @@ export const make_expandable_on_swipe = (panel) => {
             const panel_full_size = await panel.full_size_promise
 
             current_swipe = {
-                panel_start_size: get_css_var_num('--panel-size'),
+                panel_start_size: get_panel_current_thickness(),
                 panel_full_size,
                 touch_start_XY: e.changedTouches[0],
                 drag_start_coord: null,
@@ -158,7 +158,7 @@ export const make_expandable_on_swipe = (panel) => {
         if (!current_swipe.had_touchmove) return
         if (current_swipe.content_was_scrolled && !current_swipe.drag_start_coord) return
 
-        const current_size = get_css_var_num('--panel-size')
+        const current_size = get_panel_current_thickness()
         if (current_size === current_swipe.panel_start_size) return // TODO maybe this can be safely removed now
 
         // if swipe was tiny, try to return to original state:
