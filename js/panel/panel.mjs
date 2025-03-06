@@ -60,6 +60,11 @@ export const panel = {
         }
     },
     async expand() {
+        if (panel.wrapper_element.classList.contains('slow-animation')) {
+            setTimeout(() => { // used transitionend here but it didn't work on iphone, 1st expand was quick
+                panel.wrapper_element.classList.remove('slow-animation')
+            }, 1500)
+        }
         const fsize = await panel.full_size_promise
         panel.set_size(fsize)
         panel.wrapper_element.style.opacity = 1
@@ -76,25 +81,27 @@ export const panel = {
     content: null,
     async set_content(_content) {
         if (panel.content?.element === _content?.element) {
-            console.log('panel already has this content')   
+            console.log('panel already has this content')
             return
         }
-        
+
         Object.values(before_set_content_subscribers).forEach(s => s(_content))
-        
+
         await fade_out_content_if_present()
 
         panel.content = _content
         panel.body_element.innerHTML = ''
         panel.body_element.appendChild(_content.element)
         panel.body_element.style.opacity = 0
-        
+
         await wait_1frame()
-        
+
+
         _content.update_size()
         panel.cache_full_size()
+
         panel.expand()
-        
+
         panel.body_element.style.opacity = 1
 
         panel.body_element.scrollTop = 0
@@ -120,11 +127,6 @@ expand_button_el.addEventListener('click', panel.toggle)
 tappable_margin.addEventListener('click', panel.toggle)
 
 make_expandable_on_swipe(panel)
-
-add_disposable_transitionend_handler(
-    panel.wrapper_element,
-    () => { panel.wrapper_element.classList.add('first-animation-complete') }
-)
 
 export const PANEL_CONTENT_TYPES = Object.freeze({
     HIGHLIGHTS: 0,

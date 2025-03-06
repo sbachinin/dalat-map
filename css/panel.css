@@ -69,7 +69,7 @@
     position: relative;
 }
 
-#panel-expander:not(.first-animation-complete) {
+#panel-expander.slow-animation {
     transition-duration: 1s;
     transition-delay: 0.5s;
 }
