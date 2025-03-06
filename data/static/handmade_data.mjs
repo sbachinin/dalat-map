@@ -7,6 +7,8 @@ import { bldgs_handmade_data } from "./bldgs_handmade_data.mjs"
         
         title,
 
+        viet_title,
+
         subtitle, // TODO show them;
         // but it's complicated;
         // i need to push subtitles down with text-offset

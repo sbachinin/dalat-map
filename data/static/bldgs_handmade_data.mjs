@@ -1742,6 +1742,10 @@ export const bldgs_handmade_data = {
         title: 'MerPerle\nhotel',
         second_rate: true,
         title_coords: [108.45841503948003, 11.941198360637713]
+    },
+    "1308816301": {
+        title: 'Chi Lang market',
+        viet_title: 'Chợ Chi Lăng'
     }
 }
 
