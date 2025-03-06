@@ -1,13 +1,12 @@
 import { make_expandable_on_swipe } from './panel_swipe.mjs'
 import {
-    get_css_var_num,
     set_css_num_var,
     debounce,
     add_disposable_transitionend_handler,
     is_mouse_device,
     is_landscape,
     wait_once_for_transitionend,
-    get_panel_current_thickness as get_panel_current_thickness,
+    get_panel_current_breadth,
 } from '../utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 
@@ -16,7 +15,7 @@ const CONTENT_FADE_DURATION = 200
 const PANEL_EXPAND_BUTTON_SIZE = 40
 
 set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's')
-set_css_num_var('--panel-size', 0, 'px')
+set_css_num_var('--panel-breadth', 0, 'px')
 set_css_num_var('--panel-expand-button-size', PANEL_EXPAND_BUTTON_SIZE, 'px')
 set_css_num_var('--panel-content-fade-duration', CONTENT_FADE_DURATION / 1000, 's')
 
@@ -49,7 +48,7 @@ export const panel = {
     },
     async set_size(size) {
         if (size !== undefined) {
-            set_css_num_var('--panel-size', size, 'px')
+            set_css_num_var('--panel-breadth', size, 'px')
             const fsize = await this.full_size_promise
             panel.body_element.style.opacity = (size > fsize * 0.2) ? 1 : 0
             tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
@@ -70,7 +69,7 @@ export const panel = {
     },
     async is_rather_expanded() {
         const full_size = await panel.full_size_promise
-        return get_panel_current_thickness() > full_size / 2
+        return get_panel_current_breadth() > full_size / 2
     },
     content: null,
     async set_content(_content) {
@@ -105,7 +104,7 @@ export const panel = {
 }
 
 const fade_out_content_if_present = async () => {
-    if (!panel.content || get_panel_current_thickness() === 0) {
+    if (!panel.content || get_panel_current_breadth() === 0) {
         return Promise.resolve()
     } else {
         panel.body_element.style.opacity = 0

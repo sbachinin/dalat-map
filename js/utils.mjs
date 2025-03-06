@@ -95,14 +95,14 @@ export const push_to_history = (state, url) => {
 }
 
 
-export const get_panel_current_thickness = () => get_css_var_num('--panel-size')
+export const get_panel_current_breadth = () => get_css_var_num('--panel-breadth')
 
 
 // it's about "target" dimensions - these of a fully expanded panel
 const get_panel_dimensions = () => {
     return [
-        is_landscape() ? get_panel_current_thickness() : 0,
-        !is_landscape() ? get_panel_current_thickness() : 0
+        is_landscape() ? get_panel_current_breadth() : 0,
+        !is_landscape() ? get_panel_current_breadth() : 0
     ]
 }
 
