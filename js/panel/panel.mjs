@@ -26,7 +26,7 @@ const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
 const before_set_content_subscribers = []
 
-const get_panel_intrinsic_size = _ => { // height/width with scrollbar
+const get_panel_body_breadth = _ => { // height/width with scrollbar
     return panel.body_element[is_landscape() ? 'offsetWidth' : 'offsetHeight']
 }
 
@@ -43,7 +43,7 @@ export const panel = {
     cache_full_size() {
         panel.full_size_promise = new Promise(resolve => {
             requestAnimationFrame(() => { // have to wait because content might not be rendered yet
-                resolve(get_panel_intrinsic_size())
+                resolve(get_panel_body_breadth())
             })
         })
     },

@@ -22,10 +22,7 @@
 
 @media (orientation: portrait) and (pointer: fine) {
     #panel-thumbs-list {
-        /* This (portrait + desktop) is a special case where higlights y-scroll themselves instead of delegating it to #panel.
-        It's a bit inconsistent but difficult to solve. */
-        width: 100vw;
-        overflow-y: scroll;
+        height: max-content;
     }
 }
 

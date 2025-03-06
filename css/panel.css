@@ -29,6 +29,15 @@
     }
 }
 
+@media (orientation: portrait) and (pointer: fine) {
+    #panel {
+        /* in desktop+portrait panel is not restricted to 1 row */
+        height: max-content;
+        max-height: calc(var(--thumbs-list-height-in-portrait) * 1.6);
+        overflow-y: scroll;
+    }
+}
+
 @media (orientation: landscape) {
     #panel-expander {
         width: var(--panel-breadth);

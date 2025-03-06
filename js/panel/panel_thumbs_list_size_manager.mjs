@@ -13,11 +13,17 @@ const img_ratio = THUMB_IDEAL_WIDTH / THUMB_IDEAL_HEIGHT
 export const update_panel_thumbs_list_size_variables = ({
     max_width_ratio
 }) => {
+    const is_portrait_desktop = !is_landscape() && is_mouse_device
+
+
+
+
+
+    // In portrait & desktop, shrink the thumbs to avoid empty hor space
+    
     let thumb_width = THUMB_IDEAL_WIDTH
     let thumb_height = THUMB_IDEAL_HEIGHT
-    const is_portrait_desktop = !is_landscape() && is_mouse_device
     if (is_portrait_desktop && panel.content?.element) {
-        /* In portrait & desktop, shrink the thumbs to avoid empty hor space */
         const wrapper_width_without_scrollbar = panel.content.element.clientWidth
         const row_initial_length = Math.floor(
             (wrapper_width_without_scrollbar - THUMB_GAP) / (THUMB_IDEAL_WIDTH + THUMB_GAP)
@@ -39,6 +45,11 @@ export const update_panel_thumbs_list_size_variables = ({
     set_css_num_var('--thumb-height', thumb_height, 'px')
     set_css_num_var('--thumb-width', thumb_width, 'px')
 
+
+
+
+
+
     /* Here I manually decide whether to render 1 OR 2 columns but this actually can be achieved using CSS grid.
     I made it using something like grid-template-columns: repeat(...) + max-width
     But it failed in FF (it displayed always 1 column) that's why I switched to manual js solution
@@ -52,17 +63,9 @@ export const update_panel_thumbs_list_size_variables = ({
         width_in_landscape += thumb_width + THUMB_GAP
     }
 
-    let wrapper_height_in_portrait = (thumb_height + THUMB_GAP * 2)
 
-    // ATTEMPT: try to show >1 row if enough height
-    // Problems: 1) This lead to less than 1 row sometimes
-    // 2) need to check if i actually have >1 row of content
-    // if (is_portrait_desktop) {
-    //     wrapper_height_in_portrait = Math.min(
-    //         wrapper_height_in_portrait * 1.5,
-    //         window.innerHeight * 0.35
-    //     )
-    // }
+
+
 
     set_css_num_var(
         '--thumbs-list-width-in-landscape',
@@ -71,7 +74,7 @@ export const update_panel_thumbs_list_size_variables = ({
     )
     set_css_num_var(
         '--thumbs-list-height-in-portrait',
-        wrapper_height_in_portrait,
+        thumb_height + THUMB_GAP * 2,
         'px'
     )
 }
