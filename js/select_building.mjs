@@ -2,7 +2,7 @@ import { SOURCES_NAMES } from "./sources.mjs"
 
 export let selected_building_id = null
 
-export const select_bldg = newid => {
+export const set_selected_feature_state = newid => {
     const oldid = selected_building_id
     selected_building_id = newid
     if (oldid) {

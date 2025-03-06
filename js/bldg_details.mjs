@@ -1,6 +1,6 @@
 import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
 import { all_handmade_data } from '../data/static/handmade_data.mjs'
-import { select_bldg, selected_building_id } from './select_building.mjs'
+import { set_selected_feature_state, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import { coords_are_in_view, get_map_center_shift, push_to_history } from './utils.mjs'
@@ -21,12 +21,12 @@ const update_size_variables = () => {
 }
 
 
-const show_bldg_details = id => {
+const set_panel_content = async (id) => {
     const details_el = create_panel_thumbs_list({
         images_names: all_handmade_data[id].images
     })
 
-    panel.set_content({
+    await panel.set_content({
         update_size: update_size_variables,
         element: details_el,
         type: PANEL_CONTENT_TYPES.BUILDING
@@ -44,12 +44,11 @@ export const try_open_building = async (
     }
 
     if (building_has_details(id)) {
-        show_bldg_details(id)
-        select_bldg(id)
-        should_push_history && push_to_history(
-            { id },
-            `?id=${id}${window.location.hash}`
-        )
+        await set_panel_content(id)
+        set_selected_feature_state(id)
+        if (should_push_history) {
+            push_to_history({ id }, `?id=${id}${window.location.hash}`)
+        }
     }
 
     if (!should_try_to_fly) return

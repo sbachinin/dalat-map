@@ -3,7 +3,7 @@ import { images_names } from './highlights_images_list.mjs'
 import { get_image_url, push_to_history } from './utils.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
-import { select_bldg } from './select_building.mjs'
+import { set_selected_feature_state } from './select_building.mjs'
 
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
@@ -17,20 +17,20 @@ const update_size_variables = () => {
 
 const highlights_opener = document.getElementById('highlights-opener')
 
-export const display_highlights = (should_push_history = false) => {
+export const display_highlights = async (should_push_history = false) => {
     panel.on_before_set_content('highlights', new_content => {
         const should_dim = new_content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS
         highlights_opener.classList[should_dim ? 'add' : 'remove']('disabled')
     })
 
-    select_bldg(null)
+    set_selected_feature_state(null)
 
     highlights_el = highlights_el || create_panel_thumbs_list({
         images_names,
         content_type: PANEL_CONTENT_TYPES.HIGHLIGHTS
     })
 
-    panel.set_content({
+    await panel.set_content({
         update_size: update_size_variables,
         element: highlights_el,
         type: PANEL_CONTENT_TYPES.HIGHLIGHTS
