@@ -22,10 +22,10 @@ export const display_highlights = async (should_push_history = false) => {
         const should_dim = new_content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS
         highlights_opener.classList[should_dim ? 'add' : 'remove']('disabled')
     })
-    panel.on_before_collapse(() => {
+    panel.on_before_collapse('highlights', () => {
         highlights_opener.classList.remove('disabled')
     })
-    panel.on_before_expand(() => {
+    panel.on_before_expand('highlights', () => {
         if (panel.content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
             highlights_opener.classList.add('disabled')
         }

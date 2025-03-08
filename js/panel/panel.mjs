@@ -27,9 +27,9 @@ const expand_button_el = document.querySelector(`#panel-expand-button`)
 const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
 const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
-const before_set_content_subscribers = []
-const before_panel_collapse_subscribers = []
-const before_panel_expand_subscribers = []
+const before_set_content_subscribers = {}
+const before_panel_collapse_subscribers = {}
+const before_panel_expand_subscribers = {}
 
 const get_panel_body_breadth = _ => { // height/width with scrollbar
     return panel.body_element[is_landscape() ? 'offsetWidth' : 'offsetHeight']
@@ -56,9 +56,9 @@ export const panel = {
         if (size !== undefined) {
             const fsize = await this.full_size_promise
             if (size === 0) {
-                before_panel_collapse_subscribers.forEach(s => s())
+                Object.values(before_panel_collapse_subscribers).forEach(s => s())
             } else if (size === fsize) {
-                before_panel_expand_subscribers.forEach(s => s())
+                Object.values(before_panel_expand_subscribers).forEach(s => s())
             }
             set_css_num_var('--panel-breadth', size, 'px')
             panel.body_element.style.opacity = (size > fsize * 0.2) ? 1 : 0
@@ -122,15 +122,11 @@ export const panel = {
     on_before_set_content(s_name, subscriber) {
         before_set_content_subscribers[s_name] = subscriber
     },
-    on_before_collapse(subscriber) {
-        if (!before_panel_collapse_subscribers.includes(subscriber)) {
-            before_panel_collapse_subscribers.push(subscriber)
-        }
+    on_before_collapse(s_name, subscriber) {
+        before_panel_collapse_subscribers[s_name] = subscriber
     },
-    on_before_expand(subscriber) {
-        if (!before_panel_expand_subscribers.includes(subscriber)) {
-            before_panel_expand_subscribers.push(subscriber)
-        }
+    on_before_expand(s_name, subscriber) {
+        before_panel_expand_subscribers[s_name] = subscriber
     }
 }
 
