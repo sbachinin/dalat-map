@@ -27,9 +27,12 @@ const expand_button_el = document.querySelector(`#panel-expand-button`)
 const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
 const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
-const before_set_content_subscribers = {}
-const before_panel_collapse_subscribers = {}
-const before_panel_expand_subscribers = {}
+const subscribers = {
+    'before_set_content': {},
+    'after_set_content': {},
+    'before_collapse': {},
+    'before_expand': {},
+}
 
 const get_panel_body_breadth = _ => { // height/width with scrollbar
     return panel.body_element[is_landscape() ? 'offsetWidth' : 'offsetHeight']
@@ -56,9 +59,9 @@ export const panel = {
         if (size !== undefined) {
             const fsize = await this.full_size_promise
             if (size === 0) {
-                Object.values(before_panel_collapse_subscribers).forEach(s => s())
+                panel.fire('before_collapse')
             } else if (size === fsize) {
-                Object.values(before_panel_expand_subscribers).forEach(s => s())
+                panel.fire('before_expand')
             }
             set_css_num_var('--panel-breadth', size, 'px')
             panel.body_element.style.opacity = (size > fsize * 0.2) ? 1 : 0
@@ -95,7 +98,7 @@ export const panel = {
             return
         }
 
-        Object.values(before_set_content_subscribers).forEach(s => s(_content))
+        panel.fire('before_set_content', _content)
 
         await fade_out_content_if_present()
 
@@ -103,6 +106,8 @@ export const panel = {
         panel.body_element.innerHTML = ''
         panel.body_element.appendChild(_content.element)
         panel.body_element.style.opacity = 0
+
+        panel.fire('after_set_content', _content)
 
         await wait_1frame()
 
@@ -119,14 +124,27 @@ export const panel = {
         init_photoswipe()
     },
 
-    on_before_set_content(s_name, subscriber) {
-        before_set_content_subscribers[s_name] = subscriber
+    on(event_name, subscriber_name, subscriber, is_one_off = false) {
+        if (subscribers[event_name]) {
+            subscribers[event_name][subscriber_name] = { cb: subscriber, is_one_off }
+        } else {
+            console.warn(`no such panel event: ${event_name}`)
+        }
     },
-    on_before_collapse(s_name, subscriber) {
-        before_panel_collapse_subscribers[s_name] = subscriber
+
+    once(event_name, subscriber_name, subscriber) {
+        panel.on(event_name, subscriber_name, subscriber, true)
     },
-    on_before_expand(s_name, subscriber) {
-        before_panel_expand_subscribers[s_name] = subscriber
+
+    fire(event_name, ...args) {
+        if (subscribers[event_name]) {
+            Object.entries(subscribers[event_name]).forEach(([sub_name, sub]) => {
+                sub.cb(...args)
+                if (sub.is_one_off) delete subscribers[event_name][sub_name]
+            })
+        } else {
+            console.warn(`no such panel event: ${event_name}`)
+        }
     }
 }
 

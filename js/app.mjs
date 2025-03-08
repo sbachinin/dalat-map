@@ -13,6 +13,7 @@ import { DEV_skip_map_rendering, DEV_should_open_panel, DEV_map_mock } from './D
 import './photoswipe_mutations_observer.mjs'
 import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
+import { initialize_highlights_button } from './panel/highlights_button.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 
@@ -57,6 +58,8 @@ map.once('idle', async () => {
             display_highlights()
         }
     }
+
+    panel.once('after_set_content', 'app', () => initialize_highlights_button(panel.content.type))
 
     await panel.full_size_promise
 

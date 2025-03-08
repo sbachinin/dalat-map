@@ -8,14 +8,14 @@ export const initialize_highlights_button = () => {
 
     highlights_opener.classList.remove('invisible')
 
-    panel.on_before_set_content('highlights', new_content => {
+    panel.on('before_set_content', 'highlights', new_content => {
         const should_dim = new_content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS
         highlights_opener.classList[should_dim ? 'add' : 'remove']('disabled')
     })
-    panel.on_before_collapse('highlights', () => {
+    panel.on('before_collapse', 'highlights', () => {
         highlights_opener.classList.remove('disabled')
     })
-    panel.on_before_expand('highlights', () => {
+    panel.on('before_expand', 'highlights', () => {
         if (panel.content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
             highlights_opener.classList.add('disabled')
         }
