@@ -70,8 +70,8 @@
 }
 
 #panel-expander.slow-animation {
-    transition-duration: 1s;
-    transition-delay: 0.5s;
+    transition-duration: var(--panel-first-expand-transition-duration);
+    transition-delay: var(--panel-first-expand-transition-delay);
 }
 
 #panel {

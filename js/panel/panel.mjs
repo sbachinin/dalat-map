@@ -2,7 +2,6 @@ import { make_expandable_on_swipe } from './panel_swipe.mjs'
 import {
     set_css_num_var,
     debounce,
-    add_disposable_transitionend_handler,
     is_mouse_device,
     is_landscape,
     wait_once_for_transitionend,
@@ -11,11 +10,15 @@ import {
 } from '../utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 
+const FIRST_EXPAND_TRANSITION_DURATION = 1000
+const FIRST_EXPAND_TRANSITION_DELAY = 500
 const EXPAND_TRANSITION_DURATION = 250
 const CONTENT_FADE_DURATION = 200
 const PANEL_EXPAND_BUTTON_SIZE = 40
 
 set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's')
+set_css_num_var('--panel-first-expand-transition-duration', FIRST_EXPAND_TRANSITION_DURATION / 1000, 's')
+set_css_num_var('--panel-first-expand-transition-delay', FIRST_EXPAND_TRANSITION_DELAY / 1000, 's')
 set_css_num_var('--panel-breadth', 0, 'px')
 set_css_num_var('--panel-expand-button-size', PANEL_EXPAND_BUTTON_SIZE, 'px')
 set_css_num_var('--panel-content-fade-duration', CONTENT_FADE_DURATION / 1000, 's')
@@ -63,7 +66,7 @@ export const panel = {
         if (panel.wrapper_element.classList.contains('slow-animation')) {
             setTimeout(() => { // used transitionend here but it didn't work on iphone, 1st expand was quick
                 panel.wrapper_element.classList.remove('slow-animation')
-            }, 1500)
+            }, FIRST_EXPAND_TRANSITION_DURATION + FIRST_EXPAND_TRANSITION_DELAY)
         }
         const fsize = await panel.full_size_promise
         panel.set_size(fsize)
