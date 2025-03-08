@@ -12,7 +12,7 @@ import { init_photoswipe } from './init_photoswipe.mjs'
 
 const FIRST_EXPAND_TRANSITION_DURATION = 1000
 const FIRST_EXPAND_TRANSITION_DELAY = 500
-const EXPAND_TRANSITION_DURATION = 250
+const EXPAND_TRANSITION_DURATION = 300
 const CONTENT_FADE_DURATION = 200
 const PANEL_EXPAND_BUTTON_SIZE = 40
 
@@ -29,6 +29,7 @@ const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
 const before_set_content_subscribers = []
 const before_panel_collapse_subscribers = []
+const before_panel_expand_subscribers = []
 
 const get_panel_body_breadth = _ => { // height/width with scrollbar
     return panel.body_element[is_landscape() ? 'offsetWidth' : 'offsetHeight']
@@ -53,11 +54,13 @@ export const panel = {
     },
     async set_size(size) {
         if (size !== undefined) {
+            const fsize = await this.full_size_promise
             if (size === 0) {
                 before_panel_collapse_subscribers.forEach(s => s())
+            } else if (size === fsize) {
+                before_panel_expand_subscribers.forEach(s => s())
             }
             set_css_num_var('--panel-breadth', size, 'px')
-            const fsize = await this.full_size_promise
             panel.body_element.style.opacity = (size > fsize * 0.2) ? 1 : 0
             tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
             update_expand_button()
@@ -88,7 +91,7 @@ export const panel = {
     content: null,
     async set_content(_content) {
         if (panel.content?.element === _content?.element) {
-            console.log('panel already has this content')
+            panel.expand()
             return
         }
 
@@ -122,6 +125,11 @@ export const panel = {
     on_before_collapse(subscriber) {
         if (!before_panel_collapse_subscribers.includes(subscriber)) {
             before_panel_collapse_subscribers.push(subscriber)
+        }
+    },
+    on_before_expand(subscriber) {
+        if (!before_panel_expand_subscribers.includes(subscriber)) {
+            before_panel_expand_subscribers.push(subscriber)
         }
     }
 }

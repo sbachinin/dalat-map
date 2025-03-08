@@ -25,6 +25,11 @@ export const display_highlights = async (should_push_history = false) => {
     panel.on_before_collapse(() => {
         highlights_opener.classList.remove('disabled')
     })
+    panel.on_before_expand(() => {
+        if (panel.content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
+            highlights_opener.classList.add('disabled')
+        }
+    })
 
     set_selected_feature_state(null)
 

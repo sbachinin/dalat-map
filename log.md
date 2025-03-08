@@ -31,16 +31,29 @@ MPORTANT
 SLIDER
 
 
+first slow panel slide is lost
+
+
+
+
 Highlights
-	indicate that open
 	remember scroll pos
 	Show title in panel
+	
+	indicate better the geometry that was just chosen
+
+
+
+ideally a speed of a flight to bldg should depend on the distance (screen space wise)
+
+
+if panel was closed, page refresh, shouldn't panel be closed still?
+
+
 
 try handle pswp close on desktop, providing fadeout
 	but only if there are pswp options to disable closing func
 
-
-indicate better the geometry that was just chosen
 
 
 fadein lazy loader
@@ -62,8 +75,8 @@ sometimes laggy panel reveal from github
 
 !!
 1-thumb-high thumb list on portrait desktop looks weird, most of the time you see only parts of images, never whole images
-
-indicate that hl are opened
+	a) show at least 1.5 rows
+	b) (surely hard) scroll only by 1 thumb
 
 
 low-zoom tile size:
