@@ -1,5 +1,6 @@
 export const DEV_should_open_panel = true
 export const DEV_skip_map_rendering = false
+export const DEV_show_debug_el = false
 
 // TODO this is useless now, panel is not rendered anyway
 
