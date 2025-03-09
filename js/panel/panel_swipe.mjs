@@ -63,7 +63,7 @@ export const make_expandable_on_swipe = (panel) => {
         }
     })
 
-    const on_touchstart = async (e) => {
+    const on_touchstart = (e) => {
         if (
             e.target.closest('#' + panel.body_element.id)
             || e.target.closest('#panel-expand-button')
@@ -74,11 +74,9 @@ export const make_expandable_on_swipe = (panel) => {
                 return
             }
 
-            const panel_full_size = await panel.full_size_promise
-
             current_swipe = {
                 panel_start_size: get_panel_current_breadth(),
-                panel_full_size,
+                panel_full_size: panel.full_size,
                 touch_start_XY: e.changedTouches[0],
                 drag_start_coord: null,
                 drag_axis: is_landscape() ? 'x' : 'y',

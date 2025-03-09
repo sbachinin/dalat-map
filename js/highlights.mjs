@@ -16,7 +16,7 @@ const update_size_variables = () => {
 }
 
 
-export const display_highlights = async (should_push_history = false) => {
+export const display_highlights = (should_push_history = false) => {
 
     set_selected_feature_state(null)
 
@@ -25,7 +25,7 @@ export const display_highlights = async (should_push_history = false) => {
         content_type: PANEL_CONTENT_TYPES.HIGHLIGHTS
     })
 
-    await panel.set_content({
+    panel.set_content({
         update_size: update_size_variables,
         element: highlights_el,
         type: PANEL_CONTENT_TYPES.HIGHLIGHTS
