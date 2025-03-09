@@ -45,6 +45,12 @@ export const panel = {
     wrapper_element: document.querySelector(`#panel-expander`),
     body_element: document.querySelector(`#panel`),
 
+    /* 
+        This is made to force 1-frame delay before getting full size.
+        Because if new content was just appended, its width & height might not be calculated yet.
+        It's kinda useful but causes extra delay, 10s of ms, and it grows when full size is retreived many times.
+        (TODO: possible performance improvement)
+     */
     full_size_promise: Promise.resolve(),
     cache_full_size() {
         panel.full_size_promise = new Promise(resolve => {
@@ -54,21 +60,17 @@ export const panel = {
         })
     },
     async set_size(size) {
-        if (size !== undefined) {
-            const fsize = await this.full_size_promise
-            set_css_num_var('--panel-breadth', size, 'px')
+        if (size === undefined) return
 
-            if (size === 0 || size === fsize) {
-                panel.fire('new breadth was set', size, fsize)
-            }
-
-            panel.body_element.style.opacity = (size > fsize * 0.2) ? 1 : 0
-            tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
-            update_expand_button()
-        } else {
-            // TODO remove console warning
-            console.warn('no size passed to panel.set_size')
+        const fsize = await this.full_size_promise
+        set_css_num_var('--panel-breadth', size, 'px')
+        if (size === 0 || size === fsize) {
+            panel.fire('new breadth was set', size, fsize)
         }
+
+        panel.body_element.style.opacity = (size > fsize * 0.2) ? 1 : 0
+        tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
+        update_expand_button()
     },
     async resize_to_content() {
         if (panel.wrapper_element.classList.contains('slow-animation')) {
