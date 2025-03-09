@@ -44,14 +44,11 @@ map.touchZoomRotate.disableRotation()
 
 preload_some_images()
 
-map.on('load', () => add_mouse_stuff())
 
 initialize_tiny_squares()
 
 
 map.once('idle', async () => {
-    add_dead_buildings(map)
-
     panel.once('new breadth was set', 'app', () => {
         initialize_highlights_button(panel.content.type)
 
@@ -70,6 +67,9 @@ map.once('idle', async () => {
             display_highlights()
         }
     }
+
+    add_mouse_stuff()
+    add_dead_buildings(map)
 })
 
 handle_zoom_to_show_in_debug_el()
