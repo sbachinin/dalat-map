@@ -29,7 +29,7 @@ const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
 const subscribers = {
     'content will be set': {},
-    'new breadth was set': {},
+    'new breadth was set': {}, // to be fired only when panel is toggled, not on drag
 }
 
 const get_panel_body_breadth = _ => { // height/width with scrollbar
@@ -57,7 +57,10 @@ export const panel = {
         if (size !== undefined) {
             const fsize = await this.full_size_promise
             set_css_num_var('--panel-breadth', size, 'px')
-            panel.fire('new breadth was set', size, fsize)
+
+            if (size === 0 || size === fsize) {
+                panel.fire('new breadth was set', size, fsize)
+            }
 
             panel.body_element.style.opacity = (size > fsize * 0.2) ? 1 : 0
             tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
