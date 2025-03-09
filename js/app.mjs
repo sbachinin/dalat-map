@@ -16,6 +16,7 @@ import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
 import { initialize_highlights_button } from './panel/highlights_button.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
+const saved_center = JSON.parse(localStorage.getItem('map_center')) || [0, 0]
 
 const zoom = (initial_bldg_id !== null && 15.5)
     || localStorage.getItem('map_zoom')
@@ -51,6 +52,17 @@ initialize_tiny_squares()
 map.once('idle', async () => {
     add_dead_buildings(map)
 
+    panel.once('new breadth was set', 'app', () => {
+        initialize_highlights_button(panel.content.type)
+
+        const center = initial_bldg_id === null
+            ? saved_center
+            : get_center_for_bldg_with_offset(initial_bldg_id)
+
+        map.setCenter(center)
+        document.querySelector('#map').classList.remove('hidden')
+    })
+
     if (DEV_should_open_panel) {
         if (initial_bldg_id !== null) {
             try_open_building(initial_bldg_id, false, false)
@@ -58,19 +70,6 @@ map.once('idle', async () => {
             display_highlights()
         }
     }
-
-    panel.once('after_set_content', 'app', () => initialize_highlights_button(panel.content.type))
-
-    await panel.full_size_promise
-
-    let center = JSON.parse(localStorage.getItem('map_center')) || [0, 0]
-    if (initial_bldg_id !== null) {
-        center = get_center_for_bldg_with_offset(initial_bldg_id)
-    }
-
-    map.setCenter(center)
-
-    document.querySelector('#map').classList.remove('hidden')
 })
 
 handle_zoom_to_show_in_debug_el()

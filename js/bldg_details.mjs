@@ -21,12 +21,12 @@ const update_size_variables = () => {
 }
 
 
-const set_panel_content = async (id) => {
+const set_panel_content = (id) => {
     const details_el = create_panel_thumbs_list({
         images_names: all_handmade_data[id].images
     })
 
-    await panel.set_content({
+    panel.set_content({
         update_size: update_size_variables,
         element: details_el,
         type: PANEL_CONTENT_TYPES.BUILDING
@@ -39,36 +39,41 @@ export const try_open_building = async (
     should_try_to_fly = false
 ) => {
     if (id === selected_building_id) {
-        panel.expand()
+        panel.resize_to_content()
         return
     }
 
     if (building_has_details(id)) {
-        await set_panel_content(id)
+        set_panel_content(id)
         set_selected_feature_state(id)
         if (should_push_history) {
             push_to_history({ id }, `?id=${id}${window.location.hash}`)
         }
     }
 
-    if (!should_try_to_fly) return
-    await panel.full_size_promise // because panel setsize is async
-    const feature_center_arr = centroids_etc[id].centroid
-    const feature_screen_xy = window.dalatmap.project(feature_center_arr)
-    const map_zoom = window.dalatmap.getZoom()
-    if (!coords_are_in_view(feature_screen_xy)
-        || map_zoom < 15.5
-    ) {
-        window.dalatmap.easeTo({
-            /* I used to get center from get_center_for_bldg_with_offset(id)
-             and avoid passing offset
-             but in case of changing zooming this smart offset value was wrong
-             for it was calculated for initial zoom level
-            */
-            center: centroids_etc[id]?.centroid,
-            offset: get_map_center_shift(),
-            zoom: Math.max(15.5, map_zoom),
-            duration: 1600
+    panel.once(
+        'new breadth was set',
+        'fly to newly opened building',
+        () => {
+
+            if (!should_try_to_fly) return
+            const feature_center_arr = centroids_etc[id].centroid
+            const feature_screen_xy = window.dalatmap.project(feature_center_arr)
+            const map_zoom = window.dalatmap.getZoom()
+            if (!coords_are_in_view(feature_screen_xy)
+                || map_zoom < 15.5
+            ) {
+                window.dalatmap.easeTo({
+                    /* I used to get center from get_center_for_bldg_with_offset(id)
+                     and avoid passing offset
+                     but in case of changing zooming this smart offset value was wrong
+                     for it was calculated for initial zoom level
+                    */
+                    center: centroids_etc[id]?.centroid,
+                    offset: get_map_center_shift(),
+                    zoom: Math.max(15.5, map_zoom),
+                    duration: 1600
+                })
+            }
         })
-    }
 }

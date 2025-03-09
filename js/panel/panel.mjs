@@ -28,10 +28,8 @@ const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
 const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
 const subscribers = {
-    'before_set_content': {},
-    'after_set_content': {},
-    'before_collapse': {},
-    'before_expand': {},
+    'content will be set': {},
+    'new breadth was set': {},
 }
 
 const get_panel_body_breadth = _ => { // height/width with scrollbar
@@ -58,12 +56,9 @@ export const panel = {
     async set_size(size) {
         if (size !== undefined) {
             const fsize = await this.full_size_promise
-            if (size === 0) {
-                panel.fire('before_collapse')
-            } else if (size === fsize) {
-                panel.fire('before_expand')
-            }
             set_css_num_var('--panel-breadth', size, 'px')
+            panel.fire('new breadth was set', size, fsize)
+
             panel.body_element.style.opacity = (size > fsize * 0.2) ? 1 : 0
             tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
             update_expand_button()
@@ -72,7 +67,7 @@ export const panel = {
             console.warn('no size passed to panel.set_size')
         }
     },
-    async expand() {
+    async resize_to_content() {
         if (panel.wrapper_element.classList.contains('slow-animation')) {
             setTimeout(() => { // used transitionend here but it didn't work on iphone, 1st expand was quick
                 panel.wrapper_element.classList.remove('slow-animation')
@@ -85,7 +80,7 @@ export const panel = {
     },
     async toggle() {
         const was_expanded = await panel.is_rather_expanded()
-        was_expanded ? panel.set_size(0) : panel.expand()
+        was_expanded ? panel.set_size(0) : panel.resize_to_content()
     },
     async is_rather_expanded() {
         const full_size = await panel.full_size_promise
@@ -94,11 +89,11 @@ export const panel = {
     content: null,
     async set_content(_content) {
         if (panel.content?.element === _content?.element) {
-            panel.expand()
+            panel.resize_to_content()
             return
         }
 
-        panel.fire('before_set_content', _content)
+        panel.fire('content will be set', _content)
 
         await fade_out_content_if_present()
 
@@ -107,15 +102,13 @@ export const panel = {
         panel.body_element.appendChild(_content.element)
         panel.body_element.style.opacity = 0
 
-        panel.fire('after_set_content', _content)
-
         await wait_1frame()
 
 
         _content.update_size()
         panel.cache_full_size()
 
-        panel.expand()
+        panel.resize_to_content()
 
         panel.body_element.style.opacity = 1
 
