@@ -29,7 +29,9 @@ const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
 const subscribers = {
     'content will be set': {},
+    'content was just set': {},
     'new breadth was set': {}, // to be fired only when panel is toggled, not on drag
+    'scroll': {},
 }
 
 const get_panel_body_breadth = _ => { // height/width with scrollbar
@@ -102,11 +104,13 @@ export const panel = {
 
         panel.resize_to_content()
 
-        panel.body_element.style.opacity = 1
-
         panel.body_element.scrollTop = 0
         panel.body_element.scrollLeft = 0
+        panel.body_element.style.opacity = 1
+
         init_photoswipe()
+
+        panel.fire('content was just set', _content)
     },
 
     on(event_name, subscriber_name, subscriber, is_one_off = false) {
@@ -141,6 +145,8 @@ const fade_out_content_if_present = async () => {
         await wait_once_for_transitionend(panel.body_element)
     }
 }
+
+panel.body_element.addEventListener('scroll', e => panel.fire('scroll', e))
 
 expand_button_el.addEventListener('click', panel.toggle)
 tappable_margin.addEventListener('click', panel.toggle)
