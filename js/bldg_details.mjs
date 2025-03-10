@@ -3,7 +3,7 @@ import { all_handmade_data } from '../data/static/handmade_data.mjs'
 import { set_selected_feature_state, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
-import { coords_are_in_view, get_map_center_shift, push_to_history } from './utils.mjs'
+import { coords_are_in_view, div, get_map_center_shift, push_to_history } from './utils.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 
 export const building_has_details = id => {
@@ -22,9 +22,13 @@ const update_size_variables = () => {
 
 
 const set_panel_content = (id) => {
-    const details_el = create_panel_thumbs_list({
+    const details_el = div('building-details')
+    
+    const thumbs_list_el = create_panel_thumbs_list({
         images_names: all_handmade_data[id].images
     })
+
+    details_el.appendChild(thumbs_list_el)
 
     panel.set_content({
         update_size: update_size_variables,
