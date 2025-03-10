@@ -28,26 +28,22 @@ MPORTANT
 
 
 
-SLIDER
-
-
-first slow panel slide is lost
-
-
-
-
-Highlights
-	remember scroll pos
 	Show title in panel
 	
-	indicate better the geometry that was just chosen
 
+indicate better the geometry that was just chosen
+
+
+selected dead bldg style
+
+
+extra ugly blinking scrollbar in ff, landscape desktop (when entering the panel with cursor)
 
 
 ideally a speed of a flight to bldg should depend on the distance (screen space wise)
 
 
-if panel was closed, page refresh, shouldn't panel be closed still?
+if panel was closed, page refresh, shouldn't panel still be closed?
 
 
 
@@ -73,10 +69,6 @@ sometimes laggy panel reveal from github
 
 
 
-!!
-1-thumb-high thumb list on portrait desktop looks weird, most of the time you see only parts of images, never whole images
-	a) show at least 1.5 rows
-	b) (surely hard) scroll only by 1 thumb
 
 
 low-zoom tile size:
@@ -175,7 +167,9 @@ PHOTOS WORKFLOW
 
 is ml version fixed?
 
-would be great to load swiper bundle only when necessary
+
+can i release it as modules?
+
 
 
 
@@ -194,6 +188,12 @@ NICE TO HAVE
 NICE TO HAVE
 NICE TO HAVE
 NICE TO HAVE
+
+
+Remove dev artifacts
+	DEV folder
+	comments
+	etc
 
 
 user location

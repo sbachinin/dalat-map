@@ -66,7 +66,7 @@ export const add_mouse_stuff = () => {
 
 
 
-    document.querySelector('#highlights-opener').addEventListener('click', () => {
+    document.querySelector('#non-panel #highlights-opener').addEventListener('click', () => {
         display_highlights(true)
     })
 
