@@ -53,7 +53,8 @@ export const display_highlights = (should_push_history = false) => {
 }
 
 // TODO benefits of this are not apparent; and it can slow the initial load too
-export const preload_some_images = () => {
+// + It has to be called not just on page load but only if and when highlights are displayed
+export const UNUSED_preload_some_images = () => {
     for (let i = 0; i < 10; i++) {
         if (images_names[i]) {
             let img = new Image()

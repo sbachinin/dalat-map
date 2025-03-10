@@ -2,7 +2,7 @@ import { create_scale, update_scale } from './manage_scale.mjs'
 import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
-import { display_highlights, preload_some_images } from './highlights.mjs'
+import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
 import { try_open_building } from './bldg_details.mjs'
 import { get_center_for_bldg_with_offset } from './utils.mjs'
 import { panel } from './panel/panel.mjs'
@@ -42,7 +42,7 @@ const map = window.dalatmap = DEV_skip_map_rendering
 
 map.touchZoomRotate.disableRotation()
 
-preload_some_images()
+// preload_some_images()
 
 
 initialize_tiny_squares()
