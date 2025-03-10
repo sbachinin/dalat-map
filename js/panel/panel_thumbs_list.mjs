@@ -8,6 +8,31 @@ document.documentElement.style.setProperty('--image-fading-duration', `${imageFa
 
 export const panel_thumbs_list_id = 'panel-thumbs-list'
 
+const create_highlights_title = () => {
+    const svg = document.querySelector('#non-panel #highlights-opener').cloneNode(true)
+    svg.classList.remove('invisible')
+
+    return create_element_from_Html(
+        `<div class="slide-wrapper" id="highlights-title">
+            ${svg.outerHTML}
+            <div id="higlights-title-letters">
+                <div>Hi</div>
+                <div>g</div>
+                <div>h</div>
+                <div>li</div>
+                <div>g</div>
+                <div>h</div>
+                <div>t</div>
+                <div>s</div>
+            </div>
+            <svg id="highlights-title-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 24">
+                <line x1="5" y1="12" x2="25" y2="12" stroke="black" stroke-width="2" />
+                <polygon points="23,6 35,12 23,18" fill="black" />
+            </svg>
+        </div>`
+    )
+}
+
 export const create_panel_thumbs_list = ({ images_names, content_type = PANEL_CONTENT_TYPES.BUILDING }) => {
     const slide_els = images_names.map(
         name => {
@@ -18,29 +43,7 @@ export const create_panel_thumbs_list = ({ images_names, content_type = PANEL_CO
     )
 
     if (content_type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
-        const svg = document.querySelector('#non-panel #highlights-opener').cloneNode(true)
-        svg.classList.remove('invisible')
-        slide_els.unshift(
-            create_element_from_Html(
-                `<div class="slide-wrapper" id="highlights-title">
-                    ${svg.outerHTML}
-                    <div id="higlights-title-letters">
-                        <div>Hi</div>
-                        <div>g</div>
-                        <div>h</div>
-                        <div>li</div>
-                        <div>g</div>
-                        <div>h</div>
-                        <div>t</div>
-                        <div>s</div>
-                    </div>
-                    <svg id="highlights-title-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 24">
-                        <line x1="5" y1="12" x2="25" y2="12" stroke="black" stroke-width="2" />
-                        <polygon points="23,6 35,12 23,18" fill="black" />
-                    </svg>
-                </div>`
-            )
-        )
+        slide_els.unshift(create_highlights_title())
     }
 
     const list_el = create_element_from_Html(
