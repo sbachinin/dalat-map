@@ -4,11 +4,26 @@
     cursor: pointer;
     display: grid;
     gap: var(--thumb-gap);
-    padding: var(--thumb-gap);
 }
 
 @media (orientation: landscape) {
     #building-details {
         width: max-content;
     }
+}
+
+@media (orientation: portrait) and (pointer: coarse) {
+    #building-details {
+        display: flex;
+        width: max-content;
+    }
+}
+
+#building-info {
+    font-family: Merriweather;
+}
+
+#building-info__name:not(:empty) {
+    font-size: 18px;
+    margin: 8px 15px 4px 15px;
 }

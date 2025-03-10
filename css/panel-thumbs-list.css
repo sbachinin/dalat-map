@@ -4,6 +4,7 @@
     flex-wrap: wrap;
     gap: var(--thumb-gap);
     padding: var(--thumb-gap);
+    box-sizing: border-box;
 }
 
 @media (orientation: landscape) {
