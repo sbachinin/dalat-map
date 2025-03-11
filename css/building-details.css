@@ -19,11 +19,13 @@
     }
 }
 
-#building-info {
-    font-family: Merriweather;
+#building-info__name:empty {
+    display: none;
 }
 
-#building-info__name:not(:empty) {
+#building-info__name {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
     font-size: 18px;
     margin: 8px 15px 4px 15px;
 }
