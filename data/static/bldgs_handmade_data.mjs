@@ -19,7 +19,8 @@ export const bldgs_handmade_data = {
             "IMG_1648~2.jpg",
             "IMG_1642~2.jpg",
             "IMG_1645~2.jpg"
-        ]
+        ],
+        google: 'https://maps.app.goo.gl/iht5VpvR3XDWnLWUA'
     },
     "17929361": {
         "images": [
@@ -51,7 +52,9 @@ export const bldgs_handmade_data = {
         "images": [
             "IMG_7957~4.jpg",
         ],
-        year: 1943
+        year: 1943,
+        wikipedia: 'https://en.wikipedia.org/wiki/Domaine_de_Marie',
+        google: 'https://maps.app.goo.gl/mZTNG1ce4nWQwJv4A'
     },
     "361692327": {
         "images": [
@@ -63,16 +66,27 @@ export const bldgs_handmade_data = {
             "IMG_5894~2.jpg",
             "IMG_5908~2.jpg"
         ],
-        "title": "Former \npower station"
+        "title": "Former\npower station",
+        google: 'https://maps.app.goo.gl/S8vmJi6YeEuKCJFP9'
     },
     "361851888": {
-        "title": "Couvent\ndes Oiseaux",
         "images": [
             "IMG_7976~3.jpg",
             "IMG_7981~2.jpg"
         ],
-        year: 1935
     },
+
+    "542486117": {
+        "title": "Notre-Dame\ndu Langbian",
+        year: 1935,
+        wikipedia: 'https://fr.wikipedia.org/wiki/Notre-Dame_du_Langbian',
+        google: 'https://maps.app.goo.gl/knwigECduFuD7KcEA',
+        "images": [
+            "IMG_7984~4.jpg",
+            "Notre_Dame_du_Lang_Bian_01 (1)~2.jpg"
+        ]
+    },
+
     "361851915": {
         "title": "Lycée Yersin",
         "subtitle": "Currently Pedagogical College",
@@ -92,7 +106,9 @@ export const bldgs_handmade_data = {
             "IMG_20240721_111036~2.jpg",
             "IMG_3689.jpg"
         ],
-        year: 1935
+        year: 1935,
+        wikipedia: 'https://en.wikipedia.org/wiki/Lyc%C3%A9e_Yersin',
+        google: 'https://maps.app.goo.gl/5gHx3QVLaMV7PLQT9'
     },
     "407699702": {
         "title": "Dalat\nPalace Hotel",
@@ -106,7 +122,9 @@ export const bldgs_handmade_data = {
             108.4402145044401,
             11.937946013869597
         ],
-        "title_side": "top"
+        "title_side": "top",
+        wikipedia: 'https://en.wikipedia.org/wiki/Dalat_Palace_Hotel',
+        google: 'https://maps.app.goo.gl/DFX6ECT21bzz8Gpr8'
     },
     "452519411": {
         "title": "St. Nicholas \nCathedral",
@@ -118,11 +136,15 @@ export const bldgs_handmade_data = {
             "IMG_5543~3.jpg"
         ],
         "priority": 9,
-        year: 1942
+        year: 1942,
+        wikipedia: 'https://en.wikipedia.org/wiki/St._Nicholas_Cathedral,_Da_Lat',
+        google: 'https://maps.app.goo.gl/82L564YFSx7yxm2B9'
     },
     "463866431": {
         "title": "Bao Dai\nPalace №3",
-        year: 1938
+        year: 1938,
+        wikipedia: 'https://en.wikipedia.org/wiki/Dinh_III',
+        google: 'https://maps.app.goo.gl/b1NKAqj43jNkvs5S6'
     },
     "469578958": {
         "images": [
@@ -132,10 +154,12 @@ export const bldgs_handmade_data = {
     },
     "473088090": {
         "title": "Zoology museum \nin ex-monastery",
+        subtitle: 'Also headquarters of Tay Nguyen institute of scientific research',
         "images": [
             "zoo2.jpg",
             "zoo1.jpg"
-        ]
+        ],
+        google: 'https://maps.app.goo.gl/hPYArvAeocqh1qSo9'
     },
     "475362778": {
         "title": "Du Parc Hotel",
@@ -151,7 +175,8 @@ export const bldgs_handmade_data = {
             11.936592586225473
         ],
         "title_side": "right",
-        year: 1932
+        year: 1932,
+        google: 'https://maps.app.goo.gl/pXtr2hzFNTJf8S7D6'
     },
     "515193502": {
         "images": [
@@ -185,7 +210,8 @@ export const bldgs_handmade_data = {
             "IMG_0567~3.jpg",
             "IMG_0573~3.jpg",
             "IMG_0601~3.jpg"
-        ]
+        ],
+        google: 'https://maps.app.goo.gl/Y5nc4Bs9L6vjq8uu7'
     },
     "515193547": {
         "images": [
@@ -199,12 +225,6 @@ export const bldgs_handmade_data = {
             "IMG_4768~2.jpg",
             "IMG_4770~2.jpg",
             "IMG_20240801_143214~4.jpg"
-        ]
-    },
-    "542486117": {
-        "images": [
-            "IMG_7984~4.jpg",
-            "Notre_Dame_du_Lang_Bian_01 (1)~2.jpg"
         ]
     },
     "542725574": {
@@ -263,7 +283,9 @@ export const bldgs_handmade_data = {
     },
     "543357207": {
         "title": "Bao Dai\nPalace №1",
-        "priority": 11
+        "priority": 11,
+        wikipedia: 'https://vi.wikipedia.org/wiki/Dinh_I',
+        google: 'https://maps.app.goo.gl/Rui4fGwaS7vvn5F56'
     },
     "543357209": {
         "images": [
@@ -280,7 +302,8 @@ export const bldgs_handmade_data = {
             108.4363520549162,
             11.94695270820682
         ],
-        "title_side": "top"
+        "title_side": "top",
+        google: 'https://maps.app.goo.gl/GxwxzVTnzcs843oQ6'
     },
     "618049072": {
         "title": "Governor's Palace",
@@ -297,7 +320,9 @@ export const bldgs_handmade_data = {
             "IMG_4108~2.jpg",
             "IMG_4125~2.jpg"
         ],
-        "priority": 10
+        "priority": 10,
+        google: 'https://maps.app.goo.gl/SX5eQessoX1QMyjC9',
+
     },
     "777432491": {
         "images": [
@@ -393,7 +418,9 @@ export const bldgs_handmade_data = {
             "IMG_20240730_103646_1~2.jpg",
             "IMG_6864~3.jpg",
         ],
-        "priority": 10
+        "priority": 10,
+        wikipedia: 'https://vi.wikipedia.org/wiki/Dinh_II',
+        google: 'https://maps.app.goo.gl/CRUKjPQF9sxyfpZ8A'
     },
     "777439802": {
         "images": [
@@ -589,17 +616,11 @@ export const bldgs_handmade_data = {
         ]
     },
     "1238335794": {
-        "title": "Nguyen Viet\nXuan Palace",
         "second_rate": true,
         "images": [
             "IMG_2546.jpg",
             "ugly_little_palace.JPG"
-        ],
-        "title_coords": [
-            108.42982046800888,
-            11.934000182972317
-        ],
-        "title_side": "right"
+        ]
     },
     "1243929950": {
         "images": [
@@ -810,7 +831,7 @@ export const bldgs_handmade_data = {
     },
     "1303825522": {
         "title": "Former \nFranciscan \nmission",
-        "subtitle": "Also former \"Vietnam's coolest ruin\"",
+        "subtitle": "Former \"Vietnam's coolest ruin\", according to Rusty Compass",
         "links": [
             {
                 "description": "Rusty Compass' great video",
@@ -825,7 +846,8 @@ export const bldgs_handmade_data = {
             "IMG_0737.jpg",
             "IMG_0742.jpg"
         ],
-        "priority": 10
+        "priority": 10,
+        google: 'https://maps.app.goo.gl/UFWLCEofXVhUTA2f8'
     },
     "1304080964": {
         "images": [
@@ -1026,7 +1048,9 @@ export const bldgs_handmade_data = {
             "IMG_2878~2.jpg",
             "IMG_2876~3.jpg"
         ],
-        year: 1936
+        year: 1936,
+        wikipedia: 'https://en.wikipedia.org/wiki/Institut_Pasteur_de_Dalat',
+        google: 'https://maps.app.goo.gl/R5Cb52q6PUjaqAmh8'
     },
     "1305703497": {
         "images": [
@@ -1701,7 +1725,9 @@ export const bldgs_handmade_data = {
         second_rate: true
     },
     "1244767000": {
-        title: 'Nguyen Huu\nHao Tomb'
+        title: 'Nguyen Huu\nHao Tomb',
+        wikipedia: 'https://vi.wikipedia.org/wiki/L%C4%83ng_Nguy%E1%BB%85n_H%E1%BB%AFu_H%C3%A0o',
+        google: 'https://maps.app.goo.gl/tVQMVWWubZLRRktX9'
     },
     "1305230699": {
         title: '"Madame\nde Dalat"',
@@ -1716,10 +1742,14 @@ export const bldgs_handmade_data = {
         second_rate: true
     },
     "232458166": {
-        title: 'Linh Quang\nPagoda'
+        title: 'Linh Quang\nPagoda',
+        wikipedia: 'https://vi.wikipedia.org/wiki/Ch%C3%B9a_Linh_Quang_(%C4%90%C3%A0_L%E1%BA%A1t)',
+        google: 'https://maps.app.goo.gl/qkzK4sb8djmfqsRx9'
     },
     "361851927": {
-        title: 'Linh Son\nPagoda'
+        title: 'Linh Son\nPagoda',
+        wikipedia: 'https://en.wikipedia.org/wiki/Linh_S%C6%A1n_Temple',
+        google: 'https://maps.app.goo.gl/nnkTnEpoJ3P4MKWt7'
     },
     "7758125": {
         title: 'Youth Prison\nmuseum'
@@ -1745,9 +1775,10 @@ export const bldgs_handmade_data = {
         second_rate: true,
         title_coords: [108.45841503948003, 11.941198360637713]
     },
-    "1308816301": {
-        title: 'Chi Lang market',
-        viet_title: 'Chợ Chi Lăng'
+    515288602: {
+        title: 'Cam Ly Church',
+        wikipedia: 'https://vi.wikipedia.org/wiki/Nh%C3%A0_th%E1%BB%9D_Cam_Ly',
+        google: 'https://maps.app.goo.gl/jpGaZXSiFZC3eGpQ7'        
     }
 }
 
