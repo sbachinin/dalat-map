@@ -9,7 +9,8 @@ export const bldgs_handmade_data = {
             "IMG_8948~2.jpg"
         ],
         "title": "Railway\nstation",
-        year: 1932
+        year: 1932,
+        wikipedia: 'https://en.wikipedia.org/wiki/Da_Lat_station'
     },
     1307493475: {
         myhint: 'Ana Mandara, ugly but the only one that is reliably old (seen on frayed bw photos at least)',

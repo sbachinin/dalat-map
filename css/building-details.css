@@ -1,4 +1,4 @@
-#building-details img {
+#building-details #panel-thumbs-list img {
     width: var(--thumb-width);
     height: var(--thumb-height);
     cursor: pointer;
@@ -19,6 +19,19 @@
     }
 }
 
+@media (orientation: portrait) and (pointer: coarse) {
+    #building-info {
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+#building-info {
+    display: flex;
+    align-items: center;
+}
+
 #building-info__name:empty {
     display: none;
 }
@@ -28,4 +41,19 @@
     font-style: italic;
     font-size: 18px;
     margin: 8px 15px 4px 15px;
+}
+
+#building-info__wikipedia a {
+    display: flex;
+    position: relative;
+    top: 2px;
+}
+
+#building-info__wikipedia a[href=""],
+#building-info__wikipedia a:not([href]) {
+    display: none;
+}
+
+#building-info__wikipedia img {
+    height: 26px;
 }

@@ -3,7 +3,7 @@ import { all_handmade_data } from '../data/static/handmade_data.mjs'
 import { set_selected_feature_state, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
-import { coords_are_in_view, create_element_from_Html, div, get_map_center_shift, push_to_history } from './utils.mjs'
+import { coords_are_in_view, create_element_from_Html, div, get_image_url, get_map_center_shift, push_to_history } from './utils.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 
 export const building_has_details = id => {
@@ -31,6 +31,13 @@ const set_panel_content = (id) => {
     const info_el = create_element_from_Html(`
         <div id="building-info">
             <div id="building-info__name">${all_handmade_data[id].title || ''}</div>
+            <div id="building-info__other">
+                <div id="building-info__wikipedia">
+                    <a target="_blank" href="${all_handmade_data[id].wikipedia || ''}">
+                        <img src="${get_image_url('wikipedia.svg', '')}">
+                    </a>
+                </div>
+            </div>
         </div>
     `)
     details_el.appendChild(info_el)
