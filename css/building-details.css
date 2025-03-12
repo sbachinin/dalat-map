@@ -43,17 +43,30 @@
     margin: 8px 15px 4px 15px;
 }
 
-#building-info__wikipedia a {
+#building-info__other {
+	display: flex;
+	position: relative;
+	top: 2px;
+}
+
+#building-info__other a {
     display: flex;
+}
+
+#building-info__wikipedia a {
     position: relative;
     top: 2px;
 }
 
-#building-info__wikipedia a[href=""],
-#building-info__wikipedia a:not([href]) {
+#building-info a[href=""],
+#building-info a:not([href]) {
     display: none;
 }
 
 #building-info__wikipedia img {
     height: 26px;
+}
+
+#building-info__google img {
+    height: 30px;
 }

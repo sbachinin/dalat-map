@@ -37,6 +37,11 @@ const set_panel_content = (id) => {
                         <img src="${get_image_url('wikipedia.svg', '')}">
                     </a>
                 </div>
+                <div id="building-info__google">
+                    <a target="_blank" href="${all_handmade_data[id].google || ''}">
+                        <img src="${get_image_url('gmaps.svg', '')}">
+                    </a>
+                </div>
             </div>
         </div>
     `)
