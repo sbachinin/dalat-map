@@ -29,8 +29,13 @@ const set_panel_content = (id) => {
     })
 
     const title = all_handmade_data[id].title
-        ? `<div id="building-info__name">${all_handmade_data[id].title}</div>`
+        ? `<div id="building-info__title">${all_handmade_data[id].title}</div>`
         : ''
+
+    const subtitle = all_handmade_data[id].subtitle
+        ? `<div id="building-info__subtitle">${all_handmade_data[id].subtitle}</div>`
+        : ''
+
 
     const wikipedia = all_handmade_data[id].wikipedia
         ? `<div id="building-info__wikipedia">
@@ -62,6 +67,7 @@ const set_panel_content = (id) => {
     const info_el = create_element_from_Html(`
         <div id="building-info">
             ${title}
+            ${subtitle}
             ${info_other}
             ${year}
         </div >

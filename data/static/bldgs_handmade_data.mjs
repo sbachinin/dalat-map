@@ -1,5 +1,7 @@
 export const bldgs_handmade_data = {
     "17877171": {
+        "title": "Railway\nstation",
+        subtitle: 'Designed in the Art Deco style with influences from traditional Cao Nguyen communal houses.\nIt currently operates a 7-km tourist railway line connecting to the nearby village of Trai Mat',
         "images": [
             "IMG_0673.jpg",
             "IMG_0790~4.jpg",
@@ -8,8 +10,7 @@ export const bldgs_handmade_data = {
             "IMG_6099~3.jpg",
             "IMG_8948~2.jpg"
         ],
-        "title": "Railway\nstation",
-        year: 1932,
+        year: '1932-1938',
         wikipedia: 'https://en.wikipedia.org/wiki/Da_Lat_station',
         google: 'https://maps.app.goo.gl/Qky2TTE9mkMiX13u7'
     },
@@ -49,6 +50,7 @@ export const bldgs_handmade_data = {
     },
     "361692265": {
         "title": "Domaine de Marie",
+        subtitle: 'Catholic convent built in the style of Norman architecture of 17th century',
         "images": [
             "IMG_7957~4.jpg",
         ],
@@ -78,6 +80,7 @@ export const bldgs_handmade_data = {
 
     "542486117": {
         "title": "Notre-Dame\ndu Langbian",
+        subtitle: `A convent that educated young girls from the French and Vietnamese elite until 1975, now part of a boarding school for ethnic minorities`,
         year: 1935,
         wikipedia: 'https://fr.wikipedia.org/wiki/Notre-Dame_du_Langbian',
         google: 'https://maps.app.goo.gl/knwigECduFuD7KcEA',
@@ -89,8 +92,8 @@ export const bldgs_handmade_data = {
 
     "361851915": {
         "title": "Lycée Yersin",
-        "subtitle": "Currently Pedagogical College",
-        "descr": "Built in 1935 . female students from wealthy families in Dalat and southern Vietnam were educated between 1940 and 1975. Queen Nam Phuong was reportedly a student of this school as well.\n        I entered the campus without a problem. The building stands next to an old pine grove.",
+        "subtitle": "Originally a school for the children of French colonialists and the Vietnamese elite, it is now the Pedagogical College of Da Lat.",
+        // "descr": "Built in 1935 . female students from wealthy families in Dalat and southern Vietnam were educated between 1940 and 1975. Queen Nam Phuong was reportedly a student of this school as well.\n        I entered the campus without a problem. The building stands next to an old pine grove.",
         "images": [
             "IMG_8818~3.jpg",
             "IMG_3683~2.jpg",
@@ -106,12 +109,13 @@ export const bldgs_handmade_data = {
             "IMG_20240721_111036~2.jpg",
             "IMG_3689.jpg"
         ],
-        year: 1935,
+        year: 1927,
         wikipedia: 'https://en.wikipedia.org/wiki/Lyc%C3%A9e_Yersin',
         google: 'https://maps.app.goo.gl/5gHx3QVLaMV7PLQT9'
     },
     "407699702": {
         "title": "Dalat\nPalace Hotel",
+        subtitle: 'A luxury hotel originally designed to rival the most prestigious colonial hotels in Southeast Asia. Initially highly ornamental, its façade was dramatically simplified in the 1940s',
         "images": [
             "IMG_5457~2.jpg",
             "IMG_5439~2.jpg",
@@ -123,11 +127,13 @@ export const bldgs_handmade_data = {
             11.937946013869597
         ],
         "title_side": "top",
+        year: 1922,
         wikipedia: 'https://en.wikipedia.org/wiki/Dalat_Palace_Hotel',
-        google: 'https://maps.app.goo.gl/DFX6ECT21bzz8Gpr8'
+        google: 'https://maps.app.goo.gl/DFX6ECT21bzz8Gpr8',
     },
     "452519411": {
         "title": "St. Nicholas \nCathedral",
+        subtitle: 'Catholic cathedral built in neo-Romanesque style',
         "images": [
             "IMG_5520.jpg",
             "IMG_5531.jpg",
@@ -136,13 +142,14 @@ export const bldgs_handmade_data = {
             "IMG_5543~3.jpg"
         ],
         "priority": 9,
-        year: 1942,
+        year: '1931-32',
         wikipedia: 'https://en.wikipedia.org/wiki/St._Nicholas_Cathedral,_Da_Lat',
         google: 'https://maps.app.goo.gl/82L564YFSx7yxm2B9'
     },
     "463866431": {
-        "title": "Bao Dai\nPalace №3",
-        year: 1938,
+        "title": "Palace III",
+        subtitle: 'It functioned as the summer palace of Bảo Đại, the last emperor of Vietnam',
+        year: '1933-39',
         wikipedia: 'https://en.wikipedia.org/wiki/Dinh_III',
         google: 'https://maps.app.goo.gl/b1NKAqj43jNkvs5S6'
     },
@@ -205,13 +212,19 @@ export const bldgs_handmade_data = {
         ]
     },
     "515193507": {
-        "title": "Queen Nam Phuong Palace",
+        "title": "Palace of\nempress Nam Phuong",
         "images": [
             "IMG_0567~3.jpg",
             "IMG_0573~3.jpg",
             "IMG_0601~3.jpg"
         ],
-        google: 'https://maps.app.goo.gl/Y5nc4Bs9L6vjq8uu7'
+        year: 1932,
+        google: 'https://maps.app.goo.gl/Y5nc4Bs9L6vjq8uu7',
+        links: [
+            {
+                url: 'https://e.vnexpress.net/news/travel/places/da-lat-mansion-of-the-last-empress-of-vietnam-3898349.html'
+            }
+        ]
     },
     "515193547": {
         "images": [
@@ -282,8 +295,10 @@ export const bldgs_handmade_data = {
         ]
     },
     "543357207": {
-        "title": "Bao Dai\nPalace №1",
+        "title": "Palace I",
+        subtitle: 'Originally built by a French millionaire, it was acquired in 1949 by Bảo Đại, the last emperor of Vietnam',
         "priority": 11,
+        year: 1940,
         wikipedia: 'https://vi.wikipedia.org/wiki/Dinh_I',
         google: 'https://maps.app.goo.gl/Rui4fGwaS7vvn5F56'
     },
@@ -406,8 +421,8 @@ export const bldgs_handmade_data = {
         ]
     },
     "777438901": {
-        "title": "Bao Dai\nPalace №2",
-        "descr": "One of the 3 palaces of king Bao Dai. (All 3 in Dalat).\nThis on was built in 1933-1937.\nNow it's possibly used as an event space by some bosses of Lam Dong province.\nThe building is massive and rather clumsy and bureaucratic to my taste. One explanation of this is that Palace II was designed as headquarters of the French ruling apparatus in Indochina. (Though this fact comes from a dubious source in the web).\nHowever clumsiness is redeemed by the setting: a vast pine forest on the very top of the hill. A really tranquil and enigmatic place.\nThe palace is well maintained but still shows a bit of historical shabbiness which is nice. At the time of my visit the surrounding area was completely deserted.\nAccess seems to be unrestricted, I just walked through the entrance from the south. (Not from main street).",
+        "title": "Palace II",
+        "subtitle": "Once a summer residence of Jean Decoux, governor-general of Indochina",
         "images": [
             "IMG_6879~3.jpg",
             "IMG_6915~2.jpg",
@@ -418,6 +433,7 @@ export const bldgs_handmade_data = {
             "IMG_20240730_103646_1~2.jpg",
             "IMG_6864~3.jpg",
         ],
+        year: '1933-1937',
         "priority": 10,
         wikipedia: 'https://vi.wikipedia.org/wiki/Dinh_II',
         google: 'https://maps.app.goo.gl/CRUKjPQF9sxyfpZ8A'
@@ -1044,6 +1060,7 @@ export const bldgs_handmade_data = {
     },
     "1305208733": {
         "title": "Institut Pasteur",
+        subtitle: 'Vaccine research and production complex, first headed by influential bacteriologist Alexandre Yersin',
         "images": [
             "IMG_2878~2.jpg",
             "IMG_2876~3.jpg"
@@ -1778,7 +1795,11 @@ export const bldgs_handmade_data = {
     515288602: {
         title: 'Cam Ly Church',
         wikipedia: 'https://vi.wikipedia.org/wiki/Nh%C3%A0_th%E1%BB%9D_Cam_Ly',
-        google: 'https://maps.app.goo.gl/jpGaZXSiFZC3eGpQ7'        
+        google: 'https://maps.app.goo.gl/jpGaZXSiFZC3eGpQ7'
+    },
+    "1308816301": {
+        title: 'Chi Lang market',
+        viet_title: 'Chợ Chi Lăng'
     }
 }
 

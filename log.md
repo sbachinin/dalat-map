@@ -27,11 +27,17 @@ IMPORTANT
 MPORTANT
 
 
-
-	Show title in panel
+google link, wikipedia, "fly to bldg", copy link,
+      	bldg name, ?suggest an edit
 	
+make dinh1 and the likes clickable, showing justbuttons
+
+? make non-french clickable, showing at least wiki and ggl
+	there are many places in wikipedia, linked from here:
+		https://vi.wikipedia.org/wiki/L%C4%83ng_Nguy%E1%BB%85n_H%E1%BB%AFu_H%C3%A0o
 
 indicate better the geometry that was just chosen
+
 
 
 selected dead bldg style
@@ -103,10 +109,7 @@ OTHER PANEL CONTENT
 	Some bldgs need at least some info:
 		google link or wikipedia link
 			bao dai 1, 3
-
-	add "HL" heading with a medal icon
-	google link, wikipedia, "fly to bldg", copy link,
-      	bldg name, ?suggest an edit
+	
 
 
 
@@ -190,15 +193,21 @@ NICE TO HAVE
 NICE TO HAVE
 
 
-Remove dev artifacts
-	DEV folder
-	comments
-	etc
+PERF
+	Load fonts (So far only Merriweather) only before panel is opened
+
+	Minimize, Remove dev artifacts
+		DEV folder
+		comments
+
+
 
 
 user location
 
 swipe down - close slider (my intuitive gesture)
+
+On hover highlights thumbs, draw a line to a bldg polygon if it's visible
 
 
 MAKE NON-FRENCH with details CLICKABLE
