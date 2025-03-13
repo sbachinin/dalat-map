@@ -84,6 +84,13 @@
     box-sizing: border-box;
 }
 
+@media (orientation: landscape) {
+    #panel * {
+        max-width: var(--thumbs-list-width-in-landscape);
+    }
+}
+
+
 #panel-expand-tappable-margin {
     position: absolute;
 }

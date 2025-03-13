@@ -23,27 +23,48 @@ const update_size_variables = () => {
 
 const set_panel_content = (id) => {
     const details_el = div({ id: 'building-details' })
-    
+
     const thumbs_list_el = create_panel_thumbs_list({
         images_names: all_handmade_data[id].images
     })
 
-    const info_el = create_element_from_Html(`
-        <div id="building-info">
-            <div id="building-info__name">${all_handmade_data[id].title || ''}</div>
-            <div id="building-info__other">
-                <div id="building-info__wikipedia">
-                    <a target="_blank" href="${all_handmade_data[id].wikipedia || ''}">
+    const title = all_handmade_data[id].title
+        ? `<div id="building-info__name">${all_handmade_data[id].title}</div>`
+        : ''
+
+    const wikipedia = all_handmade_data[id].wikipedia
+        ? `<div id="building-info__wikipedia">
+                    <a target="_blank" href="${all_handmade_data[id].wikipedia}">
                         <img src="${get_image_url('wikipedia.svg', '')}">
                     </a>
-                </div>
-                <div id="building-info__google">
-                    <a target="_blank" href="${all_handmade_data[id].google || ''}">
+                </div>`
+        : ''
+
+    const google = all_handmade_data[id].google
+        ? `<div id="building-info__google">
+                    <a target="_blank" href="${all_handmade_data[id].google}">
                         <img src="${get_image_url('gmaps.svg', '')}">
                     </a>
-                </div>
-            </div>
-        </div>
+                </div>`
+        : ''
+
+    const info_other = (!wikipedia && !google)
+        ? ''
+        : `<div id="building-info__other">
+            ${wikipedia}
+            ${google}
+        </div>`
+
+    const year = all_handmade_data[id].year
+        ? `<div id="building-info__year">Built in ${all_handmade_data[id].year}</div>`
+        : ''
+
+    const info_el = create_element_from_Html(`
+        <div id="building-info">
+            ${title}
+            ${info_other}
+            ${year}
+        </div >
     `)
     details_el.appendChild(info_el)
     details_el.appendChild(thumbs_list_el)

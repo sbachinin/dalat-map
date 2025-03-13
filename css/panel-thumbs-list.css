@@ -10,7 +10,6 @@
 @media (orientation: landscape) {
     #panel-thumbs-list {
         flex-wrap: wrap;
-        width: var(--thumbs-list-width-in-landscape);
         height: max-content;
     }
 }

@@ -21,32 +21,39 @@
 
 @media (orientation: portrait) and (pointer: coarse) {
     #building-info {
-        flex-direction: column;
         justify-content: center;
-        gap: 15px;
     }
 }
 
 #building-info {
     display: flex;
+    flex-direction: column;
+    font-family: 'Merriweather', serif;
+    flex-wrap: wrap;
     align-items: center;
 }
 
-#building-info__name:empty {
-    display: none;
+#building-info > * {
+    margin: 4px 10px;
+}
+
+#building-info > *:first-child {
+    margin-top: 12px;
+}
+#building-info > *:last-child {
+    margin-bottom: 10px;
 }
 
 #building-info__name {
-    font-family: 'Merriweather', serif;
     font-style: italic;
     font-size: 18px;
-    margin: 8px 15px 4px 15px;
+}
+#building-info__year {
+    font-size: 13px;
 }
 
 #building-info__other {
-	display: flex;
-	position: relative;
-	top: 2px;
+    display: flex;
 }
 
 #building-info__other a {
