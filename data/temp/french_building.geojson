@@ -3327,7 +3327,7 @@
     "id": 542486117,
     "properties": {
       "has_details": true,
-      "has_title": false,
+      "has_title": true,
       "is_important": true
     }
   },
@@ -4427,7 +4427,7 @@
     "id": 361851888,
     "properties": {
       "has_details": true,
-      "has_title": true,
+      "has_title": false,
       "is_important": true
     }
   },
@@ -13146,42 +13146,6 @@
       "coordinates": [
         [
           [
-            108.4697769,
-            11.9507532
-          ],
-          [
-            108.469772,
-            11.9505782
-          ],
-          [
-            108.4699192,
-            11.9505743
-          ],
-          [
-            108.469924,
-            11.9507493
-          ],
-          [
-            108.4697769,
-            11.9507532
-          ]
-        ]
-      ]
-    },
-    "id": 1307264373,
-    "properties": {
-      "has_details": false,
-      "has_title": false,
-      "is_important": true
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [
             108.4706498,
             11.9499058
           ],
@@ -17719,7 +17683,7 @@
     "id": 1238335794,
     "properties": {
       "has_details": true,
-      "has_title": true,
+      "has_title": false,
       "is_important": false
     }
   },
