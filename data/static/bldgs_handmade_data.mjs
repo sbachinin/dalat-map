@@ -147,7 +147,7 @@ export const bldgs_handmade_data = {
         google: 'https://maps.app.goo.gl/82L564YFSx7yxm2B9'
     },
     "463866431": {
-        "title": "Palace III",
+        "title": `"Palace III"`,
         subtitle: 'It functioned as the summer palace of Bảo Đại, the last emperor of Vietnam',
         year: '1933-39',
         wikipedia: 'https://en.wikipedia.org/wiki/Dinh_III',
@@ -296,7 +296,7 @@ export const bldgs_handmade_data = {
         ]
     },
     "543357207": {
-        "title": "Palace I",
+        "title": `"Palace I"`,
         subtitle: 'Originally built by a French millionaire, it was acquired in 1949 by Bảo Đại, the last emperor of Vietnam',
         "priority": 11,
         year: 1940,
@@ -422,7 +422,7 @@ export const bldgs_handmade_data = {
         ]
     },
     "777438901": {
-        "title": "Palace II",
+        "title": `"Palace II"`,
         "subtitle": "Once a summer residence of Jean Decoux, governor-general of Indochina",
         "images": [
             "IMG_6879~3.jpg",
