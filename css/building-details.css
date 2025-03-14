@@ -17,11 +17,10 @@
         display: flex;
         width: max-content;
     }
-}
 
-@media (orientation: portrait) and (pointer: coarse) {
     #building-info {
         justify-content: center;
+        max-width: 65vw; /* ensure that 1st thumb is at least partly visible */
     }
 }
 
@@ -34,16 +33,16 @@
     align-items: center;
 }
 
-#building-info > * {
+#building-info>* {
     margin: 4px 10px;
     text-align: center;
-    max-width: 200px;
 }
 
-#building-info > *:first-child {
+#building-info>*:first-child {
     margin-top: 12px;
 }
-#building-info > *:last-child {
+
+#building-info>*:last-child {
     margin-bottom: 10px;
 }
 
