@@ -20,7 +20,15 @@
 
     #building-info {
         justify-content: center;
-        max-width: 65vw; /* ensure that 1st thumb is at least partly visible */
+
+        /* ensure that 1st thumb is at least partly visible */
+        max-width: 65vw;
+    }
+
+    #building-info__subtitle {
+        /* flex-shrink: 1; */ /* this made sense but the element shrank anyway, idkw */
+        min-height: 0; /* this supposedly makes it shrink, squeezing to the limited height of parent */
+        overflow: auto;
     }
 }
 
