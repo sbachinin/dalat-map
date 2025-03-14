@@ -29,7 +29,7 @@
     flex-direction: column;
     font-family: 'Merriweather', serif;
     font-style: italic;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     align-items: center;
 }
 
