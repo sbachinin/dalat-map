@@ -61,6 +61,8 @@ map.once('idle', async () => {
     })
 
     if (DEV_should_open_panel) {
+        const merriweather = new FontFaceObserver('Merriweather', { weight: 'normal', style: 'italic' })
+        await merriweather.load()
         if (initial_bldg_id !== null) {
             try_open_building(initial_bldg_id, false, false)
         } else {
