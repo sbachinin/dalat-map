@@ -2798,7 +2798,7 @@
     },
     "id": 543357207,
     "properties": {
-      "has_details": false,
+      "has_details": true,
       "has_title": true,
       "is_important": true
     }
@@ -4070,7 +4070,7 @@
     },
     "id": 463866431,
     "properties": {
-      "has_details": false,
+      "has_details": true,
       "has_title": true,
       "is_important": true
     }

@@ -139,12 +139,21 @@ jq "$JQ_FILTER" ../temp/land_areas0.geojson >../temp/land_areas00.geojson
 jq --argjson bldgs_hmd__ "$bldgs_handmade_data" '
   map(
     .properties = {
-      has_details: (($bldgs_hmd__[(.id | tostring)] | .images // []) | length > 0),
+      has_details: ((
+        ($bldgs_hmd__[(.id | tostring)] | .images // []) | length > 0
+      ) or (
+        ($bldgs_hmd__[(.id | tostring)] | .links // []) | length > 0
+      ) or (
+        ($bldgs_hmd__[(.id | tostring)] | .wikipedia // "") | length > 0
+      ) or (
+        ($bldgs_hmd__[(.id | tostring)] | .google // "") | length > 0
+      ) or (
+        ($bldgs_hmd__[(.id | tostring)] | .subtitle // "") | length > 0
+      )),
       has_title: ($bldgs_hmd__[(.id | tostring)] | (has("title") and .title != null)),
       is_important: ($bldgs_hmd__[(.id | tostring)] | (.second_rate // false) != true)
     }
-  )' ../temp/french_building00.geojson > ../temp/french_building.geojson
-
+  )' ../temp/french_building00.geojson >../temp/french_building.geojson
 
 # ADD HAS_TITLE PROP TO ALL SHIT BLDGS THAT HAVE HANDMADE TITLES
 jq --argjson bldgs_hmd__ "$bldgs_handmade_data" 'map(
@@ -169,7 +178,6 @@ jq --argjson land_areas_handmade_data "$land_areas_handmade_data" '
 
 # generated centroids didn't provide good-looking titles so I switched to manual title_coords
 # ./generate_centroids.sh ../temp/land_areas00.geojson ../temp/land_areas.geojson
-
 
 node save_polygons_centroids.mjs
 node save_some_features_ids.mjs
