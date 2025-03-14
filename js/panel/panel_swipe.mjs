@@ -64,6 +64,8 @@ export const make_expandable_on_swipe = (panel) => {
     })
 
     const on_touchstart = (e) => {
+        if (e.target.closest('#building-info__subtitle')) return
+
         if (
             e.target.closest('#' + panel.body_element.id)
             || e.target.closest('#panel-expand-button')
