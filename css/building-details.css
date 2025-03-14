@@ -84,3 +84,9 @@
 #building-info__google img {
     height: 30px;
 }
+
+#building-info__links a {
+    display: block;
+    padding: 4px;
+    font-size: 14px;
+}

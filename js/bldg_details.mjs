@@ -64,12 +64,21 @@ const set_panel_content = (id) => {
         ? `<div id="building-info__year">Built in ${all_handmade_data[id].year}</div>`
         : ''
 
+    const links = all_handmade_data[id].links?.length
+        ? `<div id="building-info__links">
+            ${all_handmade_data[id].links.map(link => {
+                return `<a target="_blank" href="${link.url}">${link.description || link.url}</a>`
+        }).join('')}
+        </div>`
+        : ''
+
     const info_el = create_element_from_Html(`
         <div id="building-info">
             ${title}
             ${subtitle}
             ${info_other}
             ${year}
+            ${links}
         </div >
     `)
     details_el.appendChild(info_el)

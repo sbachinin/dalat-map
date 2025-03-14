@@ -222,6 +222,7 @@ export const bldgs_handmade_data = {
         google: 'https://maps.app.goo.gl/Y5nc4Bs9L6vjq8uu7',
         links: [
             {
+                description: 'A bunch of good pictures on VnExpress',
                 url: 'https://e.vnexpress.net/news/travel/places/da-lat-mansion-of-the-last-empress-of-vietnam-3898349.html'
             }
         ]
@@ -847,10 +848,10 @@ export const bldgs_handmade_data = {
     },
     "1303825522": {
         "title": "Former \nFranciscan \nmission",
-        "subtitle": "Former \"Vietnam's coolest ruin\", according to Rusty Compass",
+        "subtitle": `Former "Vietnam's coolest ruin", according to Rusty Compass. It is now completely abandoned, with only decaying walls remaining`,
         "links": [
             {
-                "description": "Rusty Compass' great video",
+                "description": "Rusty Compass' video",
                 "url": "https://www.youtube.com/watch?v=oTT2QylDoyk&t=18s"
             },
             {
