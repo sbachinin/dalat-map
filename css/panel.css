@@ -27,6 +27,11 @@
         overflow-x: scroll;
         overflow-y: hidden;
     }
+
+    #panel,
+    #panel * {
+        max-height: var(--thumbs-list-height-in-portrait);
+    }
 }
 
 @media (orientation: portrait) and (pointer: fine) {
