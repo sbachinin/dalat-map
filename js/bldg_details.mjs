@@ -5,13 +5,7 @@ import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import { coords_are_in_view, create_element_from_Html, div, get_image_url, get_map_center_shift, push_to_history } from './utils.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
-
-export const building_has_details = id => {
-    if (id === undefined) {
-        console.warn('Trying to get building details but id is undefined. Hmm')
-    }
-    return all_handmade_data[id]?.images?.length
-}
+import { does_building_have_details } from './does_building_have_details.mjs'
 
 
 const update_size_variables = () => {
@@ -101,7 +95,7 @@ export const try_open_building = async (
         return
     }
 
-    if (building_has_details(id)) {
+    if (does_building_have_details(id)) {
         set_panel_content(id)
         set_selected_feature_state(id)
         if (should_push_history) {

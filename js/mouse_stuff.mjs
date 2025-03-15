@@ -1,6 +1,6 @@
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
-import { building_has_details, try_open_building } from './bldg_details.mjs'
+import { try_open_building } from './bldg_details.mjs'
 import { french_polygons_layers } from './layers/french_polygons.mjs'
 import {
     dead_building_fill,
@@ -11,6 +11,7 @@ import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
 import { find_bldg_id_by_image_filename, is_mouse_device } from './utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
+import { does_building_have_details } from './does_building_have_details.mjs'
 
 
 
@@ -33,7 +34,7 @@ export const add_mouse_stuff = () => {
         const rfs = map.queryRenderedFeatures(e.point)
         const clickable_feat = rfs.find(f => potentially_clickable_layers.includes(f.layer.id))
         if (clickable_feat
-            && building_has_details(clickable_feat.id)
+            && does_building_have_details(clickable_feat.id)
         ) {
             try_open_building(clickable_feat.id, true, true)
         } else {
@@ -46,7 +47,7 @@ export const add_mouse_stuff = () => {
         map.on('mousemove', layer, (e) => {
             if (map.getZoom() > CURSOR_POINTER_MINZOOM
                 && e.features[0].layer.id !== french_buildings_titles.id
-                && building_has_details(e.features[0].id)
+                && does_building_have_details(e.features[0].id)
             ) {
                 map.getCanvas().style.cursor = 'pointer'
             }
@@ -54,7 +55,7 @@ export const add_mouse_stuff = () => {
 
         map.on('mouseleave', layer, (e) => {
             const rfs = map.queryRenderedFeatures(e.point)
-            if (!rfs.find(f => f.id && building_has_details(f.id))) {
+            if (!rfs.find(f => f.id && does_building_have_details(f.id))) {
                 map.getCanvas().style.cursor = ''
             }
         })
