@@ -3,6 +3,7 @@ import fs from 'fs'
 import { bldgs_handmade_data } from '../static/bldgs_handmade_data.mjs';
 import { land_areas_handmade_data } from '../static/handmade_data.mjs';
 import { does_building_have_details, does_building_have_title } from '../../js/does_building_have_details.mjs';
+import { compare_arrays_of_features } from './compare_arrays_of_features.mjs';
 
 const args = process.argv.slice(2); // Get command-line arguments, excluding "node" and script name
 
@@ -22,7 +23,10 @@ const write = (path, data) => {
 
 
 
-
+let initial_french_bldgs = [];
+if (fs.existsSync('../temp/french_building.geojson')) {
+    initial_french_bldgs = JSON.parse(fs.readFileSync('../temp/french_building.geojson', 'utf-8'));
+}
 
 
 
@@ -142,20 +146,23 @@ write(
         })
 );
 
+
+const new_french_bldgs = all_geojson.features
+    .filter(f => {
+        return f.properties['building:architecture'] === 'french_colonial';
+    })
+    .map(filter_feature_props)
+    .map(f => {
+        f.properties.has_details = does_building_have_details(f.id);
+        f.properties.has_title = does_building_have_title(f.id);
+        f.properties.is_important = !(bldgs_handmade_data[f.id]?.second_rate);
+        return f;
+    })
+    .sort((a, b) => b.id - a.id) // to get a more readable git diff
+
 write(
     '../temp/french_building.geojson',
-    all_geojson.features
-        .filter(f => {
-            return f.properties['building:architecture'] === 'french_colonial';
-        })
-        .map(filter_feature_props)
-        .map(f => {
-            f.properties.has_details = does_building_have_details(f.id);
-            f.properties.has_title = does_building_have_title(f.id);
-            f.properties.is_important = !(bldgs_handmade_data[f.id]?.second_rate);
-            return f;
-        })
-        .sort((a, b) => b.id - a.id) // to get a more readable git diff
+    new_french_bldgs
 );
 
 write(
@@ -239,3 +246,5 @@ execSync(`tippecanoe -e ../../dalat-map-tiles/tiles \
     ../static/dalat_bulk_geometry.geojson`,
     { stdio: 'inherit' } // Ensures output is shown in the terminal
 );
+
+compare_arrays_of_features(initial_french_bldgs, new_french_bldgs);
