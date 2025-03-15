@@ -126,14 +126,15 @@ const filter_feature_props = feature => ({
 
 write(
     '../temp/boring_building.geojson',
-    all_geojson.features.filter(feature => {
-        const props = feature.properties || {};
-        return (
-            props.building != null &&
-            props['building:architecture'] !== 'french_colonial' &&
-            feature.id !== 1275206355
-        );
-    })
+    all_geojson.features
+        .filter(feature => {
+            const props = feature.properties || {};
+            return (
+                props.building != null &&
+                props['building:architecture'] !== 'french_colonial' &&
+                feature.id !== 1275206355
+            );
+        })
         .map(filter_feature_props)
         .map(f => {
             f.properties.has_title = does_building_have_title(f.id)
@@ -143,15 +144,18 @@ write(
 
 write(
     '../temp/french_building.geojson',
-    all_geojson.features.filter(f => {
-        return f.properties['building:architecture'] === 'french_colonial';
-    }).map(filter_feature_props)
+    all_geojson.features
+        .filter(f => {
+            return f.properties['building:architecture'] === 'french_colonial';
+        })
+        .map(filter_feature_props)
         .map(f => {
             f.properties.has_details = does_building_have_details(f.id);
             f.properties.has_title = does_building_have_title(f.id);
             f.properties.is_important = !(bldgs_handmade_data[f.id]?.second_rate);
             return f;
         })
+        .sort((a, b) => b.id - a.id) // to get a more readable git diff
 );
 
 write(
