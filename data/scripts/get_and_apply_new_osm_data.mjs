@@ -4,6 +4,7 @@ import { bldgs_handmade_data } from '../static/bldgs_handmade_data.mjs';
 import { land_areas_handmade_data } from '../static/handmade_data.mjs';
 import { does_building_have_details, does_building_have_title } from '../../js/does_building_have_details.mjs';
 import { compare_arrays_of_features } from './compare_arrays_of_features.mjs';
+import { BORING_BLDGS_MINZOOM, MINOR_ROADS_MINZOOM } from '../../js/layers/constants.mjs';
 
 const args = process.argv.slice(2); // Get command-line arguments, excluding "node" and script name
 
@@ -269,14 +270,14 @@ const make_main_mbtiles = `
 `
 const make_minor_roads_mbtiles = `
     tippecanoe -o ${minor_roads_mbtiles_path} \
-    --minimum-zoom=14 --maximum-zoom=17 \
+    --minimum-zoom=${MINOR_ROADS_MINZOOM} --maximum-zoom=17 \
     --no-tile-compression -f \
     ../temp/minor_roads.geojson \
 `
 
 const make_boring_bldgs_mbtiles = `
     tippecanoe -o ${boring_building_mbtiles_path} \
-    --minimum-zoom=14 --maximum-zoom=17 \
+    --minimum-zoom=${BORING_BLDGS_MINZOOM} --maximum-zoom=17 \
     --no-tile-compression -f \
     ../temp/boring_building.geojson \
 `

@@ -1,4 +1,5 @@
 import { SOURCES_NAMES } from "../sources.mjs"
+import { MINOR_ROADS_MINZOOM } from "./constants.mjs"
 
 const road_color = "hsl(30, 0%, 59%)"
 const darker_tertiary_road_color = "hsl(30, 0%, 71%)"
@@ -86,7 +87,7 @@ const minorRoad = {
     "id": "Minor road",
     ...common_road_props,
     "source-layer": "minor_roads",
-    "minzoom": 14,
+    "minzoom": MINOR_ROADS_MINZOOM,
     "paint": {
         "line-color": minor_road_color,
         "line-width": [

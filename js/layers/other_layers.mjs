@@ -136,7 +136,7 @@ export const boring_building_fill = {
     "type": "fill",
     "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "boring_building",
-    "minzoom": 14,
+    "minzoom": c.BORING_BLDGS_MINZOOM,
     "paint": {
         "fill-color": [
             "case",
