@@ -119,13 +119,18 @@ all_geojson.features = all_geojson.features
 
 
 
-const filter_feature_props = feature => ({
-    type: feature.type,
-    geometry: feature.geometry,
-    id: feature.id,
-    properties: {}
-});
-
+const clear_feature_props = (feature, props_to_preserve = []) => {
+    const properties = {}
+    props_to_preserve.forEach(prop_name => {
+        properties[prop_name] = feature.properties[prop_name];
+    })
+    return {
+        type: feature.type,
+        geometry: feature.geometry,
+        id: feature.id,
+        properties
+    }
+}
 
 // SPLIT GEOJSON INTO LAYERS
 
@@ -140,7 +145,7 @@ write(
                 feature.id !== 1275206355
             );
         })
-        .map(filter_feature_props)
+        .map(f => clear_feature_props(f))
         .map(f => {
             f.properties.has_title = does_building_have_title(f.id)
             return f;
@@ -152,7 +157,7 @@ const new_french_bldgs = all_geojson.features
     .filter(f => {
         return f.properties['building:architecture'] === 'french_colonial';
     })
-    .map(filter_feature_props)
+    .map(f => clear_feature_props(f))
     .map(f => {
         f.properties.has_details = does_building_have_details(f.id);
         f.properties.has_title = does_building_have_title(f.id);
@@ -174,17 +179,21 @@ const major_road_highway_values = ['tertiary', "primary",
 
 write(
     '../temp/major_roads.geojson',
-    all_geojson.features.filter(f => {
-        return major_road_highway_values.includes(f.properties.highway);
-    })
+    all_geojson.features
+        .filter(f => {
+            return major_road_highway_values.includes(f.properties.highway);
+        })
+        .map(f => clear_feature_props(f, ['highway']))
 );
 
 write(
     '../temp/minor_roads.geojson',
-    all_geojson.features.filter(f => {
-        return f.properties.highway
-            && !major_road_highway_values.includes(f.properties.highway);
-    })
+    all_geojson.features
+        .filter(f => {
+            return f.properties.highway
+                && !major_road_highway_values.includes(f.properties.highway);
+        })
+        .map(f => clear_feature_props(f))
 );
 
 write(
@@ -220,21 +229,21 @@ write(
                     || f.properties.name == 'Hồ Đa Thiện'
                 )
         })
-        .map(filter_feature_props)
+        .map(f => clear_feature_props(f))
 );
 
 write(
     '../temp/river.geojson',
     all_geojson.features
         .filter(f => f.properties.waterway == 'stream')
-        .map(filter_feature_props)
+        .map(f => clear_feature_props(f))
 );
 
 write(
     '../temp/land_areas.geojson',
     all_geojson.features
         .filter(f => land_areas_handmade_data.hasOwnProperty(f.id.toString()))
-        .map(filter_feature_props)
+        .map(f => clear_feature_props(f))
         .map(f => {
             f.properties.area_type = land_areas_handmade_data[f.id.toString()].area_type || null;
             return f;
