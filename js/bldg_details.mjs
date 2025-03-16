@@ -47,11 +47,14 @@ const set_panel_content = (id) => {
                 </div>`
         : ''
 
-    const info_other = (!wikipedia && !google)
-        ? ''
-        : `<div id="building-info__other">
+    const flyto = `<div id="building-info__flyto">
+        <img title="Fly to this building" src="${get_image_url('flyto.svg', '')}">
+    </div>`
+
+    const info_other = `<div id="building-info__other">
             ${wikipedia}
             ${google}
+            ${flyto}
         </div>`
 
     const year = all_handmade_data[id].year
