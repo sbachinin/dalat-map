@@ -165,10 +165,24 @@ write(
     new_french_bldgs
 );
 
+// if feature.properties.highway is one of the following, it's a major road, otherwise minor
+const major_road_highway_values = ['tertiary', "primary",
+    "primary_link",
+    "secondary",
+    "trunk"]
+
 write(
-    '../temp/highway.geojson',
+    '../temp/major_roads.geojson',
     all_geojson.features.filter(f => {
-        return f.properties.highway != null;
+        return major_road_highway_values.includes(f.properties.highway);
+    })
+);
+
+write(
+    '../temp/minor_roads.geojson',
+    all_geojson.features.filter(f => {
+        return f.properties.highway
+            && !major_road_highway_values.includes(f.properties.highway);
     })
 );
 
@@ -229,7 +243,8 @@ write(
 import('./save_polygons_centroids.mjs')
 import('./save_some_features_ids.mjs')
 
-execSync(`tippecanoe -e ../../dalat-map-tiles/tiles \
+const make_main_mbtiles = `
+    tippecanoe -o ../../dalat-map-tiles/temp/main.mbtiles \
     --minimum-zoom=10 --maximum-zoom=17 \
     --no-tile-compression -f \
     ../temp/boring_building.geojson \
@@ -237,14 +252,32 @@ execSync(`tippecanoe -e ../../dalat-map-tiles/tiles \
     ../temp/lake.geojson \
     ../temp/river.geojson \
     ../temp/land_areas.geojson \
-    ../temp/highway.geojson \
+    ../temp/major_roads.geojson \
     ../temp/railway.geojson \
     ../temp/peaks.geojson \
     ../temp/transportation_other.geojson \
     ../temp/dalat_bulk_geometry_as_linestring.geojson \
     ../static/dead_buildings.geojson \
-    ../static/dalat_bulk_geometry.geojson`,
-    { stdio: 'inherit' } // Ensures output is shown in the terminal
-);
+    ../static/dalat_bulk_geometry.geojson
+`
+
+const make_minor_road_mbtiles = `
+    tippecanoe -o ../../dalat-map-tiles/temp/minor_roads.mbtiles \
+    --minimum-zoom=14 --maximum-zoom=17 \
+    --no-tile-compression -f \
+    ../temp/minor_roads.geojson
+`
+
+execSync(make_main_mbtiles, { stdio: 'inherit' });
+execSync(make_minor_road_mbtiles, { stdio: 'inherit' });
+
+execSync(`
+    tile-join -e ../../dalat-map-tiles/tiles \
+    --no-tile-compression -f \
+    ../../dalat-map-tiles/temp/main.mbtiles \
+    ../../dalat-map-tiles/temp/minor_roads.mbtiles
+`, { stdio: 'inherit' });
+
+execSync('rm -f ../../dalat-map-tiles/temp/*', { stdio: 'inherit' });
 
 compare_arrays_of_features(initial_french_bldgs, new_french_bldgs);

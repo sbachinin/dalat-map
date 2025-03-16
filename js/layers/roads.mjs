@@ -7,7 +7,6 @@ const minor_road_color = "hsl(30, 0%, 73%)"
 const common_road_props = {
     "type": "line",
     "source": SOURCES_NAMES.DALAT_TILES,
-    "source-layer": "highway",
     "layout": {
         "line-cap": "round",
         "line-join": "round",
@@ -18,6 +17,7 @@ const common_road_props = {
 const tertiaryRoad = {
     id: 'Tertiary road',
     ...common_road_props,
+    "source-layer": "major_roads",
     "minzoom": 10,
     "paint": {
 
@@ -38,6 +38,7 @@ const tertiaryRoad = {
 const majorRoadOutline = {
     "id": "Major road outline",
     ...common_road_props,
+    "source-layer": "major_roads",
     "minzoom": 10,
     "paint": {
         "line-color": road_color,
@@ -51,19 +52,13 @@ const majorRoadOutline = {
             20, 12
         ]
     },
-    "filter": [
-        "in",
-        "highway",
-        "primary",
-        "primary_link",
-        "secondary",
-        "trunk"
-    ]
+    "filter": ["!in", "highway", "tertiary"]
 }
 
 const majorRoad = {
     "id": "Major road",
     ...common_road_props,
+    "source-layer": "major_roads",
     "minzoom": 12.8,
     "paint": {
         "line-color": [
@@ -84,19 +79,13 @@ const majorRoad = {
             20, 6
         ]
     },
-    "filter": [
-        "in",
-        "highway",
-        "primary",
-        "primary_link",
-        "secondary",
-        "trunk"
-    ]
+    "filter": ["!in", "highway", "tertiary"]
 }
 
 const minorRoad = {
     "id": "Minor road",
     ...common_road_props,
+    "source-layer": "minor_roads",
     "minzoom": 14,
     "paint": {
         "line-color": minor_road_color,
@@ -108,38 +97,7 @@ const minorRoad = {
             20, 2
         ],
         'line-blur': 1, 
-    },
-    "filter": [
-        "all",
-        [
-            "any",
-            ["!has", "brunnel"],
-            [
-                "in",
-                "brunnel",
-                "bridge",
-                "ford"
-            ]
-        ],
-        [
-            "any",
-            ["!has", "class"],
-            [
-                "in",
-                "class",
-                "bus_guideway",
-                "busway",
-                "courtyard",
-                "minor",
-                "path_construction",
-                "raceway",
-                "raceway_construction",
-                "service",
-                "storage_tank",
-                "track"
-            ]
-        ]
-    ]
+    }
 }
 
 export default [
