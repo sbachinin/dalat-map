@@ -51,10 +51,15 @@ const set_panel_content = (id) => {
         <img title="Fly to this building" src="${get_image_url('flyto.svg', '')}">
     </div>`
 
+    const copylink = `<div id="building-info__copylink">
+        <img title="Copy link to this building" src="${get_image_url('copylink.svg', '')}">
+    </div>`
+
     const info_other = `<div id="building-info__other">
             ${wikipedia}
             ${google}
             ${flyto}
+            ${copylink}
         </div>`
 
     const year = all_handmade_data[id].year
