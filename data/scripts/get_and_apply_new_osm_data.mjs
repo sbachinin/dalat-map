@@ -243,11 +243,18 @@ write(
 import('./save_polygons_centroids.mjs')
 import('./save_some_features_ids.mjs')
 
+
+
+
+const temp_tiles_path = `../../dalat-map-tiles/temp`
+const main_mbtiles_path = `${temp_tiles_path}/main.mbtiles`
+const minor_roads_mbtiles_path = `${temp_tiles_path}/minzoom_14.mbtiles`
+const boring_building_mbtiles_path = `${temp_tiles_path}/boring_buildings.mbtiles`
+
 const make_main_mbtiles = `
-    tippecanoe -o ../../dalat-map-tiles/temp/main.mbtiles \
+    tippecanoe -o ${main_mbtiles_path} \
     --minimum-zoom=10 --maximum-zoom=17 \
     --no-tile-compression -f \
-    ../temp/boring_building.geojson \
     ../temp/french_building.geojson \
     ../temp/lake.geojson \
     ../temp/river.geojson \
@@ -260,24 +267,32 @@ const make_main_mbtiles = `
     ../static/dead_buildings.geojson \
     ../static/dalat_bulk_geometry.geojson
 `
-
-const make_minor_road_mbtiles = `
-    tippecanoe -o ../../dalat-map-tiles/temp/minor_roads.mbtiles \
+const make_minor_roads_mbtiles = `
+    tippecanoe -o ${minor_roads_mbtiles_path} \
     --minimum-zoom=14 --maximum-zoom=17 \
     --no-tile-compression -f \
-    ../temp/minor_roads.geojson
+    ../temp/minor_roads.geojson \
+`
+
+const make_boring_bldgs_mbtiles = `
+    tippecanoe -o ${boring_building_mbtiles_path} \
+    --minimum-zoom=14 --maximum-zoom=17 \
+    --no-tile-compression -f \
+    ../temp/boring_building.geojson \
 `
 
 execSync(make_main_mbtiles, { stdio: 'inherit' });
-execSync(make_minor_road_mbtiles, { stdio: 'inherit' });
+execSync(make_minor_roads_mbtiles, { stdio: 'inherit' });
+execSync(make_boring_bldgs_mbtiles, { stdio: 'inherit' });
 
 execSync(`
     tile-join -e ../../dalat-map-tiles/tiles \
     --no-tile-compression -f \
-    ../../dalat-map-tiles/temp/main.mbtiles \
-    ../../dalat-map-tiles/temp/minor_roads.mbtiles
+    ${main_mbtiles_path} \
+    ${minor_roads_mbtiles_path} \
+    ${boring_building_mbtiles_path}
 `, { stdio: 'inherit' });
 
-execSync('rm -f ../../dalat-map-tiles/temp/*', { stdio: 'inherit' });
+execSync(`rm -f ${temp_tiles_path}/*`, { stdio: 'inherit' });
 
 compare_arrays_of_features(initial_french_bldgs, new_french_bldgs);
