@@ -119,11 +119,15 @@ export const try_open_building = async (
         })
 }
 
-export const fly_to_building = (id) => {
+export const fly_to_building = (
+    id,
+    { force = false } = {}
+) => {
     const feature_center_arr = centroids_etc[id].centroid
     const feature_screen_xy = window.dalatmap.project(feature_center_arr)
     const map_zoom = window.dalatmap.getZoom()
-    if (!coords_are_in_view(feature_screen_xy)
+    if (force
+        || !coords_are_in_view(feature_screen_xy)
         || map_zoom < 15.5
     ) {
         window.dalatmap.easeTo({

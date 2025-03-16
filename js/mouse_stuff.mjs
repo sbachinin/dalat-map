@@ -98,7 +98,7 @@ export const add_mouse_stuff = () => {
             lightbox?.pswp?.close()
 
         } else if (e.target.closest('#building-info__flyto')) {
-            fly_to_building(selected_building_id)
+            fly_to_building(selected_building_id, { force: true })
         }
     })
 
