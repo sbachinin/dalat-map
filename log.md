@@ -27,14 +27,19 @@ IMPORTANT
 MPORTANT
 
 
-google link, wikipedia, "fly to bldg", copy link,
-      	bldg name, ?suggest an edit
+"fly to bldg", copy link,
+?suggest an edit
 	
+
 make dinh1 and the likes clickable, showing justbuttons
+
+SORT OUT HOW TO SHOW 1-IMG DETAILS
+
 
 ? make non-french clickable, showing at least wiki and ggl
 	there are many places in wikipedia, linked from here:
 		https://vi.wikipedia.org/wiki/L%C4%83ng_Nguy%E1%BB%85n_H%E1%BB%AFu_H%C3%A0o
+
 
 indicate better the geometry that was just chosen
 
@@ -42,43 +47,6 @@ indicate better the geometry that was just chosen
 
 selected dead bldg style
 
-
-extra ugly blinking scrollbar in ff, landscape desktop (when entering the panel with cursor)
-
-
-ideally a speed of a flight to bldg should depend on the distance (screen space wise)
-
-
-if panel was closed, page refresh, shouldn't panel still be closed?
-
-
-
-try handle pswp close on desktop, providing fadeout
-	but only if there are pswp options to disable closing func
-
-
-
-fadein lazy loader
-	because it blinks badly sometimes
-
-
-easeTo on bldg select is ugly because of loading tiles
-
-
-sometimes laggy panel reveal from github
-	already took measures:
-		panel is initialized on 'idle',
-			need to TEST the effect later from github
-	Other possible improvements:
-		request less thumbs
-		|| request them only after panel finished expanding
-
-
-
-
-
-low-zoom tile size:
-    ensure no roads and no secondary buildings, check size diff
 
 
 MAKE BLDGS MORE EASILY CLICKABLE AT LOW Z
@@ -96,34 +64,8 @@ PRIORITY OF TITLES
             3) try to create another layer/source with selected title & title+square
 
 
-sort out highways
-    remove unused props from json
 
 
-
-
-OTHER PANEL CONTENT
-	are buildings now conveniently linkable?
-
-
-	Some bldgs need at least some info:
-		google link or wikipedia link
-			bao dai 1, 3
-	
-
-
-
-
-PANEL EXPAND EASING CURVE - more dynamic
-    how this curve plays with map.easeTo?
-    after-drag: quick from start, spring-like
-	any 3rd party solutions for panels?
-    
-
-
-
-
-SORT OUT HOW TO SHOW 1-IMG DETAILS
 
 
 
@@ -168,13 +110,11 @@ PHOTOS WORKFLOW
 ? one build script
 
 
-is ml version fixed?
-
-
 can i release it as modules?
 
 
 
+user location
 
 
 
@@ -201,11 +141,52 @@ PERF
 		comments
 
 
+Add buildings links to handmade data
 
 
-user location
 
-swipe down - close slider (my intuitive gesture)
+
+extra ugly blinking scrollbar in ff, landscape desktop (when entering the panel with cursor)
+
+
+ideally a speed of a flight to bldg should depend on the distance (screen space wise)
+
+
+if panel was closed, page refresh, shouldn't panel still be closed?
+
+
+
+try handle pswp close on desktop, providing fadeout
+	but only if there are pswp options to disable closing func
+
+
+
+fadein lazy loader
+	because it blinks badly sometimes
+
+
+easeTo on bldg select is ugly because of loading tiles
+
+
+sometimes laggy panel reveal from github
+	already took measures:
+		panel is initialized on 'idle',
+			need to TEST the effect later from github
+	Other possible improvements:
+		request less thumbs
+		|| request them only after panel finished expanding
+
+
+
+
+
+
+
+Add a chore that validates the links in handmade data, makes sure they ar not broken
+
+
+show in which language is wikipedia link
+
 
 On hover highlights thumbs, draw a line to a bldg polygon if it's visible
 
