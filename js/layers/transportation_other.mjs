@@ -61,7 +61,7 @@ const cable_car_layers = [
 
 const railway_layers = [
     {
-        "id": "railway",
+        "id": "Railway line",
         "type": "line",
         "source": SOURCES_NAMES.DALAT_TILES,
         "source-layer": "railway",

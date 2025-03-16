@@ -204,9 +204,11 @@ write(
 
 write(
     '../temp/railway.geojson',
-    all_geojson.features.filter(f => {
+    all_geojson.features
+    .filter(f => {
         return f.properties.railway == 'rail' || f.properties.railway == 'station';
     })
+    .map(f => clear_feature_props(f, ['railway']))
 );
 
 write(
