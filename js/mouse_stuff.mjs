@@ -1,6 +1,6 @@
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
-import { try_open_building } from './bldg_details.mjs'
+import { fly_to_building, try_open_building } from './bldg_details.mjs'
 import { french_polygons_layers } from './layers/french_polygons.mjs'
 import {
     dead_building_fill,
@@ -12,6 +12,7 @@ import { find_bldg_id_by_image_filename, is_mouse_device } from './utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { does_building_have_details } from './does_building_have_details.mjs'
+import { selected_building_id } from './select_building.mjs'
 
 
 
@@ -77,6 +78,7 @@ export const add_mouse_stuff = () => {
 
     // On click on any .bldg-link (in slider or thumbs-list), go to a bldg that owns the image
     document.body.addEventListener('click', e => {
+
         if (e.target.closest('.bldg-link')) {
             const img_src = e.target.getAttribute('img-src')
             if (!img_src) {
@@ -94,6 +96,9 @@ export const add_mouse_stuff = () => {
                 open_building_delay
             )
             lightbox?.pswp?.close()
+
+        } else if (e.target.closest('#building-info__flyto')) {
+            fly_to_building(selected_building_id)
         }
     })
 

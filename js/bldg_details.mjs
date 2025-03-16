@@ -119,7 +119,7 @@ export const try_open_building = async (
         })
 }
 
-const fly_to_building = (id) => {
+export const fly_to_building = (id) => {
     const feature_center_arr = centroids_etc[id].centroid
     const feature_screen_xy = window.dalatmap.project(feature_center_arr)
     const map_zoom = window.dalatmap.getZoom()
