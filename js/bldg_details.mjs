@@ -115,25 +115,27 @@ export const try_open_building = async (
         'new breadth was set',
         'fly to newly opened building',
         () => {
-
-            if (!should_try_to_fly) return
-            const feature_center_arr = centroids_etc[id].centroid
-            const feature_screen_xy = window.dalatmap.project(feature_center_arr)
-            const map_zoom = window.dalatmap.getZoom()
-            if (!coords_are_in_view(feature_screen_xy)
-                || map_zoom < 15.5
-            ) {
-                window.dalatmap.easeTo({
-                    /* I used to get center from get_center_for_bldg_with_offset(id)
-                     and avoid passing offset
-                     but in case of changing zooming this smart offset value was wrong
-                     for it was calculated for initial zoom level
-                    */
-                    center: centroids_etc[id]?.centroid,
-                    offset: get_map_center_shift(),
-                    zoom: Math.max(15.5, map_zoom),
-                    duration: 1600
-                })
-            }
+            if (should_try_to_fly) fly_to_building(id)
         })
+}
+
+const fly_to_building = (id) => {
+    const feature_center_arr = centroids_etc[id].centroid
+    const feature_screen_xy = window.dalatmap.project(feature_center_arr)
+    const map_zoom = window.dalatmap.getZoom()
+    if (!coords_are_in_view(feature_screen_xy)
+        || map_zoom < 15.5
+    ) {
+        window.dalatmap.easeTo({
+            /* I used to get center from get_center_for_bldg_with_offset(id)
+             and avoid passing offset
+             but in case of changing zooming this smart offset value was wrong
+             for it was calculated for initial zoom level
+            */
+            center: centroids_etc[id]?.centroid,
+            offset: get_map_center_shift(),
+            zoom: Math.max(15.5, map_zoom),
+            duration: 1600
+        })
+    }
 }
