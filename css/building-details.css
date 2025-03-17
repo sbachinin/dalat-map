@@ -124,4 +124,6 @@
 #building-info__copylink img {
     height: 33px;
     cursor: pointer;
+    padding: 5px;
+    box-sizing: border-box;
 }

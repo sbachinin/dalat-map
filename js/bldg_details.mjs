@@ -3,7 +3,15 @@ import { all_handmade_data } from '../data/static/handmade_data.mjs'
 import { set_selected_feature_state, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
-import { coords_are_in_view, create_element_from_Html, div, get_image_url, get_map_center_shift, push_to_history } from './utils.mjs'
+import {
+    coords_are_in_view,
+    create_element_from_Html,
+    div,
+    get_image_url,
+    get_map_center_shift,
+    is_mobile_device,
+    push_to_history
+} from './utils.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 import { does_building_have_details } from './does_building_have_details.mjs'
 
@@ -51,16 +59,26 @@ const set_panel_content = (id) => {
         <img title="Fly to this building" src="${get_image_url('flyto.svg', '')}">
     </div>`
 
-    const copylink = `<div id="building-info__copylink">
-        <img title="Copy link to this building" src="${get_image_url('copylink.svg', '')}">
-        <div id="copylink-message"></div>
-    </div>`
+
+
+
+    let copylink_or_share = ''
+    if (is_mobile_device && navigator.share) {
+
+    } else if (!is_mobile_device) {
+
+        copylink_or_share = `<div id="building-info__copylink">
+            <img title="Copy link to this building" src="${get_image_url('copylink.svg', '')}">
+            <div id="copylink-message"></div>
+        </div>`
+    }
+
 
     const info_other = `<div id="building-info__other">
             ${wikipedia}
             ${google}
             ${flyto}
-            ${copylink}
+            ${copylink_or_share}
         </div>`
 
     const year = all_handmade_data[id].year
@@ -70,7 +88,7 @@ const set_panel_content = (id) => {
     const links = all_handmade_data[id].links?.length
         ? `<div id="building-info__links">
             ${all_handmade_data[id].links.map(link => {
-                return `<a target="_blank" href="${link.url}">${link.description || link.url}</a>`
+            return `<a target="_blank" href="${link.url}">${link.description || link.url}</a>`
         }).join('')}
         </div>`
         : ''
