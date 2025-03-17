@@ -26,8 +26,12 @@
     }
 
     #building-info__subtitle {
-        /* flex-shrink: 1; */ /* this made sense but the element shrank anyway, idkw */
-        min-height: 0; /* this supposedly makes it shrink, squeezing to the limited height of parent */
+        /* this made sense but the element shrank anyway, idkw */
+        /* flex-shrink: 1; */
+
+        /* this supposedly makes it shrink, squeezing to the limited height of parent */
+        min-height: 0;
+        
         overflow: auto;
     }
 }

@@ -8,11 +8,17 @@ import {
 } from './dead_buildings.mjs'
 import { french_buildings_titles } from './layers/titles.mjs'
 import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
-import { find_bldg_id_by_image_filename, is_mouse_device } from './utils.mjs'
+import {
+    find_bldg_id_by_image_filename,
+    get_image_url,
+    is_mouse_device
+} from './utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { does_building_have_details } from './does_building_have_details.mjs'
-import { selected_building_id } from './select_building.mjs'
+import { get_link_to_selected_bldg, selected_building_id } from './select_building.mjs'
+import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
+import { write_to_debug_el } from './DEV/debug_el.mjs'
 
 
 
@@ -77,7 +83,7 @@ export const add_mouse_stuff = () => {
 
 
     // On click on any .bldg-link (in slider or thumbs-list), go to a bldg that owns the image
-    document.body.addEventListener('click', e => {
+    document.body.addEventListener('click', async (e) => {
 
         if (e.target.closest('.bldg-link')) {
             const img_src = e.target.getAttribute('img-src')
@@ -98,14 +104,16 @@ export const add_mouse_stuff = () => {
             lightbox?.pswp?.close()
 
 
+
         } else if (e.target.closest('#building-info__flyto')) {
             fly_to_building(selected_building_id, { force: true })
+
 
 
         } else if (e.target.closest('#building-info__copylink')) {
             const message_el = document.querySelector('#copylink-message')
             navigator.clipboard.writeText(
-                window.location.origin + `/?id=` + selected_building_id)
+                get_link_to_selected_bldg())
                 .then(() => {
                     message_el.innerText = 'Link copied!'
                     message_el.style.display = 'block';
@@ -120,6 +128,42 @@ export const add_mouse_stuff = () => {
                         message_el.style.display = 'none';
                     }, 2000);
                 });
+
+
+
+        } else if (e.target.closest('#building-info__share')) {
+
+            const bldg_data = bldgs_handmade_data[selected_building_id]
+
+            const files = []
+            const first_img_name = bldg_data?.images?.[0]
+            if (first_img_name) {
+                const response = await fetch(get_image_url(first_img_name, 'large'));
+                const blob = await response.blob();
+                const file = new File([blob], 'image.jpg', { type: blob.type });
+                files.push(file)
+            }
+
+            let text = 'Map of French architecture of Da Lat'
+            if (bldg_data?.title) {
+                text += ` - ${bldg_data?.title}`
+            }
+
+            try {
+                await navigator.share({
+                    title: 'Map of French architecture of Da Lat',
+                    url: get_link_to_selected_bldg(),
+                    text,
+                    files
+                });
+            } catch (error) {
+                // Could show a "Fail" popup message or something BUT...
+                // this catch is executed not only when smth bad happens
+                // but also when you change your mind and close the share dialog
+                // In such case no feedback is necessary
+                // I don't want to investigate different kinds of failure
+            }
+
         }
     })
 

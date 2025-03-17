@@ -26,3 +26,7 @@ export const set_selected_feature_state = newid => {
         )
     }
 }
+
+export const get_link_to_selected_bldg = () => {
+    return window.location.origin + `/?id=` + selected_building_id
+}
