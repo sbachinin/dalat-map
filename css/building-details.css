@@ -108,6 +108,7 @@
 #building-info__copylink {
     position: relative;
 }
+
 #building-info__copylink #copylink-message {
     position: absolute;
     top: 100%;
@@ -126,4 +127,9 @@
     cursor: pointer;
     padding: 5px;
     box-sizing: border-box;
+}
+
+#building-info__share img {
+    height: 27px;
+    padding: 2px;
 }
