@@ -9,5 +9,8 @@ dalat-map-images
 dalat-map-fonts
 myenv
 node_modules
+cert.pem
+key.pem
+
 
 !data/temp/french_building.geojson

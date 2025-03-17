@@ -97,8 +97,29 @@ export const add_mouse_stuff = () => {
             )
             lightbox?.pswp?.close()
 
+
         } else if (e.target.closest('#building-info__flyto')) {
             fly_to_building(selected_building_id, { force: true })
+
+
+        } else if (e.target.closest('#building-info__copylink')) {
+            const message_el = document.querySelector('#copylink-message')
+            navigator.clipboard.writeText(
+                window.location.origin + `/?id=` + selected_building_id)
+                .then(() => {
+                    message_el.innerText = 'Link copied!'
+                    message_el.style.display = 'block';
+                    setTimeout(() => {
+                        message_el.style.display = 'none';
+                    }, 1200);
+                })
+                .catch(err => {
+                    message_el.innerText = 'Failed to copy link!'
+                    message_el.style.display = 'block';
+                    setTimeout(() => {
+                        message_el.style.display = 'none';
+                    }, 2000);
+                });
         }
     })
 

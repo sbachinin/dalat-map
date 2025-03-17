@@ -67,9 +67,7 @@ const set_panel_content = (id) => {
         copylink_or_share = `<div id="building-info__share">
             <img title="Share" src="${get_image_url('share.svg', '')}">
         </div>`
-
-    } else if (!is_mobile_device) {
-
+    } else if (!is_mobile_device && navigator.clipboard?.writeText) {
         copylink_or_share = `<div id="building-info__copylink">
             <img title="Copy link to this building" src="${get_image_url('copylink.svg', '')}">
             <div id="copylink-message"></div>
