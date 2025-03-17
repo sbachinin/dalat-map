@@ -53,6 +53,7 @@ const set_panel_content = (id) => {
 
     const copylink = `<div id="building-info__copylink">
         <img title="Copy link to this building" src="${get_image_url('copylink.svg', '')}">
+        <div id="copylink-message"></div>
     </div>`
 
     const info_other = `<div id="building-info__other">
