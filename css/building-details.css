@@ -31,7 +31,7 @@
 
         /* this supposedly makes it shrink, squeezing to the limited height of parent */
         min-height: 0;
-        
+
         overflow: auto;
     }
 }
@@ -105,11 +105,20 @@
     font-size: 14px;
 }
 
+#building-info__flyto {
+    cursor: pointer;
+    transition: opacity ease-out 0.7s;
+}
+
 #building-info__flyto svg {
     height: 26px;
     width: 26px;
     padding: 3px;
-    cursor: pointer;
+}
+
+#building-info__flyto.disabled {
+    opacity: 0.25;
+    cursor: auto;
 }
 
 #building-info__copylink {

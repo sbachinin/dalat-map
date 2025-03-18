@@ -22,7 +22,7 @@ body {
     transition: none !important;
 }
 
-#map {
+#maplibregl-map {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -31,7 +31,7 @@ body {
     transition: opacity ease-out 0.4s;
 }
 
-#map.hidden {
+#maplibregl-map.hidden {
     opacity: 0;
 }
 

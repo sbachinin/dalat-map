@@ -7,9 +7,11 @@ import * as svg_icons from './svg_icons.mjs'
 import {
     coords_are_in_view,
     create_element_from_Html,
+    debounce,
     div,
     get_image_url,
     get_map_center_shift,
+    get_visible_map_center_px,
     is_mobile_device,
     push_to_history
 } from './utils.mjs'
@@ -112,6 +114,7 @@ const set_panel_content = (id) => {
         element: details_el,
         type: PANEL_CONTENT_TYPES.BUILDING
     })
+    update_flyto_button()
 }
 
 export const try_open_building = async (
@@ -164,3 +167,25 @@ export const fly_to_building = (
         })
     }
 }
+
+
+export const update_flyto_button = debounce(() => {
+    const but_el = document.querySelector('#building-info__flyto')
+    if (!but_el) return
+
+    const cntr = get_visible_map_center_px()
+
+    const selected_bldg_in_center = window.dalatmap
+        .queryRenderedFeatures([
+            [cntr[0] - 15, cntr[1] - 15],
+            [cntr[0] + 15, cntr[1] + 15]
+        ])
+        .find(feat => {
+            return (feat.id === Number(selected_building_id))
+        })
+    if (selected_bldg_in_center) {
+        but_el.classList.add('disabled')
+    } else {
+        but_el.classList.remove('disabled')
+    }
+}, 500)

@@ -3,7 +3,7 @@ import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
-import { try_open_building } from './bldg_details.mjs'
+import { try_open_building, update_flyto_button } from './bldg_details.mjs'
 import { get_center_for_bldg_with_offset } from './utils.mjs'
 import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
@@ -26,7 +26,7 @@ const zoom = (initial_bldg_id !== null && 15.5)
 const map = window.dalatmap = DEV_skip_map_rendering
     ? DEV_map_mock
     : new maplibregl.Map({
-        container: 'map',
+        container: 'maplibregl-map',
         style,
         zoom,
         dragRotate: false,
@@ -57,7 +57,7 @@ map.once('idle', async () => {
             : get_center_for_bldg_with_offset(initial_bldg_id)
 
         map.setCenter(center)
-        document.querySelector('#map').classList.remove('hidden')
+        document.querySelector('#maplibregl-map').classList.remove('hidden')
     })
 
     if (DEV_should_open_panel) {
@@ -79,6 +79,8 @@ if (DEV_show_debug_el) {
 }
 
 map.on('move', () => {
+    update_flyto_button()
+
     if (window.innerWidth < 768) {
         document.querySelector(`#custom-attribution details`).removeAttribute('open')
     }

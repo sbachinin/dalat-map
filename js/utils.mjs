@@ -184,6 +184,13 @@ export function get_center_for_bldg_with_offset(id) {
     return [center_x, center_y]
 }
 
+export function get_visible_map_center_px() {
+    const map_el = document.querySelector('#maplibregl-map')
+    const center_x = map_el.clientWidth / 2 + get_map_center_shift()[0]
+    const center_y = map_el.clientHeight / 2 + get_map_center_shift()[1]
+    return [center_x, center_y]
+}
+
 export const find_bldg_id_by_image_filename = (filename) => {
     const [bldg_id] = Object.entries(bldgs_handmade_data).find(([feat_id, feat]) => {
         return feat.images?.includes(filename)

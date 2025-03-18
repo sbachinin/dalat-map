@@ -1,10 +1,10 @@
-document.querySelector('#map').addEventListener("dragover", e => {
+document.querySelector('#maplibregl-map').addEventListener("dragover", e => {
     e.preventDefault()
 });
 
 localStorage.setItem("ids_to_imgs", localStorage.getItem("ids_to_imgs") || '{}')
 
-document.querySelector('#map').addEventListener("drop", e => {
+document.querySelector('#maplibregl-map').addEventListener("drop", e => {
     e.preventDefault()
     const file = e.dataTransfer.files[0]
     if (!file) { console.warn('no file dropped'); return }

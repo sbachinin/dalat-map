@@ -12,7 +12,7 @@
     }
 }
 
-.maplibregl-map .maplibregl-ctrl-attrib {
+#maplibregl-map .maplibregl-ctrl-attrib {
     visibility: hidden;
     pointer-events: none;
 }
