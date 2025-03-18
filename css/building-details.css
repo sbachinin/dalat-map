@@ -55,7 +55,7 @@
 }
 
 #building-info>*:last-child {
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 #building-info__title {
@@ -91,10 +91,12 @@
 
 #building-info__wikipedia img {
     height: 26px;
+    width: 34px;
 }
 
-#building-info__google img {
+#building-info__google svg {
     height: 30px;
+    width: 30px;
 }
 
 #building-info__links a {
@@ -103,8 +105,9 @@
     font-size: 14px;
 }
 
-#building-info__flyto img {
+#building-info__flyto svg {
     height: 26px;
+    width: 26px;
     padding: 3px;
     cursor: pointer;
 }
@@ -127,14 +130,16 @@
     display: none;
 }
 
-#building-info__copylink img {
+#building-info__copylink svg {
     height: 33px;
+    width: 30px;
     cursor: pointer;
     padding: 5px;
     box-sizing: border-box;
 }
 
-#building-info__share img {
+#building-info__share svg {
     height: 27px;
+    width: 27px;
     padding: 2px;
 }

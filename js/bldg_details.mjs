@@ -3,6 +3,7 @@ import { all_handmade_data } from '../data/static/handmade_data.mjs'
 import { set_selected_feature_state, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
+import * as svg_icons from './svg_icons.mjs'
 import {
     coords_are_in_view,
     create_element_from_Html,
@@ -50,13 +51,13 @@ const set_panel_content = (id) => {
     const google = all_handmade_data[id].google
         ? `<div id="building-info__google">
                     <a target="_blank" href="${all_handmade_data[id].google}">
-                        <img src="${get_image_url('gmaps.svg', '')}">
+                        ${svg_icons.gmaps}
                     </a>
                 </div>`
         : ''
 
-    const flyto = `<div id="building-info__flyto">
-        <img title="Fly to this building" src="${get_image_url('flyto.svg', '')}">
+    const flyto = `<div id="building-info__flyto" title="Fly to this building">
+        ${svg_icons.flyto}
     </div>`
 
 
@@ -64,12 +65,12 @@ const set_panel_content = (id) => {
 
     let copylink_or_share = ''
     if (is_mobile_device && navigator.share) {
-        copylink_or_share = `<div id="building-info__share">
-            <img title="Share" src="${get_image_url('share.svg', '')}">
+        copylink_or_share = `<div id="building-info__share" title="Share">
+            ${svg_icons.share}
         </div>`
     } else if (!is_mobile_device && navigator.clipboard?.writeText) {
-        copylink_or_share = `<div id="building-info__copylink">
-            <img title="Copy link to this building" src="${get_image_url('copylink.svg', '')}">
+        copylink_or_share = `<div id="building-info__copylink"  title="Copy link to this building" >
+            ${svg_icons.copylink}
             <div id="copylink-message"></div>
         </div>`
     }
