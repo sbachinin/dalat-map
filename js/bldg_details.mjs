@@ -143,6 +143,8 @@ export const try_open_building = async (
         })
 }
 
+const distance2d = (x1, y1, x2, y2) => Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
+
 export const fly_to_building = (
     id,
     { force = false } = {}
@@ -154,6 +156,14 @@ export const fly_to_building = (
         || !coords_are_in_view(feature_screen_xy)
         || map_zoom < 15.5
     ) {
+        const map_el = document.querySelector('#maplibregl-map')
+        const distance_from_center = distance2d(
+            feature_screen_xy.x,
+            feature_screen_xy.y,
+            map_el.offsetWidth / 2,
+            map_el.offsetHeight / 2
+        )
+
         window.dalatmap.easeTo({
             /* I used to get center from get_center_for_bldg_with_offset(id)
              and avoid passing offset
@@ -163,7 +173,7 @@ export const fly_to_building = (
             center: centroids_etc[id]?.centroid,
             offset: get_map_center_shift(),
             zoom: Math.max(15.5, map_zoom),
-            duration: 1600
+            duration: 500 + distance_from_center
         })
     }
 }
