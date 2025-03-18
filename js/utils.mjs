@@ -204,3 +204,55 @@ export const observe_dom_mutations = (selector, cb) => {
 }
 
 export const wait_1frame = () => new Promise(resolve => requestAnimationFrame(resolve))
+
+
+export const extract_extension_from_src = (src) => {
+    const url = new URL(src);
+    const pathname = url.pathname;
+    return pathname.substring(pathname.lastIndexOf('.') + 1);
+}
+
+export function get_image_file_from_element(img_element, filename, quality = 0.9) {
+    return new Promise((resolve, reject) => {
+        try {
+            if (!img_element.complete) {
+                img_element.onload = () => create_file_from_image();
+                img_element.onerror = () => reject(new Error("Image failed to load"));
+            } else {
+                create_file_from_image();
+            }
+
+            function create_file_from_image() {
+                const canvas = document.createElement('canvas');
+                canvas.width = img_element.naturalWidth;
+                canvas.height = img_element.naturalHeight;
+
+                const extension = extract_extension_from_src(img_element.src);
+
+                filename = filename || 'image.' + extension
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img_element, 0, 0);
+
+                let mime_type = 'image/jpeg';
+                switch (extension) {
+                    case 'png': mime_type = 'image/png'; break;
+                    case 'gif': mime_type = 'image/gif'; break;
+                    case 'webp': mime_type = 'image/webp'; break;
+                }
+
+                canvas.toBlob((blob) => {
+                    if (!blob) {
+                        reject(new Error("Canvas to Blob conversion failed"));
+                        return;
+                    }
+
+                    const file = new File([blob], filename, { type: mime_type });
+                    resolve(file);
+                }, mime_type, quality);
+            }
+        } catch (error) {
+            reject(error);
+        }
+    });
+}

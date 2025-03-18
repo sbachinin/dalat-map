@@ -10,7 +10,7 @@ import { french_buildings_titles } from './layers/titles.mjs'
 import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
 import {
     find_bldg_id_by_image_filename,
-    get_image_url,
+    get_image_file_from_element,
     is_mouse_device
 } from './utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
@@ -18,7 +18,6 @@ import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { does_building_have_details } from './does_building_have_details.mjs'
 import { get_link_to_selected_bldg, selected_building_id } from './select_building.mjs'
 import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
-import { write_to_debug_el } from './DEV/debug_el.mjs'
 
 
 
@@ -136,12 +135,17 @@ export const add_mouse_stuff = () => {
             const bldg_data = bldgs_handmade_data[selected_building_id]
 
             const files = []
-            const first_img_name = bldg_data?.images?.[0]
-            if (first_img_name) {
-                const response = await fetch(get_image_url(first_img_name, 'large'));
-                const blob = await response.blob();
-                const file = new File([blob], 'image.jpg', { type: blob.type });
-                files.push(file)
+
+            const img = document.querySelector('#building-details #panel-thumbs-list .slide-wrapper:first-child img');
+
+            if (img) {
+                try {
+                    const file = await get_image_file_from_element(img)
+                    files.push(file)
+                } catch (error) {
+                    // TODO (Think. Basically if file fails, it doesn't prevent me from sharing other stuff)
+                    console.warn('Failed to get image file', error)
+                }
             }
 
             let text = 'Map of French architecture of Da Lat'
