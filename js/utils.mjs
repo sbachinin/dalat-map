@@ -256,3 +256,9 @@ export function get_image_file_from_element(img_element, filename, quality = 0.9
         }
     });
 }
+
+
+export const can_share_files = () => {
+    const file = new File([new Blob()], 'test.txt', { type: 'text/plain' })
+    return navigator.canShare && navigator.canShare({ files: [file] })
+}
