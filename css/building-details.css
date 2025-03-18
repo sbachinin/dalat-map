@@ -106,6 +106,10 @@
 }
 
 #building-info__flyto {
+
+    /* trigger GPU rendering to avoid subpixel shifts when animating opacity in Safari Iphone */
+    transform: translate3d(0, 0, 0);
+    
     cursor: pointer;
     transition: opacity ease-out 0.7s;
 }
