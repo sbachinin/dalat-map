@@ -164,6 +164,9 @@ export const fly_to_building = (
             map_el.offsetHeight / 2
         )
 
+        const target_zoom = Math.max(15.5, map_zoom)
+        const zoom_diff = Math.abs(map_zoom - target_zoom)
+
         window.dalatmap.easeTo({
             /* I used to get center from get_center_for_bldg_with_offset(id)
              and avoid passing offset
@@ -172,8 +175,8 @@ export const fly_to_building = (
             */
             center: centroids_etc[id]?.centroid,
             offset: get_map_center_shift(),
-            zoom: Math.max(15.5, map_zoom),
-            duration: 500 + distance_from_center
+            zoom: target_zoom,
+            duration: Math.max(distance_from_center, 500) * (zoom_diff + 1)
         })
     }
 }

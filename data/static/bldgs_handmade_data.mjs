@@ -848,7 +848,7 @@ export const bldgs_handmade_data = {
     },
     "1303825522": {
         "title": "Former \nFranciscan \nmission",
-        "subtitle": `Former "Vietnam's coolest ruin", according to Rusty Compass. It is now completely abandoned, with only decaying walls remaining`,
+        "subtitle": `Once hailed as "Vietnam's coolest ruin" by blogger Rusty Compass, it now lies completely abandoned, with only its decaying walls remaining (as of 2024). Meanwhile, the adjacent chapel has been newly renovated. Both buildings are closed to the public as part of the Dalat campus of Ho Chi Minh City University of Architecture.`,
         "links": [
             {
                 "description": "Rusty Compass' video",
