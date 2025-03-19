@@ -297,7 +297,7 @@ export const bldgs_handmade_data = {
     },
     "543357207": {
         "title": `"Palace I"`,
-        subtitle: 'Originally built by a French millionaire, it was acquired in 1949 by Bảo Đại, the last emperor of Vietnam',
+        subtitle: 'Originally built by a French millionaire, it was acquired in 1949 by Bao Dai, the last emperor of Vietnam',
         "priority": 11,
         year: 1940,
         wikipedia: 'https://vi.wikipedia.org/wiki/Dinh_I',

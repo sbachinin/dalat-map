@@ -6,6 +6,15 @@
     gap: var(--thumb-gap);
 }
 
+#building-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100%;
+    flex-direction: column;
+}
+
 @media (orientation: landscape) {
     #building-details {
         width: max-content;
@@ -14,8 +23,8 @@
 
 @media (orientation: portrait) and (pointer: coarse) {
     #building-details {
-        display: flex;
         width: max-content;
+        flex-direction: row;
     }
 
     #building-info {
@@ -64,6 +73,7 @@
 
 #building-info__subtitle {
     font-size: 14px;
+    padding: 0 5px;
 }
 
 #building-info__year {
@@ -109,7 +119,7 @@
 
     /* trigger GPU rendering to avoid subpixel shifts when animating opacity in Safari Iphone */
     transform: translate3d(0, 0, 0);
-    
+
     cursor: pointer;
     transition: opacity ease-out 0.7s;
 }

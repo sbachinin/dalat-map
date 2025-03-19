@@ -29,9 +29,11 @@ const update_size_variables = () => {
 const set_panel_content = (id) => {
     const details_el = div({ id: 'building-details' })
 
-    const thumbs_list_el = create_panel_thumbs_list({
-        images_names: all_handmade_data[id].images
-    })
+    const thumbs_list_el = all_handmade_data[id].images?.length
+        ? create_panel_thumbs_list({
+            images_names: all_handmade_data[id].images
+        })
+        : ''
 
     const title = all_handmade_data[id].title
         ? `<div id="building-info__title">${all_handmade_data[id].title}</div>`
@@ -107,7 +109,7 @@ const set_panel_content = (id) => {
         </div >
     `)
     details_el.appendChild(info_el)
-    details_el.appendChild(thumbs_list_el)
+    thumbs_list_el && details_el.appendChild(thumbs_list_el)
 
     panel.set_content({
         update_size: update_size_variables,
