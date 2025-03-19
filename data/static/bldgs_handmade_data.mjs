@@ -148,7 +148,7 @@ export const bldgs_handmade_data = {
     },
     "463866431": {
         "title": `"Palace III"`,
-        subtitle: 'It functioned as the summer palace of Bảo Đại, the last emperor of Vietnam',
+        subtitle: 'It functioned as the summer palace of Bao Dai, the last emperor of Vietnam',
         year: '1933-39',
         wikipedia: 'https://en.wikipedia.org/wiki/Dinh_III',
         google: 'https://maps.app.goo.gl/b1NKAqj43jNkvs5S6'
@@ -213,6 +213,7 @@ export const bldgs_handmade_data = {
     },
     "515193507": {
         "title": "Palace of\nempress Nam Phuong",
+        subtitle: "This building was a gift to the Empress (1913-1963) from her father upon her marriage to Bao Dai, the last king of Vietnam. Today, it is part of the Museum of Lam Dong province and is open to visitors for a modest fee.",
         "images": [
             "IMG_0567~3.jpg",
             "IMG_0573~3.jpg",
@@ -363,6 +364,7 @@ export const bldgs_handmade_data = {
         ]
     },
     "777432576": {
+        subtitle: 'This is (in my opinion) the most elegant of all the buildings in Dalat designed by architect Paul Veysseyre. He is responsible for a vast number of villas and larger structures in the city, including some iconic (though often ugly, to be honest) buildings such as Palace III.',
         "images": [
             "IMG_2534~2.jpg",
             "IMG_2539.jpg",
@@ -595,6 +597,7 @@ export const bldgs_handmade_data = {
     },
     "971577493": {
         "dead": true,
+        subtitle: 'This building was demolished while I was making this map, around September 2024. Before that, it stood completely abandoned, half-hidden in dense bushes.',
         "images": [
             "IMG_9176.jpg",
             "IMG_9188.jpg",
