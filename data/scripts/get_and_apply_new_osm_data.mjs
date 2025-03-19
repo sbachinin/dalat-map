@@ -4,7 +4,7 @@ import { bldgs_handmade_data } from '../static/bldgs_handmade_data.mjs';
 import { land_areas_handmade_data } from '../static/handmade_data.mjs';
 import { does_building_have_details, does_building_have_title } from '../../js/does_building_have_details.mjs';
 import { compare_arrays_of_features } from './compare_arrays_of_features.mjs';
-import { BORING_BLDGS_MINZOOM, MINOR_ROADS_MINZOOM } from '../../js/layers/constants.mjs';
+import { BORING_BLDGS_MINZOOM, map_bounds, MINOR_ROADS_MINZOOM } from '../../js/layers/constants.mjs';
 
 const args = process.argv.slice(2); // Get command-line arguments, excluding "node" and script name
 
@@ -36,7 +36,8 @@ execSync('rm -f ../temp/*.geojson', { stdio: 'inherit' });
 if (!no_download) {
     execSync('rm -f ../temp/*.osm', { stdio: 'inherit' });
 
-    const url = 'https://overpass-api.de/api/map?bbox=108.3801,11.8800,108.5200,12.0100';
+    const bbox = map_bounds.join(',')
+    const url = `https://overpass-api.de/api/map?bbox=${bbox}`;
     execSync(`curl -o ../temp/output.osm "${url}"`, { stdio: 'inherit' });
 }
 
@@ -205,10 +206,10 @@ write(
 write(
     '../temp/railway.geojson',
     all_geojson.features
-    .filter(f => {
-        return f.properties.railway == 'rail' || f.properties.railway == 'station';
-    })
-    .map(f => clear_feature_props(f, ['railway']))
+        .filter(f => {
+            return f.properties.railway == 'rail' || f.properties.railway == 'station';
+        })
+        .map(f => clear_feature_props(f, ['railway']))
 );
 
 write(

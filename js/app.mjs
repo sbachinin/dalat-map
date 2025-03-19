@@ -4,7 +4,7 @@ import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
 import { try_open_building, update_flyto_button } from './bldg_details.mjs'
-import { get_center_for_bldg_with_offset } from './utils.mjs'
+import { get_center_for_bldg_with_offset, get_full_map_center } from './utils.mjs'
 import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
@@ -16,7 +16,7 @@ import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
 import { initialize_highlights_button } from './panel/highlights_button.mjs'
 
 const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
-const saved_center = JSON.parse(localStorage.getItem('map_center')) || [0, 0]
+const saved_center = JSON.parse(localStorage.getItem('map_center')) || get_full_map_center()
 
 const zoom = (initial_bldg_id !== null && 15.5)
     || localStorage.getItem('map_zoom')

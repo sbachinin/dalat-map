@@ -1,6 +1,7 @@
 import { french_ids, shit_ids } from '../data/for_runtime/bldgs_ids.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
 import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
+import { map_bounds } from './layers/constants.mjs'
 
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
@@ -268,4 +269,11 @@ export function get_image_file_from_element(img_element, filename, quality = 0.9
 export const can_share_files = () => {
     const file = new File([new Blob()], 'test.txt', { type: 'text/plain' })
     return navigator.canShare && navigator.canShare({ files: [file] })
+}
+
+export const get_full_map_center = () => {
+    return [
+        map_bounds[0] + (map_bounds[2] - map_bounds[0]) / 2,
+        map_bounds[1] + (map_bounds[3] - map_bounds[1]) / 2
+    ]
 }
