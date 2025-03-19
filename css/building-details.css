@@ -105,6 +105,7 @@
 }
 
 #building-info__google svg {
+    margin-top: 1px;
     height: 30px;
     width: 30px;
 }
@@ -113,6 +114,12 @@
     display: block;
     padding: 4px;
     font-size: 14px;
+}
+
+#building-info__doubt svg {
+    height: 23px;
+    width: 26px;
+    margin-top: 4px;
 }
 
 #building-info__flyto {
@@ -135,11 +142,13 @@
     cursor: auto;
 }
 
-#building-info__copylink {
+#building-info__copylink,
+#building-info__doubt {
     position: relative;
 }
 
-#building-info__copylink #copylink-message {
+#building-info__copylink #copylink-message,
+#building-info__doubt #doubt-message {
     position: absolute;
     top: 100%;
     left: 50%;
@@ -151,6 +160,12 @@
     white-space: nowrap;
     z-index: 1;
     display: none;
+}
+
+
+#building-info__doubt #doubt-message {
+    width: 120px;
+    white-space: wrap;
 }
 
 #building-info__copylink svg {

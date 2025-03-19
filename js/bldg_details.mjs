@@ -52,6 +52,13 @@ const set_panel_content = (id) => {
                 </div>`
         : ''
 
+    const doubt = all_handmade_data[id].doubt
+        ? `<div id="building-info__doubt">
+                    ${svg_icons.question}
+                    <div id="doubt-message">I have serious doubts about whether this building belongs to the colonial period</div>
+            </div>`
+        : ''
+
     const google = all_handmade_data[id].google
         ? `<div id="building-info__google">
                     <a target="_blank" href="${all_handmade_data[id].google}">
@@ -81,6 +88,7 @@ const set_panel_content = (id) => {
 
 
     const info_other = `<div id="building-info__other">
+            ${doubt}
             ${wikipedia}
             ${google}
             ${flyto}

@@ -104,6 +104,12 @@ export const add_mouse_stuff = () => {
             lightbox?.pswp?.close()
 
 
+        } else if (e.target.closest('#building-info__doubt')) {
+            document.querySelector('#doubt-message').style.display = 'block'
+            setTimeout(() => {
+                document.querySelector('#doubt-message').style.display = 'none'
+            }, 5000)
+
 
         } else if (e.target.closest('#building-info__flyto')) {
             fly_to_building(selected_building_id, { force: true })
