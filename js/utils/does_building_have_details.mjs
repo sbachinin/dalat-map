@@ -1,4 +1,4 @@
-import { all_handmade_data } from "../data/static/handmade_data.mjs"
+import { all_handmade_data } from "../../data/static/handmade_data.mjs"
 
 export const does_building_have_details = id => {
     if (id === undefined) {

@@ -7,7 +7,7 @@ import {
     wait_once_for_transitionend,
     get_panel_current_breadth,
     wait_1frame,
-} from '../utils.mjs'
+} from '../utils/utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 
 const FIRST_EXPAND_TRANSITION_DURATION = 1000

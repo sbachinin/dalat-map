@@ -1,6 +1,6 @@
 import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
 import { images_names } from './highlights_images_list.mjs'
-import { debounce, get_image_url, push_to_history } from './utils.mjs'
+import { debounce, get_image_url, push_to_history } from './utils/utils.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import { set_selected_feature_state } from './select_building.mjs'

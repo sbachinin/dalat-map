@@ -14,9 +14,9 @@ import {
     get_visible_map_center_px,
     is_mobile_device,
     push_to_history
-} from './utils.mjs'
+} from './utils/utils.mjs'
 import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
-import { does_building_have_details } from './does_building_have_details.mjs'
+import { does_building_have_details } from './utils/does_building_have_details.mjs'
 
 
 const update_size_variables = () => {

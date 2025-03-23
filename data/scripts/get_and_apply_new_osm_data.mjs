@@ -2,7 +2,7 @@ import { execSync } from 'child_process'
 import fs from 'fs'
 import { bldgs_handmade_data } from '../static/bldgs_handmade_data.mjs';
 import { land_areas_handmade_data } from '../static/handmade_data.mjs';
-import { does_building_have_details, does_building_have_title } from '../../js/does_building_have_details.mjs';
+import { does_building_have_details, does_building_have_title } from '../../js/utils/does_building_have_details.mjs';
 import { compare_arrays_of_features } from './compare_arrays_of_features.mjs';
 import { BORING_BLDGS_MINZOOM, map_bounds, MINOR_ROADS_MINZOOM } from '../../js/layers/constants.mjs';
 

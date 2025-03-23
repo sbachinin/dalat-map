@@ -1781,12 +1781,12 @@ export const bldgs_handmade_data = {
         second_rate: true,
     },
     515288602: {
-        title: 'Cam Ly Church',
+        title: 'Cam Ly\nChurch',
         wikipedia: 'https://vi.wikipedia.org/wiki/Nh%C3%A0_th%E1%BB%9D_Cam_Ly',
         google: 'https://maps.app.goo.gl/jpGaZXSiFZC3eGpQ7'
     },
     "1308816301": {
-        title: 'Chi Lang market',
+        title: 'Chi Lang\nmarket',
         viet_title: 'Chợ Chi Lăng'
     }
 }

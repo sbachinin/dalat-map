@@ -2,7 +2,7 @@ import {
     is_landscape,
     within,
     get_panel_current_breadth
-} from '../utils.mjs'
+} from '../utils/utils.mjs'
 
 const fast_swipe_toggle_threshold = 25
 const fast_swipe_max_duration = 250

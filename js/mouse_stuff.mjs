@@ -13,10 +13,10 @@ import {
     find_bldg_id_by_image_filename,
     get_image_file_from_element,
     is_mouse_device
-} from './utils.mjs'
+} from './utils/utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
-import { does_building_have_details } from './does_building_have_details.mjs'
+import { does_building_have_details } from './utils/does_building_have_details.mjs'
 import { get_link_to_selected_bldg, selected_building_id } from './select_building.mjs'
 import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
 

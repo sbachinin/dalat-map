@@ -6,7 +6,7 @@
     Therefore it was necessary to manually call zoomIn / zoomOut with "offset" option.
 */
 
-import { debounce, get_map_center_shift } from "./utils.mjs"
+import { debounce, get_map_center_shift } from "./utils/utils.mjs"
 
 const zoomin_button = document.querySelector('.zoom-button.zoom-in')
 const zoomout_button = document.querySelector('.zoom-button.zoom-out')

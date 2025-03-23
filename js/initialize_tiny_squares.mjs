@@ -1,5 +1,5 @@
 import { datanla_waterfall_layer } from "./layers/rivers.mjs"
-import { get_geojson_source, get_image_url } from "./utils.mjs"
+import { get_geojson_source, get_image_url } from "./utils/utils.mjs"
 
 const loadImageAsync = url => {
     return new Promise((resolve) => {

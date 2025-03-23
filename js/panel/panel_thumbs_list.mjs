@@ -1,6 +1,6 @@
 import { create_lazy_image } from "../lazy-image.mjs";
 import { bldg_link_html } from "../photoswipe_mutations_observer.mjs";
-import { create_element_from_Html, get_image_url, is_mouse_device } from "../utils.mjs";
+import { create_element_from_Html, get_image_url, is_mouse_device } from "../utils/utils.mjs";
 import { PANEL_CONTENT_TYPES } from "./panel.mjs";
 
 const imageFadingDuration = 160
