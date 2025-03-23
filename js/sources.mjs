@@ -7,7 +7,8 @@ import {
     land_areas_handmade_data,
 } from '../data/static/handmade_data.mjs'
 import { TITLES_PRIORITY } from './layers/constants.mjs'
-import { is_french_building } from './utils.mjs'
+import { is_french_building } from './utils/isomorphic_utils.mjs'
+import { get_title_side } from './utils/isomorphic_utils.mjs'
 
 export const SOURCES_NAMES = {
     DALAT_TILES: 'dalat_tiles',
@@ -30,7 +31,7 @@ const get_titles_props = fid => {
         priority,
         second_rate: !!fdata.second_rate,
         is_french: is_french_building(fid),
-        title_side: all_handmade_data[fid].title_side,
+        title_side: get_title_side(fid),
         minzoom: all_handmade_data[fid].minzoom
     }
 }

@@ -122,11 +122,7 @@ export const bldgs_handmade_data = {
             "IMG_5448~2.jpg"
         ],
         "priority": 10,
-        "title_coords": [
-            108.4402145044401,
-            11.937946013869597
-        ],
-        "title_side": "top",
+        "title_side": "north",
         year: 1922,
         wikipedia: 'https://en.wikipedia.org/wiki/Dalat_Palace_Hotel',
         google: 'https://maps.app.goo.gl/DFX6ECT21bzz8Gpr8',
@@ -177,11 +173,6 @@ export const bldgs_handmade_data = {
             "IMG_9020~2.jpg"
         ],
         "priority": 11,
-        "title_coords": [
-            108.43941017124001,
-            11.936592586225473
-        ],
-        "title_side": "right",
         year: 1932,
         google: 'https://maps.app.goo.gl/pXtr2hzFNTJf8S7D6'
     },
@@ -315,11 +306,6 @@ export const bldgs_handmade_data = {
             "IMG_1339.jpg"
         ],
         "second_rate": true,
-        "title_coords": [
-            108.4363520549162,
-            11.94695270820682
-        ],
-        "title_side": "top",
         google: 'https://maps.app.goo.gl/GxwxzVTnzcs843oQ6'
     },
     "618049072": {
@@ -1690,11 +1676,9 @@ export const bldgs_handmade_data = {
 
     "515193512": {
         title: 'Lam Dong museum',
-        title_coords: [108.4599121, 11.9404590]
     },
     "542725651": {
         title: "Hermann\nGmeiner\nschool",
-        title_coords: [108.4706259, 11.9509021]
     },
     "777438312": {
         "myhint": "A ghost of a french building in Mercure hotel",
@@ -1727,7 +1711,6 @@ export const bldgs_handmade_data = {
     "361851700": {
         title: "Lam Dong\nAdministrative\nCenter",
         second_rate: true,
-        title_coords: [108.43185217531817, 11.937238686542074]
     },
     "463866449": {
         title: 'Bus Station'
@@ -1738,21 +1721,21 @@ export const bldgs_handmade_data = {
     },
     "4119185": {
         title: 'Da Lat\nMarket',
-        title_coords: [108.4373759000099, 11.943643357953377]
     },
     "525191979": {
         title: "Dalat Center",
-        title_coords: [108.43798094315969, 11.944096065149296],
         second_rate: true
     },
     "1244767000": {
         title: 'Nguyen Huu\nHao Tomb',
         wikipedia: 'https://vi.wikipedia.org/wiki/L%C4%83ng_Nguy%E1%BB%85n_H%E1%BB%AFu_H%C3%A0o',
-        google: 'https://maps.app.goo.gl/tVQMVWWubZLRRktX9'
+        google: 'https://maps.app.goo.gl/tVQMVWWubZLRRktX9',
+        title_side: 'south'
     },
     "1305230699": {
         title: '"Madame\nde Dalat"',
-        subtitle: 'Vietnamese modernist villa'
+        subtitle: 'Vietnamese modernist villa',
+        title_side: 'south',
     },
     "515288597": {
         title: 'Labor \nCulture House',
@@ -1760,7 +1743,8 @@ export const bldgs_handmade_data = {
     },
     "17873628": {
         title: 'Pontifical College of St. Pius X',
-        second_rate: true
+        second_rate: true,
+        title_side: 'south',
     },
     "232458166": {
         title: 'Linh Quang\nPagoda',
@@ -1770,14 +1754,16 @@ export const bldgs_handmade_data = {
     "361851927": {
         title: 'Linh Son\nPagoda',
         wikipedia: 'https://en.wikipedia.org/wiki/Linh_S%C6%A1n_Temple',
-        google: 'https://maps.app.goo.gl/nnkTnEpoJ3P4MKWt7'
+        google: 'https://maps.app.goo.gl/nnkTnEpoJ3P4MKWt7',
+        title_side: 'south'
     },
     "7758125": {
         title: 'Youth Prison\nmuseum'
     },
     "1303678469": {
         title: 'Don Bosco parish',
-        second_rate: true
+        second_rate: true,
+        title_side: 'south'
     },
     "18645373": {
         title: 'Thien Vuong\nCo Sat\nPagoda'
@@ -1789,12 +1775,10 @@ export const bldgs_handmade_data = {
     "361851706": {
         title: 'Saigon\nhotel',
         second_rate: true,
-        title_coords: [108.42945860977937, 11.939266235240353]
     },
     "1301446697": {
         title: 'MerPerle\nhotel',
         second_rate: true,
-        title_coords: [108.45841503948003, 11.941198360637713]
     },
     515288602: {
         title: 'Cam Ly Church',

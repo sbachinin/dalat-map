@@ -80,8 +80,7 @@ export const land_areas_handmade_data = {
     1356150764: {},
     1356152943: {},
     1232634198: {
-        title: 'Lam Dong \nStadium',
-        title_coords: [108.432371, 11.959375]
+        title: 'Lam Dong \nStadium'
     },
     1355656405: {
         area_type: AREA_TYPES.INSTITUTION,
@@ -133,7 +132,6 @@ export const land_areas_handmade_data = {
     },
     473547288: {
         title: 'Nuclear \nResearch \nInstitute',
-        title_coords: [108.452563, 11.955891]
     },
     1307493492: {
         title: 'Ana Mandara \nResort',
@@ -156,7 +154,6 @@ export const land_areas_handmade_data = {
     },
     969458761: {
         title: 'Da Lat \nUniversity',
-        title_coords: [108.445401, 11.956080],
         area_type: AREA_TYPES.INSTITUTION
     },
     521598340: {

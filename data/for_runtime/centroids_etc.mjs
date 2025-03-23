@@ -4,14 +4,14 @@ export const centroids_etc = {
       108.437227,
       11.943374
     ],
-    "title_lat": 11.9429442
+    "title_lat": 11.943374
   },
   "7758125": {
     "centroid": [
       108.470658,
       11.952132
     ],
-    "title_lat": 11.9517475
+    "title_lat": 11.952132
   },
   "17873628": {
     "centroid": [
@@ -38,7 +38,7 @@ export const centroids_etc = {
       108.460251,
       11.927687
     ],
-    "title_lat": 11.9274149
+    "title_lat": 11.927687
   },
   "18721003": {
     "centroid": [
@@ -80,7 +80,7 @@ export const centroids_etc = {
       108.428526,
       11.956952
     ],
-    "title_lat": 11.9568515
+    "title_lat": 11.956952
   },
   "263418649": {
     "centroid": [
@@ -93,7 +93,7 @@ export const centroids_etc = {
       108.435969,
       11.943528
     ],
-    "title_lat": 11.9432405
+    "title_lat": 11.943528
   },
   "361692209": {
     "centroid": [
@@ -149,14 +149,14 @@ export const centroids_etc = {
       108.431852,
       11.936925
     ],
-    "title_lat": 11.93618
+    "title_lat": 11.936925
   },
   "361851706": {
     "centroid": [
       108.429423,
       11.939198
     ],
-    "title_lat": 11.9389015
+    "title_lat": 11.939198
   },
   "361851736": {
     "centroid": [
@@ -214,7 +214,7 @@ export const centroids_etc = {
       108.440415,
       11.937532
     ],
-    "title_lat": 11.9371376
+    "title_lat": 11.9379109
   },
   "452519411": {
     "centroid": [
@@ -235,7 +235,7 @@ export const centroids_etc = {
       108.44554,
       11.926938
     ],
-    "title_lat": 11.9266561
+    "title_lat": 11.926938
   },
   "469578958": {
     "centroid": [
@@ -283,7 +283,7 @@ export const centroids_etc = {
       108.445866,
       11.93481
     ],
-    "title_lat": 11.9346596
+    "title_lat": 11.93481
   },
   "475362778": {
     "centroid": [
@@ -297,7 +297,7 @@ export const centroids_etc = {
       108.435372,
       11.937033
     ],
-    "title_lat": 11.9369184
+    "title_lat": 11.937033
   },
   "515193501": {
     "centroid": [
@@ -341,7 +341,7 @@ export const centroids_etc = {
       108.459929,
       11.940462
     ],
-    "title_lat": 11.9402837
+    "title_lat": 11.940462
   },
   "515193547": {
     "centroid": [
@@ -360,14 +360,14 @@ export const centroids_etc = {
       108.449506,
       11.943075
     ],
-    "title_lat": 11.9427746
+    "title_lat": 11.943075
   },
   "515288602": {
     "centroid": [
       108.422024,
       11.94388
     ],
-    "title_lat": 11.9437276
+    "title_lat": 11.94388
   },
   "515288613": {
     "centroid": [
@@ -393,7 +393,7 @@ export const centroids_etc = {
       108.43801,
       11.944039
     ],
-    "title_lat": 11.9436038
+    "title_lat": 11.944039
   },
   "542486101": {
     "centroid": [
@@ -431,7 +431,7 @@ export const centroids_etc = {
       108.470643,
       11.950818
     ],
-    "title_lat": 11.9503963
+    "title_lat": 11.950818
   },
   "542728978": {
     "centroid": [
@@ -450,7 +450,7 @@ export const centroids_etc = {
       108.471198,
       11.955927
     ],
-    "title_lat": 11.9557517
+    "title_lat": 11.955927
   },
   "542729017": {
     "centroid": [
@@ -1001,7 +1001,7 @@ export const centroids_etc = {
       108.458424,
       11.941071
     ],
-    "title_lat": 11.940597
+    "title_lat": 11.941071
   },
   "1302653946": {
     "centroid": [
@@ -2060,7 +2060,7 @@ export const centroids_etc = {
       108.438194,
       11.973548
     ],
-    "title_lat": 11.9734355
+    "title_lat": 11.973548
   },
   "1308427745": {
     "centroid": [
@@ -2367,7 +2367,7 @@ export const centroids_etc = {
       108.468937,
       11.955126
     ],
-    "title_lat": 11.9549568
+    "title_lat": 11.955126
   },
   "1309030776": {
     "centroid": [

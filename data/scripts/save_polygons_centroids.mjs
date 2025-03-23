@@ -3,13 +3,14 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import * as turf from '@turf/turf'
 import { all_handmade_data } from '../static/handmade_data.mjs'
+import { get_title_side } from '../../js/utils/isomorphic_utils.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const data = {}
 
-function get_southmost_lat(feature) {
+const get_all_lats = feature => {
     if (!feature?.geometry?.coordinates) {
         throw new Error("Invalid GeoJSON feature")
     }
@@ -26,7 +27,7 @@ function get_southmost_lat(feature) {
         throw new Error("Geometry type must be Polygon or MultiPolygon")
     }
 
-    return Math.min(...all_lats)
+    return all_lats
 }
 
 const get_centroid = f => {
@@ -50,6 +51,29 @@ const all_french_buildings = [
     ...JSON.parse(alive_buildings_json),
     ...JSON.parse(dead_buildings_json)
 ]
+
+const get_title_lat = (
+    f // geojson feature
+) => {
+    if (f.title_coords) {
+        return // title_coords will be taken at runtime, don't generate title lat
+    }
+
+    const title_side = get_title_side(f.id)
+    if (title_side === null) {
+        console.warn('Invalid title_side for feature', f.id)
+        process.exit(1)
+    }
+
+    if (title_side === 'south') {
+        return Math.min(...get_all_lats(f))
+    } else if (title_side === 'north') {
+        return Math.max(...get_all_lats(f))
+    } else if (title_side === 'center') {
+        return get_centroid(f)[1]
+    }
+}
+
 all_french_buildings.forEach(f => {
     /* 
         save centroids for all french bldgs in order to fly to selected ones
@@ -60,7 +84,7 @@ all_french_buildings.forEach(f => {
         centroid: get_centroid(f)
     }
     if (feature_has_title(f)) {
-        data[f.id].title_lat = get_southmost_lat(f)
+        data[f.id].title_lat = get_title_lat(f)
     }
 })
 
@@ -75,7 +99,7 @@ JSON.parse(boring_buildings_data)
     .forEach(f => {
         data[f.id] = {
             centroid: get_centroid(f),
-            title_lat: get_southmost_lat(f)
+            title_lat: get_title_lat(f)
         }
     })
 

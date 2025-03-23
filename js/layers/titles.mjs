@@ -4,20 +4,21 @@ import * as c from "./constants.mjs"
 export const all_titles_common_props = {
     layout: {
         "text-field": ["get", "title"],
-        "text-anchor": ["case",
-            ["==", ["get", "title_side"], "top"],
-            "bottom",
-            ["==", ["get", "title_side"], "right"],
-            'left',
-            "top"
+        "text-anchor": [
+            "case",
+            ["==", ["get", "title_side"], "south"],
+            "top",
+            ["==", ["get", "title_side"], "north"],
+            'bottom',
+            "center"
         ],
         "text-offset": [
             "case",
-            ["==", ["get", "title_side"], "top"],
+            ["==", ["get", "title_side"], "north"],
             ["literal", [0, -0.2]],
-            ["==", ["get", "title_side"], "right"],
-            ["literal", [0.2, 0]],
-            ["literal", [0, 0.2]]
+            ["==", ["get", "title_side"], "south"],
+            ["literal", [0, 0.2]],
+            ["literal", [0, 0]]
         ],
         "symbol-sort-key": ["get", "priority"],
     },
