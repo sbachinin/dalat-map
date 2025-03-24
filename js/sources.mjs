@@ -19,20 +19,13 @@ const get_titles_props = fid => {
     const fdata = all_handmade_data[fid]
     if (!fdata) return {}
 
-    let priority = TITLES_PRIORITY.LOW
-    if (typeof fdata.priority === 'number') {
-        priority = fdata.priority
-    } else if (fdata.second_rate) {
-        priority = TITLES_PRIORITY.VERY_LOW
-    }
-
     return {
         title: fdata.title,
-        priority,
         second_rate: !!fdata.second_rate,
         is_french: is_french_building(fid),
         title_side: get_title_side(fid),
-        minzoom: all_handmade_data[fid].minzoom
+        min_zoom: fdata.min_zoom,
+        "symbol-sort-key": fdata["symbol-sort-key"]
     }
 }
 

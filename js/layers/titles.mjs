@@ -20,7 +20,13 @@ export const all_titles_common_props = {
             ["literal", [0, 0.2]],
             ["literal", [0, 0]]
         ],
-        "symbol-sort-key": ["get", "priority"],
+        'symbol-sort-key': [
+            "case",
+            ['has', 'symbol-sort-key'],
+            ['get', 'symbol-sort-key'],
+            1
+        ],
+        'text-padding': 1
     },
     paint: {
         "text-opacity": c.VARYING_TITLE_OPACITY
@@ -71,7 +77,14 @@ export const french_buildings_titles = {
         'text-color': c.FRENCH_TITLES_TEXT_COLOR,
         ...halo_if_selected
     },
-    filter: ['==', ['get', 'is_french'], true]
+    filter: [
+        "all",
+        ['==', ['get', 'is_french'], true],
+        ["any",
+            ["!", ["has", "min_zoom"]],
+            ['<=', ['get', 'min_zoom'], ['zoom']]
+        ]
+    ]
 }
 
 export const shit_buildings_titles = {

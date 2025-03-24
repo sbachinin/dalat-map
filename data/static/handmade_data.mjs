@@ -25,10 +25,9 @@ import { bldgs_handmade_data } from "./bldgs_handmade_data.mjs"
         myhint,
 
         // if second_rate is true, feature gets higher minzoom
-        // and (if priority not set here) lowest priority
         second_rate: boolean,
     
-        priority: TITLES_PRIORITY,
+        symbol-sort-key: number, // copied as such to titles' geojson props
 
         doubt: bool // is it really colonial?
 
@@ -65,7 +64,7 @@ export const land_areas_handmade_data = {
     1303837487: {
         title: "Lam Vien\nsquare",
         area_type: AREA_TYPES.SQUARE,
-        minzoom: 14
+        min_zoom: 14
     },
     1353912255: {
         title: `Lam Dong\nchildren's hospital`,

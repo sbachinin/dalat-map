@@ -39,7 +39,6 @@ export const bldgs_handmade_data = {
         "images": [
             "IMG_1791.jpg"
         ],
-        "priority": 11,
         "second_rate": true
     },
     "361692216": {
@@ -69,7 +68,8 @@ export const bldgs_handmade_data = {
             "IMG_5908~2.jpg"
         ],
         "title": "Former\npower station",
-        google: 'https://maps.app.goo.gl/S8vmJi6YeEuKCJFP9'
+        google: 'https://maps.app.goo.gl/S8vmJi6YeEuKCJFP9',
+        "symbol-sort-key": 10
     },
     "361851888": {
         "images": [
@@ -87,7 +87,7 @@ export const bldgs_handmade_data = {
         "images": [
             "IMG_7984~4.jpg",
             "Notre_Dame_du_Lang_Bian_01 (1)~2.jpg"
-        ]
+        ],
     },
 
     "361851915": {
@@ -121,7 +121,6 @@ export const bldgs_handmade_data = {
             "IMG_5439~2.jpg",
             "IMG_5448~2.jpg"
         ],
-        "priority": 10,
         "title_side": "north",
         year: 1922,
         wikipedia: 'https://en.wikipedia.org/wiki/Dalat_Palace_Hotel',
@@ -137,7 +136,6 @@ export const bldgs_handmade_data = {
             "IMG_5541.jpg",
             "IMG_5543~3.jpg"
         ],
-        "priority": 9,
         year: '1931-32',
         wikipedia: 'https://en.wikipedia.org/wiki/St._Nicholas_Cathedral,_Da_Lat',
         google: 'https://maps.app.goo.gl/82L564YFSx7yxm2B9'
@@ -172,7 +170,6 @@ export const bldgs_handmade_data = {
             "IMG_9013~2.jpg",
             "IMG_9020~2.jpg"
         ],
-        "priority": 11,
         year: 1932,
         google: 'https://maps.app.goo.gl/pXtr2hzFNTJf8S7D6'
     },
@@ -203,7 +200,7 @@ export const bldgs_handmade_data = {
         ]
     },
     "515193507": {
-        "title": "Palace of\nempress Nam Phuong",
+        "title": "Palace of\nqueen Nam Phuong",
         subtitle: "This building was a gift to the Empress (1913-1963) from her father upon her marriage to Bao Dai, the last king of Vietnam. Today, it is part of the Museum of Lam Dong province and is open to visitors for a modest fee.",
         "images": [
             "IMG_0567~3.jpg",
@@ -217,7 +214,8 @@ export const bldgs_handmade_data = {
                 description: 'A bunch of good pictures on VnExpress',
                 url: 'https://e.vnexpress.net/news/travel/places/da-lat-mansion-of-the-last-empress-of-vietnam-3898349.html'
             }
-        ]
+        ],
+        "symbol-sort-key": 2
     },
     "515193547": {
         "images": [
@@ -290,10 +288,11 @@ export const bldgs_handmade_data = {
     "543357207": {
         "title": `"Palace I"`,
         subtitle: 'Originally built by a French millionaire, it was acquired in 1949 by Bao Dai, the last emperor of Vietnam',
-        "priority": 11,
         year: 1940,
         wikipedia: 'https://vi.wikipedia.org/wiki/Dinh_I',
-        google: 'https://maps.app.goo.gl/Rui4fGwaS7vvn5F56'
+        google: 'https://maps.app.goo.gl/Rui4fGwaS7vvn5F56',
+        "symbol-sort-key": 10,
+
     },
     "543357209": {
         "images": [
@@ -305,8 +304,9 @@ export const bldgs_handmade_data = {
         "images": [
             "IMG_1339.jpg"
         ],
-        "second_rate": true,
-        google: 'https://maps.app.goo.gl/GxwxzVTnzcs843oQ6'
+        min_zoom: 14,
+        google: 'https://maps.app.goo.gl/GxwxzVTnzcs843oQ6',
+        "symbol-sort-key": 3
     },
     "618049072": {
         "title": "Governor's Palace",
@@ -323,9 +323,7 @@ export const bldgs_handmade_data = {
             "IMG_4108~2.jpg",
             "IMG_4125~2.jpg"
         ],
-        "priority": 10,
-        google: 'https://maps.app.goo.gl/SX5eQessoX1QMyjC9',
-
+        google: 'https://maps.app.goo.gl/SX5eQessoX1QMyjC9'
     },
     "777432491": {
         "images": [
@@ -423,7 +421,6 @@ export const bldgs_handmade_data = {
             "IMG_6864~3.jpg",
         ],
         year: '1933-1937',
-        "priority": 10,
         wikipedia: 'https://vi.wikipedia.org/wiki/Dinh_II',
         google: 'https://maps.app.goo.gl/CRUKjPQF9sxyfpZ8A'
     },
@@ -852,7 +849,6 @@ export const bldgs_handmade_data = {
             "IMG_0737.jpg",
             "IMG_0742.jpg"
         ],
-        "priority": 10,
         google: 'https://maps.app.goo.gl/UFWLCEofXVhUTA2f8'
     },
     "1304080964": {
@@ -1675,7 +1671,7 @@ export const bldgs_handmade_data = {
     },
 
     "515193512": {
-        title: 'Lam Dong museum',
+        title: 'Lam Dong\nmuseum',
     },
     "542725651": {
         title: "Hermann\nGmeiner\nschool",
@@ -1752,7 +1748,7 @@ export const bldgs_handmade_data = {
         google: 'https://maps.app.goo.gl/qkzK4sb8djmfqsRx9'
     },
     "361851927": {
-        title: 'Linh Son\nPagoda',
+        title: 'Linh Son Pagoda',
         wikipedia: 'https://en.wikipedia.org/wiki/Linh_S%C6%A1n_Temple',
         google: 'https://maps.app.goo.gl/nnkTnEpoJ3P4MKWt7',
         title_side: 'south'
