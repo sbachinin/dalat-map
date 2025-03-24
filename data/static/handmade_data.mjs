@@ -121,7 +121,7 @@ export const land_areas_handmade_data = {
         second_rate: true
     },
     "1355564844": {
-        title: "Military Academy",
+        title: "Military\nAcademy",
         area_type: AREA_TYPES.INSTITUTION
     },
     361692208: {},
@@ -165,7 +165,8 @@ export const land_areas_handmade_data = {
 export const lakes_handmade_data = {
     99660972: {
         title: 'Xuan Huong\nLake',
-        title_coords: [108.44589, 11.94145]
+        title_coords: [108.44589, 11.94145],
+        min_zoom: 14
     },
     125165263: {
         title: 'Tuyen Lam Lake',
@@ -183,5 +184,6 @@ export const lakes_handmade_data = {
 
 export const all_handmade_data = {
     ...bldgs_handmade_data,
-    ...land_areas_handmade_data
+    ...land_areas_handmade_data,
+    ...lakes_handmade_data
 }

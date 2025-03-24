@@ -40,12 +40,6 @@ export const AREA_TYPES = {
     CEMETERY: 'cemetery',
     SQUARE: 'square'
 }
-export const TITLES_PRIORITY = {
-    VERY_HIGH: 9,
-    HIGH: 10,
-    LOW: 11,
-    VERY_LOW: 12
-}
 
 export const FIRST_DETAILS_MINZOOM = 12.2
 

@@ -6,7 +6,6 @@ import {
     lakes_handmade_data,
     land_areas_handmade_data,
 } from '../data/static/handmade_data.mjs'
-import { TITLES_PRIORITY } from './layers/constants.mjs'
 import { is_french_building } from './utils/isomorphic_utils.mjs'
 import { get_title_side } from './utils/isomorphic_utils.mjs'
 
@@ -78,7 +77,7 @@ const lakes_titles = {
                     coordinates: lakes_handmade_data[fid].title_coords
                 },
                 properties: {
-                    title: lakes_handmade_data[fid].title
+                    ...get_titles_props(fid)
                 }
             }
         })
