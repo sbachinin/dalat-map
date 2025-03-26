@@ -277,3 +277,21 @@ export const get_full_map_center = () => {
         map_bounds[1] + (map_bounds[3] - map_bounds[1]) / 2
     ]
 }
+
+
+export const deep_merge_objects = (target, source) => {
+    const result = { ...target };
+
+    for (const key in source) {
+        if (source.hasOwnProperty(key) &&
+            typeof source[key] === 'object' &&
+            source[key] !== null &&
+            !Array.isArray(source[key])) {
+            result[key] = deep_merge_objects(result[key] || {}, source[key]);
+        } else {
+            result[key] = source[key];
+        }
+    }
+
+    return result;
+}
