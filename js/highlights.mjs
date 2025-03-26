@@ -3,7 +3,7 @@ import { images_names } from './highlights_images_list.mjs'
 import { debounce, get_image_url, push_to_history } from './utils/utils.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
-import { set_selected_feature_state } from './select_building.mjs'
+import { select_building } from './select_building.mjs'
 
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
@@ -19,7 +19,7 @@ const scroll_pos = [0, 0]
 
 export const display_highlights = (should_push_history = false) => {
 
-    set_selected_feature_state(null)
+    select_building(null)
 
     highlights_el = highlights_el || create_panel_thumbs_list({
         images_names,

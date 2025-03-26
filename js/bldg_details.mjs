@@ -1,6 +1,6 @@
 import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
 import { all_handmade_data } from '../data/static/handmade_data.mjs'
-import { set_selected_feature_state, selected_building_id } from './select_building.mjs'
+import { select_building, selected_building_id } from './select_building.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import * as svg_icons from './svg_icons.mjs'
@@ -139,7 +139,7 @@ export const try_open_building = async (
 
     if (does_building_have_details(id)) {
         set_panel_content(id)
-        set_selected_feature_state(id)
+        select_building(id)
         if (should_push_history) {
             push_to_history({ id }, `?id=${id}${window.location.hash}`)
         }

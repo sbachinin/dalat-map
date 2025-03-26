@@ -8,7 +8,7 @@ const SELECTED_STYLE_LAYER_PREFIX = 'Selected::'
 
 export let selected_building_id = null
 
-export const set_selected_feature_state = newid => {
+export const select_building = newid => {
     if (newid !== selected_building_id) {
         selected_building_id = newid
 
