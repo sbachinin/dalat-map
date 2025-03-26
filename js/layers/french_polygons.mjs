@@ -1,18 +1,13 @@
 import { SOURCES_NAMES } from "../sources.mjs"
 import * as c from "./constants.mjs"
 
-const french_fill_common_props = {
+export const french_fill_common_props = {
     "type": "fill",
     "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "french_building",
     "minzoom": c.FIRST_DETAILS_MINZOOM,
     "paint": {
-        "fill-color": [
-            'case',
-            ['==', ['feature-state', 'selected'], true],
-            c.FRENCH_SELECTED_FILL_COLOR,
-            c.FRENCH_FILL_COLOR
-        ],
+        "fill-color": c.FRENCH_FILL_COLOR,
         "fill-antialias": true
     },
 }

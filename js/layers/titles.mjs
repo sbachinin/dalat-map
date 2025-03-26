@@ -48,16 +48,6 @@ export const shit_titles_common_props = {
     }
 }
 
-const halo_if_selected = {
-    "text-halo-color": [
-        "case",
-        ['==', ['feature-state', 'selected'], true],
-        c.FRENCH_SELECTED_TITLE_HALO_COLOR,
-        'transparent'
-    ],
-    "text-halo-width": 5,
-    "text-halo-blur": 0
-}
 
 export const french_buildings_titles = {
     "id": "French buildings titles",
@@ -80,7 +70,6 @@ export const french_buildings_titles = {
     paint: {
         ...all_titles_common_props.paint,
         'text-color': c.FRENCH_TITLES_TEXT_COLOR,
-        ...halo_if_selected
     },
     filter: [
         "all",
