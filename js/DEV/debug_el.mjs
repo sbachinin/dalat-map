@@ -7,13 +7,19 @@ if (window.location.hostname === 'localhost'
 ) {
     debugel = create_element_from_Html(`
             <div style="position: fixed; z-index: 100; background: white;">
-            <a href="#" onclick="this.href = window.location.protocol + '//' + 
-            window.location.hostname + ':' + 
-            (parseInt(window.location.port || '80') + 1)">
-                PORT++
-            </a>
                 <div id="debug-zoom"></div>
                 <div id="debug-other"></div>
+                <a 
+                    style="font-size: 50px; text-decoration: none; padding-left: 10px" 
+                    href="#"
+                    onclick="
+                        this.href = window.location.protocol + '//' + 
+                        window.location.hostname + ':' + 
+                        (parseInt(window.location.port || '80') + 1)
+                    "
+                >
+                    +
+                </a>
             </div>`)
     document.body.append(debugel)
 }
