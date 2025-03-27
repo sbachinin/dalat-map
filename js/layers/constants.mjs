@@ -50,13 +50,4 @@ export const SECONDARY_TITLES_MINZOOM = 15
 export const BORING_BLDGS_MINZOOM = 14
 export const MINOR_ROADS_MINZOOM = 14
 
-// provides that normal titles appear early and second_rate only from z15
-export const VARYING_TITLE_OPACITY = [
-    "step",
-    ["zoom"],
-    ["case", ["get", "second_rate"], 0, 1],
-    SECONDARY_TITLES_MINZOOM,
-    1
-]
-
 export const CURSOR_POINTER_MINZOOM = 15

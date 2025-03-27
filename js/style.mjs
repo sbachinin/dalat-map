@@ -1,23 +1,10 @@
 import { main_sources } from './sources.mjs'
-import roads from './layers/roads.mjs'
-import rivers from './layers/rivers.mjs'
 import { lakes_fill } from './layers/lakes.mjs'
 import {
-    french_buildings_titles,
-    shit_buildings_titles,
-    city_bulk_title,
-    peaks_triangles_with_titles,
-    land_areas_titles,
-    lakes_titles
-} from './layers/titles.mjs'
-import {
-    boring_building_fill,
     city_bulk_border,
     city_bulk_fill,
-    land_areas_fill,
 } from './layers/other_layers.mjs'
-import { transportation_other } from './layers/transportation_other.mjs'
-import { french_polygons_layers } from './layers/french_polygons.mjs'
+import { build_layers } from './build_layers.mjs'
 
 export const style = {
     name: "Dalat map",
@@ -25,19 +12,22 @@ export const style = {
     layers: [
         city_bulk_fill,
         city_bulk_border,
-        land_areas_fill,
-        ...rivers,
-        boring_building_fill,
-        ...french_polygons_layers,
-        lakes_fill,
-        ...roads,
-        ...transportation_other,
-        lakes_titles,
-        city_bulk_title,
-        peaks_triangles_with_titles,
-        shit_buildings_titles,
-        land_areas_titles,
-        french_buildings_titles,
+        lakes_fill, // TODO: need a way to draw it on top of rivers, otherwise grand lac has a river drawn on top of it
+
+        ...build_layers(),
+
+        // land_areas_fill,
+        // ...rivers,
+        // boring_building_fill,
+        // ...french_polygons_layers,
+        // ...roads,
+        // ...transportation_other,
+        // lakes_titles,
+        // city_bulk_title,
+        // peaks_triangles_with_titles,
+        // shit_buildings_titles,
+        // land_areas_titles,
+        // french_buildings_titles,
     ],
     sources: main_sources,
 

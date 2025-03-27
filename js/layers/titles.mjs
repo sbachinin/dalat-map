@@ -32,9 +32,6 @@ export const all_titles_common_props = {
             1
         ],
         'text-padding': 1
-    },
-    paint: {
-        "text-opacity": c.VARYING_TITLE_OPACITY
     }
 }
 
@@ -112,7 +109,6 @@ export const land_areas_titles = {
     paint: {
         ...all_titles_common_props.paint,
         ...shit_titles_common_props.paint,
-        "text-opacity": c.VARYING_TITLE_OPACITY
     },
     "filter": min_zoom_filter
 }
