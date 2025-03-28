@@ -7,7 +7,8 @@ import {
     tertiary_road,
     french_bldg_circle,
     french_bldg_fill,
-    land_areas_fill
+    land_areas_fill,
+    non_french_titles
 } from "./drawing_layers.mjs";
 import { FIRST_CLASS_FRENCH_MINZOOM, FRENCH_GEOMETRIES_MINZOOM } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
@@ -73,29 +74,25 @@ export const zoom_order = {
             },
             drawing_layers: [peaks_triangles_with_titles]
         },
+
         {
             selector: {
-                source: SOURCES_NAMES.BUILDING_TITLES_POINTS,
-                filter: ["==", ["get", "is_french"], true]
+                "source": SOURCES_NAMES.TITLES_POINTS,
+                filter: ['==', ['get', 'is_french'], false],
             },
-            drawing_layers: [french_buildings_titles]
-        }
-
+            drawing_layers: [non_french_titles]
+        },
         {
             selector: {
                 source: SOURCES_NAMES.DALAT_TILES,
                 "source-layer": "french_building",
-                // filter: ["all",
-                //     ["==", ["get", "is_important"], true],
-                //     ["==", ["get", "has_title"], true]
-                // ]
             },
             drawing_layers: [french_bldg_circle],
             maxzoom: FRENCH_GEOMETRIES_MINZOOM
         },
         {
             selector: {
-                source: SOURCES_NAMES.BUILDING_TITLES_POINTS,
+                source: SOURCES_NAMES.TITLES_POINTS,
                 filter: ["==", ["get", "is_french"], true]
             },
             drawing_layers: [french_buildings_titles]

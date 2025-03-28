@@ -73,7 +73,7 @@ export const land_areas_handmade_data = {
     },
     473556897: {},
     473547263: {
-        title: 'Flower garden',
+        title: 'Flower\ngarden',
         second_rate: true
     },
     1356150764: {},
@@ -138,8 +138,8 @@ export const land_areas_handmade_data = {
         area_type: AREA_TYPES.INSTITUTION
     },
     99661171: {
-        title: 'Golf course',
-        title_coords: [108.44559047175477, 11.949050440541242]
+        title: 'Golf\ncourse',
+        title_coords: [108.44548684537341, 11.94835951019995]
     },
     473556887: {
         title: 'Hospital',

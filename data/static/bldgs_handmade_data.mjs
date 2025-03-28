@@ -1737,7 +1737,7 @@ export const bldgs_handmade_data = {
         second_rate: true
     },
     "17873628": {
-        title: 'Pontifical College of St. Pius X',
+        title: 'Pontifical\nCollege\nof St. Pius X',
         second_rate: true,
         title_side: 'south',
     },
