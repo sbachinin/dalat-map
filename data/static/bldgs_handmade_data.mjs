@@ -1044,7 +1044,7 @@ export const bldgs_handmade_data = {
         ]
     },
     "1305208733": {
-        "title": "Institut\nPasteur",
+        "title": "Institut Pasteur",
         subtitle: 'Vaccine research and production complex, first headed by influential bacteriologist Alexandre Yersin',
         "images": [
             "IMG_2878~2.jpg",

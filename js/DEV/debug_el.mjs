@@ -6,7 +6,7 @@ if (window.location.hostname === 'localhost'
     || window.location.hostname.match('192.168')
 ) {
     debugel = create_element_from_Html(`
-            <div style="position: fixed; z-index: 100; background: white;">
+            <div style="position: fixed; z-index: 100">
                 <div id="debug-zoom"></div>
                 <div id="debug-other"></div>
                 <a 

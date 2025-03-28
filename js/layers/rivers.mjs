@@ -1,5 +1,4 @@
 import { SOURCES_NAMES } from "../sources.mjs";
-import { FIRST_DETAILS_MINZOOM, LAKE_TITLE_COLOR, PALE_TITLES_SIZE } from "./constants.mjs";
 
 export default [
     {
@@ -51,24 +50,3 @@ export default [
     }
 ]
 
-export const datanla_waterfall_layer = {
-    id: "Datanla waterfall",
-    type: 'symbol',
-    source: 'datanla_waterfall',
-    minzoom: FIRST_DETAILS_MINZOOM,
-    layout: {
-        "icon-image": "tiny_non_french_square",
-        "icon-size": 0.4,
-        "text-field": "Datanla\nwaterfall",
-        "text-anchor": "top",
-        "text-offset": [0, 0.2],
-        'text-size': PALE_TITLES_SIZE,
-        'text-font': ['Lato Regular'],
-        "symbol-sort-key": 1,
-        "icon-allow-overlap": true,
-        "text-allow-overlap": true,
-    },
-    paint: {
-        'text-color': LAKE_TITLE_COLOR
-    },
-}

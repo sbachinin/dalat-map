@@ -32,8 +32,8 @@ export const RAILWAY_LINE_COLOR = "hsl(14, 54%, 60%)"
 
 export const CITY_BULK_FULL_OPACITY_MAXZOOM = 12
 export const CITY_BULK_DISAPPEARANCE_ZOOM = 14
-export const CITY_BULK_FULL_COLOR = 'hsl(16, 66%, 82%)'
-export const CITY_BULK_TITLE_COLOR = 'hsl(16, 66%, 70%)'
+export const CITY_BULK_FULL_COLOR = 'hsl(16, 56%, 87%)'
+export const CITY_BULK_TITLE_COLOR = 'hsl(16, 56%, 70%)'
 
 export const AREA_TYPES = {
     INSTITUTION: 'institution',
@@ -41,7 +41,8 @@ export const AREA_TYPES = {
     SQUARE: 'square'
 }
 
-export const FIRST_DETAILS_MINZOOM = 12.2
+export const FIRST_CLASS_FRENCH_MINZOOM = 12
+export const FRENCH_GEOMETRIES_MINZOOM = 13.5
 
 export const SECONDARY_BLDGS_MINZOOM = 13.3
 

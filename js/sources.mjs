@@ -8,6 +8,7 @@ import {
 } from '../data/static/handmade_data.mjs'
 import { is_french_building } from './utils/isomorphic_utils.mjs'
 import { get_title_side } from './utils/isomorphic_utils.mjs'
+import { get_geojson_source } from './utils/utils.mjs'
 
 export const SOURCES_NAMES = {
     DALAT_TILES: 'dalat_tiles',
@@ -105,6 +106,17 @@ const building_title = {
     }
 }
 
+const datanla_waterfall = get_geojson_source(
+    [{
+        type: "Feature",
+        geometry: {
+            type: "Point",
+            coordinates: [108.4488444, 11.9011774]
+        }
+    }]
+)
+
+
 export const main_sources = {
     [SOURCES_NAMES.DALAT_TILES]: {
         type: 'vector',
@@ -113,5 +125,6 @@ export const main_sources = {
     },
     land_areas_titles,
     [SOURCES_NAMES.BUILDING_TITLE]: building_title,
-    lakes_titles
+    lakes_titles,
+    datanla_waterfall
 }

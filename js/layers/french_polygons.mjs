@@ -5,7 +5,6 @@ export const french_fill_common_props = {
     "type": "fill",
     "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "french_building",
-    "minzoom": c.FIRST_DETAILS_MINZOOM,
     "paint": {
         "fill-color": c.FRENCH_FILL_COLOR,
         "fill-antialias": true
@@ -36,7 +35,6 @@ const french_thickening_outline_common_props = {
     'type': 'line',
     "source": SOURCES_NAMES.DALAT_TILES,
     "source-layer": "french_building",
-    "minzoom": c.FIRST_DETAILS_MINZOOM,
     'paint': {
         'line-color': c.FRENCH_FILL_COLOR,
         'line-width': [
@@ -68,7 +66,6 @@ const get_dark_outline_props = high_zoom_thickness => {
         'type': 'line',
         "source": SOURCES_NAMES.DALAT_TILES,
         "source-layer": "french_building",
-        "minzoom": c.FIRST_DETAILS_MINZOOM,
         'paint': {
             'line-color': c.FRENCH_DARK_BORDER_COLOR,
             'line-width': [
@@ -128,7 +125,6 @@ export const french_polygons_layers = [
             l.filter,
             first_class_bldg_filter
         ],
-        minzoom: c.FIRST_DETAILS_MINZOOM
     },
     {
         ...l,
@@ -139,5 +135,7 @@ export const french_polygons_layers = [
             non_first_class_bldg_filter
         ],
         minzoom: c.SECONDARY_BLDGS_MINZOOM
-    }
+    },
+
+
 ]))

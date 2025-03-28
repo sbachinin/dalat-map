@@ -50,7 +50,6 @@ export const french_buildings_titles = {
     "id": "French buildings titles",
     "type": "symbol",
     "source": SOURCES_NAMES.BUILDING_TITLE,
-    minzoom: c.FIRST_DETAILS_MINZOOM,
     layout: {
         ...all_titles_common_props.layout,
         'text-size': [
@@ -112,28 +111,6 @@ export const land_areas_titles = {
     },
     "filter": min_zoom_filter
 }
-
-export const peaks_triangles_with_titles = {
-    id: 'Peaks triangles with titles',
-    type: 'symbol',
-    source: SOURCES_NAMES.DALAT_TILES,
-    'source-layer': 'peaks',
-    minzoom: c.FIRST_DETAILS_MINZOOM,
-    layout: {
-        "text-anchor": "top",
-        "text-offset": [0, 0.3],
-        'text-size': c.PALE_TITLES_SIZE,
-        'text-font': ['Lato Regular'],
-        "text-field": ["get", "ele"],
-        "icon-image": "peak_triangle",
-        "icon-size": 0.01,
-    },
-    paint: {
-        'text-color': c.PEAK_TTTLE_COLOR
-    },
-    filter: min_zoom_filter
-}
-
 
 export const lakes_titles = {
     id: 'Lakes titles',
