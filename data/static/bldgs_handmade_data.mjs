@@ -299,7 +299,7 @@ export const bldgs_handmade_data = {
         ]
     },
     "618049068": {
-        "title": "Tin Lanh church",
+        "title": "Tin Lanh\nchurch",
         "images": [
             "IMG_1339.jpg"
         ],
@@ -618,7 +618,6 @@ export const bldgs_handmade_data = {
         ]
     },
     "1238335794": {
-        "second_rate": true,
         "images": [
             "IMG_2546.jpg",
             "ugly_little_palace.JPG"

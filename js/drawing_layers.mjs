@@ -123,8 +123,6 @@ export const datanla_waterfall_layer = {
         'text-size': PALE_TITLES_SIZE,
         'text-font': ['Lato Regular'],
         "symbol-sort-key": 1,
-        "icon-allow-overlap": true,
-        "text-allow-overlap": true,
     },
     paint: {
         'text-color': LAKE_TITLE_COLOR

@@ -13,6 +13,9 @@ import {
 import { FIRST_CLASS_FRENCH_MINZOOM, FRENCH_GEOMETRIES_MINZOOM } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
 
+
+const get_filter_by_fid = (...fids) => ["any", ...fids.map(fid => ["==", ["id"], fid])]
+
 export const zoom_order = {
     /*
     [zoom_level_float]: [
@@ -74,14 +77,6 @@ export const zoom_order = {
             },
             drawing_layers: [peaks_triangles_with_titles]
         },
-
-        {
-            selector: {
-                "source": SOURCES_NAMES.TITLES_POINTS,
-                filter: ['==', ['get', 'is_french'], false],
-            },
-            drawing_layers: [non_french_titles]
-        },
         {
             selector: {
                 source: SOURCES_NAMES.DALAT_TILES,
@@ -89,6 +84,18 @@ export const zoom_order = {
             },
             drawing_layers: [french_bldg_circle],
             maxzoom: FRENCH_GEOMETRIES_MINZOOM
+        },
+        {
+            selector: {
+                "source": SOURCES_NAMES.TITLES_POINTS,
+                filter: get_filter_by_fid(
+                    99661171, // golf course
+                    969458761, // university
+                    463866449, // bus station
+                    1232634198, // stadium
+                )
+            },
+            drawing_layers: [non_french_titles]
         },
         {
             selector: {
