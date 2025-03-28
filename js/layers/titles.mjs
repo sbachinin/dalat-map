@@ -49,7 +49,7 @@ export const shit_titles_common_props = {
 export const french_buildings_titles = {
     "id": "French buildings titles",
     "type": "symbol",
-    "source": SOURCES_NAMES.BUILDING_TITLE,
+    "source": SOURCES_NAMES.BUILDING_TITLES_POINTS,
     layout: {
         ...all_titles_common_props.layout,
         'text-size': [
@@ -77,7 +77,7 @@ export const french_buildings_titles = {
 export const shit_buildings_titles = {
     "id": "Shit buildings titles",
     "type": "symbol",
-    "source": SOURCES_NAMES.BUILDING_TITLE,
+    "source": SOURCES_NAMES.BUILDING_TITLES_POINTS,
     minzoom: c.SECONDARY_BLDGS_MINZOOM,
     layout: {
         ...all_titles_common_props.layout,

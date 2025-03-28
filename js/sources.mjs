@@ -12,7 +12,7 @@ import { get_geojson_source } from './utils/utils.mjs'
 
 export const SOURCES_NAMES = {
     DALAT_TILES: 'dalat_tiles',
-    BUILDING_TITLE: 'building_title',
+    BUILDING_TITLES_POINTS: 'building_title',
 }
 
 const get_titles_props = fid => {
@@ -85,7 +85,7 @@ const lakes_titles = {
     }
 }
 
-const building_title = {
+const building_titles_points = {
     type: 'geojson',
     data: {
         "type": "FeatureCollection",
@@ -124,7 +124,7 @@ export const main_sources = {
         minzoom: 10,
     },
     land_areas_titles,
-    [SOURCES_NAMES.BUILDING_TITLE]: building_title,
+    [SOURCES_NAMES.BUILDING_TITLES_POINTS]: building_titles_points,
     lakes_titles,
     datanla_waterfall
 }

@@ -6,7 +6,8 @@ import {
     peaks_triangles_with_titles,
     tertiary_road,
     french_bldg_circle,
-    french_bldg_fill
+    french_bldg_fill,
+    land_areas_fill
 } from "./drawing_layers.mjs";
 import { FIRST_CLASS_FRENCH_MINZOOM, FRENCH_GEOMETRIES_MINZOOM } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
@@ -28,7 +29,7 @@ export const zoom_order = {
     ]
     */
 
-    10: [
+    0: [
         {
             selector: {
                 "source": SOURCES_NAMES.DALAT_TILES,
@@ -46,10 +47,40 @@ export const zoom_order = {
             },
             drawing_layers: [major_road_thicker_line],
             drawing_importance: 3
+        },
+        {
+            selector: {
+                source: SOURCES_NAMES.DALAT_TILES,
+                'source-layer': 'land_areas',
+                filter: ["!=", "$id", 1307493492]
+            },
+            drawing_layers: [land_areas_fill],
+            drawing_importance: 4
         }
     ],
 
     [FIRST_CLASS_FRENCH_MINZOOM]: [
+        {
+            selector: {
+                source: 'datanla_waterfall',
+            },
+            drawing_layers: [datanla_waterfall_layer]
+        },
+        {
+            selector: {
+                source: SOURCES_NAMES.DALAT_TILES,
+                'source-layer': 'peaks',
+            },
+            drawing_layers: [peaks_triangles_with_titles]
+        },
+        {
+            selector: {
+                source: SOURCES_NAMES.BUILDING_TITLES_POINTS,
+                filter: ["==", ["get", "is_french"], true]
+            },
+            drawing_layers: [french_buildings_titles]
+        }
+
         {
             selector: {
                 source: SOURCES_NAMES.DALAT_TILES,
@@ -64,24 +95,11 @@ export const zoom_order = {
         },
         {
             selector: {
-                source: SOURCES_NAMES.BUILDING_TITLE,
+                source: SOURCES_NAMES.BUILDING_TITLES_POINTS,
                 filter: ["==", ["get", "is_french"], true]
             },
             drawing_layers: [french_buildings_titles]
         },
-        {
-            selector: {
-                source: 'datanla_waterfall',
-            },
-            drawing_layers: [datanla_waterfall_layer]
-        },
-        {
-            selector: {
-                source: SOURCES_NAMES.DALAT_TILES,
-                'source-layer': 'peaks',
-            },
-            drawing_layers: [peaks_triangles_with_titles]
-        }
     ],
     12.5: [
         {

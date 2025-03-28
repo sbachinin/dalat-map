@@ -43,30 +43,6 @@ export const city_bulk_border = {
 }
 
 
-export const land_areas_fill = {
-    id: 'Land areas fill',
-    type: 'fill',
-    source: SOURCES_NAMES.DALAT_TILES,
-    'source-layer': 'land_areas',
-    paint: {
-        'fill-color': [
-            "case",
-            ["==", ["get", "area_type"], c.AREA_TYPES.INSTITUTION],
-            c.INSTITUTION_FILL_COLOR,
-            ["==", ["get", "area_type"], c.AREA_TYPES.CEMETERY],
-            c.CEMETERY_FILL_COLOR,
-            ["==", ["get", "area_type"], c.AREA_TYPES.SQUARE],
-            c.SQUARE_FILL_COLOR,
-            c.GRASS_COLOR
-        ],
-
-        // 'hsl(70, 30%, 83%)', // ana mandara
-
-        'fill-antialias': true,
-    },
-    filter: ["!=", "$id", 1307493492]
-}
-
 
 export const boring_building_fill = {
     "id": "Boring building fill",

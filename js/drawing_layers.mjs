@@ -1,4 +1,16 @@
-import { FIRST_CLASS_FRENCH_MINZOOM, FRENCH_FILL_COLOR, FRENCH_TITLES_TEXT_COLOR, LAKE_TITLE_COLOR, PALE_TITLES_SIZE, PEAK_TTTLE_COLOR } from "./layers/constants.mjs";
+import {
+    AREA_TYPES,
+    CEMETERY_FILL_COLOR,
+    FIRST_CLASS_FRENCH_MINZOOM,
+    FRENCH_FILL_COLOR,
+    FRENCH_TITLES_TEXT_COLOR,
+    GRASS_COLOR,
+    INSTITUTION_FILL_COLOR,
+    LAKE_TITLE_COLOR,
+    PALE_TITLES_SIZE,
+    PEAK_TTTLE_COLOR,
+    SQUARE_FILL_COLOR
+} from "./layers/constants.mjs";
 import { deep_merge_objects } from "./utils/utils.mjs";
 
 
@@ -224,4 +236,25 @@ export const tertiary_road = {
         "line-cap": "round",
         "line-join": "round",
     },
+}
+
+
+
+
+export const land_areas_fill = {
+    name: 'Land areas fill',
+    type: 'fill',
+    paint: {
+        'fill-color': [
+            "case",
+            ["==", ["get", "area_type"], AREA_TYPES.INSTITUTION],
+            INSTITUTION_FILL_COLOR,
+            ["==", ["get", "area_type"], AREA_TYPES.CEMETERY],
+            CEMETERY_FILL_COLOR,
+            ["==", ["get", "area_type"], AREA_TYPES.SQUARE],
+            SQUARE_FILL_COLOR,
+            GRASS_COLOR
+        ],
+        'fill-antialias': true,
+    }
 }
