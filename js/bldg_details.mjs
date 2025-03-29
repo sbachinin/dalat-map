@@ -16,7 +16,7 @@ import {
     push_to_history
 } from './utils/utils.mjs'
 import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
-import { does_building_have_details } from './utils/does_building_have_details.mjs'
+import { does_feature_have_details } from './utils/does_feature_have_details.mjs'
 
 
 const update_size_variables = () => {
@@ -137,7 +137,7 @@ export const try_open_building = async (
         return
     }
 
-    if (does_building_have_details(id)) {
+    if (does_feature_have_details(id)) {
         set_panel_content(id)
         select_building(id)
         if (should_push_history) {

@@ -1,6 +1,6 @@
+import { french_buildings_titles } from "./drawing_layers.mjs"
 import { FRENCH_SELECTED_FILL_COLOR, FRENCH_SELECTED_TITLE_HALO_COLOR } from "./layers/constants.mjs"
 import { french_fill_common_props } from "./layers/french_polygons.mjs"
-import { french_buildings_titles } from "./layers/titles.mjs"
 import { is_french_building } from "./utils/isomorphic_utils.mjs"
 import { deep_merge_objects } from "./utils/utils.mjs"
 
@@ -25,7 +25,7 @@ export const select_building = newid => {
                 deep_merge_objects(
                     french_buildings_titles,
                     {
-                        id: SELECTED_STYLE_LAYER_PREFIX + 'French bldg title',
+                        id: SELECTED_STYLE_LAYER_PREFIX + french_buildings_titles.name,
                         paint: {
                             "text-halo-color": FRENCH_SELECTED_TITLE_HALO_COLOR,
                             "text-halo-width": 5,
@@ -47,6 +47,7 @@ export const select_building = newid => {
                     }
                 )
             )
+            // TODO: can also add layer "selected square at low zoom"
         }
     }
 

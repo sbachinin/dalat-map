@@ -1,12 +1,6 @@
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
 import { fly_to_building, try_open_building } from './bldg_details.mjs'
-import { french_polygons_layers } from './layers/french_polygons.mjs'
-import {
-    dead_building_fill,
-    dead_building_skull
-} from './dead_buildings.mjs'
-import { french_buildings_titles } from './layers/titles.mjs'
 import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
 import {
     can_share_files,
@@ -16,33 +10,23 @@ import {
 } from './utils/utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
-import { does_building_have_details } from './utils/does_building_have_details.mjs'
+import { does_feature_have_details } from './utils/does_feature_have_details.mjs'
 import { get_link_to_selected_bldg, selected_building_id } from './select_building.mjs'
 import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
 
 
 
-
-const potentially_clickable_layers = [
-    ...french_polygons_layers.map(l => l.id), // therefore detailless layers are inculded too so they have to be filtered out ad hoc
-    dead_building_fill.id,
-    dead_building_skull.id,
-    french_buildings_titles.id,
-]
-
 export const add_mouse_stuff = () => {
     const map = window.dalatmap
 
     map.on('click', (e) => {
-        // navigator?.clipboard?.writeText?.(
-        //     `[${e.lngLat.lng}, ${e.lngLat.lat}]`
-        //     // map.queryRenderedFeatures(e.point)?.[0]?.id
-        // )
+        navigator?.clipboard?.writeText?.(
+            `[${e.lngLat.lng}, ${e.lngLat.lat}]`
+            // map.queryRenderedFeatures(e.point)?.[0]?.id
+        )
         const rfs = map.queryRenderedFeatures(e.point)
-        const clickable_feat = rfs.find(f => potentially_clickable_layers.includes(f.layer.id))
-        if (clickable_feat
-            && does_building_have_details(clickable_feat.id)
-        ) {
+        const clickable_feat = rfs.find(f => does_feature_have_details(f.id))
+        if (clickable_feat) {
             try_open_building(clickable_feat.id, true, true)
         } else {
             panel.set_size(0)
@@ -50,24 +34,17 @@ export const add_mouse_stuff = () => {
     })
 
     // ADD & REMOVE CURSOR POINTER ON BUILDINGS WITH DETAILS
-    potentially_clickable_layers.forEach(layer => {
-        map.on('mousemove', layer, (e) => {
-            if (map.getZoom() > CURSOR_POINTER_MINZOOM
-                && e.features[0].layer.id !== french_buildings_titles.id
-                && does_building_have_details(e.features[0].id)
-            ) {
-                map.getCanvas().style.cursor = 'pointer'
-            }
-        })
-
-        map.on('mouseleave', layer, (e) => {
-            const rfs = map.queryRenderedFeatures(e.point)
-            if (!rfs.find(f => f.id && does_building_have_details(f.id))) {
-                map.getCanvas().style.cursor = ''
-            }
-        })
+    // potentially_clickable_layers.forEach(layer => {
+    map.on('mousemove', (e) => {
+        if (map.getZoom() > CURSOR_POINTER_MINZOOM
+            && map.queryRenderedFeatures(e.point)
+                .find(f => f.layer.type === 'fill' && does_feature_have_details(f.id))
+        ) {
+            map.getCanvas().style.cursor = 'pointer'
+        } else {
+            map.getCanvas().style.cursor = 'auto'
+        }
     })
-
 
 
 
