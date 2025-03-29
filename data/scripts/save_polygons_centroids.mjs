@@ -1,9 +1,15 @@
+/* 
+    Centroids are generated to fly to features.
+    Currenly flying is possible only to the detailful ones,
+    so centroids are made only for such.
+*/
+
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import * as turf from '@turf/turf'
-import { all_handmade_data } from '../static/handmade_data.mjs'
 import { get_title_side } from '../../js/utils/isomorphic_utils.mjs'
+import { does_feature_have_details } from '../../js/utils/does_feature_have_details.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -37,9 +43,6 @@ const get_centroid = f => {
         Number(raw_centroid.geometry.coordinates[1].toFixed(6))
     ]
 }
-
-const feature_has_title = f => all_handmade_data[f.id]?.title
-
 
 
 
@@ -75,16 +78,11 @@ const get_title_lat = (
 }
 
 all_french_buildings.forEach(f => {
-    /* 
-        save centroids for all french bldgs in order to fly to selected ones
-        TODO: Possibly can reduce the size of cntrds by taking only detailful ones
-            (but first need to decide if only detailful are selectable)
-    */
-    data[f.id] = {
-        centroid: get_centroid(f)
-    }
-    if (feature_has_title(f)) {
-        data[f.id].title_lat = get_title_lat(f)
+    if (does_feature_have_details(f.id)) {
+        data[f.id] = {
+            centroid: get_centroid(f),
+            title_lat: get_title_lat(f)
+        }
     }
 })
 
@@ -95,7 +93,7 @@ const boring_path = path.join(__dirname, '../temp/boring_building.geojson')
 // It depends also on how I solve the titles priority order (this might necessitate having all titles as separate entities)
 const boring_buildings_data = fs.readFileSync(boring_path, 'utf8')
 JSON.parse(boring_buildings_data)
-    .filter(feature_has_title)
+    .filter(f => does_feature_have_details(f.id))
     .forEach(f => {
         data[f.id] = {
             centroid: get_centroid(f),
@@ -106,7 +104,7 @@ JSON.parse(boring_buildings_data)
 const land_areas_path = path.join(__dirname, '../temp/land_areas.geojson')
 const land_areas_data = fs.readFileSync(land_areas_path, 'utf8')
 JSON.parse(land_areas_data)
-    .filter(feature_has_title)
+    .filter(f => does_feature_have_details(f.id))
     .forEach(f => {
         data[f.id] = {
             centroid: get_centroid(f),
