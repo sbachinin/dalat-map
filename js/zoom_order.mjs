@@ -11,7 +11,9 @@ import {
     non_french_titles,
     cable_car_line,
     cable_car_label,
-    cable_car_endpoints
+    cable_car_endpoints,
+    railway_line,
+    railway_station_titles_with_squares
 } from "./drawing_layers.mjs";
 import { FIRST_CLASS_FRENCH_MINZOOM, FRENCH_GEOMETRIES_MINZOOM } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
@@ -133,6 +135,22 @@ export const zoom_order = {
         }
     ],
     13: [
+        {
+            selector: {
+                "source": SOURCES_NAMES.DALAT_TILES,
+                "source-layer": "railway",
+                filter: ["==", ["get", "railway"], "rail"]
+            },
+            drawing_layers: [railway_line],
+        },
+        {
+            selector: {
+                source: SOURCES_NAMES.DALAT_TILES,
+                'source-layer': 'railway',
+                "filter": ["==", "$id", 3377406129]  // only Trai Mat
+            },
+            drawing_layers: [railway_station_titles_with_squares],
+        },
         {
             selector: {
                 "source": SOURCES_NAMES.TITLES_POINTS,

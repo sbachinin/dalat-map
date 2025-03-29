@@ -10,6 +10,7 @@ import {
     PALE_TITLES_COLOR,
     PALE_TITLES_SIZE,
     PEAK_TTTLE_COLOR,
+    RAILWAY_LINE_COLOR,
     SQUARE_FILL_COLOR
 } from "./layers/constants.mjs";
 
@@ -326,4 +327,44 @@ export const cable_car_endpoints = {
         "icon-size": 0.12,
         'icon-allow-overlap': true,
     }
+}
+
+
+
+
+
+
+export const railway_line = {
+    "name": "Railway line",
+    "type": "line",
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+    },
+    "paint": {
+        "line-color": RAILWAY_LINE_COLOR,
+        "line-width": [
+            "interpolate", ["linear"], ["zoom"],
+            10, 1,
+            14, 2,
+            16, 3
+        ],
+    },
+}
+
+export const railway_station_titles_with_squares = {
+    name: 'Train station tiny squares with titles',
+    type: 'symbol',
+    layout: {
+        "text-anchor": "top",
+        "text-offset": [0, 0.2],
+        'text-size': PALE_TITLES_SIZE,
+        'text-font': ['Lato Regular'],
+        'text-field': 'Trai Mat\nstation',
+        "icon-image": "boring_square",
+        "icon-size": 0.15,
+    },
+    paint: {
+        'text-color': PALE_TITLES_COLOR
+    },
 }
