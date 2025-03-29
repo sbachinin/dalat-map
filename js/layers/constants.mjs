@@ -17,7 +17,7 @@ export const IMPORTANT_BORING_BLDG_FILL_COLOR = 'hsl(297, 24.70%, 89%)'
 
 export const BRIGHT_LAKE_COLOR = 'hsl(193, 100%, 62.4%)'
 export const PALE_LAKE_COLOR = 'hsl(193, 70%, 85%)'
-export const LAKE_TITLE_COLOR = 'hsl(193, 100%, 32.4%)'
+export const WATER_TITLE_COLOR = 'hsl(193, 100%, 32.4%)'
 
 export const PEAK_TTTLE_COLOR = 'hsl(30, 40%, 40%)'
 

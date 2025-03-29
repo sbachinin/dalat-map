@@ -161,19 +161,25 @@ export const zoom_order = {
         {
             selector: {
                 "source": SOURCES_NAMES.TITLES_POINTS,
-                filter: get_filter_by_fid(
-                    473556887, // hospital
-                    1244767000, // nguyen tomb
-                    473755163, // du sinh cemetery
-                    473547288, // nuclear research
-                    4119185, // market
-                    521598340, // yersin univer
-                    1307493492, // ana mandara 
-                    18645373, // co sat pagoda
-                    361851927, // linh son pagoda
-                    1355564844, // military academy
-                    1356287796, // truc lam monastery
-                )
+                filter: [
+                    "any",
+                    ["==", ["get", "is_water"], true],
+                    get_filter_by_fid(
+                        473556887, // hospital
+                        1244767000, // nguyen tomb
+                        473755163, // du sinh cemetery
+                        473547288, // nuclear research
+                        4119185, // market
+                        521598340, // yersin univer
+                        1307493492, // ana mandara 
+                        18645373, // co sat pagoda
+                        361851927, // linh son pagoda
+                        1355564844, // military academy
+                        1356287796, // truc lam monastery
+                        1305230699, // Madame
+                        7758125, // youth prison
+                    )
+                ]
             },
             drawing_layers: [non_french_titles]
         },

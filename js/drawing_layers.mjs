@@ -8,7 +8,7 @@ import {
     GRASS_COLOR,
     IMPORTANT_BORING_BLDG_FILL_COLOR,
     INSTITUTION_FILL_COLOR,
-    LAKE_TITLE_COLOR,
+    WATER_TITLE_COLOR,
     PALE_TITLES_COLOR,
     PALE_TITLES_SIZE,
     PEAK_TTTLE_COLOR,
@@ -128,7 +128,7 @@ export const datanla_waterfall_layer = {
         "symbol-sort-key": 1,
     },
     paint: {
-        'text-color': LAKE_TITLE_COLOR
+        'text-color': WATER_TITLE_COLOR
     },
 }
 
@@ -285,7 +285,12 @@ export const non_french_titles = {
         'text-font': ['Lato Regular']
     },
     paint: {
-        'text-color': PALE_TITLES_COLOR
+        'text-color': [
+            "case",
+            ["==", ["get", "is_water"], true],
+            WATER_TITLE_COLOR,
+            PALE_TITLES_COLOR
+        ]
     }
 }
 

@@ -120,7 +120,7 @@ export const land_areas_handmade_data = {
         title: 'Nuclear \nResearch \nInstitute',
     },
     1307493492: {
-        title: 'Ana Mandara \nResort',
+        title: 'Ana\nMandara \nResort',
         title_coords: [108.4233402669314, 11.945999359025265],
         area_type: AREA_TYPES.INSTITUTION
     },
@@ -154,7 +154,7 @@ export const lakes_handmade_data = {
         title_coords: [108.44589, 11.94145],
     },
     125165263: {
-        title: 'Tuyen Lam Lake',
+        title: 'Tuyen Lam\nLake',
         title_coords: [108.42535285552634, 11.893930932153538]
     },
     141724748: {

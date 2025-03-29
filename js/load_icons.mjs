@@ -1,4 +1,4 @@
-import { LAKE_TITLE_COLOR, PALE_TITLES_COLOR } from "./layers/constants.mjs"
+import { WATER_TITLE_COLOR, PALE_TITLES_COLOR } from "./layers/constants.mjs"
 
 export const load_icons = async () => {
 
@@ -18,7 +18,7 @@ export const load_icons = async () => {
             ctx.arc(32, 32, 30, 0, Math.PI * 2) // Center (32, 32), Radius 30
             ctx.fill()
         } else if (id === 'water_square') {
-            ctx.fillStyle = LAKE_TITLE_COLOR
+            ctx.fillStyle = WATER_TITLE_COLOR
             ctx.fillRect(0, 0, 64, 64)
         } else if (id === 'peak_triangle') {
             ctx.fillStyle = "black"
