@@ -13,9 +13,16 @@ import {
     cable_car_label,
     cable_car_endpoints,
     railway_line,
-    railway_station_titles_with_squares
+    railway_station_titles_with_squares,
+    boring_building_fill,
+    minor_road,
+    pedestrian_path
 } from "./drawing_layers.mjs";
-import { FIRST_CLASS_FRENCH_MINZOOM, FRENCH_GEOMETRIES_MINZOOM } from "./layers/constants.mjs";
+import {
+    FIRST_CLASS_FRENCH_MINZOOM,
+    FRENCH_GEOMETRIES_MINZOOM,
+    MINOR_ROADS_MINZOOM
+} from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
 
 
@@ -174,10 +181,42 @@ export const zoom_order = {
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
             selector: {
+                "source": SOURCES_NAMES.DALAT_TILES,
+                "source-layer": "minor_roads",
+                filter: ["!=", "is_pedestrian_path", true]
+            },
+            drawing_layers: [minor_road],
+        },
+        {
+            selector: {
+                "source": SOURCES_NAMES.DALAT_TILES,
+                "source-layer": "minor_roads",
+                filter: ["==", "is_pedestrian_path", true]
+            },
+            drawing_layers: [pedestrian_path],
+        },
+        {
+            selector: {
                 source: SOURCES_NAMES.DALAT_TILES,
                 "source-layer": "french_building",
             },
-            drawing_layers: [french_bldg_fill]
+            drawing_layers: [french_bldg_fill],
+            drawing_importance: 2
         }
+    ],
+    14: [
+        {
+            selector: {
+                "source": SOURCES_NAMES.DALAT_TILES,
+                "source-layer": "boring_building",
+            },
+            drawing_layers: [boring_building_fill]
+        },
+        {
+            selector: {
+                "source": SOURCES_NAMES.TITLES_POINTS,
+            },
+            drawing_layers: [non_french_titles]
+        },
     ]
 }

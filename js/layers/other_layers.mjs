@@ -41,22 +41,3 @@ export const city_bulk_border = {
         'line-width': 10
     }
 }
-
-
-
-export const boring_building_fill = {
-    "id": "Boring building fill",
-    "type": "fill",
-    "source": SOURCES_NAMES.DALAT_TILES,
-    "source-layer": "boring_building",
-    "minzoom": c.BORING_BLDGS_MINZOOM,
-    "paint": {
-        "fill-color": [
-            "case",
-            ["boolean", ["get", "has_title"], false],
-            c.IMPORTANT_BORING_BLDG_FILL_COLOR,
-            c.BORING_BLDG_FILL_COLOR
-        ],
-        "fill-antialias": true,
-    }
-}

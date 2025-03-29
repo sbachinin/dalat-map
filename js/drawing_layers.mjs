@@ -1,10 +1,12 @@
 import {
     AREA_TYPES,
+    BORING_BLDG_FILL_COLOR,
     CEMETERY_FILL_COLOR,
     FIRST_CLASS_FRENCH_MINZOOM,
     FRENCH_FILL_COLOR,
     FRENCH_TITLES_TEXT_COLOR,
     GRASS_COLOR,
+    IMPORTANT_BORING_BLDG_FILL_COLOR,
     INSTITUTION_FILL_COLOR,
     LAKE_TITLE_COLOR,
     PALE_TITLES_COLOR,
@@ -368,3 +370,71 @@ export const railway_station_titles_with_squares = {
         'text-color': PALE_TITLES_COLOR
     },
 }
+
+
+export const boring_building_fill = {
+    "name": "Boring building fill",
+    "type": "fill",
+    "paint": {
+        "fill-color": [
+            "case",
+            ["boolean", ["get", "has_title"], false],
+            IMPORTANT_BORING_BLDG_FILL_COLOR,
+            BORING_BLDG_FILL_COLOR
+        ],
+        "fill-antialias": true,
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const minor_road_width_etc = {
+    "line-width": [
+        "interpolate",
+        ["linear", 2],
+        ["zoom"],
+        13.7, 1,
+        20, 2
+    ],
+    "line-color": minor_road_color,
+    'line-blur': 1,
+}
+
+export const minor_road = {
+    "name": "Minor road",
+    "type": "line",
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+    },
+    "paint": {
+        ...minor_road_width_etc,
+    },
+}
+
+export const pedestrian_path = {
+    "name": "pedestrian paths",
+    "type": "line",
+    "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+    },
+    "paint": {
+        ...minor_road_width_etc,
+        "line-dasharray": [2, 2]
+    }
+}
+
