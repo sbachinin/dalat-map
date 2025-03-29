@@ -9,7 +9,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import * as turf from '@turf/turf'
 import { get_title_side } from '../../js/utils/isomorphic_utils.mjs'
-import { does_feature_have_details } from '../../js/utils/does_feature_have_details.mjs'
+import { does_feature_have_details, does_feature_have_title } from '../../js/utils/does_feature_have_details.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -78,7 +78,7 @@ const get_title_lat = (
 }
 
 all_french_buildings.forEach(f => {
-    if (does_feature_have_details(f.id)) {
+    if (does_feature_have_details(f.id) || does_feature_have_title(f.id)) {
         data[f.id] = {
             centroid: get_centroid(f),
             title_lat: get_title_lat(f)
@@ -93,7 +93,7 @@ const boring_path = path.join(__dirname, '../temp/boring_building.geojson')
 // It depends also on how I solve the titles priority order (this might necessitate having all titles as separate entities)
 const boring_buildings_data = fs.readFileSync(boring_path, 'utf8')
 JSON.parse(boring_buildings_data)
-    .filter(f => does_feature_have_details(f.id))
+    .filter(f => does_feature_have_details(f.id) || does_feature_have_title(f.id))
     .forEach(f => {
         data[f.id] = {
             centroid: get_centroid(f),
@@ -104,7 +104,7 @@ JSON.parse(boring_buildings_data)
 const land_areas_path = path.join(__dirname, '../temp/land_areas.geojson')
 const land_areas_data = fs.readFileSync(land_areas_path, 'utf8')
 JSON.parse(land_areas_data)
-    .filter(f => does_feature_have_details(f.id))
+    .filter(f => does_feature_have_details(f.id) || does_feature_have_title(f.id))
     .forEach(f => {
         data[f.id] = {
             centroid: get_centroid(f),

@@ -15,7 +15,7 @@ export const does_feature_have_details = id => {
     )
 }
 
-export const does_building_have_title = id => Boolean(
+export const does_feature_have_title = id => Boolean(
     typeof all_handmade_data[id]?.title === 'string' && all_handmade_data[id]?.title.length > 0
 )
 
