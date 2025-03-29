@@ -1697,29 +1697,24 @@ export const bldgs_handmade_data = {
     },
     "542728983": {
         title: 'Chi Lang\nchurch',
-        second_rate: true
     },
     "1308414641": {
         title: "Minh Hoa\nseminary",
-        second_rate: true
     },
     "361851700": {
         title: "Lam Dong\nAdministrative\nCenter",
-        second_rate: true,
     },
     "463866449": {
         title: 'Bus Station'
     },
     "475362782": {
         title: 'Lam Dong\nLibrary',
-        second_rate: true
     },
     "4119185": {
         title: 'Da Lat\nMarket',
     },
     "525191979": {
         title: "Dalat Center",
-        second_rate: true
     },
     "1244767000": {
         title: 'Nguyen Huu\nHao Tomb',
@@ -1734,11 +1729,9 @@ export const bldgs_handmade_data = {
     },
     "515288597": {
         title: 'Labor \nCulture House',
-        second_rate: true
     },
     "17873628": {
         title: 'Pontifical\nCollege\nof St. Pius X',
-        second_rate: true,
         title_side: 'south',
     },
     "232458166": {
@@ -1757,7 +1750,6 @@ export const bldgs_handmade_data = {
     },
     "1303678469": {
         title: 'Don Bosco parish',
-        second_rate: true,
         title_side: 'south'
     },
     "18645373": {
@@ -1765,15 +1757,12 @@ export const bldgs_handmade_data = {
     },
     "475362774": {
         title: 'Radio and\nTV station',
-        second_rate: true
     },
     "361851706": {
         title: 'Saigon\nhotel',
-        second_rate: true,
     },
     "1301446697": {
         title: 'MerPerle\nhotel',
-        second_rate: true,
     },
     515288602: {
         title: 'Cam Ly\nChurch',

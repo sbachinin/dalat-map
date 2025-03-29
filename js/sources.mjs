@@ -19,7 +19,6 @@ const get_titles_props = fid => {
 
     return {
         title: fdata.title,
-        second_rate: !!fdata.second_rate,
         is_french: is_french_building(fid),
         title_side: get_title_side(fid),
         min_zoom: fdata.min_zoom,

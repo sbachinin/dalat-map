@@ -24,9 +24,6 @@ import { bldgs_handmade_data } from "./bldgs_handmade_data.mjs"
         
         myhint,
 
-        // if second_rate is true, feature gets higher minzoom
-        second_rate: boolean,
-    
         symbol-sort-key: number, // copied as such to titles' geojson props
 
         doubt: bool // is it really colonial?
@@ -48,14 +45,12 @@ export const land_areas_handmade_data = {
     },
     99661190: {
         title: 'Nguyen Du Park',
-        second_rate: true
     },
     1356068490: {},
     1356539899: {},
     1303695917: {
         title: "High school\nfor the gifted",
         area_type: AREA_TYPES.INSTITUTION,
-        second_rate: true
     },
     473755163: {
         title: 'Du Sinh\ncemetery',
@@ -68,13 +63,11 @@ export const land_areas_handmade_data = {
     },
     1353912255: {
         title: `Lam Dong\nchildren's hospital`,
-        second_rate: true,
         area_type: AREA_TYPES.INSTITUTION
     },
     473556897: {},
     473547263: {
         title: 'Flower\ngarden',
-        second_rate: true
     },
     1356150764: {},
     1356152943: {},
@@ -84,14 +77,12 @@ export const land_areas_handmade_data = {
     1355656405: {
         area_type: AREA_TYPES.INSTITUTION,
         title: 'Vinh Son Parish',
-        second_rate: true
     },
     99661160: {},
 
     971585499: {
         title: "Da Lat Pedagogy College",
         area_type: AREA_TYPES.INSTITUTION,
-        second_rate: true
     },
     99661351: {},
     1356080427: {},
@@ -111,14 +102,12 @@ export const land_areas_handmade_data = {
     473540518: {},
     1303678437: {
         title: 'Something\nmilitary',
-        second_rate: true,
         area_type: AREA_TYPES.INSTITUTION
     },
     1086020940: {
         title: "College",
         area_type: AREA_TYPES.INSTITUTION,
         title_coords: [108.42800380452292, 11.938586878593512],
-        second_rate: true
     },
     "1355564844": {
         title: "Military\nAcademy",
@@ -127,7 +116,6 @@ export const land_areas_handmade_data = {
     361692208: {},
     99660916: {
         title: 'Yersin Park',
-        second_rate: true
     },
     473547288: {
         title: 'Nuclear \nResearch \nInstitute',
@@ -149,7 +137,6 @@ export const land_areas_handmade_data = {
     99660966: {
         title: 'Anh Sang \npark',
         title_coords: [108.43695899199463, 11.93885673022271],
-        second_rate: true
     },
     969458761: {
         title: 'Da Lat \nUniversity',

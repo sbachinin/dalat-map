@@ -7,6 +7,9 @@ export const cable_car_endpoints_source = get_geojson_source([
     {
         "type": "Feature",
         "id": 357447234,
+        "properties": {
+            aerialway: 'station'
+        },
         "geometry": {
             "type": "Point",
             "coordinates": [
@@ -18,6 +21,9 @@ export const cable_car_endpoints_source = get_geojson_source([
     {
         "type": "Feature",
         "id": 357447237,
+        "properties": {
+            aerialway: 'station'
+        },
         "geometry": {
             "type": "Point",
             "coordinates": [
