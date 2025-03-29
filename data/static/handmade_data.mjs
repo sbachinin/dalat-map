@@ -139,7 +139,7 @@ export const land_areas_handmade_data = {
     },
     99661171: {
         title: 'Golf\ncourse',
-        title_coords: [108.44548684537341, 11.94835951019995]
+        title_coords: [108.44573355685378, 11.948379021612126]
     },
     473556887: {
         title: 'Hospital',

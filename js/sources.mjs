@@ -1,4 +1,5 @@
-import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
+import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
+import { cable_car_endpoints_source } from '../data/static/cable_car_endpoints.mjs'
 
 import {
     all_handmade_data
@@ -81,5 +82,6 @@ export const main_sources = {
         minzoom: 10,
     },
     [SOURCES_NAMES.TITLES_POINTS]: titles_points,
-    datanla_waterfall
+    datanla_waterfall,
+    cable_car_endpoints_source
 }

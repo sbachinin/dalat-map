@@ -8,7 +8,10 @@ import {
     french_bldg_circle,
     french_bldg_fill,
     land_areas_fill,
-    non_french_titles
+    non_french_titles,
+    cable_car_line,
+    cable_car_label,
+    cable_car_endpoints
 } from "./drawing_layers.mjs";
 import { FIRST_CLASS_FRENCH_MINZOOM, FRENCH_GEOMETRIES_MINZOOM } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
@@ -73,6 +76,18 @@ export const zoom_order = {
         {
             selector: {
                 source: SOURCES_NAMES.DALAT_TILES,
+                'source-layer': 'transportation_other',
+                "filter": ["==", ["get", "aerialway"], "cable_car"],
+            },
+            drawing_layers: [cable_car_line, cable_car_label]
+        },
+        {
+            selector: { source: 'cable_car_endpoints_source' },
+            drawing_layers: [cable_car_endpoints]
+        },
+        {
+            selector: {
+                source: SOURCES_NAMES.DALAT_TILES,
                 'source-layer': 'peaks',
             },
             drawing_layers: [peaks_triangles_with_titles]
@@ -83,7 +98,8 @@ export const zoom_order = {
                 "source-layer": "french_building",
             },
             drawing_layers: [french_bldg_circle],
-            maxzoom: FRENCH_GEOMETRIES_MINZOOM
+            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            drawing_importance: 2
         },
         {
             selector: {
@@ -95,7 +111,7 @@ export const zoom_order = {
                     1232634198, // stadium
                 )
             },
-            drawing_layers: [non_french_titles]
+            drawing_layers: [non_french_titles],
         },
         {
             selector: {
@@ -115,6 +131,27 @@ export const zoom_order = {
             drawing_layers: [major_road_thinner_line],
             drawing_importance: 2
         }
+    ],
+    13: [
+        {
+            selector: {
+                "source": SOURCES_NAMES.TITLES_POINTS,
+                filter: get_filter_by_fid(
+                    473556887, // hospital
+                    1244767000, // nguyen tomb
+                    473755163, // du sinh cemetery
+                    473547288, // nuclear research
+                    4119185, // market
+                    521598340, // yersin univer
+                    1307493492, // ana mandara 
+                    18645373, // co sat pagoda
+                    361851927, // linh son pagoda
+                    1355564844, // military academy
+                    1356287796, // truc lam monastery
+                )
+            },
+            drawing_layers: [non_french_titles]
+        },
     ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {

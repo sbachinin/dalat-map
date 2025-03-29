@@ -24,6 +24,6 @@ const outputContent = `export const french_ids = ${JSON.stringify(french_ids, nu
 export const shit_ids = ${JSON.stringify(shit_ids, null, 2)}
 `
 fs.writeFileSync(
-    '../for_runtime/bldgs_ids.mjs',
+    '../generated_for_runtime/bldgs_ids.mjs',
     outputContent
 )

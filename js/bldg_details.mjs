@@ -15,7 +15,7 @@ import {
     is_mobile_device,
     push_to_history
 } from './utils/utils.mjs'
-import { centroids_etc } from '../data/for_runtime/centroids_etc.mjs'
+import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
 import { does_building_have_details } from './utils/does_building_have_details.mjs'
 
 

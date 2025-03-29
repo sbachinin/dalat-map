@@ -115,5 +115,5 @@ JSON.parse(land_areas_data)
     })
 
 const outputContent = `export const centroids_etc = ${JSON.stringify(data, null, 2)};`
-fs.writeFileSync('../for_runtime/centroids_etc.mjs', outputContent)
+fs.writeFileSync('../generated_for_runtime/centroids_etc.mjs', outputContent)
 console.log('centroids.mjs has been generated!')

@@ -270,10 +270,60 @@ export const non_french_titles = {
     "type": "symbol",
     layout: {
         ...titles_common_layout_props,
-        'text-size': PALE_TITLES_SIZE,
+        'text-size': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            FIRST_CLASS_FRENCH_MINZOOM,
+            PALE_TITLES_SIZE - 1.5,
+            17.5,
+            PALE_TITLES_SIZE,
+        ],
         'text-font': ['Lato Regular']
     },
     paint: {
         'text-color': PALE_TITLES_COLOR
+    }
+}
+
+
+
+export const cable_car_line = {
+    "name": "Cable car line",
+    type: 'line',
+    "paint": {
+        "line-color": "#6666ff",
+        "line-width": [
+            "interpolate", ["linear"], ["zoom"],
+            10, 1,
+            15, 2
+        ],
+        "line-dasharray": [1, 1]
+    }
+}
+export const cable_car_label = {
+    "name": "Cable car label",
+    type: 'symbol',
+    "layout": {
+        "text-field": "Cable car",
+        "text-font": ["Lato Regular"],
+        "text-size": 10,
+        "symbol-placement": "line",
+        "text-letter-spacing": 0.1,
+        "text-anchor": "bottom",
+        "text-offset": [0, -0.1]
+    },
+    "paint": {
+        "text-color": PALE_TITLES_COLOR,
+    },
+}
+
+export const cable_car_endpoints = {
+    "name": "Cable car endpoints",
+    "type": "symbol",
+    "layout": {
+        "icon-image": "boring_square",
+        "icon-size": 0.12,
+        'icon-allow-overlap': true,
     }
 }

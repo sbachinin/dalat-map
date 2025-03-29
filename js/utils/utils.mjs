@@ -1,5 +1,5 @@
-import { shit_ids } from '../../data/for_runtime/bldgs_ids.mjs'
-import { centroids_etc } from '../../data/for_runtime/centroids_etc.mjs'
+import { shit_ids } from '../../data/generated_for_runtime/bldgs_ids.mjs'
+import { centroids_etc } from '../../data/generated_for_runtime/centroids_etc.mjs'
 import { bldgs_handmade_data } from '../../data/static/bldgs_handmade_data.mjs'
 import { map_bounds } from '../layers/constants.mjs'
 import { is_french_building } from './isomorphic_utils.mjs'

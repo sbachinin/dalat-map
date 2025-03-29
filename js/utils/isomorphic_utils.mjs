@@ -1,4 +1,4 @@
-import { french_ids } from "../../data/for_runtime/bldgs_ids.mjs"
+import { french_ids } from "../../data/generated_for_runtime/bldgs_ids.mjs"
 import { all_handmade_data } from "../../data/static/handmade_data.mjs"
 
 export const is_french_building = fid => french_ids.includes(Number(fid))
