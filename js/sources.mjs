@@ -21,7 +21,6 @@ const get_titles_props = fid => {
         title: fdata.title,
         is_french: is_french_building(fid),
         title_side: get_title_side(fid),
-        min_zoom: fdata.min_zoom,
         "symbol-sort-key": fdata["symbol-sort-key"]
     }
 }

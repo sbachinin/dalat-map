@@ -303,7 +303,6 @@ export const bldgs_handmade_data = {
         "images": [
             "IMG_1339.jpg"
         ],
-        min_zoom: 14,
         google: 'https://maps.app.goo.gl/GxwxzVTnzcs843oQ6',
         "symbol-sort-key": 3,
         title_side: 'north'
