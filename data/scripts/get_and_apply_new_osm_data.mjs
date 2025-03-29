@@ -286,7 +286,7 @@ const make_main_mbtiles = `
 `
 const make_minor_roads_mbtiles = `
     tippecanoe -o ${minor_roads_mbtiles_path} \
-    --minimum-zoom=${MINOR_ROADS_MINZOOM} --maximum-zoom=17 \
+    --minimum-zoom=${Math.floor(MINOR_ROADS_MINZOOM)} --maximum-zoom=17 \
     --no-tile-compression -f \
     ../temp/minor_roads.geojson \
 `
