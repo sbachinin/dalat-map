@@ -6,7 +6,6 @@ import {
     peaks_triangles_with_titles,
     tertiary_road,
     french_bldg_circle,
-    french_bldg_fill,
     land_areas_fill,
     non_french_titles,
     cable_car_line,
@@ -22,6 +21,14 @@ import {
     FIRST_CLASS_FRENCH_MINZOOM,
     FRENCH_GEOMETRIES_MINZOOM,
 } from "./layers/constants.mjs";
+import {
+    french_detailful_bldg_fill,
+    french_detailful_dark_outline,
+    french_detailful_thickening_outline,
+    french_detailless_bldg_fill,
+    french_detailless_dark_outline,
+    french_detailless_thickening_outline
+} from "./layers/french_polygons.mjs";
 
 
 const get_filter_by_fid = (...fids) => ["any", ...fids.map(fid => ["==", ["id"], fid])]
@@ -121,6 +128,7 @@ export const zoom_order = {
                     1356287796, // truc lam monastery
                     1305230699, // Madame
                     7758125, // youth prison
+                    1303837487, // lam vien square
                 )
             ],
             drawing_layers: [non_french_titles]
@@ -136,12 +144,29 @@ export const zoom_order = {
             filter: ["==", "is_pedestrian_path", true]
         },
         {
-            drawing_layers: [french_bldg_fill],
+            drawing_layers: [
+                french_detailless_dark_outline,
+                french_detailless_thickening_outline,
+                french_detailless_bldg_fill
+            ],
+            filter: ["==", ["get", "has_details"], false],
             drawing_importance: 2
-        }
+        },
+        {
+            drawing_layers: [
+                french_detailful_dark_outline,
+                french_detailful_thickening_outline,
+                french_detailful_bldg_fill
+            ],
+            filter: ["==", ["get", "has_details"], true],
+            drawing_importance: 2
+        },
     ],
     14: [
-        { drawing_layers: [boring_building_fill] },
+        {
+            drawing_layers: [boring_building_fill],
+            drawing_importance: 3
+        },
         { drawing_layers: [non_french_titles] },
     ]
 }

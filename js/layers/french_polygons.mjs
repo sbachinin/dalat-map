@@ -16,13 +16,12 @@ export const french_fill_common_props = {
 // the following separation was necessary
 // in order to render all detailful bldgs after all detailless,
 // to prevent the detailful bldgs' border from being covered by borderless buildings' parts
-const french_detailless_bldg_fill = {
-    "id": "French unimportant building fill",
+export const french_detailless_bldg_fill = {
+    "name": "French unimportant building fill",
     ...french_fill_common_props,
-    filter: ["==", ["get", "has_details"], false]
 }
 export const french_detailful_bldg_fill = {
-    "id": "French important building",
+    "name": "French important building",
     ...french_fill_common_props,
     filter: ["==", ["get", "has_details"], true]
 }
@@ -49,14 +48,13 @@ const french_thickening_outline_common_props = {
     },
 }
 
-const french_detailless_thickening_outline = {
-    id: 'French bldg without details thickening outline',
+export const french_detailless_thickening_outline = {
+    name: 'French bldg without details thickening outline',
     ...french_thickening_outline_common_props,
-    filter: ["==", ["get", "has_details"], false]
 }
 
 export const french_detailful_thickening_outline = {
-    id: 'French bldg with details thickening outline',
+    name: 'French bldg with details thickening outline',
     ...french_thickening_outline_common_props,
     filter: ["==", ["get", "has_details"], true]
 }
@@ -83,59 +81,13 @@ const get_dark_outline_props = high_zoom_thickness => {
     }
 }
 
-const french_detailless_dark_outline = {
-    'id': 'French buildings without details dark outline',
+export const french_detailless_dark_outline = {
+    'name': 'French buildings without details dark outline',
     ...get_dark_outline_props(1),
-    filter: ["==", ["get", "has_details"], false]
 }
 
 export const french_detailful_dark_outline = {
-    'id': 'French buildings with details dark outline',
+    'name': 'French buildings with details dark outline',
     ...get_dark_outline_props(4),
     filter: ["==", ["get", "has_details"], true]
 }
-
-const first_class_bldg_filter = ["all",
-    ["==", ["get", "is_important"], true],
-    ["==", ["get", "has_title"], true]
-]
-const non_first_class_bldg_filter = ["any",
-    ["==", ["get", "is_important"], false],
-    ["==", ["get", "has_title"], false]
-]
-
-export const french_polygons_layers = [
-    // detailless bldgs go first
-    // because otherwise it can cover
-    // the adjacent important buildings' outlines
-    // leading to "missing borders" appearance
-    french_detailless_dark_outline,
-    french_detailless_thickening_outline,
-    french_detailless_bldg_fill,
-
-    french_detailful_dark_outline,
-    french_detailful_thickening_outline,
-    french_detailful_bldg_fill
-].flatMap(l => ([
-    {
-        ...l,
-        id: l.id + ' - 1st class',
-        filter: [
-            "all",
-            l.filter,
-            first_class_bldg_filter
-        ],
-    },
-    {
-        ...l,
-        id: l.id + ' - non-1st class',
-        filter: [
-            "all",
-            l.filter,
-            non_first_class_bldg_filter
-        ],
-        minzoom: c.SECONDARY_BLDGS_MINZOOM
-    },
-
-
-]))

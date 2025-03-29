@@ -19,6 +19,10 @@ export const build_layers = () => {
                     if (zoom_level_layer.maxzoom) {
                         layer.maxzoom = zoom_level_layer.maxzoom
                     }
+                    if (zoom_level_layer.filter) {
+                        layer.filter = zoom_level_layer.filter
+                    }
+
                     return layer
                 })
             })
