@@ -48,6 +48,7 @@ export const titles_common_layout_props = {
 export const french_buildings_titles = {
     "name": "French buildings titles",
     "type": "symbol",
+    source: SOURCES_NAMES.TITLES_POINTS,
     layout: {
         ...titles_common_layout_props,
         'text-size': [
@@ -71,6 +72,8 @@ export const french_buildings_titles = {
 export const french_bldg_circle = {
     "name": "French building circle",
     "type": "symbol",
+    source: SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "french_building",
     layout: {
         "icon-image": "french_circle",
         "icon-size": [
@@ -105,6 +108,8 @@ export const french_bldg_circle = {
 export const french_bldg_fill = {
     "name": "French building fill",
     "type": "fill",
+    source: SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "french_building",
     "paint": {
         "fill-color": FRENCH_FILL_COLOR,
         "fill-antialias": true
@@ -117,6 +122,7 @@ export const french_bldg_fill = {
 export const datanla_waterfall_layer = {
     name: "Datanla waterfall",
     type: 'symbol',
+    source: 'datanla_waterfall',
     layout: {
         "icon-image": "water_square",
         "icon-size": 0.12,
@@ -136,6 +142,8 @@ export const datanla_waterfall_layer = {
 export const peaks_triangles_with_titles = {
     name: 'Peaks triangles with titles',
     type: 'symbol',
+    source: SOURCES_NAMES.DALAT_TILES,
+    'source-layer': 'peaks',
     layout: {
         "text-anchor": "top",
         "text-offset": [0, 0.3],
@@ -169,6 +177,8 @@ const minor_road_color = "hsl(30, 0%, 73%)"
 export const major_road_thicker_line = {
     "name": "Major road thicker line",
     "type": "line",
+    "source": SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "major_roads",
     "paint": {
         "line-color": road_color,
         "line-width": [
@@ -189,6 +199,8 @@ export const major_road_thicker_line = {
 export const major_road_thinner_line = {
     "name": "Major road thinner line",
     "type": "line",
+    "source": SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "major_roads",
     "paint": {
         "line-color": [
             "interpolate",
@@ -216,6 +228,8 @@ export const major_road_thinner_line = {
 
 export const tertiary_road = {
     name: 'Tertiary road',
+    "source": SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "major_roads",
     type: 'line',
     "paint": {
 
@@ -242,6 +256,8 @@ export const tertiary_road = {
 export const land_areas_fill = {
     name: 'Land areas fill',
     type: 'fill',
+    source: SOURCES_NAMES.DALAT_TILES,
+    'source-layer': 'land_areas',
     paint: {
         'fill-color': [
             "case",
@@ -271,6 +287,7 @@ export const land_areas_fill = {
 export const non_french_titles = {
     name: "Non french titles",
     "type": "symbol",
+    "source": SOURCES_NAMES.TITLES_POINTS,
     layout: {
         ...titles_common_layout_props,
         'text-size': [
@@ -299,6 +316,8 @@ export const non_french_titles = {
 export const cable_car_line = {
     "name": "Cable car line",
     type: 'line',
+    source: SOURCES_NAMES.DALAT_TILES,
+    'source-layer': 'transportation_other',
     "paint": {
         "line-color": "#6666ff",
         "line-width": [
@@ -312,6 +331,8 @@ export const cable_car_line = {
 export const cable_car_label = {
     "name": "Cable car label",
     type: 'symbol',
+    source: SOURCES_NAMES.DALAT_TILES,
+    'source-layer': 'transportation_other',
     "layout": {
         "text-field": "Cable car",
         "text-font": ["Lato Regular"],
@@ -329,6 +350,7 @@ export const cable_car_label = {
 export const cable_car_endpoints = {
     "name": "Cable car endpoints",
     "type": "symbol",
+    source: 'cable_car_endpoints_source',
     "layout": {
         "icon-image": "boring_square",
         "icon-size": 0.12,
@@ -344,6 +366,8 @@ export const cable_car_endpoints = {
 export const railway_line = {
     "name": "Railway line",
     "type": "line",
+    "source": SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "railway",
     "layout": {
         "line-cap": "round",
         "line-join": "round"
@@ -362,6 +386,8 @@ export const railway_line = {
 export const railway_station_titles_with_squares = {
     name: 'Train station tiny squares with titles',
     type: 'symbol',
+    source: SOURCES_NAMES.DALAT_TILES,
+    'source-layer': 'railway',
     layout: {
         "text-anchor": "top",
         "text-offset": [0, 0.2],
@@ -380,6 +406,8 @@ export const railway_station_titles_with_squares = {
 export const boring_building_fill = {
     "name": "Boring building fill",
     "type": "fill",
+    "source": SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "boring_building",
     "paint": {
         "fill-color": [
             "case",
@@ -421,6 +449,8 @@ const minor_road_width_etc = {
 export const minor_road = {
     "name": "Minor road",
     "type": "line",
+    "source": SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "minor_roads",
     "layout": {
         "line-cap": "round",
         "line-join": "round",
@@ -433,6 +463,8 @@ export const minor_road = {
 export const pedestrian_path = {
     "name": "pedestrian paths",
     "type": "line",
+    "source": SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "minor_roads",
     "layout": {
         "line-cap": "round",
         "line-join": "round",

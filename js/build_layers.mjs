@@ -12,12 +12,9 @@ export const build_layers = () => {
                     }
                     const layer = {
                         id: zoom_level + ": " + drawing_layer.name,
-                        ...zoom_level_layer.selector,
                         minzoom: +zoom_level,
-                        type: drawing_layer.type,
-                        paint: drawing_layer.paint || {},
-                        layout: drawing_layer.layout || {},
-                        drawing_importance: zoom_level_layer.drawing_importance
+                        drawing_importance: zoom_level_layer.drawing_importance,
+                        ...drawing_layer,
                     }
                     if (zoom_level_layer.maxzoom) {
                         layer.maxzoom = zoom_level_layer.maxzoom
