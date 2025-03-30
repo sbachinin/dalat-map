@@ -74,6 +74,10 @@ export const french_buildings_titles = {
 export const french_bldg_circle = {
     "name": "French building circle",
     "type": "symbol",
+
+    // could use 'bldgs_centroids_points' source,
+    // it would be consistent with how non-french squares are rendered,
+    // but centroids source hasn't 'has_title' property
     source: SOURCES_NAMES.DALAT_TILES,
     "source-layer": "french_building",
     layout: {

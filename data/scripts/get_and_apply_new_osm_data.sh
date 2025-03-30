@@ -179,7 +179,7 @@ jq --argjson land_areas_handmade_data "$land_areas_handmade_data" '
 # generated centroids didn't provide good-looking titles so I switched to manual title_coords
 # ./generate_centroids.sh ../temp/land_areas00.geojson ../temp/land_areas.geojson
 
-node save_polygons_centroids.mjs
+node save_polygons_centroids_etc.mjs
 node save_some_features_ids.mjs
 
 # MAKE MANY LAYERS FROM MANY JSON FILES
