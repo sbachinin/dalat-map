@@ -50,7 +50,8 @@ import {
     railway_station_titles_with_squares,
     boring_building_fill,
     minor_road,
-    pedestrian_path
+    pedestrian_path,
+    city_bulk_title
 } from "./drawing_layers.mjs";
 import {
     FIRST_CLASS_FRENCH_MINZOOM,
@@ -203,5 +204,6 @@ export const zoom_order = {
             drawing_importance: 3
         },
         { drawing_layers: [non_french_titles] },
+        { drawing_layers: [city_bulk_title] }
     ]
 }

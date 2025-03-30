@@ -13,7 +13,8 @@ import {
     PALE_TITLES_SIZE,
     PEAK_TTTLE_COLOR,
     RAILWAY_LINE_COLOR,
-    SQUARE_FILL_COLOR
+    SQUARE_FILL_COLOR,
+    CITY_BULK_TITLE_COLOR
 } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
 
@@ -473,6 +474,27 @@ export const pedestrian_path = {
     "paint": {
         ...minor_road_width_etc,
         "line-dasharray": [2, 2]
+    }
+}
+
+
+
+export const city_bulk_title = {
+    name: 'cityBulk title',
+    type: 'symbol',
+    source: SOURCES_NAMES.DALAT_TILES,
+    "source-layer": 'dalat_bulk_geometry_as_linestring',
+    layout: {
+        'text-field': 'Approximate residential limits of Dalat',
+        'text-size': PALE_TITLES_SIZE - 1.5,
+        'text-font': ['Lato Regular'],
+        'symbol-placement': 'line',
+        "symbol-spacing": 300,
+        "text-offset": [0, 1],
+        "text-letter-spacing": 0.07,
+    },
+    paint: {
+        'text-color': CITY_BULK_TITLE_COLOR
     }
 }
 
