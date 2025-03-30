@@ -1,8 +1,6 @@
-import { shit_ids } from '../../data/generated_for_runtime/bldgs_ids.mjs'
 import { centroids_etc } from '../../data/generated_for_runtime/centroids_etc.mjs'
 import { bldgs_handmade_data } from '../../data/static/bldgs_handmade_data.mjs'
 import { map_bounds } from '../layers/constants.mjs'
-import { is_french_building } from './isomorphic_utils.mjs'
 
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
@@ -166,11 +164,6 @@ export const get_geojson_source = (features) => {
     }
 }
 
-export const is_shit_building = fid => shit_ids.includes(fid)
-
-export const is_a_building = fid => {
-    return is_french_building(fid) || is_shit_building(fid)
-}
 
 
 export function get_center_for_bldg_with_offset(id) {
