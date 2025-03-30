@@ -361,6 +361,17 @@ export const cable_car_endpoints = {
 }
 
 
+export const boring_building_square = {
+    "name": "Boring building square",
+    "type": "symbol",
+    source: 'bldgs_centroids_points',
+    "layout": {
+        "icon-image": "boring_square",
+        "icon-size": 0.12,
+        'icon-allow-overlap': true,
+    }
+}
+
 
 
 

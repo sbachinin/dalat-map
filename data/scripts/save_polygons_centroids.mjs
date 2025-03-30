@@ -2,6 +2,8 @@
     Centroids are generated to fly to features.
     Currenly flying is possible only to the detailful ones,
     so centroids are made only for such.
+    Also it's possible to use centroids to draw something instead of polygons,
+        such as a "square" icon that accompanies a title of a building whose geometry is too early to show
 */
 
 import fs from 'fs'

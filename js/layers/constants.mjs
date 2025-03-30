@@ -13,7 +13,7 @@ export const FRENCH_DEAD_FILL_COLOR = 'hsl(22, 50%, 90%)'
 export const FRENCH_DARK_BORDER_COLOR = 'hsl(340, 35.30%, 35.00%)'
 export const FRENCH_LIGHTER_BORDER_COLOR = 'hsl(340, 0%, 50.00%)'
 export const BORING_BLDG_FILL_COLOR = 'hsl(43, 15%, 92%)'
-export const IMPORTANT_BORING_BLDG_FILL_COLOR = 'hsl(297, 24.70%, 89%)'
+export const IMPORTANT_BORING_BLDG_FILL_COLOR = 'hsla(0, 0.00%, 70%, 0.8)'
 
 export const BRIGHT_LAKE_COLOR = 'hsl(193, 100%, 62.4%)'
 export const PALE_LAKE_COLOR = 'hsl(193, 70%, 85%)'
@@ -22,6 +22,8 @@ export const WATER_TITLE_COLOR = 'hsl(193, 100%, 32.4%)'
 export const PEAK_TTTLE_COLOR = 'hsl(30, 40%, 40%)'
 
 export const PALE_TITLES_COLOR = 'hsl(0, 0.00%, 40.40%)'
+export const BORING_SQUARE_COLOR = 'hsl(0, 0.00%, 60.40%)'
+
 export const PALE_TITLES_SIZE = 11
 export const GRASS_COLOR = 'hsl(70, 50%, 70%)'
 export const INSTITUTION_FILL_COLOR = 'hsl(164, 20.30%, 85.00%)'

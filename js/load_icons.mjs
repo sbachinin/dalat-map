@@ -1,4 +1,4 @@
-import { WATER_TITLE_COLOR, PALE_TITLES_COLOR } from "./layers/constants.mjs"
+import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR } from "./layers/constants.mjs"
 
 export const load_icons = async () => {
 
@@ -29,7 +29,7 @@ export const load_icons = async () => {
             ctx.closePath()
             ctx.fill()
         } else if (id == 'boring_square') {
-            ctx.fillStyle = PALE_TITLES_COLOR
+            ctx.fillStyle = BORING_SQUARE_COLOR
             ctx.fillRect(0, 0, 64, 64)
         }
 

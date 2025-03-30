@@ -38,7 +38,7 @@ export const add_mouse_stuff = () => {
     map.on('mousemove', (e) => {
         if (map.getZoom() > CURSOR_POINTER_MINZOOM
             && map.queryRenderedFeatures(e.point)
-                .find(f => f.layer.type === 'fill' && does_feature_have_details(f.id))
+                .find(f => f.layer.type === 'fill' && f.id && does_feature_have_details(f.id))
         ) {
             map.getCanvas().style.cursor = 'pointer'
         } else {

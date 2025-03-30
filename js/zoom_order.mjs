@@ -51,9 +51,11 @@ import {
     boring_building_fill,
     minor_road,
     pedestrian_path,
-    city_bulk_title
+    city_bulk_title,
+    boring_building_square
 } from "./drawing_layers.mjs";
 import {
+    BORING_BLDGS_MINZOOM,
     FIRST_CLASS_FRENCH_MINZOOM,
     FRENCH_GEOMETRIES_MINZOOM,
 } from "./layers/constants.mjs";
@@ -169,6 +171,12 @@ export const zoom_order = {
             ],
             drawing_layers: [non_french_titles]
         },
+        {
+            drawing_layers: [boring_building_square],
+            filter: get_filter_by_fid(1244767000, 1305230699, 361851927),
+            maxzoom: BORING_BLDGS_MINZOOM,
+            drawing_importance: 3
+        }
     ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
@@ -198,7 +206,7 @@ export const zoom_order = {
             drawing_importance: 2
         },
     ],
-    14: [
+    [BORING_BLDGS_MINZOOM]: [
         {
             drawing_layers: [boring_building_fill],
             drawing_importance: 3

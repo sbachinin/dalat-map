@@ -95,7 +95,7 @@ export const centroids_etc = {
       108.435969,
       11.943528
     ],
-    "title_lat": 11.943528
+    "title_lat": 11.9432405
   },
   "361692216": {
     "centroid": [

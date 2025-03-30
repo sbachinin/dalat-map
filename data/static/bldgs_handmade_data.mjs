@@ -36,9 +36,10 @@ export const bldgs_handmade_data = {
     },
     "308446691": {
         "title": "Hoa Binh \n(ex)cinema",
+        title_side: 'south',
         "images": [
             "IMG_1791.jpg"
-        ]
+        ],
     },
     "361692216": {
         "images": [
@@ -1565,7 +1566,8 @@ export const bldgs_handmade_data = {
     "1316150308": {
         "images": [
             "IMG_8599~4.jpg"
-        ]
+        ],
+        doubt: true
     },
     "1316150310": {
         "images": [
