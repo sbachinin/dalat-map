@@ -181,11 +181,11 @@ export const zoom_order = {
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
             drawing_layers: [minor_road],
-            filter: ["!=", "is_pedestrian_path", true]
+            filter: ["!in", "highway", "footway", "path", "cycleway", "steps"]
         },
         {
             drawing_layers: [pedestrian_path],
-            filter: ["==", "is_pedestrian_path", true]
+            filter: ["in", "highway", "footway", "path", "cycleway", "steps"]
         },
         {
             drawing_layers: [

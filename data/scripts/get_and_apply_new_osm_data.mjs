@@ -193,7 +193,6 @@ write(
         .map(f => clear_feature_props(f, ['highway']))
 );
 
-const pedestrian_highway_values = ['footway', 'cycleway', 'steps', 'path']
 write(
     '../temp/minor_roads.geojson',
     all_geojson.features
@@ -201,12 +200,7 @@ write(
             return f.properties.highway
                 && !major_road_highway_values.includes(f.properties.highway);
         })
-        .map(f => {
-            if (pedestrian_highway_values.includes(f.properties.highway)) {
-                f.properties.is_pedestrian_path = true;
-            }
-            return clear_feature_props(f, ['is_pedestrian_path']);
-        })
+        .map(f => clear_feature_props(f, ['highway']))
 );
 
 write(
@@ -265,7 +259,7 @@ write(
         })
 );
 
-import('./save_polygons_centroids.mjs')
+import('./save_polygons_centroids_etc.mjs')
 import('./save_some_features_ids.mjs')
 
 

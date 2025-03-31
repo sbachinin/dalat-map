@@ -17,6 +17,7 @@ import {
     CITY_BULK_TITLE_COLOR
 } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
+import { deep_merge_objects } from "./utils/utils.mjs";
 
 
 export const titles_common_layout_props = {
@@ -451,18 +452,6 @@ export const boring_building_fill = {
 
 
 
-const minor_road_width_etc = {
-    "line-width": [
-        "interpolate",
-        ["linear", 2],
-        ["zoom"],
-        13.7, 1,
-        20, 2
-    ],
-    "line-color": minor_road_color,
-    'line-blur': 1,
-}
-
 export const minor_road = {
     "name": "Minor road",
     "type": "line",
@@ -473,26 +462,37 @@ export const minor_road = {
         "line-join": "round",
     },
     "paint": {
-        ...minor_road_width_etc,
+        "line-width": [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            13.7,
+            [
+                "case",
+                ["==", ["get", "highway"], "residential"],
+                2,
+                1
+            ],
+            20,
+            [
+                "case",
+                ["==", ["get", "highway"], "residential"],
+                4,
+                2
+            ],
+        ],
+        "line-color": minor_road_color,
+        'line-blur': 1,
     },
 }
 
-export const pedestrian_path = {
-    "name": "pedestrian paths",
-    "type": "line",
-    "source": SOURCES_NAMES.DALAT_TILES,
-    "source-layer": "minor_roads",
-    "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-    },
-    "paint": {
-        ...minor_road_width_etc,
-        "line-dasharray": [2, 2]
+export const pedestrian_path = deep_merge_objects(
+    minor_road,
+    {
+        id: 'pedestrian_path',
+        paint: { "line-dasharray": [2, 2] }
     }
-}
-
-
+)
 
 export const city_bulk_title = {
     name: 'cityBulk title',
