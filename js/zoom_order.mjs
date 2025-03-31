@@ -68,8 +68,9 @@ import {
     french_detailless_thickening_outline
 } from "./layers/french_polygons.mjs";
 
+import { all_handmade_data as hmd } from "../data/static/handmade_data.mjs";
 
-const get_filter_by_fid = (...fids) => ["any", ...fids.map(fid => ["==", ["id"], fid])]
+const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
 
 export const zoom_order = {
     /*
@@ -120,11 +121,11 @@ export const zoom_order = {
         },
         {
             drawing_layers: [non_french_titles],
-            filter: get_filter_by_fid(
-                99661171, // golf course
-                969458761, // university
-                463866449, // bus station
-                1232634198, // stadium
+            filter: get_filter_by_fids(
+                hmd[99661171], // golf course
+                hmd[969458761], // university
+                hmd[463866449], // bus station
+                hmd[1232634198], // stadium
             ),
         },
         {
@@ -152,28 +153,32 @@ export const zoom_order = {
             filter: [
                 "any",
                 ["==", ["get", "is_water"], true],
-                get_filter_by_fid(
-                    473556887, // hospital
-                    1244767000, // nguyen tomb
-                    473755163, // du sinh cemetery
-                    473547288, // nuclear research
-                    4119185, // market
-                    521598340, // yersin univer
-                    1307493492, // ana mandara 
-                    18645373, // co sat pagoda
-                    361851927, // linh son pagoda
-                    1355564844, // military academy
-                    1356287796, // truc lam monastery
-                    1305230699, // Madame
-                    7758125, // youth prison
-                    1303837487, // lam vien square
+                get_filter_by_fids(
+                    hmd[473556887], // hospital
+                    hmd[1244767000], // nguyen tomb
+                    hmd[473755163], // du sinh cemetery
+                    hmd[473547288], // nuclear research
+                    hmd[4119185], // market
+                    hmd[521598340], // yersin univer
+                    hmd[1307493492], // ana mandara 
+                    hmd[18645373], // co sat pagoda
+                    hmd[361851927], // linh son pagoda
+                    hmd[1355564844], // military academy
+                    hmd[1356287796], // truc lam monastery
+                    hmd[1305230699], // Madame
+                    hmd[7758125], // youth prison
+                    hmd[1303837487], // lam vien square
                 )
             ],
             drawing_layers: [non_french_titles]
         },
         {
             drawing_layers: [boring_building_square],
-            filter: get_filter_by_fid(1244767000, 1305230699, 361851927),
+            filter: get_filter_by_fids(
+                hmd[1244767000],
+                hmd[1305230699],
+                hmd[361851927]
+            ),
             maxzoom: BORING_BLDGS_MINZOOM,
             drawing_importance: 3
         }

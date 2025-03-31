@@ -172,3 +172,7 @@ export const all_handmade_data = {
     ...land_areas_handmade_data,
     ...lakes_handmade_data
 }
+
+Object.keys(all_handmade_data).forEach((feat_id) => {
+    all_handmade_data[feat_id].id = feat_id
+})
