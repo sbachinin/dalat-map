@@ -1,4 +1,6 @@
-export const DEV_should_open_panel = true
+/* ! this doesn't work, setting it to false leads to blank map
+*/ export const DEV_should_open_panel = true
+
 export const DEV_skip_map_rendering = false
 export const DEV_show_debug_el = true
 

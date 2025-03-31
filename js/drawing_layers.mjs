@@ -466,17 +466,18 @@ export const minor_road = {
             "interpolate",
             ["linear", 2],
             ["zoom"],
-            13.7,
+            13,
             [
                 "case",
-                ["==", ["get", "highway"], "residential"],
-                2,
-                1
+                ["match", ["get", "highway"], ["residential", 'unclassified'], true, false],
+                1.3,
+                0.8
             ],
             20,
             [
                 "case",
-                ["==", ["get", "highway"], "residential"],
+                ["match", ["get", "highway"], ["residential", 'unclassified'], true, false],
+
                 4,
                 2
             ],

@@ -146,6 +146,10 @@ export const zoom_order = {
             filter: ["==", ["get", "railway"], "rail"],
         },
         {
+            drawing_layers: [minor_road],
+            filter: ["in", "highway", "residential", "unclassified"]
+        },
+        {
             drawing_layers: [railway_station_titles_with_squares],
             "filter": ["==", "$id", 3377406129]  // only Trai Mat
         },
@@ -185,14 +189,6 @@ export const zoom_order = {
     ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
-            drawing_layers: [minor_road],
-            filter: ["!in", "highway", "footway", "path", "cycleway", "steps"]
-        },
-        {
-            drawing_layers: [pedestrian_path],
-            filter: ["in", "highway", "footway", "path", "cycleway", "steps"]
-        },
-        {
             drawing_layers: [
                 french_detailless_dark_outline,
                 french_detailless_thickening_outline,
@@ -212,6 +208,19 @@ export const zoom_order = {
         },
     ],
     [BORING_BLDGS_MINZOOM]: [
+        {
+            drawing_layers: [minor_road],
+            filter: [
+                "!in",
+                "highway",
+                "residential", "unclassified",
+                "footway", "path", "cycleway", "steps"
+            ]
+        },
+        {
+            drawing_layers: [pedestrian_path],
+            filter: ["in", "highway", "footway", "path", "cycleway", "steps"]
+        },
         {
             drawing_layers: [boring_building_fill],
             drawing_importance: 3
