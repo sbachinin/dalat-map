@@ -5,13 +5,16 @@ import {
     city_bulk_fill,
 } from './layers/other_layers.mjs'
 import { build_layers } from './build_layers.mjs'
-
+import { cam_ly_line, other_rivers_lines } from './layers/rivers.mjs'
+console.log(build_layers().map(l => l.id).join('\n'))
 export const style = {
     name: "Dalat map",
 
     layers: [
         city_bulk_fill,
         city_bulk_border,
+        other_rivers_lines,
+        cam_ly_line,
         lakes_fill, // TODO: need a way to draw it on top of rivers, otherwise grand lac has a river drawn on top of it
 
         ...build_layers(),

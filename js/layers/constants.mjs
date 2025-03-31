@@ -15,7 +15,7 @@ export const FRENCH_LIGHTER_BORDER_COLOR = 'hsl(340, 0%, 50.00%)'
 export const BORING_BLDG_FILL_COLOR = 'hsl(43, 15%, 92%)'
 export const IMPORTANT_BORING_BLDG_FILL_COLOR = 'hsla(0, 0.00%, 70%, 0.8)'
 
-export const BRIGHT_LAKE_COLOR = 'hsl(193, 100%, 62.4%)'
+export const BRIGHT_LAKE_COLOR = 'hsl(193, 70%, 62.4%)'
 export const PALE_LAKE_COLOR = 'hsl(193, 70%, 85%)'
 export const WATER_TITLE_COLOR = 'hsl(193, 100%, 32.4%)'
 

@@ -245,7 +245,7 @@ write(
     '../temp/river.geojson',
     all_geojson.features
         .filter(f => f.properties.waterway == 'stream')
-        .map(f => clear_feature_props(f))
+        .map(f => clear_feature_props(f, ['name']))
 );
 
 write(

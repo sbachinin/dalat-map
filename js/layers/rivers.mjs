@@ -1,52 +1,44 @@
 import { SOURCES_NAMES } from "../sources.mjs";
+import { BRIGHT_LAKE_COLOR, PALE_LAKE_COLOR } from "./constants.mjs";
 
-export default [
-    {
-        id: "River Cam Ly",
-        type: 'line',
-        source: SOURCES_NAMES.DALAT_TILES,
-        'source-layer': 'river',
-        "layout": {
-            "visibility": "visible",
-            "line-cap": "round",
-            "line-join": "round",
-        },
-        "paint": {
-            "line-color": 'RGB(77, 204, 241)',
-            'line-width': [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                14,
-                1.5,
-                18,
-                6
-            ]
-        },
-        "filter": ['==', 'name', 'Suối Cam Ly']
+const river_props = {
+    type: 'line',
+    source: SOURCES_NAMES.DALAT_TILES,
+    'source-layer': 'river',
+    "layout": {
+        "visibility": "visible",
+        "line-cap": "round",
+        "line-join": "round",
     },
-    {
-        id: "All rivers but Cam Ly",
-        type: 'line',
-        source: SOURCES_NAMES.DALAT_TILES,
-        'source-layer': 'river',
-        minzoom: 14,
-        "layout": {
-            "visibility": "visible",
-            "line-cap": "round",
-            "line-join": "round",
-        },
-        "paint": {
-            "line-color": 'RGB(77, 204, 241)',
-            'line-width': [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                14, 1,
-                18, 4
-            ]
-        },
-        "filter": ['!=', 'name', 'Suối Cam Ly']
-    }
-]
+    "paint": {
+        "line-color": [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            10, BRIGHT_LAKE_COLOR,
+            13.7, PALE_LAKE_COLOR,
+        ],
+        'line-width': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            14,
+            2,
+            18,
+            6
+        ]
+    },
+}
 
+export const cam_ly_line = {
+    ...river_props,
+    id: "River Cam Ly",
+    "filter": ['==', 'name', 'Suối Cam Ly']
+}
+
+export const other_rivers_lines = {
+    ...river_props,
+    id: "All rivers but Cam Ly",
+    minzoom: 14,
+    "filter": ['!=', 'name', 'Suối Cam Ly']
+}
