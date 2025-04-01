@@ -91,12 +91,12 @@ export const zoom_order = {
         {
             "filter": ["in", "highway", "tertiary"],
             drawing_layers: [tertiary_road],
-            drawing_importance: 3
+            drawing_importance: 4
         },
         {
             "filter": ["!in", "highway", "tertiary"],
             drawing_layers: [major_road_thicker_line],
-            drawing_importance: 3
+            drawing_importance: 4
         }
     ],
 
@@ -158,7 +158,8 @@ export const zoom_order = {
         },
         {
             drawing_layers: [minor_road],
-            filter: ["in", "highway", "residential", "unclassified"]
+            filter: ["in", "highway", "residential", "unclassified"],
+            drawing_importance: 5
         },
         {
             drawing_layers: [railway_station_titles_with_squares],
@@ -234,11 +235,13 @@ export const zoom_order = {
                 "highway",
                 "residential", "unclassified",
                 "footway", "path", "cycleway", "steps"
-            ]
+            ],
+            drawing_importance: 5
         },
         {
             drawing_layers: [pedestrian_path],
-            filter: ["in", "highway", "footway", "path", "cycleway", "steps"]
+            filter: ["in", "highway", "footway", "path", "cycleway", "steps"],
+            drawing_importance: 5
         },
     ]
 }
