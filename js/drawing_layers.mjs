@@ -86,8 +86,8 @@ export const french_bldg_circle = {
         "icon-size": [
             "case",
             ["==", ["get", "has_title"], true],
-            0.13,
-            0.1
+            0.15,
+            0.12
         ],
         "icon-allow-overlap": true,
     },

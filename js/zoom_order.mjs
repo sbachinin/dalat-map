@@ -41,7 +41,6 @@ import {
     peaks_triangles_with_titles,
     tertiary_road,
     french_bldg_circle,
-    land_areas_fill,
     non_french_titles,
     cable_car_line,
     cable_car_label,
