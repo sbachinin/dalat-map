@@ -69,7 +69,6 @@ import {
 } from "./layers/french_polygons.mjs";
 
 import { all_handmade_data as hmd } from "../data/static/handmade_data.mjs";
-import { rivers_titles } from "./layers/rivers.mjs";
 
 const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
 
@@ -99,11 +98,6 @@ export const zoom_order = {
             "filter": ["!in", "highway", "tertiary"],
             drawing_layers: [major_road_thicker_line],
             drawing_importance: 3
-        },
-        {
-            filter: ["!=", "$id", 1307493492],
-            drawing_layers: [land_areas_fill],
-            drawing_importance: 4
         }
     ],
 
@@ -142,6 +136,14 @@ export const zoom_order = {
         }
     ],
     13: [
+
+        // The following was commented out because:
+        // Text placement changes for a line with each zoom level.
+        // This goes against one of my main rules, which is "preserve positions of texts as you zoom in"
+        // In theory I could mitigate the blinking
+        // Here is 1 way which is basically quite complicated and still allows some entropy:
+        // - cut the river into pieces and draw texts for certain small pieces.
+        /*
         {
             drawing_layers: [rivers_titles],
             "filter": ["all",
@@ -150,6 +152,7 @@ export const zoom_order = {
             ],
             drawing_importance: 2
         },
+         */
         {
             drawing_layers: [railway_line],
             filter: ["==", ["get", "railway"], "rail"],

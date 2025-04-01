@@ -118,6 +118,7 @@ export const land_areas_handmade_data = {
     },
     473547288: {
         title: 'Nuclear \nResearch \nInstitute',
+        title_coords: [108.45263475485513, 11.955316019067567]
     },
     1307493492: {
         title: 'Ana\nMandara \nResort',

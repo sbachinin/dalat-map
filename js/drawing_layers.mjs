@@ -261,7 +261,7 @@ export const tertiary_road = {
 
 
 export const land_areas_fill = {
-    name: 'Land areas fill',
+    id: 'Land areas fill',
     type: 'fill',
     source: SOURCES_NAMES.DALAT_TILES,
     'source-layer': 'land_areas',
@@ -286,7 +286,8 @@ export const land_areas_fill = {
             13,
             1
         ]
-    }
+    },
+    filter: ["!=", "$id", 1307493492], // not ana mandara
 }
 
 

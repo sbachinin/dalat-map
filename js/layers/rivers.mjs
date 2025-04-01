@@ -1,5 +1,5 @@
 import { SOURCES_NAMES } from "../sources.mjs";
-import { BRIGHT_LAKE_COLOR, PALE_LAKE_COLOR } from "./constants.mjs";
+import { BRIGHT_LAKE_COLOR, PALE_LAKE_COLOR, WATER_TITLE_COLOR } from "./constants.mjs";
 
 const river_props = {
     type: 'line',
@@ -56,7 +56,7 @@ export const rivers_titles = {
     "layout": {
         "text-field": "Cam  Ly",
         "text-font": ["Lato Regular"],
-        "text-size": 12,
+        "text-size": 10,
         "text-max-width": 8,
         "text-anchor": "bottom",
 
@@ -67,6 +67,6 @@ export const rivers_titles = {
         "text-letter-spacing": 0.1,
     },
     "paint": {
-        "text-color": "#666"
+        "text-color": WATER_TITLE_COLOR
     }
 }
