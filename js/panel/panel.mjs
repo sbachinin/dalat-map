@@ -64,9 +64,9 @@ export const panel = {
         update_expand_button()
     },
     resize_to_content() {
-        if (panel.wrapper_element.classList.contains('slow-animation')) {
+        if (panel.wrapper_element.classList.contains('pristine')) {
             setTimeout(() => { // used transitionend here but it didn't work on iphone, 1st expand was quick
-                panel.wrapper_element.classList.remove('slow-animation')
+                panel.wrapper_element.classList.remove('pristine')
             }, FIRST_EXPAND_TRANSITION_DURATION + FIRST_EXPAND_TRANSITION_DELAY)
         }
         panel.set_size(panel.full_size)
@@ -74,6 +74,7 @@ export const panel = {
         panel_expand_button_el.style.opacity = 1
     },
     async toggle() {
+        if (panel.wrapper_element.classList.contains('pristine')) return
         const was_expanded = await panel.is_rather_expanded()
         was_expanded ? panel.set_size(0) : panel.resize_to_content()
     },
