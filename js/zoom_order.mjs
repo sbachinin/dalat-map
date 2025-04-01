@@ -221,6 +221,14 @@ export const zoom_order = {
     ],
     [BORING_BLDGS_MINZOOM]: [
         {
+            drawing_layers: [boring_building_fill],
+            drawing_importance: 3
+        },
+        { drawing_layers: [non_french_titles] },
+        { drawing_layers: [city_bulk_title] }
+    ],
+    14.5: [
+        {
             drawing_layers: [minor_road],
             filter: [
                 "!in",
@@ -233,11 +241,5 @@ export const zoom_order = {
             drawing_layers: [pedestrian_path],
             filter: ["in", "highway", "footway", "path", "cycleway", "steps"]
         },
-        {
-            drawing_layers: [boring_building_fill],
-            drawing_importance: 3
-        },
-        { drawing_layers: [non_french_titles] },
-        { drawing_layers: [city_bulk_title] }
     ]
 }
