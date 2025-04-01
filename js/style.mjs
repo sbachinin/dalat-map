@@ -12,6 +12,11 @@ export const style = {
     name: "Dalat map",
 
     layers: [
+
+        // so here some layers are "hardcoded", not built
+        // Basically they are "basic" layers that show up early and have low drawing priority
+        // For consistency i could add them to the build
+        // But for now it doesn't look like a problem, apart from this minor code dirt
         city_bulk_fill,
         land_areas_fill,
         city_bulk_border,
@@ -20,19 +25,6 @@ export const style = {
         lakes_fill,
 
         ...build_layers(),
-
-        // land_areas_fill,
-        // ...rivers,
-        // boring_building_fill,
-        // ...french_polygons_layers,
-        // ...roads,
-        // ...transportation_other,
-        // lakes_titles,
-        // city_bulk_title,
-        // peaks_triangles_with_titles,
-        // shit_buildings_titles,
-        // land_areas_titles,
-        // french_buildings_titles,
     ],
     sources: main_sources,
 
