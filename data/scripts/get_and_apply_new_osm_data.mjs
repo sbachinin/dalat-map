@@ -245,7 +245,8 @@ write(
     '../temp/river.geojson',
     all_geojson.features
         .filter(f => f.properties.waterway == 'stream')
-        .map(f => clear_feature_props(f, ['name']))
+        .filter(f => f.id !== 99661185) // skip the stretch of Cam Ly "inside" the Lake
+        .map(f => clear_feature_props(f, ['name', 'tunnel']))
 );
 
 write(

@@ -42,3 +42,31 @@ export const other_rivers_lines = {
     minzoom: 14,
     "filter": ['!=', 'name', 'Suối Cam Ly']
 }
+
+
+
+
+
+
+export const rivers_titles = {
+    "name": "Rivers titles",
+    "type": "symbol",
+    source: SOURCES_NAMES.DALAT_TILES,
+    'source-layer': 'river',
+    "layout": {
+        "text-field": "Cam  Ly",
+        "text-font": ["Lato Regular"],
+        "text-size": 12,
+        "text-max-width": 8,
+        "text-anchor": "bottom",
+
+        "symbol-placement": "line",
+        "symbol-spacing": 500,
+        "text-allow-overlap": false,
+        "text-padding": 5,
+        "text-letter-spacing": 0.1,
+    },
+    "paint": {
+        "text-color": "#666"
+    }
+}

@@ -69,6 +69,7 @@ import {
 } from "./layers/french_polygons.mjs";
 
 import { all_handmade_data as hmd } from "../data/static/handmade_data.mjs";
+import { rivers_titles } from "./layers/rivers.mjs";
 
 const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
 
@@ -137,10 +138,18 @@ export const zoom_order = {
         {
             drawing_layers: [major_road_thinner_line],
             "filter": ["!in", "highway", "tertiary"],
-            drawing_importance: 2
+            drawing_importance: 3
         }
     ],
     13: [
+        {
+            drawing_layers: [rivers_titles],
+            "filter": ["all",
+                ["!has", "tunnel"],
+                ['==', 'name', 'Suối Cam Ly']
+            ],
+            drawing_importance: 2
+        },
         {
             drawing_layers: [railway_line],
             filter: ["==", ["get", "railway"], "rail"],
