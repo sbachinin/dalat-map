@@ -7,6 +7,7 @@ import {
     wait_once_for_transitionend,
     get_panel_current_breadth,
     wait_1frame,
+    wait,
 } from '../utils/utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 
@@ -63,18 +64,23 @@ export const panel = {
         tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
         update_expand_button()
     },
-    resize_to_content() {
-        if (panel.wrapper_element.classList.contains('pristine')) {
-            setTimeout(() => { // used transitionend here but it didn't work on iphone, 1st expand was quick
-                panel.wrapper_element.classList.remove('pristine')
-            }, FIRST_EXPAND_TRANSITION_DURATION + FIRST_EXPAND_TRANSITION_DELAY)
-        }
+
+    is_pristine() {
+        return panel.wrapper_element.classList.contains('pristine')
+    },
+
+    async resize_to_content() {
+
         panel.set_size(panel.full_size)
         panel.wrapper_element.style.opacity = 1
         panel_expand_button_el.style.opacity = 1
+
+        // used transitionend here but it didn't work on iphone, 1st expand was quick
+        await wait(FIRST_EXPAND_TRANSITION_DURATION + FIRST_EXPAND_TRANSITION_DELAY)
+        panel.wrapper_element.classList.remove('pristine')
     },
     async toggle() {
-        if (panel.wrapper_element.classList.contains('pristine')) return
+        if (panel.is_pristine()) return
         const was_expanded = await panel.is_rather_expanded()
         was_expanded ? panel.set_size(0) : panel.resize_to_content()
     },

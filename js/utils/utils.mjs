@@ -154,6 +154,8 @@ export const wait_once_for_transitionend = (el) => {
     return new Promise(resolve => add_disposable_transitionend_handler(el, resolve))
 }
 
+export const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
 export const get_geojson_source = (features) => {
     return {
         type: "geojson",
