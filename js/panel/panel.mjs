@@ -15,18 +15,19 @@ const FIRST_EXPAND_TRANSITION_DURATION = 1000
 const FIRST_EXPAND_TRANSITION_DELAY = 500
 const EXPAND_TRANSITION_DURATION = 300
 const CONTENT_FADE_DURATION = 200
-const PANEL_EXPAND_BUTTON_SIZE = 40
+
+
+const expand_button_el = document.querySelector(`#panel-expand-button`)
+const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
+const panel_expand_button_el = document.querySelector('#panel-expand-button')
+
 
 set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's')
 set_css_num_var('--panel-first-expand-transition-duration', FIRST_EXPAND_TRANSITION_DURATION / 1000, 's')
 set_css_num_var('--panel-first-expand-transition-delay', FIRST_EXPAND_TRANSITION_DELAY / 1000, 's')
 set_css_num_var('--panel-breadth', 0, 'px')
-set_css_num_var('--panel-expand-button-size', PANEL_EXPAND_BUTTON_SIZE, 'px')
+set_css_num_var('--panel-expand-button-size', panel_expand_button_el.offsetWidth, 'px')
 set_css_num_var('--panel-content-fade-duration', CONTENT_FADE_DURATION / 1000, 's')
-
-const expand_button_el = document.querySelector(`#panel-expand-button`)
-const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
-const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
 const subscribers = {
     'content will be set': {},
@@ -72,8 +73,6 @@ export const panel = {
     async resize_to_content() {
 
         panel.set_size(panel.full_size)
-        panel.wrapper_element.style.opacity = 1
-        panel_expand_button_el.style.opacity = 1
 
         // used transitionend here but it didn't work on iphone, 1st expand was quick
         await wait(FIRST_EXPAND_TRANSITION_DURATION + FIRST_EXPAND_TRANSITION_DELAY)

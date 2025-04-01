@@ -97,8 +97,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: var(--panel-expand-button-size);
-    width: var(--panel-expand-button-size);
+    height: 40px;
+    width: 40px;
     background: white;
     border-radius: 8px 8px 0 0;
     border-bottom: 1px solid #dadce0;
@@ -106,7 +106,6 @@
     pointer-events: auto;
     user-select: none;
     cursor: pointer;
-    transition: opacity ease-in 1s 0.5s;
 }
 
 #panel-expand-button.inward svg {
