@@ -14,7 +14,8 @@ import {
     PEAK_TTTLE_COLOR,
     RAILWAY_LINE_COLOR,
     SQUARE_FILL_COLOR,
-    CITY_BULK_TITLE_COLOR
+    CITY_BULK_TITLE_COLOR,
+    IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR
 } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
 import { deep_merge_objects } from "./utils/utils.mjs";
@@ -430,6 +431,11 @@ export const boring_building_fill = {
     "paint": {
         "fill-color": [
             "case",
+            ["any",
+                ['==', ['id'], 17873628],
+                ['==', ['id'], 361851927],
+            ],
+            IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR,
             ["boolean", ["get", "has_title"], false],
             IMPORTANT_BORING_BLDG_FILL_COLOR,
             BORING_BLDG_FILL_COLOR
