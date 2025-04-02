@@ -4,14 +4,17 @@ import { style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
 import { try_open_building, update_flyto_button } from './bldg_details.mjs'
-import { get_center_for_bldg_with_offset, get_full_map_center } from './utils/utils.mjs'
+import {
+    get_bldg_id_from_href,
+    get_center_for_bldg_with_offset,
+    get_full_map_center
+} from './utils/utils.mjs'
 import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { load_icons } from './load_icons.mjs'
 import {
     DEV_skip_map_rendering,
-    DEV_should_open_panel_on_pageload,
     DEV_map_mock,
     DEV_show_debug_el
 } from './DEV/constants.mjs'
@@ -20,11 +23,11 @@ import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
 import { initialize_highlights_button } from './panel/highlights_button.mjs'
 import { FIRST_CLASS_FRENCH_MINZOOM } from './layers/constants.mjs'
+import { initialize_panel } from './initialize_panel.mjs'
 
-const initial_bldg_id = new URL(window.location.href).searchParams.get('id')
 const saved_center = JSON.parse(localStorage.getItem('map_center')) || get_full_map_center()
 
-const zoom = (initial_bldg_id !== null && 15.5)
+const zoom = (get_bldg_id_from_href() !== null && 15.5)
     || localStorage.getItem('map_zoom')
     || FIRST_CLASS_FRENCH_MINZOOM
 
@@ -55,37 +58,15 @@ map.touchZoomRotate.disableRotation()
 
 load_icons()
 
-const initialize_panel = () => {
-    return new Promise(resolve => {
-
-        const should_open_panel = DEV_should_open_panel_on_pageload
-
-        if (should_open_panel) {
-            if (initial_bldg_id !== null) {
-                try_open_building(initial_bldg_id, false, false)
-            } else {
-                display_highlights()
-            }
-            panel.once('new breadth was set', 'app', resolve)
-            panel.expand_button_el.classList.add('inward')
-        } else {
-            panel.wrapper_element.classList.remove('pristine') // TODO? not "pristine" but "waiting-for-first-expand-transition"
-            panel.once('content is missing', 'app', display_highlights)
-            resolve()
-        }
-        panel.expand_button_el.classList.remove('hidden')
-    })
-}
-
 
 map.once('idle', async () => {
     await initialize_panel()
 
     initialize_highlights_button(panel.content?.type)
 
-    const center = initial_bldg_id === null
+    const center = get_bldg_id_from_href() === null
         ? saved_center
-        : get_center_for_bldg_with_offset(initial_bldg_id)
+        : get_center_for_bldg_with_offset(get_bldg_id_from_href())
 
     map.setCenter(center)
     document.querySelector('#maplibregl-map').classList.remove('hidden')

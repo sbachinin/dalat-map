@@ -156,6 +156,8 @@ export const wait_once_for_transitionend = (el) => {
 
 export const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
+export const get_bldg_id_from_href = () => new URL(window.location.href).searchParams.get('id')
+
 export const get_geojson_source = (features) => {
     return {
         type: "geojson",
