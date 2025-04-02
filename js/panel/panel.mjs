@@ -49,6 +49,7 @@ const update_expand_button = debounce(async () => {
 export const panel = {
     wrapper_element: document.querySelector(`#panel-expander`),
     body_element: document.querySelector(`#panel`),
+    expand_button_el: panel_expand_button_el,
 
     full_size: null,
     cache_full_size() {
