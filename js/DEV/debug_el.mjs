@@ -9,19 +9,21 @@ if (window.location.hostname === 'localhost'
             <div style="position: fixed; z-index: 100">
                 <div id="debug-zoom"></div>
                 <div id="debug-other"></div>
-                <a 
+                <a id="port-switcher"
                     style="font-size: 50px; text-decoration: none; padding-left: 10px" 
                     href="#"
-                    onclick="
-                        this.href = window.location.protocol + '//' + 
-                        window.location.hostname + ':' + 
-                        (parseInt(window.location.port || '80') + 1)
-                    "
                 >
                     +
                 </a>
             </div>`)
     document.body.append(debugel)
+
+    const port_switcher = debugel.querySelector('a#port-switcher')
+    port_switcher.addEventListener('click', () => {
+        const parsedUrl = new URL(window.location.href)
+        parsedUrl.port = Number(parsedUrl.port) + 1
+        port_switcher.href = parsedUrl.toString()
+    })
 }
 
 export const handle_zoom_to_show_in_debug_el = () => {
