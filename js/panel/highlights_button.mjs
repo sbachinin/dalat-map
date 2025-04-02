@@ -8,7 +8,7 @@ const handle_new_breadth = (breadth, full_breadth) => {
         highlights_opener.classList.remove('disabled')
     }
     if (breadth === full_breadth) {
-        if (panel.content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
+        if (panel.content?.type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
             highlights_opener.classList.add('disabled')
         }
     }

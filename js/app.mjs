@@ -9,7 +9,12 @@ import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { load_icons } from './load_icons.mjs'
-import { DEV_skip_map_rendering, DEV_should_open_panel, DEV_map_mock, DEV_show_debug_el } from './DEV/constants.mjs'
+import {
+    DEV_skip_map_rendering,
+    DEV_should_open_panel_on_pageload,
+    DEV_map_mock,
+    DEV_show_debug_el
+} from './DEV/constants.mjs'
 import './photoswipe_mutations_observer.mjs'
 import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
@@ -50,28 +55,37 @@ map.touchZoomRotate.disableRotation()
 
 load_icons()
 
+const initialize_panel = () => {
+    return new Promise(resolve => {
+
+        const should_open_panel = DEV_should_open_panel_on_pageload
+
+        if (should_open_panel) {
+            if (initial_bldg_id !== null) {
+                try_open_building(initial_bldg_id, false, false)
+            } else {
+                display_highlights()
+            }
+            panel.once('new breadth was set', 'app', resolve)
+        } else {
+            panel.wrapper_element.classList.remove('pristine') // TODO? not "pristine" but "waiting-for-first-expand-transition"
+            resolve()
+        }
+    })
+}
+
 
 map.once('idle', async () => {
-    panel.once('new breadth was set', 'app', () => {
-        initialize_highlights_button(panel.content.type)
+    await initialize_panel()
 
-        const center = initial_bldg_id === null
-            ? saved_center
-            : get_center_for_bldg_with_offset(initial_bldg_id)
+    initialize_highlights_button(panel.content?.type)
 
-        map.setCenter(center)
-        document.querySelector('#maplibregl-map').classList.remove('hidden')
-    })
+    const center = initial_bldg_id === null
+        ? saved_center
+        : get_center_for_bldg_with_offset(initial_bldg_id)
 
-    if (DEV_should_open_panel) {
-        const merriweather = new FontFaceObserver('Merriweather', { weight: 'normal', style: 'italic' })
-        await merriweather.load()
-        if (initial_bldg_id !== null) {
-            try_open_building(initial_bldg_id, false, false)
-        } else {
-            display_highlights()
-        }
-    }
+    map.setCenter(center)
+    document.querySelector('#maplibregl-map').classList.remove('hidden')
 
     add_mouse_stuff()
     add_dead_buildings(map)

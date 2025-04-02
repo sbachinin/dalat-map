@@ -138,6 +138,10 @@ export const try_open_building = async (
     }
 
     if (does_feature_have_details(id)) {
+        if (document.fonts && !document.fonts.check('italic normal 400 1em Merriweather')) {
+            const merriweather = new FontFaceObserver('Merriweather', { weight: 'normal', style: 'italic' })
+            await merriweather.load()
+        }
         set_panel_content(id)
         select_building(id)
         if (should_push_history) {
