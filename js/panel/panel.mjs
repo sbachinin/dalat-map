@@ -34,6 +34,7 @@ const subscribers = {
     'content was just set': {},
     'new breadth was set': {}, // to be fired only when panel is toggled, not on drag
     'scroll': {},
+    'content is missing': {},
 }
 
 const get_panel_body_breadth = _ => { // height/width with scrollbar
@@ -80,8 +81,16 @@ export const panel = {
     },
     async toggle() {
         if (panel.is_pristine()) return
+
         const was_expanded = await panel.is_rather_expanded()
-        was_expanded ? panel.set_size(0) : panel.resize_to_content()
+
+        if (was_expanded) {
+            panel.set_size(0)
+        } else if (panel.content) {
+            panel.resize_to_content()
+        } else {
+            panel.fire('content is missing')
+        }
     },
     is_rather_expanded() {
         return get_panel_current_breadth() > panel.full_size / 2

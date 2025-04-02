@@ -69,6 +69,7 @@ const initialize_panel = () => {
             panel.once('new breadth was set', 'app', resolve)
         } else {
             panel.wrapper_element.classList.remove('pristine') // TODO? not "pristine" but "waiting-for-first-expand-transition"
+            panel.once('content is missing', 'app', display_highlights)
             resolve()
         }
     })
