@@ -11,8 +11,8 @@ import {
 } from '../utils/utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 
-const FIRST_EXPAND_TRANSITION_DURATION = 1000
-const FIRST_EXPAND_TRANSITION_DELAY = 500
+const FIRST_EXPAND_TRANSITION_DURATION = 1200
+const FIRST_EXPAND_TRANSITION_DELAY = 1500
 const EXPAND_TRANSITION_DURATION = 300
 const CONTENT_FADE_DURATION = 200
 

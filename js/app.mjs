@@ -59,6 +59,9 @@ map.touchZoomRotate.disableRotation()
 load_icons()
 
 
+
+// TODO 'idle' is used here in false expectation that it will allow to open panel only when map has finished drawing all tiles
+// This is half-cured by increasing the delay of 1st panel expand
 map.once('idle', async () => {
     await initialize_panel()
 
