@@ -38,7 +38,9 @@ const map = window.dalatmap = DEV_skip_map_rendering
         ],
         antialias: true,
         maxZoom: 17.5,
-        fadeDuration: 0
+        fadeDuration: 0,
+        pitchWithRotate: false,
+        maxPitch: 0
     })
 
 map.touchZoomRotate.disableRotation()
