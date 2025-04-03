@@ -5,7 +5,7 @@ import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
 import { try_open_building, update_flyto_button } from './bldg_details.mjs'
 import {
-    get_bldg_id_from_href,
+    get_bldg_id_from_url,
     get_center_for_bldg_with_offset,
     get_full_map_center
 } from './utils/utils.mjs'
@@ -27,7 +27,7 @@ import { initialize_panel } from './initialize_panel.mjs'
 
 const saved_center = JSON.parse(localStorage.getItem('map_center')) || get_full_map_center()
 
-const zoom = (get_bldg_id_from_href() !== null && 15.5)
+const zoom = (get_bldg_id_from_url() !== null && 15.5)
     || localStorage.getItem('map_zoom')
     || FIRST_CLASS_FRENCH_MINZOOM
 
@@ -67,9 +67,9 @@ map.once('idle', async () => {
 
     initialize_highlights_button(panel.content?.type)
 
-    const center = get_bldg_id_from_href() === null
+    const center = get_bldg_id_from_url() === null
         ? saved_center
-        : get_center_for_bldg_with_offset(get_bldg_id_from_href())
+        : get_center_for_bldg_with_offset(get_bldg_id_from_url())
 
     map.setCenter(center)
     document.querySelector('#maplibregl-map').classList.remove('hidden')

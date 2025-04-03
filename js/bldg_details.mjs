@@ -5,13 +5,13 @@ import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import * as svg_icons from './svg_icons.mjs'
 import {
-    coords_are_in_view,
     create_element_from_Html,
     debounce,
     div,
     get_image_url,
     get_map_center_shift,
     get_visible_map_center_px,
+    is_landscape,
     is_mobile_device,
     push_to_history
 } from './utils/utils.mjs'
@@ -119,11 +119,14 @@ const set_panel_content = (id) => {
     details_el.appendChild(info_el)
     thumbs_list_el && details_el.appendChild(thumbs_list_el)
 
-    panel.set_content({
-        update_size: update_size_variables,
-        element: details_el,
-        type: PANEL_CONTENT_TYPES.BUILDING
-    })
+    panel.set_content(
+        {
+            update_size: update_size_variables,
+            element: details_el,
+            type: PANEL_CONTENT_TYPES.BUILDING
+        },
+        false
+    )
     update_flyto_button()
 }
 
@@ -150,49 +153,82 @@ export const try_open_building = async (
     }
 
     panel.once(
-        'new breadth was set',
+        'new content breadth',
         'fly to newly opened building',
         () => {
-            if (should_try_to_fly) fly_to_building(id)
+            if (should_try_to_fly) {
+                try_fly_to_building(id).then(panel.resize_to_content)
+            } else {
+                panel.resize_to_content()
+            }
         })
 }
 
 const distance2d = (x1, y1, x2, y2) => Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
 
-export const fly_to_building = (
+export const coords_will_be_in_view = (
+    coords,
+    padding = 40,
+    panel_wil_be_expanded = true
+) => {
+
+    let left_bound = padding
+    let bottom_bound = window.innerHeight - padding
+    if (panel_wil_be_expanded) {
+        if (is_landscape()) {
+            left_bound += panel.content_breadth
+        } else  {
+            bottom_bound -= panel.content_breadth
+        }
+    }
+    return coords.x > left_bound
+        && coords.x < (window.innerWidth - padding)
+        && coords.y > padding
+        && coords.y < bottom_bound
+}
+
+export const try_fly_to_building = (
     id,
     { force = false } = {}
 ) => {
-    const feature_center_arr = centroids_etc[id].centroid
-    const feature_screen_xy = window.dalatmap.project(feature_center_arr)
-    const map_zoom = window.dalatmap.getZoom()
-    if (force
-        || !coords_are_in_view(feature_screen_xy)
-        || map_zoom < 15.5
-    ) {
-        const map_el = document.querySelector('#maplibregl-map')
-        const distance_from_center = distance2d(
-            feature_screen_xy.x,
-            feature_screen_xy.y,
-            map_el.offsetWidth / 2,
-            map_el.offsetHeight / 2
-        )
+    return new Promise((resolve) => {
+        const feature_center_arr = centroids_etc[id].centroid
+        const feature_screen_xy = window.dalatmap.project(feature_center_arr)
+        const map_zoom = window.dalatmap.getZoom()
+        if (force
+            || !coords_will_be_in_view(feature_screen_xy)
+            || map_zoom < 15.5
+        ) {
+            const map_el = document.querySelector('#maplibregl-map')
+            const distance_from_center = distance2d(
+                feature_screen_xy.x,
+                feature_screen_xy.y,
+                map_el.offsetWidth / 2,
+                map_el.offsetHeight / 2
+            )
 
-        const target_zoom = Math.max(15.5, map_zoom)
-        const zoom_diff = Math.abs(map_zoom - target_zoom)
+            const target_zoom = Math.max(15.5, map_zoom)
+            const zoom_diff = Math.abs(map_zoom - target_zoom)
 
-        window.dalatmap.easeTo({
-            /* I used to get center from get_center_for_bldg_with_offset(id)
-             and avoid passing offset
-             but in case of changing zooming this smart offset value was wrong
-             for it was calculated for initial zoom level
-            */
-            center: centroids_etc[id]?.centroid,
-            offset: get_map_center_shift(),
-            zoom: target_zoom,
-            duration: Math.max(distance_from_center, 500) * (zoom_diff + 1)
-        })
-    }
+            window.dalatmap.easeTo({
+                /* I used to get center from get_center_for_bldg_with_offset(id)
+                 and avoid passing offset
+                 but in case of changing zooming this smart offset value was wrong
+                 for it was calculated for initial zoom level
+                */
+                center: centroids_etc[id]?.centroid,
+                offset: get_map_center_shift(panel.content_breadth),
+                zoom: target_zoom,
+                duration: Math.max(distance_from_center, 500) * (zoom_diff + 1)
+            })
+
+            window.dalatmap.once('moveend', resolve)
+
+        } else {
+            resolve()
+        }
+    })
+
 }
 
 

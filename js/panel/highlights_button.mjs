@@ -28,7 +28,7 @@ export const initialize_highlights_button = () => {
     )
 
     panel.on(
-        'new breadth was set',
+        'begin transition to new size',
         'highlights button',
         handle_new_breadth
     )

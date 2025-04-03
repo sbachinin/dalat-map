@@ -6,7 +6,11 @@
     Therefore it was necessary to manually call zoomIn / zoomOut with "offset" option.
 */
 
-import { debounce, get_map_center_shift } from "./utils/utils.mjs"
+import {
+    debounce,
+    get_map_center_shift,
+    get_panel_shown_breadth
+} from "./utils/utils.mjs"
 
 const zoomin_button = document.querySelector('.zoom-button.zoom-in')
 const zoomout_button = document.querySelector('.zoom-button.zoom-out')
@@ -48,13 +52,13 @@ export const initialize_custom_zoom_buttons = () => {
 
     zoomin_button.addEventListener('click', () => {
         window.dalatmap.zoomIn({
-            offset: get_map_center_shift()
+            offset: get_map_center_shift(get_panel_shown_breadth())
         })
     })
 
     zoomout_button.addEventListener('click', () => {
         window.dalatmap.zoomOut({
-            offset: get_map_center_shift()
+            offset: get_map_center_shift(get_panel_shown_breadth())
         })
     })
 

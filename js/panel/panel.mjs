@@ -5,9 +5,9 @@ import {
     is_mouse_device,
     is_landscape,
     wait_once_for_transitionend,
-    get_panel_current_breadth,
     wait_1frame,
     wait,
+    get_panel_shown_breadth,
 } from '../utils/utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 
@@ -32,9 +32,10 @@ set_css_num_var('--panel-content-fade-duration', CONTENT_FADE_DURATION / 1000, '
 const subscribers = {
     'content will be set': {},
     'content was just set': {},
-    'new breadth was set': {}, // to be fired only when panel is toggled, not on drag
+    'begin transition to new size': {}, // to be fired only when panel is toggled, not on drag
     'scroll': {},
     'content is missing': {},
+    'new content breadth': {},
 }
 
 const get_panel_body_breadth = _ => { // height/width with scrollbar
@@ -51,19 +52,19 @@ export const panel = {
     body_element: document.querySelector(`#panel`),
     expand_button_el: panel_expand_button_el,
 
-    full_size: null,
-    cache_full_size() {
-        panel.full_size = get_panel_body_breadth()
+    content_breadth: null,
+    cache_content_breadth() {
+        panel.content_breadth = get_panel_body_breadth()
     },
     async set_size(size) {
         if (size === undefined) return
 
         set_css_num_var('--panel-breadth', size, 'px')
-        if (size === 0 || size === panel.full_size) {
-            panel.fire('new breadth was set', size, panel.full_size)
+        if (size === 0 || size === panel.content_breadth) {
+            panel.fire('begin transition to new size', size, panel.content_breadth)
         }
 
-        panel.body_element.style.opacity = (size > panel.full_size * 0.2) ? 1 : 0
+        panel.body_element.style.opacity = (size > panel.content_breadth * 0.2) ? 1 : 0
         tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
         update_expand_button()
     },
@@ -73,8 +74,7 @@ export const panel = {
     },
 
     async resize_to_content() {
-
-        panel.set_size(panel.full_size)
+        panel.set_size(panel.content_breadth)
 
         // used transitionend here but it didn't work on iphone, 1st expand was quick
         await wait(FIRST_EXPAND_TRANSITION_DURATION + FIRST_EXPAND_TRANSITION_DELAY)
@@ -94,10 +94,10 @@ export const panel = {
         }
     },
     is_rather_expanded() {
-        return get_panel_current_breadth() > panel.full_size / 2
+        return get_panel_shown_breadth() > panel.content_breadth / 2
     },
     content: null,
-    async set_content(_content) {
+    async set_content(_content, should_expand_immediately = true) {
         if (panel.content?.element === _content?.element) {
             panel.resize_to_content()
             return
@@ -116,9 +116,13 @@ export const panel = {
 
 
         _content.update_size()
-        panel.cache_full_size()
+        panel.cache_content_breadth()
 
-        panel.resize_to_content()
+        panel.fire('new content breadth')
+
+        if (should_expand_immediately) {
+            panel.resize_to_content()
+        }
 
         panel.body_element.scrollTop = 0
         panel.body_element.scrollLeft = 0
@@ -154,7 +158,7 @@ export const panel = {
 }
 
 const fade_out_content_if_present = async () => {
-    if (!panel.content || get_panel_current_breadth() === 0) {
+    if (!panel.content || get_panel_shown_breadth() === 0) {
         return Promise.resolve()
     } else {
         panel.body_element.style.opacity = 0

@@ -107,32 +107,20 @@ export const push_to_history = (state, url) => {
     history.pushState(state, "", url)
 }
 
-
-export const get_panel_current_breadth = () => get_css_var_num('--panel-breadth')
-
-
-// it's about "target" dimensions - these of a fully expanded panel
-const get_panel_dimensions = () => {
-    return [
-        is_landscape() ? get_panel_current_breadth() : 0,
-        !is_landscape() ? get_panel_current_breadth() : 0
-    ]
+export const get_panel_shown_breadth = () => {
+    return get_css_var_num('--panel-breadth')
 }
 
 // center of portion of the map not covered by the panel
-export const get_map_center_shift = () => {
+export const get_map_center_shift = (
+    // It can be "content breadth" (with panel collapsed) - necessary in case I need "future breadth before expand", e.g. when flying to bldg
+    // or it can be "show breadth"
+    breadth
+) => {
     return [
-        get_panel_dimensions()[0] / 2,
-        -get_panel_dimensions()[1] / 2
+        is_landscape() ? (breadth / 2) : 0,
+        is_landscape() ? 0 : -(breadth / 2)
     ]
-}
-
-// Are coords within map "viewport" and not covered by panel?
-export const coords_are_in_view = (coords, padding = 40) => {
-    return coords.x > (get_panel_dimensions()[0] + padding)
-        && coords.x < (window.innerWidth - padding)
-        && coords.y > padding
-        && coords.y < (window.innerHeight - get_panel_dimensions()[1] - padding)
 }
 
 export const get_lnglat_per_px = () => {
@@ -156,7 +144,7 @@ export const wait_once_for_transitionend = (el) => {
 
 export const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
-export const get_bldg_id_from_href = () => new URL(window.location.href).searchParams.get('id')
+export const get_bldg_id_from_url = () => new URL(window.location.href).searchParams.get('id')
 
 export const get_geojson_source = (features) => {
     return {
@@ -177,16 +165,20 @@ export function get_center_for_bldg_with_offset(id) {
         return
     }
     const { lng_per_px, lat_per_px } = get_lnglat_per_px()
-    const center_x = cntrd[0] - lng_per_px * get_map_center_shift()[0]
-    const center_y = cntrd[1] - lat_per_px * get_map_center_shift()[1]
-    return [center_x, center_y]
+    const cntr_shift = get_map_center_shift(get_panel_shown_breadth())
+    return [
+        cntrd[0] - lng_per_px * cntr_shift[0],
+        cntrd[1] - lat_per_px * cntr_shift[1]
+    ]
 }
 
 export function get_visible_map_center_px() {
     const map_el = document.querySelector('#maplibregl-map')
-    const center_x = map_el.clientWidth / 2 + get_map_center_shift()[0]
-    const center_y = map_el.clientHeight / 2 + get_map_center_shift()[1]
-    return [center_x, center_y]
+    const cntr_shift = get_map_center_shift(get_panel_shown_breadth())
+    return [
+        map_el.clientWidth / 2 + cntr_shift[0],
+        map_el.clientHeight / 2 + cntr_shift[1]
+    ]
 }
 
 export const find_bldg_id_by_image_filename = (filename) => {

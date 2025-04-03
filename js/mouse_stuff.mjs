@@ -1,6 +1,6 @@
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
-import { fly_to_building, try_open_building } from './bldg_details.mjs'
+import { try_fly_to_building, try_open_building } from './bldg_details.mjs'
 import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
 import {
     can_share_files,
@@ -89,7 +89,7 @@ export const add_mouse_stuff = () => {
 
 
         } else if (e.target.closest('#building-info__flyto')) {
-            fly_to_building(selected_building_id, { force: true })
+            try_fly_to_building(selected_building_id, { force: true })
 
 
 
