@@ -115,7 +115,7 @@ if (window.location.hostname === 'localhost') {
 
 window.addEventListener("popstate", (event) => {
     if (event.state?.id) {
-        try_open_building(event.state.id, false, true)
+        try_open_building(event.state.id, false, true, false)
     } else {
         display_highlights(false)
     }

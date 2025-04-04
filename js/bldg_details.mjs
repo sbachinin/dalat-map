@@ -133,7 +133,8 @@ const set_panel_content = (id) => {
 export const try_open_building = async (
     id,
     should_push_history = false,
-    should_try_to_fly = false
+    should_try_to_fly = false,
+    should_expand_panel = true
 ) => {
     if (id === selected_building_id) {
         panel.resize_to_content()
@@ -155,10 +156,11 @@ export const try_open_building = async (
     panel.once(
         'new content breadth',
         'fly to newly opened building',
-        () => {
+        async () => {
             if (should_try_to_fly) {
-                try_fly_to_building(id).then(panel.resize_to_content)
-            } else {
+                await try_fly_to_building(id)
+            }
+            if (should_expand_panel) {
                 panel.resize_to_content()
             }
         })
@@ -177,7 +179,7 @@ export const coords_will_be_in_view = (
     if (panel_wil_be_expanded) {
         if (is_landscape()) {
             left_bound += panel.content_breadth
-        } else  {
+        } else {
             bottom_bound -= panel.content_breadth
         }
     }
