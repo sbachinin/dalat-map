@@ -147,7 +147,7 @@ export const make_expandable_on_swipe = (panel) => {
             current_swipe.panel_full_size
         )
 
-        panel.set_size(new_size);
+        panel.set_size(new_size, true);
     }
 
 

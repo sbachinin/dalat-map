@@ -56,11 +56,13 @@ export const panel = {
     cache_content_breadth() {
         panel.content_breadth = get_panel_body_breadth()
     },
-    async set_size(size) {
+    async set_size(size, is_dragged = false) {
         if (size === undefined) return
 
         set_css_num_var('--panel-breadth', size, 'px')
-        if (size === 0 || size === panel.content_breadth) {
+        if (!is_dragged &&
+            (size === 0 || size === panel.content_breadth)
+        ) {
             panel.fire('begin transition to new size', size, panel.content_breadth)
         }
 
