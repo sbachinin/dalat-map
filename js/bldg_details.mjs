@@ -125,7 +125,9 @@ const set_panel_content = (id) => {
             element: details_el,
             type: PANEL_CONTENT_TYPES.BUILDING
         },
-        false
+        {
+            should_resize_immediately: panel.is_rather_expanded()
+        }
     )
     update_flyto_button()
 }

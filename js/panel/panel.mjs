@@ -99,7 +99,10 @@ export const panel = {
         return get_panel_shown_breadth() > panel.content_breadth / 2
     },
     content: null,
-    async set_content(_content, should_expand_immediately = true) {
+    async set_content(
+        _content,
+        { should_resize_immediately = true } = {}
+    ) {
         if (panel.content?.element === _content?.element) {
             panel.resize_to_content()
             return
@@ -122,7 +125,7 @@ export const panel = {
 
         panel.fire('new content breadth')
 
-        if (should_expand_immediately) {
+        if (should_resize_immediately) {
             panel.resize_to_content()
         }
 
