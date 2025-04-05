@@ -213,6 +213,7 @@ export const try_fly_to_building = (
 
             const target_zoom = Math.max(15.5, map_zoom)
             const zoom_diff = Math.abs(map_zoom - target_zoom)
+            const duration = Math.max(distance_from_center, 500) * (zoom_diff + 1)
 
             window.dalatmap.easeTo({
                 /* I used to get center from get_center_for_bldg_with_offset(id)
@@ -226,7 +227,12 @@ export const try_fly_to_building = (
                 duration: Math.max(distance_from_center, 500) * (zoom_diff + 1)
             })
 
-            window.dalatmap.once('moveend', resolve)
+            // Here map.on('moveend') was used instead of setTimeout.
+            // It looked cooler but failed on my gpu-deficient desktop
+            // where easeTo wasn't really animated and moveend wasn't fired.
+            // It's a very marginal case but still setTimeout looks more reliable.
+            // Besides moveend, in case of its failure, will be fired as a surprise in the end of any subsequent map swipe - super ugly
+            setTimeout(resolve, duration)
 
         } else {
             resolve()
