@@ -8,7 +8,7 @@
 
 import {
     debounce,
-    get_map_center_shift,
+    get_map_center_shift_px,
     get_panel_shown_breadth
 } from "./utils/utils.mjs"
 
@@ -52,13 +52,13 @@ export const initialize_custom_zoom_buttons = () => {
 
     zoomin_button.addEventListener('click', () => {
         window.dalatmap.zoomIn({
-            offset: get_map_center_shift(get_panel_shown_breadth())
+            offset: get_map_center_shift_px(get_panel_shown_breadth())
         })
     })
 
     zoomout_button.addEventListener('click', () => {
         window.dalatmap.zoomOut({
-            offset: get_map_center_shift(get_panel_shown_breadth())
+            offset: get_map_center_shift_px(get_panel_shown_breadth())
         })
     })
 

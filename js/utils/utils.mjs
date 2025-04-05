@@ -59,6 +59,71 @@ export const debounce = (func, delay = 100) => {
     }
 }
 
+export function throttle(func, wait, trailing = false) {
+    let lastArgs = null;
+    let lastThis = null;
+    let result = null;
+    let timerId = null;
+    let lastCallTime = 0;
+
+    function invokeFunc() {
+        const args = lastArgs;
+        const thisArg = lastThis;
+
+        lastArgs = lastThis = null;
+        result = func.apply(thisArg, args);
+        return result;
+    }
+
+    function startTimer() {
+        timerId = setTimeout(timerExpired, wait);
+    }
+
+    function timerExpired() {
+        timerId = null;
+
+        // Only invoke if we have lastArgs, which means `func` hasn't been
+        // called since the last timer was set and trailing is true
+        if (trailing && lastArgs) {
+            return invokeFunc();
+        }
+
+        lastArgs = lastThis = null;
+    }
+
+    function throttled(...args) {
+        const now = Date.now();
+        const isInvoking = lastCallTime === 0 || now - lastCallTime >= wait;
+
+        lastArgs = args;
+        lastThis = this;
+        lastCallTime = now;
+
+        if (isInvoking) {
+            if (timerId === null) {
+                startTimer();
+                return invokeFunc();
+            }
+        }
+
+        if (timerId === null) {
+            startTimer();
+        }
+
+        return result;
+    }
+
+    throttled.cancel = function () {
+        if (timerId !== null) {
+            clearTimeout(timerId);
+        }
+        lastCallTime = 0;
+        lastArgs = lastThis = timerId = null;
+    };
+
+    return throttled;
+}
+
 export const wrap = (num, min, max) => {
     const range = max - min + 1
     return ((num - min) % range + range) % range + min
@@ -111,12 +176,11 @@ export const get_panel_shown_breadth = () => {
     return get_css_var_num('--panel-breadth')
 }
 
-// center of portion of the map not covered by the panel
-export const get_map_center_shift = (
-    // It can be "content breadth" (with panel collapsed) - necessary in case I need "future breadth before expand", e.g. when flying to bldg
-    // or it can be "show breadth"
-    breadth
-) => {
+// half-panel-breadth shift
+// By passing certain "breadth", user decides
+// if he's interested in "max breadth" (that of content), or an "actual breadth" (that of panel-expander element)
+// "Content breadth" is used to retrieve "future breadth" before expand, e.g. when flying to bldg
+export const get_map_center_shift_px = breadth => {
     return [
         is_landscape() ? (breadth / 2) : 0,
         is_landscape() ? 0 : -(breadth / 2)
@@ -165,7 +229,7 @@ export function get_center_for_bldg_with_offset(id) {
         return
     }
     const { lng_per_px, lat_per_px } = get_lnglat_per_px()
-    const cntr_shift = get_map_center_shift(get_panel_shown_breadth())
+    const cntr_shift = get_map_center_shift_px(get_panel_shown_breadth())
     return [
         cntrd[0] - lng_per_px * cntr_shift[0],
         cntrd[1] - lat_per_px * cntr_shift[1]
@@ -174,7 +238,7 @@ export function get_center_for_bldg_with_offset(id) {
 
 export function get_visible_map_center_px() {
     const map_el = document.querySelector('#maplibregl-map')
-    const cntr_shift = get_map_center_shift(get_panel_shown_breadth())
+    const cntr_shift = get_map_center_shift_px(get_panel_shown_breadth())
     return [
         map_el.clientWidth / 2 + cntr_shift[0],
         map_el.clientHeight / 2 + cntr_shift[1]

@@ -138,6 +138,7 @@ export const panel = {
         panel.fire('content was just set', _content)
     },
 
+    // calling this with same subscriber_name again removes the old subscriber
     on(event_name, subscriber_name, subscriber, is_one_off = false) {
         if (subscribers[event_name]) {
             subscribers[event_name][subscriber_name] = { cb: subscriber, is_one_off }

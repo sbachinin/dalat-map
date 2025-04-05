@@ -6,14 +6,13 @@ import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_li
 import * as svg_icons from './svg_icons.mjs'
 import {
     create_element_from_Html,
-    debounce,
     div,
     get_image_url,
-    get_map_center_shift,
-    get_visible_map_center_px,
+    get_map_center_shift_px,
     is_landscape,
     is_mobile_device,
-    push_to_history
+    push_to_history,
+    throttle
 } from './utils/utils.mjs'
 import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
 import { does_feature_have_details } from './utils/does_feature_have_details.mjs'
@@ -67,7 +66,7 @@ const set_panel_content = (id) => {
                 </div>`
         : ''
 
-    const flyto = `<div id="building-info__flyto" title="Fly to this building">
+    const flyto = `<div id="building-info__flyto" class="disabled" title="Fly to this building">
         ${svg_icons.flyto}
     </div>`
 
@@ -129,7 +128,6 @@ const set_panel_content = (id) => {
             should_resize_immediately: panel.is_rather_expanded()
         }
     )
-    update_flyto_button()
 }
 
 export const try_open_building = async (
@@ -222,7 +220,7 @@ export const try_fly_to_building = (
                  for it was calculated for initial zoom level
                 */
                 center: centroids_etc[id]?.centroid,
-                offset: get_map_center_shift(panel.content_breadth),
+                offset: get_map_center_shift_px(panel.content_breadth),
                 zoom: target_zoom,
                 duration: Math.max(distance_from_center, 500) * (zoom_diff + 1)
             })
@@ -242,23 +240,26 @@ export const try_fly_to_building = (
 }
 
 
-export const update_flyto_button = debounce(() => {
+export const update_flyto_button = throttle(() => {
     const but_el = document.querySelector('#building-info__flyto')
     if (!but_el) return
 
-    const cntr = get_visible_map_center_px()
+    // Previous solution utilized queryRenderedFeatures
+    // But it was unstable because relied on what is actually rendered atm
+    // So I switched to comparing centoid with map viewport's lngLat bounds, and this doesn't depend on network or anything.
+    // TODO: this doesn't consider the panel. So, when feature is covered by panel, it won't enable the button
+    const { _ne: { lng: e_bound, lat: n_bound }, _sw: { lng: w_bound, lat: s_bound } } = dalatmap.getBounds()
+    const cntrd = centroids_etc[selected_building_id].centroid
+    const selected_bldg_is_visible = (
+        cntrd[0] > w_bound
+        && cntrd[0] < e_bound
+        && cntrd[1] > s_bound
+        && cntrd[1] < n_bound
+    )    
 
-    const selected_bldg_in_center = window.dalatmap
-        .queryRenderedFeatures([
-            [cntr[0] - 15, cntr[1] - 15],
-            [cntr[0] + 15, cntr[1] + 15]
-        ])
-        .find(feat => {
-            return (feat.id === Number(selected_building_id))
-        })
-    if (selected_bldg_in_center) {
+    if (selected_bldg_is_visible) {
         but_el.classList.add('disabled')
     } else {
         but_el.classList.remove('disabled')
     }
-}, 500)
+}, 200, true)

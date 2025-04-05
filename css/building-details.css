@@ -82,7 +82,7 @@
 
 #building-info__other {
     display: flex;
-    gap: 3px;
+    gap: 8px;
 }
 
 #building-info__other a {
@@ -125,10 +125,10 @@
 #building-info__flyto {
 
     /* trigger GPU rendering to avoid subpixel shifts when animating opacity in Safari Iphone */
-    transform: translate3d(0, 0, 0);
-
+    transform: translateZ(0);
+    will-change: opacity;
     cursor: pointer;
-    transition: opacity ease-out 0.7s;
+    transition: opacity ease-out 0.4s;
 }
 
 #building-info__flyto svg {
