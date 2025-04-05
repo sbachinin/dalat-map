@@ -28,7 +28,7 @@ export const add_mouse_stuff = () => {
         const clickable_feat = rfs.find(f => does_feature_have_details(f.id))
         if (clickable_feat) {
             try_open_building(clickable_feat.id, true, true)
-        } else {
+        } else if (!panel.is_pristine()) {
             panel.set_size(0)
         }
     })
