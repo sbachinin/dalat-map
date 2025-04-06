@@ -27,13 +27,23 @@ IMPORTANT
 MPORTANT
 
 
-"fly to bldg", copy link,
-?suggest an edit
-	
 
-make dinh1 and the likes clickable, showing justbuttons
 
-SORT OUT HOW TO SHOW 1-IMG DETAILS
+tooltip appear outside the window if buttons are very bottom
+		show_tooltip(text, preferred_side, auto_close_after)
+	apply this for "goto building too"
+
+
+indicate that bldg is dead in bldg details
+selected dead bldg style
+
+
+better ways to show very compact bldg details?
+
+
+
+desk-portr: images shrink even when enough space for big
+
 
 
 ? make non-french clickable, showing at least wiki and ggl
@@ -45,48 +55,13 @@ indicate better the geometry that was just chosen
 
 
 
-selected dead bldg style
-
-
 
 MAKE BLDGS MORE EASILY CLICKABLE AT LOW Z
     ? extend clickable area
 
 
-PRIORITY OF TITLES
-    - those visible at low z must remain at higher z,
-        - need a classification of importance, ideally to show (auto) as much as there is space
-    - selected should be protected from disappearance
-        symbol-z-order:
-            1) check if it works at all
-                (is it only per-layer btw? Though french might be enough)
-            2) ensure that it's not adjustable by feature state
-            3) try to create another layer/source with selected title & title+square
 
 
-
-
-
-
-
-
-
-**** 
-CLASSIFY BLDGS
-A lot of kinds of bldgs that need diff rendering and diff interaction:
-	french
-		first-class and not
-		titled and not
-	dead french
-	maybe french
-	non french
-
-
-
-
-Check all boring titles positions
-	Fix them
-	Are there any left that need to be rendered under?
 
 
 
@@ -111,6 +86,19 @@ PHOTOS WORKFLOW
 
 
 can i release it as modules?
+
+
+
+WHAT TO TEST ON OTHER DESKTOPS/LAPTOPS
+absense of easeTo animation (I assumed it's my comp's glitch. If it's not, have to provide the animation).
+
+
+
+Panel initially expands before map has finished drawing itself.
+	At least that's what I observed on safari from ghpages.
+	I assumed that on('idle') fixes this but not.
+	Solutions suggested by AI are complicated.
+	Can basically just increase the timeout for panel expand, idk.
 
 
 
@@ -144,15 +132,14 @@ PERF
 Add buildings links to handmade data
 
 
+Portrait mob: only buttons in building details? align them vertically
 
+
+Consider panel when disabling the flyto button
 
 extra ugly blinking scrollbar in ff, landscape desktop (when entering the panel with cursor)
+	solutions from ai didn't work ({scrollbar-width: auto/thin})
 
-
-ideally a speed of a flight to bldg should depend on the distance (screen space wise)
-
-
-if panel was closed, page refresh, shouldn't panel still be closed?
 
 
 

@@ -1725,8 +1725,14 @@ export const bldgs_handmade_data = {
     },
     "1305230699": {
         title: '"Madame\nde Dalat"',
-        subtitle: 'Vietnamese modernist villa',
+        subtitle: `A landmark of Vietnamese modernist architecture, it's one of three neighboring villas that once belonged to Tran Le Xuan (or "Madame Nhu"), a close relative of South Vietnam’s first (1955-1963) president Ngo Dinh Diem. It is well preserved and open to visitors with a ticket`,
         title_side: 'south',
+        google: 'https://maps.app.goo.gl/Lw6o8sZm8yk7P6sr9',
+        year: 1958,
+        links: [{
+            description: 'Some info from Rusty Compass',
+            url: 'https://www.rustycompass.com/vietnam-travel-guide-233/dalat-33/see-and-do-14/madam-nhus-residence-dalat-1291'
+        }]
     },
     "515288597": {
         title: 'Labor \nCulture House',
