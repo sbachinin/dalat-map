@@ -1,4 +1,10 @@
-export const question = `<svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 318.293 318.293" xml:space="preserve" width="64px" height="64px"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M159.148,0c-52.696,0-95.544,39.326-95.544,87.662h47.736c0-22.007,21.438-39.927,47.808-39.927 c26.367,0,47.804,17.92,47.804,39.927v6.929c0,23.39-10.292,34.31-25.915,50.813c-20.371,21.531-45.744,48.365-45.744,105.899 h47.745c0-38.524,15.144-54.568,32.692-73.12c17.368-18.347,38.96-41.192,38.96-83.592v-6.929C254.689,39.326,211.845,0,159.148,0z "></path> <rect x="134.475" y="277.996" width="49.968" height="40.297"></rect> </g> </g></svg>`
+export const question = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="black">
+  <!-- Question mark stem -->
+  <path d="M15 4C10 4 7 7 7 10h4c0-1.5 1.5-3 4-3s4 1.2 4 3c0 1-0.7 1.7-2 2.5-2.3 1.5-4 3-4 6v1h4v-1c0-1.6 1.1-2.5 2.6-3.5C22 13.5 23 12 23 10c0-3.5-3.5-6-8-6z"/>
+  <!-- Larger, closer dot -->
+  <circle cx="15" cy="23" r="2"/>
+</svg>
+`
 
 export const flyto = `<svg width="800px" height="800px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="none" stroke="#000000" stroke-width="1.5">
 <path d="m8 5.25v-3m0 11.5v-3m2.75-2.75h3m-11.5 0h3"/>

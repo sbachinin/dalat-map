@@ -36,10 +36,12 @@ export const bldgs_handmade_data = {
     },
     "308446691": {
         "title": "Hoa Binh \n(ex)cinema",
+        subtitle: "One of Dalat's most iconic buildings, having a slightly awkward look today. Once a cinema and a fairly elegant piece of architecture, it has since been reduced to a featureless cube without any apparent function. In the absence of reliable information, I assume it was built around the same time as Da Lat Market (1960), though it can be of colonial period too",
         title_side: 'south',
         "images": [
             "IMG_1791.jpg"
         ],
+        doubt: true
     },
     "361692216": {
         "images": [

@@ -53,8 +53,7 @@ const set_panel_content = (id) => {
 
     const doubt = all_handmade_data[id].doubt
         ? `<div id="building-info__doubt">
-                    ${svg_icons.question}
-                    <div id="doubt-message">I have serious doubts about whether this building belongs to the colonial period</div>
+                <img src="${get_image_url('question.png', '')}">
             </div>`
         : ''
 

@@ -7,7 +7,8 @@ export const does_feature_have_details = id => {
     const feat_hm_data = all_handmade_data[id]
     return Boolean(
         feat_hm_data && (
-            feat_hm_data.images?.length
+            feat_hm_data.subtitle
+            || feat_hm_data.images?.length
             || feat_hm_data.links?.length
             || (typeof feat_hm_data.wikipedia === 'string' && feat_hm_data.wikipedia.length > 0)
             || (typeof feat_hm_data.google === 'string' && feat_hm_data.google.length > 0)

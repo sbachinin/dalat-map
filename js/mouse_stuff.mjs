@@ -13,6 +13,7 @@ import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { does_feature_have_details } from './utils/does_feature_have_details.mjs'
 import { get_link_to_selected_bldg, selected_building_id } from './select_building.mjs'
 import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
+import { handle_doubt_click } from './panel/doubt_message.mjs'
 
 
 
@@ -82,10 +83,7 @@ export const add_mouse_stuff = () => {
 
 
         } else if (e.target.closest('#building-info__doubt')) {
-            document.querySelector('#doubt-message').style.display = 'block'
-            setTimeout(() => {
-                document.querySelector('#doubt-message').style.display = 'none'
-            }, 5000)
+            handle_doubt_click()
 
 
         } else if (e.target.closest('#building-info__flyto')) {

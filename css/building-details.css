@@ -85,8 +85,8 @@
     gap: 8px;
 }
 
-#building-info__other a {
-    display: flex;
+#building-info__other>* {
+    cursor: pointer;
 }
 
 #building-info__wikipedia a {
@@ -116,10 +116,12 @@
     font-size: 14px;
 }
 
-#building-info__doubt svg {
-    height: 23px;
-    width: 26px;
-    margin-top: 4px;
+#building-info__doubt img {
+    height: 22px;
+    margin-top: 2px;
+    background: #fab3b3;
+    border-radius: 20px;
+    padding: 2px;
 }
 
 #building-info__flyto {
@@ -147,15 +149,13 @@
     position: relative;
 }
 
-#building-info__copylink #copylink-message,
-#building-info__doubt #doubt-message {
+#building-info__copylink #copylink-message {
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #333;
     color: #fff;
-    font-size: smaller;
     padding: 4px 6px;
     white-space: nowrap;
     z-index: 1;
@@ -163,15 +163,9 @@
 }
 
 
-#building-info__doubt #doubt-message {
-    width: 120px;
-    white-space: wrap;
-}
-
 #building-info__copylink svg {
     height: 33px;
     width: 30px;
-    cursor: pointer;
     padding: 5px;
     box-sizing: border-box;
 }
