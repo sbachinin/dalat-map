@@ -10,11 +10,12 @@ if (window.location.hostname === 'localhost'
                 <div id="debug-zoom"></div>
                 <div id="debug-other"></div>
                 <a id="port-switcher"
-                    style="font-size: 50px; text-decoration: none; padding-left: 10px" 
-                    href="#"
+                style="font-size: 50px; text-decoration: none; padding-left: 10px" 
+                href="#"
                 >
-                    +
+                +
                 </a>
+                <span style="font-size: 10px; margin-left: -20px;">${window.location.port}</span>
             </div>`)
     document.body.append(debugel)
 
