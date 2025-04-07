@@ -11,28 +11,53 @@ import { set_css_num_var } from "./utils/utils.mjs"
 const TOOLTIP_FADE_DURATION = 400
 set_css_num_var('--tooltip-fade-duration', TOOLTIP_FADE_DURATION / 1000, 's')
 
-export const hide_tooltip = (el) => {
-    if (!(el instanceof Element)) {
-        el = document
+let current_tooltip = null
+
+const hide_tooltip_on_click = (e) => {
+    if (!current_tooltip || current_tooltip.was_just_opened) return
+    const parent_is_clicked = current_tooltip.parentEl === e.target || current_tooltip.parentEl.contains(e.target)
+    if (
+        !parent_is_clicked
+        || current_tooltip.hide_when_parent_clicked
+    ) {
+        hide_tooltip()
     }
-    el.querySelectorAll('.tooltip').forEach(ttip => ttip.classList.remove('visible'))
 }
 
-export const show_tooltip = (
-    el,
-    text,
-    width,
-    position = 'top'
-) => {
+
+export const hide_tooltip = () => {
+    document.querySelector('.tooltip')?.classList.remove('visible')
+}
+
+/*
+    options: {
+        parentEl, // needs { position:relative or similar }
+        text,
+        position: 'top' || 'bottom' || 'left' || 'right',
+        minWidth: number,
+        hide_when_parent_clicked: boolean = true // actually tapped too
+    }
+*/
+export const show_tooltip = (options = {}) => {
+    if (is_tooltip_open()) return
+
+    options.position = options.position ?? 'top'
+    options.hide_when_parent_clicked = options.hide_when_parent_clicked ?? true
+
+    const { parentEl, minWidth, text, position } = current_tooltip = options
+
+    // avoid click-to-close handler from closing it immediately
+    current_tooltip.was_just_opened = true
+
     // remove old tooltip (that can be there but invible)
     // in order to forget its margins and data-position and calculate them anew
-    el.querySelector('.tooltip')?.remove()
+    parentEl.querySelector('.tooltip')?.remove()
 
     const ttip = document.createElement('div')
     ttip.classList.add('tooltip')
     ttip.innerText = text
-    ttip.style.minWidth = `${width}px`
-    el.appendChild(ttip)
+    ttip.style.minWidth = `${minWidth}px`
+    parentEl.appendChild(ttip)
 
     ttip.dataset.position = position
 
@@ -71,6 +96,11 @@ export const show_tooltip = (
     }
 
     ttip.classList.add('visible')
+
+    requestAnimationFrame(() => current_tooltip.was_just_opened = false)
 }
 
-export const is_tooltip_open = (el) => el.querySelector('.tooltip.visible')
+document.addEventListener('mousedown', hide_tooltip_on_click)
+document.addEventListener('touchstart', hide_tooltip_on_click)
+
+export const is_tooltip_open = () => document.querySelector('.tooltip.visible')
