@@ -65,7 +65,7 @@ const set_panel_content = (id) => {
                 </div>`
         : ''
 
-    const flyto = `<div id="building-info__flyto" class="disabled" title="Fly to this building">
+    const flyto = `<div id="building-info__flyto" class="disabled">
         ${svg_icons.flyto}
     </div>`
 

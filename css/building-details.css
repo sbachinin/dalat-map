@@ -134,12 +134,8 @@
 }
 
 #building-info__flyto {
-
-    /* trigger GPU rendering to avoid subpixel shifts when animating opacity in Safari Iphone */
-    transform: translateZ(0);
-    will-change: opacity;
+    position: relative;
     cursor: pointer;
-    transition: opacity ease-out 0.4s;
 }
 
 #building-info__flyto svg {
@@ -149,8 +145,18 @@
 }
 
 #building-info__flyto.disabled {
-    opacity: 0.25;
     cursor: auto;
+}
+
+
+#building-info__flyto path,
+#building-info__flyto circle {
+    transition: stroke ease-out 0.4s;
+}
+
+#building-info__flyto.disabled path,
+#building-info__flyto.disabled circle {
+    stroke: rgba(0, 0, 0, 0.2);
 }
 
 #building-info__copylink,

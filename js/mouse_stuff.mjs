@@ -4,6 +4,7 @@ import { try_fly_to_building, try_open_building } from './bldg_details.mjs'
 import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
 import {
     can_share_files,
+    debounce,
     find_bldg_id_by_image_filename,
     get_image_file_from_element,
     is_mouse_device
@@ -13,8 +14,7 @@ import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { does_feature_have_details } from './utils/does_feature_have_details.mjs'
 import { get_link_to_selected_bldg, selected_building_id } from './select_building.mjs'
 import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
-import { handle_doubt_click } from './panel/doubt_message.mjs'
-
+import { show_tooltip } from './tooltip.mjs'
 
 
 export const add_mouse_stuff = () => {
@@ -57,7 +57,19 @@ export const add_mouse_stuff = () => {
     })
 
 
-
+    document.body.addEventListener('mouseover', debounce((e) => {
+        if (e.target.closest('#building-info__flyto')) {
+            console.log('fly to!')
+            show_tooltip({
+                ownerEl: e.target.closest('#building-info__flyto'),
+                boundingEl: panel.wrapper_element,
+                text: `Fly to this building`,
+                minWidth: 100,
+                position: 'bottom',
+                closeOnMouseleave: true
+            })
+        }
+    }))
 
 
     // On click on any .bldg-link (in slider or thumbs-list), go to a bldg that owns the image
@@ -83,7 +95,16 @@ export const add_mouse_stuff = () => {
 
 
         } else if (e.target.closest('#building-info__doubt')) {
-            handle_doubt_click()
+            show_tooltip({
+                ownerEl: document.querySelector('#building-info__doubt'),
+                boundingEl: panel.wrapper_element,
+                text: `I don't have enough information or intuition to say whether it was built during the colonial period or later`,
+                minWidth: 250,
+                position: 'bottom',
+                hide_when_parent_clicked: false,
+                closeAfter: !is_mouse_device ? 5000 : undefined,
+                closeOnMouseleave: true
+            })
 
 
         } else if (e.target.closest('#building-info__flyto')) {
