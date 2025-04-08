@@ -8,6 +8,7 @@
 
 import { set_css_num_var } from "./utils/utils.mjs"
 
+const margin_px = 10
 const TOOLTIP_FADE_DURATION = 400
 set_css_num_var('--tooltip-fade-duration', TOOLTIP_FADE_DURATION / 1000, 's')
 
@@ -32,6 +33,7 @@ export const hide_tooltip = () => {
 /*
     options: {
         parentEl, // needs { position:relative or similar }
+        boundingEl, // an element that tooltip should not overflow
         text,
         position: 'top' || 'bottom' || 'left' || 'right',
         minWidth: number,
@@ -43,8 +45,12 @@ export const show_tooltip = (options = {}) => {
 
     options.position = options.position ?? 'top'
     options.hide_when_parent_clicked = options.hide_when_parent_clicked ?? true
+    options.minWidth = options.minWidth ?? 0
+    if (options.boundingEl instanceof HTMLElement) {
+        options.minWidth = Math.min(options.minWidth, options.boundingEl.offsetWidth - margin_px * 2)
+    }
 
-    const { parentEl, minWidth, text, position } = current_tooltip = options
+    const { parentEl, boundingEl, minWidth, text, position } = current_tooltip = options
 
     // avoid click-to-close handler from closing it immediately
     current_tooltip.was_just_opened = true
@@ -56,7 +62,10 @@ export const show_tooltip = (options = {}) => {
     const ttip = document.createElement('div')
     ttip.classList.add('unique-tooltip')
     ttip.innerText = text
-    ttip.style.minWidth = `${minWidth ?? 0}px`
+
+    ttip.style.minWidth = `${minWidth}px`
+    ttip.style.maxHeight = `${boundingEl.offsetHeight - margin_px * 2}px`
+    
     parentEl.appendChild(ttip)
 
     ttip.dataset.position = position
@@ -70,28 +79,28 @@ export const show_tooltip = (options = {}) => {
         if (position === 'top') {
             ttip.dataset.position = 'bottom'
         } else {
-            ttip.style.marginTop = `${-top + 10}px`
+            ttip.style.marginTop = `${-top + margin_px}px`
         }
     }
     if (left < 0) {
         if (position === 'left') {
             ttip.dataset.position = 'right'
         } else {
-            ttip.style.marginLeft = `${-left + 10}px`
+            ttip.style.marginLeft = `${-left + margin_px}px`
         }
     }
     if (right > window.innerWidth) {
         if (position === 'right') {
             ttip.dataset.position = 'left'
         } else {
-            ttip.style.marginRight = `${right - window.innerWidth + 10}px`
+            ttip.style.marginRight = `${right - window.innerWidth + margin_px}px`
         }
     }
     if (bottom > window.innerHeight) {
         if (position === 'bottom') {
             ttip.dataset.position = 'top'
         } else {
-            ttip.style.marginBottom = `${bottom - window.innerHeight + 10}px`
+            ttip.style.marginBottom = `${bottom - window.innerHeight + margin_px}px`
         }
     }
 
