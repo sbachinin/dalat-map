@@ -8,8 +8,8 @@ export const handle_doubt_click = () => {
     const doubt_main_el = document.querySelector('#building-info__doubt')
 
     show_tooltip({
-        parentEl: doubt_main_el,
-        boundingEl: panel.body_element,
+        ownerEl: doubt_main_el,
+        boundingEl: panel.wrapper_element,
         text: `I don't have enough information or intuition to say whether it was built during the colonial period or later`,
         minWidth: 250,
         position: 'bottom',

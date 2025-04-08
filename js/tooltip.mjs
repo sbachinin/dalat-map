@@ -16,7 +16,7 @@ let current_tooltip = null
 
 const hide_tooltip_on_click = (e) => {
     if (!current_tooltip || current_tooltip.was_just_opened) return
-    const parent_is_clicked = current_tooltip.parentEl === e.target || current_tooltip.parentEl.contains(e.target)
+    const parent_is_clicked = current_tooltip.ownerEl === e.target || current_tooltip.ownerEl.contains(e.target)
     if (
         !parent_is_clicked
         || current_tooltip.hide_when_parent_clicked
@@ -32,7 +32,7 @@ export const hide_tooltip = () => {
 
 /*
     options: {
-        parentEl, // needs { position:relative or similar }
+        ownerEl, // needs { position:relative or similar }
         boundingEl, // an element that tooltip should not overflow
         text,
         position: 'top' || 'bottom' || 'left' || 'right',
@@ -50,14 +50,14 @@ export const show_tooltip = (options = {}) => {
         options.minWidth = Math.min(options.minWidth, options.boundingEl.offsetWidth - margin_px * 2)
     }
 
-    const { parentEl, boundingEl, minWidth, text, position } = current_tooltip = options
+    const { ownerEl, boundingEl, minWidth, text, position } = current_tooltip = options
 
     // avoid click-to-close handler from closing it immediately
     current_tooltip.was_just_opened = true
 
     // remove old tooltip (that can be there but invible)
     // in order to forget its margins and data-position and calculate them anew
-    parentEl.querySelector('.unique-tooltip')?.remove()
+    ownerEl.querySelector('.unique-tooltip')?.remove()
 
     const ttip = document.createElement('div')
     ttip.classList.add('unique-tooltip')
@@ -65,42 +65,69 @@ export const show_tooltip = (options = {}) => {
 
     ttip.style.minWidth = `${minWidth}px`
     ttip.style.maxHeight = `${boundingEl.offsetHeight - margin_px * 2}px`
-    
-    parentEl.appendChild(ttip)
+
+    ownerEl.appendChild(ttip)
 
     ttip.dataset.position = position
 
-    // position improvement algorithm:
-    // if tooltip overflows the window on its target side, swap the target side (dataset.position)
-    // if it overflows on the other axis, shift it with margin.
+
+
+
+    // Position improvement algorithm:
     // It has to be executed every time tooltip is shown
-    const { top, left, right, bottom } = ttip.getBoundingClientRect()
-    if (top < 0) {
+    // 1. If tooltip overflows the window on its target side, swap the target side (dataset.position)
+    // If it overflows on the "other axis", shift it with margin.
+    // 2. Check the new position, if on the "main axis" it still overflows,
+    // rollback to the original dataset.position and shift it with margin
+    // TODO This has to be more thoroughly tested, independently of map, cases are many
+    const { top_overflow, right_overflow, bottom_overflow, left_overflow } = get_element_overflow(ttip, boundingEl, margin_px)
+
+    if (top_overflow) {
         if (position === 'top') {
             ttip.dataset.position = 'bottom'
+            const new_bottom_overflow = get_element_overflow(ttip, boundingEl, margin_px).bottom_overflow
+            if (new_bottom_overflow) {
+                ttip.dataset.position = 'top'
+                ttip.style.marginBottom = `-${top_overflow}px`
+            }
         } else {
-            ttip.style.marginTop = `${-top + margin_px}px`
+            ttip.style.marginTop = `${top_overflow}px` // marginTop/marginBottom inversion is important here
         }
     }
-    if (left < 0) {
+    if (left_overflow) {
         if (position === 'left') {
             ttip.dataset.position = 'right'
+            const new_right_overflow = get_element_overflow(ttip, boundingEl, margin_px).right_overflow
+            if (new_right_overflow) {
+                ttip.dataset.position = 'left'
+                ttip.style.marginRight = `-${left_overflow}px`
+            }
         } else {
-            ttip.style.marginLeft = `${-left + margin_px}px`
+            ttip.style.marginLeft = `${left_overflow}px` // marginRight/marginLeft inversion is important here
         }
     }
-    if (right > window.innerWidth) {
+    if (right_overflow) {
         if (position === 'right') {
             ttip.dataset.position = 'left'
+            const new_left_overflow = get_element_overflow(ttip, boundingEl, margin_px).left_overflow
+            if (new_left_overflow) {
+                ttip.dataset.position = 'right'
+                ttip.style.marginLeft = `-${right_overflow}px`
+            }
         } else {
-            ttip.style.marginRight = `${right - window.innerWidth + margin_px}px`
+            ttip.style.marginLeft = `-${right_overflow}px`
         }
     }
-    if (bottom > window.innerHeight) {
+    if (bottom_overflow) {
         if (position === 'bottom') {
             ttip.dataset.position = 'top'
+            const new_top_overflow = get_element_overflow(ttip, boundingEl, margin_px).top_overflow
+            if (new_top_overflow) {
+                ttip.dataset.position = 'bottom'
+                ttip.style.marginTop = `-${bottom_overflow}px`
+            }
         } else {
-            ttip.style.marginBottom = `${bottom - window.innerHeight + margin_px}px`
+            ttip.style.marginTop = `-${bottom_overflow}px`
         }
     }
 
@@ -113,3 +140,29 @@ document.addEventListener('mousedown', hide_tooltip_on_click)
 document.addEventListener('touchstart', hide_tooltip_on_click)
 
 export const is_tooltip_open = () => document.querySelector('.unique-tooltip.visible')
+
+
+// return { top_overflow, right_overflow, bottom_overflow, left_overflow }
+// where values are positive integers if there is actual overflow
+// or 0 if there is no overflow
+// If bounding_el is omitted, return overflow from documentElement
+const get_element_overflow = (el, bounding_el, margin = 10) => {
+    const el_rect = el.getBoundingClientRect();
+
+    let bounding_rect = {
+        top: 0,
+        right: document.documentElement.clientWidth, // without scrollbar
+        bottom: document.documentElement.clientHeight,
+        left: 0
+    }
+    if (bounding_el) {
+        bounding_rect = bounding_el.getBoundingClientRect();
+    }
+
+    return {
+        top_overflow: Math.max(0, bounding_rect.top - el_rect.top + margin),
+        right_overflow: Math.max(0, el_rect.right - bounding_rect.right + margin),
+        bottom_overflow: Math.max(0, el_rect.bottom - bounding_rect.bottom + margin),
+        left_overflow: Math.max(0, bounding_rect.left - el_rect.left + margin)
+    }
+}
