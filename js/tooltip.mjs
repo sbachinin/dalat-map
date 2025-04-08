@@ -26,7 +26,7 @@ const hide_tooltip_on_click = (e) => {
 
 
 export const hide_tooltip = () => {
-    document.querySelector('.tooltip')?.classList.remove('visible')
+    document.querySelector('.unique-tooltip')?.classList.remove('visible')
 }
 
 /*
@@ -51,12 +51,12 @@ export const show_tooltip = (options = {}) => {
 
     // remove old tooltip (that can be there but invible)
     // in order to forget its margins and data-position and calculate them anew
-    parentEl.querySelector('.tooltip')?.remove()
+    parentEl.querySelector('.unique-tooltip')?.remove()
 
     const ttip = document.createElement('div')
-    ttip.classList.add('tooltip')
+    ttip.classList.add('unique-tooltip')
     ttip.innerText = text
-    ttip.style.minWidth = `${minWidth}px`
+    ttip.style.minWidth = `${minWidth ?? 0}px`
     parentEl.appendChild(ttip)
 
     ttip.dataset.position = position
@@ -103,4 +103,4 @@ export const show_tooltip = (options = {}) => {
 document.addEventListener('mousedown', hide_tooltip_on_click)
 document.addEventListener('touchstart', hide_tooltip_on_click)
 
-export const is_tooltip_open = () => document.querySelector('.tooltip.visible')
+export const is_tooltip_open = () => document.querySelector('.unique-tooltip.visible')

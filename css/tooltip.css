@@ -1,5 +1,5 @@
 
-.tooltip {
+.unique-tooltip {
     position: absolute;
     background-color: #333;
 
@@ -16,30 +16,30 @@
     cursor: default !important;
 }
 
-.tooltip[data-position="bottom"] {
+.unique-tooltip[data-position="bottom"] {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.tooltip[data-position="top"] {
+.unique-tooltip[data-position="top"] {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.tooltip[data-position="left"] {
+.unique-tooltip[data-position="left"] {
     top: 50%;
     right: 100%;
     transform: translateY(-50%);
 }
 
-.tooltip[data-position="right"] {
+.unique-tooltip[data-position="right"] {
     top: 50%;
     left: 100%;
     transform: translateY(-50%);
 }
 
-.tooltip.visible {
+.unique-tooltip.visible {
     opacity: 1;
 }
