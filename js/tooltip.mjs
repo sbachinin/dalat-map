@@ -9,6 +9,7 @@
 import { set_css_num_var } from "./utils/utils.mjs"
 
 const margin_px = 10
+let close_timeout = null
 const TOOLTIP_FADE_DURATION = 400
 set_css_num_var('--tooltip-fade-duration', TOOLTIP_FADE_DURATION / 1000, 's')
 
@@ -27,6 +28,7 @@ const hide_tooltip_on_click = (e) => {
 
 
 export const hide_tooltip = () => {
+    clearTimeout(close_timeout)
     document.querySelector('.unique-tooltip')?.classList.remove('visible')
 }
 
@@ -38,9 +40,16 @@ export const hide_tooltip = () => {
         position: 'top' || 'bottom' || 'left' || 'right',
         minWidth: number,
         hide_when_parent_clicked: boolean = true // actually tapped too
+        closeAfter: number // ms
     }
 */
 export const show_tooltip = (options = {}) => {
+
+    clearTimeout(close_timeout)
+    if (options.closeAfter) { // even if tooltip is already open, start timeout afresh
+        close_timeout = setTimeout(hide_tooltip, 5000)
+    }
+
     if (is_tooltip_open()) return
 
     options.position = options.position ?? 'top'
