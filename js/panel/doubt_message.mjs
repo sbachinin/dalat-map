@@ -12,14 +12,7 @@ export const handle_doubt_click = () => {
         minWidth: 250,
         position: 'bottom',
         hide_when_parent_clicked: false,
-        closeAfter: !is_mouse_device ? 5000 : undefined
+        closeAfter: !is_mouse_device ? 5000 : undefined,
+        closeOnMouseleave: true
     })
-
-    if (is_mouse_device) {
-        doubt_main_el.addEventListener(
-            'mouseleave',
-            hide_tooltip,
-            { once: true })
-    }
-
 }

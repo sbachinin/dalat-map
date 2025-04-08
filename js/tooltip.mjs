@@ -30,6 +30,7 @@ const hide_tooltip_on_click = (e) => {
 export const hide_tooltip = () => {
     clearTimeout(close_timeout)
     document.querySelector('.unique-tooltip')?.classList.remove('visible')
+    current_tooltip.ownerEl.removeEventListener('mouseleave', hide_tooltip)
 }
 
 /*
@@ -40,7 +41,8 @@ export const hide_tooltip = () => {
         position: 'top' || 'bottom' || 'left' || 'right',
         minWidth: number,
         hide_when_parent_clicked: boolean = true // actually tapped too
-        closeAfter: number // ms
+        closeAfter: number, // ms
+        closeOnMouseleave: boolean
     }
 */
 export const show_tooltip = (options = {}) => {
@@ -143,6 +145,10 @@ export const show_tooltip = (options = {}) => {
     ttip.classList.add('visible')
 
     requestAnimationFrame(() => current_tooltip.was_just_opened = false)
+
+    if (options.closeOnMouseleave && window.matchMedia("(pointer: fine)").matches) {
+        ownerEl.addEventListener('mouseleave', hide_tooltip)
+    }
 }
 
 document.addEventListener('mousedown', hide_tooltip_on_click)
