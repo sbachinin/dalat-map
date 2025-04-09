@@ -57,16 +57,25 @@ export const add_mouse_stuff = () => {
     })
 
 
-    document.body.addEventListener('mouseover', debounce((e) => {
+    is_mouse_device && document.body.addEventListener('mouseover', debounce((e) => {
+
         if (e.target.closest('#building-info__flyto')) {
-            console.log('fly to!')
             show_tooltip({
-                ownerEl: e.target.closest('#building-info__flyto'),
+                triggerEl: e.target.closest('#building-info__flyto'),
                 boundingEl: panel.wrapper_element,
                 text: `Fly to this building`,
                 minWidth: 100,
-                position: 'bottom',
-                closeOnMouseleave: true
+                position: 'bottom'
+            })
+        }
+
+        if (e.target.closest('#building-info__copylink')) {
+            show_tooltip({
+                triggerEl: e.target.closest('#building-info__copylink'),
+                boundingEl: panel.wrapper_element,
+                text: `Copy link to this building`,
+                minWidth: 100,
+                position: 'bottom'
             })
         }
     }))
@@ -96,14 +105,13 @@ export const add_mouse_stuff = () => {
 
         } else if (e.target.closest('#building-info__doubt')) {
             show_tooltip({
-                ownerEl: document.querySelector('#building-info__doubt'),
+                triggerEl: document.querySelector('#building-info__doubt'),
                 boundingEl: panel.wrapper_element,
                 text: `I don't have enough information or intuition to say whether it was built during the colonial period or later`,
                 minWidth: 250,
                 position: 'bottom',
-                hide_when_parent_clicked: false,
-                closeAfter: !is_mouse_device ? 5000 : undefined,
-                closeOnMouseleave: true
+                closeOnTriggerElClick: false,
+                closeAfter: !is_mouse_device ? 5000 : undefined
             })
 
 

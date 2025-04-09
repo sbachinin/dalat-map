@@ -17,30 +17,32 @@ let current_tooltip = null
 
 const hide_tooltip_on_click = (e) => {
     if (!current_tooltip || current_tooltip.was_just_opened) return
-    const parent_is_clicked = current_tooltip.ownerEl === e.target || current_tooltip.ownerEl.contains(e.target)
+    const parent_is_clicked = current_tooltip.triggerEl === e.target || current_tooltip.triggerEl.contains(e.target)
     if (
         !parent_is_clicked
-        || current_tooltip.hide_when_parent_clicked
+        || current_tooltip.closeOnTriggerElClick
     ) {
-        hide_tooltip()
+        hide_tooltips()
     }
 }
 
 
-export const hide_tooltip = () => {
-    clearTimeout(close_timeout)
-    document.querySelector('.unique-tooltip')?.classList.remove('visible')
-    current_tooltip.ownerEl.removeEventListener('mouseleave', hide_tooltip)
+const hide_tooltips = () => {
+    document.querySelectorAll('.unique-tooltip')
+        .forEach(t => {
+            t.classList.remove('visible')
+            t.parentElement.removeEventListener('mouseleave', hide_tooltips)
+        })
 }
 
 /*
     options: {
-        ownerEl, // needs { position:relative or similar }
+        triggerEl, // needs { position:relative or similar }
         boundingEl, // an element that tooltip should not overflow
         text,
         position: 'top' || 'bottom' || 'left' || 'right',
         minWidth: number,
-        hide_when_parent_clicked: boolean = true // actually tapped too
+        closeOnTriggerElClick: boolean = true // actually tapped too
         closeAfter: number, // ms
         closeOnMouseleave: boolean
     }
@@ -49,26 +51,29 @@ export const show_tooltip = (options = {}) => {
 
     clearTimeout(close_timeout)
     if (options.closeAfter) { // even if tooltip is already open, start timeout afresh
-        close_timeout = setTimeout(hide_tooltip, 5000)
+        close_timeout = setTimeout(hide_tooltips, 5000)
     }
 
-    if (is_tooltip_open()) return
+    if (is_tooltip_open(options.triggerEl)) return
+
+    hide_tooltips()
 
     options.position = options.position ?? 'top'
-    options.hide_when_parent_clicked = options.hide_when_parent_clicked ?? true
+    options.closeOnTriggerElClick = options.closeOnTriggerElClick ?? true
+    options.closeOnMouseleave = options.closeOnMouseleave ?? true
     options.minWidth = options.minWidth ?? 0
     if (options.boundingEl instanceof HTMLElement) {
         options.minWidth = Math.min(options.minWidth, options.boundingEl.offsetWidth - margin_px * 2)
     }
 
-    const { ownerEl, boundingEl, minWidth, text, position } = current_tooltip = options
+    const { triggerEl, boundingEl, minWidth, text, position } = current_tooltip = options
 
     // avoid click-to-close handler from closing it immediately
     current_tooltip.was_just_opened = true
 
     // remove old tooltip (that can be there but invible)
     // in order to forget its margins and data-position and calculate them anew
-    ownerEl.querySelector('.unique-tooltip')?.remove()
+    triggerEl.querySelector('.unique-tooltip')?.remove()
 
     const ttip = document.createElement('div')
     ttip.classList.add('unique-tooltip')
@@ -77,7 +82,7 @@ export const show_tooltip = (options = {}) => {
     ttip.style.minWidth = `${minWidth}px`
     ttip.style.maxHeight = `${boundingEl.offsetHeight - margin_px * 2}px`
 
-    ownerEl.appendChild(ttip)
+    triggerEl.appendChild(ttip)
 
     ttip.dataset.position = position
 
@@ -147,15 +152,18 @@ export const show_tooltip = (options = {}) => {
     requestAnimationFrame(() => current_tooltip.was_just_opened = false)
 
     if (options.closeOnMouseleave && window.matchMedia("(pointer: fine)").matches) {
-        ownerEl.addEventListener('mouseleave', hide_tooltip)
+        triggerEl.addEventListener('mouseleave', hide_tooltips)
     }
 }
 
 document.addEventListener('mousedown', hide_tooltip_on_click)
 document.addEventListener('touchstart', hide_tooltip_on_click)
 
-export const is_tooltip_open = () => document.querySelector('.unique-tooltip.visible')
 
+
+export const is_tooltip_open = (trigger_el) => {
+    return trigger_el.querySelector(':scope > .unique-tooltip.visible') !== null
+}
 
 // return { top_overflow, right_overflow, bottom_overflow, left_overflow }
 // where values are positive integers if there is actual overflow
