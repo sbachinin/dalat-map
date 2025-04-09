@@ -39,7 +39,8 @@ export const bldgs_handmade_data = {
         subtitle: "One of Dalat's most iconic buildings, having a slightly awkward look today. Once a cinema and a fairly elegant piece of architecture, it has since been reduced to a featureless cube without any apparent function. In the absence of reliable information, I assume it was built around the same time as Da Lat Market (1960), though it can be of colonial period too",
         title_side: 'south',
         "images": [
-            "IMG_1791.jpg"
+            "IMG_1791.jpg",
+            "vn-01-1552983909-7821-1552984618.png"
         ],
         doubt: true
     },
@@ -1715,6 +1716,9 @@ export const bldgs_handmade_data = {
     },
     "4119185": {
         title: 'Da Lat\nMarket',
+        wikipedia: 'https://en.wikipedia.org/wiki/Da_Lat_Market',
+        google: 'https://maps.app.goo.gl/VbHuRh3NT1GSaTT3A',
+        subtitle: `Today's Da Lat Market consists of buildings constructed at different times. The most interesting is the modernist structure facing the roundabout square, built in 1960, which looked rather imposing in its time. The adjacent building, connected to the former by elevated walkways, was added in 1993`
     },
     "525191979": {
         title: "Dalat Center",

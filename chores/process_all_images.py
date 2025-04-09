@@ -4,8 +4,9 @@ import sys
 from process_1_image import process_image
 
 # HOW TO RUN THIS
+# ubuntu
 # in project root, "source myenv/bin/activate"
-# python chores/resize_all_images.py
+# npm run process_all_images or similar
 
 orig_other_folder = 'dalat-map-images/orig-other'
 orig_highlights_folder = 'dalat-map-images/orig-highlights'
