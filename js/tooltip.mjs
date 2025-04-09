@@ -1,10 +1,27 @@
-// This tooltip is almost great
-// It repositions itself if overflows the window
-// BUT: it has no knowledge of other elements with overflow: hidden
-// (or any other elements that can hide its overflowing parts)
-// (in my case, panel is such an element, tooltip can't expand beyond the panel).
-// So it's up to the tooltip's consumer to make sure that tooltip isn't too close to the edges of such elements,
-// And "width" option is partly to ensure that tooltip is small enough not to overflow any parent
+/* 
+Kinda README )
+
+This tooltip is almost great
+It repositions itself if overflows the window
+BUT: it has no knowledge of other elements with overflow: hidden
+(or any other elements that can hide its overflowing parts)
+(in my case, panel is such an element, tooltip can't expand beyond the panel).
+So it's up to the tooltip's consumer to make sure that tooltip isn't too close to the edges of such elements,
+And "width" option is partly to ensure that tooltip is small enough not to overflow any parent
+
+Other things to consider:
+- tooltip is positioned simply by inserting it into the trigger element's HTML, expecting that trigger element has { position relative } or similar.
+- One downside of this is that, depending on the trigger element's css props, you may experience issues with tooltip visibility
+- (This has to do with css stacking context.
+    For example, a trigger element with opacity less than 0, it affects its stacking priority, and its tooltip may appear below, that is covered, by some adjacent elements)
+    You need to handle this problem ad hoc to make sure that trigger element's css props don't create problems for tooltip.
+    (In some situations it might be enough to set z-index on trigger element)
+
+Rules of how tooltip is closed
+By default, tooltip will be closed by click or tap anywhere on the page.
+Also by default, but only on desktop, tooltip will be closed when mouse leaves the trigger element.
+Options that can change this default behaviour: ... (TODO)
+*/
 
 import { set_css_num_var } from "./utils/utils.mjs"
 
