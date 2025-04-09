@@ -81,9 +81,6 @@ export const show_tooltip = (options = {}) => {
     options.closeOnTriggerElClick = options.closeOnTriggerElClick ?? true
     options.closeOnMouseleave = options.closeOnMouseleave ?? true
     options.minWidth = options.minWidth ?? 0
-    if (options.boundingEl instanceof HTMLElement) {
-        options.minWidth = Math.min(options.minWidth, options.boundingEl.offsetWidth - margin_px * 2)
-    }
 
     const { triggerEl, boundingEl, minWidth, text, position, textNoWrap } = current_tooltip = options
 
@@ -98,8 +95,18 @@ export const show_tooltip = (options = {}) => {
     ttip.classList.add('unique-tooltip')
     ttip.innerText = text
 
-    ttip.style.minWidth = `${minWidth}px`
-    ttip.style.maxHeight = `${boundingEl.offsetHeight - margin_px * 2}px`
+
+    if (boundingEl instanceof HTMLElement) {
+        ttip.style.maxHeight = `${boundingEl.offsetHeight - margin_px * 2}px`
+        const max_width = boundingEl.offsetWidth - margin_px * 2
+        ttip.style.maxWidth = `${max_width}px`
+        ttip.style.minWidth = `${Math.min(minWidth, max_width)}px` // otherwise, if options.minWidth > boundingEl.offsetWidth, minWidth wins and tooltip overflows the boundingEl
+    } else {
+        ttip.style.maxHeight = `${document.documentElement.clientHeight - margin_px * 2}px`
+        ttip.style.maxWidth = `${document.documentElement.clientWidth - margin_px * 2}px`
+        ttip.style.minWidth = `${minWidth}px`
+    }
+
     textNoWrap && (ttip.style.whiteSpace = 'nowrap')
 
     triggerEl.appendChild(ttip)
