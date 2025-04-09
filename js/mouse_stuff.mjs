@@ -64,7 +64,7 @@ export const add_mouse_stuff = () => {
                 triggerEl: e.target.closest('#building-info__flyto'),
                 boundingEl: panel.wrapper_element,
                 text: `Fly to this building`,
-                minWidth: 100,
+                textNoWrap: true,
                 position: 'bottom'
             })
         }
@@ -74,11 +74,11 @@ export const add_mouse_stuff = () => {
                 triggerEl: e.target.closest('#building-info__copylink'),
                 boundingEl: panel.wrapper_element,
                 text: `Copy link to this building`,
-                minWidth: 100,
+                textNoWrap: true,
                 position: 'bottom'
             })
         }
-    }))
+    }), 300)
 
 
     // On click on any .bldg-link (in slider or thumbs-list), go to a bldg that owns the image

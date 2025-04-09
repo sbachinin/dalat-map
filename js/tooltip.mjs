@@ -44,7 +44,8 @@ const hide_tooltips = () => {
         minWidth: number,
         closeOnTriggerElClick: boolean = true // actually tapped too
         closeAfter: number, // ms
-        closeOnMouseleave: boolean
+        closeOnMouseleave: boolean,
+        textNoWrap: boolean = false
     }
 */
 export const show_tooltip = (options = {}) => {
@@ -59,6 +60,7 @@ export const show_tooltip = (options = {}) => {
     hide_tooltips()
 
     options.position = options.position ?? 'top'
+    options.textNoWrap = options.textNoWrap ?? false
     options.closeOnTriggerElClick = options.closeOnTriggerElClick ?? true
     options.closeOnMouseleave = options.closeOnMouseleave ?? true
     options.minWidth = options.minWidth ?? 0
@@ -66,7 +68,7 @@ export const show_tooltip = (options = {}) => {
         options.minWidth = Math.min(options.minWidth, options.boundingEl.offsetWidth - margin_px * 2)
     }
 
-    const { triggerEl, boundingEl, minWidth, text, position } = current_tooltip = options
+    const { triggerEl, boundingEl, minWidth, text, position, textNoWrap } = current_tooltip = options
 
     // avoid click-to-close handler from closing it immediately
     current_tooltip.was_just_opened = true
@@ -81,6 +83,7 @@ export const show_tooltip = (options = {}) => {
 
     ttip.style.minWidth = `${minWidth}px`
     ttip.style.maxHeight = `${boundingEl.offsetHeight - margin_px * 2}px`
+    textNoWrap && (ttip.style.whiteSpace = 'nowrap')
 
     triggerEl.appendChild(ttip)
 
