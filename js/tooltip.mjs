@@ -17,10 +17,16 @@ Other things to consider:
     You need to handle this problem ad hoc to make sure that trigger element's css props don't create problems for tooltip.
     (In some situations it might be enough to set z-index on trigger element)
 
+- as an absolutely positioned element, tooltip will try to be as narrow as possible, basically shrinking to the longest word in the provided text
+- this can be mitigated by providing "minWidth" or "textNoWrap" options
+
 Rules of how tooltip is closed
 By default, tooltip will be closed by click or tap anywhere on the page.
 Also by default, but only on desktop, tooltip will be closed when mouse leaves the trigger element.
 Options that can change this default behaviour: ... (TODO)
+
+- not all elements will work well as trigger element...
+- for example svg. Tooltip will be appended to svg's innerHTML, and it will not lead to any good.
 */
 
 import { set_css_num_var } from "./utils/utils.mjs"

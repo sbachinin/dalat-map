@@ -78,6 +78,15 @@ export const add_mouse_stuff = () => {
                 position: 'bottom'
             })
         }
+
+        if (e.target.closest('#highlights-opener')) {
+            show_tooltip({
+                triggerEl: e.target.closest('#highlights-opener'),
+                text: `Open highlights`,
+                position: 'left',
+                textNoWrap: true
+            })
+        }
     }), 300)
 
 

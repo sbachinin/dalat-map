@@ -9,7 +9,7 @@ document.documentElement.style.setProperty('--image-fading-duration', `${imageFa
 export const panel_thumbs_list_id = 'panel-thumbs-list'
 
 const create_highlights_title = () => {
-    const svg = document.querySelector('#non-panel #highlights-opener').cloneNode(true)
+    const svg = document.querySelector('#non-panel #highlights-opener svg').cloneNode(true)
     svg.classList.remove('invisible')
 
     return create_element_from_Html(
