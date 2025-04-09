@@ -87,6 +87,7 @@ export const show_tooltip = (options = {}) => {
     options.closeOnTriggerElClick = options.closeOnTriggerElClick ?? true
     options.closeOnMouseleave = options.closeOnMouseleave ?? true
     options.minWidth = options.minWidth ?? 0
+    options.offset = options.offset ?? 0
 
     const { triggerEl, boundingEl, minWidth, text, position, textNoWrap } = current_tooltip = options
 
@@ -100,6 +101,7 @@ export const show_tooltip = (options = {}) => {
     const ttip = document.createElement('div')
     ttip.classList.add('unique-tooltip')
     ttip.innerText = text
+    set_css_num_var('--tooltip-offset', options.offset, 'px', ttip)
 
 
     if (boundingEl instanceof HTMLElement) {

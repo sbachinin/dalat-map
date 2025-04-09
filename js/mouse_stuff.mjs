@@ -87,6 +87,15 @@ export const add_mouse_stuff = () => {
                 textNoWrap: true
             })
         }
+
+        if (e.target.closest('.bldg-link')) {
+            show_tooltip({
+                triggerEl: e.target.closest('.bldg-link'),
+                text: `Go to building`,
+                position: 'top',
+                offset: 5
+            })
+        }
     }), 300)
 
 

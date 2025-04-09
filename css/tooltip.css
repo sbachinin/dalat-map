@@ -19,26 +19,26 @@
 }
 
 .unique-tooltip[data-position="bottom"] {
-    top: 100%;
+    top: calc(100% + var(--tooltip-offset));
     left: 50%;
     transform: translateX(-50%);
 }
 
 .unique-tooltip[data-position="top"] {
-    bottom: 100%;
+    bottom: calc(100% + var(--tooltip-offset));
     left: 50%;
     transform: translateX(-50%);
 }
 
 .unique-tooltip[data-position="left"] {
     top: 50%;
-    right: 100%;
+    right: calc(100% + var(--tooltip-offset));
     transform: translateY(-50%);
 }
 
 .unique-tooltip[data-position="right"] {
     top: 50%;
-    left: 100%;
+    left: calc(100% + var(--tooltip-offset));
     transform: translateY(-50%);
 }
 

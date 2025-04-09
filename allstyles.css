@@ -105,8 +105,8 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background: rgba(19, 19, 19, 0.8);
-    width: 34px;
-    height: 34px;
+    width: 27px;
+    height: 27px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,6 +119,8 @@ body {
 
 .pswp .bldg-link {
     transition: opacity ease-out 0.4s;
+    width: 34px;
+    height: 34px;
 }
 
 .bldg-link>* {
@@ -133,7 +135,7 @@ body {
 @media (pointer: fine) {
     #panel-thumbs-list .bldg-link {
         transition: opacity ease-out 0.2s;
-        transform: translateX(-50%) scale(0.75);
+        transform: translateX(-50%);
     }
 
     #panel-thumbs-list .slide-wrapper:hover .bldg-link {
