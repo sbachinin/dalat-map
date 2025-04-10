@@ -48,6 +48,7 @@ import {
     railway_line,
     railway_station_titles_with_squares,
     boring_building_fill,
+    boring_bldg_with_details_border,
     minor_road,
     pedestrian_path,
     city_bulk_title,
@@ -222,6 +223,10 @@ export const zoom_order = {
     [BORING_BLDGS_MINZOOM]: [
         {
             drawing_layers: [boring_building_fill],
+            drawing_importance: 3
+        },
+        {
+            drawing_layers: [boring_bldg_with_details_border],
             drawing_importance: 3
         },
         { drawing_layers: [non_french_titles] },

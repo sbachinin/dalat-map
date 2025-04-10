@@ -15,7 +15,7 @@ export const bldgs_handmade_data = {
         google: 'https://maps.app.goo.gl/Qky2TTE9mkMiX13u7'
     },
     1307493475: {
-        myhint: 'Ana Mandara, ugly but the only one that is reliably old (seen on frayed bw photos at least)',
+        subtitle: `Among the many French-looking villas of Ana Mandara resort, this one is the most reliably old — at least, I've seen it in old photographs. However, in my opinion, its architectural value is not particularly high, and some of the resort's other buildings (although unlikely to be ancient) look more interesting`,
         images: [
             "IMG_1648~2.jpg",
             "IMG_1642~2.jpg",
@@ -313,6 +313,7 @@ export const bldgs_handmade_data = {
     },
     "618049072": {
         "title": "Governor's Palace",
+        subtitle: `Once the palace of the provincial governor, this building now has no apparent function. With its spectacular location on top of a hill overlooking the very center of the city, it often features in news reports about its possible demolition or relocation as part of large-scale development projects. Today, the building itself is closed to the public, but the surrounding area, including a beautiful park, is open and free of charge.`,
         "images": [
             "IMG_1227~2.jpg",
             "IMG_1248.jpg",
@@ -1096,11 +1097,12 @@ export const bldgs_handmade_data = {
         ]
     },
     "1307493477": {
+        subtitle: 'Hard to say how much of the old architecture (if any) can be found in this building, but to me, it looks like the most graceful structure in the Ana Mandara resort — so I’d like it to be original',
         "images": [
+            "IMG_1684.jpg",
             "IMG_1656~2.jpg",
             "IMG_1673~2.jpg",
             "IMG_1680~2.jpg",
-            "IMG_1684.jpg"
         ],
         doubt: true
     },
@@ -1680,7 +1682,7 @@ export const bldgs_handmade_data = {
         title: "Hermann\nGmeiner\nschool",
     },
     "777438312": {
-        "myhint": "A ghost of a french building in Mercure hotel",
+        "subtitle": `A "ghost" of a French villa. From what I understand, this building was newly erected several years ago, replicating a rather colorful colonial villa that once stood in the same place. Now it's part of the Mercure hotel, which consists of about a dozen uniform grey buildings meant to evoke French architecture. It's hard to say how many of them are based on actual colonial prototypes, but I’d guess very few`,
         "images": [
             "IMG_4783~2.jpg"
         ]
@@ -1716,6 +1718,7 @@ export const bldgs_handmade_data = {
     },
     "4119185": {
         title: 'Da Lat\nMarket',
+        title_coords: [108.43693249991662, 11.943140230783612],
         wikipedia: 'https://en.wikipedia.org/wiki/Da_Lat_Market',
         google: 'https://maps.app.goo.gl/VbHuRh3NT1GSaTT3A',
         subtitle: `Today's Da Lat Market consists of buildings constructed at different times. The most interesting is the modernist structure facing the roundabout square, built in 1960, which looked rather imposing in its time. The adjacent building, connected to the former by elevated walkways, was added in 1993`
@@ -1780,7 +1783,8 @@ export const bldgs_handmade_data = {
     515288602: {
         title: 'Cam Ly\nChurch',
         wikipedia: 'https://vi.wikipedia.org/wiki/Nh%C3%A0_th%E1%BB%9D_Cam_Ly',
-        google: 'https://maps.app.goo.gl/jpGaZXSiFZC3eGpQ7'
+        google: 'https://maps.app.goo.gl/jpGaZXSiFZC3eGpQ7',
+        title_side: 'south'
     },
     "1308816301": {
         title: 'Chi Lang\nmarket',

@@ -15,7 +15,8 @@ import {
     RAILWAY_LINE_COLOR,
     SQUARE_FILL_COLOR,
     CITY_BULK_TITLE_COLOR,
-    IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR
+    IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR,
+    BORING_BLDG_WITH_DETAILS_BORDER_COLOR
 } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
 import { deep_merge_objects } from "./utils/utils.mjs";
@@ -443,6 +444,18 @@ export const boring_building_fill = {
         "fill-antialias": true,
     }
 }
+
+export const boring_bldg_with_details_border = {
+    name: 'Boring building with details border',
+    'type': 'line',
+    "source": SOURCES_NAMES.DALAT_TILES,
+    "source-layer": "boring_building",
+    'paint': {
+        'line-color': BORING_BLDG_WITH_DETAILS_BORDER_COLOR
+    },
+    filter: ["==", ["get", "has_details"], true]
+}
+
 
 
 
