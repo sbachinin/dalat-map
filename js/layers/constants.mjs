@@ -16,6 +16,7 @@ export const BORING_BLDG_FILL_COLOR = 'hsl(43, 15%, 92%)'
 export const BORING_BLDG_WITH_DETAILS_BORDER_COLOR = 'hsl(43, 15%, 70%)'
 export const IMPORTANT_BORING_BLDG_FILL_COLOR = 'hsla(0, 0.00%, 75%, 0.65)'
 export const IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR = 'hsla(232, 52.40%, 75.30%, 0.80)'
+export const SELECTED_BORING_BLDG_FILL_COLOR = 'hsla(187, 41.10%, 62.70%, 0.65)'
 
 export const BRIGHT_LAKE_COLOR = 'hsl(193, 70%, 62.4%)'
 export const PALE_LAKE_COLOR = 'hsl(193, 70%, 85%)'

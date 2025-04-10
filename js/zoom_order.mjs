@@ -123,10 +123,7 @@ export const zoom_order = {
                 hmd[1232634198], // stadium
             ),
         },
-        {
-            drawing_layers: [french_buildings_titles],
-            filter: ["==", ["get", "is_french"], true]
-        },
+        { drawing_layers: [french_buildings_titles] },
     ],
     12.5: [
         {
@@ -216,7 +213,6 @@ export const zoom_order = {
                 french_detailful_thickening_outline,
                 french_detailful_bldg_fill
             ],
-            filter: ["==", ["get", "has_details"], true],
             drawing_importance: 2
         },
     ],

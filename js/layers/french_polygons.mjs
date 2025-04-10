@@ -23,6 +23,11 @@ export const french_detailless_bldg_fill = {
 export const french_detailful_bldg_fill = {
     "name": "French important building",
     ...french_fill_common_props,
+    props_when_selected: {
+        "paint": {
+            "fill-color": c.FRENCH_SELECTED_FILL_COLOR
+        }
+    },
     filter: ["==", ["get", "has_details"], true]
 }
 

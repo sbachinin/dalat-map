@@ -16,7 +16,9 @@ import {
     SQUARE_FILL_COLOR,
     CITY_BULK_TITLE_COLOR,
     IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR,
-    BORING_BLDG_WITH_DETAILS_BORDER_COLOR
+    BORING_BLDG_WITH_DETAILS_BORDER_COLOR,
+    SELECTED_BORING_BLDG_FILL_COLOR,
+    FRENCH_SELECTED_TITLE_HALO_COLOR,
 } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
 import { deep_merge_objects } from "./utils/utils.mjs";
@@ -70,6 +72,14 @@ export const french_buildings_titles = {
     paint: {
         'text-color': FRENCH_TITLES_TEXT_COLOR,
     },
+    props_when_selected: {
+        paint: {
+            "text-halo-color": FRENCH_SELECTED_TITLE_HALO_COLOR,
+            "text-halo-width": 5,
+            "text-halo-blur": 0
+        },
+    },
+    filter: ["==", ["get", "is_french"], true]
 }
 
 
@@ -114,16 +124,6 @@ export const french_bldg_circle = {
 }
 
 
-export const french_bldg_fill = {
-    "name": "French building fill",
-    "type": "fill",
-    source: SOURCES_NAMES.DALAT_TILES,
-    "source-layer": "french_building",
-    "paint": {
-        "fill-color": FRENCH_FILL_COLOR,
-        "fill-antialias": true
-    },
-}
 
 
 
@@ -442,6 +442,11 @@ export const boring_building_fill = {
             BORING_BLDG_FILL_COLOR
         ],
         "fill-antialias": true,
+    },
+    props_when_selected: {
+        paint: {
+            'fill-color': SELECTED_BORING_BLDG_FILL_COLOR
+        }
     }
 }
 
@@ -510,7 +515,7 @@ export const minor_road = {
 export const pedestrian_path = deep_merge_objects(
     minor_road,
     {
-        id: 'pedestrian_path',
+        name: 'Pedestrian path',
         paint: { "line-dasharray": [2, 2] }
     }
 )

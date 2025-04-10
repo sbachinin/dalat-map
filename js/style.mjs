@@ -7,7 +7,7 @@ import {
 import { build_layers } from './build_layers.mjs'
 import { cam_ly_line, other_rivers_lines } from './layers/rivers.mjs'
 import { land_areas_fill } from './drawing_layers.mjs'
-console.log(build_layers().map(l => l.id).join('\n'))
+
 export const style = {
     name: "Dalat map",
 
@@ -32,3 +32,5 @@ export const style = {
 
     "glyphs": `${window.location.origin}/dalat-map-fonts/{fontstack}/{range}.pbf`
 }
+
+console.log(style.layers)

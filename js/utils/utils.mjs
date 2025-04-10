@@ -351,3 +351,12 @@ export const deep_merge_objects = (target, source) => {
 
     return result;
 }
+
+export const pick = (obj, props) => {
+    return props.reduce((result, prop) => {
+        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+            result[prop] = obj[prop]
+        }
+        return result
+    }, {});
+}
