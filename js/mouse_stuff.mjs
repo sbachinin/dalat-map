@@ -12,7 +12,8 @@ import {
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { does_feature_have_details } from './utils/does_feature_have_details.mjs'
-import { get_link_to_selected_bldg, selected_building_id } from './select_building.mjs'
+import { get_link_to_selected_bldg } from './select_building.mjs'
+import { get_selected_building_id } from './selected_building_id.mjs'
 import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
 import { show_tooltip } from './tooltip.mjs'
 
@@ -134,7 +135,7 @@ export const add_mouse_stuff = () => {
 
 
         } else if (e.target.closest('#building-info__flyto')) {
-            try_fly_to_building(selected_building_id, { force: true })
+            try_fly_to_building(get_selected_building_id(), { force: true })
 
 
 
@@ -161,7 +162,7 @@ export const add_mouse_stuff = () => {
 
         } else if (e.target.closest('#building-info__share')) {
 
-            const bldg_data = bldgs_handmade_data[selected_building_id]
+            const bldg_data = bldgs_handmade_data[get_selected_building_id()]
 
             let files = undefined // shouldn't pass files if sharing of files is not supported
 

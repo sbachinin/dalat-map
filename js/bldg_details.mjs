@@ -1,6 +1,7 @@
 import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
 import { all_handmade_data } from '../data/static/handmade_data.mjs'
-import { select_building, selected_building_id } from './select_building.mjs'
+import { select_building } from './select_building.mjs'
+import { get_selected_building_id } from './selected_building_id.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import * as svg_icons from './svg_icons.mjs'
@@ -135,7 +136,7 @@ export const try_open_building = async (
     should_try_to_fly = false,
     should_expand_panel = true
 ) => {
-    if (id === selected_building_id) {
+    if (id === get_selected_building_id()) {
         panel.resize_to_content()
         return
     }
@@ -248,7 +249,7 @@ export const update_flyto_button = throttle(() => {
     // So I switched to comparing centoid with map viewport's lngLat bounds, and this doesn't depend on network or anything.
     // TODO: this doesn't consider the panel. So, when feature is covered by panel, it won't enable the button
     const { _ne: { lng: e_bound, lat: n_bound }, _sw: { lng: w_bound, lat: s_bound } } = dalatmap.getBounds()
-    const cntrd = centroids_etc[selected_building_id].centroid
+    const cntrd = centroids_etc[get_selected_building_id()].centroid
     const selected_bldg_is_visible = (
         cntrd[0] > w_bound
         && cntrd[0] < e_bound

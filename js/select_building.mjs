@@ -1,16 +1,15 @@
 import { french_buildings_titles } from "./drawing_layers.mjs"
 import { FRENCH_SELECTED_FILL_COLOR, FRENCH_SELECTED_TITLE_HALO_COLOR } from "./layers/constants.mjs"
 import { french_fill_common_props } from "./layers/french_polygons.mjs"
+import { get_selected_building_id, set_selected_building_id } from "./selected_building_id.mjs"
 import { is_french_building } from "./utils/isomorphic_utils.mjs"
 import { deep_merge_objects } from "./utils/utils.mjs"
 
 const SELECTED_STYLE_LAYER_PREFIX = 'Selected::'
 
-export let selected_building_id = null
-
 export const select_building = newid => {
-    if (newid !== selected_building_id) {
-        selected_building_id = newid
+    if (newid !== get_selected_building_id()) {
+        set_selected_building_id(newid)
 
         for (const layer of window.dalatmap.getStyle().layers) {
             if (layer.id.startsWith(SELECTED_STYLE_LAYER_PREFIX)) {
@@ -59,5 +58,5 @@ export const select_building = newid => {
 }
 
 export const get_link_to_selected_bldg = () => {
-    return window.location.origin + window.location.pathname + `?id=` + selected_building_id
+    return window.location.origin + window.location.pathname + `?id=` + get_selected_building_id()
 }
