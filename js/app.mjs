@@ -72,10 +72,13 @@ map.once('idle', async () => {
         : get_center_for_bldg_with_offset(get_bldg_id_from_url())
 
     map.setCenter(center)
-    document.querySelector('#maplibregl-map').classList.remove('hidden')
 
     add_mouse_stuff()
     add_dead_buildings(map)
+
+    requestAnimationFrame(
+        () => document.querySelector('#maplibregl-map').classList.remove('hidden')
+    )
 })
 
 if (DEV_show_debug_el) {
