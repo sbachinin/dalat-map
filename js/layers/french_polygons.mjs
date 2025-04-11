@@ -19,6 +19,7 @@ export const french_fill_common_props = {
 export const french_detailless_bldg_fill = {
     "name": "French unimportant building fill",
     ...french_fill_common_props,
+    filter: ["==", ["get", "has_details"], false]
 }
 export const french_detailful_bldg_fill = {
     "name": "French important building",
@@ -56,6 +57,7 @@ const french_thickening_outline_common_props = {
 export const french_detailless_thickening_outline = {
     name: 'French bldg without details thickening outline',
     ...french_thickening_outline_common_props,
+    filter: ["==", ["get", "has_details"], false],
 }
 
 export const french_detailful_thickening_outline = {
@@ -89,6 +91,7 @@ const get_dark_outline_props = high_zoom_thickness => {
 export const french_detailless_dark_outline = {
     'name': 'French buildings without details dark outline',
     ...get_dark_outline_props(1),
+    filter: ["==", ["get", "has_details"], false],
 }
 
 export const french_detailful_dark_outline = {

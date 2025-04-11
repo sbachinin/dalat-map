@@ -90,12 +90,10 @@ export const zoom_order = {
 
     0: [
         {
-            "filter": ["in", "highway", "tertiary"],
             drawing_layers: [tertiary_road],
             drawing_importance: 4
         },
         {
-            "filter": ["!in", "highway", "tertiary"],
             drawing_layers: [major_road_thicker_line],
             drawing_importance: 4
         }
@@ -103,10 +101,7 @@ export const zoom_order = {
 
     [FIRST_CLASS_FRENCH_MINZOOM]: [
         { drawing_layers: [datanla_waterfall_layer] },
-        {
-            "filter": ["==", ["get", "aerialway"], "cable_car"],
-            drawing_layers: [cable_car_line, cable_car_label]
-        },
+        { drawing_layers: [cable_car_line, cable_car_label] },
         { drawing_layers: [cable_car_endpoints] },
         { drawing_layers: [peaks_triangles_with_titles] },
         {
@@ -128,7 +123,6 @@ export const zoom_order = {
     12.5: [
         {
             drawing_layers: [major_road_thinner_line],
-            "filter": ["!in", "highway", "tertiary"],
             drawing_importance: 3
         }
     ],
@@ -152,17 +146,13 @@ export const zoom_order = {
          */
         {
             drawing_layers: [railway_line],
-            filter: ["==", ["get", "railway"], "rail"],
         },
         {
             drawing_layers: [minor_road],
             filter: ["in", "highway", "residential", "unclassified"],
             drawing_importance: 5
         },
-        {
-            drawing_layers: [railway_station_titles_with_squares],
-            "filter": ["==", "$id", 3377406129]  // only Trai Mat
-        },
+        { drawing_layers: [railway_station_titles_with_squares] },
         {
             filter: [
                 "any",
@@ -204,7 +194,6 @@ export const zoom_order = {
                 french_detailless_thickening_outline,
                 french_detailless_bldg_fill
             ],
-            filter: ["==", ["get", "has_details"], false],
             drawing_importance: 2
         },
         {
@@ -241,7 +230,6 @@ export const zoom_order = {
         },
         {
             drawing_layers: [pedestrian_path],
-            filter: ["in", "highway", "footway", "path", "cycleway", "steps"],
             drawing_importance: 5
         },
     ]

@@ -203,6 +203,7 @@ export const major_road_thicker_line = {
         "line-cap": "round",
         "line-join": "round",
     },
+    "filter": ["!in", "highway", "tertiary"]
 }
 
 export const major_road_thinner_line = {
@@ -233,6 +234,7 @@ export const major_road_thinner_line = {
         "line-cap": "round",
         "line-join": "round",
     },
+    "filter": ["!in", "highway", "tertiary"],
 }
 
 export const tertiary_road = {
@@ -257,6 +259,7 @@ export const tertiary_road = {
         "line-cap": "round",
         "line-join": "round",
     },
+    "filter": ["in", "highway", "tertiary"],
 }
 
 
@@ -336,7 +339,8 @@ export const cable_car_line = {
             15, 2
         ],
         "line-dasharray": [1, 1]
-    }
+    },
+    "filter": ["==", ["get", "aerialway"], "cable_car"],
 }
 export const cable_car_label = {
     "name": "Cable car label",
@@ -355,6 +359,7 @@ export const cable_car_label = {
     "paint": {
         "text-color": PALE_TITLES_COLOR,
     },
+    "filter": ["==", ["get", "aerialway"], "cable_car"],
 }
 
 export const cable_car_endpoints = {
@@ -402,6 +407,7 @@ export const railway_line = {
             16, 3
         ],
     },
+    filter: ["==", ["get", "railway"], "rail"],
 }
 
 export const railway_station_titles_with_squares = {
@@ -421,6 +427,7 @@ export const railway_station_titles_with_squares = {
     paint: {
         'text-color': PALE_TITLES_COLOR
     },
+    "filter": ["==", "$id", 3377406129]  // only Trai Mat
 }
 
 
@@ -509,14 +516,15 @@ export const minor_road = {
         ],
         "line-color": minor_road_color,
         'line-blur': 1,
-    },
+    }
 }
 
 export const pedestrian_path = deep_merge_objects(
     minor_road,
     {
         name: 'Pedestrian path',
-        paint: { "line-dasharray": [2, 2] }
+        paint: { "line-dasharray": [2, 2] },
+        filter: ["in", "highway", "footway", "path", "cycleway", "steps"],
     }
 )
 
