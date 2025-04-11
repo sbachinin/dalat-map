@@ -10,6 +10,7 @@ import {
     get_panel_shown_breadth,
 } from '../utils/utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
+import { wait_for_sizeless_images_load } from './wait_for_sizeless_images_load.mjs'
 
 const FIRST_EXPAND_TRANSITION_DURATION = 1200
 const FIRST_EXPAND_TRANSITION_DELAY = 1500
@@ -110,7 +111,11 @@ export const panel = {
 
         panel.fire('content will be set', _content)
 
-        await fade_out_content_if_present()
+        await await Promise.all([
+            fade_out_content_if_present(),
+            // wait for "other images", not lazy thumbs!
+            wait_for_sizeless_images_load(_content.element.querySelectorAll('img:not(#panel-thumbs-list img)'))
+        ])
 
         panel.content = _content
         panel.body_element.innerHTML = ''
