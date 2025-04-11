@@ -10,7 +10,11 @@ export const select_building = newid => {
                 const filter = [...layer.filter]
                     .map(f_item => { // find an "id" filter and set its target value to selected_building_id
                         if (f_item[0] === '==' && f_item[1][0] === 'id') {
-                            return [f_item[0], f_item[1], newid]
+                            return [
+                                f_item[0], 
+                                f_item[1], 
+                                newid === null ? 'nonexistent_id' : newid // for clarity
+                            ]
                         } else return f_item
                     })
                 window.dalatmap.setFilter(layer.id, filter)
