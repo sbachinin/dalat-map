@@ -313,7 +313,7 @@ export const bldgs_handmade_data = {
     },
     "618049072": {
         "title": "Governor's Palace",
-        subtitle: `Once the palace of the provincial governor, this building now has no apparent function. With its spectacular location on top of a hill overlooking the very center of the city, it often features in news reports about its possible demolition or relocation as part of large-scale development projects. Today, the building itself is closed to the public, but the surrounding area, including a beautiful park, is open and free of charge.`,
+        subtitle: `Once the palace of the provincial governor, this building now has no apparent function. With its spectacular location on top of a hill overlooking the very center of the city, it often features in news reports about its possible demolition or relocation as part of large-scale development projects. As of 2024, the building itself was closed to the public, but the surrounding area, including a beautiful park, was open and free of charge`,
         "images": [
             "IMG_1227~2.jpg",
             "IMG_1248.jpg",
@@ -1718,7 +1718,8 @@ export const bldgs_handmade_data = {
     },
     "4119185": {
         title: 'Da Lat\nMarket',
-        title_coords: [108.43693249991662, 11.943140230783612],
+        title_coords: [108.4368592404482, 11.942970213381457],
+        title_side: 'south',
         wikipedia: 'https://en.wikipedia.org/wiki/Da_Lat_Market',
         google: 'https://maps.app.goo.gl/VbHuRh3NT1GSaTT3A',
         subtitle: `Today's Da Lat Market consists of buildings constructed at different times. The most interesting is the modernist structure facing the roundabout square, built in 1960, which looked rather imposing in its time. The adjacent building, connected to the former by elevated walkways, was added in 1993`

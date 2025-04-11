@@ -17,12 +17,12 @@ export const french_fill_common_props = {
 // in order to render all detailful bldgs after all detailless,
 // to prevent the detailful bldgs' border from being covered by borderless buildings' parts
 export const french_detailless_bldg_fill = {
-    "name": "French unimportant building fill",
+    "name": "French detailless building fill",
     ...french_fill_common_props,
     filter: ["==", ["get", "has_details"], false]
 }
 export const french_detailful_bldg_fill = {
-    "name": "French important building",
+    "name": "French detailful building",
     ...french_fill_common_props,
     props_when_selected: {
         "paint": {
