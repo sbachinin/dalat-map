@@ -43,6 +43,7 @@ export const build_layers = () => {
                             {
                                 ...drawing_layer.props_when_selected,
                                 id: `${SELECTED_STYLE_LAYER_PREFIX} ${final_main_layer.id}`,
+                                minzoom: 11,
                                 filter: [
                                     ...final_main_layer.filter,
                                     ["==", ["id"], 'nonexistent_id']
