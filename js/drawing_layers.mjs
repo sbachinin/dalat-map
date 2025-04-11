@@ -19,6 +19,7 @@ import {
     BORING_BLDG_WITH_DETAILS_BORDER_COLOR,
     SELECTED_BORING_BLDG_FILL_COLOR,
     FRENCH_SELECTED_TITLE_HALO_COLOR,
+    SELECTED_BORING_BLDG_TEXT_COLOR,
 } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
 import { deep_merge_objects } from "./utils/utils.mjs";
@@ -321,6 +322,22 @@ export const non_french_titles = {
             WATER_TITLE_COLOR,
             PALE_TITLES_COLOR
         ]
+    },
+    props_when_selected: {
+        layout: {
+            "text-size": [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                FIRST_CLASS_FRENCH_MINZOOM,
+                PALE_TITLES_SIZE - 0.5,
+                17.5,
+                PALE_TITLES_SIZE + 0.5,
+            ],
+        },
+        paint: {
+            'text-color': SELECTED_BORING_BLDG_TEXT_COLOR
+        }
     }
 }
 
