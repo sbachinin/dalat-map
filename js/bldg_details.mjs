@@ -17,6 +17,7 @@ import {
 } from './utils/utils.mjs'
 import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
 import { does_feature_have_details } from './utils/does_feature_have_details.mjs'
+import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
 
 
 const update_size_variables = () => {
@@ -199,7 +200,7 @@ export const try_fly_to_building = (
         const map_zoom = window.dalatmap.getZoom()
         if (force
             || !coords_will_be_in_view(feature_screen_xy)
-            || map_zoom < 15.5
+            || map_zoom < MINIMAL_ZOOM_ON_BUILDING_SELECT
         ) {
             const map_el = document.querySelector('#maplibregl-map')
             const distance_from_center = distance2d(
@@ -209,7 +210,7 @@ export const try_fly_to_building = (
                 map_el.offsetHeight / 2
             )
 
-            const target_zoom = Math.max(15.5, map_zoom)
+            const target_zoom = Math.max(MINIMAL_ZOOM_ON_BUILDING_SELECT, map_zoom)
             const zoom_diff = Math.abs(map_zoom - target_zoom)
             const duration = Math.max(distance_from_center, 500) * (zoom_diff + 1)
 

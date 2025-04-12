@@ -22,12 +22,12 @@ import './photoswipe_mutations_observer.mjs'
 import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
 import { initialize_highlights_button } from './panel/highlights_button.mjs'
-import { FIRST_CLASS_FRENCH_MINZOOM } from './layers/constants.mjs'
+import { FIRST_CLASS_FRENCH_MINZOOM, MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
 import { initialize_panel } from './initialize_panel.mjs'
 
 const saved_center = JSON.parse(localStorage.getItem('map_center')) || get_full_map_center()
 
-const zoom = (get_bldg_id_from_url() !== null && 15.5)
+const zoom = (get_bldg_id_from_url() !== null && MINIMAL_ZOOM_ON_BUILDING_SELECT)
     || localStorage.getItem('map_zoom')
     || FIRST_CLASS_FRENCH_MINZOOM
 
