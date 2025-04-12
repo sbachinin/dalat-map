@@ -118,6 +118,7 @@ export const land_areas_handmade_data = {
     },
     473547288: {
         title: 'Nuclear \nResearch \nInstitute',
+        subtitle: `Originally built by the US in the 1960s. It houses Vietnam's only nuclear reactor, which is used for scientific purposes`,
         title_coords: [108.45263475485513, 11.955316019067567]
     },
     1307493492: {

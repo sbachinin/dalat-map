@@ -1,4 +1,4 @@
-import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR } from "./layers/constants.mjs"
+import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR, SELECTED_BORING_BLDG_FILL_COLOR } from "./layers/constants.mjs"
 
 export const load_icons = async () => {
 
@@ -30,6 +30,9 @@ export const load_icons = async () => {
             ctx.fill()
         } else if (id == 'boring_square') {
             ctx.fillStyle = BORING_SQUARE_COLOR
+            ctx.fillRect(0, 0, 64, 64)
+        } else if (id == 'boring_square_selected') {
+            ctx.fillStyle = 'hsla(187, 71.10%, 52.70%, 0.65)'
             ctx.fillRect(0, 0, 64, 64)
         }
 

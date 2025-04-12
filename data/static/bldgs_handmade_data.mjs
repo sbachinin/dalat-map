@@ -1763,7 +1763,10 @@ export const bldgs_handmade_data = {
         title_side: 'south'
     },
     "7758125": {
-        title: 'Youth Prison\nmuseum'
+        title: 'Youth Prison\nmuseum',
+        subtitle: `During the Vietnam War, 600 revolutionary teenagers (12–17) were detained here. Built in 1971, it was known for harsh conditions, torture, and resistance by prisoners. It closed in 1973 and was later restored as a museum`,
+        wikipedia: `https://vi.wikipedia.org/wiki/Nh%C3%A0_lao_thi%E1%BA%BFu_nhi_%C4%90%C3%A0_L%E1%BA%A1t`,
+        google: `https://g.co/kgs/e5mRV9e`
     },
     "1303678469": {
         title: 'Don Bosco parish',

@@ -181,7 +181,9 @@ export const zoom_order = {
             filter: get_filter_by_fids(
                 hmd[1244767000],
                 hmd[1305230699],
-                hmd[361851927]
+                hmd[361851927],
+                hmd[4119185],
+                hmd[308446691]
             ),
             maxzoom: BORING_BLDGS_MINZOOM,
             drawing_importance: 3
