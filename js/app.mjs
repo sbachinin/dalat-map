@@ -94,6 +94,7 @@ map.on('move', () => {
 })
 
 map.on('zoom', () => {
+    update_flyto_button()
     update_scale()
     update_zoom_buttons()
 })

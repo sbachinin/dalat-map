@@ -245,6 +245,11 @@ export const update_flyto_button = throttle(() => {
     const but_el = document.querySelector('#building-info__flyto')
     if (!but_el) return
 
+    if (dalatmap.getZoom() < MINIMAL_ZOOM_ON_BUILDING_SELECT - 1) {
+        but_el.classList.remove('disabled')
+        return
+    }
+
     // Previous solution utilized queryRenderedFeatures
     // But it was unstable because relied on what is actually rendered atm
     // So I switched to comparing centoid with map viewport's lngLat bounds, and this doesn't depend on network or anything.
