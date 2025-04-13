@@ -28,12 +28,6 @@ MPORTANT
 
 
 
-
-tooltip appear outside the window if buttons are very bottom
-		show_tooltip(text, preferred_side, auto_close_after)
-	apply this for "goto building too"
-
-
 indicate that bldg is dead in bldg details
 selected dead bldg style
 

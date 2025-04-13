@@ -138,7 +138,7 @@ export const try_open_building = async (
     should_expand_panel = true
 ) => {
     if (id === get_selected_building_id()) {
-        panel.resize_to_content()
+        panel.resize_to_content() // meaning, expand the panel if it was collapsed
         return
     }
 
@@ -152,19 +152,19 @@ export const try_open_building = async (
         if (should_push_history) {
             push_to_history({ id }, `?id=${id}${window.location.hash}`)
         }
-    }
 
-    panel.once(
-        'new content breadth',
-        'fly to newly opened building',
-        async () => {
-            if (should_try_to_fly) {
-                await try_fly_to_building(id)
-            }
-            if (should_expand_panel) {
-                panel.resize_to_content()
-            }
-        })
+        panel.once(
+            'new content breadth',
+            'fly to newly opened building',
+            async () => {
+                if (should_try_to_fly) {
+                    await try_fly_to_building(id)
+                }
+                if (should_expand_panel) {
+                    panel.resize_to_content()
+                }
+            })
+    }
 }
 
 const distance2d = (x1, y1, x2, y2) => Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
@@ -261,7 +261,7 @@ export const update_flyto_button = throttle(() => {
         && cntrd[0] < e_bound
         && cntrd[1] > s_bound
         && cntrd[1] < n_bound
-    )    
+    )
 
     if (selected_bldg_is_visible) {
         but_el.classList.add('disabled')
