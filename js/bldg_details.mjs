@@ -16,7 +16,7 @@ import {
     throttle
 } from './utils/utils.mjs'
 import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
-import { does_feature_have_details } from './utils/does_feature_have_details.mjs'
+import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
 
 
@@ -142,7 +142,7 @@ export const try_open_building = async (
         return
     }
 
-    if (does_feature_have_details(id)) {
+    if (is_feature_selectable(id)) {
         if (document.fonts && !document.fonts.check('italic normal 400 1em Merriweather')) {
             const merriweather = new FontFaceObserver('Merriweather', { weight: 'normal', style: 'italic' })
             await merriweather.load()

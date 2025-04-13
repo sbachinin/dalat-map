@@ -11,7 +11,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import * as turf from '@turf/turf'
 import { get_title_side } from '../../js/utils/isomorphic_utils.mjs'
-import { does_feature_have_details, does_feature_have_title } from '../../js/utils/does_feature_have_details.mjs'
+import { is_feature_selectable, does_feature_have_title } from '../../js/utils/does_feature_have_details.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -86,7 +86,7 @@ const get_title_lat = (
 ...JSON.parse(alive_buildings_json),
 ...JSON.parse(dead_buildings_json)
 ]).forEach(f => {
-    if (does_feature_have_details(f.id) || does_feature_have_title(f.id)) {
+    if (is_feature_selectable(f.id) || does_feature_have_title(f.id)) {
         result[f.id] = {
             centroid: get_centroid(f),
             title_lat: get_title_lat(f)

@@ -1,6 +1,6 @@
 import { all_handmade_data } from "../../data/static/handmade_data.mjs"
 
-export const does_feature_have_details = id => {
+export const is_feature_selectable = id => {
     if (id === undefined) {
         console.warn('Trying to get building details but id is undefined. Hmm')
     }

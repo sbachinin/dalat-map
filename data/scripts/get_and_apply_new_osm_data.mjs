@@ -2,7 +2,7 @@ import { execSync } from 'child_process'
 import fs from 'fs'
 import { land_areas_handmade_data } from '../static/handmade_data.mjs';
 import {
-    does_feature_have_details,
+    is_feature_selectable,
     does_feature_have_title
 } from '../../js/utils/does_feature_have_details.mjs';
 import { compare_arrays_of_features } from './compare_arrays_of_features.mjs';
@@ -154,7 +154,7 @@ write(
         })
         .map(f => clear_feature_props(f))
         .map(f => {
-            f.properties.has_details = does_feature_have_details(f.id)
+            f.properties.has_details = is_feature_selectable(f.id)
             f.properties.has_title = does_feature_have_title(f.id)
             return f;
         })
@@ -167,7 +167,7 @@ const new_french_bldgs = all_geojson.features
     })
     .map(f => clear_feature_props(f))
     .map(f => {
-        f.properties.has_details = does_feature_have_details(f.id);
+        f.properties.has_details = is_feature_selectable(f.id);
         f.properties.has_title = does_feature_have_title(f.id);
         return f;
     })

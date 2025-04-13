@@ -11,7 +11,7 @@ import {
 } from './utils/utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
-import { does_feature_have_details } from './utils/does_feature_have_details.mjs'
+import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { get_link_to_selected_bldg } from './select_building.mjs'
 import { get_selected_building_id } from './selected_building_id.mjs'
 import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
@@ -27,7 +27,7 @@ export const add_mouse_stuff = () => {
             // map.queryRenderedFeatures(e.point)?.[0]?.id
         )
         const rfs = map.queryRenderedFeatures(e.point)
-        const clickable_feat = rfs.find(f => does_feature_have_details(f.id))
+        const clickable_feat = rfs.find(f => is_feature_selectable(f.id))
         if (clickable_feat) {
             try_open_building(clickable_feat.id, true, true)
         } else if (!panel.is_pristine()) {
@@ -40,7 +40,7 @@ export const add_mouse_stuff = () => {
     map.on('mousemove', (e) => {
         if (map.getZoom() > CURSOR_POINTER_MINZOOM
             && map.queryRenderedFeatures(e.point)
-                .find(f => f.layer.type === 'fill' && f.id && does_feature_have_details(f.id))
+                .find(f => f.layer.type === 'fill' && f.id && is_feature_selectable(f.id))
         ) {
             map.getCanvas().style.cursor = 'pointer'
         } else {
