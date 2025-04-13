@@ -154,7 +154,7 @@ write(
         })
         .map(f => clear_feature_props(f))
         .map(f => {
-            f.properties.has_details = is_feature_selectable(f.id)
+            f.properties.is_selectable = is_feature_selectable(f.id)
             f.properties.has_title = does_feature_have_title(f.id)
             return f;
         })
@@ -167,7 +167,7 @@ const new_french_bldgs = all_geojson.features
     })
     .map(f => clear_feature_props(f))
     .map(f => {
-        f.properties.has_details = is_feature_selectable(f.id);
+        f.properties.is_selectable = is_feature_selectable(f.id);
         f.properties.has_title = does_feature_have_title(f.id);
         return f;
     })

@@ -19,7 +19,7 @@ export const french_fill_common_props = {
 export const french_detailless_bldg_fill = {
     "name": "French detailless building fill",
     ...french_fill_common_props,
-    filter: ["==", ["get", "has_details"], false]
+    filter: ["==", ["get", "is_selectable"], false]
 }
 export const french_detailful_bldg_fill = {
     "name": "French detailful building",
@@ -29,7 +29,7 @@ export const french_detailful_bldg_fill = {
             "fill-color": c.FRENCH_SELECTED_FILL_COLOR
         }
     },
-    filter: ["==", ["get", "has_details"], true]
+    filter: ["==", ["get", "is_selectable"], true]
 }
 
 
@@ -57,13 +57,13 @@ const french_thickening_outline_common_props = {
 export const french_detailless_thickening_outline = {
     name: 'French bldg without details thickening outline',
     ...french_thickening_outline_common_props,
-    filter: ["==", ["get", "has_details"], false],
+    filter: ["==", ["get", "is_selectable"], false],
 }
 
 export const french_detailful_thickening_outline = {
     name: 'French bldg with details thickening outline',
     ...french_thickening_outline_common_props,
-    filter: ["==", ["get", "has_details"], true]
+    filter: ["==", ["get", "is_selectable"], true]
 }
 
 const get_dark_outline_props = high_zoom_thickness => {
@@ -91,11 +91,11 @@ const get_dark_outline_props = high_zoom_thickness => {
 export const french_detailless_dark_outline = {
     'name': 'French buildings without details dark outline',
     ...get_dark_outline_props(1),
-    filter: ["==", ["get", "has_details"], false],
+    filter: ["==", ["get", "is_selectable"], false],
 }
 
 export const french_detailful_dark_outline = {
     'name': 'French buildings with details dark outline',
     ...get_dark_outline_props(4),
-    filter: ["==", ["get", "has_details"], true]
+    filter: ["==", ["get", "is_selectable"], true]
 }

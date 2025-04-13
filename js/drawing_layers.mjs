@@ -492,7 +492,7 @@ export const boring_bldg_with_details_border = {
     'paint': {
         'line-color': BORING_BLDG_WITH_DETAILS_BORDER_COLOR
     },
-    filter: ["==", ["get", "has_details"], true]
+    filter: ["==", ["get", "is_selectable"], true]
 }
 
 
