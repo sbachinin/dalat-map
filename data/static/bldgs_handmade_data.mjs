@@ -1749,8 +1749,17 @@ export const bldgs_handmade_data = {
     },
     "17873628": {
         title: 'Pontifical\nCollege\nof St. Pius X',
+        subtitle: 'A Roman Catholic seminary, an extensive and rather ambitious modernist building was erected in 1958. While a Wikipedia article claims that it has lost much of its architectural value in recent decades, it seems to retain its original design — albeit not perfectly maintained',
         title_side: 'south',
+        wikipedia: 'https://en.wikipedia.org/wiki/Pontifical_College_of_St._Pius_X',
+        google: 'https://maps.app.goo.gl/16tQSgFbndV1qWqX9'
     },
+
+    1303678447: {
+        title: 'Bui Thi Xuan High School',
+        title_coords: [108.44033951069201, 11.951430143221415]
+    },
+
     "232458166": {
         title: 'Linh Quang\nPagoda',
         wikipedia: 'https://vi.wikipedia.org/wiki/Ch%C3%B9a_Linh_Quang_(%C4%90%C3%A0_L%E1%BA%A1t)',

@@ -223,7 +223,7 @@ export const try_fly_to_building = (
                 center: centroids_etc[id]?.centroid,
                 offset: get_map_center_shift_px(panel.content_breadth),
                 zoom: target_zoom,
-                duration: Math.max(distance_from_center, 500) * (zoom_diff + 1)
+                duration
             })
 
             // Here map.on('moveend') was used instead of setTimeout.

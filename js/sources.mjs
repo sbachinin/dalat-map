@@ -61,6 +61,7 @@ const titles_points = {
                     properties: get_titles_props(fid)
                 }
             })
+            .filter(f => f.geometry.coordinates)
     }
 }
 

@@ -27,6 +27,13 @@ IMPORTANT
 MPORTANT
 
 
+hue: mark also all hue unesco sites (Arena!)  https://whc.unesco.org/en/list/678/maps/#map
+
+
+year can be number or string; better do it string only
+
+
+handle new dalat pictures (dalat extra album)
 
 indicate that bldg is dead in bldg details
 selected dead bldg style
@@ -273,3 +280,42 @@ minzoom:
         https://bois.com.vn/bo-suu-tap-100-tam-anh-biet-thu-co-da-lat-xua/
     
     write to thi tuan, can they provide photos / info
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+some possible domains
+    mapofcities.com
+    somegoodarchitecture
+    wayofarchitecture.com
+
+    whatwasbuilt.com
+
+    humanbuildings.org / net
+
+    architecturalshock.com
+
+    badmaps.org
+    ohmymap.org
+
+    mapfulness (there is some shit company with this name)
+
+    mapsforjoy
+    atlasofcities
+    mapsforhumans
