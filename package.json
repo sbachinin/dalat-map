@@ -11,7 +11,8 @@
     "process_all_images": "python3 chores/process_all_images.py -force",
     "full_build_images": "npm run process_all_images && npm run validate_images_data && npm run validate_highlights",
     "copy_tiles_to_windows": "cp -r dalat-map-tiles/tiles /mnt/c/Users/Admin/projects/dalat-map/dalat-map-tiles/",
-    "run_https_localhost": "http-server -S"
+    "run_https_localhost": "http-server -S",
+    "build": "node build.mjs"
   },
   "author": "",
   "license": "ISC",
