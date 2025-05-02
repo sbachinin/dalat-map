@@ -1,6 +1,5 @@
 import { centroids_etc } from '../../data/generated_for_runtime/centroids_etc.mjs'
 import { bldgs_handmade_data } from '../../data/static/bldgs_handmade_data.mjs'
-import { map_bounds } from '../layers/constants.mjs'
 
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
@@ -327,7 +326,18 @@ export const can_share_files = () => {
     return navigator.canShare && navigator.canShare({ files: [file] })
 }
 
-export const get_full_map_center = () => {
+
+export const lnglat_is_within_bounds = (lnglat, bounds) => { // lnglat: [lng, lat], bounds: [w, s, e, n]
+    return (
+        lnglat[0] >= bounds[0]
+        && lnglat[0] <= bounds[2]
+        && lnglat[1] >= bounds[1]
+        && lnglat[1] <= bounds[3]
+    )
+}
+
+
+export const get_map_bounds_center = (map_bounds) => {
     return [
         map_bounds[0] + (map_bounds[2] - map_bounds[0]) / 2,
         map_bounds[1] + (map_bounds[3] - map_bounds[1]) / 2

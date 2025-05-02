@@ -8,9 +8,9 @@ import {
 import { compare_arrays_of_features } from './compare_arrays_of_features.mjs';
 import {
     BORING_BLDGS_MINZOOM,
-    map_bounds,
     MINOR_ROADS_MINZOOM
 } from '../../js/layers/constants.mjs';
+import { cities_meta } from '../../js/cities_meta.mjs';
 
 const args = process.argv.slice(2); // Get command-line arguments, excluding "node" and script name
 
@@ -42,7 +42,7 @@ execSync('rm -f ../temp/*.geojson', { stdio: 'inherit' });
 if (!no_download) {
     execSync('rm -f ../temp/*.osm', { stdio: 'inherit' });
 
-    const bbox = map_bounds.join(',')
+    const bbox = cities_meta.dalat.bounds.join(',')
     const url = `https://overpass-api.de/api/map?bbox=${bbox}`;
     execSync(`curl -o ../temp/output.osm "${url}"`, { stdio: 'inherit' });
 }

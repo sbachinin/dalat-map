@@ -7,7 +7,8 @@ import { try_open_building, update_flyto_button } from './bldg_details.mjs'
 import {
     get_bldg_id_from_url,
     get_center_for_bldg_with_offset,
-    get_full_map_center
+    get_map_bounds_center,
+    lnglat_is_within_bounds
 } from './utils/utils.mjs'
 import { panel } from './panel/panel.mjs'
 import '../data/static/DEV_get_updated_buildings_data.mjs'
@@ -25,10 +26,13 @@ import { initialize_highlights_button } from './panel/highlights_button.mjs'
 import { FIRST_CLASS_FRENCH_MINZOOM, MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
 import { initialize_panel } from './initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
-
+import { cities_meta } from './cities_meta.mjs'
 
 export const initialize_city = (city) => {
-    const saved_center = JSON.parse(localStorage.getItem('map_center')) || get_full_map_center()
+    let initial_center = JSON.parse(localStorage.getItem('map_center')) // [lng, lat]
+    if (initial_center === null || !lnglat_is_within_bounds(initial_center, cities_meta[city].bounds)) {
+        initial_center = get_map_bounds_center(cities_meta[city].bounds)
+    }
 
     if (get_bldg_id_from_url() && !is_feature_selectable(get_bldg_id_from_url())) {
         console.warn(`"id" parameter in the URL is not a selectable building id`)
@@ -76,7 +80,7 @@ export const initialize_city = (city) => {
 
         const center = is_feature_selectable(get_bldg_id_from_url())
             ? get_center_for_bldg_with_offset(get_bldg_id_from_url())
-            : saved_center
+            : initial_center
 
         map.setCenter(center)
 

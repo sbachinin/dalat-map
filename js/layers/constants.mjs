@@ -1,5 +1,3 @@
-export const map_bounds = [108.3765, 11.8800, 108.5200, 12.0100] // W, S, E, N
-
 export const FRENCH_SELECTED_FILL_COLOR = 'hsl(42, 97.80%, 53.50%)'
 
 // TODO this one is actually outdated, purplish
