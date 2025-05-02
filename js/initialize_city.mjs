@@ -23,7 +23,7 @@ import './photoswipe_mutations_observer.mjs'
 import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
 import { initialize_highlights_button } from './panel/highlights_button.mjs'
-import { FIRST_CLASS_FRENCH_MINZOOM, MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
+import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
 import { initialize_panel } from './initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { cities_meta } from './cities_meta.mjs'
@@ -32,15 +32,22 @@ export const initialize_city = (city) => {
     let initial_center = JSON.parse(localStorage.getItem('map_center')) // [lng, lat]
     if (initial_center === null || !lnglat_is_within_bounds(initial_center, cities_meta[city].bounds)) {
         initial_center = get_map_bounds_center(cities_meta[city].bounds)
+        
+        // cached center and zoom clearly belonged to another city, therefore ->
+        localStorage.removeItem('map_center')
+        localStorage.removeItem('map_zoom')
     }
 
-    if (get_bldg_id_from_url() && !is_feature_selectable(get_bldg_id_from_url())) {
+    const initial_bldg_id = get_bldg_id_from_url()
+
+    if (initial_bldg_id && !is_feature_selectable(initial_bldg_id)) {
         console.warn(`"id" parameter in the URL is not a selectable building id`)
     }
 
-    const zoom = (is_feature_selectable(get_bldg_id_from_url()) && MINIMAL_ZOOM_ON_BUILDING_SELECT)
+    const zoom = (is_feature_selectable(initial_bldg_id) && MINIMAL_ZOOM_ON_BUILDING_SELECT)
         || localStorage.getItem('map_zoom')
-        || FIRST_CLASS_FRENCH_MINZOOM
+        || cities_meta[city].intro_zoom
+        || 12
 
 
     const map = window.dalatmap = DEV_skip_map_rendering
@@ -78,8 +85,8 @@ export const initialize_city = (city) => {
 
         initialize_highlights_button(panel.content?.type)
 
-        const center = is_feature_selectable(get_bldg_id_from_url())
-            ? get_center_for_bldg_with_offset(get_bldg_id_from_url())
+        const center = is_feature_selectable(initial_bldg_id)
+            ? get_center_for_bldg_with_offset(initial_bldg_id)
             : initial_center
 
         map.setCenter(center)
