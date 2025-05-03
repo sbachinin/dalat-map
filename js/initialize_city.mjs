@@ -28,13 +28,13 @@ import { initialize_panel } from './initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './cities_assets.mjs'
 
-export const initialize_city = async (name) => {    
+export const initialize_city = async (name) => {
     await load_city(name)
 
     let initial_center = JSON.parse(localStorage.getItem('map_center'))
     if (initial_center === null || !lnglat_is_within_bounds(initial_center, current_city.bounds)) {
         initial_center = get_map_bounds_center(current_city.bounds)
-        
+
         // cached center and zoom clearly belonged to another city, therefore ->
         localStorage.removeItem('map_center')
         localStorage.removeItem('map_zoom')
@@ -60,8 +60,8 @@ export const initialize_city = async (name) => {
             dragRotate: false,
             keyboard: false, // also to prevent rotation
             maxBounds: [
-                [108.37416, 11.88], // SW
-                [108.52, 12.01]  // NE
+                [current_city.bounds[0], current_city.bounds[1]],
+                [current_city.bounds[2], current_city.bounds[3]]
             ],
             antialias: true,
             maxZoom: 17.5,
