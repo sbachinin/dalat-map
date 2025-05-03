@@ -12,6 +12,7 @@ import { fileURLToPath } from 'url'
 import * as turf from '@turf/turf'
 import { get_title_side } from '../../js/utils/isomorphic_utils.mjs'
 import { is_feature_selectable, does_feature_have_title } from '../../js/utils/does_feature_have_details.mjs'
+import { all_handmade_data } from '../../dalat/handmade_data.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -64,8 +65,11 @@ const get_title_lat = (
     if (f.title_coords) {
         return // title_coords will be taken at runtime, don't generate title lat
     }
+    
+    // TODO
+    throw new Error('This needs to be city-agnostic, accepting a city name and retrieving the appropriate hmdata')
 
-    const title_side = get_title_side(f.id)
+    const title_side = get_title_side(f.id, all_handmade_data)
     if (title_side === null) {
         console.warn('Invalid title_side for feature', f.id)
         process.exit(1)

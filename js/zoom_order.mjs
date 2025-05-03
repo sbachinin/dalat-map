@@ -68,7 +68,7 @@ import {
     french_detailless_thickening_outline
 } from "./layers/french_polygons.mjs";
 
-import { all_handmade_data as hmd } from "../data/static/handmade_data.mjs";
+import { all_handmade_data as hmd } from "../dalat/handmade_data.mjs";
 
 const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
 

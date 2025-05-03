@@ -1,6 +1,6 @@
 import { execSync } from 'child_process'
 import fs from 'fs'
-import { land_areas_handmade_data } from '../static/handmade_data.mjs';
+import { land_areas_handmade_data } from '../../dalat/handmade_data.mjs';
 import {
     is_feature_selectable,
     does_feature_have_title
@@ -10,7 +10,7 @@ import {
     BORING_BLDGS_MINZOOM,
     MINOR_ROADS_MINZOOM
 } from '../../js/layers/constants.mjs';
-import { cities_meta } from '../../js/cities_meta.mjs';
+import { cities_meta } from '../../js/cities_assets.mjs';
 
 const args = process.argv.slice(2); // Get command-line arguments, excluding "node" and script name
 

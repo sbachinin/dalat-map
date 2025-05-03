@@ -4,7 +4,7 @@ import { cable_car_endpoints_source } from '../data/static/cable_car_endpoints.m
 import {
     all_handmade_data,
     lakes_handmade_data
-} from '../data/static/handmade_data.mjs'
+} from '../dalat/handmade_data.mjs'
 import { is_french_building } from './utils/isomorphic_utils.mjs'
 import { get_title_side } from './utils/isomorphic_utils.mjs'
 import { get_geojson_source } from './utils/utils.mjs'
@@ -21,7 +21,7 @@ const get_titles_props = fid => {
     return {
         title: fdata.title,
         is_french: is_french_building(fid),
-        title_side: get_title_side(fid),
+        title_side: get_title_side(fid, all_handmade_data),
         is_water: !!lakes_handmade_data[fid],
         "symbol-sort-key": fdata["symbol-sort-key"]
     }

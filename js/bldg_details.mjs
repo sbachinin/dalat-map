@@ -1,5 +1,4 @@
 import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
-import { all_handmade_data } from '../data/static/handmade_data.mjs'
 import { select_building } from './select_building.mjs'
 import { get_selected_building_id } from './selected_building_id.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
@@ -18,6 +17,7 @@ import {
 import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
+import { current_city } from './cities_assets.mjs'
 
 
 const update_size_variables = () => {
@@ -28,40 +28,42 @@ const update_size_variables = () => {
 
 
 const set_panel_content = (id) => {
+    const feat_hmd = current_city.all_handmade_data[id]
+
     const details_el = div({ id: 'building-details' })
 
-    const thumbs_list_el = all_handmade_data[id].images?.length
+    const thumbs_list_el = feat_hmd.images?.length
         ? create_panel_thumbs_list({
-            images_names: all_handmade_data[id].images
+            images_names: feat_hmd.images
         })
         : ''
 
-    const title = all_handmade_data[id].title
-        ? `<div id="building-info__title">${all_handmade_data[id].title}</div>`
+    const title = feat_hmd.title
+        ? `<div id="building-info__title">${feat_hmd.title}</div>`
         : ''
 
-    const subtitle = all_handmade_data[id].subtitle
-        ? `<div id="building-info__subtitle">${all_handmade_data[id].subtitle}</div>`
+    const subtitle = feat_hmd.subtitle
+        ? `<div id="building-info__subtitle">${feat_hmd.subtitle}</div>`
         : ''
 
 
-    const wikipedia = all_handmade_data[id].wikipedia
+    const wikipedia = feat_hmd.wikipedia
         ? `<div id="building-info__wikipedia">
-                    <a target="_blank" href="${all_handmade_data[id].wikipedia}">
+                    <a target="_blank" href="${feat_hmd.wikipedia}">
                         <img src="${get_image_url('wikipedia.svg', '')}">
                     </a>
                 </div>`
         : ''
 
-    const doubt = all_handmade_data[id].doubt
+    const doubt = feat_hmd.doubt
         ? `<div id="building-info__doubt">
                 <img src="${get_image_url('question.png', '')}">
             </div>`
         : ''
 
-    const google = all_handmade_data[id].google
+    const google = feat_hmd.google
         ? `<div id="building-info__google">
-                    <a target="_blank" href="${all_handmade_data[id].google}">
+                    <a target="_blank" href="${feat_hmd.google}">
                         ${svg_icons.gmaps}
                     </a>
                 </div>`
@@ -95,13 +97,13 @@ const set_panel_content = (id) => {
             ${copylink_or_share}
         </div>`
 
-    const year = all_handmade_data[id].year
-        ? `<div id="building-info__year">Built in ${all_handmade_data[id].year}</div>`
+    const year = feat_hmd.year
+        ? `<div id="building-info__year">Built in ${feat_hmd.year}</div>`
         : ''
 
-    const links = all_handmade_data[id].links?.length
+    const links = feat_hmd.links?.length
         ? `<div id="building-info__links">
-            ${all_handmade_data[id].links.map(link => {
+            ${feat_hmd.links.map(link => {
             return `<a target="_blank" href="${link.url}">${link.description || link.url}</a>`
         }).join('')}
         </div>`

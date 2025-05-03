@@ -1,4 +1,4 @@
-export const hue_handmade_data = {
+export const all_handmade_data = {
     "1377444109": { // Hue Industrial College main ancient bldg
         year: '1924'
     },

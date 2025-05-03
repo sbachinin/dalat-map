@@ -26,12 +26,14 @@ import { initialize_highlights_button } from './panel/highlights_button.mjs'
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
 import { initialize_panel } from './initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
-import { cities_meta } from './cities_meta.mjs'
+import { current_city, load_city } from './cities_assets.mjs'
 
-export const initialize_city = (city) => {
-    let initial_center = JSON.parse(localStorage.getItem('map_center')) // [lng, lat]
-    if (initial_center === null || !lnglat_is_within_bounds(initial_center, cities_meta[city].bounds)) {
-        initial_center = get_map_bounds_center(cities_meta[city].bounds)
+export const initialize_city = async (name) => {    
+    await load_city(name)
+
+    let initial_center = JSON.parse(localStorage.getItem('map_center'))
+    if (initial_center === null || !lnglat_is_within_bounds(initial_center, current_city.bounds)) {
+        initial_center = get_map_bounds_center(current_city.bounds)
         
         // cached center and zoom clearly belonged to another city, therefore ->
         localStorage.removeItem('map_center')
@@ -46,8 +48,7 @@ export const initialize_city = (city) => {
 
     const zoom = (is_feature_selectable(initial_bldg_id) && MINIMAL_ZOOM_ON_BUILDING_SELECT)
         || localStorage.getItem('map_zoom')
-        || cities_meta[city].intro_zoom
-        || 12
+        || current_city.intro_zoom
 
 
     const map = window.dalatmap = DEV_skip_map_rendering

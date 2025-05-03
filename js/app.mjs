@@ -1,5 +1,5 @@
 import { initialize_city } from './initialize_city.mjs'
-import { cities_meta } from './cities_meta.mjs'
+import { cities_meta } from './cities_assets.mjs'
 const current_city = new URL(location.href).pathname.split('/').filter(s => s.length > 0)[0]
 
 if (current_city) {
