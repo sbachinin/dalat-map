@@ -27,3 +27,5 @@ export const get_title_side = (fid, hmdata) => {
 
     return title_side
 }
+
+export const is_one_of = (val, arr) => arr.some(v => v === val)

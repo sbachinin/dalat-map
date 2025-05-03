@@ -1,6 +1,5 @@
-dalat_from_overpass_api.geojson
-dalat_from_overpass_api.osm
-data/temp/*.geojson
+*/temp_data/*.geojson
+cities_tiles/*
 *.osm
 oldlayers
 __pycache__
@@ -13,4 +12,4 @@ cert.pem
 key.pem
 
 
-!data/temp/french_building.geojson
+!**/french_building.geojson

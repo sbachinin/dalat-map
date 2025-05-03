@@ -59,3 +59,5 @@ export const SECONDARY_TITLES_MINZOOM = 15
 export const BORING_BLDGS_MINZOOM = 14
 
 export const CURSOR_POINTER_MINZOOM = 14.5
+
+export const DEFAULT_CITY_MINZOOM = 10

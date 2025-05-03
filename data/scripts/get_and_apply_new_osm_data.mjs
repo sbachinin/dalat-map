@@ -1,53 +1,49 @@
 import { execSync } from 'child_process'
 import fs from 'fs'
-import { land_areas_handmade_data } from '../../dalat/handmade_data.mjs';
 import {
     is_feature_selectable,
     does_feature_have_title
-} from '../../js/utils/does_feature_have_details.mjs';
-import { compare_arrays_of_features } from './compare_arrays_of_features.mjs';
+} from '../../js/utils/does_feature_have_details.mjs'
 import {
     BORING_BLDGS_MINZOOM,
-    MINOR_ROADS_MINZOOM
-} from '../../js/layers/constants.mjs';
-import { cities_meta } from '../../js/cities_assets.mjs';
-
-const args = process.argv.slice(2); // Get command-line arguments, excluding "node" and script name
-
-let no_download = false;
-
-for (const arg of args) {
-    if (arg === 'no-download') {
-        no_download = true;
-        break;
-    }
-}
+    DEFAULT_CITY_MINZOOM
+} from '../../js/layers/constants.mjs'
+import { cities_meta } from '../../js/cities_assets.mjs'
+import { mkdir_if_needed, parse_args } from './utils.mjs'
 
 const write = (path, data) => {
-    fs.writeFileSync(path, JSON.stringify(data, null, 2));
+    fs.writeFileSync(path, JSON.stringify(data, null, 2))
+}
+
+const exec = (command) => {
+    execSync(command, { stdio: 'inherit' })
 }
 
 
+const { skip_osm_download, city } = parse_args()
 
+const city_root_path = `../../${city}`
 
-let initial_french_bldgs = [];
-if (fs.existsSync('../temp/french_building.geojson')) {
-    initial_french_bldgs = JSON.parse(fs.readFileSync('../temp/french_building.geojson', 'utf-8'));
+if (!fs.existsSync(city_root_path)) {
+    console.warn('no folder for such city!')
+    process.exit(0)
 }
 
+mkdir_if_needed(city_root_path + `/temp_data`)
 
+exec(`rm -f ${city_root_path}/temp_data/*.geojson`)
 
-execSync('rm -f ../temp/*.geojson', { stdio: 'inherit' });
+const osm_output_path = city_root_path + `/temp_data/output.osm`
 
-if (!no_download) {
-    execSync('rm -f ../temp/*.osm', { stdio: 'inherit' });
+if (!skip_osm_download) {
+    exec(`rm -f ${osm_output_path}`)
 
-    const bbox = cities_meta.dalat.bounds.join(',')
+    const bbox = cities_meta[city].bounds.join(',')
     const url = `https://overpass-api.de/api/map?bbox=${bbox}`;
-    execSync(`curl -o ../temp/output.osm "${url}"`, { stdio: 'inherit' });
+    exec(`curl -o ${osm_output_path} "${url}"`)
 }
 
-execSync('osmtogeojson ../temp/output.osm > ../temp/from_osm.geojson', { shell: true, stdio: 'inherit' });
+exec(`osmtogeojson ${osm_output_path} > ${city_root_path}/temp_data/from_osm.geojson`)
 
 
 
@@ -59,48 +55,56 @@ execSync('osmtogeojson ../temp/output.osm > ../temp/from_osm.geojson', { shell: 
 
 
 
-const inputPath = '../static/dalat_bulk_geometry.geojson';
-const outputPath = '../temp/dalat_bulk_geometry_as_linestring.geojson';
+const bulk_souce_path = city_root_path + '/static_data/city_bulk_geometry.geojson'
+if (fs.existsSync(bulk_souce_path)) {
+    const city_bulk_data = JSON.parse(fs.readFileSync(bulk_souce_path, 'utf-8'))
 
-const data = JSON.parse(fs.readFileSync(inputPath, 'utf-8'));
+    const transformed = {
+        type: 'Feature',
+        properties: city_bulk_data[0].properties,
+        geometry: {
+            type: 'LineString',
+            coordinates: city_bulk_data[0].geometry.coordinates[0],
+        },
+    }
 
-const transformed = {
-    type: 'Feature',
-    properties: data[0].properties,
-    geometry: {
-        type: 'LineString',
-        coordinates: data[0].geometry.coordinates[0],
-    },
-};
-
-write(outputPath, transformed);
-
-
-
-
-
+    write(
+        city_root_path + '/temp_data/city_bulk_geometry_as_linestring.geojson',
+        transformed
+    )
+}
 
 
 
 
-// merge my custom geojson into osm's geojson,
+
+
+
+
+
+// merge custom geojson into osm geojson,
 // prioritize custom features in case of duplicate ids
 
-const geojsonData = [
-    JSON.parse(fs.readFileSync('../temp/from_osm.geojson', 'utf-8')),
-    JSON.parse(fs.readFileSync('../static/all_custom_features.geojson', 'utf-8')),
-]
+const osm_data = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/from_osm.geojson', 'utf-8'))
+let all_geojson = osm_data
 
-let features = geojsonData.flatMap(data => data.features || []);
+const custom_features_path = city_root_path + '/static_data/custom_features.geojson'
+if (fs.existsSync(custom_features_path)) {
 
-const seenIds = new Set();
-features = features.reverse().filter(feature => {
-    if (!feature.id || seenIds.has(feature.id)) return false;
-    seenIds.add(feature.id);
-    return true;
-}).reverse();
+    const custom_features = JSON.parse(fs.readFileSync(custom_features_path, 'utf-8'))
+    const seen_ids = new Set()
 
-const all_geojson = { type: 'FeatureCollection', features };
+    let features = ([osm_data, custom_features])
+        .flatMap(data => data.features || [])
+        .reverse()
+        .filter(feature => {
+            if (!feature.id || seen_ids.has(feature.id)) return false
+            seen_ids.add(feature.id)
+            return true
+        }).reverse()
+
+    all_geojson = { type: 'FeatureCollection', features }
+}
 
 
 
@@ -112,10 +116,10 @@ const all_geojson = { type: 'FeatureCollection', features };
 all_geojson.features = all_geojson.features
     .map(feature => {
         if (typeof feature.id === 'string') {
-            feature.id = feature.id.replace(/^(way|node|relation)\//, '');
-            feature.id = Number(feature.id);
+            feature.id = feature.id.replace(/^(way|node|relation)\//, '')
+            feature.id = Number(feature.id)
         }
-        return feature;
+        return feature
     })
 
 
@@ -124,7 +128,9 @@ all_geojson.features = all_geojson.features
 
 
 
+const temp_tiles_path = `../../cities_tiles/temp`
 
+const { all_handmade_data: hmdata } = await import(city_root_path + '/static_data/handmade_data.mjs')
 
 const clear_feature_props = (feature, props_to_preserve = []) => {
     const properties = {}
@@ -141,178 +147,79 @@ const clear_feature_props = (feature, props_to_preserve = []) => {
 
 // SPLIT GEOJSON INTO LAYERS
 
-write(
-    '../temp/boring_building.geojson',
-    all_geojson.features
-        .filter(feature => {
-            const props = feature.properties || {};
-            return (
-                props.building != null &&
-                props['building:architecture'] !== 'french_colonial' &&
-                feature.id !== 1275206355
-            );
-        })
-        .map(f => clear_feature_props(f))
-        .map(f => {
-            f.properties.is_selectable = is_feature_selectable(f.id)
-            f.properties.has_title = does_feature_have_title(f.id)
-            return f;
-        })
-);
+const boring_building_tiling_meta = {
+    name: 'boring_building',
+    feature_filter: f => {
+        if (!f.properties?.building) return false
+        if (f.geometry.type === 'Point') return false
+        const cf = cities_meta[city].unimportant_buildings_filter
+        if (cf) return cf(f)
+        return false
+    },
+    added_props: ['is_selectable', 'has_title'],
+    feature_props_to_preserve: ['building', 'building:architecture'],
+    minzoom: BORING_BLDGS_MINZOOM
+}
 
+const all_mbtiles_paths = []
 
-const new_french_bldgs = all_geojson.features
-    .filter(f => {
-        return f.properties['building:architecture'] === 'french_colonial';
+cities_meta[city].tile_layers
+    .concat(boring_building_tiling_meta)
+    .forEach(tile_layer => {
+        if (!tile_layer.feature_filter) throw new Error('feature_filter not defined for tile_layer ' + tile_layer.name)
+        if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
+
+        const geojson_path = city_root_path + `/temp_data/${tile_layer.name}.geojson`
+
+        write(
+            geojson_path,
+            all_geojson.features
+                .filter(tile_layer.feature_filter)
+                .map(f => clear_feature_props(f, tile_layer.feature_props_to_preserve))
+                .map(f => {
+                    tile_layer.added_props?.forEach(prop => {
+                        if (f.properties[prop] !== undefined) {
+                            throw new Error(`trying to add extra prop ${prop} to ${f.id} but feature already has it`)
+                        }
+                        if (prop === 'is_selectable') {
+                            f.properties[prop] = is_feature_selectable(f.id, hmdata)
+                        } else if (prop === 'has_title') {
+                            f.properties[prop] = does_feature_have_title(f.id, hmdata)
+                        } else if (prop.name && prop.get_value) {
+                            f.properties[prop.name] = prop.get_value(f)
+                        }
+                    })
+                    return f
+                })
+                // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
+                .sort((a, b) => b.id - a.id)
+        )
+
+        const temp_tiles_city_path = `${temp_tiles_path}/${city}`
+        mkdir_if_needed(temp_tiles_city_path)
+
+        const temp_mbtiles_path = `${temp_tiles_city_path}/${tile_layer.name}.mbtiles`
+        all_mbtiles_paths.push(temp_mbtiles_path)
+
+        const minz = tile_layer.minzoom
+            || cities_meta[city].minzoom
+            || DEFAULT_CITY_MINZOOM
+
+        exec(`
+            tippecanoe -o ${temp_mbtiles_path} \
+            --minimum-zoom=${Math.floor(minz)} --maximum-zoom=17 \
+            --no-tile-compression -f \
+            ${geojson_path}`);
     })
-    .map(f => clear_feature_props(f))
-    .map(f => {
-        f.properties.is_selectable = is_feature_selectable(f.id);
-        f.properties.has_title = does_feature_have_title(f.id);
-        return f;
-    })
-    .sort((a, b) => b.id - a.id) // to get a more readable git diff
-
-write(
-    '../temp/french_building.geojson',
-    new_french_bldgs
-);
-
-// if feature.properties.highway is one of the following, it's a major road, otherwise minor
-const major_road_highway_values = ['tertiary', "primary",
-    "primary_link",
-    "secondary",
-    "trunk"]
-
-write(
-    '../temp/major_roads.geojson',
-    all_geojson.features
-        .filter(f => {
-            return major_road_highway_values.includes(f.properties.highway);
-        })
-        .map(f => clear_feature_props(f, ['highway']))
-);
-
-write(
-    '../temp/minor_roads.geojson',
-    all_geojson.features
-        .filter(f => {
-            return f.properties.highway
-                && !major_road_highway_values.includes(f.properties.highway);
-        })
-        .map(f => clear_feature_props(f, ['highway']))
-);
-
-write(
-    '../temp/railway.geojson',
-    all_geojson.features
-        .filter(f => {
-            return f.properties.railway == 'rail' || f.properties.railway == 'station';
-        })
-        .map(f => clear_feature_props(f, ['railway']))
-);
-
-write(
-    '../temp/peaks.geojson',
-    all_geojson.features.filter(f => {
-        return f.properties.natural == 'peak';
-    })
-);
-
-write(
-    '../temp/transportation_other.geojson',
-    all_geojson.features.filter(f => {
-        return f.properties.aerialway == 'cable_car';
-    })
-);
-
-write(
-    '../temp/lake.geojson',
-    all_geojson.features
-        .filter(f => {
-            return f.properties.natural == 'water'
-                && (
-                    f.properties.name == 'Hồ Xuân Hương'
-                    || f.properties.name == 'Hồ Tuyền Lâm'
-                    || f.properties.name == 'Hồ Chiến Thắng'
-                    || f.properties.name == 'Hồ Đa Thiện'
-                )
-        })
-        .map(f => clear_feature_props(f))
-);
-
-write(
-    '../temp/river.geojson',
-    all_geojson.features
-        .filter(f => f.properties.waterway == 'stream')
-        .filter(f => f.id !== 99661185) // skip the stretch of Cam Ly "inside" the Lake
-        .map(f => clear_feature_props(f, ['name', 'tunnel']))
-);
-
-write(
-    '../temp/land_areas.geojson',
-    all_geojson.features
-        .filter(f => land_areas_handmade_data.hasOwnProperty(f.id.toString()))
-        .map(f => clear_feature_props(f))
-        .map(f => {
-            f.properties.area_type = land_areas_handmade_data[f.id.toString()].area_type || null;
-            return f;
-        })
-);
-
-import('./save_polygons_centroids_etc.mjs')
-import('./save_some_features_ids.mjs')
 
 
+const final_tiles_path = `../../cities_tiles/${city}/tiles`
+mkdir_if_needed(final_tiles_path)
+exec(`rm -rf ${final_tiles_path}/*`)
 
-
-const temp_tiles_path = `../../dalat-map-tiles/temp`
-const main_mbtiles_path = `${temp_tiles_path}/main.mbtiles`
-const minor_roads_mbtiles_path = `${temp_tiles_path}/minzoom_14.mbtiles`
-const boring_building_mbtiles_path = `${temp_tiles_path}/boring_buildings.mbtiles`
-
-const make_main_mbtiles = `
-    tippecanoe -o ${main_mbtiles_path} \
-    --minimum-zoom=10 --maximum-zoom=17 \
+exec(`
+    tile-join -e ${final_tiles_path} \
     --no-tile-compression -f \
-    ../temp/french_building.geojson \
-    ../temp/lake.geojson \
-    ../temp/river.geojson \
-    ../temp/land_areas.geojson \
-    ../temp/major_roads.geojson \
-    ../temp/railway.geojson \
-    ../temp/peaks.geojson \
-    ../temp/transportation_other.geojson \
-    ../temp/dalat_bulk_geometry_as_linestring.geojson \
-    ../static/dead_buildings.geojson \
-    ../static/dalat_bulk_geometry.geojson
-`
-const make_minor_roads_mbtiles = `
-    tippecanoe -o ${minor_roads_mbtiles_path} \
-    --minimum-zoom=${Math.floor(MINOR_ROADS_MINZOOM)} --maximum-zoom=17 \
-    --no-tile-compression -f \
-    ../temp/minor_roads.geojson \
-`
+    ${all_mbtiles_paths.join(' ')}`);
 
-const make_boring_bldgs_mbtiles = `
-    tippecanoe -o ${boring_building_mbtiles_path} \
-    --minimum-zoom=${BORING_BLDGS_MINZOOM} --maximum-zoom=17 \
-    --no-tile-compression -f \
-    ../temp/boring_building.geojson \
-`
-
-execSync(make_main_mbtiles, { stdio: 'inherit' });
-execSync(make_minor_roads_mbtiles, { stdio: 'inherit' });
-execSync(make_boring_bldgs_mbtiles, { stdio: 'inherit' });
-
-execSync(`
-    tile-join -e ../../dalat-map-tiles/tiles \
-    --no-tile-compression -f \
-    ${main_mbtiles_path} \
-    ${minor_roads_mbtiles_path} \
-    ${boring_building_mbtiles_path}
-`, { stdio: 'inherit' });
-
-execSync(`rm -f ${temp_tiles_path}/*`, { stdio: 'inherit' });
-
-compare_arrays_of_features(initial_french_bldgs, new_french_bldgs);
+exec(`rm -rf ${temp_tiles_path}/*`);

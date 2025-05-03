@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url'
 import * as turf from '@turf/turf'
 import { get_title_side } from '../../js/utils/isomorphic_utils.mjs'
 import { is_feature_selectable, does_feature_have_title } from '../../js/utils/does_feature_have_details.mjs'
-import { all_handmade_data } from '../../dalat/handmade_data.mjs'
+import { all_handmade_data } from '../../dalat/static_data/handmade_data.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

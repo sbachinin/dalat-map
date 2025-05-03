@@ -4,7 +4,7 @@ import { cable_car_endpoints_source } from '../data/static/cable_car_endpoints.m
 import {
     all_handmade_data,
     lakes_handmade_data
-} from '../dalat/handmade_data.mjs'
+} from '../dalat/static_data/handmade_data.mjs'
 import { is_french_building } from './utils/isomorphic_utils.mjs'
 import { get_title_side } from './utils/isomorphic_utils.mjs'
 import { get_geojson_source } from './utils/utils.mjs'

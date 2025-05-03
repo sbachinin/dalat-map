@@ -559,7 +559,7 @@ export const city_bulk_title = {
     name: 'cityBulk title',
     type: 'symbol',
     source: SOURCES_NAMES.DALAT_TILES,
-    "source-layer": 'dalat_bulk_geometry_as_linestring',
+    "source-layer": 'city_bulk_geometry_as_linestring',
     layout: {
         'text-field': 'Approximate residential limits of Dalat',
         'text-size': PALE_TITLES_SIZE - 1.5,

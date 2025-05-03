@@ -6,7 +6,7 @@
 
 import fs from 'fs'
 import path from 'path'
-import { all_handmade_data } from '../data/static/handmade_data.mjs'
+import { all_handmade_data } from '../dalat/static_data/handmade_data.mjs'
 
 const rejected_imgs = [
   "IMG_9858~3.jpg",, 'IMG_0475~2.jpg', 'IMG_0613~2.jpg',
