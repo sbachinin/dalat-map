@@ -292,7 +292,8 @@
             },
             "id": "1355564844",
             "properties": {
-              "area_type": "institution"
+              "area_type": "institution",
+              "what_is_it": "military academy"
             }
           }
     ]

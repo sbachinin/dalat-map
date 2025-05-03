@@ -1,10 +1,13 @@
 import { current_city } from "../cities_assets.mjs"
 
-export const is_feature_selectable = id => {
+export const is_feature_selectable = (id, hmdata = current_city?.all_handmade_data) => {
+    if (!hmdata) {
+        throw new Error('hmdata is undefined')
+    }
     if (id === undefined) {
         console.warn('Trying to get building details but id is undefined. Hmm')
     }
-    const feat_hm_data = current_city.all_handmade_data[id]
+    const feat_hm_data = hmdata[id]
     return Boolean(
         feat_hm_data && (
             feat_hm_data.subtitle
@@ -16,9 +19,13 @@ export const is_feature_selectable = id => {
     )
 }
 
-export const does_feature_have_title = id => Boolean(
-    typeof current_city.all_handmade_data[id]?.title === 'string'
-    && current_city.all_handmade_data[id]?.title.length > 0
-)
-
+export const does_feature_have_title = (id, hmdata = current_city?.all_handmade_data) => {
+    if (!hmdata) {
+        throw new Error('hmdata is undefined')
+    }
+    return Boolean(
+        typeof hmdata[id]?.title === 'string'
+        && hmdata[id]?.title.length > 0
+    )
+}
 
