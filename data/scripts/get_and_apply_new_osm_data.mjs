@@ -54,34 +54,6 @@ exec(`osmtogeojson ${osm_output_path} > ${city_root_path}/temp_data/from_osm.geo
 
 
 
-
-const bulk_souce_path = city_root_path + '/static_data/city_bulk_geometry.geojson'
-if (fs.existsSync(bulk_souce_path)) {
-    const city_bulk_data = JSON.parse(fs.readFileSync(bulk_souce_path, 'utf-8'))
-
-    const transformed = {
-        type: 'Feature',
-        properties: city_bulk_data[0].properties,
-        geometry: {
-            type: 'LineString',
-            coordinates: city_bulk_data[0].geometry.coordinates[0],
-        },
-    }
-
-    write(
-        city_root_path + '/temp_data/city_bulk_geometry_as_linestring.geojson',
-        transformed
-    )
-}
-
-
-
-
-
-
-
-
-
 // merge custom geojson into osm geojson,
 // prioritize custom features in case of duplicate ids
 
@@ -145,7 +117,9 @@ const clear_feature_props = (feature, props_to_preserve = []) => {
     }
 }
 
-// SPLIT GEOJSON INTO LAYERS
+
+
+
 
 const boring_building_tiling_meta = {
     name: 'boring_building',
@@ -161,39 +135,85 @@ const boring_building_tiling_meta = {
     minzoom: BORING_BLDGS_MINZOOM
 }
 
+const common_tile_layers = [
+    boring_building_tiling_meta,
+]
+
+
+
+
+const bulk_souce_path = city_root_path + '/static_data/city_bulk_geometry.geojson'
+if (fs.existsSync(bulk_souce_path)) {
+    const city_bulk_feature = JSON.parse(fs.readFileSync(bulk_souce_path, 'utf-8'))
+
+    const as_linestring = {
+        type: 'Feature',
+        properties: city_bulk_feature.properties,
+        geometry: {
+            type: 'LineString',
+            coordinates: city_bulk_feature.geometry.coordinates[0],
+        }
+    }
+
+    common_tile_layers.push({
+        name: 'city_bulk_geometry',
+        feature_filter: () => false,
+        static_features: [
+            city_bulk_feature,
+            as_linestring
+        ]
+    })
+}
+
+
+
+
 const all_mbtiles_paths = []
 
+// For each city's tile_layer:
+// 1) tile_layer.feature_filter will be executed for ALL data
+// 2) tile.layer.static_features will be added (overwriting possible duplicates from prev step)
+// 3) only features specified in tile_layer.feature_props_to_preserve will be preserved
+// 4) features specified in tile_layer.added_props will be added
+// 5) result will be written
+// 6) temporary .mbtiles will be created for current layer's geojson
+// (it's to enable individual minzooms for layers; then all .mbtiles are joined)
+
 cities_meta[city].tile_layers
-    .concat(boring_building_tiling_meta)
+    .concat(common_tile_layers)
     .forEach(tile_layer => {
         if (!tile_layer.feature_filter) throw new Error('feature_filter not defined for tile_layer ' + tile_layer.name)
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
 
         const geojson_path = city_root_path + `/temp_data/${tile_layer.name}.geojson`
 
-        write(
-            geojson_path,
-            all_geojson.features
-                .filter(tile_layer.feature_filter)
-                .map(f => clear_feature_props(f, tile_layer.feature_props_to_preserve))
-                .map(f => {
-                    tile_layer.added_props?.forEach(prop => {
-                        if (f.properties[prop] !== undefined) {
-                            throw new Error(`trying to add extra prop ${prop} to ${f.id} but feature already has it`)
-                        }
-                        if (prop === 'is_selectable') {
-                            f.properties[prop] = is_feature_selectable(f.id, hmdata)
-                        } else if (prop === 'has_title') {
-                            f.properties[prop] = does_feature_have_title(f.id, hmdata)
-                        } else if (prop.name && prop.get_value) {
-                            f.properties[prop.name] = prop.get_value(f)
-                        }
-                    })
-                    return f
+        const layer_features = all_geojson.features
+            .filter(tile_layer.feature_filter)
+            .filter(f => !tile_layer.static_features?.find(sf => sf.id === f.id))
+            .map(f => clear_feature_props(f, tile_layer.feature_props_to_preserve))
+            .map(f => {
+                tile_layer.added_props?.forEach(prop => {
+                    if (f.properties[prop] !== undefined) {
+                        throw new Error(`trying to add extra prop ${prop} to ${f.id} but feature already has it`)
+                    }
+                    if (prop === 'is_selectable') {
+                        f.properties[prop] = is_feature_selectable(f.id, hmdata)
+                    } else if (prop === 'has_title') {
+                        f.properties[prop] = does_feature_have_title(f.id, hmdata)
+                    } else if (prop.name && prop.get_value) {
+                        f.properties[prop.name] = prop.get_value(f)
+                    }
                 })
-                // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
-                .sort((a, b) => b.id - a.id)
-        )
+                return f
+            })
+            // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
+            .sort((a, b) => b.id - a.id)
+
+        if (tile_layer.static_features) {
+            layer_features.push(...tile_layer.static_features)
+        }
+
+        write(geojson_path, layer_features)
 
         const temp_tiles_city_path = `${temp_tiles_path}/${city}`
         mkdir_if_needed(temp_tiles_city_path)

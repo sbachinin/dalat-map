@@ -82,7 +82,7 @@ const dalat = {
     ],
 }
 const hue = {
-    bounds: [107.5409, 16.4137, 107.6409, 16.5137], // given by ai
+    bounds: [107.4909, 16.3637, 107.6909, 16.5637],
     html_title: 'Map of colonial architecture in Hue',
     unimportant_buildings_filter: feat => {
         return feat.properties['building:architecture'] !== 'french_colonial'
