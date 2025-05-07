@@ -81,16 +81,37 @@ const dalat = {
         },
     ],
 }
+
+const dalat_layers_to_use_in_hue = [
+    'major_roads',
+    'minor_roads',
+    'railway',
+    'peaks',
+    'river',
+]
+
 const hue = {
     bounds: [107.4909, 16.3637, 107.6909, 16.5637],
     html_title: 'Map of colonial architecture in Hue',
     unimportant_buildings_filter: feat => {
         return feat.properties['building:architecture'] !== 'french_colonial'
     },
-    tile_layers: dalat.tile_layers.filter(tl => tl.name !== 'transportation_other'
-        && tl.name !== 'lake'
-        && tl.name !== 'land_areas'
-    )
+
+    tile_layers: dalat.tile_layers
+        .filter(tl => is_one_of(tl.name, dalat_layers_to_use_in_hue))
+        .concat([
+            {
+                name: 'lake',
+                feature_filter: f => f.properties.natural === 'water'
+            },
+            {
+                name: 'french_building',
+                feature_filter: f => f.properties['building:architecture'] === 'french_colonial'
+                    || f.id === 1384219085,
+                added_props: ['is_selectable', 'has_title']
+            }
+
+        ])
 }
 
 export const cities_meta = {
