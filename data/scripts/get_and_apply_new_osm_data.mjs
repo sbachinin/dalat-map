@@ -54,29 +54,91 @@ exec(`osmtogeojson ${osm_output_path} > ${city_root_path}/temp_data/from_osm.geo
 
 
 
-// merge custom geojson into osm geojson,
-// prioritize custom features in case of duplicate ids
+const boring_building_tiling_meta = {
+    name: 'boring_building',
+    feature_filter: f => {
+        if (!f.properties?.building) return false
+        if (f.geometry.type === 'Point') return false
+        const cf = cities_meta[city].unimportant_buildings_filter
+        if (cf) return cf(f)
+        return false
+    },
+    added_props: ['is_selectable', 'has_title'],
+    feature_props_to_preserve: ['building', 'building:architecture'],
+    minzoom: BORING_BLDGS_MINZOOM
+}
+
+const common_tile_layers = [boring_building_tiling_meta]
+
+
+
+
+
+
+
+
+
+
+const custom_features = []
+
+const custom_features_path = city_root_path + '/static_data/custom_features.geojson'
+if (fs.existsSync(custom_features_path)) {
+    custom_features.push(
+        ...JSON.parse(fs.readFileSync(custom_features_path, 'utf-8')).features
+    )
+}
+
+
+
+const bulk_souce_path = city_root_path + '/static_data/city_bulk_geometry.geojson'
+if (fs.existsSync(bulk_souce_path)) {
+    const CITY_BULK_POLYGON_ID = 9345734095734957
+    const CITY_BULK_LINESTRING_ID = 9345734095734958
+
+    const city_bulk_polygon = JSON.parse(fs.readFileSync(bulk_souce_path, 'utf-8'))
+
+    const city_bulk_linestring = {
+        type: 'Feature',
+        properties: city_bulk_polygon.properties,
+        geometry: {
+            type: 'LineString',
+            coordinates: city_bulk_polygon.geometry.coordinates[0],
+        }
+    }
+
+    custom_features.push({ ...city_bulk_polygon, id: CITY_BULK_POLYGON_ID })
+    custom_features.push({ ...city_bulk_linestring, id: CITY_BULK_LINESTRING_ID })
+
+    common_tile_layers.push({
+        name: 'city_bulk_geometry',
+        feature_filter: f => f.id === CITY_BULK_POLYGON_ID || f.id === CITY_BULK_LINESTRING_ID
+    })
+}
+
+
+
+
 
 const osm_data = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/from_osm.geojson', 'utf-8'))
 let all_geojson = osm_data
 
-const custom_features_path = city_root_path + '/static_data/custom_features.geojson'
-if (fs.existsSync(custom_features_path)) {
 
-    const custom_features = JSON.parse(fs.readFileSync(custom_features_path, 'utf-8'))
-    const seen_ids = new Set()
+// merge custom_features.geojson into osm geojson,
+// and bulk geometry (as polygon + as linestring) too,
+// prioritize custom features in case of duplicate ids
+const seen_ids = new Set()
+let features = osm_data.features
+    .concat(custom_features)
+    .reverse()
+    .filter(feature => {
+        if (!feature.id || seen_ids.has(feature.id)) return false
+        seen_ids.add(feature.id)
+        return true
+    }).reverse()
 
-    let features = ([osm_data, custom_features])
-        .flatMap(data => data.features || [])
-        .reverse()
-        .filter(feature => {
-            if (!feature.id || seen_ids.has(feature.id)) return false
-            seen_ids.add(feature.id)
-            return true
-        }).reverse()
+all_geojson = { type: 'FeatureCollection', features }
 
-    all_geojson = { type: 'FeatureCollection', features }
-}
+
 
 
 
@@ -121,50 +183,6 @@ const clear_feature_props = (feature, props_to_preserve = []) => {
 
 
 
-const boring_building_tiling_meta = {
-    name: 'boring_building',
-    feature_filter: f => {
-        if (!f.properties?.building) return false
-        if (f.geometry.type === 'Point') return false
-        const cf = cities_meta[city].unimportant_buildings_filter
-        if (cf) return cf(f)
-        return false
-    },
-    added_props: ['is_selectable', 'has_title'],
-    feature_props_to_preserve: ['building', 'building:architecture'],
-    minzoom: BORING_BLDGS_MINZOOM
-}
-
-const common_tile_layers = [
-    boring_building_tiling_meta,
-]
-
-
-
-
-const bulk_souce_path = city_root_path + '/static_data/city_bulk_geometry.geojson'
-if (fs.existsSync(bulk_souce_path)) {
-    const city_bulk_feature = JSON.parse(fs.readFileSync(bulk_souce_path, 'utf-8'))
-
-    const as_linestring = {
-        type: 'Feature',
-        properties: city_bulk_feature.properties,
-        geometry: {
-            type: 'LineString',
-            coordinates: city_bulk_feature.geometry.coordinates[0],
-        }
-    }
-
-    common_tile_layers.push({
-        name: 'city_bulk_geometry',
-        feature_filter: () => false,
-        static_features: [
-            city_bulk_feature,
-            as_linestring
-        ]
-    })
-}
-
 
 
 
@@ -172,11 +190,10 @@ const all_mbtiles_paths = []
 
 // For each city's tile_layer:
 // 1) tile_layer.feature_filter will be executed for ALL data
-// 2) tile.layer.static_features will be added (overwriting possible duplicates from prev step)
-// 3) only features specified in tile_layer.feature_props_to_preserve will be preserved
-// 4) features specified in tile_layer.added_props will be added
-// 5) result will be written
-// 6) temporary .mbtiles will be created for current layer's geojson
+// 2) only features specified in tile_layer.feature_props_to_preserve will be preserved
+// 3) features specified in tile_layer.added_props will be added
+// 4) result will be written
+// 5) temporary .mbtiles will be created for current layer's geojson
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
 
 cities_meta[city].tile_layers
@@ -189,7 +206,6 @@ cities_meta[city].tile_layers
 
         const layer_features = all_geojson.features
             .filter(tile_layer.feature_filter)
-            .filter(f => !tile_layer.static_features?.find(sf => sf.id === f.id))
             .map(f => clear_feature_props(f, tile_layer.feature_props_to_preserve))
             .map(f => {
                 tile_layer.added_props?.forEach(prop => {
@@ -208,10 +224,6 @@ cities_meta[city].tile_layers
             })
             // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
             .sort((a, b) => b.id - a.id)
-
-        if (tile_layer.static_features) {
-            layer_features.push(...tile_layer.static_features)
-        }
 
         write(geojson_path, layer_features)
 
