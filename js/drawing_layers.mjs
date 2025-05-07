@@ -19,7 +19,7 @@ import {
     BORING_BLDG_WITH_DETAILS_BORDER_COLOR,
     SELECTED_BORING_BLDG_FILL_COLOR,
     FRENCH_SELECTED_TITLE_HALO_COLOR,
-    SELECTED_BORING_BLDG_TEXT_COLOR,
+    SELECTED_BORING_BLDG_TEXT_COLOR
 } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
 import { deep_merge_objects } from "./utils/utils.mjs";
@@ -559,7 +559,8 @@ export const city_bulk_title = {
     name: 'cityBulk title',
     type: 'symbol',
     source: SOURCES_NAMES.DALAT_TILES,
-    "source-layer": 'city_bulk_geometry_as_linestring',
+    "source-layer": 'city_bulk_geometry',
+    filter: ['==', ['geometry-type'], 'LineString'],
     layout: {
         'text-field': 'Approximate residential limits of Dalat',
         'text-size': PALE_TITLES_SIZE - 1.5,

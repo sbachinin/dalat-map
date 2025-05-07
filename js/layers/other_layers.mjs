@@ -5,7 +5,8 @@ export const city_bulk_fill = {
     id: 'cityBulk',
     type: 'fill',
     source: SOURCES_NAMES.DALAT_TILES,
-    "source-layer": 'dalat_bulk_geometry',
+    "source-layer": 'city_bulk_geometry',
+    filter: ['==', ['geometry-type'], 'Polygon'],
     minzoom: 10,
     maxzoom: 14.3,
     paint: {
@@ -20,14 +21,15 @@ export const city_bulk_fill = {
             c.CITY_BULK_DISAPPEARANCE_ZOOM,
             0
         ]
-    }
+    },
 }
 
 export const city_bulk_border = {
     id: 'cityBulk border',
     type: 'line',
     source: SOURCES_NAMES.DALAT_TILES,
-    "source-layer": 'dalat_bulk_geometry',
+    "source-layer": 'city_bulk_geometry',
+    filter: ['==', ['geometry-type'], 'Polygon'],
     paint: {
         'line-color': [
             "interpolate",
