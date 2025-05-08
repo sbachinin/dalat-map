@@ -92,7 +92,7 @@ export const french_bldg_circle = {
     // could use 'bldgs_centroids_points' source,
     // it would be consistent with how non-french squares are rendered,
     // but centroids source hasn't 'has_title' property
-    source: SOURCES_NAMES.DALAT_TILES,
+    source: SOURCES_NAMES.CITY_TILES,
     "source-layer": "french_building",
     layout: {
         "icon-image": "french_circle",
@@ -157,7 +157,7 @@ export const datanla_waterfall_layer = {
 export const peaks_triangles_with_titles = {
     name: 'Peaks triangles with titles',
     type: 'symbol',
-    source: SOURCES_NAMES.DALAT_TILES,
+    source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'peaks',
     layout: {
         "text-anchor": "top",
@@ -192,7 +192,7 @@ const minor_road_color = "hsl(30, 0%, 73%)"
 export const major_road_thicker_line = {
     "name": "Major road thicker line",
     "type": "line",
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "major_roads",
     "paint": {
         "line-color": road_color,
@@ -215,7 +215,7 @@ export const major_road_thicker_line = {
 export const major_road_thinner_line = {
     "name": "Major road thinner line",
     "type": "line",
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "major_roads",
     "paint": {
         "line-color": [
@@ -245,7 +245,7 @@ export const major_road_thinner_line = {
 
 export const tertiary_road = {
     name: 'Tertiary road',
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "major_roads",
     type: 'line',
     "paint": {
@@ -274,7 +274,7 @@ export const tertiary_road = {
 export const land_areas_fill = {
     id: 'Land areas fill',
     type: 'fill',
-    source: SOURCES_NAMES.DALAT_TILES,
+    source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'land_areas',
     paint: {
         'fill-color': [
@@ -351,7 +351,7 @@ export const non_french_titles = {
 export const cable_car_line = {
     "name": "Cable car line",
     type: 'line',
-    source: SOURCES_NAMES.DALAT_TILES,
+    source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'transportation_other',
     "paint": {
         "line-color": "#6666ff",
@@ -367,7 +367,7 @@ export const cable_car_line = {
 export const cable_car_label = {
     "name": "Cable car label",
     type: 'symbol',
-    source: SOURCES_NAMES.DALAT_TILES,
+    source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'transportation_other',
     "layout": {
         "text-field": "Cable car",
@@ -419,7 +419,7 @@ export const boring_building_square = {
 export const railway_line = {
     "name": "Railway line",
     "type": "line",
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "railway",
     "layout": {
         "line-cap": "round",
@@ -440,7 +440,7 @@ export const railway_line = {
 export const railway_station_titles_with_squares = {
     name: 'Train station tiny squares with titles',
     type: 'symbol',
-    source: SOURCES_NAMES.DALAT_TILES,
+    source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'railway',
     layout: {
         "text-anchor": "top",
@@ -461,7 +461,7 @@ export const railway_station_titles_with_squares = {
 export const boring_building_fill = {
     "name": "Boring building fill",
     "type": "fill",
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "boring_building",
     "paint": {
         "fill-color": [
@@ -487,7 +487,7 @@ export const boring_building_fill = {
 export const boring_bldg_with_details_border = {
     name: 'Boring building with details border',
     'type': 'line',
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "boring_building",
     'paint': {
         'line-color': BORING_BLDG_WITH_DETAILS_BORDER_COLOR
@@ -514,7 +514,7 @@ export const boring_bldg_with_details_border = {
 export const minor_road = {
     "name": "Minor road",
     "type": "line",
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "minor_roads",
     "layout": {
         "line-cap": "round",
@@ -558,7 +558,7 @@ export const pedestrian_path = deep_merge_objects(
 export const city_bulk_title = {
     name: 'cityBulk title',
     type: 'symbol',
-    source: SOURCES_NAMES.DALAT_TILES,
+    source: SOURCES_NAMES.CITY_TILES,
     "source-layer": 'city_bulk_geometry',
     filter: ['==', ['geometry-type'], 'LineString'],
     layout: {

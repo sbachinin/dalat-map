@@ -4,7 +4,7 @@ import { SOURCES_NAMES } from "./sources.mjs"
 export const dead_building_fill = {
     "id": "Dead building fill",
     "type": "fill",
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "dead_buildings",
     "minzoom": 14,
     "paint": {
@@ -16,7 +16,7 @@ export const dead_building_fill = {
 export const dead_building_skull = {
     id: 'Dead building skull',
     type: 'symbol',
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "dead_buildings",
     "minzoom": 14,
     layout: {

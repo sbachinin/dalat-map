@@ -3,7 +3,7 @@ import * as c from "./constants.mjs"
 
 export const french_fill_common_props = {
     "type": "fill",
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "french_building",
     "paint": {
         "fill-color": c.FRENCH_FILL_COLOR,
@@ -38,7 +38,7 @@ const FRENCH_POLYGONS_MAX_THICKENING = 0.7
 
 const french_thickening_outline_common_props = {
     'type': 'line',
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "french_building",
     'paint': {
         'line-color': c.FRENCH_FILL_COLOR,
@@ -69,7 +69,7 @@ export const french_detailful_thickening_outline = {
 const get_dark_outline_props = high_zoom_thickness => {
     return {
         'type': 'line',
-        "source": SOURCES_NAMES.DALAT_TILES,
+        "source": SOURCES_NAMES.CITY_TILES,
         "source-layer": "french_building",
         'paint': {
             'line-color': c.FRENCH_DARK_BORDER_COLOR,

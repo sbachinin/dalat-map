@@ -4,7 +4,7 @@ import { BRIGHT_LAKE_COLOR, PALE_LAKE_COLOR } from "./constants.mjs";
 export const lakes_fill = {
     "id": "Primary Water",
     "type": "fill",
-    "source": SOURCES_NAMES.DALAT_TILES,
+    "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "lake",
     "paint": {
         "fill-color": [

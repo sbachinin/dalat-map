@@ -11,7 +11,7 @@ import { get_geojson_source } from './utils/utils.mjs'
 import { current_city } from './load_city.mjs'
 
 export const SOURCES_NAMES = {
-    DALAT_TILES: 'dalat_tiles',
+    CITY_TILES: 'city_tiles',
     TITLES_POINTS: 'building_title',
 }
 
@@ -92,7 +92,7 @@ export const get_main_sources = () => {
         throw new Error('current_city is undefined in get_main_sources, there is some mistake here')
     }
     return {
-        [SOURCES_NAMES.DALAT_TILES]: {
+        [SOURCES_NAMES.CITY_TILES]: {
             type: 'vector',
             tiles: [`${window.location.origin}/cities_tiles/${current_city.name}/tiles/{z}/{x}/{y}.pbf`],
             minzoom: 10,

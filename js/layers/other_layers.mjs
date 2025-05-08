@@ -4,7 +4,7 @@ import { SOURCES_NAMES } from "../sources.mjs"
 export const city_bulk_fill = {
     id: 'cityBulk',
     type: 'fill',
-    source: SOURCES_NAMES.DALAT_TILES,
+    source: SOURCES_NAMES.CITY_TILES,
     "source-layer": 'city_bulk_geometry',
     filter: ['==', ['geometry-type'], 'Polygon'],
     minzoom: 10,
@@ -27,7 +27,7 @@ export const city_bulk_fill = {
 export const city_bulk_border = {
     id: 'cityBulk border',
     type: 'line',
-    source: SOURCES_NAMES.DALAT_TILES,
+    source: SOURCES_NAMES.CITY_TILES,
     "source-layer": 'city_bulk_geometry',
     filter: ['==', ['geometry-type'], 'Polygon'],
     paint: {
