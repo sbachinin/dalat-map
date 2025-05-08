@@ -98,6 +98,8 @@ export const initialize_city = async (name) => {
         requestAnimationFrame(
             () => document.querySelector('#maplibregl-map').classList.remove('hidden')
         )
+
+        document.querySelector(`#custom-attribution [title]`)?.removeAttribute('title')
     })
 
     if (DEV_show_debug_el) {

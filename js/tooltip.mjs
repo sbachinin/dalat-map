@@ -72,6 +72,7 @@ const hide_tooltips = () => {
     }
 */
 export const show_tooltip = (options = {}) => {
+    if (!is_mouse_in_viewport) return
 
     clearTimeout(close_timeout)
     if (options.closeAfter) { // even if tooltip is already open, start timeout afresh
@@ -224,3 +225,12 @@ const get_element_overflow = (el, bounding_el, margin = 10) => {
         left_overflow: Math.max(0, bounding_rect.left - el_rect.left + margin)
     }
 }
+
+
+let is_mouse_in_viewport = true
+document.documentElement.addEventListener('mouseenter', () => {
+    is_mouse_in_viewport = true
+})
+document.documentElement.addEventListener('mouseleave', (e) => {
+    is_mouse_in_viewport = false
+})

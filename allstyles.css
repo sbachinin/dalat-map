@@ -188,3 +188,9 @@ body {
         opacity: 0.8;
     }
 }
+
+.maplibregl-ctrl-attrib-button:focus,
+.maplibregl-ctrl-group button:focus {
+    /* prevent built-in ugly blue outline */
+    box-shadow: 0 0 5px 2px #adadad;
+}
