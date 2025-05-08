@@ -562,7 +562,7 @@ export const city_bulk_title = {
     "source-layer": 'city_bulk_geometry',
     filter: ['==', ['geometry-type'], 'LineString'],
     layout: {
-        'text-field': 'Approximate residential limits of Dalat',
+        'text-field': 'Approx. residential limits',
         'text-size': PALE_TITLES_SIZE - 1.5,
         'text-font': ['Lato Regular'],
         'symbol-placement': 'line',

@@ -1,4 +1,4 @@
-import { current_city } from "../cities_assets.mjs"
+import { current_city } from "../load_city.mjs"
 
 export const is_feature_selectable = (id, hmdata = current_city?.all_handmade_data) => {
     if (!hmdata) {

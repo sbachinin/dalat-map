@@ -17,7 +17,7 @@ import {
 import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
-import { current_city } from './cities_assets.mjs'
+import { current_city } from './load_city.mjs'
 
 
 const update_size_variables = () => {

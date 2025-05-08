@@ -1,12 +1,13 @@
 import { initialize_city } from './initialize_city.mjs'
-import { cities_meta } from './cities_assets.mjs'
+
 const current_city = new URL(location.href).pathname.split('/').filter(s => s.length > 0)[0]
 
 if (current_city) {
-    if (cities_meta[current_city]) {
+    const res = await fetch(`../${current_city}/isomorphic_assets.mjs`) // check if such city exists
+    if (res.ok) {
         initialize_city(current_city)
     } else {
-        console.warn(`First segment in pathname is not a city: ${current_city}, perhaps smth is wrong`)
+        console.warn(`First segment in pathname is not a valid city name: ${current_city}, perhaps smth is wrong`)
     }
 } else {
     document.write('will show world map')

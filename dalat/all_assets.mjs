@@ -1,19 +1,13 @@
-import { land_areas_handmade_data as dalat_land_areas_handmade_data } from "../dalat/static_data/handmade_data.mjs";
-import { FIRST_CLASS_FRENCH_MINZOOM, MINOR_ROADS_MINZOOM } from "./layers/constants.mjs";
-import { is_one_of } from "./utils/isomorphic_utils.mjs";
+import { land_areas_handmade_data as dalat_land_areas_handmade_data } from "./static_data/handmade_data.mjs";
+import { MINOR_ROADS_MINZOOM } from "../js/layers/constants.mjs";
+import { is_one_of } from "../js/utils/isomorphic_utils.mjs";
+import { map_bounds } from "./isomorphic_assets.mjs"
 
 const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk"]
 
-const dalat = {
-
-    // 10 is supposed to be a "global default" for now
-    // So this is just to demonstrate that city can order another minzoom
-    // That will affect e.g. the minzoom for tile generation
-    // minzoom: 10,
-
-    bounds: [108.3765, 11.8800, 108.5200, 12.0100],
+export const all_assets = {
+    map_bounds,
     html_title: 'Map of colonial architecture in Dalat',
-    intro_zoom: FIRST_CLASS_FRENCH_MINZOOM,
     unimportant_buildings_filter: feat => {
         return feat.properties['building:architecture'] !== 'french_colonial'
             && feat.id !== 1275206355 // big c
@@ -81,53 +75,3 @@ const dalat = {
         },
     ],
 }
-
-const dalat_layers_to_use_in_hue = [
-    'major_roads',
-    'minor_roads',
-    'railway',
-    'peaks',
-    'river',
-]
-
-const hue = {
-    bounds: [107.4909, 16.3637, 107.6909, 16.5637],
-    html_title: 'Map of colonial architecture in Hue',
-    unimportant_buildings_filter: feat => {
-        return feat.properties['building:architecture'] !== 'french_colonial'
-    },
-
-    tile_layers: dalat.tile_layers
-        .filter(tl => is_one_of(tl.name, dalat_layers_to_use_in_hue))
-        .concat([
-            {
-                name: 'lake',
-                feature_filter: f => f.properties.natural === 'water'
-            },
-            {
-                name: 'french_building',
-                feature_filter: f => f.properties['building:architecture'] === 'french_colonial'
-                    || f.id === 1384219085,
-                added_props: ['is_selectable', 'has_title']
-            }
-
-        ])
-}
-
-export const cities_meta = {
-    dalat,
-    hue,
-}
-
-export const load_city = async (name) => {
-    current_city = {}
-    current_city.bounds = cities_meta[name].bounds
-    current_city.intro_zoom = cities_meta[name].intro_zoom || 12
-
-    const [hmd] = await Promise.all([
-        import(`../${name}/static_data/handmade_data.mjs`)
-    ])
-    current_city.all_handmade_data = hmd.all_handmade_data
-}
-
-export let current_city = null

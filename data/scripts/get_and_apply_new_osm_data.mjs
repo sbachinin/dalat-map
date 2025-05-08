@@ -8,7 +8,6 @@ import {
     BORING_BLDGS_MINZOOM,
     DEFAULT_CITY_MINZOOM
 } from '../../js/layers/constants.mjs'
-import { cities_meta } from '../../js/cities_assets.mjs'
 import { mkdir_if_needed, parse_args } from './utils.mjs'
 
 const write = (path, data) => {
@@ -23,6 +22,7 @@ const exec = (command) => {
 const { skip_osm_download, city } = parse_args()
 
 const city_root_path = `../../${city}`
+const city_assets = (await import(city_root_path + '/all_assets.mjs')).all_assets
 
 if (!fs.existsSync(city_root_path)) {
     console.warn('no folder for such city!')
@@ -38,7 +38,7 @@ const osm_output_path = city_root_path + `/temp_data/output.osm`
 if (!skip_osm_download) {
     exec(`rm -f ${osm_output_path}`)
 
-    const bbox = cities_meta[city].bounds.join(',')
+    const bbox = city_assets.map_bounds.join(',')
     const url = `https://overpass-api.de/api/map?bbox=${bbox}`;
     exec(`curl -o ${osm_output_path} "${url}"`)
 }
@@ -59,7 +59,7 @@ const boring_building_tiling_meta = {
     feature_filter: f => {
         if (!f.properties?.building) return false
         if (f.geometry.type === 'Point') return false
-        const cf = cities_meta[city].unimportant_buildings_filter
+        const cf = city_assets.unimportant_buildings_filter
         if (cf) return cf(f)
         return false
     },
@@ -88,26 +88,25 @@ if (fs.existsSync(custom_features_path)) {
     )
 }
 
+let bulk_polygon
+try { bulk_polygon = (await import(city_root_path + '/static_data/city_bulk_geometry.mjs')).default
+} catch (e) {}
 
-
-const bulk_souce_path = city_root_path + '/static_data/city_bulk_geometry.geojson'
-if (fs.existsSync(bulk_souce_path)) {
+if (bulk_polygon) {
     const CITY_BULK_POLYGON_ID = 9345734095734957
     const CITY_BULK_LINESTRING_ID = 9345734095734958
 
-    const city_bulk_polygon = JSON.parse(fs.readFileSync(bulk_souce_path, 'utf-8'))
-
-    const city_bulk_linestring = {
+    const bulk_linestring = {
         type: 'Feature',
-        properties: city_bulk_polygon.properties,
+        properties: bulk_polygon.properties,
         geometry: {
             type: 'LineString',
-            coordinates: city_bulk_polygon.geometry.coordinates[0],
+            coordinates: bulk_polygon.geometry.coordinates[0],
         }
     }
 
-    custom_features.push({ ...city_bulk_polygon, id: CITY_BULK_POLYGON_ID })
-    custom_features.push({ ...city_bulk_linestring, id: CITY_BULK_LINESTRING_ID })
+    custom_features.push({ ...bulk_polygon, id: CITY_BULK_POLYGON_ID })
+    custom_features.push({ ...bulk_linestring, id: CITY_BULK_LINESTRING_ID })
 
     common_tile_layers.push({
         name: 'city_bulk_geometry',
@@ -196,7 +195,7 @@ const all_mbtiles_paths = []
 // 5) temporary .mbtiles will be created for current layer's geojson
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
 
-cities_meta[city].tile_layers
+city_assets.tile_layers
     .concat(common_tile_layers)
     .forEach(tile_layer => {
         if (!tile_layer.feature_filter) throw new Error('feature_filter not defined for tile_layer ' + tile_layer.name)
@@ -234,7 +233,7 @@ cities_meta[city].tile_layers
         all_mbtiles_paths.push(temp_mbtiles_path)
 
         const minz = tile_layer.minzoom
-            || cities_meta[city].minzoom
+            || city_assets.minzoom
             || DEFAULT_CITY_MINZOOM
 
         exec(`

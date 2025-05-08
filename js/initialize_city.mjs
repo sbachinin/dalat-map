@@ -26,14 +26,14 @@ import { initialize_highlights_button } from './panel/highlights_button.mjs'
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
 import { initialize_panel } from './initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
-import { current_city, load_city } from './cities_assets.mjs'
+import { current_city, load_city } from './load_city.mjs'
 
 export const initialize_city = async (name) => {
     await load_city(name)
 
     let initial_center = JSON.parse(localStorage.getItem('map_center'))
-    if (initial_center === null || !lnglat_is_within_bounds(initial_center, current_city.bounds)) {
-        initial_center = get_map_bounds_center(current_city.bounds)
+    if (initial_center === null || !lnglat_is_within_bounds(initial_center, current_city.map_bounds)) {
+        initial_center = get_map_bounds_center(current_city.map_bounds)
 
         // cached center and zoom clearly belonged to another city, therefore ->
         localStorage.removeItem('map_center')
@@ -60,8 +60,8 @@ export const initialize_city = async (name) => {
             dragRotate: false,
             keyboard: false, // also to prevent rotation
             maxBounds: [
-                [current_city.bounds[0], current_city.bounds[1]],
-                [current_city.bounds[2], current_city.bounds[3]]
+                [current_city.map_bounds[0], current_city.map_bounds[1]],
+                [current_city.map_bounds[2], current_city.map_bounds[3]]
             ],
             antialias: true,
             maxZoom: 17.5,
