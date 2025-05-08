@@ -1,6 +1,6 @@
 import { create_scale, update_scale } from './manage_scale.mjs'
 import { add_mouse_stuff } from './mouse_stuff.mjs'
-import { style } from './style.mjs'
+import { get_style } from './style.mjs'
 import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
 import { try_open_building, update_flyto_button } from './bldg_details.mjs'
@@ -55,7 +55,7 @@ export const initialize_city = async (name) => {
         ? DEV_map_mock
         : new maplibregl.Map({
             container: 'maplibregl-map',
-            style,
+            style: get_style(),
             zoom,
             dragRotate: false,
             keyboard: false, // also to prevent rotation

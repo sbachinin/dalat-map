@@ -8,6 +8,7 @@ import {
 import { is_french_building } from './utils/isomorphic_utils.mjs'
 import { get_title_side } from './utils/isomorphic_utils.mjs'
 import { get_geojson_source } from './utils/utils.mjs'
+import { current_city } from './load_city.mjs'
 
 export const SOURCES_NAMES = {
     DALAT_TILES: 'dalat_tiles',
@@ -86,15 +87,19 @@ const centroids_as_features = Object.entries(centroids_etc).map(([feat_id, data]
     }
 })
 
-
-export const main_sources = {
-    [SOURCES_NAMES.DALAT_TILES]: {
-        type: 'vector',
-        tiles: [`${window.location.origin}/dalat-map-tiles/tiles/{z}/{x}/{y}.pbf`],
-        minzoom: 10,
-    },
-    [SOURCES_NAMES.TITLES_POINTS]: titles_points,
-    datanla_waterfall,
-    cable_car_endpoints_source,
-    bldgs_centroids_points: get_geojson_source(centroids_as_features)
+export const get_main_sources = () => {
+    if (!current_city) {
+        throw new Error('current_city is undefined in get_main_sources, there is some mistake here')
+    }
+    return {
+        [SOURCES_NAMES.DALAT_TILES]: {
+            type: 'vector',
+            tiles: [`${window.location.origin}/cities_tiles/${current_city.name}/tiles/{z}/{x}/{y}.pbf`],
+            minzoom: 10,
+        },
+        [SOURCES_NAMES.TITLES_POINTS]: titles_points,
+        datanla_waterfall,
+        cable_car_endpoints_source,
+        bldgs_centroids_points: get_geojson_source(centroids_as_features)
+    }
 }
