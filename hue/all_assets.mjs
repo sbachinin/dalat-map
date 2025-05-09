@@ -1,4 +1,5 @@
 import booleanWithin from '@turf/boolean-within'
+import area from '@turf/area'
 import { map_bounds } from './isomorphic_assets.mjs'
 import { all_assets as dalat_assets } from '../dalat/all_assets.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
@@ -49,6 +50,7 @@ export const all_assets = {
                     ])) return false
 
                     if (f.id === 4928340932566945) return true // handmade lagoon
+                    if (f.id === 492834093252947212) return true // sea
 
                     // rivers will be displayed even outside the city bulk
                     if (f.properties.water === 'river') return true
@@ -60,7 +62,11 @@ export const all_assets = {
                     if (f.geometry.type === 'Polygon' && booleanWithin(f, hue_bulk_polygon)) {
                         return true
                     }
-                }
+                },
+                added_props: [{
+                    name: 'is_small_lake',
+                    get_value: f => area(f.geometry) < 7000 
+                }]
             },
             {
                 name: 'river_lines',
@@ -80,7 +86,7 @@ export const all_assets = {
                     493391669,
                     493391667,
                     493391668,
-                    
+                    871598526,
                 ]),
                 feature_props_to_preserve: ['name', 'tunnel']
             },
