@@ -90,10 +90,6 @@ export const zoom_order = {
 
     0: [
         {
-            drawing_layers: [tertiary_road],
-            drawing_importance: 4
-        },
-        {
             drawing_layers: [major_road_thicker_line],
             drawing_importance: 4
         }
@@ -121,6 +117,10 @@ export const zoom_order = {
         { drawing_layers: [french_buildings_titles] },
     ],
     12.5: [
+        {
+            drawing_layers: [tertiary_road],
+            drawing_importance: 4
+        },
         {
             drawing_layers: [major_road_thinner_line],
             drawing_importance: 3

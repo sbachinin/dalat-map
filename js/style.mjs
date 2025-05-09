@@ -5,7 +5,7 @@ import {
     city_bulk_fill,
 } from './layers/other_layers.mjs'
 import { build_layers } from './build_layers.mjs'
-import { cam_ly_line, other_rivers_lines } from './layers/rivers.mjs'
+import { river_lines } from './layers/rivers.mjs'
 import { land_areas_fill } from './drawing_layers.mjs'
 
 export const get_style = () => {
@@ -21,8 +21,7 @@ export const get_style = () => {
             city_bulk_fill,
             land_areas_fill,
             city_bulk_border,
-            other_rivers_lines,
-            cam_ly_line,
+            river_lines,
             water_areas_fill,
 
             ...build_layers(),

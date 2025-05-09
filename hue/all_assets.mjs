@@ -8,7 +8,6 @@ const dalat_layers_to_use_in_hue = [
     'minor_roads',
     'railway',
     'peaks',
-    'river_lines',
 ]
 
 const hue_bulk_polygon = (await import('../hue/static_data/city_bulk_geometry.mjs')).default
@@ -26,12 +25,34 @@ export const all_assets = {
             {
                 name: 'water_areas',
                 feature_filter: f => {
-                    if (f.id === 217518615) return false // some ugly river in the north
+
+                    if (is_one_of(f.id, [
+                        205805271,
+                        206625147,
+                        242927543,
+                        242927542,
+                        1075011956,
+                        3237013
+                    ])) return true
+
+                    if (is_one_of(f.id, [
+                        217518615,
+                        217518212,
+                        251679819,
+                        1166042173,
+                        1125369216,
+                        1125369215,
+                        1125363332,
+                        1125363328,
+                        1125363330,
+
+                    ])) return false
+
                     if (f.id === 4928340932566945) return true // handmade lagoon
 
                     // rivers will be displayed even outside the city bulk
-                    if (f.properties.water === 'river') return true 
-                    
+                    if (f.properties.water === 'river') return true
+
                     // other water areas will be displayed only if they are inside the city bulk
                     if (f.properties.water !== 'lake'
                         && f.properties.natural !== 'water'
@@ -40,6 +61,28 @@ export const all_assets = {
                         return true
                     }
                 }
+            },
+            {
+                name: 'river_lines',
+                feature_filter: f => (
+                    f.properties.waterway === 'stream' || f.properties.waterway === 'river'
+                ) && !is_one_of(f.id, [
+                    371992465,
+                    371992466,
+                    371992467,
+                    1384655151,
+                    251682725,
+                    371992489,
+                    1384652981,
+                    1384652982,
+                    1384652980,
+                    493391664,
+                    493391669,
+                    493391667,
+                    493391668,
+                    
+                ]),
+                feature_props_to_preserve: ['name', 'tunnel']
             },
             {
                 name: 'french_building',

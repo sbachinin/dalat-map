@@ -1,8 +1,10 @@
 import { SOURCES_NAMES } from "../sources.mjs";
-import { BRIGHT_LAKE_COLOR, PALE_LAKE_COLOR, WATER_TITLE_COLOR } from "./constants.mjs";
+import { BRIGHT_LAKE_COLOR, PALE_LAKE_COLOR } from "./constants.mjs";
 
-const river_props = {
+export const river_lines = {
+    id: 'River lines',
     type: 'line',
+    minzoom: 12,
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'river_lines',
     "layout": {
@@ -28,45 +30,4 @@ const river_props = {
             6
         ]
     },
-}
-
-export const cam_ly_line = {
-    ...river_props,
-    id: "River Cam Ly",
-    "filter": ['==', 'name', 'Suối Cam Ly']
-}
-
-export const other_rivers_lines = {
-    ...river_props,
-    id: "All rivers but Cam Ly",
-    minzoom: 14,
-    "filter": ['!=', 'name', 'Suối Cam Ly']
-}
-
-
-
-
-
-// UNUSED
-export const rivers_titles = {
-    "name": "Rivers titles",
-    "type": "symbol",
-    source: SOURCES_NAMES.CITY_TILES,
-    'source-layer': 'river_lines',
-    "layout": {
-        "text-field": "Cam  Ly",
-        "text-font": ["Lato Regular"],
-        "text-size": 10,
-        "text-max-width": 8,
-        "text-anchor": "bottom",
-
-        "symbol-placement": "line",
-        "symbol-spacing": 500,
-        "text-allow-overlap": false,
-        "text-padding": 5,
-        "text-letter-spacing": 0.1,
-    },
-    "paint": {
-        "text-color": WATER_TITLE_COLOR
-    }
 }
