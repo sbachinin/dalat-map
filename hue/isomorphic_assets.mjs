@@ -1,1 +1,1 @@
-export const map_bounds = [107.4709, 16.3637, 107.6909, 16.5637]
+export const map_bounds = [107.4709, 16.3637, 107.7009, 16.5637]

@@ -84,13 +84,19 @@ const custom_features = []
 const custom_features_path = city_root_path + '/static_data/custom_features.geojson'
 if (fs.existsSync(custom_features_path)) {
     custom_features.push(
-        ...JSON.parse(fs.readFileSync(custom_features_path, 'utf-8')).features
+        ...JSON.parse(fs.readFileSync(custom_features_path, 'utf-8'))
+            .features.map(f => ({
+                ...f,
+                // without SOME id feature might not survive some future transformations in this script
+                id: f.id || Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+            }))
     )
 }
 
 let bulk_polygon
-try { bulk_polygon = (await import(city_root_path + '/static_data/city_bulk_geometry.mjs')).default
-} catch (e) {}
+try {
+    bulk_polygon = (await import(city_root_path + '/static_data/city_bulk_geometry.mjs')).default
+} catch (e) { }
 
 if (bulk_polygon) {
     const CITY_BULK_POLYGON_ID = 9345734095734957
