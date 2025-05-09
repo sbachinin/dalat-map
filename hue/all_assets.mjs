@@ -1,4 +1,3 @@
-import booleanOverlap from '@turf/boolean-overlap'
 import booleanWithin from '@turf/boolean-within'
 import { map_bounds } from './isomorphic_assets.mjs'
 import { all_assets as dalat_assets } from '../dalat/all_assets.mjs'
@@ -9,7 +8,7 @@ const dalat_layers_to_use_in_hue = [
     'minor_roads',
     'railway',
     'peaks',
-    'river',
+    'river_lines',
 ]
 
 const hue_bulk_polygon = (await import('../hue/static_data/city_bulk_geometry.mjs')).default
@@ -25,16 +24,21 @@ export const all_assets = {
         .filter(tl => is_one_of(tl.name, dalat_layers_to_use_in_hue))
         .concat([
             {
-                name: 'lake',
+                name: 'water_areas',
                 feature_filter: f => {
                     if (f.id === 217518615) return false // some ugly river in the north
-                    if (f.id === 4928340932566945) return true // lagoon
-                    if (f.properties.natural !== 'water') return false
-                    if (f.properties.water === 'river') return true
-                    if (
-                        f.geometry.type === 'Polygon'
-                        && (booleanWithin(f, hue_bulk_polygon) || booleanOverlap(f, hue_bulk_polygon))
-                    ) return true
+                    if (f.id === 4928340932566945) return true // handmade lagoon
+
+                    // rivers will be displayed even outside the city bulk
+                    if (f.properties.water === 'river') return true 
+                    
+                    // other water areas will be displayed only if they are inside the city bulk
+                    if (f.properties.water !== 'lake'
+                        && f.properties.natural !== 'water'
+                    ) return false
+                    if (f.geometry.type === 'Polygon' && booleanWithin(f, hue_bulk_polygon)) {
+                        return true
+                    }
                 }
             },
             {

@@ -3,7 +3,7 @@ import { MINOR_ROADS_MINZOOM } from "../js/layers/constants.mjs";
 import { is_one_of } from "../js/utils/isomorphic_utils.mjs";
 import { map_bounds } from "./isomorphic_assets.mjs"
 
-const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk"]
+const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk", "motorway"]
 
 export const all_assets = {
     map_bounds,
@@ -49,7 +49,7 @@ export const all_assets = {
         },
 
         {
-            name: 'lake',
+            name: 'water_areas',
             feature_filter: f => f.properties.natural === 'water'
                 && (f.properties.name === 'Hồ Xuân Hương'
                     || f.properties.name === 'Hồ Tuyền Lâm'
@@ -58,9 +58,10 @@ export const all_assets = {
         },
 
         {
-            name: 'river',
-            feature_filter: f => f.properties.waterway === 'stream'
-                && f.id !== 99661185, // skip the stretch of Cam Ly "inside" the Lake
+            name: 'river_lines',
+            feature_filter: f => (
+                f.properties.waterway === 'stream' || f.properties.waterway === 'river'
+            ) && f.id !== 99661185, // skip the stretch of Cam Ly "inside" the Lake
             feature_props_to_preserve: ['name', 'tunnel']
         },
 

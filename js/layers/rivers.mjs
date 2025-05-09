@@ -4,7 +4,7 @@ import { BRIGHT_LAKE_COLOR, PALE_LAKE_COLOR, WATER_TITLE_COLOR } from "./constan
 const river_props = {
     type: 'line',
     source: SOURCES_NAMES.CITY_TILES,
-    'source-layer': 'river',
+    'source-layer': 'river_lines',
     "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -47,12 +47,12 @@ export const other_rivers_lines = {
 
 
 
-
+// UNUSED
 export const rivers_titles = {
     "name": "Rivers titles",
     "type": "symbol",
     source: SOURCES_NAMES.CITY_TILES,
-    'source-layer': 'river',
+    'source-layer': 'river_lines',
     "layout": {
         "text-field": "Cam  Ly",
         "text-font": ["Lato Regular"],

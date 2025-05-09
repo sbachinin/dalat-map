@@ -1,11 +1,11 @@
 import { SOURCES_NAMES } from "../sources.mjs";
 import { BRIGHT_LAKE_COLOR, PALE_LAKE_COLOR } from "./constants.mjs";
 
-export const lakes_fill = {
+export const water_areas_fill = {
     "id": "Primary Water",
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
-    "source-layer": "lake",
+    "source-layer": "water_areas",
     "paint": {
         "fill-color": [
             "interpolate",
