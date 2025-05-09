@@ -8,7 +8,7 @@ export const city_bulk_fill = {
     "source-layer": 'city_bulk_geometry',
     filter: ['==', ['geometry-type'], 'Polygon'],
     minzoom: 10,
-    maxzoom: 14.3,
+    maxzoom: c.CITY_BULK_DISAPPEARANCE_ZOOM,
     paint: {
         'fill-color': c.CITY_BULK_FULL_COLOR,
         'fill-antialias': true,
@@ -40,6 +40,14 @@ export const city_bulk_border = {
             13.475,
             '#FAEFEB'
         ],
-        'line-width': 10
+        'line-width': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            c.CITY_BULK_FULL_OPACITY_MAXZOOM,
+            2,
+            15,
+            10
+        ]
     }
 }

@@ -35,9 +35,9 @@ export const SQUARE_FILL_COLOR = 'hsl(308, 69.10%, 92.90%)'
 export const RAILWAY_LINE_COLOR = "hsl(14, 54%, 60%)"
 
 
-export const CITY_BULK_FULL_OPACITY_MAXZOOM = 12
-export const CITY_BULK_DISAPPEARANCE_ZOOM = 14
-export const CITY_BULK_FULL_COLOR = 'hsl(16, 56%, 87%)'
+export const CITY_BULK_FULL_OPACITY_MAXZOOM = 11.5
+export const CITY_BULK_DISAPPEARANCE_ZOOM = 12.5
+export const CITY_BULK_FULL_COLOR = 'hsl(16, 46%, 92%)'
 export const CITY_BULK_TITLE_COLOR = 'hsl(16, 56%, 70%)'
 
 export const AREA_TYPES = {
