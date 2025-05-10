@@ -3,6 +3,7 @@ import area from '@turf/area'
 import { map_bounds } from './isomorphic_assets.mjs'
 import { all_assets as dalat_assets } from '../dalat/all_assets.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
+import { AREA_TYPES } from '../js/layers/constants.mjs'
 
 const dalat_layers_to_use_in_hue = [
     'major_roads',
@@ -110,7 +111,22 @@ export const all_assets = {
                 feature_filter: f => f.properties['building:architecture'] === 'french_colonial'
                     || f.id === 1384219085,
                 added_props: ['is_selectable', 'has_title']
-            }
+            },
+            {
+                name: 'land_areas',
+                feature_filter: f => {
+                    if (f.properties.barrier === 'city_wall' && f.geometry.type === 'Polygon') return true
+                    // return hue_land_areas_handmade_data.hasOwnProperty(f.id.toString())
+                } ,
+                // feature_props_to_preserve: ['landuse'], // copied from dalat
+                added_props: [{
+                    name: 'area_type',
+                    get_value: f => {
+                        if (f.properties.barrier === 'city_wall') return AREA_TYPES.CITY_WALL
+                        // return hue_land_areas_handmade_data[f.id.toString()].area_type || null
+                    }
+                }]
+            },
 
         ])
 }
