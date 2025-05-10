@@ -171,11 +171,21 @@ const temp_tiles_path = `../../cities_tiles/temp`
 
 const { all_handmade_data: hmdata } = await import(city_root_path + '/static_data/handmade_data.mjs')
 
-const clear_feature_props = (feature, props_to_preserve = []) => {
+const clear_feature_props = (feature, tile_layer) => {
     const properties = {}
-    props_to_preserve.forEach(prop_name => {
-        properties[prop_name] = feature.properties[prop_name];
+
+    const preserved_props_names = tile_layer.feature_props_to_preserve || []
+
+    if (Array.isArray(tile_layer.added_props)) {
+        // prop is either an object with a .name, or a string...
+        const added_props_names = tile_layer.added_props.map(p => p.name || p)
+        preserved_props_names.push(...added_props_names)
+    }
+
+    preserved_props_names.forEach(n => {
+        properties[n] = feature.properties[n]
     })
+
     return {
         type: feature.type,
         geometry: feature.geometry,
@@ -211,7 +221,6 @@ city_assets.tile_layers
 
         const layer_features = all_geojson.features
             .filter(tile_layer.feature_filter)
-            .map(f => clear_feature_props(f, tile_layer.feature_props_to_preserve))
             .map(f => {
                 tile_layer.added_props?.forEach(prop => {
                     if (f.properties[prop] !== undefined) {
@@ -227,6 +236,7 @@ city_assets.tile_layers
                 })
                 return f
             })
+            .map(f => clear_feature_props(f, tile_layer))
             // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
             .sort((a, b) => b.id - a.id)
 
