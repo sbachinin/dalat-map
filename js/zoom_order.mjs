@@ -210,7 +210,7 @@ export const zoom_order = {
     [BORING_BLDGS_MINZOOM]: [
         {
             drawing_layers: [boring_building_fill],
-            drawing_importance: 3
+            drawing_importance: 6
         },
         {
             drawing_layers: [boring_bldg_with_details_border],

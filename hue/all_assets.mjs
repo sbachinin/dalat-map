@@ -46,7 +46,9 @@ export const all_assets = {
                         1125363332,
                         1125363328,
                         1125363330,
-
+                        695959200,
+                        695817661,
+                        619851668,
                     ])) return false
 
                     if (f.id === 4928340932566945) return true // handmade lagoon
@@ -65,7 +67,18 @@ export const all_assets = {
                 },
                 added_props: [{
                     name: 'is_small_lake',
-                    get_value: f => area(f.geometry) < 7000 
+                    get_value: f => area(f.geometry) < 20000
+                        || is_one_of(f.id, [
+                            
+                            // some parts of the ditch around vauban fort
+                            39452865,
+                            367388993,
+                            39452851,
+                            39452844,
+                            39452850,
+
+                            8537574
+                        ])
                 }]
             },
             {
@@ -87,6 +100,8 @@ export const all_assets = {
                     493391667,
                     493391668,
                     871598526,
+                    695949067,
+                    695959214
                 ]),
                 feature_props_to_preserve: ['name', 'tunnel']
             },
