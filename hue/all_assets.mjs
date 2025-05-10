@@ -113,19 +113,10 @@ export const all_assets = {
                 added_props: ['is_selectable', 'has_title']
             },
             {
-                name: 'land_areas',
+                name: 'city_walls_areas',
                 feature_filter: f => {
                     if (f.properties.barrier === 'city_wall' && f.geometry.type === 'Polygon') return true
-                    // return hue_land_areas_handmade_data.hasOwnProperty(f.id.toString())
-                } ,
-                // feature_props_to_preserve: ['landuse'], // copied from dalat
-                added_props: [{
-                    name: 'area_type',
-                    get_value: f => {
-                        if (f.properties.barrier === 'city_wall') return AREA_TYPES.CITY_WALL
-                        // return hue_land_areas_handmade_data[f.id.toString()].area_type || null
-                    }
-                }]
+                }
             },
 
         ])

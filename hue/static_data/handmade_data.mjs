@@ -101,7 +101,28 @@ export const all_handmade_data = {
         // rusty compass says that it's one of the iconic historic streets
         // one stupid blogger shows a house No. 66 Bach Dang: 
         // "was formerly a primary school named Saint Piere, built in 1924" (written in 2018)
+    },
+
+
+    695810806: {
+        title: 'Tho Chi gate'
+        // great 2 pictures in borrowed album (need to choose only 1)
+        // 1 img i added to highlights
+    },
+
+    695810777: {
+        // amazing gate to the north of Tho Ninh hall
+        images: [
+            '639809557_95265c9866_6k.jpg'
+        ]
+    },
+
+    695810701: {
+        title: 'Tam Toa',
+        year: 1903
     }
+
+
 }
 
 

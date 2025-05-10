@@ -3,7 +3,6 @@ import {
     BORING_BLDG_FILL_COLOR,
     CEMETERY_FILL_COLOR,
     FIRST_CLASS_FRENCH_MINZOOM,
-    FRENCH_FILL_COLOR,
     FRENCH_TITLES_TEXT_COLOR,
     GRASS_COLOR,
     IMPORTANT_BORING_BLDG_FILL_COLOR,
@@ -19,7 +18,9 @@ import {
     BORING_BLDG_WITH_DETAILS_BORDER_COLOR,
     SELECTED_BORING_BLDG_FILL_COLOR,
     FRENCH_SELECTED_TITLE_HALO_COLOR,
-    SELECTED_BORING_BLDG_TEXT_COLOR
+    SELECTED_BORING_BLDG_TEXT_COLOR,
+    BRIGHT_LAKE_COLOR,
+    PALE_LAKE_COLOR
 } from "./layers/constants.mjs";
 import { SOURCES_NAMES } from "./sources.mjs";
 import { deep_merge_objects } from "./utils/utils.mjs";
@@ -575,3 +576,19 @@ export const city_bulk_title = {
     }
 }
 
+
+export const water_areas_fill = {
+    "name": "Water areas fill",
+    "type": "fill",
+    "source": SOURCES_NAMES.CITY_TILES,
+    "source-layer": "water_areas",
+    "paint": {
+        "fill-color": [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            10, BRIGHT_LAKE_COLOR,
+            13.7, PALE_LAKE_COLOR,
+        ]
+    }
+}

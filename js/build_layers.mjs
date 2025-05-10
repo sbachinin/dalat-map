@@ -1,6 +1,23 @@
 import { SELECTED_STYLE_LAYER_PREFIX } from "./select_building.mjs"
 import { deep_merge_objects, pick } from "./utils/utils.mjs"
-import { zoom_order } from "./zoom_order.mjs"
+import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
+import { current_city } from "./load_city.mjs"
+
+const merge_zoom_order = (zo1, zo2) => { // common + city-specific zoom_order    
+    /* 
+        For each "zoom group" (array of "zoom layers"),
+        gather all items from both common and city
+    */
+    const all_zoom_levels = [...new Set([...Object.keys(zo1), ...Object.keys(zo2)])].sort()
+    const result = {}
+    all_zoom_levels.forEach(zl => {
+        result[zl] = [
+            ...(zo1[zl] || []),
+            ...(zo2[zl] || [])
+        ]
+    })
+    return result
+}
 
 // zoom_order -> normal maplibre style layers
 // + create selected layers and append them to the end
@@ -8,7 +25,8 @@ export const build_layers = () => {
 
     const selected_layers = []
 
-    const main_layers = Object.entries(zoom_order)
+    const zo = merge_zoom_order(common_zoom_order, current_city.zoom_order)
+    const main_layers = Object.entries(zo)
         .sort((a, b) => Number(b[0]) - Number(a[0]))
         .flatMap(([zoom_level, zoom_level_layers]) => {
             return zoom_level_layers.flatMap(zoom_level_layer => {

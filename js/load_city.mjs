@@ -1,14 +1,20 @@
 export const load_city = async (name) => {
-    const [isomorphic_assets, hmd] = await Promise.all([
+    const [
+        isomorphic_assets,
+        { zoom_order },
+        { all_handmade_data }
+    ] = await Promise.all([
         import(`../${name}/isomorphic_assets.mjs`),
+        import(`../${name}/zoom_order.mjs`),
         import(`../${name}/static_data/handmade_data.mjs`)
     ])
 
     current_city = { name }
     current_city.map_bounds = isomorphic_assets.map_bounds
     current_city.intro_zoom = isomorphic_assets.intro_zoom || 12
+    current_city.zoom_order = zoom_order
 
-    current_city.all_handmade_data = hmd.all_handmade_data
+    current_city.all_handmade_data = all_handmade_data
 }
 
 export let current_city = null

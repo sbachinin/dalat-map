@@ -1,5 +1,4 @@
 import { get_main_sources } from './sources.mjs'
-import { water_areas_fill } from './layers/lakes.mjs'
 import {
     city_bulk_border,
     city_bulk_fill,
@@ -22,7 +21,6 @@ export const get_style = () => {
             land_areas_fill,
             city_bulk_border,
             river_lines,
-            water_areas_fill,
 
             ...build_layers(),
         ],
