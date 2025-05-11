@@ -14,6 +14,13 @@ export const bldgs_handmade_data = {
         wikipedia: 'https://en.wikipedia.org/wiki/Da_Lat_station',
         google: 'https://maps.app.goo.gl/Qky2TTE9mkMiX13u7'
     },
+    542458425: {
+        title: 'Ankroet\npower plant',
+        subtitle: 'The oldest hydroelectric plant in Vietnam, still functioning today',
+        year: 1945,
+        wikipedia: 'https://vi.wikipedia.org/wiki/Nh%C3%A0_m%C3%A1y_th%E1%BB%A7y_%C4%91i%E1%BB%87n_Ankroet',
+        google: 'https://maps.app.goo.gl/TEnTY8iVubg1ZWUd6'
+    },
     1307493475: {
         subtitle: `Among the many French-looking villas of Ana Mandara resort, this one is the most reliably old — at least, I've seen it in old photographs. However, in my opinion, its architectural value is not particularly high, and some of the resort's other buildings (although unlikely to be ancient) look more interesting`,
         images: [

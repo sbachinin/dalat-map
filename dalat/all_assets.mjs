@@ -54,7 +54,10 @@ export const all_assets = {
                 && (f.properties.name === 'Hồ Xuân Hương'
                     || f.properties.name === 'Hồ Tuyền Lâm'
                     || f.properties.name === 'Hồ Chiến Thắng'
-                    || f.properties.name === 'Hồ Đa Thiện'),
+                    || f.properties.name === 'Hồ Đa Thiện'
+                    || f.properties.name === 'Hồ Đan Kia'
+                    || f.properties.name === 'Hồ Suối Vàng'
+                ),
         },
 
         {

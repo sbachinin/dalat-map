@@ -6,6 +6,6 @@ import { FIRST_CLASS_FRENCH_MINZOOM } from "../js/layers/constants.mjs"
 // That will affect e.g. the minzoom for tile generation
 // export const minzoom = 10
 
-export const map_bounds = [108.3765, 11.8800, 108.5200, 12.0100]
+export const map_bounds = [108.3378, 11.8540, 108.5587, 12.0360]
 
 export const intro_zoom = FIRST_CLASS_FRENCH_MINZOOM
