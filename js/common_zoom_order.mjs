@@ -70,7 +70,7 @@ import {
 
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
 
-const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
+export const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
 
 export const zoom_order = {
     /*

@@ -273,7 +273,7 @@ export const tertiary_road = {
 
 
 export const land_areas_fill = {
-    id: 'Land areas fill',
+    name: 'Land areas fill',
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'land_areas',
@@ -289,20 +289,24 @@ export const land_areas_fill = {
             GRASS_COLOR
         ],
         'fill-antialias': true,
-        'fill-opacity': [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            11,
-            0.5,
-            13,
-            1
-        ]
+        'fill-opacity': 1
     },
-    filter: ["!=", "$id", 1307493492], // not ana mandara
+    filter: ["!=", "area_type", AREA_TYPES.TOWN],
 }
 
 
+export const towns_fill = {
+    name: 'Towns fill',
+    type: 'fill',
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'land_areas',
+    paint: {
+        'fill-color': 'hsl(0, 0%, 93%)',
+        'fill-antialias': true,
+        'fill-opacity': 1
+    },
+    filter: ["==", "area_type", AREA_TYPES.TOWN],
+}
 
 export const non_french_titles = {
     name: "Non french titles",

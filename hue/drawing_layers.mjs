@@ -1,6 +1,6 @@
 import { SOURCES_NAMES } from "../js/sources.mjs";
 
-const CITY_WALL_COLOR = 'hsl(45, 85%, 45%)'
+const CITY_WALL_COLOR = 'hsl(45, 85%, 0%)'
 
 export const city_walls_fill = {
     name: 'City walls fill',
@@ -10,15 +10,7 @@ export const city_walls_fill = {
     paint: {
         'fill-color': CITY_WALL_COLOR,
         'fill-antialias': true,
-        'fill-opacity': [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            11,
-            0.5,
-            13,
-            1
-        ]
+        'fill-opacity': 0.65
     }
 }
 
@@ -34,18 +26,10 @@ export const city_walls_thickening_outline = {
             ["linear"],
             ["zoom"],
             10,
-            2,
+            1,
             15.5,
             0
         ],
-        'line-opacity': [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            11,
-            0.5,
-            13,
-            1
-        ]
+        'line-opacity': 0.65
     }
 }

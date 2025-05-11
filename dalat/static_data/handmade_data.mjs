@@ -86,7 +86,7 @@ export const land_areas_handmade_data = {
     99661351: {},
     1356080427: {},
     1356080833: {},
-    521598336: {},
+    521598336: {}, // park around Dinh II
     1356287796: {
         title: 'Truc Lam\nmonastery',
         area_type: AREA_TYPES.INSTITUTION

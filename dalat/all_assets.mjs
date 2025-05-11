@@ -1,7 +1,8 @@
 import { land_areas_handmade_data as dalat_land_areas_handmade_data } from "./static_data/handmade_data.mjs";
-import { MINOR_ROADS_MINZOOM } from "../js/layers/constants.mjs";
+import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/layers/constants.mjs";
 import { is_one_of } from "../js/utils/isomorphic_utils.mjs";
 import { map_bounds } from "./isomorphic_assets.mjs"
+import { area } from "@turf/turf";
 
 const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk", "motorway"]
 
@@ -70,12 +71,27 @@ export const all_assets = {
 
         {
             name: 'land_areas',
-            feature_filter: f => dalat_land_areas_handmade_data.hasOwnProperty(f.id.toString()),
+            feature_filter: f => {
+                if (f.properties.name === 'Lac Duong') return true
+                if (f.id === 1307493492) return false // not ana mandara
+                return dalat_land_areas_handmade_data.hasOwnProperty(f.id.toString())
+            },
             feature_props_to_preserve: ['landuse'],
-            added_props: [{
-                name: 'area_type',
-                get_value: f => dalat_land_areas_handmade_data[f.id.toString()].area_type || null
-            }]
+            added_props: [
+                {
+                    name: 'area_type',
+                    get_value: f => {
+                        if (f.properties.name === 'Lac Duong') return AREA_TYPES.TOWN
+                        return dalat_land_areas_handmade_data[f.id.toString()]?.area_type || null
+                    }
+                },
+                {
+                    name: 'is_small_area',
+                    get_value: f => {
+                        return area(f.geometry) < 80000
+                    }
+                }
+            ]
         },
     ],
 }

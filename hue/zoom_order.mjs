@@ -1,5 +1,5 @@
 import { water_areas_fill } from "../js/drawing_layers.mjs";
-import { city_bulk_border } from "../js/layers/other_layers.mjs";
+import { city_bulk_border, river_lines } from "../js/layers/common_drawing_layers.mjs";
 import { city_walls_fill, city_walls_thickening_outline } from "./drawing_layers.mjs";
 
 export const zoom_order = {
@@ -17,6 +17,12 @@ export const zoom_order = {
             drawing_layers: [city_bulk_border],
             drawing_importance: 1
         }
+    ],
+    11.7: [
+        {
+            drawing_layers: [river_lines],
+            drawing_importance: 7
+        },
     ],
     13: [
         {
