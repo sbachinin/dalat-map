@@ -347,7 +347,7 @@ export const cable_car_line = {
         ],
         "line-dasharray": [1, 1]
     },
-    "filter": ["==", ["get", "aerialway"], "cable_car"],
+    "filter": ["in", ["get", "aerialway"], ["literal", ["gondola", "cable_car"]]]
 }
 export const cable_car_label = {
     "name": "Cable car label",
@@ -366,7 +366,7 @@ export const cable_car_label = {
     "paint": {
         "text-color": PALE_TITLES_COLOR,
     },
-    "filter": ["==", ["get", "aerialway"], "cable_car"],
+    "filter": ["in", ["get", "aerialway"], ["literal", ["gondola", "cable_car"]]]
 }
 
 export const cable_car_endpoints = {

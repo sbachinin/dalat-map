@@ -56,6 +56,7 @@ export const zoom_order = {
             drawing_importance: 0,
             filter: ['!=', 'ele', '1503']
         },
+        { drawing_layers: [cable_car_line, cable_car_endpoints] },
     ],
 
     12: [
@@ -67,9 +68,7 @@ export const zoom_order = {
                 hmd[1232634198], // stadium
             ),
         },
-        { drawing_layers: [datanla_waterfall_layer] },
-        { drawing_layers: [cable_car_line, cable_car_label] },
-        { drawing_layers: [cable_car_endpoints] },
+        { drawing_layers: [datanla_waterfall_layer, cable_car_label ] },
     ],
 
     [CITY_BULK_DISAPPEARANCE_ZOOM]: [
