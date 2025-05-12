@@ -34,30 +34,17 @@ It's nice to have some free space sometimes.
 */
 
 import {
-    datanla_waterfall_layer,
     french_buildings_titles,
     major_road_thinner_line,
-    major_road_thicker_line,
-    peaks_triangles_with_titles,
-    tertiary_road,
-    french_bldg_circle,
-    non_french_titles,
-    cable_car_line,
-    cable_car_label,
-    cable_car_endpoints,
-    railway_line,
-    railway_station_titles_with_squares,
-    boring_building_fill,
-    boring_bldg_with_details_border,
+    major_road_thicker_line, tertiary_road,
+    french_bldg_circle, boring_building_fill,
     minor_road,
     pedestrian_path,
-    city_bulk_title,
-    boring_building_square
+    city_bulk_title
 } from "./drawing_layers.mjs";
 import {
-    BORING_BLDGS_MINZOOM,
     FIRST_CLASS_FRENCH_MINZOOM,
-    FRENCH_GEOMETRIES_MINZOOM,
+    FRENCH_GEOMETRIES_MINZOOM
 } from "./layers/constants.mjs";
 import {
     french_detailful_bldg_fill,
@@ -67,8 +54,6 @@ import {
     french_detailless_dark_outline,
     french_detailless_thickening_outline
 } from "./layers/french_polygons.mjs";
-
-import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
 
 export const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
 
@@ -84,6 +69,8 @@ export const zoom_order = {
 
             // defaults to 1 (highest) and, as number goes up, move such stuff towards the beginning of the final layers array
             drawing_importance: number,
+
+            maxzoom: number
         }
     ]
     */
@@ -96,98 +83,24 @@ export const zoom_order = {
     ],
 
     [FIRST_CLASS_FRENCH_MINZOOM]: [
-        { drawing_layers: [datanla_waterfall_layer] },
-        { drawing_layers: [cable_car_line, cable_car_label] },
-        { drawing_layers: [cable_car_endpoints] },
-        { drawing_layers: [peaks_triangles_with_titles] },
         {
             drawing_layers: [french_bldg_circle],
             maxzoom: FRENCH_GEOMETRIES_MINZOOM,
             drawing_importance: 2
-        },
-        {
-            drawing_layers: [non_french_titles],
-            filter: get_filter_by_fids(
-                hmd[99661171], // golf course
-                hmd[969458761], // university
-                hmd[463866449], // bus station
-                hmd[1232634198], // stadium
-            ),
-        },
-        { drawing_layers: [french_buildings_titles] },
+        }
     ],
     12.5: [
-        {
-            drawing_layers: [tertiary_road],
-            drawing_importance: 4
-        },
         {
             drawing_layers: [major_road_thinner_line],
             drawing_importance: 3
         }
     ],
     13: [
-
-        // The following was commented out because:
-        // Text placement changes for a line with each zoom level.
-        // This goes against one of my main rules, which is "preserve positions of texts as you zoom in"
-        // In theory I could mitigate the blinking
-        // Here is 1 way which is basically quite complicated and still allows some entropy:
-        // - cut the river into pieces and draw texts for certain small pieces.
-        /*
         {
-            drawing_layers: [rivers_titles],
-            "filter": ["all",
-                ["!has", "tunnel"],
-                ['==', 'name', 'Suối Cam Ly']
-            ],
-            drawing_importance: 2
+            drawing_layers: [tertiary_road],
+            drawing_importance: 4
         },
-         */
-        {
-            drawing_layers: [railway_line],
-        },
-        {
-            drawing_layers: [minor_road],
-            filter: ["in", "highway", "residential", "unclassified"],
-            drawing_importance: 5
-        },
-        { drawing_layers: [railway_station_titles_with_squares] },
-        {
-            filter: [
-                "any",
-                ["==", ["get", "is_water"], true],
-                get_filter_by_fids(
-                    hmd[473556887], // hospital
-                    hmd[1244767000], // nguyen tomb
-                    hmd[473755163], // du sinh cemetery
-                    hmd[473547288], // nuclear research
-                    hmd[4119185], // market
-                    hmd[521598340], // yersin univer
-                    hmd[1307493492], // ana mandara 
-                    hmd[18645373], // co sat pagoda
-                    hmd[361851927], // linh son pagoda
-                    hmd[1355564844], // military academy
-                    hmd[1356287796], // truc lam monastery
-                    hmd[1305230699], // Madame
-                    hmd[7758125], // youth prison
-                    hmd[1303837487], // lam vien square
-                )
-            ],
-            drawing_layers: [non_french_titles]
-        },
-        {
-            drawing_layers: [boring_building_square],
-            filter: get_filter_by_fids(
-                hmd[1244767000],
-                hmd[1305230699],
-                hmd[361851927],
-                hmd[4119185],
-                hmd[308446691]
-            ),
-            maxzoom: BORING_BLDGS_MINZOOM,
-            drawing_importance: 3
-        }
+        { drawing_layers: [french_buildings_titles] },
     ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
@@ -207,19 +120,25 @@ export const zoom_order = {
             drawing_importance: 2
         },
     ],
-    [BORING_BLDGS_MINZOOM]: [
+    15: [
         {
             drawing_layers: [boring_building_fill],
-            drawing_importance: 6
+            drawing_importance: 5
+
         },
-        {
-            drawing_layers: [boring_bldg_with_details_border],
-            drawing_importance: 3
-        },
-        { drawing_layers: [non_french_titles] },
+  
         { drawing_layers: [city_bulk_title] }
+
     ],
     14.5: [
+        
+        {
+            drawing_layers: [minor_road],
+            filter: ["in", "highway", "residential", "unclassified"],
+            drawing_importance: 5
+        },
+    ],
+    15.5: [
         {
             drawing_layers: [minor_road],
             filter: [

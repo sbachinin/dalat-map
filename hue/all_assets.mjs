@@ -8,7 +8,6 @@ import { AREA_TYPES } from '../js/layers/constants.mjs'
 const dalat_layers_to_use_in_hue = [
     'major_roads',
     'minor_roads',
-    'railway',
     'peaks',
 ]
 
@@ -70,7 +69,6 @@ export const all_assets = {
                     name: 'is_small_lake',
                     get_value: f => area(f.geometry) < 20000
                         || is_one_of(f.id, [
-                            
                             // some parts of the ditch around vauban fort
                             39452865,
                             367388993,
@@ -118,6 +116,11 @@ export const all_assets = {
                     if (f.properties.barrier === 'city_wall' && f.geometry.type === 'Polygon') return true
                 }
             },
+            {
+                name: 'railway',
+                feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
+                feature_props_to_preserve: ['railway', 'name:en']
+            }
 
         ])
 }

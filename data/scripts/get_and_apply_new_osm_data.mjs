@@ -5,7 +5,7 @@ import {
     does_feature_have_title
 } from '../../js/utils/does_feature_have_details.mjs'
 import {
-    BORING_BLDGS_MINZOOM,
+    BORING_BLDGS_POLYGONS_MINZOOM,
     DEFAULT_CITY_MINZOOM
 } from '../../js/layers/constants.mjs'
 import { mkdir_if_needed, parse_args } from './utils.mjs'
@@ -65,7 +65,7 @@ const boring_building_tiling_meta = {
     },
     added_props: ['is_selectable', 'has_title'],
     feature_props_to_preserve: ['building', 'building:architecture'],
-    minzoom: BORING_BLDGS_MINZOOM
+    minzoom: BORING_BLDGS_POLYGONS_MINZOOM
 }
 
 const common_tile_layers = [boring_building_tiling_meta]

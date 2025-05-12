@@ -65,9 +65,9 @@ export const french_buildings_titles = {
             ["linear"],
             ["zoom"],
             14,
-            11,
+            12,
             17.5,
-            15
+            16
         ],
         'text-font': ['Merriweather Italic']
     },
@@ -133,26 +133,6 @@ export const french_bldg_circle = {
 
 
 
-
-
-export const datanla_waterfall_layer = {
-    name: "Datanla waterfall",
-    type: 'symbol',
-    source: 'datanla_waterfall',
-    layout: {
-        "icon-image": "water_square",
-        "icon-size": 0.12,
-        "text-field": "Datanla\nwaterfall",
-        "text-anchor": "top",
-        "text-offset": [0, 0.2],
-        'text-size': PALE_TITLES_SIZE,
-        'text-font': ['Lato Regular'],
-        "symbol-sort-key": 1,
-    },
-    paint: {
-        'text-color': WATER_TITLE_COLOR
-    },
-}
 
 
 export const peaks_triangles_with_titles = {

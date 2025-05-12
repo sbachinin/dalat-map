@@ -59,6 +59,7 @@ export const land_areas_handmade_data = {
     1303837487: {
         title: "Lam Vien\nsquare",
         area_type: AREA_TYPES.SQUARE,
+        title_coords: [108.4448809674085, 11.938695678915096]
     },
     1353912255: {
         title: `Lam Dong\nchildren's hospital`,
@@ -114,12 +115,12 @@ export const land_areas_handmade_data = {
     },
     361692208: {},
     99660916: {
-        title: 'Yersin Park',
+        title: 'Yersin\nPark',
     },
     473547288: {
         title: 'Nuclear \nResearch \nInstitute',
         subtitle: `Originally built by the US in the 1960s. It houses Vietnam's only nuclear reactor, which is used for scientific purposes`,
-        title_coords: [108.45263475485513, 11.955316019067567]
+        title_coords: [108.45250268473643, 11.95580711711365]
     },
     1307493492: {
         title: 'Ana\nMandara \nResort',
