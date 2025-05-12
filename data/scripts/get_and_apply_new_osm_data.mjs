@@ -256,6 +256,7 @@ city_assets.tile_layers
             tippecanoe -o ${temp_mbtiles_path} \
             --minimum-zoom=${Math.floor(minz)} --maximum-zoom=17 \
             --no-tile-compression -f \
+            --drop-rate=1 \
             ${geojson_path}`);
     })
 
