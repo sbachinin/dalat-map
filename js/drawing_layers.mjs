@@ -162,12 +162,12 @@ export const peaks_triangles_with_titles = {
     'source-layer': 'peaks',
     layout: {
         "text-anchor": "top",
-        "text-offset": [0, 0.3],
-        'text-size': PALE_TITLES_SIZE,
+        "text-offset": [0, 0.4],
+        'text-size': PALE_TITLES_SIZE - 1,
         'text-font': ['Lato Regular'],
         "text-field": ["get", "ele"],
         "icon-image": "peak_triangle",
-        "icon-size": 0.2,
+        "icon-size": 0.16
     },
     paint: {
         'text-color': PEAK_TTTLE_COLOR

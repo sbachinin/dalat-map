@@ -1,0 +1,17 @@
+Add city bulk geometry
+    just add city_bulk_geometry.mjs to city/static_data
+
+Decide what osm buildings will be taken as "unimportant" (gray)
+    set .unimportant_buildings_filter in city meta
+    (filter out important buildings and perhaps some totally undesirable ones)
+
+Create a tile layer that contains only some topical features from [OSM + custom]
+    set .feature_filter in city_meta
+
+Add features that don't come from OSM
+    Add them to city/static_data/custom_features.geojson - they will be treated as regular OSM feature
+    Can specify a dedicated tile_layer in city meta for such added features
+
+Display city title (at early zoom)
+    add city_title_coords to [city]/isomorphic_utils
+    add [city_title] layer in [city]/zoom_order. (With maxzoom)

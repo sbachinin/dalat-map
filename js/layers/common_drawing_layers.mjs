@@ -65,6 +65,23 @@ export const city_bulk_border = {
 }
 
 
+export const city_title = {
+    "name": "City title",
+    "type": "symbol",
+    source: SOURCES_NAMES.CITY_TITLE,
+    layout: {
+        "text-field": ["get", "title"],
+        'text-size': 20,
+        'text-font': ['Lato Regular'],
+    },
+    paint: {
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 10,
+        "text-halo-blur": 0
+    }
+}
+
+
 export const river_lines = {
     name: 'River lines',
     type: 'line',

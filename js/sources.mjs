@@ -13,6 +13,7 @@ import { current_city } from './load_city.mjs'
 export const SOURCES_NAMES = {
     CITY_TILES: 'city_tiles',
     TITLES_POINTS: 'building_title',
+    CITY_TITLE: 'city_title'
 }
 
 const get_titles_props = fid => {
@@ -91,7 +92,8 @@ export const get_main_sources = () => {
     if (!current_city) {
         throw new Error('current_city is undefined in get_main_sources, there is some mistake here')
     }
-    return {
+
+    const sources = {
         [SOURCES_NAMES.CITY_TILES]: {
             type: 'vector',
             tiles: [`${window.location.origin}/cities_tiles/${current_city.name}/tiles/{z}/{x}/{y}.pbf`],
@@ -102,4 +104,19 @@ export const get_main_sources = () => {
         cable_car_endpoints_source,
         bldgs_centroids_points: get_geojson_source(centroids_as_features)
     }
+
+    if (current_city.city_title_coords) {
+        sources[SOURCES_NAMES.CITY_TITLE] = get_geojson_source(
+            [{
+                type: "Feature",
+                properties: { title: current_city.name.charAt(0).toUpperCase() + current_city.name.slice(1) },
+                geometry: {
+                    type: "Point",
+                    coordinates: current_city.city_title_coords
+                },
+            }]
+        )
+    }
+
+    return sources
 }

@@ -9,12 +9,14 @@ export const load_city = async (name) => {
         import(`../${name}/static_data/handmade_data.mjs`)
     ])
 
-    current_city = { name }
-    current_city.map_bounds = isomorphic_assets.map_bounds
-    current_city.intro_zoom = isomorphic_assets.intro_zoom || 12
-    current_city.zoom_order = zoom_order
+    current_city = {
+        name,
+        ...isomorphic_assets,
+        zoom_order,
+        all_handmade_data
+    }
 
-    current_city.all_handmade_data = all_handmade_data
+    current_city.intro_zoom = current_city.intro_zoom || 12
 }
 
 export let current_city = null

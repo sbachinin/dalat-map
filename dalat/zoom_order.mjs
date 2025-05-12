@@ -30,12 +30,21 @@ export const zoom_order = {
         {
             drawing_layers: [river_lines],
             "filter": ['==', 'name', 'Suối Cam Ly'],
+            drawing_importance: 7
         },
 
         {
             drawing_layers: [city_bulk_border],
             drawing_importance: 1
         },
+
+        {
+            drawing_layers: [city_title],
+            drawing_importance: 1,
+            maxzoom: 12
+        },
+    ],
+
     ],
     [CITY_BULK_DISAPPEARANCE_ZOOM]: [
         {

@@ -9,3 +9,5 @@ import { FIRST_CLASS_FRENCH_MINZOOM } from "../js/layers/constants.mjs"
 export const map_bounds = [108.3378, 11.8540, 108.5587, 12.0360]
 
 export const intro_zoom = FIRST_CLASS_FRENCH_MINZOOM
+
+export const city_title_coords = [108.44621694944584, 11.94863657461714]
