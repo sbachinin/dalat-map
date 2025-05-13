@@ -48,8 +48,10 @@ export const all_assets = {
 
         {
             name: 'transportation_other',
-            feature_filter: f => f.properties?.aerialway === 'cable_car'
-                || f.properties?.aerialway === 'gondola',
+            feature_filter: f => is_one_of(f.properties.aerialway, [
+                'gondola', 'cable_car', 'station'
+            ])
+                ,
             feature_props_to_preserve: ['aerialway'],
         },
 

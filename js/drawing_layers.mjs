@@ -372,10 +372,20 @@ export const cable_car_label = {
 export const cable_car_endpoints = {
     "name": "Cable car endpoints",
     "type": "symbol",
-    source: 'cable_car_endpoints_source',
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'transportation_other',
+    "filter": ["==", ["get", "aerialway"], "station"],
     "layout": {
         "icon-image": "boring_square",
-        "icon-size": 0.12,
+        "icon-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"], 
+            11, 
+            0.12, 
+            16,
+            0.22
+        ],
         'icon-allow-overlap': true,
     }
 }

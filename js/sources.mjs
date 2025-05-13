@@ -1,5 +1,4 @@
 import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
-import { cable_car_endpoints_source } from '../data/static/cable_car_endpoints.mjs'
 
 import {
     all_handmade_data,
@@ -101,7 +100,6 @@ export const get_main_sources = () => {
         },
         [SOURCES_NAMES.TITLES_POINTS]: titles_points,
         datanla_waterfall,
-        cable_car_endpoints_source,
         bldgs_centroids_points: get_geojson_source(centroids_as_features)
     }
 
