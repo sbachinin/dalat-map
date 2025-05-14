@@ -239,7 +239,10 @@ city_assets.renderables?.forEach(r => {
     generate_temp_mbtiles(
         r.id,
         r.style_layer.minzoom,
-        r.get_features(all_geojson.features))
+        r.get_features(all_geojson.features).map(f => {
+            // add .properties if absent, to avoid errors
+            return { ...f, properties: f.properties || {} }
+        }))
 })
 
 // For each city's tile_layer:

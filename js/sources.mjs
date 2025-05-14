@@ -66,16 +66,6 @@ const titles_points = {
     }
 }
 
-const datanla_waterfall = get_geojson_source(
-    [{
-        type: "Feature",
-        geometry: {
-            type: "Point",
-            coordinates: [108.4488444, 11.9011774]
-        }
-    }]
-)
-
 const centroids_as_features = Object.entries(centroids_etc).map(([feat_id, data]) => {
     return {
         "type": "Feature",
@@ -99,7 +89,6 @@ export const get_main_sources = () => {
             minzoom: 10,
         },
         [SOURCES_NAMES.TITLES_POINTS]: titles_points,
-        datanla_waterfall,
         bldgs_centroids_points: get_geojson_source(centroids_as_features)
     }
 

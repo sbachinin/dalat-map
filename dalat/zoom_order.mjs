@@ -1,6 +1,5 @@
 import { get_filter_by_fids } from "../js/common_zoom_order.mjs";
 
-import { datanla_waterfall_layer } from './drawing_layers.mjs';
 import {
     boring_bldg_with_details_border,
     boring_building_fill,
@@ -81,7 +80,6 @@ export const zoom_order = {
                 hmd[1232634198], // stadium
             ),
         },
-        { drawing_layers: [datanla_waterfall_layer] },
     ],
 
     [CITY_BULK_DISAPPEARANCE_ZOOM]: [

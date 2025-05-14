@@ -1,4 +1,8 @@
-import { PALE_TITLES_COLOR } from "../js/layers/constants.mjs";
+import {
+    PALE_TITLES_COLOR,
+    PALE_TITLES_SIZE,
+    WATER_TITLE_COLOR
+} from "../js/layers/constants.mjs";
 
 export const renderables = [
     {
@@ -46,5 +50,41 @@ export const renderables = [
                 "text-color": PALE_TITLES_COLOR,
             },
         }
+    },
+
+
+
+
+
+    {
+        id: 'Datanla_waterfall',
+        get_features: () => {
+            return [{
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [108.4488444, 11.9011774]
+                }
+            }]
+        },
+        style_layer: {
+            type: 'symbol',
+            minzoom: 12,
+            layout: {
+                "icon-image": "water_square",
+                "icon-size": 0.12,
+                "text-field": "Datanla\nwaterfall",
+                "text-anchor": "top",
+                "text-offset": [0, 0.2],
+                'text-size': PALE_TITLES_SIZE,
+                'text-font': ['Lato Regular'],
+                "symbol-sort-key": 1,
+            },
+            paint: {
+                'text-color': WATER_TITLE_COLOR
+            },
+        }
     }
+
+
 ]

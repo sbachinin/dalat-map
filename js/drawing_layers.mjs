@@ -117,7 +117,7 @@ export const french_bldg_circle = {
                 "case",
                 ["==", ["get", "has_title"], true],
                 1,
-                0.35
+                0.6
             ],
             14,
             1
