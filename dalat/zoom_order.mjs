@@ -1,7 +1,20 @@
 import { get_filter_by_fids } from "../js/common_zoom_order.mjs";
 
 import { datanla_waterfall_layer } from './drawing_layers.mjs';
-import { boring_bldg_with_details_border, boring_building_fill, boring_building_square, cable_car_endpoints, cable_car_label, cable_car_line, land_areas_fill, non_french_titles, peaks_triangles_with_titles, railway_line, railway_station_titles_with_squares, towns_fill, water_areas_fill } from "../js/drawing_layers.mjs";
+import {
+    boring_bldg_with_details_border,
+    boring_building_fill,
+    boring_building_square,
+    cable_car_endpoints,
+    cable_car_line,
+    land_areas_fill,
+    non_french_titles,
+    peaks_triangles_with_titles,
+    railway_line,
+    railway_station_titles_with_squares,
+    towns_fill,
+    water_areas_fill
+} from "../js/drawing_layers.mjs";
 import { city_bulk_border, city_title, river_lines } from "../js/layers/common_drawing_layers.mjs";
 import { AREA_TYPES, CITY_BULK_DISAPPEARANCE_ZOOM } from "../js/layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
@@ -68,7 +81,7 @@ export const zoom_order = {
                 hmd[1232634198], // stadium
             ),
         },
-        { drawing_layers: [datanla_waterfall_layer, cable_car_label ] },
+        { drawing_layers: [datanla_waterfall_layer] },
     ],
 
     [CITY_BULK_DISAPPEARANCE_ZOOM]: [

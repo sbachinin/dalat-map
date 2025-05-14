@@ -9,6 +9,9 @@ import {
     DEFAULT_CITY_MINZOOM
 } from '../../js/layers/constants.mjs'
 import { mkdir_if_needed, parse_args } from './utils.mjs'
+import * as turf from '@turf/turf'
+
+global.turf = turf
 
 const write = (path, data) => {
     fs.writeFileSync(path, JSON.stringify(data, null, 2))
@@ -68,7 +71,7 @@ const boring_building_tiling_meta = {
     minzoom: BORING_BLDGS_POLYGONS_MINZOOM
 }
 
-const common_tile_layers = [boring_building_tiling_meta]
+const general_tile_layers = [boring_building_tiling_meta]
 
 
 
@@ -114,7 +117,7 @@ if (bulk_polygon) {
     custom_features.push({ ...bulk_polygon, id: CITY_BULK_POLYGON_ID })
     custom_features.push({ ...bulk_linestring, id: CITY_BULK_LINESTRING_ID })
 
-    common_tile_layers.push({
+    general_tile_layers.push({
         name: 'city_bulk_geometry',
         feature_filter: f => f.id === CITY_BULK_POLYGON_ID || f.id === CITY_BULK_LINESTRING_ID
     })
@@ -203,6 +206,42 @@ const clear_feature_props = (feature, tile_layer) => {
 
 const all_mbtiles_paths = []
 
+const generate_temp_mbtiles = (tile_layer_name, minzoom, layer_features) => {
+
+    const geojson_path = city_root_path + `/temp_data/${tile_layer_name}.geojson`
+
+    write(geojson_path, layer_features)
+
+    const temp_tiles_city_path = `${temp_tiles_path}/${city}`
+    mkdir_if_needed(temp_tiles_city_path)
+
+    const temp_mbtiles_path = `${temp_tiles_city_path}/${tile_layer_name}.mbtiles`
+    all_mbtiles_paths.push(temp_mbtiles_path)
+
+    const minz = minzoom
+        || city_assets.minzoom
+        || DEFAULT_CITY_MINZOOM
+
+    exec(`
+        tippecanoe -o ${temp_mbtiles_path} \
+        --minimum-zoom=${Math.floor(minz)} --maximum-zoom=17 \
+        --no-tile-compression -f \
+        --drop-rate=1 \
+        ${geojson_path}`);
+}
+
+
+city_assets.renderables?.forEach(r => {
+    if (r.id.match(/\s/)) {
+        console.warn('renderable id has white space:', r.id)
+        process.exit(1)
+    }
+    generate_temp_mbtiles(
+        r.id,
+        r.style_layer.minzoom,
+        r.get_features(all_geojson.features))
+})
+
 // For each city's tile_layer:
 // 1) tile_layer.feature_filter will be executed for ALL data
 // 2) only features specified in tile_layer.feature_props_to_preserve will be preserved
@@ -210,14 +249,11 @@ const all_mbtiles_paths = []
 // 4) result will be written
 // 5) temporary .mbtiles will be created for current layer's geojson
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
-
 city_assets.tile_layers
-    .concat(common_tile_layers)
+    .concat(general_tile_layers)
     .forEach(tile_layer => {
         if (!tile_layer.feature_filter) throw new Error('feature_filter not defined for tile_layer ' + tile_layer.name)
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
-
-        const geojson_path = city_root_path + `/temp_data/${tile_layer.name}.geojson`
 
         const layer_features = all_geojson.features
             .filter(tile_layer.feature_filter)
@@ -240,24 +276,7 @@ city_assets.tile_layers
             // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
             .sort((a, b) => b.id - a.id)
 
-        write(geojson_path, layer_features)
-
-        const temp_tiles_city_path = `${temp_tiles_path}/${city}`
-        mkdir_if_needed(temp_tiles_city_path)
-
-        const temp_mbtiles_path = `${temp_tiles_city_path}/${tile_layer.name}.mbtiles`
-        all_mbtiles_paths.push(temp_mbtiles_path)
-
-        const minz = tile_layer.minzoom
-            || city_assets.minzoom
-            || DEFAULT_CITY_MINZOOM
-
-        exec(`
-            tippecanoe -o ${temp_mbtiles_path} \
-            --minimum-zoom=${Math.floor(minz)} --maximum-zoom=17 \
-            --no-tile-compression -f \
-            --drop-rate=1 \
-            ${geojson_path}`);
+        generate_temp_mbtiles(tile_layer.name, tile_layer.minzoom, layer_features)
     })
 
 

@@ -3,6 +3,7 @@ import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/layers/constants.mjs";
 import { is_one_of } from "../js/utils/isomorphic_utils.mjs";
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf";
+import { renderables } from './renderables.mjs'
 
 const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk", "motorway"]
 
@@ -50,8 +51,7 @@ export const all_assets = {
             name: 'transportation_other',
             feature_filter: f => is_one_of(f.properties.aerialway, [
                 'gondola', 'cable_car', 'station'
-            ])
-                ,
+            ]),
             feature_props_to_preserve: ['aerialway'],
         },
 
@@ -100,4 +100,5 @@ export const all_assets = {
             ]
         },
     ],
+    renderables
 }

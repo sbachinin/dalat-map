@@ -349,25 +349,6 @@ export const cable_car_line = {
     },
     "filter": ["in", ["get", "aerialway"], ["literal", ["gondola", "cable_car"]]]
 }
-export const cable_car_label = {
-    "name": "Cable car label",
-    type: 'symbol',
-    source: SOURCES_NAMES.CITY_TILES,
-    'source-layer': 'transportation_other',
-    "layout": {
-        "text-field": "Cable car",
-        "text-font": ["Lato Regular"],
-        "text-size": 10,
-        "symbol-placement": "line",
-        "text-letter-spacing": 0.1,
-        "text-anchor": "bottom",
-        "text-offset": [0, -0.1]
-    },
-    "paint": {
-        "text-color": PALE_TITLES_COLOR,
-    },
-    "filter": ["in", ["get", "aerialway"], ["literal", ["gondola", "cable_car"]]]
-}
 
 export const cable_car_endpoints = {
     "name": "Cable car endpoints",

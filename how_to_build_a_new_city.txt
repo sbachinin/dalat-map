@@ -15,3 +15,37 @@ Add features that don't come from OSM
 Display city title (at early zoom)
     add city_title_coords to [city]/isomorphic_utils
     add [city_title] layer in [city]/zoom_order. (With maxzoom)
+
+
+Add some singular city-specific features that are not from OSM
+    (or from OSM but require some modifications maybe):
+    Example: "cable car label" in Dalat.
+
+    (renderables.mjs at the root of city folder,
+    also used as city_assets.renderables
+        - but the latter is basically to underline that renderables are just a kind of assets).
+    
+    "Renderable" allows to describe a "singular" feature IN FULL IN ONE FILE:
+    geometry, style layer, id of a source layer, minzoom etc.
+    This logic normally tends to leave artifacts in many places in code
+    (generation of tiles, + on frontend: creation of sources and of style layers)
+
+    Considering a potentially large number of such "singular" features,
+    it can create a considerable mess, and will be harder to write for sure.
+
+    Renderable is (ideally) 1 file that is used by both "build" and frontend.
+    (Though it can be split into 2 files with a dedicated stuff for frontend
+    but I like the idea of using only 1 file).
+    1 file creates a risk of UNNECESSARY IMPORTS for frontend.
+        (Unnecessary imports for "build" is also a problem,
+        it can break things but at least it doesn't impact user performance,
+        and errors are unlikely to be silent)
+    Ideally, nothing should be imported as "import {somthing} from 'somewhere'" unless it is used by both parties.
+
+    Similarly, get_features code is also unnecessary for frontend.
+    So, if this "renderables" stuff proves to be efficient,
+    I need to get rid of this unnecessary code via some build_for_frontend step
+
+    * I also tried to use renderables.mjs only by build, not frontend.
+    (Build created final style layers to [city]/generated_for_frontend/style_layers_from_renderables.mjs, and frontend imported them).
+    This worked - but in order to see style changes, I had to rebuild, and it was critically inconvenient.

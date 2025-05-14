@@ -2,6 +2,7 @@ import { SELECTED_STYLE_LAYER_PREFIX } from "./select_building.mjs"
 import { deep_merge_objects, pick } from "./utils/utils.mjs"
 import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
 import { current_city } from "./load_city.mjs"
+import { SOURCES_NAMES } from "./sources.mjs"
 
 const merge_zoom_order = (zo1, zo2) => { // common + city-specific zoom_order    
     /* 
@@ -77,6 +78,14 @@ export const build_layers = () => {
                 })
             })
         })
+        .concat(current_city.renderables.map(r => {
+            return {
+                ...r.style_layer,
+                id: r.id,
+                source: SOURCES_NAMES.CITY_TILES,
+                'source-layer': r.id
+            }
+        }))
         .sort((a, b) => { // TODO need thorough test
             return (b.drawing_importance ?? 1) - (a.drawing_importance ?? 1)
         })
