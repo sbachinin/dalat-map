@@ -233,7 +233,7 @@ const generate_temp_mbtiles = (tile_layer_name, minzoom, layer_features) => {
 
 city_assets.renderables?.forEach(r => {
     if (r.id.match(/\s/)) {
-        console.warn('renderable id has white space:', r.id)
+        console.warn('ERROR: renderable id has white space:', r.id)
         process.exit(1)
     }
     generate_temp_mbtiles(

@@ -4,6 +4,17 @@ import {
     WATER_TITLE_COLOR
 } from "../js/layers/constants.mjs";
 
+const get_point_feature = (coords) => {
+    return {
+        type: 'Feature',
+        geometry: {
+            type: 'Point',
+            coordinates: coords
+        },
+        properties: {}
+    }
+}
+
 export const renderables = [
     {
         id: 'Cable_car_label',
@@ -58,15 +69,7 @@ export const renderables = [
 
     {
         id: 'Datanla_waterfall',
-        get_features: () => {
-            return [{
-                type: "Feature",
-                geometry: {
-                    type: "Point",
-                    coordinates: [108.4488444, 11.9011774]
-                }
-            }]
-        },
+        get_features: () => [get_point_feature([108.4488444, 11.9011774])],
         style_layer: {
             type: 'symbol',
             minzoom: 12,
@@ -84,7 +87,74 @@ export const renderables = [
                 'text-color': WATER_TITLE_COLOR
             },
         }
-    }
+    },
 
 
+    {
+        id: 'Lac_Duong_title',
+        get_features: () => [get_point_feature([108.42049039331886, 12.00963086343829])],
+        style_layer: {
+            type: 'symbol',
+            minzoom: 10,
+            maxzoom: 16,
+            layout: {
+                "text-field": "Lac Duong",
+                'text-size': [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    10, 14,
+                    16, 24],
+                'text-font': ['Lato Regular']
+            },
+            paint: {
+                'text-color': PALE_TITLES_COLOR
+            },
+        }
+    },
+
+
+    {
+        id: 'Cam_Ly_titles',
+        use_as_geojson: true,
+        get_features: () => [
+            {
+                ...get_point_feature([108.40540965179486, 11.966917979701066]),
+                properties: {
+                    rotate: 10,
+                    text_anchor: 'bottom',
+                    text_offset: [0, -0.3],
+                }
+            },
+            {
+                ...get_point_feature([108.34981570114951, 11.935637726367332]),
+                properties: {
+                    rotate: -23,
+                    text_anchor: 'top',
+                    text_offset: [0, 0.2],
+                }
+            }
+        ],
+        style_layer: {
+            type: 'symbol',
+            minzoom: 10,
+            maxzoom: 14,
+            layout: {
+                "text-field": "Cam  Ly",
+                'text-anchor': ['get', 'text_anchor'],
+                'text-offset': ['get', 'text_offset'],
+                'text-rotate': ["get", "rotate"],
+                'text-size': [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    10, 8,
+                    14, 16],
+                'text-font': ['Lato Regular']
+            },
+            paint: {
+                'text-color': WATER_TITLE_COLOR
+            },
+        }
+    },
 ]
