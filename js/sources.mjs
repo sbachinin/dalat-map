@@ -1,5 +1,3 @@
-import { centroids_etc } from '../data/generated_for_runtime/centroids_etc.mjs'
-
 import {
     all_handmade_data,
     lakes_handmade_data
@@ -33,7 +31,7 @@ const get_title_final_coords = fid => {
     // or coords just below the feature's polygon.
     // It's for plain high-zoom titles, not for tiny_squares
     const hardcoded_coords = all_handmade_data[fid]?.title_coords
-    const generated_coords = centroids_etc[fid]
+    const generated_coords = current_city.centroids_etc[fid]
     if (!hardcoded_coords && !generated_coords) {
         console.warn(`title coords cannot be found; maybe something is going wrong.
 Could be that some handmade title was added but tiles weren't generated after that.`)
@@ -44,7 +42,7 @@ Could be that some handmade title was added but tiles weren't generated after th
 }
 
 
-const titles_points = {
+const get_titles_points = () => ({
     type: 'geojson',
     data: {
         "type": "FeatureCollection",
@@ -64,9 +62,9 @@ const titles_points = {
             })
             .filter(f => f.geometry.coordinates)
     }
-}
+})
 
-const centroids_as_features = Object.entries(centroids_etc).map(([feat_id, data]) => {
+const get_centroids_as_features = () => Object.entries(current_city.centroids_etc).map(([feat_id, data]) => {
     return {
         "type": "Feature",
         id: feat_id,
@@ -88,8 +86,8 @@ export const get_main_sources = () => {
             tiles: [`${window.location.origin}/cities_tiles/${current_city.name}/tiles/{z}/{x}/{y}.pbf`],
             minzoom: 10,
         },
-        [SOURCES_NAMES.TITLES_POINTS]: titles_points,
-        bldgs_centroids_points: get_geojson_source(centroids_as_features)
+        [SOURCES_NAMES.TITLES_POINTS]: get_titles_points(),
+        bldgs_centroids_points: get_geojson_source(get_centroids_as_features())
     }
 
     if (current_city.city_title_coords) {

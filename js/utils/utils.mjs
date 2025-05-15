@@ -1,5 +1,5 @@
-import { centroids_etc } from '../../data/generated_for_runtime/centroids_etc.mjs'
 import { bldgs_handmade_data } from '../../data/static/bldgs_handmade_data.mjs'
+import { current_city } from '../load_city.mjs';
 
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
 
@@ -225,7 +225,7 @@ export const get_geojson_source = (features) => {
 
 
 export function get_center_for_bldg_with_offset(id) {
-    const cntrd = centroids_etc[id]?.centroid
+    const cntrd = current_city.centroids_etc[id]?.centroid
     if (!cntrd) {
         console.warn(`no centroid for ${id}`)
         return null
