@@ -86,9 +86,13 @@ export const initialize_city = async (name) => {
 
         initialize_highlights_button(panel.content?.type)
 
-        const center = is_feature_selectable(initial_bldg_id)
-            ? get_center_for_bldg_with_offset(initial_bldg_id)
-            : initial_center
+        let center = initial_center
+        
+        if (is_feature_selectable(initial_bldg_id)) {
+            // get_center can return null, perhaps when centroid isn't generated yet,
+            // It means some fuckup in the code but still it's better to show a sensible center
+            center = get_center_for_bldg_with_offset(initial_bldg_id) || initial_center
+        }
 
         map.setCenter(center)
 

@@ -228,7 +228,7 @@ export function get_center_for_bldg_with_offset(id) {
     const cntrd = centroids_etc[id]?.centroid
     if (!cntrd) {
         console.warn(`no centroid for ${id}`)
-        return
+        return null
     }
     const { lng_per_px, lat_per_px } = get_lnglat_per_px()
     const cntr_shift = get_map_center_shift_px(get_panel_shown_breadth())
