@@ -2,7 +2,7 @@ import { SELECTED_STYLE_LAYER_PREFIX } from "./select_building.mjs"
 import { deep_merge_objects, pick } from "./utils/utils.mjs"
 import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
 import { current_city } from "./load_city.mjs"
-import { SOURCES_NAMES } from "./sources.mjs"
+import { SOURCES_NAMES } from "./constants.mjs"
 
 const merge_zoom_order = (zo1, zo2) => { // common + city-specific zoom_order    
     /* 

@@ -39,7 +39,6 @@ import {
     major_road_thicker_line, tertiary_road, boring_building_fill,
     minor_road,
     pedestrian_path,
-    city_bulk_title
 } from "./common_drawing_layers/drawing_layers.mjs";
 import {
     FRENCH_GEOMETRIES_MINZOOM
@@ -117,9 +116,6 @@ export const zoom_order = {
             drawing_importance: 5
 
         },
-  
-        { drawing_layers: [city_bulk_title] }
-
     ],
     14.5: [
         

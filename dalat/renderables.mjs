@@ -4,8 +4,11 @@ import {
     PALE_TITLES_SIZE,
     WATER_TITLE_COLOR
 } from "../js/common_drawing_layers/constants.mjs";
+import city_bulk_geometry from './static_data/city_bulk_geometry.mjs'
 
 import dead_buildings from "./static_data/dead_buildings.mjs"
+import { get_polygon_as_linestring } from "../scripts/get_polygon_as_linestring.mjs";
+import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_drawing_layers/city_bulk.mjs";
 
 const get_point_feature = (coords) => {
     return {
@@ -176,5 +179,15 @@ export const renderables = [
         id: 'Dead_buildings',
         get_features: () => dead_buildings,
         style_layers: dead_buildings_drawing_layers
-    }
+    },
+
+    {
+        id: 'City_bulk',
+        get_features: () => ([
+            city_bulk_geometry,
+            get_polygon_as_linestring(city_bulk_geometry)
+        ]),
+        style_layers: [city_bulk_fill, city_bulk_border, city_bulk_title]
+    },
+
 ]

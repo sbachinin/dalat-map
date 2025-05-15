@@ -18,7 +18,6 @@ import {
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { AREA_TYPES, CITY_BULK_DISAPPEARANCE_ZOOM, FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
-import { city_bulk_border } from "../js/common_drawing_layers/city_bulk.mjs";
 
 
 export const zoom_order = {
@@ -51,12 +50,6 @@ export const zoom_order = {
             "filter": ['==', 'name', 'Suối Cam Ly'],
             drawing_importance: 7
         },
-
-        {
-            drawing_layers: [city_bulk_border],
-            drawing_importance: 1
-        },
-
 
         {
             filter: get_filter_by_fids(

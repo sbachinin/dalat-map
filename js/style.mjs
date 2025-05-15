@@ -1,21 +1,11 @@
 import { get_main_sources } from './sources.mjs'
 import { build_layers } from './build_layers.mjs'
-import { city_bulk_fill } from './common_drawing_layers/city_bulk.mjs'
 
 export const get_style = () => {
     return {
         name: "Dalat map",
 
-        layers: [
-
-            // so here some layers are "hardcoded", not built
-            // Basically they are "basic" layers that show up early and have low drawing priority
-            // For consistency i could add them to the build
-            // But for now it doesn't look like a problem, apart from this minor code dirt
-            city_bulk_fill,
-
-            ...build_layers(),
-        ],
+        layers: build_layers(),
 
         sources: get_main_sources(),
 

@@ -13,7 +13,6 @@ import {
     PEAK_TTTLE_COLOR,
     RAILWAY_LINE_COLOR,
     SQUARE_FILL_COLOR,
-    CITY_BULK_TITLE_COLOR,
     IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR,
     BORING_BLDG_WITH_DETAILS_BORDER_COLOR,
     SELECTED_BORING_BLDG_FILL_COLOR,
@@ -22,7 +21,7 @@ import {
     BRIGHT_LAKE_COLOR,
     PALE_LAKE_COLOR
 } from "./constants.mjs";
-import { SOURCES_NAMES } from "../sources.mjs";
+import { SOURCES_NAMES } from "../constants.mjs";
 import { deep_merge_objects } from "../utils/utils.mjs";
 
 
@@ -530,26 +529,6 @@ export const pedestrian_path = deep_merge_objects(
         filter: ["in", "highway", "footway", "path", "cycleway", "steps"],
     }
 )
-
-export const city_bulk_title = {
-    name: 'cityBulk title',
-    type: 'symbol',
-    source: SOURCES_NAMES.CITY_TILES,
-    "source-layer": 'city_bulk_geometry',
-    filter: ['==', ['geometry-type'], 'LineString'],
-    layout: {
-        'text-field': 'Approx. residential limits',
-        'text-size': PALE_TITLES_SIZE - 1.5,
-        'text-font': ['Lato Regular'],
-        'symbol-placement': 'line',
-        "symbol-spacing": 300,
-        "text-offset": [0, 1],
-        "text-letter-spacing": 0.07,
-    },
-    paint: {
-        'text-color': CITY_BULK_TITLE_COLOR
-    }
-}
 
 
 export const water_areas_fill = {

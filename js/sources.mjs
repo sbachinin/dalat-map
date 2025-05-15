@@ -6,12 +6,7 @@ import { is_french_building } from './utils/isomorphic_utils.mjs'
 import { get_title_side } from './utils/isomorphic_utils.mjs'
 import { get_geojson_source } from './utils/utils.mjs'
 import { current_city } from './load_city.mjs'
-
-export const SOURCES_NAMES = {
-    CITY_TILES: 'city_tiles',
-    TITLES_POINTS: 'building_title',
-    CITY_TITLE: 'city_title'
-}
+import { SOURCES_NAMES } from './constants.mjs'
 
 const get_titles_props = fid => {
     const fdata = all_handmade_data[fid]

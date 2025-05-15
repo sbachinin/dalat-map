@@ -1,4 +1,4 @@
-import { SOURCES_NAMES } from "../sources.mjs"
+import { SOURCES_NAMES } from "../constants.mjs"
 import * as c from "./constants.mjs"
 
 export const french_fill_common_props = {

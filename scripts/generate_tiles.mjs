@@ -97,30 +97,6 @@ if (fs.existsSync(custom_features_path)) {
 }
 
 
-let bulk_polygon = await maybe_import_default(
-    city_root_path + '/static_data/city_bulk_geometry.mjs')
-
-if (bulk_polygon) {
-    const CITY_BULK_POLYGON_ID = 9345734095734957
-    const CITY_BULK_LINESTRING_ID = 9345734095734958
-
-    const bulk_linestring = {
-        type: 'Feature',
-        properties: bulk_polygon.properties,
-        geometry: {
-            type: 'LineString',
-            coordinates: bulk_polygon.geometry.coordinates[0],
-        }
-    }
-
-    custom_features.push({ ...bulk_polygon, id: CITY_BULK_POLYGON_ID })
-    custom_features.push({ ...bulk_linestring, id: CITY_BULK_LINESTRING_ID })
-
-    general_tile_layers.push({
-        name: 'city_bulk_geometry',
-        feature_filter: f => f.id === CITY_BULK_POLYGON_ID || f.id === CITY_BULK_LINESTRING_ID
-    })
-}
 
 
 

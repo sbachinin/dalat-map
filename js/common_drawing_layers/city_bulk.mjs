@@ -1,13 +1,10 @@
 import * as c from "./constants.mjs"
-import { SOURCES_NAMES } from "../sources.mjs"
 
 export const city_bulk_fill = {
-    id: 'cityBulk',
     type: 'fill',
-    source: SOURCES_NAMES.CITY_TILES,
-    "source-layer": 'city_bulk_geometry',
     filter: ['==', ['geometry-type'], 'Polygon'],
-    minzoom: 10,
+    minzoom: 8,
+    drawing_importance: 7,
     paint: {
         'fill-color': c.CITY_BULK_FULL_COLOR,
         'fill-antialias': true,
@@ -24,10 +21,8 @@ export const city_bulk_fill = {
 }
 
 export const city_bulk_border = {
-    name: 'cityBulk border',
     type: 'line',
-    source: SOURCES_NAMES.CITY_TILES,
-    "source-layer": 'city_bulk_geometry',
+    minzoom: 8,
     filter: ['==', ['geometry-type'], 'Polygon'],
     paint: {
         'line-color': [
@@ -59,5 +54,25 @@ export const city_bulk_border = {
             c.CITY_BULK_DISAPPEARANCE_ZOOM + 2,
             0.2
         ]
+    }
+}
+
+
+
+export const city_bulk_title = {
+    type: 'symbol',
+    minzoom: 15,
+    filter: ['==', ['geometry-type'], 'LineString'],
+    layout: {
+        'text-field': 'Approx. residential limits',
+        'text-size': c.PALE_TITLES_SIZE - 1.5,
+        'text-font': ['Lato Regular'],
+        'symbol-placement': 'line',
+        "symbol-spacing": 300,
+        "text-offset": [0, 1],
+        "text-letter-spacing": 0.07,
+    },
+    paint: {
+        'text-color': c.CITY_BULK_TITLE_COLOR
     }
 }

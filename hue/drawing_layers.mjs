@@ -1,4 +1,4 @@
-import { SOURCES_NAMES } from "../js/sources.mjs";
+import { SOURCES_NAMES } from "../js/constants.mjs";
 
 const CITY_WALL_COLOR = 'hsl(45, 85%, 0%)'
 
