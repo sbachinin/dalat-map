@@ -167,6 +167,14 @@ export const lakes_handmade_data = {
     141724891: {
         title: 'Chien Thang\nlake',
         title_coords: [108.46564657614073, 11.974080820149084]
+    },
+    141724809: {
+        title: 'Suoi Vang\nLake',
+        title_coords: [108.3682423133476, 12.00078429246257]
+    },
+    64737684: {
+        title: 'Dankia\nLake',
+        title_coords: [108.38190723577048, 12.012793493488417]
     }
 }
 

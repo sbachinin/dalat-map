@@ -55,6 +55,16 @@ export const zoom_order = {
             drawing_importance: 1
         },
 
+
+        {
+            filter: get_filter_by_fids(
+                hmd[125165263], // southern big lake
+                hmd[141724809], // smaller lake near ankroet
+                hmd[64737684], // bigger lake near ankroet
+            ),
+            drawing_layers: [non_french_titles]
+        },
+
         {
             drawing_layers: [city_title],
             drawing_importance: 1,
