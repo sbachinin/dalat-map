@@ -7,7 +7,7 @@ import {
 import {
     BORING_BLDGS_POLYGONS_MINZOOM,
     DEFAULT_CITY_MINZOOM
-} from '../js/layers/constants.mjs'
+} from '../js/common_drawing_layers/constants.mjs'
 import { maybe_import_default, mkdir_if_needed, parse_args } from './utils.mjs'
 import * as turf from '@turf/turf'
 

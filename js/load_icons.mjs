@@ -1,4 +1,4 @@
-import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR, SELECTED_BORING_BLDG_FILL_COLOR } from "./layers/constants.mjs"
+import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR } from "./common_drawing_layers/constants.mjs"
 
 export const load_icons = async () => {
 

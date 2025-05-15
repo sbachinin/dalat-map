@@ -15,7 +15,7 @@ import {
     throttle
 } from './utils/utils.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
-import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './layers/constants.mjs'
+import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './common_drawing_layers/constants.mjs'
 import { current_city } from './load_city.mjs'
 
 

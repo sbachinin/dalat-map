@@ -1,9 +1,9 @@
-import { dead_buildings_drawing_layers } from "../js/layers/dead_buildings_drawing_layers.mjs";
+import { dead_buildings_drawing_layers } from "../js/common_drawing_layers/dead_buildings_drawing_layers.mjs";
 import {
     PALE_TITLES_COLOR,
     PALE_TITLES_SIZE,
     WATER_TITLE_COLOR
-} from "../js/layers/constants.mjs";
+} from "../js/common_drawing_layers/constants.mjs";
 
 import dead_buildings from "./static_data/dead_buildings.mjs"
 

@@ -1,8 +1,6 @@
 import { get_main_sources } from './sources.mjs'
-import {
-    city_bulk_fill,
-} from './layers/common_drawing_layers.mjs'
 import { build_layers } from './build_layers.mjs'
+import { city_bulk_fill } from './common_drawing_layers/city_bulk.mjs'
 
 export const get_style = () => {
     return {

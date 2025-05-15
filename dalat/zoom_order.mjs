@@ -14,10 +14,11 @@ import {
     railway_station_titles_with_squares,
     towns_fill,
     water_areas_fill
-} from "../js/drawing_layers.mjs";
-import { city_bulk_border, city_title, river_lines } from "../js/layers/common_drawing_layers.mjs";
-import { AREA_TYPES, CITY_BULK_DISAPPEARANCE_ZOOM, FRENCH_GEOMETRIES_MINZOOM } from "../js/layers/constants.mjs";
+} from "../js/common_drawing_layers/drawing_layers.mjs";
+import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
+import { AREA_TYPES, CITY_BULK_DISAPPEARANCE_ZOOM, FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
+import { city_bulk_border } from "../js/common_drawing_layers/city_bulk.mjs";
 
 
 export const zoom_order = {

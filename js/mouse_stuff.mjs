@@ -1,7 +1,7 @@
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
 import { try_fly_to_building, try_open_building } from './bldg_details.mjs'
-import { CURSOR_POINTER_MINZOOM } from './layers/constants.mjs'
+import { CURSOR_POINTER_MINZOOM } from './common_drawing_layers/constants.mjs'
 import {
     can_share_files,
     debounce,

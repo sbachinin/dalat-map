@@ -1,4 +1,4 @@
-import { FIRST_CLASS_FRENCH_MINZOOM } from "../js/layers/constants.mjs"
+import { FIRST_CLASS_FRENCH_MINZOOM } from "../js/common_drawing_layers/constants.mjs"
 
 
 // 10 is supposed to be a "global default" for now

@@ -40,10 +40,10 @@ import {
     minor_road,
     pedestrian_path,
     city_bulk_title
-} from "./drawing_layers.mjs";
+} from "./common_drawing_layers/drawing_layers.mjs";
 import {
     FRENCH_GEOMETRIES_MINZOOM
-} from "./layers/constants.mjs";
+} from "./common_drawing_layers/constants.mjs";
 import {
     french_detailful_bldg_fill,
     french_detailful_dark_outline,
@@ -51,7 +51,7 @@ import {
     french_detailless_bldg_fill,
     french_detailless_dark_outline,
     french_detailless_thickening_outline
-} from "./layers/french_polygons.mjs";
+} from "./common_drawing_layers/french_polygons.mjs";
 
 export const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
 

@@ -1,5 +1,5 @@
 import { land_areas_handmade_data as dalat_land_areas_handmade_data } from "./static_data/handmade_data.mjs";
-import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/layers/constants.mjs";
+import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { is_one_of } from "../js/utils/isomorphic_utils.mjs";
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf";
