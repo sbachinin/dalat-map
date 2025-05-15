@@ -2,7 +2,6 @@ const try_import = async (path) => {
     try {
         return await import(path)
     } catch (err) {
-        console.error(`Failed to import ${path}:`, err)
         return null
     }
 }

@@ -251,7 +251,7 @@ export const find_bldg_id_by_image_filename = (filename) => {
     const [bldg_id] = Object.entries(bldgs_handmade_data).find(([feat_id, feat]) => {
         return feat.images?.includes(filename)
     }) || [null]
-    return bldg_id
+    return Number(bldg_id)
 }
 
 export const observe_dom_mutations = (selector, cb) => {

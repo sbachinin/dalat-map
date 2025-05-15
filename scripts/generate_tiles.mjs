@@ -24,11 +24,11 @@ const exec = (command) => {
 
 const { skip_osm_download, city } = parse_args()
 
-const city_root_path = `../../${city}`
+const city_root_path = `../${city}`
 const city_assets = (await import(city_root_path + '/all_assets.mjs')).all_assets
 
 if (!fs.existsSync(city_root_path)) {
-    console.warn('no folder for such city!')
+    console.warn('no folder for such city: ', city_root_path)
     process.exit(0)
 }
 
@@ -170,7 +170,7 @@ all_geojson.features = all_geojson.features
 
 
 
-const temp_tiles_path = `../../cities_tiles/temp`
+const temp_tiles_path = `../cities_tiles/temp`
 
 const { all_handmade_data: hmdata } = await import(city_root_path + '/static_data/handmade_data.mjs')
 
@@ -231,19 +231,36 @@ const generate_temp_mbtiles = (tile_layer_name, minzoom, layer_features) => {
 }
 
 
-city_assets.renderables?.forEach(r => {
+const features_from_renderables = city_assets.renderables?.flatMap(r => {
     if (r.id.match(/\s/)) {
         console.warn('ERROR: renderable id has white space:', r.id)
         process.exit(1)
     }
+
+    const features = r.get_features(all_geojson.features).map(f => {
+        // add .properties if absent, to avoid errors
+        return { ...f, properties: f.properties || {} }
+    })
+
     generate_temp_mbtiles(
         r.id,
         r.style_layer.minzoom,
-        r.get_features(all_geojson.features).map(f => {
-            // add .properties if absent, to avoid errors
-            return { ...f, properties: f.properties || {} }
-        }))
-})
+        features
+    )
+
+    return features
+}) || []
+
+write(
+    city_root_path + '/temp_data/all_geojson_features_with_renderables.geojson',
+    [...all_geojson.features, ...features_from_renderables]
+)
+
+
+
+
+
+
 
 // For each city's tile_layer:
 // 1) tile_layer.feature_filter will be executed for ALL data
@@ -283,7 +300,7 @@ city_assets.tile_layers
     })
 
 
-const final_tiles_path = `../../cities_tiles/${city}/tiles`
+const final_tiles_path = `../cities_tiles/${city}/tiles`
 mkdir_if_needed(final_tiles_path)
 exec(`rm -rf ${final_tiles_path}/*`)
 

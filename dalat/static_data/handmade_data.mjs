@@ -152,7 +152,7 @@ export const land_areas_handmade_data = {
 }
 
 export const lakes_handmade_data = {
-    99660972: {
+    2390139: {
         title: 'Xuan Huong\nLake',
         title_coords: [108.44589, 11.94145],
     },
