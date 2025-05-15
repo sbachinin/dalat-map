@@ -7,26 +7,52 @@ const try_import = async (path) => {
     }
 }
 
-const filenames = [
-    'isomorphic_assets.mjs',
-    'zoom_order.mjs',
-    'static_data/handmade_data.mjs',
-    'renderables.mjs'
+const files = [
+    {
+        name: 'isomorphic_assets.mjs',
+        propname: 'isomorphic_assets',
+        extractor: d => d,
+        default_val: {}
+    },
+    {
+        name: 'zoom_order.mjs',
+        propname: 'zoom_order',
+        extractor: d => d.zoom_order,
+        default_val: {}
+    },
+    {
+        name: 'static_data/handmade_data.mjs',
+        propname: 'all_handmade_data',
+        extractor: d => d.all_handmade_data,
+        default_val: {}
+    },
+    {
+        name: 'renderables.mjs',
+        propname: 'renderables',
+        extractor: d => d.renderables,
+        default_val: []
+    },
+
+    {
+        name: 'generated_for_runtime/centroids_etc.mjs',
+        propname: 'centroids_etc',
+        extractor: d => d.centroids_etc,
+        default_val: {}
+    }
 ]
 export const load_city = async (name) => {
-    const [
-        { value: isomorphic_assets},
-        { value: zo },
-        { value: hmd },
-        { value: rnd }
-    ] = await Promise.allSettled(filenames.map(n => try_import(`../${name}/${n}`)))
+    const results = await Promise.all(files.map(f => try_import(`../${name}/${f.name}`)))
 
+    const results_obj = {}
+    
+    files.forEach((f, i) => {
+        results_obj[f.propname] = results[i] ? f.extractor(results[i]) : f.default_val
+    })
+    
     current_city = {
         name,
-        ...isomorphic_assets,
-        zoom_order: zo?.zoom_order || {},
-        all_handmade_data: hmd?.all_handmade_data || {},
-        renderables: rnd?.renderables || []
+        ...results_obj,
+        ...results_obj.isomorphic_assets
     }
 
     current_city.intro_zoom = current_city.intro_zoom || 12
