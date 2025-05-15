@@ -196,7 +196,11 @@ export const try_fly_to_building = (
     { force = false } = {}
 ) => {
     return new Promise((resolve) => {
-        const feature_center_arr = current_city.centroids_etc[id].centroid
+        const feature_center_arr = current_city.centroids_etc[id]?.centroid
+        if (feature_center_arr === undefined) {
+            console.warn(`no centroid for ${id}, perhaps need to regenerate?`)
+            return
+        }
         const feature_screen_xy = window.dalatmap.project(feature_center_arr)
         const map_zoom = window.dalatmap.getZoom()
         if (force
@@ -256,7 +260,10 @@ export const update_flyto_button = throttle(() => {
     // So I switched to comparing centoid with map viewport's lngLat bounds, and this doesn't depend on network or anything.
     // TODO: this doesn't consider the panel. So, when feature is covered by panel, it won't enable the button
     const { _ne: { lng: e_bound, lat: n_bound }, _sw: { lng: w_bound, lat: s_bound } } = dalatmap.getBounds()
-    const cntrd = current_city.centroids_etc[get_selected_building_id()].centroid
+    const cntrd = current_city.centroids_etc[get_selected_building_id()]?.centroid
+    if (!cntrd) {
+        return
+    }
     const selected_bldg_is_visible = (
         cntrd[0] > w_bound
         && cntrd[0] < e_bound
