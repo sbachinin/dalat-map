@@ -589,7 +589,7 @@ export const bldgs_handmade_data = {
             "IMG_6419~2.jpg",
         ]
     },
-    "971577493": {
+    "9715774939715776": {
         "dead": true,
         subtitle: 'This building was demolished while I was making this map, around September 2024. Before that, it stood completely abandoned, half-hidden in dense bushes.',
         "images": [

@@ -78,13 +78,13 @@ export const build_layers = () => {
                 })
             })
         })
-        .concat(current_city.renderables.map(r => {
-            return {
-                ...r.style_layer,
-                id: r.id,
+        .concat(current_city.renderables.flatMap(r => {
+            return r.style_layers.map(sl => ({
+                ...sl,
+                id: r.id + " " + sl.type,
                 source: SOURCES_NAMES.CITY_TILES,
                 'source-layer': r.id
-            }
+            }))
         }))
         .sort((a, b) => { // TODO need thorough test
             return (b.drawing_importance ?? 1) - (a.drawing_importance ?? 1)

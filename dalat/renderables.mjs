@@ -1,8 +1,11 @@
+import { dead_buildings_drawing_layers } from "../js/layers/dead_buildings_drawing_layers.mjs";
 import {
     PALE_TITLES_COLOR,
     PALE_TITLES_SIZE,
     WATER_TITLE_COLOR
 } from "../js/layers/constants.mjs";
+
+import dead_buildings from "./static_data/dead_buildings.mjs"
 
 const get_point_feature = (coords) => {
     return {
@@ -38,29 +41,31 @@ export const renderables = [
 
             return [midpoint_feat]
         },
-        style_layer: {
-            minzoom: 12,
-            type: 'symbol',
-            "layout": {
-                "text-field": "Cable car",
-                "text-font": ["Lato Regular"],
-                "text-size": [
-                    "interpolate",
-                    ["linear"],
-                    ["zoom"],
-                    12, 10,
-                    16, 14
-                ],
-                'text-rotate': ["get", "text_rotate"],
-                "text-letter-spacing": 0.1,
-                "text-anchor": "bottom",
-                "text-offset": [0, -0.1],
-                "text-allow-overlap": true
-            },
-            "paint": {
-                "text-color": PALE_TITLES_COLOR,
-            },
-        }
+        style_layers: [
+            {
+                minzoom: 12,
+                type: 'symbol',
+                "layout": {
+                    "text-field": "Cable car",
+                    "text-font": ["Lato Regular"],
+                    "text-size": [
+                        "interpolate",
+                        ["linear"],
+                        ["zoom"],
+                        12, 10,
+                        16, 14
+                    ],
+                    'text-rotate': ["get", "text_rotate"],
+                    "text-letter-spacing": 0.1,
+                    "text-anchor": "bottom",
+                    "text-offset": [0, -0.1],
+                    "text-allow-overlap": true
+                },
+                "paint": {
+                    "text-color": PALE_TITLES_COLOR,
+                },
+            }
+        ]
     },
 
 
@@ -70,53 +75,56 @@ export const renderables = [
     {
         id: 'Datanla_waterfall',
         get_features: () => [get_point_feature([108.4488444, 11.9011774])],
-        style_layer: {
-            type: 'symbol',
-            minzoom: 12,
-            layout: {
-                "icon-image": "water_square",
-                "icon-size": 0.12,
-                "text-field": "Datanla\nwaterfall",
-                "text-anchor": "top",
-                "text-offset": [0, 0.2],
-                'text-size': PALE_TITLES_SIZE,
-                'text-font': ['Lato Regular'],
-                "symbol-sort-key": 1,
-            },
-            paint: {
-                'text-color': WATER_TITLE_COLOR
-            },
-        }
+        style_layers: [
+            {
+                type: 'symbol',
+                minzoom: 12,
+                layout: {
+                    "icon-image": "water_square",
+                    "icon-size": 0.12,
+                    "text-field": "Datanla\nwaterfall",
+                    "text-anchor": "top",
+                    "text-offset": [0, 0.2],
+                    'text-size': PALE_TITLES_SIZE,
+                    'text-font': ['Lato Regular'],
+                    "symbol-sort-key": 1,
+                },
+                paint: {
+                    'text-color': WATER_TITLE_COLOR
+                },
+            }
+        ]
     },
 
 
     {
         id: 'Lac_Duong_title',
         get_features: () => [get_point_feature([108.42049039331886, 12.00963086343829])],
-        style_layer: {
-            type: 'symbol',
-            minzoom: 10,
-            maxzoom: 16,
-            layout: {
-                "text-field": "Lac Duong",
-                'text-size': [
-                    "interpolate",
-                    ["linear"],
-                    ["zoom"],
-                    10, 14,
-                    16, 24],
-                'text-font': ['Lato Regular']
-            },
-            paint: {
-                'text-color': PALE_TITLES_COLOR
-            },
-        }
+        style_layers: [
+            {
+                type: 'symbol',
+                minzoom: 10,
+                maxzoom: 16,
+                layout: {
+                    "text-field": "Lac Duong",
+                    'text-size': [
+                        "interpolate",
+                        ["linear"],
+                        ["zoom"],
+                        10, 14,
+                        16, 24],
+                    'text-font': ['Lato Regular']
+                },
+                paint: {
+                    'text-color': PALE_TITLES_COLOR
+                },
+            }
+        ]
     },
 
 
     {
         id: 'Cam_Ly_titles',
-        use_as_geojson: true,
         get_features: () => [
             {
                 ...get_point_feature([108.40540965179486, 11.966917979701066]),
@@ -135,26 +143,38 @@ export const renderables = [
                 }
             }
         ],
-        style_layer: {
-            type: 'symbol',
-            minzoom: 10,
-            maxzoom: 14,
-            layout: {
-                "text-field": "Cam  Ly",
-                'text-anchor': ['get', 'text_anchor'],
-                'text-offset': ['get', 'text_offset'],
-                'text-rotate': ["get", "rotate"],
-                'text-size': [
-                    "interpolate",
-                    ["linear"],
-                    ["zoom"],
-                    10, 8,
-                    14, 16],
-                'text-font': ['Lato Regular']
-            },
-            paint: {
-                'text-color': WATER_TITLE_COLOR
-            },
-        }
+        style_layers: [
+            {
+                type: 'symbol',
+                minzoom: 10,
+                maxzoom: 14,
+                layout: {
+                    "text-field": "Cam  Ly",
+                    'text-anchor': ['get', 'text_anchor'],
+                    'text-offset': ['get', 'text_offset'],
+                    'text-rotate': ["get", "rotate"],
+                    'text-size': [
+                        "interpolate",
+                        ["linear"],
+                        ["zoom"],
+                        10, 8,
+                        14, 16],
+                    'text-font': ['Lato Regular']
+                },
+                paint: {
+                    'text-color': WATER_TITLE_COLOR
+                },
+            }
+        ]
     },
+
+
+
+
+
+    {
+        id: 'Dead_buildings',
+        get_features: () => dead_buildings,
+        style_layers: dead_buildings_drawing_layers
+    }
 ]

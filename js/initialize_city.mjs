@@ -1,7 +1,6 @@
 import { create_scale, update_scale } from './manage_scale.mjs'
 import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { get_style } from './style.mjs'
-import { add_dead_buildings } from './dead_buildings.mjs'
 import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
 import { try_open_building, update_flyto_button } from './bldg_details.mjs'
 import {
@@ -97,7 +96,6 @@ export const initialize_city = async (name) => {
         map.setCenter(center)
 
         add_mouse_stuff()
-        add_dead_buildings(map)
 
         requestAnimationFrame(
             () => document.querySelector('#maplibregl-map').classList.remove('hidden')

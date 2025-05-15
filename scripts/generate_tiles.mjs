@@ -90,7 +90,7 @@ if (fs.existsSync(custom_features_path)) {
         ...JSON.parse(fs.readFileSync(custom_features_path, 'utf-8'))
             .features.map(f => ({
                 ...f,
-                // without SOME id feature might not survive some future transformations in this script
+                // without SOME id feature may not survive some future transformations in this script
                 id: f.id || Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
             }))
     )
@@ -121,8 +121,6 @@ if (bulk_polygon) {
         feature_filter: f => f.id === CITY_BULK_POLYGON_ID || f.id === CITY_BULK_LINESTRING_ID
     })
 }
-
-
 
 
 
@@ -243,7 +241,7 @@ const features_from_renderables = city_assets.renderables?.flatMap(r => {
 
     generate_temp_mbtiles(
         r.id,
-        r.style_layer.minzoom,
+        Math.min(...r.style_layers.map(l => l.minzoom)),
         features
     )
 

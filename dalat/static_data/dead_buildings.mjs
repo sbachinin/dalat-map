@@ -1,4 +1,4 @@
-[
+export default [
     {
         "type": "Feature",
         "geometry": {
@@ -28,7 +28,7 @@
                 ]
             ]
         },
-        "id": 971577493,
+        "id": 9715774939715776,
         "properties": {
             "name": null
         }

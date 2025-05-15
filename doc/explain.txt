@@ -1,0 +1,21 @@
+Features come from:
+	OSM
+	/static_data:
+		bulk,
+		custom_features,
+	city_assets.renderables
+		including dead_buildings
+
+Tile layers come from
+	city_assets.tile_layers
+	"general_tile_layers":
+		city bulk
+		boring bldgs
+	city_assets.renderables
+		including dead_buildings
+
+
+Style layers come from
+	zoom_order -> drawing_layers (+ "selectable" variants made at runtime)
+	"simple" layers defined in style.mjss
+	city_assets.renderables	

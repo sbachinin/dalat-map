@@ -28,12 +28,17 @@ export const load_icons = async () => {
             ctx.lineTo(8, 56)
             ctx.closePath()
             ctx.fill()
-        } else if (id == 'boring_square') {
+        } else if (id === 'boring_square') {
             ctx.fillStyle = BORING_SQUARE_COLOR
             ctx.fillRect(0, 0, 64, 64)
-        } else if (id == 'boring_square_selected') {
+        } else if (id === 'boring_square_selected') {
             ctx.fillStyle = 'hsla(187, 71.10%, 52.70%, 0.65)'
             ctx.fillRect(0, 0, 64, 64)
+        } else if (id === 'skull-icon') {
+            window.dalatmap
+                .loadImage(`${window.location.origin}/dalat-map-images/skull.png`)
+                .then(image => window.dalatmap.addImage('skull-icon', image.data))
+            return
         }
 
 
