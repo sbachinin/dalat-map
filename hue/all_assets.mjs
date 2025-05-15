@@ -3,7 +3,6 @@ import area from '@turf/area'
 import { map_bounds } from './isomorphic_assets.mjs'
 import { all_assets as dalat_assets } from '../dalat/all_assets.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
-import { AREA_TYPES } from '../js/layers/constants.mjs'
 
 const dalat_layers_to_use_in_hue = [
     'major_roads',

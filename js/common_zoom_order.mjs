@@ -36,14 +36,12 @@ It's nice to have some free space sometimes.
 import {
     french_buildings_titles,
     major_road_thinner_line,
-    major_road_thicker_line, tertiary_road,
-    french_bldg_circle, boring_building_fill,
+    major_road_thicker_line, tertiary_road, boring_building_fill,
     minor_road,
     pedestrian_path,
     city_bulk_title
 } from "./drawing_layers.mjs";
 import {
-    FIRST_CLASS_FRENCH_MINZOOM,
     FRENCH_GEOMETRIES_MINZOOM
 } from "./layers/constants.mjs";
 import {
@@ -82,13 +80,6 @@ export const zoom_order = {
         }
     ],
 
-    [FIRST_CLASS_FRENCH_MINZOOM]: [
-        {
-            drawing_layers: [french_bldg_circle],
-            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
-            drawing_importance: 2
-        }
-    ],
     12.5: [
         {
             drawing_layers: [major_road_thinner_line],

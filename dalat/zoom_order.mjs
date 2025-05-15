@@ -6,6 +6,7 @@ import {
     boring_building_square,
     cable_car_endpoints,
     cable_car_line,
+    french_bldg_circle,
     land_areas_fill,
     non_french_titles,
     peaks_triangles_with_titles,
@@ -15,7 +16,7 @@ import {
     water_areas_fill
 } from "../js/drawing_layers.mjs";
 import { city_bulk_border, city_title, river_lines } from "../js/layers/common_drawing_layers.mjs";
-import { AREA_TYPES, CITY_BULK_DISAPPEARANCE_ZOOM } from "../js/layers/constants.mjs";
+import { AREA_TYPES, CITY_BULK_DISAPPEARANCE_ZOOM, FRENCH_GEOMETRIES_MINZOOM } from "../js/layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
 
 
@@ -81,6 +82,16 @@ export const zoom_order = {
         { drawing_layers: [cable_car_line, cable_car_endpoints] },
     ],
 
+
+    11.5: [
+        {
+            drawing_layers: [french_bldg_circle],
+            filter: ["==", ["get", "has_title"], true],
+            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            drawing_importance: 2
+        }
+    ],
+
     12: [
         {
             drawing_layers: [non_french_titles],
@@ -90,6 +101,15 @@ export const zoom_order = {
                 hmd[1232634198], // stadium
             ),
         },
+    ],
+
+    12.2: [
+        {
+            drawing_layers: [french_bldg_circle],
+            filter: ["==", ["get", "is_selectable"], true],
+            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            drawing_importance: 2
+        }
     ],
 
     [CITY_BULK_DISAPPEARANCE_ZOOM]: [
@@ -107,6 +127,11 @@ export const zoom_order = {
             ],
             drawing_importance: 6
         },
+        {
+            drawing_layers: [french_bldg_circle],
+            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            drawing_importance: 2
+        }
     ],
     13: [
         {
