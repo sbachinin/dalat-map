@@ -8,7 +8,7 @@ import {
     BORING_BLDGS_POLYGONS_MINZOOM,
     DEFAULT_CITY_MINZOOM
 } from '../js/layers/constants.mjs'
-import { mkdir_if_needed, parse_args } from './utils.mjs'
+import { maybe_import_default, mkdir_if_needed, parse_args } from './utils.mjs'
 import * as turf from '@turf/turf'
 
 global.turf = turf
@@ -96,10 +96,9 @@ if (fs.existsSync(custom_features_path)) {
     )
 }
 
-let bulk_polygon
-try {
-    bulk_polygon = (await import(city_root_path + '/static_data/city_bulk_geometry.mjs')).default
-} catch (e) { }
+
+let bulk_polygon = await maybe_import_default(
+    city_root_path + '/static_data/city_bulk_geometry.mjs')
 
 if (bulk_polygon) {
     const CITY_BULK_POLYGON_ID = 9345734095734957

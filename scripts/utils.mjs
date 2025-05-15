@@ -30,3 +30,13 @@ export const mkdir_if_needed = (path) => {
         mkdir(path)
     }
 }
+
+
+export const maybe_import_default = async path => {
+    try {
+        const module = await import(path)
+        return module.default
+    } catch (e) {
+        return null
+    }
+}
