@@ -8,7 +8,7 @@ import {
     BORING_BLDGS_POLYGONS_MINZOOM,
     DEFAULT_CITY_MINZOOM
 } from '../js/common_drawing_layers/constants.mjs'
-import { maybe_import_default, mkdir_if_needed, parse_args } from './utils.mjs'
+import { mkdir_if_needed, parse_args } from './utils.mjs'
 import * as turf from '@turf/turf'
 
 global.turf = turf
@@ -25,11 +25,18 @@ const exec = (command) => {
 const { skip_osm_download, city } = parse_args()
 
 const city_root_path = `../${city}`
-const city_assets = (await import(city_root_path + '/all_assets.mjs')).all_assets
 
 if (!fs.existsSync(city_root_path)) {
     console.warn('no folder for such city: ', city_root_path)
-    process.exit(0)
+    process.exit(1)
+}
+
+const ass = await import(city_root_path + '/all_assets.mjs')
+const city_assets = ass.all_assets
+
+if (!city_assets.renderables) {
+    console.warn('ERROR: renderables must be exported from city_assets')
+    process.exit(1)
 }
 
 mkdir_if_needed(city_root_path + `/temp_data`)
