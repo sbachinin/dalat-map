@@ -73,18 +73,29 @@ const get_title_lat = (
     }
 }
 
-Object.keys(all_handmade_data).forEach(fid => {
+Object.entries(all_handmade_data).forEach(([fid, f]) => {
     const geojson_feature = all_geojson_features.find(f => String(f.id) === String(fid))
     if (!geojson_feature) {
         console.warn('No geojson feature for this handmade id: ', fid)
         return
     }
-    if (is_feature_selectable(fid, all_handmade_data) || does_feature_have_title(fid, all_handmade_data)) {
-        // ! If feature has title but isn't selectable, it still needs a centroid
-        // because title lng will be taken from centroid
+    const is_selectable = is_feature_selectable(fid, all_handmade_data)
+    const has_title = does_feature_have_title(fid, all_handmade_data)
+
+    if (is_selectable) {
         result[fid] = {
-            centroid: get_centroid(geojson_feature),
-            title_lat: get_title_lat(geojson_feature)
+            centroid: get_centroid(geojson_feature)
+        }
+    }
+
+    if (has_title) {
+        if (!f.title_coords) {
+            result[fid] = {
+                // ! If feature has title but isn't selectable, it still needs a centroid
+                // because title lng will be taken from centroid
+                centroid: get_centroid(geojson_feature),
+                title_lat: get_title_lat(geojson_feature)
+            }
         }
     }
 })
