@@ -3,11 +3,11 @@ import fs from 'fs'
 import {
     is_feature_selectable,
     does_feature_have_title
-} from '../../js/utils/does_feature_have_details.mjs'
+} from '../js/utils/does_feature_have_details.mjs'
 import {
     BORING_BLDGS_POLYGONS_MINZOOM,
     DEFAULT_CITY_MINZOOM
-} from '../../js/layers/constants.mjs'
+} from '../js/layers/constants.mjs'
 import { mkdir_if_needed, parse_args } from './utils.mjs'
 import * as turf from '@turf/turf'
 
