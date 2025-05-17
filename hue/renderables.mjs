@@ -1,5 +1,5 @@
 import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_drawing_layers/city_bulk.mjs";
-import { get_polygon_as_linestring } from "../scripts/get_polygon_as_linestring.mjs";
+import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs";
 import city_bulk_geometry from "./static_data/city_bulk_geometry.mjs";
 
 export const renderables = [

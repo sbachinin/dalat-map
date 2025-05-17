@@ -7,8 +7,14 @@ import {
 import city_bulk_geometry from './static_data/city_bulk_geometry.mjs'
 
 import dead_buildings from "./static_data/dead_buildings.mjs"
-import { get_polygon_as_linestring } from "../scripts/get_polygon_as_linestring.mjs";
 import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_drawing_layers/city_bulk.mjs";
+
+// TODO: importing like this from build/ is a smell
+// It means that frontend imports something that it doesn't need
+// In this case, this import is too small to bother.
+// But in principle, it's a bad design and needs to be improved
+import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs";
+
 
 const get_point_feature = (coords) => {
     return {
