@@ -5,10 +5,14 @@ import {
     does_feature_have_title
 } from '../js/utils/does_feature_have_details.mjs'
 import {
-    BORING_BLDGS_POLYGONS_MINZOOM,
-    DEFAULT_CITY_MINZOOM
+    BORING_BLDGS_POLYGONS_MINZOOM
 } from '../js/common_drawing_layers/constants.mjs'
-import { mkdir_if_needed, parse_args } from './utils.mjs'
+import {
+    calculate_minzoom,
+    is_real_number,
+    mkdir_if_needed,
+    parse_args,
+} from './utils.mjs'
 import * as turf from '@turf/turf'
 
 global.turf = turf
@@ -22,9 +26,9 @@ const exec = (command) => {
 }
 
 
-const { skip_osm_download, city } = parse_args()
+const { skip_osm_download, city: cityname } = parse_args()
 
-const city_root_path = `../${city}`
+const city_root_path = `../${cityname}`
 
 if (!fs.existsSync(city_root_path)) {
     console.warn('no folder for such city: ', city_root_path)
@@ -180,27 +184,26 @@ const clear_feature_props = (feature, tile_layer) => {
 
 
 
-
-
-
+const smallest_possible_minzoom = calculate_minzoom(city_assets.map_bounds, 320, 568)  // Assuming that smallest device (the one that will need the smallest minzoom) is Iphone SE
 
 const all_mbtiles_paths = []
 
-const generate_temp_mbtiles = (tile_layer_name, minzoom, layer_features) => {
+const generate_temp_mbtiles = (tile_layer_name, tile_layer_minzoom, layer_features) => {
 
     const geojson_path = city_root_path + `/temp_data/${tile_layer_name}.geojson`
 
     write(geojson_path, layer_features)
 
-    const temp_tiles_city_path = `${temp_tiles_path}/${city}`
+    const temp_tiles_city_path = `${temp_tiles_path}/${cityname}`
     mkdir_if_needed(temp_tiles_city_path)
 
     const temp_mbtiles_path = `${temp_tiles_city_path}/${tile_layer_name}.mbtiles`
     all_mbtiles_paths.push(temp_mbtiles_path)
-
-    const minz = minzoom
-        || city_assets.minzoom
-        || DEFAULT_CITY_MINZOOM
+    
+    let minz = smallest_possible_minzoom
+    if (tile_layer_minzoom) {
+        minz = Math.max(tile_layer_minzoom, smallest_possible_minzoom)
+    }
 
     exec(`
         tippecanoe -o ${temp_mbtiles_path} \
@@ -222,11 +225,17 @@ const features_from_renderables = city_assets.renderables?.flatMap(r => {
         return { ...f, properties: f.properties || {} }
     })
 
-    generate_temp_mbtiles(
-        r.id,
-        Math.min(...r.style_layers.map(l => l.minzoom)),
-        features
-    )
+    let minzoom = null
+
+    // if any of renderable's style_layers has no minzoom, then tiles must be made from earliest minzoom
+    if (
+        r.style_layers.length > 0 &&
+        r.style_layers.every(l => is_real_number(l.minzoom))
+    ) {
+        minzoom = Math.min(...r.style_layers.map(l => l.minzoom))
+    }
+
+    generate_temp_mbtiles(r.id, minzoom, features)
 
     return features
 }) || []
@@ -280,7 +289,7 @@ city_assets.tile_layers
     })
 
 
-const final_tiles_path = `../cities_tiles/${city}/tiles`
+const final_tiles_path = `../cities_tiles/${cityname}/tiles`
 mkdir_if_needed(final_tiles_path)
 exec(`rm -rf ${final_tiles_path}/*`)
 

@@ -3,7 +3,6 @@ import * as c from "./constants.mjs"
 export const city_bulk_fill = {
     type: 'fill',
     filter: ['==', ['geometry-type'], 'Polygon'],
-    minzoom: 8,
     drawing_importance: 7,
     paint: {
         'fill-color': c.CITY_BULK_FULL_COLOR,
@@ -22,7 +21,6 @@ export const city_bulk_fill = {
 
 export const city_bulk_border = {
     type: 'line',
-    minzoom: 8,
     filter: ['==', ['geometry-type'], 'Polygon'],
     paint: {
         'line-color': [

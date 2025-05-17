@@ -40,3 +40,33 @@ export const maybe_import_default = async path => {
         return null
     }
 }
+
+
+export const is_real_number = (value) => {
+    return typeof value === 'number' && !isNaN(value)
+}
+
+
+export function calculate_minzoom(bounds, screen_width, screen_height) {
+
+    // Calculate the width and height of the bounds in degrees
+    const bounds_width = bounds[2] - bounds[0]
+    const bounds_height = bounds[3] - bounds[1]
+
+    const bounds_asp_ratio = bounds_width / bounds_height
+    const screen_asp_ratio = screen_width / screen_height
+
+    // Determine which dimension is limiting
+    let zoom_factor
+    if (bounds_asp_ratio > screen_asp_ratio) {
+        // Width is the limiting factor
+        zoom_factor = 360 / bounds_width
+    } else {
+        // Height is the limiting factor
+        zoom_factor = 180 / bounds_height
+    }
+
+    const zoom = Math.log2(zoom_factor * screen_width / 256) // 256 px is standard tile size
+
+    return Math.floor(zoom)
+}
