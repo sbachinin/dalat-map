@@ -7,11 +7,13 @@
 */
 
 import fs from 'fs'
-import * as turf from '@turf/turf'
 import { get_title_side } from '../js/utils/isomorphic_utils.mjs'
 import { is_feature_selectable, does_feature_have_title } from '../js/utils/does_feature_have_details.mjs'
 import { mkdir_if_needed, parse_args } from './utils.mjs'
+import { get_centroid } from './get_centroid.mjs'
+import * as turf from '@turf/turf'
 
+global.turf = turf
 
 const result = {}
 
@@ -41,15 +43,6 @@ const get_all_lats = feature => {
 
     return all_lats
 }
-
-const get_centroid = f => {
-    const raw_centroid = turf.centerOfMass(f)
-    return [
-        Number(raw_centroid.geometry.coordinates[0].toFixed(6)),
-        Number(raw_centroid.geometry.coordinates[1].toFixed(6))
-    ]
-}
-
 
 const get_title_lat = (
     f // geojson feature

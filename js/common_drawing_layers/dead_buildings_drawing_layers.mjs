@@ -8,6 +8,7 @@ export const dead_buildings_drawing_layers = [
             "fill-color": FRENCH_DEAD_FILL_COLOR,
             "fill-antialias": true
         },
+        filter: ["==", ["geometry-type"], "Polygon"]
     },
     {
         type: 'symbol',
@@ -20,8 +21,8 @@ export const dead_buildings_drawing_layers = [
                 ['zoom'],
                 12, 0.005,
                 18, 0.05
-            ],
-            'icon-allow-overlap': true
+            ]
         },
+        filter: ['==', ['geometry-type'], 'Point']
     }
 ]

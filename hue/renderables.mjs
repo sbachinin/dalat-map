@@ -2,6 +2,8 @@ import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_
 import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs";
 import city_bulk_geometry from "./static_data/city_bulk_geometry.mjs";
 import { dead_buildings_drawing_layers } from "../js/common_drawing_layers/dead_buildings_drawing_layers.mjs";
+import dead_buildings from "./static_data/dead_buildings.mjs";
+import { get_Point_at_center } from "../build/get_Point_at_center.mjs";
 
 export const renderables = [
 
@@ -16,7 +18,12 @@ export const renderables = [
 
     {
         id: 'Dead_buildings',
-        get_features: () => dead_buildings,
+        get_features: () => {
+            return [
+                ...dead_buildings,
+                ...dead_buildings.map(get_Point_at_center)
+            ]
+        },
         style_layers: dead_buildings_drawing_layers
     },
 ]

@@ -68,7 +68,7 @@ export const all_handmade_data = {
         subtitle: `As of 2020, this school's campus was a remarkably antiquated place, with some trees and a lot of colonial architecture: 2 extensive classroom buildings with an arcade passage connecting them, and a chapel which I think was one of the most beautiful buildings in Hue. Shortly afterwads all colonial structures were demolished, and in 2025 the campus was newly opened with no trace of anything historical.`
     },
 
-    "demolished in front of heritage hotel": {
+    4204853453454355: {
         // there is a good photo
         subtitle: "Demolished in 2017. Interestingly enough, it seems that the motive for demolition was simply cutting the maintenance costs rather than development projects (by 2025 nothing new was built on the site). It was too old for profitable commercial use but had to maintain a polished look in order not to ruin the grand view of the adjacent Hue Heritage hotel - a hopeless arrangement indeed."
     },
