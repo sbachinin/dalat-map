@@ -189,7 +189,7 @@ const smallest_possible_minzoom = calculate_minzoom(city_assets.map_bounds, 320,
 
 const all_mbtiles_paths = []
 
-const generate_temp_mbtiles = (tile_layer_name, tile_layer_minzoom, layer_features) => {
+const generate_temp_mbtiles = (tile_layer_name, layer_features, tile_layer_minzoom) => {
 
     const geojson_path = city_root_path + `/temp_data/${tile_layer_name}.geojson`
 
@@ -236,7 +236,7 @@ const features_from_renderables = city_assets.renderables?.flatMap(r => {
         minzoom = Math.min(...r.style_layers.map(l => l.minzoom))
     }
 
-    generate_temp_mbtiles(r.id, minzoom, features)
+    generate_temp_mbtiles(r.id, features, minzoom)
 
     return features
 }) || []
@@ -286,7 +286,7 @@ city_assets.tile_layers
             // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
             .sort((a, b) => b.id - a.id)
 
-        generate_temp_mbtiles(tile_layer.name, tile_layer.minzoom, layer_features)
+        generate_temp_mbtiles(tile_layer.name, layer_features, tile_layer.minzoom)
     })
 
 
