@@ -81,7 +81,7 @@ export const french_buildings_titles = {
             "text-halo-blur": 0
         },
     },
-    filter: ["==", ["get", "is_french"], true]
+    filter: ["==", ["get", "building:architecture"], 'french_colonial']
 }
 
 

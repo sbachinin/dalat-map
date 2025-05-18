@@ -14,7 +14,6 @@ export const get_titles_points_tiling_settings = (all_handmade_data, lakes_handm
 
             const title_props = {
                 title: all_handmade_data[f.id].title,
-                is_french: f.properties['building:architecture'] === 'french_colonial',
                 title_side: get_title_side(f, all_handmade_data),
                 is_water: !!lakes_handmade_data[f.id],
                 "symbol-sort-key": all_handmade_data[f.id]["symbol-sort-key"]
