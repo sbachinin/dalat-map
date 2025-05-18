@@ -1,4 +1,3 @@
-import { dead_buildings_drawing_layers } from "../js/common_drawing_layers/dead_buildings_drawing_layers.mjs";
 import {
     PALE_TITLES_COLOR,
     PALE_TITLES_SIZE,
@@ -114,7 +113,7 @@ export const renderables = [
             {
                 type: 'symbol',
                 minzoom: 10,
-                maxzoom: 16,
+                maxzoom: 15,
                 layout: {
                     "text-field": "Lac Duong",
                     'text-size': [

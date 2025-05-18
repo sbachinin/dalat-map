@@ -28,7 +28,7 @@ const get_title_final_coords = fid => {
     const hardcoded_coords = all_handmade_data[fid]?.title_coords
     const generated_coords = current_city.centroids_etc[fid]
     if (!hardcoded_coords && !generated_coords) {
-        console.warn(`title coords cannot be found; maybe something is going wrong.
+        console.warn(`title coords cannot be found for feature ${fid}; maybe something is going wrong.
 Could be that some handmade title was added but tiles weren't generated after that.`)
         return
     }

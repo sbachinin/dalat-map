@@ -189,8 +189,12 @@ const smallest_possible_minzoom = calculate_minzoom(city_assets.map_bounds, 320,
 
 const all_mbtiles_paths = []
 
-const generate_temp_mbtiles = (tile_layer_name, layer_features, tile_layer_minzoom) => {
-
+const generate_temp_mbtiles = (
+    tile_layer_name,
+    layer_features,
+    tile_layer_minzoom,
+    tile_layer_maxzoom
+) => {
     const geojson_path = city_root_path + `/temp_data/${tile_layer_name}.geojson`
 
     write(geojson_path, layer_features)
@@ -202,13 +206,17 @@ const generate_temp_mbtiles = (tile_layer_name, layer_features, tile_layer_minzo
     all_mbtiles_paths.push(temp_mbtiles_path)
 
     let minz = smallest_possible_minzoom
-    if (tile_layer_minzoom) {
+    if (is_real_number(tile_layer_minzoom)) {
         minz = Math.max(tile_layer_minzoom, smallest_possible_minzoom)
+    }
+    let maxz = DEFAULT_MAX_ZOOM
+    if (is_real_number(tile_layer_maxzoom)) {
+        maxz = Math.min(tile_layer_maxzoom, DEFAULT_MAX_ZOOM)
     }
 
     exec(`
         tippecanoe -o ${temp_mbtiles_path} \
-        --minimum-zoom=${Math.floor(minz)} --maximum-zoom=${Math.floor(DEFAULT_MAX_ZOOM)} \
+        --minimum-zoom=${Math.floor(minz)} --maximum-zoom=${Math.floor(maxz)} \
         --no-tile-compression -f \
         --drop-rate=1 \
         ${geojson_path}`);
@@ -227,7 +235,6 @@ const features_from_renderables = city_assets.renderables?.flatMap(r => {
     })
 
     let minzoom = null
-
     // if any of renderable's style_layers has no minzoom, then tiles must be made from earliest minzoom
     if (
         r.style_layers.length > 0 &&
@@ -236,7 +243,15 @@ const features_from_renderables = city_assets.renderables?.flatMap(r => {
         minzoom = Math.min(...r.style_layers.map(l => l.minzoom))
     }
 
-    generate_temp_mbtiles(r.id, features, minzoom)
+    let maxzoom = null
+    if (
+        r.style_layers.length > 0 &&
+        r.style_layers.every(l => is_real_number(l.maxzoom))
+    ) {
+        maxzoom = Math.max(...r.style_layers.map(l => l.maxzoom))
+    }
+
+    generate_temp_mbtiles(r.id, features, minzoom, maxzoom)
 
     return features
 }) || []
@@ -286,7 +301,12 @@ city_assets.tile_layers
             // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
             .sort((a, b) => b.id - a.id)
 
-        generate_temp_mbtiles(tile_layer.name, layer_features, tile_layer.minzoom)
+        generate_temp_mbtiles(
+            tile_layer.name,
+            layer_features,
+            tile_layer.minzoom,
+            tile_layer.maxzoom
+        )
     })
 
 
