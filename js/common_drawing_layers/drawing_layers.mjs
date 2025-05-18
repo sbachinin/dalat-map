@@ -21,7 +21,7 @@ import {
     BRIGHT_LAKE_COLOR,
     PALE_LAKE_COLOR
 } from "./constants.mjs";
-import { SOURCES_NAMES } from "../constants.mjs";
+import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 import { deep_merge_objects } from "../utils/utils.mjs";
 
 
@@ -65,7 +65,7 @@ export const french_buildings_titles = {
             ["zoom"],
             14,
             12,
-            17.5,
+            DEFAULT_MAX_ZOOM,
             16
         ],
         'text-font': ['Merriweather Italic']
@@ -299,7 +299,7 @@ export const non_french_titles = {
             ["zoom"],
             FIRST_CLASS_FRENCH_MINZOOM,
             PALE_TITLES_SIZE - 1.5,
-            17.5,
+            DEFAULT_MAX_ZOOM,
             PALE_TITLES_SIZE,
         ],
         'text-font': ['Lato Regular']
@@ -320,7 +320,7 @@ export const non_french_titles = {
                 ["zoom"],
                 FIRST_CLASS_FRENCH_MINZOOM,
                 PALE_TITLES_SIZE - 0.5,
-                17.5,
+                DEFAULT_MAX_ZOOM,
                 PALE_TITLES_SIZE + 0.5,
             ],
         },

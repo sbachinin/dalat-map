@@ -3,3 +3,5 @@ export const SOURCES_NAMES = {
     TITLES_POINTS: 'building_title',
     CITY_TITLE: 'city_title'
 }
+
+export const DEFAULT_MAX_ZOOM = 17.5

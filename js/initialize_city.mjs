@@ -26,6 +26,7 @@ import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './common_drawing_layers/constan
 import { initialize_panel } from './initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './load_city.mjs'
+import { DEFAULT_MAX_ZOOM } from './constants.mjs'
 
 export const initialize_city = async (name) => {
     await load_city(name)
@@ -63,7 +64,7 @@ export const initialize_city = async (name) => {
                 [current_city.map_bounds[2], current_city.map_bounds[3]]
             ],
             antialias: true,
-            maxZoom: 17.5,
+            maxZoom: DEFAULT_MAX_ZOOM,
             fadeDuration: 0,
             pitchWithRotate: false,
             maxPitch: 0

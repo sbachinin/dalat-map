@@ -14,6 +14,7 @@ import {
     parse_args,
 } from './utils.mjs'
 import * as turf from '@turf/turf'
+import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
 
 global.turf = turf
 
@@ -199,7 +200,7 @@ const generate_temp_mbtiles = (tile_layer_name, tile_layer_minzoom, layer_featur
 
     const temp_mbtiles_path = `${temp_tiles_city_path}/${tile_layer_name}.mbtiles`
     all_mbtiles_paths.push(temp_mbtiles_path)
-    
+
     let minz = smallest_possible_minzoom
     if (tile_layer_minzoom) {
         minz = Math.max(tile_layer_minzoom, smallest_possible_minzoom)
@@ -207,7 +208,7 @@ const generate_temp_mbtiles = (tile_layer_name, tile_layer_minzoom, layer_featur
 
     exec(`
         tippecanoe -o ${temp_mbtiles_path} \
-        --minimum-zoom=${Math.floor(minz)} --maximum-zoom=17 \
+        --minimum-zoom=${Math.floor(minz)} --maximum-zoom=${Math.floor(DEFAULT_MAX_ZOOM)} \
         --no-tile-compression -f \
         --drop-rate=1 \
         ${geojson_path}`);
