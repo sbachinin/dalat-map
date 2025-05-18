@@ -1,7 +1,3 @@
-import {
-    all_handmade_data,
-    lakes_handmade_data
-} from '../dalat/static_data/handmade_data.mjs'
 import { is_french_building } from './utils/isomorphic_utils.mjs'
 import { get_title_side } from './utils/isomorphic_utils.mjs'
 import { get_geojson_source } from './utils/utils.mjs'
@@ -9,14 +5,14 @@ import { current_city } from './load_city.mjs'
 import { SOURCES_NAMES } from './constants.mjs'
 
 const get_titles_props = fid => {
-    const fdata = all_handmade_data[fid]
+    const fdata = current_city.all_handmade_data[fid]
     if (!fdata) return {}
 
     return {
         title: fdata.title,
         is_french: is_french_building(fid),
-        title_side: get_title_side(fid, all_handmade_data),
-        is_water: !!lakes_handmade_data[fid],
+        title_side: get_title_side(fid, current_city.all_handmade_data),
+        is_water: (console.warn('NEED TO DEFINE is_water')), // !!lakes_handmade_data[fid],
         "symbol-sort-key": fdata["symbol-sort-key"]
     }
 }
@@ -25,7 +21,7 @@ const get_title_final_coords = fid => {
     // either hardcoded coords
     // or coords just below the feature's polygon.
     // It's for plain high-zoom titles, not for tiny_squares
-    const hardcoded_coords = all_handmade_data[fid]?.title_coords
+    const hardcoded_coords = current_city.all_handmade_data[fid]?.title_coords
     const generated_coords = current_city.centroids_etc[fid]
     if (!hardcoded_coords && !generated_coords) {
         console.warn(`title coords cannot be found for feature ${fid}; maybe something is going wrong.
@@ -41,8 +37,8 @@ const get_titles_points = () => ({
     type: 'geojson',
     data: {
         "type": "FeatureCollection",
-        "features": Object.keys(all_handmade_data)
-            .filter(id => Boolean(all_handmade_data[id].title))
+        "features": Object.keys(current_city.all_handmade_data)
+            .filter(id => Boolean(current_city.all_handmade_data[id].title))
             .map(Number)
             .map(fid => {
                 return {
