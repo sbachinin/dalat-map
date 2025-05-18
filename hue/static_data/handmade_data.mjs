@@ -1,4 +1,4 @@
-export const all_handmade_data = {
+export const buildings_handmade_data = {
     "1377444109": { // Hue Industrial College main ancient bldg
         year: '1924'
     },
@@ -122,7 +122,15 @@ export const all_handmade_data = {
         year: 1903
     }
 
-
 }
 
 
+export const lakes_handmade_data = {
+    
+}
+
+
+export const all_handmade_data = {
+    ...buildings_handmade_data,
+    ...lakes_handmade_data
+}

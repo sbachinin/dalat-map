@@ -298,6 +298,7 @@ city_assets.tile_layers
                 return f
             })
             .map(f => clear_feature_props(f, tile_layer))
+            .map(tile_layer.feature_transform || (f => f))
             // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
             .sort((a, b) => b.id - a.id)
 

@@ -1689,7 +1689,7 @@ export const bldgs_handmade_data = {
         title: "Hermann\nGmeiner\nschool",
     },
     "777438312": {
-        "subtitle": `A "ghost" of a French villa. From what I understand, this building was newly erected several years ago, replicating a rather colorful colonial villa that once stood in the same place. Now it's part of the Mercure hotel, which consists of about a dozen uniform grey buildings meant to evoke French architecture. It's hard to say how many of them are based on actual colonial prototypes, but I’d guess very few`,
+        "subtitle": `A ghost of a French villa. From what I understand, this building was newly erected several years ago, replicating a rather colorful colonial villa that once stood in the same place. Now it's part of the Mercure hotel, which consists of about a dozen uniform grey buildings meant to evoke French architecture. It's hard to say how many of them are based on actual colonial prototypes, but I’d guess very few`,
         "images": [
             "IMG_4783~2.jpg"
         ]

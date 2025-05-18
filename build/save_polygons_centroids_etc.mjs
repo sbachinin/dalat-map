@@ -7,11 +7,14 @@
 */
 
 import fs from 'fs'
-import { get_title_side } from '../js/utils/isomorphic_utils.mjs'
-import { is_feature_selectable, does_feature_have_title } from '../js/utils/does_feature_have_details.mjs'
+import { is_feature_selectable } from '../js/utils/does_feature_have_details.mjs'
 import { mkdir_if_needed, parse_args } from './utils.mjs'
 import { get_centroid } from './get_centroid.mjs'
 import * as turf from '@turf/turf'
+
+// TODO
+// Currently this is just centroids, not centroids_etc, so rename is desirable
+// Also, returned items could be just centroids ([]), not objects. But not a big deal
 
 global.turf = turf
 
@@ -24,47 +27,6 @@ const all_geojson_features = JSON.parse(
     fs.readFileSync(city_root_path + '/temp_data/all_geojson_features_with_renderables.geojson', 'utf8')
 )
 
-const get_all_lats = feature => {
-    if (!feature?.geometry?.coordinates) {
-        throw new Error("Invalid GeoJSON feature")
-    }
-
-    const { type, coordinates } = feature.geometry
-
-    let all_lats = []
-
-    if (type === "Polygon") {
-        all_lats = coordinates[0].map(coord => coord[1])
-    } else if (type === "MultiPolygon") {
-        all_lats = coordinates.flat(2).map(coord => coord[1])
-    } else {
-        throw new Error("Geometry type must be Polygon or MultiPolygon")
-    }
-
-    return all_lats
-}
-
-const get_title_lat = (
-    f // geojson feature
-) => {
-    if (f.title_coords) {
-        return // title_coords will be taken at runtime, don't generate title lat
-    }
-
-    const title_side = get_title_side(f.id, all_handmade_data)
-    if (title_side === null) {
-        console.warn('Invalid title_side for feature', f.id)
-        process.exit(1)
-    }
-
-    if (title_side === 'south') {
-        return Math.min(...get_all_lats(f))
-    } else if (title_side === 'north') {
-        return Math.max(...get_all_lats(f))
-    } else if (title_side === 'center') {
-        return get_centroid(f)[1]
-    }
-}
 
 Object.entries(all_handmade_data).forEach(([fid, f]) => {
     const geojson_feature = all_geojson_features.find(f => String(f.id) === String(fid))
@@ -72,23 +34,9 @@ Object.entries(all_handmade_data).forEach(([fid, f]) => {
         console.warn('No geojson feature for this handmade id: ', fid)
         return
     }
-    const is_selectable = is_feature_selectable(fid, all_handmade_data)
-    const has_title = does_feature_have_title(fid, all_handmade_data)
-
-    if (is_selectable) {
+    if (is_feature_selectable(fid, all_handmade_data)) {
         result[fid] = {
             centroid: get_centroid(geojson_feature)
-        }
-    }
-
-    if (has_title) {
-        if (!f.title_coords) {
-            result[fid] = {
-                // ! If feature has title but isn't selectable, it still needs a centroid
-                // because title lng will be taken from centroid
-                centroid: get_centroid(geojson_feature),
-                title_lat: get_title_lat(geojson_feature)
-            }
         }
     }
 })

@@ -1,9 +1,10 @@
-import { land_areas_handmade_data as dalat_land_areas_handmade_data } from "./static_data/handmade_data.mjs";
+import { all_handmade_data, land_areas_handmade_data as dalat_land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs";
 import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { is_one_of } from "../js/utils/isomorphic_utils.mjs";
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf";
 import { renderables } from './renderables.mjs'
+import { get_titles_points_tiling_settings } from "../build/common_tiling_settings.mjs";
 
 const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk", "motorway"]
 
@@ -99,6 +100,9 @@ export const all_assets = {
                 }
             ]
         },
+
+        get_titles_points_tiling_settings(all_handmade_data, lakes_handmade_data),
+
     ],
     renderables
 }

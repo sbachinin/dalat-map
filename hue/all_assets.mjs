@@ -4,6 +4,8 @@ import { map_bounds } from './isomorphic_assets.mjs'
 import { all_assets as dalat_assets } from '../dalat/all_assets.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
 import { renderables } from './renderables.mjs'
+import { all_handmade_data, lakes_handmade_data } from './static_data/handmade_data.mjs'
+import { get_titles_points_tiling_settings } from '../build/common_tiling_settings.mjs'
 
 const dalat_layers_to_use_in_hue = [
     'major_roads',
@@ -120,8 +122,10 @@ export const all_assets = {
                 name: 'railway',
                 feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
                 feature_props_to_preserve: ['railway', 'name:en']
-            }
+            },
 
+            get_titles_points_tiling_settings(all_handmade_data, lakes_handmade_data),
+            
         ]),
-        renderables
+    renderables
 }

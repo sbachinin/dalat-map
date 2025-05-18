@@ -56,7 +56,8 @@ export const titles_common_layout_props = {
 export const french_buildings_titles = {
     "name": "French buildings titles",
     "type": "symbol",
-    source: SOURCES_NAMES.TITLES_POINTS,
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'titles_points',
     layout: {
         ...titles_common_layout_props,
         'text-size': [
@@ -290,7 +291,8 @@ export const towns_fill = {
 export const non_french_titles = {
     name: "Non french titles",
     "type": "symbol",
-    "source": SOURCES_NAMES.TITLES_POINTS,
+    "source": SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'titles_points',
     layout: {
         ...titles_common_layout_props,
         'text-size': [
