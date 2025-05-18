@@ -14,18 +14,8 @@ import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_
 // But in principle, it's a bad design and needs to be improved
 import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs";
 import { get_dead_buildings_renderable } from "../js/common_renderables.mjs";
+import { get_point_feature } from "../js/utils/isomorphic_utils.mjs";
 
-
-const get_point_feature = (coords) => {
-    return {
-        type: 'Feature',
-        geometry: {
-            type: 'Point',
-            coordinates: coords
-        },
-        properties: {}
-    }
-}
 
 export const renderables = [
     {

@@ -1,6 +1,6 @@
 import { SOURCES_NAMES } from "../js/constants.mjs";
 
-const CITY_WALL_COLOR = 'hsl(45, 85%, 0%)'
+export const CITY_WALL_COLOR = 'hsl(45, 85%, 0%)'
 
 export const city_walls_fill = {
     name: 'City walls fill',
