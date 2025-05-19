@@ -277,30 +277,37 @@ write(
 city_assets.tile_layers
     .concat(general_tile_layers)
     .forEach(tile_layer => {
-        if (!tile_layer.feature_filter) throw new Error('feature_filter not defined for tile_layer ' + tile_layer.name)
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
 
-        const layer_features = all_geojson.features
-            .filter(tile_layer.feature_filter)
-            .map(f => {
-                tile_layer.added_props?.forEach(prop => {
-                    if (f.properties[prop] !== undefined) {
-                        throw new Error(`trying to add extra prop ${prop} to ${f.id} but feature already has it`)
-                    }
-                    if (prop === 'is_selectable') {
-                        f.properties[prop] = is_feature_selectable(f.id, hmdata)
-                    } else if (prop === 'has_title') {
-                        f.properties[prop] = does_feature_have_title(f.id, hmdata)
-                    } else if (prop.name && prop.get_value) {
-                        f.properties[prop.name] = prop.get_value(f)
-                    }
+        let layer_features = null
+        if (tile_layer.get_features) {
+            layer_features = tile_layer.get_features(all_geojson.features)
+        } else if (tile_layer.feature_filter) {
+            layer_features = all_geojson.features
+                .filter(tile_layer.feature_filter)
+                .map(f => {
+                    tile_layer.added_props?.forEach(prop => {
+                        if (f.properties[prop] !== undefined) {
+                            throw new Error(`trying to add extra prop ${prop} to ${f.id} but feature already has it`)
+                        }
+                        if (prop === 'is_selectable') {
+                            f.properties[prop] = is_feature_selectable(f.id, hmdata)
+                        } else if (prop === 'has_title') {
+                            f.properties[prop] = does_feature_have_title(f.id, hmdata)
+                        } else if (prop.name && prop.get_value) {
+                            f.properties[prop.name] = prop.get_value(f)
+                        }
+                    })
+                    return f
                 })
-                return f
-            })
-            .map(f => clear_feature_props(f, tile_layer))
-            .map(tile_layer.feature_transform || (f => f))
-            // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
-            .sort((a, b) => b.id - a.id)
+                .map(f => clear_feature_props(f, tile_layer))
+                .map(tile_layer.feature_transform || (f => f))
+                // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
+                .sort((a, b) => b.id - a.id)
+
+        } else {
+            throw new Error('tile_layer must have either get_features or feature_filter defined, tile_layer name: ' + tile_layer.name)
+        }
 
         generate_temp_mbtiles(
             tile_layer.name,

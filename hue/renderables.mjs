@@ -186,18 +186,10 @@ export const renderables = [
         }],
         style_layers: [
             {
-                type: 'fill',
+                type: 'line',
                 paint: {
-                    'fill-color': 'purple',
-                    'fill-opacity': [
-                        "interpolate",
-                        ["linear"],
-                        ["zoom"],
-                        12.5,
-                        0.1,
-                        15,
-                        0.02
-                    ]
+                    'line-color': 'purple',
+                    'line-opacity': 0.3
                 },
                 drawing_importance: 8
             }

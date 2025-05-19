@@ -6,6 +6,8 @@ import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
 import { renderables } from './renderables.mjs'
 import { all_handmade_data, lakes_handmade_data, land_areas_handmade_data } from './static_data/handmade_data.mjs'
 import { get_titles_points_tiling_settings } from '../build/common_tiling_settings.mjs'
+import { unesco_sites_polygons } from './static_data/unesco_sites_polygons.mjs'
+import imperial_city_border from './static_data/imperial_city_border.mjs'
 
 const dalat_layers_to_use_in_hue = [
     'major_roads',
@@ -146,6 +148,11 @@ export const all_assets = {
                     // }
                 ]
             },
+
+            {
+                name: 'unesco_areas',
+                get_features: () => unesco_sites_polygons.concat(imperial_city_border)
+            }
 
         ]),
     renderables

@@ -33,3 +33,25 @@ export const city_walls_thickening_outline = {
         'line-opacity': 0.65
     }
 }
+
+
+
+export const unesco_areas_fill = {
+    name: 'UNESCO areas fill',
+    type: 'fill',
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'unesco_areas',
+    paint: {
+        'fill-color': 'yellow',
+        'fill-antialias': true,
+        'fill-opacity': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            10,
+            0.3,
+            15,
+            0.1
+        ]
+    },
+}
