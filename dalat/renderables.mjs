@@ -15,7 +15,7 @@ import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_
 import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs";
 import { get_dead_buildings_renderable } from "../js/common_renderables.mjs";
 import { get_point_feature } from "../js/utils/isomorphic_utils.mjs";
-
+import { get_midPoint_feature_with_text_rotate } from '../build/get_midPoint_feature_with_text_rotate.mjs'
 
 export const renderables = [
     {
@@ -25,20 +25,7 @@ export const renderables = [
             const cable_car_stations = all_features.filter(f => f.properties.aerialway === 'station')
             const coords1 = cable_car_stations[0].geometry.coordinates
             const coords2 = cable_car_stations[1].geometry.coordinates
-
-            const midpoint_feat = turf.midpoint(coords1, coords2)
-
-            // Calculate the angle between the two points for text rotation
-            const angle_rad = Math.atan2(
-                coords2[1] - coords1[1],
-                coords2[0] - coords1[0]
-            )
-
-            const angle_deg = (angle_rad * 180) / Math.PI
-
-            midpoint_feat.properties.text_rotate = -angle_deg
-
-            return [midpoint_feat]
+            return [get_midPoint_feature_with_text_rotate(coords1, coords2)]
         },
         style_layers: [
             {
@@ -172,7 +159,7 @@ export const renderables = [
 
 
     get_dead_buildings_renderable(dead_buildings),
-    
+
 
     {
         id: 'City_bulk',
