@@ -23,6 +23,7 @@ export const get_title_renderable = (
     font,
     color,
     size,
+    text_anchor = 'center'
 ) => {
     const layer = {
         id: `${text.replace(/\s/g, '_').replace(/\n/g, '_')}_title_${hash_coordinates(coords)}`,
@@ -47,6 +48,8 @@ export const get_title_renderable = (
                     'text-size': size,
                     'text-font': [font],
                     'text-rotate': ["get", "text_rotate"],
+                    'text-anchor': text_anchor,
+                    'text-offset': text_anchor === 'bottom' ? [0, -0.1] : [0, 0],
                 },
                 paint: {
                     'text-color': color

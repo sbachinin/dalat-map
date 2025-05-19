@@ -97,14 +97,14 @@ export const renderables = [
     get_title_renderable(
         'Perfume River',
         [
-          [
-            107.54521734741724,
-            16.432900119720784
-          ],
-          [
-            107.5553730971231,
-            16.429910646715683
-          ]
+            [
+                107.54521734741724,
+                16.432900119720784
+            ],
+            [
+                107.5553730971231,
+                16.429910646715683
+            ]
         ],
         [12.5, 14.5],
         'Merriweather Italic',
@@ -128,6 +128,44 @@ export const renderables = [
         'Merriweather Italic',
         WATER_TITLE_COLOR,
         interpolate(13.3, 14, 15, 24),
+    ),
+
+    get_title_renderable(
+        'National Route 1',
+        [
+            [
+                107.61354782800203,
+                16.38494438712938
+            ],
+            [
+                107.6355722997892,
+                16.37537349744889
+            ]
+        ],
+        [11, 15],
+        'Lato Regular',
+        WATER_TITLE_COLOR,
+        interpolate(11, 11, 15, 24),
+        'bottom'
+    ),
+
+    get_title_renderable(
+        'National Route 1',
+        [
+            [
+                107.49568433463094,
+                16.465863271273292
+            ],
+            [
+                107.51121018347351,
+                16.453803863303833
+            ]
+        ],
+        [11, 15],
+        'Lato Regular',
+        WATER_TITLE_COLOR,
+        interpolate(11, 11, 15, 24),
+        'bottom'
     ),
 
     {
