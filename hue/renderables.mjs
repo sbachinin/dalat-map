@@ -96,22 +96,38 @@ export const renderables = [
 
     get_title_renderable(
         'Perfume River',
-        [107.5455278, 16.4327962],
+        [
+          [
+            107.54521734741724,
+            16.432900119720784
+          ],
+          [
+            107.5553730971231,
+            16.429910646715683
+          ]
+        ],
         [12.5, 14.5],
         'Merriweather Italic',
         WATER_TITLE_COLOR,
         interpolate(12.5, 14, 14.5, 24),
-        15
     ),
 
     get_title_renderable(
         'Perfume River',
-        [107.580572895, 16.462598832],
+        [
+            [
+                107.5770416027525,
+                16.461016065145458
+            ],
+            [
+                107.58288908810675,
+                16.463671073732726
+            ]
+        ],
         [13.3, 15],
         'Merriweather Italic',
         WATER_TITLE_COLOR,
         interpolate(13.3, 14, 15, 24),
-        -24
     ),
 
     {

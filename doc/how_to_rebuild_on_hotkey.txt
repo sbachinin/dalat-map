@@ -4,3 +4,6 @@ Run vscode command "Configure task", choose the right build script
 tasks.json will be opened with a new object added for a script
 copy label (e.g. "npm: build_hue")
 Run vscode command "Open keyboard shortcuts (JSON)", modify the ctrl_alt_r shotcut label to the required one
+
+Currently, having both "build_hue" and "build_dalat" scripts + tasks configured,
+to switch between Hue and Dalat I need to change the name in keybindings.json
