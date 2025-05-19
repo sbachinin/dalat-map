@@ -1,3 +1,5 @@
+import { AREA_TYPES } from "../../js/common_drawing_layers/constants.mjs"
+
 export const buildings_handmade_data = {
     "1377444109": { // Hue Industrial College main ancient bldg
         year: '1924'
@@ -129,8 +131,16 @@ export const lakes_handmade_data = {
     
 }
 
+export const land_areas_handmade_data = {
+    217466613: {
+        title: 'Phu Bai\nInternational\nAirport',
+        area_type: AREA_TYPES.AIRPORT
+    }
+}
+
 
 export const all_handmade_data = {
     ...buildings_handmade_data,
-    ...lakes_handmade_data
+    ...lakes_handmade_data,
+    ...land_areas_handmade_data
 }

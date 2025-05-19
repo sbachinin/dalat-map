@@ -83,7 +83,6 @@ export const all_assets = {
                 if (f.id === 1307493492) return false // not ana mandara
                 return dalat_land_areas_handmade_data.hasOwnProperty(f.id.toString())
             },
-            feature_props_to_preserve: ['landuse'],
             added_props: [
                 {
                     name: 'area_type',

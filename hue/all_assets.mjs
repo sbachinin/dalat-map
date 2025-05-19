@@ -4,7 +4,7 @@ import { map_bounds } from './isomorphic_assets.mjs'
 import { all_assets as dalat_assets } from '../dalat/all_assets.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
 import { renderables } from './renderables.mjs'
-import { all_handmade_data, lakes_handmade_data } from './static_data/handmade_data.mjs'
+import { all_handmade_data, lakes_handmade_data, land_areas_handmade_data } from './static_data/handmade_data.mjs'
 import { get_titles_points_tiling_settings } from '../build/common_tiling_settings.mjs'
 
 const dalat_layers_to_use_in_hue = [
@@ -125,7 +125,28 @@ export const all_assets = {
             },
 
             get_titles_points_tiling_settings(all_handmade_data, lakes_handmade_data),
-            
+
+            {
+                name: 'land_areas',
+                feature_filter: f => {
+                    return land_areas_handmade_data.hasOwnProperty(f.id.toString())
+                },
+                added_props: [
+                    {
+                        name: 'area_type',
+                        get_value: f => {
+                            return land_areas_handmade_data[f.id.toString()]?.area_type || null
+                        }
+                    },
+                    // {
+                    //     name: 'is_small_area',
+                    //     get_value: f => {
+                    //         return area(f.geometry) < 80000
+                    //     }
+                    // }
+                ]
+            },
+
         ]),
     renderables
 }

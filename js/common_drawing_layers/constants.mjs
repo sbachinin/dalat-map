@@ -32,6 +32,7 @@ export const GRASS_COLOR = 'hsl(70, 50%, 70%)'
 export const INSTITUTION_FILL_COLOR = 'hsl(164, 20.30%, 85.00%)'
 export const CEMETERY_FILL_COLOR = 'hsl(0, 0.00%, 88.20%)'
 export const SQUARE_FILL_COLOR = 'hsl(308, 69.10%, 92.90%)'
+export const AIRPORT_FILL_COLOR = 'hsl(240, 100%, 92%)'
 export const RAILWAY_LINE_COLOR = "hsl(14, 54%, 60%)"
 
 
@@ -50,6 +51,7 @@ export const AREA_TYPES = {
     CEMETERY: 'cemetery',
     SQUARE: 'square',
     TOWN: 'town',
+    AIRPORT: 'airport'
 }
 
 export const MINIMAL_ZOOM_ON_BUILDING_SELECT = 15.5

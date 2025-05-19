@@ -19,7 +19,8 @@ import {
     FRENCH_SELECTED_TITLE_HALO_COLOR,
     SELECTED_BORING_BLDG_TEXT_COLOR,
     BRIGHT_LAKE_COLOR,
-    PALE_LAKE_COLOR
+    PALE_LAKE_COLOR,
+    AIRPORT_FILL_COLOR
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 import { deep_merge_objects } from "../utils/utils.mjs";
@@ -266,6 +267,8 @@ export const land_areas_fill = {
             CEMETERY_FILL_COLOR,
             ["==", ["get", "area_type"], AREA_TYPES.SQUARE],
             SQUARE_FILL_COLOR,
+            ["==", ["get", "area_type"], AREA_TYPES.AIRPORT],
+            AIRPORT_FILL_COLOR,
             GRASS_COLOR
         ],
         'fill-antialias': true,
