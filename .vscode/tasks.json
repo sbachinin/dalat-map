@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build_hue",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build_hue",
+			"detail": "cd build && node ./build_city.mjs city=hue skip_osm_download"
+		},
+		{
+			"type": "npm",
+			"script": "build_dalat",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build_dalat",
+			"detail": "cd build && node ./build_city.mjs city=dalat skip_osm_download"
+		}
+	]
+}

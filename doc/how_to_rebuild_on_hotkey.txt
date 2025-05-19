@@ -1,0 +1,6 @@
+how to rebuild city on hotkey
+Add to package.json a script like "build_hue"
+Run vscode command "Configure task", choose the right build script
+tasks.json will be opened with a new object added for a script
+copy label (e.g. "npm: build_hue")
+Run vscode command "Open keyboard shortcuts (JSON)", modify the ctrl_alt_r shotcut label to the required one
