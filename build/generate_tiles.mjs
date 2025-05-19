@@ -215,7 +215,7 @@ const generate_temp_mbtiles = (
     }
 
     exec(`
-        tippecanoe -o ${temp_mbtiles_path} \
+        tippecanoe --quiet -o ${temp_mbtiles_path} \
         --minimum-zoom=${Math.floor(minz)} --maximum-zoom=${Math.floor(maxz)} \
         --no-tile-compression -f \
         --drop-rate=1 \

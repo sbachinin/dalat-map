@@ -1,7 +1,7 @@
 export default {
     "type": "Feature",
     "hint": "Imperial city wall",
-    "id": "3982746384109384",
+    "id": 3982746384109384,
     "properties": {},
     "geometry": {
         "coordinates": [

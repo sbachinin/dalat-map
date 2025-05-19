@@ -1,5 +1,20 @@
 import { get_point_feature } from "./isomorphic_utils.mjs"
 
+const hash_coordinates = coords => {
+    // this works for arrays of varying depth
+    // so it will hash both points and linestrings and polygons and hopefully multipolygons
+    // For now it's an overkill because titles are always points
+    // But just to avoid confusion later....
+    const flat = JSON.stringify(coords)
+    let hash = 0
+    for (let i = 0; i < flat.length; i++) {
+        const char = flat.charCodeAt(i)
+        hash = ((hash << 5) - hash) + char
+        hash |= 0 // Convert to 32-bit int
+    }
+    return hash >>> 0 // Unsigned
+}
+
 export const get_title_renderable = (
     text,
     coords,
@@ -10,7 +25,7 @@ export const get_title_renderable = (
     rotate = 0
 ) => {
     const layer = {
-        id: `${text.replace(/\s/g, '_').replace(/\n/g, '_')}_title_${String(coords[0]).replace('.', '_')}_${String(coords[1]).replace('.', '_')}`,
+        id: `${text.replace(/\s/g, '_').replace(/\n/g, '_')}_title_${hash_coordinates(coords)}`,
         get_features: () => ([
             get_point_feature(coords)
         ]),
@@ -26,6 +41,7 @@ export const get_title_renderable = (
                 paint: {
                     'text-color': color
                 },
+                drawing_importance: 0,
             }
         ]
     }

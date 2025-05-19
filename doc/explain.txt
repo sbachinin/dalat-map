@@ -1,3 +1,17 @@
+Why I decide against rendering text along linestrings (with curves, like for rivers)
+	Because it's behaving wildly,
+	Disappearing at various zoom levels, and it's impossible to control
+	This is not the case when symbol (text) is drawn for a point.
+	Behaviour of linestring is perhaps due to insufficient space,
+		and this space is perhaps defined per-tile,
+		and so the space is limited not by the whole linestring
+			but by its portion in a certain tile.
+			Very annoying
+
+
+
+
+
 Features come from:
 	OSM
 	/static_data:
