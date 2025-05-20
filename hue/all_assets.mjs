@@ -151,7 +151,14 @@ export const all_assets = {
 
             {
                 name: 'unesco_areas',
-                get_features: () => unesco_sites_polygons.concat(imperial_city_border)
+                get_features: all_features => unesco_sites_polygons
+                    .concat(imperial_city_border)
+                    .concat(all_features.filter(f => is_one_of(Number(f.id), [
+                        174758160,
+                        136815463,
+                        136815456,
+                        1346839222
+                    ])))
             }
 
         ]),

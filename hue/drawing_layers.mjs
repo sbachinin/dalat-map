@@ -55,3 +55,15 @@ export const unesco_areas_fill = {
         ]
     },
 }
+
+export const unesco_areas_border = {
+    name: 'UNESCO areas border',
+    type: 'line',
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'unesco_areas',
+    paint: {
+        'line-color': 'yellow',
+        'line-width': 1,
+        'line-opacity': 0.65
+    }
+}

@@ -24,7 +24,12 @@ const files = [
         name: 'generated_for_runtime/centroids_etc.mjs',
         propname: 'centroids_etc',
         extractor: d => d.centroids_etc,
-    }
+    },
+    {
+        name: 'constants.mjs',
+        propname: 'constants',
+        extractor: d => d.constants,
+    },
 ]
 export const load_city = async (name) => {
 

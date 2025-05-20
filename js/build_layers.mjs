@@ -4,6 +4,22 @@ import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
 import { current_city } from "./load_city.mjs"
 import { SOURCES_NAMES } from "./constants.mjs"
 
+const inject_city_constants = (input /* style_layer or any of its values */) => {
+    if (Array.isArray(input)) {
+        return input.map(item => inject_city_constants(item))
+    } else if (typeof input === 'object' && input !== null) {
+        for (const key in input) {
+            input[key] = inject_city_constants(input[key])
+        }
+        return input
+    } else if (typeof input === 'string' && input.startsWith('$$_')) {
+        const key = input.slice(3)
+        return current_city.constants[key]
+    } else {
+        return input
+    }
+}
+
 const merge_zoom_order = (zo1, zo2) => { // common + city-specific zoom_order    
     /* 
         For each "zoom group" (array of "zoom layers"),
@@ -91,4 +107,5 @@ export const build_layers = () => {
         })
 
     return [...main_layers, ...selected_layers]
+        .map(inject_city_constants)
 }

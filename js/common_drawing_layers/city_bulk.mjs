@@ -13,7 +13,7 @@ export const city_bulk_fill = {
             ["zoom"],
             c.CITY_BULK_FULL_OPACITY_MAXZOOM,
             1,
-            c.CITY_BULK_DISAPPEARANCE_ZOOM,
+            '$$_CITY_BULK_DISAPPEARANCE_ZOOM',
             0
         ]
     },
@@ -29,7 +29,7 @@ export const city_bulk_border = {
             ["zoom"],
             c.CITY_BULK_FULL_OPACITY_MAXZOOM,
             'black',
-            c.CITY_BULK_DISAPPEARANCE_ZOOM,
+            '$$_CITY_BULK_DISAPPEARANCE_ZOOM',
             'hsl(259, 25%, 50%)'
         ],
         'line-width': [
@@ -47,9 +47,7 @@ export const city_bulk_border = {
             ["zoom"],
             c.CITY_BULK_FULL_OPACITY_MAXZOOM,
             1,
-            c.CITY_BULK_DISAPPEARANCE_ZOOM + 1,
-            0.35,
-            c.CITY_BULK_DISAPPEARANCE_ZOOM + 2,
+            14.8,
             0.2
         ]
     }
