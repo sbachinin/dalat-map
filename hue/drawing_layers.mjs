@@ -1,4 +1,6 @@
 import { SOURCES_NAMES } from "../js/constants.mjs";
+import { interpolate } from "../js/utils/isomorphic_utils.mjs";
+import { constants as c } from "./constants.mjs";
 
 export const CITY_WALL_COLOR = 'hsl(45, 85%, 0%)'
 
@@ -42,7 +44,7 @@ export const unesco_areas_fill = {
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
     paint: {
-        'fill-color': 'yellow',
+        'fill-color': 'hsl(60, 81.82%, 43.14%)',
         'fill-antialias': true,
         'fill-opacity': [
             "interpolate",
@@ -62,8 +64,8 @@ export const unesco_areas_border = {
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
     paint: {
-        'line-color': 'yellow',
+        'line-color': 'hsl(60, 81.82%, 43.14%)',
         'line-width': 1,
-        'line-opacity': 0.65
+        'line-opacity': interpolate(c.CITY_BULK_DISAPPEARANCE_ZOOM, 0.65, 15, 0)
     }
 }

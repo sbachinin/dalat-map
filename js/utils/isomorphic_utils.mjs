@@ -10,3 +10,14 @@ export const get_point_feature = (coords) => {
         properties: {}
     }
 }
+
+
+export const interpolate = (z1, v1, z2, v2) => {
+    return [
+        "interpolate",
+        ["linear"],
+        ["zoom"],
+        z1, v1,
+        z2, v2
+    ]
+}

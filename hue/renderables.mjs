@@ -7,16 +7,7 @@ import { PALE_TITLES_COLOR, WATER_TITLE_COLOR } from "../js/common_drawing_layer
 import { get_title_renderable } from "../js/utils/get_title_renderable.mjs";
 import imperial_city_border from "./static_data/imperial_city_border.mjs";
 import { CITY_WALL_COLOR } from "./drawing_layers.mjs";
-
-const interpolate = (z1, v1, z2, v2) => {
-    return [
-        "interpolate",
-        ["linear"],
-        ["zoom"],
-        z1, v1,
-        z2, v2
-    ]
-}
+import { interpolate } from "../js/utils/isomorphic_utils.mjs";
 
 export const renderables = [
     {
