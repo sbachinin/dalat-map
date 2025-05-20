@@ -69,3 +69,16 @@ export const unesco_areas_border = {
         'line-opacity': interpolate(c.CITY_BULK_DISAPPEARANCE_ZOOM, 0.65, 15, 0)
     }
 }
+
+
+
+export const non_french_bldgs_within_imperial_city_fill = {
+    "name": "Non french bldgs within imperial city fill",
+    "type": "fill",
+    "source": SOURCES_NAMES.CITY_TILES,
+    "source-layer": "non_french_bldgs_within_imperial_city",
+    "paint": {
+        "fill-color": 'hsl(60, 20.82%, 63.14%)',
+        "fill-opacity": interpolate(14, 0.5, 15, 1)
+    }
+}

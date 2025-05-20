@@ -1,4 +1,5 @@
 import booleanWithin from '@turf/boolean-within'
+import booleanIntersects from '@turf/boolean-intersects'
 import area from '@turf/area'
 import { map_bounds } from './isomorphic_assets.mjs'
 import { all_assets as dalat_assets } from '../dalat/all_assets.mjs'
@@ -17,16 +18,38 @@ const dalat_layers_to_use_in_hue = [
 
 const hue_bulk_polygon = (await import('../hue/static_data/city_bulk_geometry.mjs')).default
 
+const is_within_imperial_or_intersects = f => {
+    let result = false
+    try {
+        // these turf fns tend to throw plenty of exceptions that are difficult to handle
+        result = booleanWithin(f, imperial_city_border)
+            || booleanIntersects(f, imperial_city_border)
+    } catch (e) { }
+    // So, if a building is within imperial but turf fails, building will be treated is outside imperial.
+    // Slippery stuff. I only hope it will not fail on healthy buildings
+    return result
+}
+
 export const all_assets = {
     map_bounds,
     html_title: 'Map of colonial architecture in Hue',
-    unimportant_buildings_filter: feat => {
-        return feat.properties['building:architecture'] !== 'french_colonial'
+    unimportant_buildings_filter: f => {
+        return f.properties['building:architecture'] !== 'french_colonial'
+            && !is_within_imperial_or_intersects(f)
     },
 
     tile_layers: dalat_assets.tile_layers
         .filter(tl => is_one_of(tl.name, dalat_layers_to_use_in_hue))
         .concat([
+            {
+                name: 'non_french_bldgs_within_imperial_city',
+                feature_filter: f => {
+                    return f.properties.building
+                        && f.geometry.type !== 'Point'
+                        && f.properties['building:architecture'] !== 'french_colonial'
+                        && is_within_imperial_or_intersects(f)
+                }
+            },
             {
                 name: 'water_areas',
                 feature_filter: f => {
