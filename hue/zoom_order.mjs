@@ -1,4 +1,4 @@
-import { french_bldg_circle, land_areas_fill, railway_line, water_areas_fill } from "../js/common_drawing_layers/drawing_layers.mjs";
+import { french_bldg_circle, french_buildings_titles, land_areas_fill, railway_line, water_areas_fill } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { city_walls_fill, city_walls_thickening_outline, unesco_areas_border, unesco_areas_fill } from "./drawing_layers.mjs";
@@ -72,6 +72,9 @@ export const zoom_order = {
             filter: ["==", ["get", "is_small_lake"], true],
             drawing_importance: 5
         },
+    ],
+    15: [
+        { drawing_layers: [french_buildings_titles] },
     ],
     16: [
         {

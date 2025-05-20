@@ -16,6 +16,11 @@ const hash_coordinates = coords => {
     return hash >>> 0 // Unsigned
 }
 
+// remove all chars that are forbidden in tippecanoe tile layer names
+const slugify = text => text.toLowerCase()
+.replace(/[^a-z0-9_-]/g, '')
+.replace(/^[0-9]/, 'l') // canoe id can't start with number
+
 export const get_title_renderable = (
     text,
     coords,
@@ -25,8 +30,8 @@ export const get_title_renderable = (
     size,
     text_anchor = 'center'
 ) => {
-    const layer = {
-        id: `${text.replace(/\s/g, '_').replace(/\n/g, '_')}_title_${hash_coordinates(coords)}`,
+    const rnbl = {
+        id: `${slugify(text)}_title_${hash_coordinates(coords)}`,
         get_features: () => {
             // for a horizontally drawn title, pass a single point (coords = [x, y])
             // for a tilted title, pass two points ([[x,y], [x,y]]), in order to calculate the rotate angle for a point right btw them
@@ -60,11 +65,11 @@ export const get_title_renderable = (
     }
 
     if (zoom_range[0]) {
-        layer.style_layers[0].minzoom = zoom_range[0]
+        rnbl.style_layers[0].minzoom = zoom_range[0]
     }
     if (zoom_range[1]) {
-        layer.style_layers[0].maxzoom = zoom_range[1]
+        rnbl.style_layers[0].maxzoom = zoom_range[1]
     }
 
-    return layer
+    return rnbl
 }

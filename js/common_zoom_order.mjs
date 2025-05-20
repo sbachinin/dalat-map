@@ -34,7 +34,6 @@ It's nice to have some free space sometimes.
 */
 
 import {
-    french_buildings_titles,
     major_road_thinner_line,
     major_road_thicker_line, tertiary_road, boring_building_fill,
     minor_road,
@@ -89,8 +88,7 @@ export const zoom_order = {
         {
             drawing_layers: [tertiary_road],
             drawing_importance: 4
-        },
-        { drawing_layers: [french_buildings_titles] },
+        }
     ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {

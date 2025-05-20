@@ -8,6 +8,7 @@ import { get_title_renderable } from "../js/utils/get_title_renderable.mjs";
 import imperial_city_border from "./static_data/imperial_city_border.mjs";
 import { CITY_WALL_COLOR } from "./drawing_layers.mjs";
 import { interpolate } from "../js/utils/isomorphic_utils.mjs";
+import { constants as c } from "./constants.mjs";
 
 export const renderables = [
     {
@@ -51,12 +52,22 @@ export const renderables = [
 
     get_title_renderable(
         'Imperial\nCity',
-        [107.577519678, 16.4694936767],
+        [107.5776242, 16.46931831],
         [12.5, 14],
         'Lato Regular',
         PALE_TITLES_COLOR,
         interpolate(12.5, 12, 14, 16)
     ),
+
+    get_title_renderable(
+        'Purple\n(Forbidden)\nCity',
+        [107.5772269, 16.47014294],
+        [14, 15],
+        'Lato Regular',
+        c.PURPLE_CITY_COLOR,
+        interpolate(14, 12, 15, 16)
+    ),
+
 
     get_title_renderable(
         "Thanh Lam\nLagoon",
@@ -179,8 +190,9 @@ export const renderables = [
             {
                 type: 'line',
                 paint: {
-                    'line-color': 'purple',
-                    'line-opacity': 0.3
+                    'line-color': c.PURPLE_CITY_COLOR,
+                    'line-opacity': 0.5,
+                    'line-width': 2
                 },
                 drawing_importance: 8
             }

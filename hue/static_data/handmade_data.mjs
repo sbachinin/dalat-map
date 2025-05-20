@@ -41,12 +41,12 @@ export const buildings_handmade_data = {
     },
 
     "172763419": {
-        title: 'Imperial city guard headquarters',
+        title: 'Imperial city\nguard HQ',
         subtitle: `This building is clearly the one most european in Hue Citadel - and perhaps the least well preserved. It was built in the early 20th century, replacing a building of Royal treasury, and served as the Imperial city guard headquarters in 1936. From 1957 it housed Hue college of fine arts and today it's function is unclear`
     },
 
     "531031540": {
-        title: "Tinh Minh Lau villa",
+        title: "Tinh Minh\nLau villa",
         subtitle: `Current structure was built in 1927 as a medical clinic and in 1950 rebuilt as a private residence of the king Bao Dai`,
         links: [
             {
@@ -76,7 +76,7 @@ export const buildings_handmade_data = {
     },
 
     285990348: {
-        title: 'Kien Trung Palace',
+        title: 'Kien Trung\nPalace',
         subtitle: `Boldly eclectic building combining european and vietnamese principles in its overall layout and decoration.
         Built in 1921-23, used as the main residence of king Bao Dai; destroyed, almost completely, in 1947 during the First Indochina War; restored in 2019-23.
         A lot of similarities can be found between this structure and An Dinh palace - a more radically europian piece of architecture, built just before Kien Trung.`
