@@ -213,9 +213,6 @@ OPTIMIZE FOR_RUNTIME DATA
 	** todos in script files
 
 
-tiny_non_french_square is used by datanla and cable car
-    should be renamed at least
-
 
 ankroet
 

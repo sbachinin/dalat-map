@@ -7,7 +7,6 @@ import * as svg_icons from './svg_icons.mjs'
 import {
     create_element_from_Html,
     div,
-    get_image_url,
     get_map_center_shift_px,
     is_landscape,
     is_mobile_device,
@@ -49,14 +48,14 @@ const set_panel_content = (id) => {
     const wikipedia = feat_hmd.wikipedia
         ? `<div id="building-info__wikipedia">
                     <a target="_blank" href="${feat_hmd.wikipedia}">
-                        <img src="${get_image_url('wikipedia.svg', '')}">
+                        <img src="../auxiliary_images/wikipedia.svg">
                     </a>
                 </div>`
         : ''
 
     const doubt = feat_hmd.doubt
         ? `<div id="building-info__doubt">
-                <img src="${get_image_url('question.png', '')}">
+                <img src="../auxiliary_images/question.png">
             </div>`
         : ''
 

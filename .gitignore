@@ -4,7 +4,7 @@ cities_tiles/*
 oldlayers
 __pycache__
 dalat-map-tiles
-dalat-map-images
+cities_images
 dalat-map-fonts
 myenv
 node_modules

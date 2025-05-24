@@ -128,10 +128,16 @@ export const wrap = (num, min, max) => {
     return ((num - min) % range + range) % range + min
 }
 
-export const get_image_url = (name, folder) => {
-    const folder_part = folder ? `${folder}/` : ''
-    return `${window.location.origin}/dalat-map-images/${folder_part}${name.replace('HEIC', 'jpg')}`
-    // return `https://sbachinin.github.io/dalat-map-images/${folder}/${name.replace('HEIC', 'jpg')}`
+export const get_image_url = (name, img_type) => {
+    return (
+        window.location.origin
+        + `/cities_images/`
+        + current_city.name
+        + `/dist/`
+        + img_type
+        + `/`
+        + name.replace('HEIC', 'jpg')
+    )
 }
 
 export const do_n_times = (n, fn) => {
