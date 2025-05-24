@@ -42,7 +42,7 @@ const set_panel_content = (id) => {
         : ''
 
     const subtitle = feat_hmd.subtitle
-        ? `<div id="building-info__subtitle">${feat_hmd.subtitle}</div>`
+        ? `<div id="building-info__subtitle">${feat_hmd.subtitle.replace(/\n/g, '<br>')}</div>`
         : ''
 
 

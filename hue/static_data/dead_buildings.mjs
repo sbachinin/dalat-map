@@ -34,6 +34,8 @@ export default [
     },
     {
         "type": "Feature",
+        "hint": "chapel of jeanne d’arc",
+        "id": 4291675218324692,
         "geometry": {
             "type": "Polygon",
             "coordinates": [

@@ -43,6 +43,7 @@ export const unesco_areas_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
+    filter: ["==", ["geometry-type"], "Polygon"],
     paint: {
         'fill-color': 'hsl(60, 81.82%, 43.14%)',
         'fill-antialias': true,
@@ -55,7 +56,7 @@ export const unesco_areas_fill = {
             15,
             0.1
         ]
-    },
+    }
 }
 
 export const unesco_areas_border = {
@@ -63,11 +64,29 @@ export const unesco_areas_border = {
     type: 'line',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
+    filter: ["==", ["geometry-type"], "Polygon"],
     paint: {
         'line-color': 'hsl(60, 81.82%, 43.14%)',
         'line-width': 1,
         'line-opacity': interpolate(c.CITY_BULK_DISAPPEARANCE_ZOOM, 0.65, 15, 0)
-    }
+    },
+}
+
+// unesco_areas_titles
+export const unesco_areas_titles = {
+    name: 'UNESCO areas titles',
+    type: 'symbol',
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'unesco_areas',
+    filter: ["==", ["geometry-type"], "Point"],
+    layout: {
+        'text-size': 12,
+        'text-font': ['Lato Regular'],
+        "text-field": ["get", "title"],
+    },
+    paint: {
+        'text-color': 'hsl(60, 71.82%, 13.14%)'
+    },
 }
 
 
