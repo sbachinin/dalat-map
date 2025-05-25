@@ -1,35 +1,41 @@
 const files = [
     {
-        name: 'isomorphic_assets.mjs',
+        filename: 'isomorphic_assets.mjs',
         propname: 'isomorphic_assets',
         extractor: d => d,
     },
     {
-        name: 'zoom_order.mjs',
+        filename: 'zoom_order.mjs',
         propname: 'zoom_order',
         extractor: d => d.zoom_order,
     },
     {
-        name: 'static_data/handmade_data.mjs',
+        filename: 'static_data/handmade_data.mjs',
         propname: 'all_handmade_data',
         extractor: d => d.all_handmade_data,
     },
     {
-        name: 'renderables.mjs',
+        filename: 'renderables.mjs',
         propname: 'renderables',
         extractor: d => d.renderables,
     },
 
     {
-        name: 'generated_for_runtime/centroids_etc.mjs',
+        filename: 'generated_for_runtime/centroids_etc.mjs',
         propname: 'centroids_etc',
         extractor: d => d.centroids_etc,
     },
     {
-        name: 'constants.mjs',
+        filename: 'constants.mjs',
         propname: 'constants',
         extractor: d => d.constants,
     },
+
+    {
+        filename: 'static_data/highlights_images_names.mjs',
+        propname: 'highlights_images_names',
+        extractor: d => d.highlights_images_names,
+    }
 ]
 export const load_city = async (name) => {
 
@@ -42,7 +48,7 @@ export const load_city = async (name) => {
     // An error was also swallowed by try/catch and it was hard to debug.
     // So I went back to explicit errors and blank map in order to see what happens
 
-    const results = await Promise.all(files.map(f => import(`../${name}/${f.name}`)))
+    const results = await Promise.all(files.map(f => import(`../${name}/${f.filename}`)))
 
     const results_obj = {}
 

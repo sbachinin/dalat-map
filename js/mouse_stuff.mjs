@@ -14,8 +14,8 @@ import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { get_link_to_selected_bldg } from './select_building.mjs'
 import { get_selected_building_id } from './selected_building_id.mjs'
-import { bldgs_handmade_data } from '../data/static/bldgs_handmade_data.mjs'
 import { show_tooltip } from './tooltip.mjs'
+import { current_city } from './load_city.mjs'
 
 
 export const add_mouse_stuff = () => {
@@ -162,7 +162,7 @@ export const add_mouse_stuff = () => {
 
         } else if (e.target.closest('#building-info__share')) {
 
-            const bldg_data = bldgs_handmade_data[get_selected_building_id()]
+            const bldg_data = current_city.all_handmade_data[get_selected_building_id()]
 
             let files = undefined // shouldn't pass files if sharing of files is not supported
 

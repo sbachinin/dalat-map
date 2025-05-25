@@ -1,5 +1,5 @@
 import { AREA_TYPES } from "../../js/common_drawing_layers/constants.mjs"
-import { bldgs_handmade_data } from "../../data/static/bldgs_handmade_data.mjs"
+import { bldgs_handmade_data } from "./bldgs_handmade_data.mjs"
 
 /*
     {

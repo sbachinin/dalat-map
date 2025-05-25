@@ -6,6 +6,41 @@
       "coordinates": [
         [
           [
+            107.5616573,
+            16.4633114
+          ],
+          [
+            107.5618771,
+            16.4631031
+          ],
+          [
+            107.5619875,
+            16.4632102
+          ],
+          [
+            107.5617678,
+            16.4634186
+          ],
+          [
+            107.5616573,
+            16.4633114
+          ]
+        ]
+      ]
+    },
+    "id": 1388509039,
+    "properties": {
+      "is_selectable": true,
+      "has_title": true
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
             107.564902,
             16.459802
           ],
@@ -2813,8 +2848,8 @@
     },
     "id": 730227961,
     "properties": {
-      "is_selectable": false,
-      "has_title": false
+      "is_selectable": true,
+      "has_title": true
     }
   },
   {

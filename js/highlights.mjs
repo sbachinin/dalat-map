@@ -1,9 +1,9 @@
 import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
-import { images_names } from './highlights_images_list.mjs'
-import { debounce, get_image_url, push_to_history } from './utils/utils.mjs'
+import { debounce, push_to_history } from './utils/utils.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
 import { select_building } from './select_building.mjs'
+import { current_city } from './load_city.mjs'
 
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
 
@@ -22,7 +22,7 @@ export const display_highlights = (should_push_history = false) => {
     select_building(null)
 
     highlights_el = highlights_el || create_panel_thumbs_list({
-        images_names,
+        images_names: current_city.highlights_images_names,
         content_type: PANEL_CONTENT_TYPES.HIGHLIGHTS
     })
 
@@ -50,15 +50,4 @@ export const display_highlights = (should_push_history = false) => {
             panel.body_element.scrollTop = scroll_pos[1]
         }
     })
-}
-
-// TODO benefits of this are not apparent; and it can slow the initial load too
-// + It has to be called not just on page load but only if and when highlights are displayed
-export const UNUSED_preload_some_images = () => {
-    for (let i = 0; i < 10; i++) {
-        if (images_names[i]) {
-            let img = new Image()
-            img.src = get_image_url(images_names[i], 'thumbs')
-        }
-    }
 }

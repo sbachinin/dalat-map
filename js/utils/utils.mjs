@@ -1,4 +1,3 @@
-import { bldgs_handmade_data } from '../../data/static/bldgs_handmade_data.mjs'
 import { current_city } from '../load_city.mjs';
 
 export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
@@ -254,7 +253,7 @@ export function get_visible_map_center_px() {
 }
 
 export const find_bldg_id_by_image_filename = (filename) => {
-    const [bldg_id] = Object.entries(bldgs_handmade_data).find(([feat_id, feat]) => {
+    const [bldg_id] = Object.entries(current_city.all_handmade_data).find(([feat_id, feat]) => {
         return feat.images?.includes(filename)
     }) || [null]
     return Number(bldg_id)
