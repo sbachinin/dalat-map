@@ -1,7 +1,7 @@
 import argparse
 import os
 import sys
-from process_1_image import process_image
+from build.images.process_1_image import process_image
 
 # HOW TO RUN THIS
 # ubuntu

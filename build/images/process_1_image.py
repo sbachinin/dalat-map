@@ -2,7 +2,7 @@ import argparse
 import sys
 from PIL import Image
 import os
-from heic_converter import convert_heic_to_jpg
+from build.images.heic_converter import convert_heic_to_jpg
 
 thumbs_folder = 'dalat-map-images/thumbs'
 large_folder = 'dalat-map-images/large'
