@@ -1,7 +1,8 @@
 /* 
-  GOAL
-  Check if I failed to add all available images to handmade data
+  This answers the questions:
+  1) Haven't I failed to use all the available images in buildings' data?
   Copy them from "large" folder to "missing" folder in order to drop them to browser
+  2) Don't I use some nonexistent filenames in buildings data? ("broken links")
 */
 
 import fs from 'fs'

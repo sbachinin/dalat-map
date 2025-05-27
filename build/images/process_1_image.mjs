@@ -2,10 +2,11 @@ import fs from 'fs'
 import path from 'path'
 import sharp from 'sharp'
 import heicConvert from 'heic-convert'
+import { is_running_from_cmd_line } from '../utils.mjs'
 
 const supported_formats = ['.png', '.jpg', '.jpeg', '.gif', '.heic']
 
-async function convert_heic_to_jpg(inputPath, outputPath) {
+const convert_heic_to_jpg = async (inputPath, outputPath) => {
     const inputBuffer = await fs.promises.readFile(inputPath)
     const outputBuffer = await heicConvert({
         buffer: inputBuffer,
@@ -15,7 +16,7 @@ async function convert_heic_to_jpg(inputPath, outputPath) {
     await fs.promises.writeFile(outputPath, outputBuffer)
 }
 
-async function process_image(source_folder, source_filename, force = false) {
+export const process_image = async (source_folder, source_filename, force = false) => {
 
     // this script can only be run with a path that contains: 'cities_images/[cityname]/src/....'
     const is_valid_path = /cities_images\/[^\/]+\/src/.test(source_folder)
@@ -61,8 +62,8 @@ async function process_image(source_folder, source_filename, force = false) {
     // city_folder must be a part of sourceFolder string that ends with 'cities_images/[cityname]'
     const city_images_root_folder = source_folder.split('/src')[0]
 
-    const thumb_img_path = path.join(city_images_root_folder, 'thumbs', output_filename)
-    const large_img_path = path.join(city_images_root_folder, 'large', output_filename)
+    const thumb_img_path = path.join(city_images_root_folder, 'dist', 'thumbs', output_filename)
+    const large_img_path = path.join(city_images_root_folder, 'dist', 'large', output_filename)
 
     if (!fs.existsSync(path.dirname(thumb_img_path))) {
         fs.mkdirSync(path.dirname(thumb_img_path), { recursive: true })
@@ -97,8 +98,11 @@ async function process_image(source_folder, source_filename, force = false) {
     }
 }
 
+
+
 // To run from CLI: "node process_1_image.mjs ../../cities_images/hue/src/highlights/IMG_7326.HEIC"
-if (process.argv.length > 2) {
+
+if (is_running_from_cmd_line() && process.argv.length > 2) {
     const image_path = process.argv[2]
     const folder = path.dirname(image_path)
     const filename = path.basename(image_path)

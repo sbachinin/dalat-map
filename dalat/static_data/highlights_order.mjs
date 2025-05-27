@@ -1,4 +1,4 @@
-export const highlights_images_names = [
+export const highlights_order = [
     "IMG_9766~3.jpg",
     "IMG_8385~2.jpg",
     "IMG_4047~2.jpg",

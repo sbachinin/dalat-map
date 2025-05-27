@@ -32,9 +32,9 @@ const files = [
     },
 
     {
-        filename: 'static_data/highlights_images_names.mjs',
-        propname: 'highlights_images_names',
-        extractor: d => d.highlights_images_names,
+        filename: 'static_data/highlights_order.mjs',
+        propname: 'highlights_order',
+        extractor: d => d.highlights_order,
     }
 ]
 export const load_city = async (name) => {

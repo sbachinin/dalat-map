@@ -10,7 +10,6 @@ import {
     lnglat_is_within_bounds
 } from './utils/utils.mjs'
 import { panel } from './panel/panel.mjs'
-import '../data/static/DEV_get_updated_buildings_data.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { load_icons } from './load_icons.mjs'
 import {
@@ -134,10 +133,11 @@ export const initialize_city = async (name) => {
     window.addEventListener('orientationchange', onresize)
 
 
-    if (window.location.hostname === 'localhost') {
+    if (window.location.hostname.endsWith('localhost')) {
         const script = document.createElement('script')
         script.src = '../js/DEV/handle_img_drag.mjs'
         script.async = true
+        script.type = 'module'
         document.body.appendChild(script)
     }
 

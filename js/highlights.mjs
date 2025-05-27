@@ -22,7 +22,7 @@ export const display_highlights = (should_push_history = false) => {
     select_building(null)
 
     highlights_el = highlights_el || create_panel_thumbs_list({
-        images_names: current_city.highlights_images_names,
+        images_names: current_city.highlights_order,
         content_type: PANEL_CONTENT_TYPES.HIGHLIGHTS
     })
 

@@ -1,5 +1,7 @@
 import fs from 'fs'
-import { get_centroid } from './get_centroid.mjs';
+import { get_centroid } from './get_centroid.mjs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 export const parse_args = () => {
     const params = {};
@@ -15,6 +17,10 @@ export const parse_args = () => {
         });
 
     return params;
+}
+
+export const is_running_from_cmd_line = () => {
+    return path.basename(fileURLToPath(import.meta.url)) === path.basename(process.argv[1])
 }
 
 export const mkdir = (path) => {
