@@ -52,10 +52,10 @@ export const process_image = async (source_folder, source_filename, force = fals
 
     // Rotate if landscape
     let processed_image = sharp_image
-    if (metadata.width > metadata.height) {
+    /* if (metadata.width > metadata.height) {
         console.log('Rotating:', source_file_path)
         processed_image = processed_image.rotate(-90)
-    }
+    } */
 
     const output_filename = path.basename(source_file_path) // filename
 

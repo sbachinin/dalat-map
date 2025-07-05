@@ -7,14 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "validate_images_data": "node chores/validate_images_data.mjs ",
     "validate_highlights": "node chores/validate_highlights.mjs",
-    "process_fresh_images": "python3 chores/process_all_images.py",
-    "process_all_images": "python3 chores/process_all_images.py -force",
-    "full_build_images": "npm run process_all_images && npm run validate_images_data && npm run validate_highlights",
+    "process_all_images_for_city": "cd build/images && node ./process_images.mjs",
+    "___process_all_images_for_city_example": "npm run process_all_images_for_city -- city=hue force      ::::: force means rebuild ALL images, including those already present in dist/...",
     "copy_tiles_to_windows": "cp -r dalat-map-tiles/tiles /mnt/c/Users/Admin/projects/dalat-map/dalat-map-tiles/",
     "run_https_localhost": "http-server -S",
     "build": "node build.mjs",
-    "build_hue": "cd build && node ./build_city.mjs city=hue skip_osm_download",
-    "build_dalat": "cd build && node ./build_city.mjs city=dalat skip_osm_download"
+    "build_city": "cd build && node ./build_city.mjs",
+    "example_build_city": "npm run build_city -- city=hue reprocess_old_photos"
   },
   "author": "",
   "license": "ISC",

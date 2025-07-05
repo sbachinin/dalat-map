@@ -87,15 +87,6 @@ export const buildings_handmade_data = {
         subtitle: "Demolished in 2017. Interestingly enough, it seems that the motive for demolition was simply cutting the maintenance costs rather than development projects (by 2025 nothing new was built on the site). It was too old for profitable commercial use but had to maintain a polished look in order not to ruin the grand view of the adjacent Hue Heritage hotel - a hopeless arrangement indeed."
     },
 
-    '?????': {
-        title: 'Saigon Hotel',
-        subtitle: `This hotel, according to many sources, is a very old one, having celebrated its 120+ birthday. That may be true in some sense, but as a piece of architecture, it's difficult to regard it as colonial — based on how it looks today and also on its history (which is a bit obscure). In the early 20th century, it was a rather small building that had nothing in common with the current one, except its main spatial layout with a chamfered corner — i.e., the original hotel also made this double 45° turn at the street corner, instead of a right angle.
-
-Before the end of the French protectorate period, it was extended several times, by 1953 having (supposedly) 72 rooms. Unfortunately, I failed to find any imagery depicting these intermediate stages of its development, so it's hard to say how it looked by the end of French rule.
-
-During the wars and long afterward, it was in serious decline and stopped being a hotel for a while, serving instead as one of the buildings of Hue University. Then in the 1990s, it was decided to revive it as a hotel and to make it bigger and better than it ever was. Today it has 180 bedrooms and - I'm guessing - mostly new architecture that is loosely based on some colonial prototype. It looks indeed much more colonial than most other hotels in Hue, but still not quite colonial enough. I guess the oldest thing it retains today is, again, its spatial layout — an enclosed “fortress” occupying a whole block, with an extensive inner courtyard where hotel guests are well protected from the street life.`
-    },
-
     730227961: {
         title: 'Chapel of\nHue Seminary',
         subtitle: `This is a very hidden piece of architecture that I discovered by accident on the web. Otherwise, it would be quite difficult to spot, as it is situated deep within the restricted grounds of the Hue Major Seminary. Its history is also unclear. I can only say that at present it’s perhaps far from its best appearance, painted in rather dull whitish tones. A bit earlier, around 2015, the color scheme was much better, with yellow as the dominant color. At that time, it must have been a truly delightful sight.`
@@ -125,11 +116,11 @@ During the wars and long afterward, it was in serious decline and stopped being 
         subtitile: `This structure houses a large stele - inscribed stone tablet containing a summary of deceased emperor's life. It's a common feature of all royal tombs of Nguyen dynasty, always  standing in the center of the tomb complex. This pavilion, like the quaint palace above it, breaks many architectural traditions of vietnamese imperial tombs by including some european features: arched openings, romanesque columns and octagonal plan (instead of traditionally rectangular). Carvings depict some national motives but their style is rather western - less geometric and more ornate.`
     },
 
-    bach_dang_street: {
+    // bach_dang_street: {
         // rusty compass says that it's one of the iconic historic streets
         // one stupid blogger shows a house No. 66 Bach Dang: 
         // "was formerly a primary school named Saint Piere, built in 1924" (written in 2018)
-    },
+    // },
 
 
     695810806: {
@@ -178,7 +169,16 @@ During the wars and long afterward, it was in serious decline and stopped being 
     730227939: {
         subtitle: `This chapel belongs to the grounds of the Congregation of Immaculate Conception of Hue (monastery of some kind)`,
         doubt: true
-    }
+    },
+
+    3231165: {
+        title: 'Saigon Hotel',
+        subtitle: `This hotel, according to many sources, is a very old one, having celebrated its 120+ birthday. That may be true in some sense, but as a piece of architecture, it's difficult to regard it as colonial — based on how it looks today and also on its history (which is a bit obscure). In the early 20th century, it was a rather small building that had nothing in common with the current one, except its main spatial layout with a chamfered corner — i.e., the original hotel also made this double 45° turn at the street corner, instead of a right angle.
+
+Before the end of the French protectorate period, it was extended several times, by 1953 having (supposedly) 72 rooms. Unfortunately, I failed to find any imagery depicting these intermediate stages of its development, so it's hard to say how it looked by the end of French rule.
+
+During the wars and long afterward, it was in serious decline and stopped being a hotel for a while, serving instead as one of the buildings of Hue University. Then in the 1990s, it was decided to revive it as a hotel and to make it bigger and better than it ever was. Today it has 180 bedrooms and - I'm guessing - mostly new architecture that is loosely based on some colonial prototype. It looks indeed much more colonial than most other hotels in Hue, but still not quite colonial enough. I guess the oldest thing it retains today is, again, its spatial layout — an enclosed “fortress” occupying a whole block, with an extensive inner courtyard where hotel guests are well protected from the street life.`
+    },
 
 }
 
