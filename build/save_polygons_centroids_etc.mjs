@@ -23,6 +23,8 @@ const result = {}
 const { city } = parse_args()
 const city_root_path = `../${city}`
 const all_handmade_data = (await import(city_root_path + '/static_data/handmade_data.mjs')).all_handmade_data
+const fids_to_img_names = (await import(city_root_path + '/static_data/fids_to_img_names.mjs')).fids_to_img_names
+
 const all_geojson_features = JSON.parse(
     fs.readFileSync(city_root_path + '/temp_data/all_geojson_features_with_renderables.geojson', 'utf8')
 )
@@ -34,7 +36,7 @@ Object.entries(all_handmade_data).forEach(([fid, f]) => {
         console.warn('No geojson feature for this handmade id: ', fid)
         return
     }
-    if (is_feature_selectable(fid, all_handmade_data)) {
+    if (is_feature_selectable(fid, all_handmade_data, fids_to_img_names)) {
         result[fid] = {
             centroid: get_centroid(geojson_feature)
         }

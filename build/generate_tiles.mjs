@@ -158,6 +158,7 @@ all_geojson.features = all_geojson.features
 const temp_tiles_path = `../cities_tiles/temp`
 
 const { all_handmade_data: hmdata } = await import(city_root_path + '/static_data/handmade_data.mjs')
+const { fids_to_img_names } = await import(city_root_path + '/static_data/fids_to_img_names.mjs')
 
 const clear_feature_props = (feature, tile_layer) => {
     const properties = {}
@@ -291,7 +292,7 @@ city_assets.tile_layers
                             throw new Error(`trying to add extra prop ${prop} to ${f.id} but feature already has it`)
                         }
                         if (prop === 'is_selectable') {
-                            f.properties[prop] = is_feature_selectable(f.id, hmdata)
+                            f.properties[prop] = is_feature_selectable(f.id, hmdata, fids_to_img_names)
                         } else if (prop === 'has_title') {
                             f.properties[prop] = does_feature_have_title(f.id, hmdata)
                         } else if (prop.name && prop.get_value) {

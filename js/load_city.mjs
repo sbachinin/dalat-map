@@ -15,6 +15,11 @@ const files = [
         extractor: d => d.all_handmade_data,
     },
     {
+        filename: 'static_data/fids_to_img_names.mjs',
+        propname: 'fids_to_img_names',
+        extractor: d => d.fids_to_img_names,
+    },
+    {
         filename: 'renderables.mjs',
         propname: 'renderables',
         extractor: d => d.renderables,
