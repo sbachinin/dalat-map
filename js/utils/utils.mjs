@@ -253,9 +253,10 @@ export function get_visible_map_center_px() {
 }
 
 export const find_bldg_id_by_image_filename = (filename) => {
-    const [bldg_id] = Object.entries(current_city.all_handmade_data).find(([feat_id, feat]) => {
-        return feat.images?.includes(filename)
-    }) || [null]
+    const [bldg_id] = Object.entries(current_city.fids_to_img_names)
+        .find(([_, feat_img_names]) => {
+            return feat_img_names.includes(filename)
+        }) || [null]
     return Number(bldg_id)
 }
 

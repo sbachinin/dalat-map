@@ -30,18 +30,20 @@ const all_geojson_features = JSON.parse(
 )
 
 
-Object.entries(all_handmade_data).forEach(([fid, f]) => {
-    const geojson_feature = all_geojson_features.find(f => String(f.id) === String(fid))
-    if (!geojson_feature) {
-        console.warn('No geojson feature for this handmade id: ', fid)
-        return
-    }
-    if (is_feature_selectable(fid, all_handmade_data, fids_to_img_names)) {
-        result[fid] = {
-            centroid: get_centroid(geojson_feature)
+Object.keys(all_handmade_data)
+    .concat(Object.keys(fids_to_img_names))
+    .forEach(fid => {
+        const geojson_feature = all_geojson_features.find(f => String(f.id) === String(fid))
+        if (!geojson_feature) {
+            console.warn('No geojson feature for this handmade id: ', fid)
+            return
         }
-    }
-})
+        if (is_feature_selectable(fid, all_handmade_data, fids_to_img_names)) {
+            result[fid] = {
+                centroid: get_centroid(geojson_feature)
+            }
+        }
+    })
 
 const outputContent = `export const centroids_etc = ${JSON.stringify(result, null, 2)};`
 mkdir_if_needed(city_root_path + '/generated_for_runtime')

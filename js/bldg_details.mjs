@@ -27,25 +27,26 @@ const update_size_variables = () => {
 
 const set_panel_content = (id) => {
     const feat_hmd = current_city.all_handmade_data[id]
+    const feat_img_names = current_city.fids_to_img_names[id]
 
     const details_el = div({ id: 'building-details' })
 
-    const thumbs_list_el = feat_hmd.images?.length
+    const thumbs_list_el = feat_img_names?.length
         ? create_panel_thumbs_list({
-            images_names: feat_hmd.images
+            images_names: feat_img_names
         })
         : ''
 
-    const title = feat_hmd.title
+    const title = feat_hmd?.title
         ? `<div id="building-info__title">${feat_hmd.title}</div>`
         : ''
 
-    const subtitle = feat_hmd.subtitle
+    const subtitle = feat_hmd?.subtitle
         ? `<div id="building-info__subtitle">${feat_hmd.subtitle.replace(/\n/g, '<br>')}</div>`
         : ''
 
 
-    const wikipedia = feat_hmd.wikipedia
+    const wikipedia = feat_hmd?.wikipedia
         ? `<div id="building-info__wikipedia">
                     <a target="_blank" href="${feat_hmd.wikipedia}">
                         <img src="../auxiliary_images/wikipedia.svg">
@@ -53,13 +54,13 @@ const set_panel_content = (id) => {
                 </div>`
         : ''
 
-    const doubt = feat_hmd.doubt
+    const doubt = feat_hmd?.doubt
         ? `<div id="building-info__doubt">
                 <img src="../auxiliary_images/question.png">
             </div>`
         : ''
 
-    const google = feat_hmd.google
+    const google = feat_hmd?.google
         ? `<div id="building-info__google">
                     <a target="_blank" href="${feat_hmd.google}">
                         ${svg_icons.gmaps}
@@ -95,11 +96,11 @@ const set_panel_content = (id) => {
             ${copylink_or_share}
         </div>`
 
-    const year = feat_hmd.year
+    const year = feat_hmd?.year
         ? `<div id="building-info__year">Built in ${feat_hmd.year}</div>`
         : ''
 
-    const links = feat_hmd.links?.length
+    const links = feat_hmd?.links?.length
         ? `<div id="building-info__links">
             ${feat_hmd.links.map(link => {
             return `<a target="_blank" href="${link.url}">${link.description || link.url}</a>`
