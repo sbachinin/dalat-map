@@ -27,7 +27,7 @@ export const add_mouse_stuff = () => {
             // map.queryRenderedFeatures(e.point)?.[0]?.id
         )
         const rfs = map.queryRenderedFeatures(e.point)
-        const clickable_feat = rfs.find(f => is_feature_selectable(f.id))
+        const clickable_feat = rfs.find(f => f.id && is_feature_selectable(f.id))
         if (clickable_feat) {
             try_open_building(clickable_feat.id, true, true)
         } else if (!panel.is_pristine()) {
