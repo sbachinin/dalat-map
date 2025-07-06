@@ -1,5 +1,5 @@
 import { download_json } from "../../chores/download_json.mjs";
-import { current_city } from "../load_city.mjs";
+import { current_city as city, onload_city } from "../load_city.mjs";
 import { create_element_from_Html } from "../utils/utils.mjs";
 
 document.querySelector('#maplibregl-map').addEventListener("dragover", e => {
@@ -22,12 +22,23 @@ document.querySelector('#maplibregl-map').addEventListener("dragover", e => {
     (though I'm not sure that it's a valid scenario: I expect to be concerned with 1 particular city while populating the images names)
 */
 
+// on city load (because i don't want to make it for all cities because then i need to keep a list of them),
+// put stuff from file to lsname
+// just overwrite everything, meaning that unsaved changes will be erased completely once the city is loaded again. But making it more safe is a lot of work
+
+onload_city(city => {
+    localStorage.setItem(
+        city.name + '_fids_to_imgs',
+        JSON.stringify(city.fids_to_imgs)
+    )
+})
+
 document.querySelector('#maplibregl-map').addEventListener("drop", e => {
     e.preventDefault()
 
-    const lsname = current_city.name + '_ids_to_imgs'
+    const lsname = city.name + '_fids_to_imgs'
 
-    const fresh_ids_to_imgs = JSON.parse(localStorage.getItem(lsname)) || {}
+    const fresh_fids_to_imgs = JSON.parse(localStorage.getItem(lsname)) || {}
 
     const file = e.dataTransfer.files[0]
     if (!file) { console.warn('no file dropped'); return }
@@ -46,15 +57,15 @@ document.querySelector('#maplibregl-map').addEventListener("drop", e => {
     }
 
     const feat_id = rf[0].id
-    const imgs = fresh_ids_to_imgs[feat_id] = fresh_ids_to_imgs[feat_id] || []
+    const imgs = fresh_fids_to_imgs[feat_id] = fresh_fids_to_imgs[feat_id] || []
     if (imgs.includes(file.name)) {
         console.warn('already have such filename for this feature')
         return
     }
 
     imgs.push(file.name)
-    console.log('Added a new img name. Total images count: ', Object.values(fresh_ids_to_imgs).flat().length)
-    localStorage.setItem(lsname, JSON.stringify(fresh_ids_to_imgs))
+    console.log('Added a new img name. Total images count: ', Object.values(fresh_fids_to_imgs).flat().length)
+    localStorage.setItem(lsname, JSON.stringify(fresh_fids_to_imgs))
 
 
 
@@ -64,19 +75,19 @@ document.querySelector('#maplibregl-map').addEventListener("drop", e => {
                 position: fixed; bottom: 0; 
                 background: white; color: red; cursor: pointer;
                 padding: 6px 12px; font-size: 32px; font-family: verdana;
-            " id="save-ids-to-imgs">Maybe there are unsaved ids_to_imgs in localStorage, click here to save to fids_to_img_names.mjs</div>`
+            " id="save-ids-to-imgs">Maybe there are unsaved fids_to_imgs in localStorage, click here to save to fids_to_img_names.mjs</div>`
         )
         document.body.appendChild(button)
         button.addEventListener('click', async () => {
 
-            const { fids_to_img_names: old_ids_to_imgs } = await import(`../../${current_city.name}/static_data/fids_to_img_names.mjs`)
+            const { fids_to_img_names: old_fids_to_imgs } = await import(`../../${city.name}/static_data/fids_to_img_names.mjs`)
 
-            const merged = { ...old_ids_to_imgs }
-            Object.keys(fresh_ids_to_imgs).forEach(key => {
+            const merged = { ...old_fids_to_imgs }
+            Object.keys(fresh_fids_to_imgs).forEach(key => {
                 if (merged[key]) {
-                    merged[key] = [...merged[key], ...fresh_ids_to_imgs[key]]
+                    merged[key] = [...merged[key], ...fresh_fids_to_imgs[key]]
                 } else {
-                    merged[key] = fresh_ids_to_imgs[key]
+                    merged[key] = fresh_fids_to_imgs[key]
                 }
             })
 

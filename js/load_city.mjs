@@ -68,6 +68,17 @@ export const load_city = async (name) => {
     }
 
     current_city.intro_zoom = current_city.intro_zoom || 12
+
+    onload_listeners.forEach(cb => cb(current_city))
+}
+
+const onload_listeners = []
+
+export const onload_city = (cb) => {
+    onload_listeners.push(cb)
+    if (current_city) {
+        cb(current_city)
+    }
 }
 
 export let current_city = null
