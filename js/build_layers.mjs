@@ -82,7 +82,8 @@ export const build_layers = () => {
                                 filter: [
                                     ...final_main_layer.filter,
                                     ["==", ["id"], 'nonexistent_id']
-                                ]
+                                ],
+                                drawing_importance: zoom_level_layer.drawing_importance
                             }
                         )
                         selected_layers.push(sel_layer)
@@ -105,6 +106,10 @@ export const build_layers = () => {
         .sort((a, b) => { // TODO need thorough test
             return (b.drawing_importance ?? 1) - (a.drawing_importance ?? 1)
         })
+
+    selected_layers.sort((a, b) => {
+        return (b.drawing_importance ?? 1) - (a.drawing_importance ?? 1)
+    })
 
     return [...main_layers, ...selected_layers]
         .map(inject_city_constants)

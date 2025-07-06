@@ -46,9 +46,7 @@ export const buildings_handmade_data = {
     },
 
     "118543157": {
-        // the one that i missed on the southern bank
-        title: 'Center For Vocational Education',
-        // with borrowed image
+        subtitle: 'Currently this building belongs to the Center For Vocational Education',
     },
 
     "172763419": {
