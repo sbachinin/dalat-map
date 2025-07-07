@@ -30,7 +30,7 @@
     },
     "id": 1389832834,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -202,7 +202,7 @@
     },
     "id": 1388473478,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": true
     }
   },
@@ -272,7 +272,7 @@
     },
     "id": 1384219085,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -307,7 +307,7 @@
     },
     "id": 1384219084,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -916,7 +916,7 @@
     },
     "id": 1379241617,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -951,7 +951,7 @@
     },
     "id": 1379241616,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -1444,7 +1444,7 @@
     },
     "id": 1377450373,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -1654,7 +1654,7 @@
     },
     "id": 1377444127,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -1974,7 +1974,7 @@
     },
     "id": 1377444119,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2017,7 +2017,7 @@
     },
     "id": 1377444118,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2321,7 +2321,7 @@
     },
     "id": 1377444110,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2391,7 +2391,7 @@
     },
     "id": 1377444108,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2563,7 +2563,7 @@
     },
     "id": 1377444104,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2641,7 +2641,7 @@
     },
     "id": 1377444102,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2684,7 +2684,7 @@
     },
     "id": 1332014338,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2735,7 +2735,7 @@
     },
     "id": 1192697531,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2821,7 +2821,7 @@
     },
     "id": 1174028275,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2891,7 +2891,7 @@
     },
     "id": 732309921,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2926,7 +2926,7 @@
     },
     "id": 732304151,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -3122,7 +3122,7 @@
     },
     "id": 695810701,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -3232,7 +3232,7 @@
     },
     "id": 695775639,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -3495,7 +3495,7 @@
     },
     "id": 695775628,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -3530,7 +3530,7 @@
     },
     "id": 695775623,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -3565,7 +3565,7 @@
     },
     "id": 695770492,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -3632,7 +3632,7 @@
     },
     "id": 695770489,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -3750,7 +3750,7 @@
     },
     "id": 695770484,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -4271,7 +4271,7 @@
     },
     "id": 240266283,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -4306,7 +4306,7 @@
     },
     "id": 239972934,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -4561,7 +4561,7 @@
     },
     "id": 173793328,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -4643,7 +4643,7 @@
     },
     "id": 173151284,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": true
     }
   },
@@ -4713,8 +4713,8 @@
     },
     "id": 118543157,
     "properties": {
-      "is_selectable": false,
-      "has_title": true
+      "is_selectable": true,
+      "has_title": false
     }
   },
   {
@@ -5013,7 +5013,7 @@
     },
     "id": 118542346,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -5091,7 +5091,7 @@
     },
     "id": 118542220,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -5126,7 +5126,7 @@
     },
     "id": 118541964,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -5274,7 +5274,7 @@
     },
     "id": 118541538,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -5337,7 +5337,7 @@
     },
     "id": 118541430,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -5372,7 +5372,7 @@
     },
     "id": 118541181,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -5521,130 +5521,66 @@
       "coordinates": [
         [
           [
-            107.5896391,
-            16.4664337
+            107.5896496,
+            16.4664407
           ],
           [
-            107.589639,
-            16.4663852
+            107.5896449,
+            16.466385
           ],
           [
-            107.5897335,
-            16.4662831
+            107.5899732,
+            16.4660156
           ],
           [
-            107.5897472,
-            16.4662948
+            107.5909482,
+            16.4668759
           ],
           [
-            107.5898819,
-            16.4661492
+            107.5906795,
+            16.4671332
           ],
           [
-            107.5898682,
-            16.4661376
+            107.5904684,
+            16.4671371
           ],
           [
-            107.5899922,
-            16.4660035
-          ],
-          [
-            107.590241,
-            16.4662152
-          ],
-          [
-            107.5902241,
-            16.4662334
-          ],
-          [
-            107.5908579,
-            16.4667727
-          ],
-          [
-            107.5908747,
-            16.4667545
-          ],
-          [
-            107.5909752,
-            16.4668546
-          ],
-          [
-            107.5906878,
-            16.4671129
-          ],
-          [
-            107.5904571,
-            16.4671199
-          ],
-          [
-            107.5896391,
-            16.4664337
+            107.5896496,
+            16.4664407
           ]
         ],
         [
           [
-            107.5906494,
-            16.467021
+            107.5906412,
+            16.4670203
           ],
           [
-            107.5907954,
-            16.4668632
+            107.590793,
+            16.4668671
           ],
           [
-            107.5900524,
-            16.4662308
+            107.5899833,
+            16.4661651
           ],
           [
-            107.5899882,
-            16.4663002
+            107.5897745,
+            16.4664056
           ],
           [
-            107.5899168,
-            16.4662394
+            107.5905057,
+            16.4670219
           ],
           [
-            107.5898153,
-            16.4663491
-          ],
-          [
-            107.5898847,
-            16.4664082
-          ],
-          [
-            107.5898427,
-            16.4664536
-          ],
-          [
-            107.5902087,
-            16.466765
-          ],
-          [
-            107.5902441,
-            16.4667267
-          ],
-          [
-            107.5903054,
-            16.4667789
-          ],
-          [
-            107.59027,
-            16.4668172
-          ],
-          [
-            107.5905049,
-            16.4670172
-          ],
-          [
-            107.5906494,
-            16.467021
+            107.5906412,
+            16.4670203
           ]
         ]
       ]
     },
     "id": 3231165,
     "properties": {
-      "is_selectable": false,
-      "has_title": false
+      "is_selectable": true,
+      "has_title": true
     }
   }
 ]
