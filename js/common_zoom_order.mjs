@@ -35,7 +35,7 @@ It's nice to have some free space sometimes.
 
 import {
     major_road_thinner_line,
-    major_road_thicker_line, tertiary_road, boring_building_fill,
+    major_road_thicker_line, tertiary_road,
     minor_road,
     pedestrian_path,
 } from "./common_drawing_layers/drawing_layers.mjs";
@@ -106,13 +106,6 @@ export const zoom_order = {
                 french_detailful_bldg_fill
             ],
             drawing_importance: 2
-        },
-    ],
-    15: [
-        {
-            drawing_layers: [boring_building_fill],
-            drawing_importance: 5
-
         },
     ],
     14.5: [

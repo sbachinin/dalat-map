@@ -72,9 +72,9 @@ document.querySelector('#maplibregl-map').addEventListener("drop", e => {
     if (!document.querySelector('#save-ids-to-imgs')) {
         const button = create_element_from_Html(
             `<div style="
-                position: fixed; bottom: 0; 
-                background: white; color: red; cursor: pointer;
-                padding: 6px 12px; font-size: 32px; font-family: verdana;
+                position: fixed; top: 0; 
+                background: blue; color: red; cursor: pointer;
+                padding: 6px 12px; font-family: verdana;
             " id="save-ids-to-imgs">Maybe there are unsaved fids_to_img_names, click here to save to ./cityname/static_data/fids_to_img_names.mjs</div>`
         )
         document.body.appendChild(button)
