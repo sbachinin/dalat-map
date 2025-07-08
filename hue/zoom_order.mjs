@@ -4,6 +4,7 @@ import {
     french_bldg_circle,
     french_buildings_titles,
     land_areas_fill,
+    non_french_titles,
     railway_line,
     water_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
@@ -88,9 +89,10 @@ export const zoom_order = {
             drawing_layers: [non_french_bldgs_within_imperial_city_fill],
             drawing_importance: 5
         },
+        { drawing_layers: [french_buildings_titles] },
     ],
     15: [
-        { drawing_layers: [french_buildings_titles] },
+        { drawing_layers: [non_french_titles] },
         {
             drawing_layers: [boring_building_fill],
             drawing_importance: 5
@@ -98,7 +100,7 @@ export const zoom_order = {
         {
             drawing_layers: [boring_bldg_with_details_border],
             drawing_importance: 3
-        },
+        }
     ],
     16: [
         {

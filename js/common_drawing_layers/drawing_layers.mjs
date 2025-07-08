@@ -332,7 +332,8 @@ export const non_french_titles = {
         paint: {
             'text-color': SELECTED_BORING_BLDG_TEXT_COLOR
         }
-    }
+    },
+    filter: ["!=", ["get", "building:architecture"], 'french_colonial']
 }
 
 

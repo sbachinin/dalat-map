@@ -19,6 +19,7 @@ export const buildings_handmade_data = {
 
     1388902201: {
         title: 'Gorgeous\nsoviet condo',
+        title_side: 'south',
         subtitle: `This residential complex neither belongs to the colonial era nor is it a recognized architectural landmark. Still I can't resist including it in the "colonial highlights" of Hue because, first of all, this complex is a sheer architectural delight, and secondly, it's a very foreign piece of architecture, introduced by a very different civilization - soviet in this case. 
 
         It  looks totally out of place in this featureless suburb, next to the busy and very casual street market. Against this backdrop it look almost opulent. It also carries a faint french feel - thought it's unlikely that any french architectural forces were involved in this project. 
@@ -27,7 +28,7 @@ export const buildings_handmade_data = {
     },
 
     "118542146": {
-        title: 'Francis Xavier Church',
+        title: 'Francis Xavier\nChurch',
         subtitle: `In a way, it's the most important of all colonial churches in Hue, and possibly the oldest. However, it was severely damaged during the Tet Offensive in 1968. By 1972, the church was mostly restored, but still lacked the bell tower. Photos from that time show an incomplete but really beautiful version of the building. In 2008, a full restoration was completed — as far as I can tell, the original design was followed, but without much scrutiny. Some minor simplifications sneaked in, and most notably, the bell tower became thinner, which really ruined the overall proportions. (The most reliable part is the ground-floor arcade that wasn't destroyed in the war). Also — traditionally for churches in Hue — the paint was chosen very poorly. As a result, today the building doesn’t look colonial at all (and perhaps that wasn’t the goal of the restoration). It’s not the worst church in Hue, but I hesitate to consider it a historical building.`,
         year: '1911'
     },
@@ -171,6 +172,7 @@ export const buildings_handmade_data = {
 
     3231165: {
         title: 'Saigon Hotel',
+        title_side: 'center',
         subtitle: `This hotel, according to many sources, is a very old one, having celebrated its 120+ birthday. That may be true in some sense, but as a piece of architecture, it's difficult to regard it as colonial — based on how it looks today and also on its history (which is a bit obscure). In the early 20th century, it was a rather small building that had nothing in common with the current one, except its main spatial layout with a chamfered corner — i.e., the original hotel also made this double 45° turn at the street corner, instead of a right angle.
 
 Before the end of the French protectorate period, it was extended several times, by 1953 having (supposedly) 72 rooms. Unfortunately, I failed to find any imagery depicting these intermediate stages of its development, so it's hard to say how it looked by the end of French rule.
