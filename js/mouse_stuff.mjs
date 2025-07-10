@@ -16,6 +16,8 @@ import { get_link_to_selected_bldg } from './select_building.mjs'
 import { get_selected_building_id } from './selected_building_id.mjs'
 import { show_tooltip } from './tooltip.mjs'
 import { current_city } from './load_city.mjs'
+import { find_clickable_feat } from './find_clickable_feat.mjs'
+
 
 
 export const add_mouse_stuff = () => {
@@ -26,8 +28,7 @@ export const add_mouse_stuff = () => {
             `[${e.lngLat.lng}, ${e.lngLat.lat}]`
             // map.queryRenderedFeatures(e.point)?.[0]?.id
         )
-        const rfs = map.queryRenderedFeatures(e.point)
-        const clickable_feat = rfs.find(f => f.id && is_feature_selectable(f.id))
+        const clickable_feat = find_clickable_feat(e.point)
         if (clickable_feat) {
             try_open_building(clickable_feat.id, true, true)
         } else if (!panel.is_pristine()) {
