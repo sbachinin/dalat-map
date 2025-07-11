@@ -199,6 +199,7 @@ export const try_fly_to_building = (
         const feature_center_arr = current_city.centroids_etc[id]?.centroid
         if (feature_center_arr === undefined) {
             console.warn(`no centroid for ${id}, perhaps need to regenerate?`)
+            resolve()
             return
         }
         const feature_screen_xy = window.dalatmap.project(feature_center_arr)
