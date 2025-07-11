@@ -36,7 +36,7 @@ export const load_icons = async () => {
             ctx.fillRect(0, 0, 64, 64)
         } else if (id === 'skull-icon') {
             window.dalatmap
-                .loadImage(`${window.location.origin}/auxiliary_images/skull.png`)
+                .loadImage(`../auxiliary_images/skull.png`)
                 .then(image => window.dalatmap.addImage('skull-icon', image.data))
             return
         }
