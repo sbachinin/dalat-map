@@ -34,12 +34,12 @@ export const load_icons = async () => {
         } else if (id === 'boring_square_selected') {
             ctx.fillStyle = 'hsla(187, 71.10%, 52.70%, 0.65)'
             ctx.fillRect(0, 0, 64, 64)
-        } else if (id === 'skull-icon') {
+        } /* else if (id === 'skull-icon') {
             window.dalatmap
                 .loadImage(`../auxiliary_images/skull.png`)
                 .then(image => window.dalatmap.addImage('skull-icon', image.data))
             return
-        }
+        } */
 
 
         const imageData = ctx.getImageData(0, 0, 64, 64)

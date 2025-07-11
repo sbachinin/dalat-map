@@ -10,7 +10,7 @@ export const dead_buildings_drawing_layers = [
         },
         filter: ["==", ["geometry-type"], "Polygon"]
     },
-    {
+    /* {
         type: 'symbol',
         "minzoom": 14,
         layout: {
@@ -24,5 +24,5 @@ export const dead_buildings_drawing_layers = [
             ]
         },
         filter: ['==', ['geometry-type'], 'Point']
-    }
+    } */
 ]

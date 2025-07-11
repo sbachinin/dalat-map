@@ -64,6 +64,9 @@ export default [
             ]
         }
     },
+
+    // two other dead buildings in Jeanne d’Arc school
+    /* 
     {
         "type": "Feature",
         "geometry": {
@@ -124,4 +127,5 @@ export default [
             ]
         }
     }
+ */
 ]
