@@ -2,12 +2,16 @@ import { is_feature_selectable } from "./utils/does_feature_have_details.mjs"
 import { polygonToLine } from 'https://esm.sh/@turf/polygon-to-line'
 import { nearestPointOnLine } from 'https://esm.sh/@turf/nearest-point-on-line'
 import { distance } from 'https://esm.sh/@turf/distance'
+import { is_mouse_device } from "./utils/utils.mjs"
+
+const clickable_extra_thickness = is_mouse_device ? 7 : 20 // smaller mistake tolerance for mouse because it's harder to miss with mouse
 
 export const find_clickable_feat = (click_point) => {
 
     // PLAN:
     // if at point there is building with details, open it
-    // if at point there are no buildings, try find them within reasonable distance, and open the nearest of them
+    // if at point there are no buildings, try find them within reasonable distance
+    // If they are found near, open the nearest
 
     const rfs_at_point = window.dalatmap.queryRenderedFeatures(click_point)
     const clickable_feat_at_point = rfs_at_point.find(f => f.id && is_feature_selectable(f.id))
@@ -15,7 +19,6 @@ export const find_clickable_feat = (click_point) => {
         return clickable_feat_at_point
     }
 
-    const clickable_extra_thickness = 20
     const bbox = [
         [click_point.x - clickable_extra_thickness, click_point.y - clickable_extra_thickness],
         [click_point.x + clickable_extra_thickness, click_point.y + clickable_extra_thickness]
