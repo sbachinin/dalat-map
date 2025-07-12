@@ -27,7 +27,8 @@ export const zoom_order = {
         {
             drawing_layers: [railway_line],
             // exclude many secondary lines near the station
-            filter: ['==', ['get', 'name:en'], 'North–South railway']
+            filter: ['==', ['get', 'name:en'], 'North–South railway'],
+            drawing_importance: 5
         },
         {
             drawing_layers: [city_walls_fill, city_walls_thickening_outline],

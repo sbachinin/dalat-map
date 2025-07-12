@@ -4,6 +4,18 @@ import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
 import { current_city } from "./load_city.mjs"
 import { SOURCES_NAMES } from "./constants.mjs"
 
+const join_style_filters = (...filters) => {
+    // depending on the number of truthy filters, returns ["all", ...] OR the_only_truthy_one OR null
+    const truthy_filters = filters.filter(Boolean)
+    if (truthy_filters.length === 1) {
+        return truthy_filters[0]
+    }
+    if (truthy_filters.length > 1) {
+        return ["all", ...truthy_filters]
+    }
+    return null
+}
+
 const inject_city_constants = (input /* style_layer or any of its values */) => {
     if (Array.isArray(input)) {
         return input.map(item => inject_city_constants(item))
@@ -39,11 +51,8 @@ const merge_zoom_order = (zo1, zo2) => { // common + city-specific zoom_order
 // zoom_order -> normal maplibre style layers
 // + create selected layers and append them to the end
 export const build_layers = () => {
-
-    const selected_layers = []
-
     const zo = merge_zoom_order(common_zoom_order, current_city.zoom_order)
-    const main_layers = Object.entries(zo)
+    const layers_from_zoom_order = Object.entries(zo)
         .sort((a, b) => Number(b[0]) - Number(a[0]))
         .flatMap(([zoom_level, zoom_level_layers]) => {
             return zoom_level_layers.flatMap(zoom_level_layer => {
@@ -55,62 +64,68 @@ export const build_layers = () => {
                         console.warn('drawing layer has an id, this is suspicious because drawing layer must have "name" instead of id')
                     }
 
-                    const final_main_layer = {
+                    const style_layer = {
                         id: `${zoom_level}: ${drawing_layer.name}`,
                         minzoom: +zoom_level,
-                        ...pick(drawing_layer, ['source', 'source-layer', 'type', 'layout', 'paint']),
+                        ...pick(drawing_layer, ['source', 'source-layer', 'type', 'layout', 'paint', 'props_when_selected']),
                     }
 
                     if (zoom_level_layer.maxzoom) {
-                        final_main_layer.maxzoom = zoom_level_layer.maxzoom
-                    }
-                    final_main_layer.filter = ["all"]
-                    if (zoom_level_layer.filter) {
-                        final_main_layer.filter.push(zoom_level_layer.filter)
-                    }
-                    if (drawing_layer.filter) {
-                        final_main_layer.filter.push(drawing_layer.filter)
+                        style_layer.maxzoom = zoom_level_layer.maxzoom
                     }
 
-                    if (drawing_layer.props_when_selected) {
-                        const sel_layer = deep_merge_objects(
-                            final_main_layer,
-                            {
-                                ...drawing_layer.props_when_selected,
-                                id: `${SELECTED_STYLE_LAYER_PREFIX} ${final_main_layer.id}`,
-                                minzoom: 11,
-                                filter: [
-                                    ...final_main_layer.filter,
-                                    ["==", ["id"], 'nonexistent_id']
-                                ],
-                                drawing_importance: zoom_level_layer.drawing_importance
-                            }
-                        )
-                        selected_layers.push(sel_layer)
+                    const maybe_filter = join_style_filters(zoom_level_layer.filter, drawing_layer.filter)
+                    if (maybe_filter !== null) {
+                        style_layer.filter = maybe_filter
                     }
 
-                    final_main_layer.drawing_importance = zoom_level_layer.drawing_importance
+                    style_layer.drawing_importance = zoom_level_layer.drawing_importance
 
-                    return final_main_layer
+                    return style_layer
                 })
             })
         })
-        .concat(current_city.renderables.flatMap(r => {
-            return r.style_layers.map(sl => ({
-                ...sl,
-                id: r.id + " " + sl.type,
-                source: SOURCES_NAMES.CITY_TILES,
-                'source-layer': r.id
-            }))
-        }))
-        .sort((a, b) => { // TODO need thorough test
-            return (b.drawing_importance ?? 1) - (a.drawing_importance ?? 1)
-        })
 
-    selected_layers.sort((a, b) => {
-        return (b.drawing_importance ?? 1) - (a.drawing_importance ?? 1)
+    const layers_from_renderables = current_city.renderables.flatMap(r => {
+        return r.style_layers.map(sl => ({
+            ...sl,
+            id: r.id + " " + sl.type,
+            source: SOURCES_NAMES.CITY_TILES,
+            'source-layer': r.id
+        }))
     })
 
-    return [...main_layers, ...selected_layers]
+    const get_drawing_importance = l => {
+        if (!l.drawing_importance) {
+            if (l.type === 'symbol') {
+                return 0
+            }
+            return Infinity
+        }
+        return l.drawing_importance
+    }
+    const base_layers = ([...layers_from_zoom_order, ...layers_from_renderables])
+        .sort((a, b) => {
+            return get_drawing_importance(b) - get_drawing_importance(a)
+        })
+
+    const selected_layers = base_layers
+        .filter(l => !!l.props_when_selected)
+        .map(base_layer => deep_merge_objects(
+            base_layer,
+            {
+                id: `${SELECTED_STYLE_LAYER_PREFIX} ${base_layer.id}`,
+                minzoom: 11,
+                paint: deep_merge_objects(base_layer.paint, base_layer.props_when_selected.paint),
+                layout: deep_merge_objects(base_layer.layout, base_layer.props_when_selected.layout),
+                filter: join_style_filters(
+                    base_layer.filter,
+                    ["==", ["id"], 'nonexistent_id'] // hide everything selected for a start
+                )
+            }
+        ))
+
+    return ([...base_layers, ...selected_layers])
+        .map(layer => ({ ...layer, drawing_importance: undefined, props_when_selected: undefined }))
         .map(inject_city_constants)
 }
