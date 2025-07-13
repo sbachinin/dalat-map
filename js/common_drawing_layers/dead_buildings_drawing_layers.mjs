@@ -1,4 +1,4 @@
-import { FRENCH_DEAD_FILL_COLOR } from "./constants.mjs";
+import { FRENCH_DEAD_FILL_COLOR, SELECTED_DEAD_FILL_COLOR } from "./constants.mjs";
 
 export const dead_buildings_drawing_layers = [
     {
@@ -8,21 +8,25 @@ export const dead_buildings_drawing_layers = [
             "fill-color": FRENCH_DEAD_FILL_COLOR,
             "fill-antialias": true
         },
-        filter: ["==", ["geometry-type"], "Polygon"]
+        filter: ["==", ["geometry-type"], "Polygon"],
+        props_when_selected: {
+            "paint": {
+                "fill-color": SELECTED_DEAD_FILL_COLOR
+            }
+        }
     },
-    /* {
-        type: 'symbol',
+    {
+        type: 'line',
         "minzoom": 14,
-        layout: {
-            'icon-image': 'skull-icon',
-            'icon-size': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                12, 0.005,
-                18, 0.05
-            ]
+        "paint": {
+            "line-color": FRENCH_DEAD_FILL_COLOR,
+            "line-width": 2,
         },
-        filter: ['==', ['geometry-type'], 'Point']
-    } */
+        filter: ["==", ["geometry-type"], "Polygon"],
+        props_when_selected: {
+            layout: {
+                visibility: 'visible'
+            },
+        }
+    }
 ]
