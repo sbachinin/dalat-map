@@ -1,4 +1,4 @@
-import { get_geojson_source } from './utils/utils.mjs'
+import { get_geojson_source } from './utils/isomorphic_utils.mjs'
 import { current_city } from './load_city.mjs'
 import { SOURCES_NAMES } from './constants.mjs'
 

@@ -45,8 +45,6 @@ export const set_css_num_var = (name, value, units, element = document.documentE
     element.style.setProperty(name, String(value) + units)
 }
 
-export const within = (number, min, max) => Math.max(min, Math.min(number, max));
-
 export const debounce = (func, delay = 100) => {
     let timeout
     return (...args) => {
@@ -122,11 +120,6 @@ export function throttle(func, wait, trailing = false) {
     return throttled;
 }
 
-export const wrap = (num, min, max) => {
-    const range = max - min + 1
-    return ((num - min) % range + range) % range + min
-}
-
 export const get_image_url = (name, img_type) => {
     return (
         window.location.origin
@@ -137,12 +130,6 @@ export const get_image_url = (name, img_type) => {
         + `/`
         + name.replace('HEIC', 'jpg')
     )
-}
-
-export const do_n_times = (n, fn) => {
-    for (let i = 0; i <= n; i++) {
-        fn(i)
-    }
 }
 
 export const toggle_class = (el, class_name, condition) => {
@@ -217,16 +204,6 @@ export const get_bldg_id_from_url = () => {
     return id ? Number(id) : null
 }
 
-export const get_geojson_source = (features) => {
-    return {
-        type: "geojson",
-        data: {
-            "type": "FeatureCollection",
-            features
-        }
-    }
-}
-
 
 
 export function get_center_for_bldg_with_offset(id) {
@@ -252,13 +229,6 @@ export function get_visible_map_center_px() {
     ]
 }
 
-export const find_bldg_id_by_image_filename = (filename) => {
-    const [bldg_id] = Object.entries(current_city.fids_to_img_names)
-        .find(([_, feat_img_names]) => {
-            return feat_img_names.includes(filename)
-        }) || [null]
-    return Number(bldg_id)
-}
 
 export const observe_dom_mutations = (selector, cb) => {
 
@@ -330,49 +300,4 @@ export function get_image_file_from_element(img_element, filename, quality = 0.9
 export const can_share_files = () => {
     const file = new File([new Blob()], 'test.txt', { type: 'text/plain' })
     return navigator.canShare && navigator.canShare({ files: [file] })
-}
-
-
-export const lnglat_is_within_bounds = (lnglat, bounds) => { // lnglat: [lng, lat], bounds: [w, s, e, n]
-    return (
-        lnglat[0] >= bounds[0]
-        && lnglat[0] <= bounds[2]
-        && lnglat[1] >= bounds[1]
-        && lnglat[1] <= bounds[3]
-    )
-}
-
-
-export const get_map_bounds_center = (map_bounds) => {
-    return [
-        map_bounds[0] + (map_bounds[2] - map_bounds[0]) / 2,
-        map_bounds[1] + (map_bounds[3] - map_bounds[1]) / 2
-    ]
-}
-
-
-export const deep_merge_objects = (target, source) => {
-    const result = { ...target };
-
-    for (const key in source) {
-        if (source.hasOwnProperty(key) &&
-            typeof source[key] === 'object' &&
-            source[key] !== null &&
-            !Array.isArray(source[key])) {
-            result[key] = deep_merge_objects(result[key] || {}, source[key]);
-        } else {
-            result[key] = source[key];
-        }
-    }
-
-    return result;
-}
-
-export const pick = (obj, props) => {
-    return props.reduce((result, prop) => {
-        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-            result[prop] = obj[prop]
-        }
-        return result
-    }, {});
 }

@@ -6,9 +6,8 @@ import { try_open_building, update_flyto_button } from './bldg_details.mjs'
 import {
     get_bldg_id_from_url,
     get_center_for_bldg_with_offset,
-    get_map_bounds_center,
-    lnglat_is_within_bounds
 } from './utils/utils.mjs'
+import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
 import { panel } from './panel/panel.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { load_icons } from './load_icons.mjs'

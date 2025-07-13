@@ -27,7 +27,8 @@ export const fids_to_img_names = {
         "IMG_8910.PNG"
     ],
     "172763419": [
-        "IMG_8948 Copy.JPG"
+        "IMG_8948 Copy.JPG",
+        "french-colonial-architecture-in-imperial-city-of-hue-vietnam-v0-clpq2mz79ozd1 Copy.JPG"
     ],
     "173151284": [
         "IMG_9812 Copy.JPG",
@@ -35,6 +36,10 @@ export const fids_to_img_names = {
     ],
     "173793328": [
         "IMG_9958 Copy.JPG"
+    ],
+    "205805244": [
+        "IMG_0927 Copy.JPG",
+        "IMG_0933 Copy.JPG"
     ],
     "239972934": [
         "IMG_1020 Copy.JPG",
@@ -63,6 +68,10 @@ export const fids_to_img_names = {
         "IMG_8838.JPG",
         "IMG_9585 Copy.JPG"
     ],
+    "695775615": [
+        "IMG_0857 Copy.JPG",
+        "IMG_0912 Copy.JPG"
+    ],
     "695775623": [
         "IMG_8347.jpg"
     ],
@@ -78,9 +87,13 @@ export const fids_to_img_names = {
     "695810701": [
         "IMG_9949 Copy.JPG"
     ],
+    "730227939": [
+        "IMG_0873 Copy.JPG"
+    ],
     "730227961": [
         "IMG_1074 Copy.JPG",
-        "IMG_1059 Copy.JPG"
+        "IMG_0851 Copy Copy.JPG",
+        "IMG_0853 Copy.JPG"
     ],
     "732304151": [
         "IMG_8657.JPG"
@@ -92,6 +105,9 @@ export const fids_to_img_names = {
     ],
     "732309970": [
         "IMG_1070 Copy.JPG"
+    ],
+    "1075011937": [
+        "IMG_0937 Copy.JPG"
     ],
     "1172897443": [
         "AC9h4nqhk69_kFnpZeoC7jRRCaL7CRCjcjOeAiMmgLfNsdWEUBE3P85wPo3IoaHCqfK4xXdsxYaVovEp3D8v1Te-Uq63wup0oYibDnEW7qZ34tStHm92qgGSU13LyevBLAds1gtkPyQe9A=s3072-v1~2.jpg"
@@ -160,8 +176,12 @@ export const fids_to_img_names = {
         "IMG_9810 Copy.JPG",
         "AF1QipOreUJWye3ozlhcx2_qyQtjQgRhzbVl0fYKkJTZ=s3072-v1.jpg"
     ],
+    "1388418415": [
+        "IMG_0905 Copy.JPG"
+    ],
     "1388473478": [
-        "IMG_0867 Copy Copy.JPG"
+        "IMG_0867 Copy Copy.JPG",
+        "carmelite3 Copy.JPG"
     ],
     "1388902200": [
         "IMG_5032~2.jpg"
@@ -174,6 +194,7 @@ export const fids_to_img_names = {
         "IMG_8897.PNG"
     ],
     "4291675218324692": [
-        "IMG_8890 Copy.JPG"
+        "IMG_8890 Copy.JPG",
+        "IMG_0914 Copy.JPG"
     ]
 }

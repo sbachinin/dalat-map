@@ -27,16 +27,32 @@ IMPORTANT
 MPORTANT
 
 
-hue: mark also all hue unesco sites (Arena!)  https://whc.unesco.org/en/list/678/maps/#map
+handle new dalat pictures (dalat extra album)
+
+
+don't allow to zoom images more than their actual size
+
+
+
+Try vollkorn font
+
+"Architectural portraits of some beautiful cities"
+
+"mapofcities" will be hard to google
+
+Maps will "expire": the year must be explicitly shown
+
+
+
+
+
 
 
 year can be number or string; better do it string only
 
 
-handle new dalat pictures (dalat extra album)
-
 indicate that bldg is dead in bldg details
-selected dead bldg style
+
 
 
 better ways to show very compact bldg details?

@@ -5,10 +5,10 @@ import { CURSOR_POINTER_MINZOOM } from './common_drawing_layers/constants.mjs'
 import {
     can_share_files,
     debounce,
-    find_bldg_id_by_image_filename,
     get_image_file_from_element,
     is_mouse_device
 } from './utils/utils.mjs'
+import { find_bldg_id_by_image_filename } from './utils/isomorphic_utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'

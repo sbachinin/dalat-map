@@ -23,7 +23,7 @@ import {
     AIRPORT_FILL_COLOR
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
-import { deep_merge_objects } from "../utils/utils.mjs";
+import { deep_merge_objects } from "../utils/isomorphic_utils.mjs";
 
 
 export const titles_common_layout_props = {

@@ -1,8 +1,8 @@
 import {
     is_landscape,
-    within,
     get_panel_shown_breadth
 } from '../utils/utils.mjs'
+import { within } from '../utils/isomorphic_utils.mjs'
 
 const fast_swipe_toggle_threshold = 25
 const fast_swipe_max_duration = 250

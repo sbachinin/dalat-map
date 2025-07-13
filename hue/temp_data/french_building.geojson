@@ -237,7 +237,7 @@
     },
     "id": 1388418415,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },

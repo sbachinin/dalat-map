@@ -1,5 +1,5 @@
 import { SELECTED_STYLE_LAYER_PREFIX } from "./select_building.mjs"
-import { deep_merge_objects, pick } from "./utils/utils.mjs"
+import { deep_merge_objects, pick } from "./utils/isomorphic_utils.mjs"
 import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
 import { current_city } from "./load_city.mjs"
 import { SOURCES_NAMES } from "./constants.mjs"
