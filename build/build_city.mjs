@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { parse_args } from "./utils.mjs"
+import { parse_args } from "./build_utils.mjs"
 
 const { reprocess_old_photos, city } = parse_args()
 

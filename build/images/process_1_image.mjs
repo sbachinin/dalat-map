@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import sharp from 'sharp'
 import heicConvert from 'heic-convert'
-import { is_running_from_cmd_line } from '../utils.mjs'
+import { is_running_from_cmd_line } from '../build_utils.mjs'
 
 const supported_formats = ['.png', '.jpg', '.jpeg', '.gif', '.heic']
 

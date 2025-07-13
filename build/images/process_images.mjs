@@ -1,6 +1,6 @@
 // Args: "force" and "city=<city_name>"
 
-import { parse_args } from '../utils.mjs'
+import { parse_args } from '../build_utils.mjs'
 import { process_image } from './process_1_image.mjs'
 import fs from 'fs'
 import * as fs_promises from 'fs/promises'

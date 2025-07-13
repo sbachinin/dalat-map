@@ -1,4 +1,4 @@
-import { get_title_lat, get_title_side } from "./utils.mjs"
+import { get_title_lat, get_title_side } from "./build_utils.mjs"
 
 export const get_titles_points_tiling_settings = (all_handmade_data, lakes_handmade_data) => {
     return {

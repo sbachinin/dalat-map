@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path';
-import { parse_args } from "./utils.mjs"
+import { parse_args } from "./build_utils.mjs"
 
 const { city: cityname } = parse_args()
 

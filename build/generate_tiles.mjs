@@ -12,7 +12,7 @@ import {
     is_real_number,
     mkdir_if_needed,
     parse_args,
-} from './utils.mjs'
+} from './build_utils.mjs'
 import * as turf from '@turf/turf'
 import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
 
