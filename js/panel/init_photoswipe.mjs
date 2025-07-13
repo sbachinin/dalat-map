@@ -1,5 +1,5 @@
 import PhotoSwipeLightbox from '../../photoswipe/dist/photoswipe-lightbox.esm.min.js'
-import { is_landscape } from '../utils/utils.mjs'
+import { is_landscape } from '../utils/frontend_utils.mjs'
 import { panel } from './panel.mjs'
 
 export let lightbox = null

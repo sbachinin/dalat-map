@@ -12,7 +12,7 @@ import {
     is_mobile_device,
     push_to_history,
     throttle
-} from './utils/utils.mjs'
+} from './utils/frontend_utils.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './common_drawing_layers/constants.mjs'
 import { current_city } from './load_city.mjs'

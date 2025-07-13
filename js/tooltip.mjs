@@ -29,7 +29,7 @@ Options that can change this default behaviour: ... (TODO)
 - for example svg. Tooltip will be appended to svg's innerHTML, and it will not lead to any good.
 */
 
-import { set_css_num_var } from "./utils/utils.mjs"
+import { set_css_num_var } from "./utils/frontend_utils.mjs"
 
 const margin_px = 10
 let close_timeout = null

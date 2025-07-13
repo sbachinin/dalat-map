@@ -3,7 +3,7 @@ import { DEV_should_open_panel_on_pageload } from "./DEV/constants.mjs"
 import { display_highlights } from "./highlights.mjs"
 import { panel } from "./panel/panel.mjs"
 import { is_feature_selectable } from "./utils/does_feature_have_details.mjs"
-import { get_bldg_id_from_url } from "./utils/utils.mjs"
+import { get_bldg_id_from_url } from "./utils/frontend_utils.mjs"
 
 export const initialize_panel = () => {
     return new Promise(resolve => {

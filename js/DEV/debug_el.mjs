@@ -1,4 +1,4 @@
-import { create_element_from_Html } from "../utils/utils.mjs"
+import { create_element_from_Html } from "../utils/frontend_utils.mjs"
 
 let debugel = null
 

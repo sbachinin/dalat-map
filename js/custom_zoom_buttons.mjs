@@ -10,7 +10,7 @@ import {
     debounce,
     get_map_center_shift_px,
     get_panel_shown_breadth
-} from "./utils/utils.mjs"
+} from "./utils/frontend_utils.mjs"
 
 const zoomin_button = document.querySelector('.zoom-button.zoom-in')
 const zoomout_button = document.querySelector('.zoom-button.zoom-out')

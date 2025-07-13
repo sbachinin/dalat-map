@@ -1,4 +1,4 @@
-import { set_css_num_var, is_landscape, is_mouse_device } from '../utils/utils.mjs'
+import { set_css_num_var, is_landscape, is_mouse_device } from '../utils/frontend_utils.mjs'
 import { panel } from './panel.mjs'
 import { panel_thumbs_list_id } from './panel_thumbs_list.mjs'
 

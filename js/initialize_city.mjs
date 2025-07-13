@@ -3,10 +3,7 @@ import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { get_style } from './style.mjs'
 import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
 import { try_open_building, update_flyto_button } from './bldg_details.mjs'
-import {
-    get_bldg_id_from_url,
-    get_center_for_bldg_with_offset,
-} from './utils/utils.mjs'
+import { get_bldg_id_from_url, get_center_for_bldg_with_offset } from './utils/frontend_utils.mjs'
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
 import { panel } from './panel/panel.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
@@ -85,7 +82,7 @@ export const initialize_city = async (name) => {
         initialize_highlights_button(panel.content?.type)
 
         let center = initial_center
-        
+
         if (is_feature_selectable(initial_bldg_id)) {
             // get_center can return null, perhaps when centroid isn't generated yet,
             // It means some fuckup in the code but still it's better to show a sensible center

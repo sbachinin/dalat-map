@@ -1,4 +1,4 @@
-import { create_element_from_Html, debounce } from "./utils/utils.mjs";
+import { create_element_from_Html, debounce } from "./utils/frontend_utils.mjs";
 
 let root = document.documentElement
 

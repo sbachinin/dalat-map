@@ -8,7 +8,7 @@ import {
     wait_1frame,
     wait,
     get_panel_shown_breadth,
-} from '../utils/utils.mjs'
+} from '../utils/frontend_utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 import { wait_for_sizeless_images_load } from './wait_for_sizeless_images_load.mjs'
 

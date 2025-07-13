@@ -1,5 +1,5 @@
 import { current_city, onload_city } from "../load_city.mjs";
-import { create_element_from_Html } from "../utils/utils.mjs";
+import { create_element_from_Html } from "../utils/frontend_utils.mjs";
 import { save_string_to_file } from "./save_string_to_file.mjs";
 
 document.querySelector('#maplibregl-map').addEventListener("dragover", e => {
