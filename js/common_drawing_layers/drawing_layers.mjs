@@ -312,7 +312,7 @@ export const non_french_titles = {
     paint: {
         'text-color': [
             "case",
-            ["==", ["get", "is_water"], true],
+            ["==", ["get", "feature_type"], 'water'],
             WATER_TITLE_COLOR,
             PALE_TITLES_COLOR
         ]

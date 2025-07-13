@@ -9,6 +9,7 @@ import imperial_city_border from "./static_data/imperial_city_border.mjs";
 import { CITY_WALL_COLOR } from "./drawing_layers.mjs";
 import { interpolate } from "../js/utils/isomorphic_utils.mjs";
 import { constants as c } from "./constants.mjs";
+import { all_handmade_data } from "./static_data/handmade_data.mjs"
 
 export const renderables = [
     {
@@ -199,5 +200,5 @@ export const renderables = [
         ]
     },
 
-    get_dead_buildings_renderable(dead_buildings),
+    get_dead_buildings_renderable(dead_buildings, all_handmade_data),
 ]

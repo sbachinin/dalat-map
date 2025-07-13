@@ -16,6 +16,8 @@ import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mj
 import { get_dead_buildings_renderable } from "../js/common_renderables.mjs";
 import { get_point_feature } from "../js/utils/isomorphic_utils.mjs";
 import { get_midPoint_feature_with_text_rotate } from '../build/get_midPoint_feature_with_text_rotate.mjs'
+import { all_handmade_data } from "./static_data/handmade_data.mjs"
+
 
 export const renderables = [
     {
@@ -158,7 +160,7 @@ export const renderables = [
 
 
 
-    get_dead_buildings_renderable(dead_buildings),
+    get_dead_buildings_renderable(dead_buildings, all_handmade_data),
 
 
     {

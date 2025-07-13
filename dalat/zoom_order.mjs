@@ -191,7 +191,7 @@ export const zoom_order = {
         {
             filter: [
                 "any",
-                ["==", ["get", "is_water"], true],
+                ["==", ["get", "feature_type"], 'water'],
                 get_filter_by_fids(
                     hmd[473556887], // hospital
                     hmd[473755163], // du sinh cemetery
