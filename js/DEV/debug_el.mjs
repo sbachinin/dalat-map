@@ -2,7 +2,7 @@ import { create_element_from_Html } from "../utils/frontend_utils.mjs"
 
 let debugel = null
 
-if (window.location.hostname === 'localhost'
+if (window.location.hostname.endsWith('localhost')
     || window.location.hostname.match('192.168')
 ) {
     debugel = create_element_from_Html(`
@@ -15,14 +15,15 @@ if (window.location.hostname === 'localhost'
                 >
                 +
                 </a>
-                <span style="font-size: 10px; margin-left: -20px;">${window.location.port}</span>
             </div>`)
     document.body.append(debugel)
 
     const port_switcher = debugel.querySelector('a#port-switcher')
     port_switcher.addEventListener('click', () => {
         const parsedUrl = new URL(window.location.href)
-        parsedUrl.port = Number(parsedUrl.port) + 1
+        const subdomains = parsedUrl.hostname.split('.')
+        subdomains[0] = Number(subdomains[0]) + 1
+        parsedUrl.hostname = subdomains.join('.')
         port_switcher.href = parsedUrl.toString()
     })
 }
