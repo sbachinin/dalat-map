@@ -38,7 +38,7 @@ export const assets_for_build = {
             && !is_within_imperial_or_intersects(f)
     },
 
-    tile_layers: dalat_build_assets.tile_layers
+    tile_layers_meta: dalat_build_assets.tile_layers_meta
         .filter(tl => is_one_of(tl.name, dalat_layers_to_use_in_hue))
         .concat([
             {

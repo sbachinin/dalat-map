@@ -83,7 +83,7 @@ const boring_building_tiling_meta = {
     minzoom: BORING_BLDGS_POLYGONS_MINZOOM
 }
 
-const general_tile_layers = [boring_building_tiling_meta]
+const general_tile_layers_meta = [boring_building_tiling_meta]
 
 
 
@@ -113,7 +113,6 @@ if (fs.existsSync(custom_features_path)) {
 
 
 const osm_data = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/from_osm.geojson', 'utf-8'))
-let all_geojson = osm_data
 
 
 // merge custom_features.geojson into osm geojson,
@@ -129,7 +128,7 @@ let features = osm_data.features
         return true
     }).reverse()
 
-all_geojson = { type: 'FeatureCollection', features }
+let main_geojson = { type: 'FeatureCollection', features }
 
 
 
@@ -140,7 +139,7 @@ all_geojson = { type: 'FeatureCollection', features }
 
 
 // DROP NON-NUMERIC PART OF FEATURE ID SUCH AS "way/"
-all_geojson.features = all_geojson.features
+main_geojson.features = main_geojson.features
     .map(feature => {
         if (typeof feature.id === 'string') {
             feature.id = feature.id.replace(/^(way|node|relation)\//, '')
@@ -230,7 +229,7 @@ const features_from_renderables = city_assets.renderables?.flatMap(r => {
         process.exit(1)
     }
 
-    const features = r.get_features(all_geojson.features).map(f => {
+    const features = r.get_features(main_geojson.features).map(f => {
         // add .properties if absent, to avoid errors
         return { ...f, properties: f.properties || {} }
     })
@@ -259,7 +258,7 @@ const features_from_renderables = city_assets.renderables?.flatMap(r => {
 
 write(
     city_root_path + '/temp_data/all_geojson_features_with_renderables.geojson',
-    [...all_geojson.features, ...features_from_renderables]
+    [...main_geojson.features, ...features_from_renderables]
 )
 
 
@@ -275,16 +274,16 @@ write(
 // 4) result will be written
 // 5) temporary .mbtiles will be created for current layer's geojson
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
-city_assets.tile_layers
-    .concat(general_tile_layers)
+city_assets.tile_layers_meta
+    .concat(general_tile_layers_meta)
     .forEach(tile_layer => {
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
 
         let layer_features = null
         if (tile_layer.get_features) {
-            layer_features = tile_layer.get_features(all_geojson.features)
+            layer_features = tile_layer.get_features(main_geojson.features)
         } else if (tile_layer.feature_filter) {
-            layer_features = all_geojson.features
+            layer_features = main_geojson.features
                 .filter(tile_layer.feature_filter)
                 .map(f => {
                     tile_layer.added_props?.forEach(prop => {

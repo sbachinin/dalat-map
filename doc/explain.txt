@@ -23,6 +23,27 @@ Read about renderables (including their motivation) also in  doc/hot_to_build_a_
 
 
 
+## HOW TITLES POINTS ARE (CAN BE) MADE
+
+In tile_layers_meta, add item by calling get_titles_points_tiling_settings(...),
+it contains feature filter and feature transform that will be applied in generate_tiles,
+matching geojson features from "main_geojson" to titles from handmade data,
+and making a Point features for every match.
+This will however make Point only for features that happen to be in main_geojson but some titled features will be elsewhere,
+e.g. features made from renderables won't get points automatically (unless renderable.get_features gets them from main_geojson).
+Do Renderable's get_features can take care of that, generating title points for polygons
+(like it's done for dead buildings and unesco areas).
+Basically features from renderables could be merged into main_geojson,
+and this will result in having Points generated for them automatically,
+but I hesitate to do that because these automatically generated Points are now in 1 big tile layer,
+and this means that some work is necessary to filter them in order to get different rendering for different features.
+So for now I keep this scattered system of points generation. If it gets too messy, might need to change to something more uniform.
+
+
+
+
+
+
 
 Why I decide against rendering text along linestrings (with curves, like for rivers)
 	Because it's behaving wildly,
@@ -47,8 +68,8 @@ Features come from:
 		including dead_buildings
 
 Tile layers come from
-	city_assets.tile_layers
-	"general_tile_layers":
+	city_assets.tile_layers_meta
+	"general_tile_layers_meta":
 		city bulk
 		boring bldgs
 	city_assets.renderables

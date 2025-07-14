@@ -15,7 +15,7 @@ export const assets_for_build = {
         return feat.properties['building:architecture'] !== 'french_colonial'
             && feat.id !== 1275206355 // big c
     },
-    tile_layers: [
+    tile_layers_meta: [
         {
             name: 'french_building',
             feature_filter: f => f.properties['building:architecture'] === 'french_colonial',
