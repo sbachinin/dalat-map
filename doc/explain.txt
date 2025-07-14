@@ -1,3 +1,29 @@
+
+
+
+## HOW RENDERABLES WORK
+
+Renderable.id:
+1) It becomes the name of generated geojson file with all the features obtained via renderable's get_features. 
+2) It also becomes the name of a tile layer.
+3) It is used to produce style layers' ids on frontend in build_layers (style layer's resulting id is `${rnd_id} ${style_layer_type}`
+4) style layer produced from renderable on frontend also needs r.id as the name of 'source-layer'
+
+get_features is called in generate_tiles, resulting features go to renderable's dedicated geojson file, and then to dedicated tile layer.
+Get features do totally arbitrary stuff, they can utilize city's handmade data, they can spun some "derived" features like title point for Polygons.
+
+style_layers are mostly for frontend but their "minzoom" and "maxzoom" is applied also for tiling.
+
+When writing renderables, #1 caveat is the possiblity of introducing build-only imports that will be downloaded by end website user. This is soluble by "top level imports" for build only. However, it's not really a valid solution because I need to remember to use such conditional TLI, and anyway build-only import can sneak through some deeply nested modules, which is basically uncontrollable. This really stinks but the extent of the problem is difficult to measure so far, and I'm waiting for more evidence. For now, the proper tool for conditional imports is a util function load_build_only_modules.
+
+Read about renderables (including their motivation) also in  doc/hot_to_build_a_new_city.txt
+
+
+
+
+
+
+
 Why I decide against rendering text along linestrings (with curves, like for rivers)
 	Because it's behaving wildly,
 	Disappearing at various zoom levels, and it's impossible to control

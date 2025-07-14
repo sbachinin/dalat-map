@@ -1,21 +1,24 @@
+import { load_build_only_modules } from "../build/load_build_only_modules.mjs"
+const bom = await load_build_only_modules([
+    ['city_bulk_geometry', './dalat/static_data/city_bulk_geometry.mjs'],
+    ['dead_buildings_geojson', './dalat/static_data/dead_buildings_geojson.mjs'],
+    ['get_midPoint_feature_with_text_rotate', './build/get_midPoint_feature_with_text_rotate.mjs', 'get_midPoint_feature_with_text_rotate'],
+    ['get_polygon_as_linestring', './build/get_polygon_as_linestring.mjs', 'get_polygon_as_linestring'],
+])
+
 import {
     PALE_TITLES_COLOR,
     PALE_TITLES_SIZE,
     WATER_TITLE_COLOR
 } from "../js/common_drawing_layers/constants.mjs";
-import city_bulk_geometry from './static_data/city_bulk_geometry.mjs'
-
-import dead_buildings from "./static_data/dead_buildings.mjs"
 import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_drawing_layers/city_bulk.mjs";
 
 // TODO: importing like this from build/ is a smell
 // It means that frontend imports something that it doesn't need
 // In this case, this import is too small to bother.
 // But in principle, it's a bad design and needs to be improved
-import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs";
 import { get_dead_buildings_renderable } from "../js/common_renderables.mjs";
 import { get_point_feature } from "../js/utils/isomorphic_utils.mjs";
-import { get_midPoint_feature_with_text_rotate } from '../build/get_midPoint_feature_with_text_rotate.mjs'
 import { all_handmade_data } from "./static_data/handmade_data.mjs"
 
 
@@ -27,7 +30,7 @@ export const renderables = [
             const cable_car_stations = all_features.filter(f => f.properties.aerialway === 'station')
             const coords1 = cable_car_stations[0].geometry.coordinates
             const coords2 = cable_car_stations[1].geometry.coordinates
-            return [get_midPoint_feature_with_text_rotate(coords1, coords2)]
+            return [bom.get_midPoint_feature_with_text_rotate(coords1, coords2)]
         },
         style_layers: [
             {
@@ -160,14 +163,14 @@ export const renderables = [
 
 
 
-    get_dead_buildings_renderable(dead_buildings, all_handmade_data),
+    get_dead_buildings_renderable(bom.dead_buildings_geojson, all_handmade_data),
 
 
     {
         id: 'City_bulk',
         get_features: () => ([
-            city_bulk_geometry,
-            get_polygon_as_linestring(city_bulk_geometry)
+            bom.city_bulk_geometry,
+            bom.get_polygon_as_linestring(bom.city_bulk_geometry)
         ]),
         style_layers: [city_bulk_fill, city_bulk_border, city_bulk_title]
     },
