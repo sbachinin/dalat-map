@@ -36,8 +36,8 @@ if (!fs.existsSync(city_root_path)) {
     process.exit(1)
 }
 
-const ass = await import(city_root_path + '/all_assets.mjs')
-const city_assets = ass.all_assets
+const ass = await import(city_root_path + '/assets_for_build.mjs')
+const city_assets = ass.assets_for_build
 
 if (!city_assets.renderables) {
     console.warn('ERROR: renderables must be exported from city_assets')

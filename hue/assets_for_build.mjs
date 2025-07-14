@@ -2,7 +2,7 @@ import booleanWithin from '@turf/boolean-within'
 import booleanIntersects from '@turf/boolean-intersects'
 import area from '@turf/area'
 import { map_bounds } from './isomorphic_assets.mjs'
-import { all_assets as dalat_assets } from '../dalat/all_assets.mjs'
+import { assets_for_build as dalat_build_assets } from '../dalat/assets_for_build.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
 import { renderables } from './renderables.mjs'
 import { all_handmade_data, lakes_handmade_data, land_areas_handmade_data } from './static_data/handmade_data.mjs'
@@ -30,7 +30,7 @@ const is_within_imperial_or_intersects = f => {
     return result
 }
 
-export const all_assets = {
+export const assets_for_build = {
     map_bounds,
     html_title: 'Map of colonial architecture in Hue',
     unimportant_buildings_filter: f => {
@@ -38,7 +38,7 @@ export const all_assets = {
             && !is_within_imperial_or_intersects(f)
     },
 
-    tile_layers: dalat_assets.tile_layers
+    tile_layers: dalat_build_assets.tile_layers
         .filter(tl => is_one_of(tl.name, dalat_layers_to_use_in_hue))
         .concat([
             {

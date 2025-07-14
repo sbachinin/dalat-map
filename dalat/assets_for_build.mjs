@@ -8,7 +8,7 @@ import { get_titles_points_tiling_settings } from "../build/titles_points.mjs"
 
 const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk", "motorway"]
 
-export const all_assets = {
+export const assets_for_build = {
     map_bounds,
     html_title: 'Map of colonial architecture in Dalat',
     unimportant_buildings_filter: feat => {
