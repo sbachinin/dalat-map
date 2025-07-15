@@ -1,6 +1,8 @@
 import { get_geojson_source } from './utils/isomorphic_utils.mjs'
 import { current_city } from './load_city.mjs'
 import { SOURCES_NAMES } from './constants.mjs'
+import { get_centroid } from '../build/get_centroid.mjs'
+import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 
 
 const get_centroids_as_features = () => Object.entries(current_city.centroids_etc).map(([feat_id, data]) => {
@@ -43,6 +45,16 @@ export const get_main_sources = () => {
 
     const features_from_renderables = current_city.renderables?.flatMap(r => {
         return r.get_features().map(f => {
+            if (typeof f.id === 'undefined') {
+                f.id = Math.floor(Math.random() * 10000000000000000)
+            }
+
+            if (f.geometry.type === 'Polygon' && is_feature_selectable(f.id, current_city.all_handmade_data, current_city.fids_to_img_names)) {
+                current_city.centroids_etc[f.id] = {
+                    centroid: get_centroid(f)
+                }
+            }
+
             return {
                 ...f,
                 properties: {
