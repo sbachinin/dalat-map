@@ -1,5 +1,4 @@
 import fs from 'fs'
-import { get_centroid } from './get_centroid.mjs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -76,75 +75,4 @@ export function calculate_minzoom(bounds, screen_width, screen_height) {
     const zoom = Math.log2(zoom_factor * screen_width / 256) // 256 px is standard tile size
 
     return Math.floor(zoom)
-}
-
-
-
-const get_all_lats = feature => {
-    if (!feature?.geometry?.coordinates) {
-        throw new Error("Invalid GeoJSON feature")
-    }
-
-    const { type, coordinates } = feature.geometry
-
-    let all_lats = []
-
-    if (type === "Polygon") {
-        all_lats = coordinates[0].map(coord => coord[1])
-    } else if (type === "MultiPolygon") {
-        all_lats = coordinates.flat(2).map(coord => coord[1])
-    } else {
-        throw new Error("Geometry type must be Polygon or MultiPolygon")
-    }
-
-    return all_lats
-}
-
-
-
-
-// All titles are positioned at the center of the building,
-// except those with "title_side" handmade prop
-// and french (positioned at south if title_side not specified).
-// Returns 'south', 'north' or 'center'
-// 'Left' and 'right' could also make sense but there was no need so far
-export const get_title_side = (f, hmdata) => {
-    const f_hmdata = hmdata[f.id]
-
-    let title_side = 'center'
-
-    if (f_hmdata?.title_side) {
-        if (
-            !['south', 'north', 'center'].includes(f_hmdata.title_side)) {
-            console.warn('This title side is not supported: ', f_hmdata.title_side)
-            return null
-        }
-        title_side = f_hmdata.title_side
-
-    } else if (f.properties['building:architecture'] === 'french_colonial') {
-        title_side = 'south'
-    }
-
-    return title_side
-}
-
-
-
-export const get_title_lat = (
-    f, // geojson feature
-    hmd
-) => {
-    const title_side = get_title_side(f, hmd)
-    if (title_side === null) {
-        console.warn('Invalid title_side for feature', f.id)
-        process.exit(1)
-    }
-
-    if (title_side === 'south') {
-        return Math.min(...get_all_lats(f))
-    } else if (title_side === 'north') {
-        return Math.max(...get_all_lats(f))
-    } else if (title_side === 'center') {
-        return get_centroid(f)[1]
-    }
 }

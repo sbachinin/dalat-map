@@ -1,9 +1,6 @@
-import { load_build_only_modules } from "../build/load_build_only_modules.mjs"
-const bom = await load_build_only_modules([
-    ['city_bulk_geometry', './hue/static_data/city_bulk_geometry.mjs'],
-    ['dead_buildings_geojson', './hue/static_data/dead_buildings_geojson.mjs'],
-    ['imperial_city_border', './hue/static_data/imperial_city_border.mjs'],
-])
+import city_bulk_geometry from "./static_data/city_bulk_geometry.mjs"
+import imperial_city_border from "./static_data/imperial_city_border.mjs"
+import dead_buildings_geojson from "./static_data/dead_buildings_geojson.mjs"
 
 import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs"
 
@@ -20,8 +17,8 @@ export const renderables = [
     {
         id: 'City_bulk',
         get_features: () => ([
-            bom.city_bulk_geometry,
-            get_polygon_as_linestring(bom.city_bulk_geometry)
+            city_bulk_geometry,
+            get_polygon_as_linestring(city_bulk_geometry)
         ]),
         style_layers: [city_bulk_fill, city_bulk_border, city_bulk_title]
     },
@@ -37,7 +34,7 @@ export const renderables = [
 
     {
         id: 'imperial_city_border',
-        get_features: () => [bom.imperial_city_border],
+        get_features: () => [imperial_city_border],
         style_layers: [{
             type: 'line',
             'paint': {
@@ -205,5 +202,5 @@ export const renderables = [
         ]
     },
 
-    get_dead_buildings_renderable(bom.dead_buildings_geojson, all_handmade_data),
+    get_dead_buildings_renderable(dead_buildings_geojson, all_handmade_data),
 ]

@@ -18,10 +18,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@turf/turf": "^7.2.0"
   },
   "devDependencies": {
     "heic-convert": "^2.1.0",
-    "sharp": "^0.34.2"
+    "sharp": "^0.34.2",
+    "@turf/turf": "^7.2.0"
   }
 }

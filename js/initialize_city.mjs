@@ -1,3 +1,9 @@
+import { centerOfMass } from 'https://esm.sh/@turf/center-of-mass@7.2.0'
+import { midpoint } from 'https://esm.sh/@turf/midpoint@7.2.0'
+import { polygonToLine } from 'https://esm.sh/@turf/polygon-to-line'
+import { nearestPointOnLine } from 'https://esm.sh/@turf/nearest-point-on-line'
+import { distance } from 'https://esm.sh/@turf/distance'
+
 import { create_scale, update_scale } from './manage_scale.mjs'
 import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { get_style } from './style.mjs'
@@ -22,6 +28,14 @@ import { initialize_panel } from './initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './load_city.mjs'
 import { DEFAULT_MAX_ZOOM } from './constants.mjs'
+
+globalThis.turf = { // because the following turf functions are used on build too, and build can't import turf from https, imports it from node_modules instead
+    centerOfMass,
+    midpoint,
+    polygonToLine,
+    nearestPointOnLine,
+    distance,
+}
 
 export const initialize_city = async (name) => {
     await load_city(name)

@@ -41,5 +41,19 @@ export const get_main_sources = () => {
         )
     }
 
+    const features_from_renderables = current_city.renderables?.flatMap(r => {
+        return r.get_features().map(f => {
+            return {
+                ...f,
+                properties: {
+                    ...(f.properties || {}),
+                    renderable_id: r.id
+                }
+            }
+        })
+    }) || []
+
+    sources[SOURCES_NAMES.RENDERABLES] = get_geojson_source(features_from_renderables)
+
     return sources
 }

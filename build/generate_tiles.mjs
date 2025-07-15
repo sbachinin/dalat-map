@@ -16,7 +16,7 @@ import {
 import * as turf from '@turf/turf'
 import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
 
-global.turf = turf
+globalThis.turf = turf
 
 const write = (path, data) => {
     fs.writeFileSync(path, JSON.stringify(data, null, 2))
@@ -38,11 +38,6 @@ if (!fs.existsSync(city_root_path)) {
 
 const ass = await import(city_root_path + '/assets_for_build.mjs')
 const city_assets = ass.assets_for_build
-
-if (!city_assets.renderables) {
-    console.warn('ERROR: renderables must be exported from city_assets')
-    process.exit(1)
-}
 
 mkdir_if_needed(city_root_path + `/temp_data`)
 
@@ -222,43 +217,9 @@ const generate_temp_mbtiles = (
         ${geojson_path}`);
 }
 
-
-const features_from_renderables = city_assets.renderables?.flatMap(r => {
-    if (r.id.match(/\s/)) {
-        console.warn('ERROR: renderable id has white space:', r.id)
-        process.exit(1)
-    }
-
-    const features = r.get_features(main_geojson.features).map(f => {
-        // add .properties if absent, to avoid errors
-        return { ...f, properties: f.properties || {} }
-    })
-
-    let minzoom = null
-    // if any of renderable's style_layers has no minzoom, then tiles must be made from earliest minzoom
-    if (
-        r.style_layers.length > 0 &&
-        r.style_layers.every(l => is_real_number(l.minzoom))
-    ) {
-        minzoom = Math.min(...r.style_layers.map(l => l.minzoom))
-    }
-
-    let maxzoom = null
-    if (
-        r.style_layers.length > 0 &&
-        r.style_layers.every(l => is_real_number(l.maxzoom))
-    ) {
-        maxzoom = Math.max(...r.style_layers.map(l => l.maxzoom))
-    }
-
-    generate_temp_mbtiles(r.id, features, minzoom, maxzoom)
-
-    return features
-}) || []
-
 write(
-    city_root_path + '/temp_data/all_geojson_features_with_renderables.geojson',
-    [...main_geojson.features, ...features_from_renderables]
+    city_root_path + '/temp_data/features_to_make_centroids_for.geojson',
+    main_geojson.features
 )
 
 

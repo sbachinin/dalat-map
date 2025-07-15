@@ -1,10 +1,7 @@
-import { load_build_only_modules } from "../build/load_build_only_modules.mjs"
-const bom = await load_build_only_modules([
-    ['city_bulk_geometry', './dalat/static_data/city_bulk_geometry.mjs'],
-    ['dead_buildings_geojson', './dalat/static_data/dead_buildings_geojson.mjs'],
-    ['get_midPoint_feature_with_text_rotate', './build/get_midPoint_feature_with_text_rotate.mjs', 'get_midPoint_feature_with_text_rotate'],
-    ['get_polygon_as_linestring', './build/get_polygon_as_linestring.mjs', 'get_polygon_as_linestring'],
-])
+import city_bulk_geometry from "./static_data/city_bulk_geometry.mjs"
+import dead_buildings_geojson from "./static_data/dead_buildings_geojson.mjs"
+import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs"
+import { get_midPoint_feature_with_text_rotate } from "../build/get_midPoint_feature_with_text_rotate.mjs"
 
 import {
     PALE_TITLES_COLOR,
@@ -30,7 +27,7 @@ export const renderables = [
             const cable_car_stations = all_features.filter(f => f.properties.aerialway === 'station')
             const coords1 = cable_car_stations[0].geometry.coordinates
             const coords2 = cable_car_stations[1].geometry.coordinates
-            return [bom.get_midPoint_feature_with_text_rotate(coords1, coords2)]
+            return [get_midPoint_feature_with_text_rotate(coords1, coords2)]
         },
         style_layers: [
             {
@@ -163,14 +160,14 @@ export const renderables = [
 
 
 
-    get_dead_buildings_renderable(bom.dead_buildings_geojson, all_handmade_data),
+    get_dead_buildings_renderable(dead_buildings_geojson, all_handmade_data),
 
 
     {
         id: 'City_bulk',
         get_features: () => ([
-            bom.city_bulk_geometry,
-            bom.get_polygon_as_linestring(bom.city_bulk_geometry)
+            city_bulk_geometry,
+            get_polygon_as_linestring(city_bulk_geometry)
         ]),
         style_layers: [city_bulk_fill, city_bulk_border, city_bulk_title]
     },

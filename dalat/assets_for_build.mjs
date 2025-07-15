@@ -3,7 +3,6 @@ import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/common_drawing_layers/con
 import { is_one_of } from "../js/utils/isomorphic_utils.mjs";
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf";
-import { renderables } from './renderables.mjs'
 import { get_titles_points_tiling_settings } from "../build/titles_points.mjs"
 
 const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk", "motorway"]
@@ -102,6 +101,5 @@ export const assets_for_build = {
 
         get_titles_points_tiling_settings(all_handmade_data, lakes_handmade_data),
 
-    ],
-    renderables
+    ]
 }

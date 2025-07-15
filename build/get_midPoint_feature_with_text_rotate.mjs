@@ -1,5 +1,5 @@
 export const get_midPoint_feature_with_text_rotate = (coords1, coords2) => {
-    const midpoint_feat = turf.midpoint(coords1, coords2)
+    const midpoint_feat = globalThis.turf.midpoint(coords1, coords2)
 
     const westest = coords1[0] < coords2[0] ? coords1 : coords2
     const eastest = coords1[0] > coords2[0] ? coords1 : coords2

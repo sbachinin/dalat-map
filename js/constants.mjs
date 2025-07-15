@@ -1,5 +1,6 @@
 export const SOURCES_NAMES = {
     CITY_TILES: 'city_tiles',
+    RENDERABLES: 'renderables',
     CITY_TITLE: 'city_title'
 }
 

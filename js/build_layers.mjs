@@ -90,8 +90,8 @@ export const build_layers = () => {
         return r.style_layers.map(sl => ({
             ...sl,
             id: r.id + " " + sl.type,
-            source: SOURCES_NAMES.CITY_TILES,
-            'source-layer': r.id
+            source: SOURCES_NAMES.RENDERABLES,
+            filter: join_style_filters(sl.filter, ["==", ["get", "renderable_id"], r.id])
         }))
     })
 

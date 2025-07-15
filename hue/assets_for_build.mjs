@@ -1,10 +1,7 @@
-import booleanWithin from '@turf/boolean-within'
-import booleanIntersects from '@turf/boolean-intersects'
-import area from '@turf/area'
+import * as turf from '@turf/turf'
 import { map_bounds } from './isomorphic_assets.mjs'
 import { assets_for_build as dalat_build_assets } from '../dalat/assets_for_build.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
-import { renderables } from './renderables.mjs'
 import { all_handmade_data, lakes_handmade_data, land_areas_handmade_data } from './static_data/handmade_data.mjs'
 import { get_titles_points_tiling_settings } from '../build/titles_points.mjs'
 import { unesco_sites_polygons } from './static_data/unesco_sites_polygons.mjs'
@@ -22,8 +19,8 @@ const is_within_imperial_or_intersects = f => {
     let result = false
     try {
         // these turf fns tend to throw plenty of exceptions that are difficult to handle
-        result = booleanWithin(f, imperial_city_border)
-            || booleanIntersects(f, imperial_city_border)
+        result = turf.booleanWithin(f, imperial_city_border)
+            || turf.booleanIntersects(f, imperial_city_border)
     } catch (e) { }
     // So, if a building is within imperial but turf fails, building will be treated is outside imperial.
     // Slippery stuff. I only hope it will not fail on healthy buildings
@@ -88,13 +85,13 @@ export const assets_for_build = {
                     if (f.properties.water !== 'lake'
                         && f.properties.natural !== 'water'
                     ) return false
-                    if (f.geometry.type === 'Polygon' && booleanWithin(f, hue_bulk_polygon)) {
+                    if (f.geometry.type === 'Polygon' && turf.booleanWithin(f, hue_bulk_polygon)) {
                         return true
                     }
                 },
                 added_props: [{
                     name: 'is_small_lake',
-                    get_value: f => area(f.geometry) < 20000
+                    get_value: f => turf.area(f.geometry) < 20000
                         || is_one_of(f.id, [
                             // some parts of the ditch around vauban fort
                             39452865,
@@ -166,7 +163,7 @@ export const assets_for_build = {
                     // {
                     //     name: 'is_small_area',
                     //     get_value: f => {
-                    //         return area(f.geometry) < 80000
+                    //         return turf.area(f.geometry) < 80000
                     //     }
                     // }
                 ]
@@ -192,5 +189,4 @@ export const assets_for_build = {
             }
 
         ]),
-    renderables
 }

@@ -1,11 +1,7 @@
 import { FRENCH_DEAD_FILL_COLOR, SELECTED_DEAD_FILL_COLOR } from "./common_drawing_layers/constants.mjs";
 import { titles_common_layout_props } from "./common_drawing_layers/drawing_layers.mjs";
 import { DEFAULT_MAX_ZOOM } from "./constants.mjs";
-
-let tp = null
-if (typeof window === 'undefined') {
-    tp = await import('../build/titles_points.mjs')
-}
+import { make_title_point_feature } from "../build/titles_points.mjs"
 
 export const get_dead_buildings_renderable = (dead_buildings_features, all_handmade_data) => {
     return {
@@ -14,7 +10,7 @@ export const get_dead_buildings_renderable = (dead_buildings_features, all_handm
             ...dead_buildings_features,
             ...dead_buildings_features
                 .filter(f => all_handmade_data[f.id]?.title)
-                .map(f => tp.make_title_point_feature(f, all_handmade_data))
+                .map(f => make_title_point_feature(f, all_handmade_data))
         ],
         style_layers: [
             {

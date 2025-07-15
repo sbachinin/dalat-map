@@ -1,7 +1,4 @@
 import { is_feature_selectable } from "./utils/does_feature_have_details.mjs"
-import { polygonToLine } from 'https://esm.sh/@turf/polygon-to-line'
-import { nearestPointOnLine } from 'https://esm.sh/@turf/nearest-point-on-line'
-import { distance } from 'https://esm.sh/@turf/distance'
 import { is_mouse_device } from "./utils/frontend_utils.mjs"
 
 const clickable_extra_thickness = is_mouse_device ? 7 : 20 // smaller mistake tolerance for mouse because it's harder to miss with mouse
@@ -38,9 +35,9 @@ export const find_clickable_feat = (click_point) => {
     clickable_feats_around_point
         .filter(f => f.layer.type === 'fill')
         .forEach(f => {
-            const pline = polygonToLine(f)
-            const nearest_point = nearestPointOnLine(pline, arr_point)
-            const d = distance(arr_point, nearest_point, { units: 'kilometers' })
+            const pline = globalThis.turf.polygonToLine(f)
+            const nearest_point = globalThis.turf.nearestPointOnLine(pline, arr_point)
+            const d = globalThis.turf.distance(arr_point, nearest_point, { units: 'kilometers' })
             if (d < smallest_distance_to_click) {
                 smallest_distance_to_click = d
                 nearest_feat = f
