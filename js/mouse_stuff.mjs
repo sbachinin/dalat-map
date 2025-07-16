@@ -1,21 +1,15 @@
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
-import { try_fly_to_building, try_open_building } from './bldg_details.mjs'
+import { try_open_building } from './bldg_details.mjs'
 import { CURSOR_POINTER_MINZOOM } from './common_drawing_layers/constants.mjs'
 import {
-    can_share_files,
-    debounce,
-    get_image_file_from_element,
-    is_mouse_device
+    debounce, is_mouse_device
 } from './utils/frontend_utils.mjs'
 import { find_bldg_id_by_image_filename } from './utils/isomorphic_utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
-import { get_link_to_selected_bldg } from './select_building.mjs'
-import { get_selected_building_id } from './selected_building_id.mjs'
 import { show_tooltip } from './tooltip.mjs'
-import { current_city } from './load_city.mjs'
 import { find_clickable_feat } from './find_clickable_feat.mjs'
 
 
@@ -102,70 +96,6 @@ export const add_mouse_stuff = () => {
             )
             lightbox?.pswp?.close()
 
-
-        } else if (e.target.closest('#building-info__flyto')) {
-            try_fly_to_building(get_selected_building_id(), { force: true })
-
-
-
-        } else if (e.target.closest('#building-info__copylink')) {
-            const message_el = document.querySelector('#copylink-message')
-            navigator.clipboard.writeText(
-                get_link_to_selected_bldg())
-                .then(() => {
-                    message_el.innerText = 'Link copied!'
-                    message_el.style.display = 'block';
-                    setTimeout(() => {
-                        message_el.style.display = 'none';
-                    }, 1200);
-                })
-                .catch(err => {
-                    message_el.innerText = 'Failed to copy link!'
-                    message_el.style.display = 'block';
-                    setTimeout(() => {
-                        message_el.style.display = 'none';
-                    }, 2000);
-                });
-
-
-
-        } else if (e.target.closest('#building-info__share')) {
-
-            const bldg_data = current_city.all_handmade_data[get_selected_building_id()]
-
-            let files = undefined // shouldn't pass files if sharing of files is not supported
-
-            const img = document.querySelector('#building-details #panel-thumbs-list .slide-wrapper:first-child img');
-
-            if (img && can_share_files()) {
-                try {
-                    const file = await get_image_file_from_element(img)
-                    files = [file]
-                } catch (error) {
-                    // TODO (Think. Basically if file fails, it doesn't prevent me from sharing other stuff)
-                    console.warn('Failed to get image file', error)
-                }
-            }
-
-            let text = 'Map of French architecture of Da Lat'
-            if (bldg_data?.title) {
-                text += ` - ${bldg_data?.title}`
-            }
-
-            try {
-                await navigator.share({
-                    title: 'Map of French architecture of Da Lat',
-                    url: get_link_to_selected_bldg(),
-                    text,
-                    files
-                });
-            } catch (error) {
-                // Could show a "Fail" popup message or something BUT...
-                // this catch is executed not only when smth bad happens
-                // but also when you change your mind and close the share dialog
-                // In such case no feedback is necessary
-                // I don't want to investigate different kinds of failure
-            }
 
         }
     })

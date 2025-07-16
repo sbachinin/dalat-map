@@ -7,6 +7,10 @@ import { RENDERABLES_NAMES } from '../constants.mjs'
 import { current_city } from '../load_city.mjs'
 import { panel } from './panel.mjs'
 import { show_tooltip } from '../tooltip.mjs'
+import { get_link_to_selected_bldg } from '../select_building.mjs'
+import { try_fly_to_building } from '../bldg_details.mjs'
+import { get_selected_building_id } from '../selected_building_id.mjs'
+import { onclick_share } from './onclick_share.mjs'
 
 function get_topmost_id(html_string) {
     const parser = new DOMParser()
@@ -81,6 +85,9 @@ const buttons_icons = [
             text: `Fly to this building`,
             textNoWrap: true,
             position: 'bottom'
+        },
+        onclick: (e) => {
+            try_fly_to_building(get_selected_building_id(), { force: true })
         }
     },
 
@@ -88,7 +95,8 @@ const buttons_icons = [
         if: () => is_mobile_device && navigator.share,
         get_markup: fid => `<div id="building-info__share" title="Share">
             ${svg_icons.share}
-        </div>`
+        </div>`,
+        onclick: onclick_share
     },
     {
         if: () => !is_mobile_device && navigator.clipboard?.writeText,
@@ -101,6 +109,25 @@ const buttons_icons = [
             text: `Copy link to this building`,
             textNoWrap: true,
             position: 'bottom'
+        },
+        onclick: () => {
+            const message_el = document.querySelector('#copylink-message')
+            navigator.clipboard.writeText(
+                get_link_to_selected_bldg())
+                .then(() => {
+                    message_el.innerText = 'Link copied!'
+                    message_el.style.display = 'block'
+                    setTimeout(() => {
+                        message_el.style.display = 'none'
+                    }, 1200);
+                })
+                .catch(err => {
+                    message_el.innerText = 'Failed to copy link!'
+                    message_el.style.display = 'block';
+                    setTimeout(() => {
+                        message_el.style.display = 'none'
+                    }, 2000)
+                })
         }
     }
 ]
@@ -111,12 +138,8 @@ const set_icons_listeners = () => {
             ...i,
             root_el_id: get_topmost_id(i.get_markup()),
         }))
-    const clickable_icons = all_icons
-        .filter(icon => icon.tooltip_when?.includes('click'))
-    const hoverable_icons = all_icons
-        .filter(icon => icon.tooltip_when?.includes('hover'))
 
-    const try_open = (e_target, icons) => {
+    const try_show_tooltip = (e_target, icons) => {
         icons.forEach(icon => {
             if (e_target.closest('#' + icon.root_el_id)) {
                 show_tooltip({
@@ -130,12 +153,21 @@ const set_icons_listeners = () => {
 
     document.addEventListener('click', (e) => {
         if (!e.target.closest('#building-info__icons')) return
-        try_open(e.target, clickable_icons)
+        try_show_tooltip(
+            e.target,
+            all_icons.filter(icon => icon.tooltip_when?.includes('click'))
+        )
+        all_icons
+            .find(icon => icon.onclick && e.target.closest('#' + icon.root_el_id))
+            ?.onclick(e)
     })
 
     document.addEventListener('mouseover', (e) => {
         if (!e.target.closest('#building-info__icons')) return
-        try_open(e.target, hoverable_icons)
+        try_show_tooltip(
+            e.target,
+            all_icons.filter(icon => icon.tooltip_when?.includes('hover'))
+        )
     })
 }
 
