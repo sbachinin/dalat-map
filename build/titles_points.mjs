@@ -1,4 +1,4 @@
-import { get_centroid } from "./get_centroid.mjs"
+import { get_centroid } from "../js/utils/isomorphic_utils.mjs"
 
 const get_all_lats = feature => {
     if (!feature?.geometry?.coordinates) {

@@ -9,8 +9,8 @@
 import fs from 'fs'
 import { is_feature_selectable } from '../js/utils/does_feature_have_details.mjs'
 import { mkdir_if_needed, parse_args } from './build_utils.mjs'
-import { get_centroid } from './get_centroid.mjs'
 import * as turf from '@turf/turf'
+import { get_centroid } from '../js/utils/isomorphic_utils.mjs'
 globalThis.turf = turf
 
 // TODO

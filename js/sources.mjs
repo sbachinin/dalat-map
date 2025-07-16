@@ -1,7 +1,7 @@
 import { get_geojson_source } from './utils/isomorphic_utils.mjs'
 import { current_city } from './load_city.mjs'
 import { SOURCES_NAMES } from './constants.mjs'
-import { get_centroid } from '../build/get_centroid.mjs'
+import { get_centroid } from './utils/isomorphic_utils.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 
 
