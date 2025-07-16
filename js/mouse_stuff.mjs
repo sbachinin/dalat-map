@@ -61,6 +61,16 @@ export const add_mouse_stuff = () => {
 
     is_mouse_device && document.body.addEventListener('mouseover', debounce((e) => {
 
+        if (e.target.closest('#building-info__dead')) {
+            show_tooltip({
+                triggerEl: e.target.closest('#building-info__dead'),
+                boundingEl: panel.wrapper_element,
+                text: `This building was recently demolished`,
+                textNoWrap: true,
+                position: 'bottom'
+            })
+        }
+
         if (e.target.closest('#building-info__flyto')) {
             show_tooltip({
                 triggerEl: e.target.closest('#building-info__flyto'),

@@ -93,6 +93,7 @@
     align-items: center;
     justify-content: center;
     padding: 4px;
+    position: relative;
 }
 
 #building-info a[href=""],
@@ -122,6 +123,15 @@
     font-size: 14px;
 }
 
+#building-info__dead {
+    cursor: default;
+}
+
+#building-info__dead img {
+    height: 23px;
+    margin: 0 3px;
+}
+
 #building-info__doubt {
     padding: 4px 6px;
 }
@@ -134,7 +144,6 @@
 }
 
 #building-info__flyto {
-    position: relative;
     cursor: pointer;
 }
 
@@ -157,11 +166,6 @@
 #building-info__flyto.disabled path,
 #building-info__flyto.disabled circle {
     stroke: rgba(0, 0, 0, 0.2);
-}
-
-#building-info__copylink,
-#building-info__doubt {
-    position: relative;
 }
 
 #building-info__copylink #copylink-message {
