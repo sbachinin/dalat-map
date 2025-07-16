@@ -80,26 +80,26 @@
     font-size: 13px;
 }
 
-#building-info__other {
+#building-info__icons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 6px;
 }
 
-#building-info__other>*>* {
+#building-info__icons>*>* {
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
 
-#building-info__other>* {
+#building-info__icons>* {
     display: flex;
     gap: 5px;
 }
 
-#building-info__other #building-buttons>* {
+#building-info__icons #building-buttons>* {
     cursor: pointer;
     background: rgba(208, 224, 220, 0.4);
     border-radius: 5px;

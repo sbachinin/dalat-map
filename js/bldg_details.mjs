@@ -3,21 +3,18 @@ import { select_building } from './select_building.mjs'
 import { get_selected_building_id } from './selected_building_id.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
-import * as svg_icons from './svg_icons.mjs'
 import {
     create_element_from_Html,
     div,
     get_map_center_shift_px,
     is_landscape,
-    is_mobile_device,
     push_to_history,
     throttle
 } from './utils/frontend_utils.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './common_drawing_layers/constants.mjs'
 import { current_city } from './load_city.mjs'
-import { RENDERABLES_NAMES } from './constants.mjs'
-
+import { make_icons } from './panel/bldg_details_icons.mjs'
 
 const update_size_variables = () => {
     update_panel_thumbs_list_size_variables({
@@ -46,71 +43,6 @@ const set_panel_content = (id) => {
         ? `<div id="building-info__subtitle">${feat_hmd.subtitle.replace(/\n/g, '<br>')}</div>`
         : ''
 
-
-    const wikipedia = feat_hmd?.wikipedia
-        ? `<div id="building-info__wikipedia">
-                    <a target="_blank" href="${feat_hmd.wikipedia}">
-                        <img src="../auxiliary_images/wikipedia.svg">
-                    </a>
-                </div>`
-        : ''
-
-    const doubt = feat_hmd?.doubt
-        ? `<div id="building-info__doubt">
-                <img src="../auxiliary_images/question.png">
-            </div>`
-        : ''
-
-    const is_dead = current_city.features_from_renderables_as_array.find(f => {
-        return f.id === id && f.properties?.renderable_id === RENDERABLES_NAMES.DEAD_BUILDINGS
-    })
-    const dead = is_dead ? `<div id="building-info__dead">
-                <img src="../auxiliary_images/skull.png">
-            </div>`
-        : ''
-
-    const google = feat_hmd?.google
-        ? `<div id="building-info__google">
-                    <a target="_blank" href="${feat_hmd.google}">
-                        ${svg_icons.gmaps}
-                    </a>
-                </div>`
-        : ''
-
-    const flyto = `<div id="building-info__flyto" class="disabled">
-        ${svg_icons.flyto}
-    </div>`
-
-
-
-
-    let copylink_or_share = ''
-    if (is_mobile_device && navigator.share) {
-        copylink_or_share = `<div id="building-info__share" title="Share">
-            ${svg_icons.share}
-        </div>`
-    } else if (!is_mobile_device && navigator.clipboard?.writeText) {
-        copylink_or_share = `<div id="building-info__copylink">
-            ${svg_icons.copylink}
-            <div id="copylink-message"></div>
-        </div>`
-    }
-
-
-    const info_other = `<div id="building-info__other">
-        <div>
-            ${doubt}
-            ${dead}
-        </div>
-        <div id=building-buttons>
-            ${wikipedia}
-            ${google}
-            ${flyto}
-            ${copylink_or_share}
-        </div>
-        
-        </div>`
-
     const year = feat_hmd?.year
         ? `<div id="building-info__year">Built in ${feat_hmd.year}</div>`
         : ''
@@ -127,7 +59,7 @@ const set_panel_content = (id) => {
         <div id="building-info">
             ${title}
             ${subtitle}
-            ${info_other}
+            ${make_icons(id)}
             ${year}
             ${links}
         </div >

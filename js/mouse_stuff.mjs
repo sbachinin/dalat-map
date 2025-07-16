@@ -61,36 +61,6 @@ export const add_mouse_stuff = () => {
 
     is_mouse_device && document.body.addEventListener('mouseover', debounce((e) => {
 
-        if (e.target.closest('#building-info__dead')) {
-            show_tooltip({
-                triggerEl: e.target.closest('#building-info__dead'),
-                boundingEl: panel.wrapper_element,
-                text: `This building was recently demolished`,
-                textNoWrap: true,
-                position: 'bottom'
-            })
-        }
-
-        if (e.target.closest('#building-info__flyto')) {
-            show_tooltip({
-                triggerEl: e.target.closest('#building-info__flyto'),
-                boundingEl: panel.wrapper_element,
-                text: `Fly to this building`,
-                textNoWrap: true,
-                position: 'bottom'
-            })
-        }
-
-        if (e.target.closest('#building-info__copylink')) {
-            show_tooltip({
-                triggerEl: e.target.closest('#building-info__copylink'),
-                boundingEl: panel.wrapper_element,
-                text: `Copy link to this building`,
-                textNoWrap: true,
-                position: 'bottom'
-            })
-        }
-
         if (e.target.closest('#highlights-opener')) {
             show_tooltip({
                 triggerEl: e.target.closest('#highlights-opener'),
@@ -131,18 +101,6 @@ export const add_mouse_stuff = () => {
                 open_building_delay
             )
             lightbox?.pswp?.close()
-
-
-        } else if (e.target.closest('#building-info__doubt')) {
-            show_tooltip({
-                triggerEl: document.querySelector('#building-info__doubt'),
-                boundingEl: panel.wrapper_element,
-                text: `I don't have enough information or intuition to say whether it was built during the colonial period or later`,
-                minWidth: 250,
-                position: 'bottom',
-                closeOnTriggerElClick: false,
-                closeAfter: !is_mouse_device ? 5000 : undefined
-            })
 
 
         } else if (e.target.closest('#building-info__flyto')) {
