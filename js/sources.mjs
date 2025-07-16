@@ -65,6 +65,8 @@ export const get_main_sources = () => {
         })
     }) || []
 
+    current_city.features_from_renderables_as_array = features_from_renderables
+
     sources[SOURCES_NAMES.RENDERABLES] = get_geojson_source(features_from_renderables)
 
     return sources

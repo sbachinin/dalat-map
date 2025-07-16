@@ -16,6 +16,7 @@ import {
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './common_drawing_layers/constants.mjs'
 import { current_city } from './load_city.mjs'
+import { RENDERABLES_NAMES } from './constants.mjs'
 
 
 const update_size_variables = () => {
@@ -60,6 +61,14 @@ const set_panel_content = (id) => {
             </div>`
         : ''
 
+    const is_dead = current_city.features_from_renderables_as_array.find(f => {
+        return f.id === id && f.properties?.renderable_id === RENDERABLES_NAMES.DEAD_BUILDINGS
+    })
+    const dead = is_dead ? `<div id="building-info__dead">
+                <img src="../auxiliary_images/skull.png">
+            </div>`
+        : ''
+
     const google = feat_hmd?.google
         ? `<div id="building-info__google">
                     <a target="_blank" href="${feat_hmd.google}">
@@ -90,6 +99,7 @@ const set_panel_content = (id) => {
 
     const info_other = `<div id="building-info__other">
             ${doubt}
+            ${dead}
             ${wikipedia}
             ${google}
             ${flyto}
