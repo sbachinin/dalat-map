@@ -2,7 +2,7 @@ import city_bulk_geometry from "./static_data/city_bulk_geometry.mjs"
 import imperial_city_border from "./static_data/imperial_city_border.mjs"
 import dead_buildings_geojson from "./static_data/dead_buildings_geojson.mjs"
 
-import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs"
+import { get_polygon_as_linestring } from '../js/utils/frontend_utils.mjs'
 
 import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_drawing_layers/city_bulk.mjs"
 import { PALE_TITLES_COLOR, WATER_TITLE_COLOR } from "../js/common_drawing_layers/constants.mjs"

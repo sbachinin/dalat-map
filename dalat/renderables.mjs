@@ -1,6 +1,6 @@
 import city_bulk_geometry from "./static_data/city_bulk_geometry.mjs"
 import dead_buildings_geojson from "./static_data/dead_buildings_geojson.mjs"
-import { get_polygon_as_linestring } from "../build/get_polygon_as_linestring.mjs"
+import { get_polygon_as_linestring } from '../js/utils/frontend_utils.mjs'
 import { get_midPoint_feature_with_text_rotate } from "../js/utils/get_midPoint_feature_with_text_rotate.mjs"
 
 import {
