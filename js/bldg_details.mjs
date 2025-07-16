@@ -98,12 +98,17 @@ const set_panel_content = (id) => {
 
 
     const info_other = `<div id="building-info__other">
+        <div>
             ${doubt}
             ${dead}
+        </div>
+        <div id=building-buttons>
             ${wikipedia}
             ${google}
             ${flyto}
             ${copylink_or_share}
+        </div>
+        
         </div>`
 
     const year = feat_hmd?.year

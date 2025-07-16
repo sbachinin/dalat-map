@@ -87,13 +87,22 @@
     gap: 6px;
 }
 
-#building-info__other>* {
-    cursor: pointer;
+#building-info__other>*>* {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 4px;
     position: relative;
+}
+
+#building-info__other>* {
+    display: flex;
+    gap: 5px;
+}
+
+#building-info__other #building-buttons>* {
+    cursor: pointer;
+    background: rgba(208, 224, 220, 0.4);
+    border-radius: 5px;
 }
 
 #building-info a[href=""],
@@ -143,10 +152,6 @@
     padding: 2px;
 }
 
-#building-info__flyto {
-    cursor: pointer;
-}
-
 #building-info__flyto svg {
     height: 26px;
     width: 26px;
@@ -154,7 +159,7 @@
 }
 
 #building-info__flyto.disabled {
-    cursor: auto;
+    cursor: auto !important;
 }
 
 
@@ -182,7 +187,7 @@
 }
 
 #building-info__copylink {
-    padding: 4px 8px;
+    padding: 4px;
 }
 
 #building-info__copylink svg {
