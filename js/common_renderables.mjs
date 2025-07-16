@@ -1,7 +1,7 @@
 import { FRENCH_DEAD_FILL_COLOR, SELECTED_DEAD_FILL_COLOR } from "./common_drawing_layers/constants.mjs";
 import { titles_common_layout_props } from "./common_drawing_layers/drawing_layers.mjs";
 import { DEFAULT_MAX_ZOOM } from "./constants.mjs";
-import { make_title_point_feature } from "../build/titles_points.mjs"
+import { make_title_point_feature } from "./utils/titles_points.mjs"
 
 export const get_dead_buildings_renderable = (dead_buildings_features, all_handmade_data) => {
     return {
