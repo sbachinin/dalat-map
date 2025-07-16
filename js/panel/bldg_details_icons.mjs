@@ -8,7 +8,7 @@ import { current_city } from '../load_city.mjs'
 import { panel } from './panel.mjs'
 import { show_tooltip } from '../tooltip.mjs'
 import { get_link_to_selected_bldg } from '../select_building.mjs'
-import { try_fly_to_building } from '../bldg_details.mjs'
+import { try_fly_to_building } from './bldg_details.mjs'
 import { get_selected_building_id } from '../selected_building_id.mjs'
 import { onclick_share } from './onclick_share.mjs'
 

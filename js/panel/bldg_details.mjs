@@ -1,8 +1,8 @@
-import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
-import { select_building } from './select_building.mjs'
-import { get_selected_building_id } from './selected_building_id.mjs'
-import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
-import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
+import { panel, PANEL_CONTENT_TYPES } from './panel.mjs'
+import { select_building } from '../select_building.mjs'
+import { get_selected_building_id } from '../selected_building_id.mjs'
+import { create_panel_thumbs_list } from './panel_thumbs_list.mjs'
+import { update_panel_thumbs_list_size_variables } from './panel_thumbs_list_size_manager.mjs'
 import {
     create_element_from_Html,
     div,
@@ -10,11 +10,11 @@ import {
     is_landscape,
     push_to_history,
     throttle
-} from './utils/frontend_utils.mjs'
-import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
-import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './common_drawing_layers/constants.mjs'
-import { current_city } from './load_city.mjs'
-import { make_icons } from './panel/bldg_details_icons.mjs'
+} from '../utils/frontend_utils.mjs'
+import { is_feature_selectable } from '../utils/does_feature_have_details.mjs'
+import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from '../common_drawing_layers/constants.mjs'
+import { current_city } from '../load_city.mjs'
+import { make_icons } from './bldg_details_icons.mjs'
 
 const update_size_variables = () => {
     update_panel_thumbs_list_size_variables({

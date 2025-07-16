@@ -1,6 +1,6 @@
 import { panel } from './panel/panel.mjs'
 import { display_highlights } from './highlights.mjs'
-import { try_open_building } from './bldg_details.mjs'
+import { try_open_building } from './panel/bldg_details.mjs'
 import { CURSOR_POINTER_MINZOOM } from './common_drawing_layers/constants.mjs'
 import {
     debounce, is_mouse_device
