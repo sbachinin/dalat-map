@@ -1,4 +1,4 @@
-import { get_midPoint_feature_with_text_rotate } from "../../build/get_midPoint_feature_with_text_rotate.mjs"
+import { get_midPoint_feature_with_text_rotate } from './get_midPoint_feature_with_text_rotate.mjs'
 import { get_point_feature } from "./isomorphic_utils.mjs"
 
 const hash_coordinates = coords => {
