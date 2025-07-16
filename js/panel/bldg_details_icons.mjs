@@ -111,22 +111,25 @@ const buttons_icons = [
             position: 'bottom'
         },
         onclick: () => {
-            const message_el = document.querySelector('#copylink-message')
             navigator.clipboard.writeText(
                 get_link_to_selected_bldg())
                 .then(() => {
-                    message_el.innerText = 'Link copied!'
-                    message_el.style.display = 'block'
-                    setTimeout(() => {
-                        message_el.style.display = 'none'
-                    }, 1200);
+                    show_tooltip({
+                        text: 'Link copied!',
+                        triggerEl: document.querySelector('#building-info__copylink'),
+                        boundingEl: panel.wrapper_element,
+                        position: 'bottom',
+                        closeAfter: 1200
+                    })
                 })
                 .catch(err => {
-                    message_el.innerText = 'Failed to copy link!'
-                    message_el.style.display = 'block';
-                    setTimeout(() => {
-                        message_el.style.display = 'none'
-                    }, 2000)
+                    show_tooltip({
+                        text: 'Failed to copy link!',
+                        triggerEl: document.querySelector('#building-info__copylink'),
+                        boundingEl: panel.wrapper_element,
+                        position: 'bottom',
+                        closeAfter: 2000
+                    })
                 })
         }
     }

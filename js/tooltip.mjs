@@ -76,7 +76,7 @@ export const show_tooltip = (options = {}) => {
 
     clearTimeout(close_timeout)
     if (options.closeAfter) { // even if tooltip is already open, start timeout afresh
-        close_timeout = setTimeout(hide_tooltips, 5000)
+        close_timeout = setTimeout(hide_tooltips, options.closeAfter)
     }
 
     if (is_tooltip_open(options.triggerEl)) return
