@@ -3,20 +3,27 @@
 
 ## HOW RENDERABLES WORK
 
-Renderable.id:
-1) It becomes the name of generated geojson file with all the features obtained via renderable's get_features. 
-2) It also becomes the name of a tile layer.
-3) It is used to produce style layers' ids on frontend in build_layers (style layer's resulting id is `${rnd_id} ${style_layer_type}`
-4) style layer produced from renderable on frontend also needs r.id as the name of 'source-layer'
+They are things that describe some unique feauture (or a small class of features) in one file, without having separate meta in sources, style layers etc.
 
-get_features is called in generate_tiles, resulting features go to renderable's dedicated geojson file, and then to dedicated tile layer.
-Get features do totally arbitrary stuff, they can utilize city's handmade data, they can spun some "derived" features like title point for Polygons.
+They are frontend-only for now.
+They used to be "isomorphic" - they were tiled on build.
+It wasn't clear how benefitial it was (unique features mustn't be too many, and performance impact must be small)
+Plus, the isomorphic way had many caveats:
+	1) the main caveat is unintentional (and SILENT) import of some heavy build-only modules to frontend.
+	This is uncontrollable because such imports can be somewhere very deep and so even extreme caution won't help.
+	Renderables were not the only source of such imports but by far the biggest source
+	2) non-silent breaking import: "window" imported in build, "fs" imported to frontend etc.
+	Although an error is seen right away, it's usually hard to debug it and tell where the import is exactly.
+	3) Perhaps not the biggest flaw but the decisive problem that made me switch to frontend was:
+		I needed a knowledge of whether a building is "dead", and this was based solely on whether a building is listed in "dead_something.geojson",
+		and this knowledge was hard to transfer to frontend too. (Extracting it from tiles is deeply problematic, etc).
+		So, it turned out to be cleaner to keep data closer to frontend. If it's lightweight, why not.
 
-style_layers are mostly for frontend but their "minzoom" and "maxzoom" is applied also for tiling.
+How they work
+Each renderable's features are put in the single geojson source, generated on frontend.
+Renderable's id is saved in each feature's "renderable_id" prop, and this is used to filter feats in style_layers.
 
-When writing renderables, #1 caveat is the possiblity of introducing build-only imports that will be downloaded by end website user. This is soluble by "top level imports" for build only. However, it's not really a valid solution because I need to remember to use such conditional TLI, and anyway build-only import can sneak through some deeply nested modules, which is basically uncontrollable. This really stinks but the extent of the problem is difficult to measure so far, and I'm waiting for more evidence. For now, the proper tool for conditional imports is a util function load_build_only_modules.
-
-Read about renderables (including their motivation) also in  doc/hot_to_build_a_new_city.txt
+Currently in renderables it's impossible to derive renderable's features from osm geojson or custom geojson, because these jsons are build-only.
 
 
 
@@ -31,13 +38,8 @@ matching geojson features from "main_geojson" to titles from handmade data,
 and making a Point features for every match.
 This will however make Point only for features that happen to be in main_geojson but some titled features will be elsewhere,
 e.g. features made from renderables won't get points automatically (unless renderable.get_features gets them from main_geojson).
-Do Renderable's get_features can take care of that, generating title points for polygons
+Renderable's get_features can take care of that, generating title points for polygons
 (like it's done for dead buildings and unesco areas).
-Basically features from renderables could be merged into main_geojson,
-and this will result in having Points generated for them automatically,
-but I hesitate to do that because these automatically generated Points are now in 1 big tile layer,
-and this means that some work is necessary to filter them in order to get different rendering for different features.
-So for now I keep this scattered system of points generation. If it gets too messy, might need to change to something more uniform.
 
 
 
@@ -64,7 +66,7 @@ Features come from:
 	/static_data:
 		bulk,
 		custom_features,
-	city_assets.renderables
+	renderables
 		including dead_buildings
 
 Tile layers come from
@@ -72,11 +74,8 @@ Tile layers come from
 	"general_tile_layers_meta":
 		city bulk
 		boring bldgs
-	city_assets.renderables
-		including dead_buildings
-
 
 Style layers come from
 	zoom_order -> drawing_layers (+ "selectable" variants made at runtime)
-	"simple" layers defined in style.mjss
-	city_assets.renderables	
+	"simple" layers defined in style.mjs
+	renderables
