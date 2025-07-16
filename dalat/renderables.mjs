@@ -22,12 +22,9 @@ import { all_handmade_data } from "./static_data/handmade_data.mjs"
 export const renderables = [
     {
         id: 'Cable_car_label',
-        get_features: (all_features) => {
-
-            const cable_car_stations = all_features.filter(f => f.properties.aerialway === 'station')
-            const coords1 = cable_car_stations[0].geometry.coordinates
-            const coords2 = cable_car_stations[1].geometry.coordinates
-            return [get_midPoint_feature_with_text_rotate(coords1, coords2)]
+        get_features: () => {
+            const cable_car_stations_coords = [[108.4434298, 11.9230389], [108.4369496, 11.9041084]]
+            return [get_midPoint_feature_with_text_rotate(cable_car_stations_coords[0], cable_car_stations_coords[1])]
         },
         style_layers: [
             {
