@@ -3,7 +3,7 @@ import { map_bounds } from './isomorphic_assets.mjs'
 import { assets_for_build as dalat_build_assets } from '../dalat/assets_for_build.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
 import { all_handmade_data, lakes_handmade_data, land_areas_handmade_data } from './static_data/handmade_data.mjs'
-import { get_titles_points_tiling_settings } from '../build/titles_points.mjs'
+import { get_titles_points_tiling_settings } from '../js/utils/titles_points.mjs'
 import { unesco_sites_polygons } from './static_data/unesco_sites_polygons.mjs'
 import imperial_city_border from './static_data/imperial_city_border.mjs'
 
@@ -181,7 +181,7 @@ export const assets_for_build = {
                             1346839222
                         ])))
                     const points = polygons.map(p => ({
-                        ...turf.centerOfMass(p),
+                        ...turf.centroid(p),
                         properties: { title: p.properties.title }
                     }))
                     return [...polygons, ...points]

@@ -18,7 +18,7 @@ import { bldgs_handmade_data } from "./bldgs_handmade_data.mjs"
       
         links: string[],
 
-        title_coords (for areas with complex geometry where centerOfMass looks bad),
+        title_coords (for areas with complex geometry where centroid looks bad),
         
         area_type (for areas),
         
