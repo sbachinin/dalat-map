@@ -1,4 +1,4 @@
-import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR } from "./common_drawing_layers/constants.mjs"
+import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR, FRENCH_SELECTED_FILL_COLOR } from "./common_drawing_layers/constants.mjs"
 
 const icons_ids_to_commands = {
     'french_circle': (ctx) => {
@@ -28,16 +28,22 @@ const icons_ids_to_commands = {
         ctx.fillStyle = 'hsla(187, 71.10%, 52.70%, 0.65)'
         ctx.fillRect(0, 0, 64, 64)
     },
+    'selected_square': (ctx) => {
+        ctx.fillStyle = 'black'
+        ctx.fillRect(0, 0, 16, 16)
+        ctx.fillStyle = FRENCH_SELECTED_FILL_COLOR
+        ctx.fillRect(4, 4, 8, 8)
+    },
     'black_square': (ctx) => {
         ctx.fillStyle = 'black'
         ctx.fillRect(0, 0, 64, 64)
     },
 }
 
-export const get_icon_as_ctx = (id) => {
+export const get_icon_as_ctx = (id, xy = [64, 64]) => {
     const canvas = document.createElement("canvas")
-    canvas.width = 64
-    canvas.height = 64
+    canvas.width = xy[0]
+    canvas.height = xy[1]
     const ctx = canvas.getContext("2d")
     icons_ids_to_commands[id](ctx)
     return ctx
@@ -51,7 +57,9 @@ export const load_icons = async () => {
 
         if (window.dalatmap.hasImage(id)) return
 
-        const ctx = get_icon_as_ctx(id)
+        const dimensions = id === 'selected_square' ? [16, 16] : [64, 64]
+
+        const ctx = get_icon_as_ctx(id, dimensions)
 
         /* else (id === 'skull-icon') {
             window.dalatmap
@@ -61,7 +69,7 @@ export const load_icons = async () => {
         } */
 
 
-        const imageData = ctx.getImageData(0, 0, 64, 64)
+        const imageData = ctx.getImageData(0, 0, ...dimensions)
         window.dalatmap.addImage(id, imageData, { pixelRatio: 2 })
     })
 }
