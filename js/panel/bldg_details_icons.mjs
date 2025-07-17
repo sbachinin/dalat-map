@@ -1,9 +1,9 @@
 import * as svg_icons from '../svg_icons.mjs'
 import {
+    is_dead_building,
     is_mobile_device,
     is_mouse_device,
 } from '../utils/frontend_utils.mjs'
-import { RENDERABLES_NAMES } from '../constants.mjs'
 import { current_city } from '../load_city.mjs'
 import { panel } from './panel.mjs'
 import { show_tooltip } from '../tooltip.mjs'
@@ -21,11 +21,7 @@ function get_topmost_id(html_string) {
 
 const info_icons = [
     {
-        if: (fid) => {
-            return current_city.features_from_renderables_as_array.find(f => {
-                return fid === f.id && f.properties?.renderable_id === RENDERABLES_NAMES.DEAD_BUILDINGS
-            })
-        },
+        if: is_dead_building,
         get_markup: fid => `<div id="building-info__dead">
                 <img src="../auxiliary_images/skull.png">
             </div>`,

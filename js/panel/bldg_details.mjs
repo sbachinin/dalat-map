@@ -7,6 +7,7 @@ import {
     create_element_from_Html,
     div,
     get_map_center_shift_px,
+    is_dead_building,
     is_landscape,
     push_to_history,
     throttle
@@ -15,6 +16,7 @@ import { is_feature_selectable } from '../utils/does_feature_have_details.mjs'
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from '../common_drawing_layers/constants.mjs'
 import { current_city } from '../load_city.mjs'
 import { make_icons } from './bldg_details_icons.mjs'
+import { get_icon_as_ctx } from '../load_icons.mjs'
 
 const update_size_variables = () => {
     update_panel_thumbs_list_size_variables({
@@ -35,8 +37,12 @@ const set_panel_content = (id) => {
         })
         : ''
 
+    const dead_square = is_dead_building(id)
+        ? `<img id="bldg-title-dead-square" src="${get_icon_as_ctx('black_square').canvas.toDataURL()}"> `
+        : ''
+
     const title = feat_hmd?.title
-        ? `<div id="building-info__title">${feat_hmd.title}</div>`
+        ? `<div id="building-info__title">${dead_square}${feat_hmd.title}</div>`
         : ''
 
     const subtitle = feat_hmd?.subtitle

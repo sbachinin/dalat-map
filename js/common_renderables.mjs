@@ -44,6 +44,7 @@ export const get_dead_buildings_renderable = (dead_buildings_features, all_handm
             {
                 "name": "Dead buildings titles",
                 "type": "symbol",
+                "minzoom": 15.5,
                 layout: {
                     ...titles_common_layout_props,
                     'text-size': [

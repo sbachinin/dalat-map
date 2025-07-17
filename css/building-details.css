@@ -71,6 +71,11 @@
     font-size: 18px;
 }
 
+#bldg-title-dead-square {
+    height: 13px;
+    width: auto;
+}
+
 #building-info__subtitle {
     font-size: 14px;
     padding: 0 5px;
