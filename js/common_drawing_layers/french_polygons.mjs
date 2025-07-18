@@ -72,7 +72,7 @@ const get_dark_outline_props = high_zoom_thickness => {
         "source": SOURCES_NAMES.CITY_TILES,
         "source-layer": "french_building",
         'paint': {
-            'line-color': c.FRENCH_DARK_BORDER_COLOR,
+            'line-color': c.SELECTED_BORDER_COLOR,
             'line-width': [
                 "interpolate",
                 ["linear", 2],

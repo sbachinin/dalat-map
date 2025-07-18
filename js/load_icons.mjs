@@ -1,4 +1,4 @@
-import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR, FRENCH_SELECTED_FILL_COLOR } from "./common_drawing_layers/constants.mjs"
+import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR, FRENCH_SELECTED_FILL_COLOR, SELECTED_BORDER_COLOR } from "./common_drawing_layers/constants.mjs"
 
 const icons_ids_to_commands = {
     'french_circle': (ctx) => {
@@ -29,7 +29,7 @@ const icons_ids_to_commands = {
         ctx.fillRect(0, 0, 64, 64)
     },
     'selected_square': (ctx) => {
-        ctx.fillStyle = 'black'
+        ctx.fillStyle = SELECTED_BORDER_COLOR
         ctx.fillRect(0, 0, 16, 16)
         ctx.fillStyle = FRENCH_SELECTED_FILL_COLOR
         ctx.fillRect(4, 4, 8, 8)
