@@ -213,5 +213,9 @@ export const zoom_order = {
 
     15: [
         { drawing_layers: [non_french_titles] },
+        {
+            drawing_layers: [boring_building_fill],
+            drawing_importance: 5
+        },
     ]
 }
