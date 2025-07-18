@@ -87,7 +87,15 @@ const get_dark_outline_props = high_zoom_thickness => {
         },
         props_when_selected: {
             'paint': {
-                'line-width': 6
+                'line-width': [
+                    "interpolate",
+                    ["linear", 2],
+                    ["zoom"],
+                    c.SELECTED_SQUARE_MAXZOOM,
+                    4,
+                    15.5,
+                    6
+                ]
             }
         }
 
