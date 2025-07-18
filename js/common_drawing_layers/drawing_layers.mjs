@@ -20,7 +20,8 @@ import {
     SELECTED_BORING_BLDG_TEXT_COLOR,
     BRIGHT_LAKE_COLOR,
     PALE_LAKE_COLOR,
-    AIRPORT_FILL_COLOR
+    AIRPORT_FILL_COLOR,
+    SELECTED_SQUARE_MAXZOOM
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 import { deep_merge_objects } from "../utils/isomorphic_utils.mjs";
@@ -401,7 +402,7 @@ export const selected_square = {
     "type": "symbol",
     source: 'bldgs_centroids_points',
     minzoom: 10,
-    maxzoom: 14,
+    maxzoom: SELECTED_SQUARE_MAXZOOM,
     "layout": {
         "icon-image": "selected_square",
         "icon-size": 1,

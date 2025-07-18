@@ -80,11 +80,17 @@ const get_dark_outline_props = high_zoom_thickness => {
                 // at low zoom, this outline has only visual purpose
                 // (it's very narrow behind the thickening and adds some clarity to polygons)
                 14,
-                FRENCH_POLYGONS_MAX_THICKENING + 0.7,
+                FRENCH_POLYGONS_MAX_THICKENING + 1,
                 15.5,
                 high_zoom_thickness
             ]
+        },
+        props_when_selected: {
+            'paint': {
+                'line-width': 6
+            }
         }
+
     }
 }
 

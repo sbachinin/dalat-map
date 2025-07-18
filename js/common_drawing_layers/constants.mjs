@@ -1,5 +1,8 @@
 export const FRENCH_SELECTED_FILL_COLOR = 'hsl(42, 97.80%, 53.50%)'
 
+export const SELECTED_SQUARE_MAXZOOM = 14
+
+
 // TODO this one is actually outdated, purplish
 export const FRENCH_TITLES_TEXT_COLOR = 'hsl(300, 20%, 25.40%)'
 
