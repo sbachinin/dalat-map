@@ -30,9 +30,9 @@ const icons_ids_to_commands = {
     },
     'selected_square': (ctx) => {
         ctx.fillStyle = SELECTED_BORDER_COLOR
-        ctx.fillRect(0, 0, 16, 16)
+        ctx.fillRect(0, 0, 20, 20)
         ctx.fillStyle = FRENCH_SELECTED_FILL_COLOR
-        ctx.fillRect(4, 4, 8, 8)
+        ctx.fillRect(4, 4, 12, 12)
     },
     'black_square': (ctx) => {
         ctx.fillStyle = 'black'
@@ -57,7 +57,7 @@ export const load_icons = async () => {
 
         if (window.dalatmap.hasImage(id)) return
 
-        const dimensions = id === 'selected_square' ? [16, 16] : [64, 64]
+        const dimensions = id === 'selected_square' ? [20, 20] : [64, 64]
 
         const ctx = get_icon_as_ctx(id, dimensions)
 
