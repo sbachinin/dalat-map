@@ -88,61 +88,44 @@ const general_tile_layers_meta = [boring_building_tiling_meta]
 
 
 
-
-const custom_features = []
-
-const custom_features_path = city_root_path + '/static_data/custom_features.geojson'
-if (fs.existsSync(custom_features_path)) {
-    custom_features.push(
-        ...JSON.parse(fs.readFileSync(custom_features_path, 'utf-8'))
-            .features.map(f => ({
-                ...f,
-                // without SOME id feature may not survive some future transformations in this script
-                id: f.id || Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
-            }))
-    )
-}
-
-
-
-
-
-const osm_data = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/from_osm.geojson', 'utf-8'))
-
-
 // merge custom_features.geojson into osm geojson,
 // and bulk geometry (as polygon + as linestring) too,
 // prioritize custom features in case of duplicate ids
+
+const osm_features = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/from_osm.geojson', 'utf-8')).features
+const custom_features_path = city_root_path + '/static_data/custom_features.geojson'
+const custom_features = fs.existsSync(custom_features_path)
+    ? JSON.parse(fs.readFileSync(custom_features_path, 'utf-8')).features
+    : []
+
+const fix_id = f => {
+    if (!f.id) {
+        // 1. generate id if missing. Otherwise, features without id can be erased later here
+        f.id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+    } else {
+        // 2. numberify the id, trim non-numeric part
+        f.id = +f.id.replace(/^(way|node|relation)\//, '')
+    }
+    return f
+}
+
 const seen_ids = new Set()
-let features = osm_data.features
-    .concat(custom_features)
-    .reverse()
-    .filter(feature => {
-        if (!feature.id || seen_ids.has(feature.id)) return false
-        seen_ids.add(feature.id)
-        return true
-    }).reverse()
+const is_not_duplicate = f => { // because custom features may repeat the osm data
+    if (seen_ids.has(f.id)) {
+        console.warn('duplicate id', f.id)
+        return false
+    }
+    seen_ids.add(f.id)
+    return true
+}
 
-let main_geojson = { type: 'FeatureCollection', features }
-
-
-
-
-
-
-
-
-
-// DROP NON-NUMERIC PART OF FEATURE ID SUCH AS "way/"
-main_geojson.features = main_geojson.features
-    .map(feature => {
-        if (typeof feature.id === 'string') {
-            feature.id = feature.id.replace(/^(way|node|relation)\//, '')
-            feature.id = Number(feature.id)
-        }
-        return feature
-    })
-
+let main_geojson = {
+    type: 'FeatureCollection',
+    features: custom_features
+        .concat(osm_features)
+        .map(fix_id)
+        .filter(is_not_duplicate)
+}
 
 
 
