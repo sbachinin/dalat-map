@@ -308,7 +308,8 @@ export const bldgs_handmade_data = {
     },
     "1308816301": {
         title: 'Chi Lang\nmarket',
-        viet_title: 'Chợ Chi Lăng'
+        viet_title: 'Chợ Chi Lăng',
+        title_side: 'north',
     }
 }
 

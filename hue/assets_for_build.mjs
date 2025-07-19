@@ -6,6 +6,8 @@ import { all_handmade_data, lakes_handmade_data, land_areas_handmade_data } from
 import { get_titles_points_tiling_settings } from '../js/utils/titles_points.mjs'
 import { unesco_sites_polygons } from './static_data/unesco_sites_polygons.mjs'
 import imperial_city_border from './static_data/imperial_city_border.mjs'
+import { is_important_building } from '../js/utils/does_feature_have_details.mjs'
+import { fids_to_img_names } from './static_data/fids_to_img_names.mjs'
 
 const dalat_layers_to_use_in_hue = [
     'major_roads',
@@ -30,14 +32,26 @@ const is_within_imperial_or_intersects = f => {
 export const assets_for_build = {
     map_bounds,
     html_title: 'Map of colonial architecture in Hue',
+
+
+
     unimportant_buildings_filter: f => {
         return f.properties['building:architecture'] !== 'french_colonial'
             && !is_within_imperial_or_intersects(f)
+            && !is_important_building(f.id, all_handmade_data, fids_to_img_names)
     },
 
     tile_layers_meta: dalat_build_assets.tile_layers_meta
         .filter(tl => is_one_of(tl.name, dalat_layers_to_use_in_hue))
         .concat([
+            {
+                name: 'important_boring_building',
+                feature_filter: f => f.properties?.building
+                    && f.properties?.['building:architecture'] !== 'french_colonial'
+                    && is_important_building(f.id, all_handmade_data, fids_to_img_names)
+                    && !is_within_imperial_or_intersects(f),
+                added_props: ['is_selectable']
+            },
             {
                 name: 'non_french_bldgs_within_imperial_city',
                 feature_filter: f => {

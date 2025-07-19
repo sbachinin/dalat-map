@@ -1,12 +1,13 @@
 import {
-    boring_bldg_with_details_border,
+    selectable_boring_bldg_border,
     boring_building_fill,
     french_bldg_circle,
     french_buildings_titles,
     land_areas_fill,
     non_french_titles,
     railway_line,
-    water_areas_fill
+    water_areas_fill,
+    important_boring_building_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
@@ -91,6 +92,9 @@ export const zoom_order = {
             drawing_importance: 5
         },
         { drawing_layers: [french_buildings_titles] },
+        {
+            drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border]
+        }
     ],
     15: [
         { drawing_layers: [non_french_titles] },
@@ -99,7 +103,7 @@ export const zoom_order = {
             drawing_importance: 5
         },
         {
-            drawing_layers: [boring_bldg_with_details_border],
+            drawing_layers: [selectable_boring_bldg_border],
             drawing_importance: 3
         }
     ],
