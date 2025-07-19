@@ -13,6 +13,7 @@ import {
     peaks_triangles_with_titles,
     railway_line,
     railway_station_titles_with_squares,
+    important_boring_building_fill,
     towns_fill,
     water_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
@@ -163,7 +164,7 @@ export const zoom_order = {
         },
         { drawing_layers: [french_buildings_titles] },
     ],
-    13.5: [
+    [FRENCH_GEOMETRIES_MINZOOM]: [
         {
             drawing_layers: [non_french_titles],
             filter: get_filter_by_fids(
@@ -172,17 +173,16 @@ export const zoom_order = {
                 hmd[1355564844], // military academy
             )
         },
+        {
+            drawing_layers: [important_boring_building_fill],
+            drawing_importance: 3
+        }
     ],
     14: [
         {
             drawing_layers: [river_lines],
             "filter": ['!=', 'name', 'Suối Cam Ly'],
             drawing_importance: 7
-        },
-        {
-            drawing_layers: [boring_building_fill],
-            filter: ["==", ['get', 'is_selectable'], true],
-            drawing_importance: 5
         },
         {
             drawing_layers: [boring_bldg_with_details_border],

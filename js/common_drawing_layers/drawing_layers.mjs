@@ -368,9 +368,9 @@ export const cable_car_endpoints = {
         "icon-size": [
             "interpolate",
             ["linear"],
-            ["zoom"], 
-            11, 
-            0.12, 
+            ["zoom"],
+            11,
+            0.12,
             16,
             0.22
         ],
@@ -468,11 +468,20 @@ export const boring_building_fill = {
                 ['==', ['id'], 361851927],
             ],
             IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR,
-            ["boolean", ["get", "has_title"], false],
-            IMPORTANT_BORING_BLDG_FILL_COLOR,
             BORING_BLDG_FILL_COLOR
         ],
         "fill-antialias": true,
+    }
+}
+
+export const important_boring_building_fill = {
+    name: 'Important (selectable or titled) boring building fill',
+    type: 'fill',
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'important_boring_building',
+    "paint": {
+        "fill-color": IMPORTANT_BORING_BLDG_FILL_COLOR,
+        "fill-antialias": true
     },
     props_when_selected: {
         paint: {
@@ -480,6 +489,8 @@ export const boring_building_fill = {
         }
     }
 }
+
+
 
 export const boring_bldg_with_details_border = {
     name: 'Boring building with details border',

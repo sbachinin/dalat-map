@@ -1,9 +1,11 @@
-import { all_handmade_data, land_areas_handmade_data as dalat_land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs";
-import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
-import { is_one_of } from "../js/utils/isomorphic_utils.mjs";
+import { all_handmade_data, land_areas_handmade_data as dalat_land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs"
+import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/common_drawing_layers/constants.mjs"
+import { is_one_of } from "../js/utils/isomorphic_utils.mjs"
 import { map_bounds } from "./isomorphic_assets.mjs"
-import { area } from "@turf/turf";
+import { area } from "@turf/turf"
 import { get_titles_points_tiling_settings } from "../js/utils/titles_points.mjs"
+import { is_important_building } from "../js/utils/does_feature_have_details.mjs"
+import { fids_to_img_names } from "./static_data/fids_to_img_names.mjs"
 
 const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk", "motorway"]
 
@@ -13,8 +15,15 @@ export const assets_for_build = {
     unimportant_buildings_filter: feat => {
         return feat.properties['building:architecture'] !== 'french_colonial'
             && feat.id !== 1275206355 // big c
+            && !is_important_building(feat.id, all_handmade_data, fids_to_img_names)
     },
     tile_layers_meta: [
+        {
+            name: 'important_boring_building',
+            feature_filter: f => f.properties?.building
+                && f.properties?.['building:architecture'] !== 'french_colonial'
+                && is_important_building(f.id, all_handmade_data, fids_to_img_names),
+        },
         {
             name: 'french_building',
             feature_filter: f => f.properties['building:architecture'] === 'french_colonial',

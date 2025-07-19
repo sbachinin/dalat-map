@@ -73,7 +73,6 @@ const boring_building_tiling_meta = {
         if (cf) return cf(f)
         return false
     },
-    added_props: ['is_selectable', 'has_title'],
     feature_props_to_preserve: ['building', 'building:architecture'],
     minzoom: BORING_BLDGS_POLYGONS_MINZOOM
 }
