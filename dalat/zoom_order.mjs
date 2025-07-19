@@ -1,7 +1,7 @@
 import { get_filter_by_fids } from "../js/common_zoom_order.mjs";
 
 import {
-    boring_bldg_with_details_border,
+    selectable_boring_bldg_border,
     boring_building_fill,
     boring_building_square,
     cable_car_endpoints,
@@ -174,7 +174,7 @@ export const zoom_order = {
             )
         },
         {
-            drawing_layers: [important_boring_building_fill],
+            drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border],
             drawing_importance: 3
         }
     ],
@@ -183,10 +183,6 @@ export const zoom_order = {
             drawing_layers: [river_lines],
             "filter": ['!=', 'name', 'Suối Cam Ly'],
             drawing_importance: 7
-        },
-        {
-            drawing_layers: [boring_bldg_with_details_border],
-            drawing_importance: 3
         },
         {
             filter: [

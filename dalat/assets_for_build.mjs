@@ -23,6 +23,7 @@ export const assets_for_build = {
             feature_filter: f => f.properties?.building
                 && f.properties?.['building:architecture'] !== 'french_colonial'
                 && is_important_building(f.id, all_handmade_data, fids_to_img_names),
+            added_props: ['is_selectable']
         },
         {
             name: 'french_building',

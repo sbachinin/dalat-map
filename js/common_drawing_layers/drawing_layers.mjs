@@ -492,11 +492,11 @@ export const important_boring_building_fill = {
 
 
 
-export const boring_bldg_with_details_border = {
-    name: 'Boring building with details border',
+export const selectable_boring_bldg_border = {
+    name: 'Selectable boring building border',
     'type': 'line',
     "source": SOURCES_NAMES.CITY_TILES,
-    "source-layer": "boring_building",
+    "source-layer": "important_boring_building",
     'paint': {
         'line-color': BORING_BLDG_WITH_DETAILS_BORDER_COLOR
     },
