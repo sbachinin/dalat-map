@@ -149,7 +149,7 @@ export const try_fly_to_building = (
     { force = false } = {}
 ) => {
     return new Promise((resolve) => {
-        const feature_center_arr = current_city.centroids_etc[id]?.centroid
+        const feature_center_arr = current_city.features_generated_props_for_frontend[id]?.centroid
         if (feature_center_arr === undefined) {
             console.warn(`no centroid for ${id}, perhaps need to regenerate?`)
             resolve()
@@ -179,7 +179,7 @@ export const try_fly_to_building = (
                  but in case of changing zooming this smart offset value was wrong
                  for it was calculated for initial zoom level
                 */
-                center: current_city.centroids_etc[id]?.centroid,
+                center: current_city.features_generated_props_for_frontend[id]?.centroid,
                 offset: get_map_center_shift_px(panel.content_breadth),
                 zoom: target_zoom,
                 duration
@@ -214,7 +214,7 @@ export const update_flyto_button = throttle(() => {
     // So I switched to comparing centoid with map viewport's lngLat bounds, and this doesn't depend on network or anything.
     // TODO: this doesn't consider the panel. So, when feature is covered by panel, it won't enable the button
     const { _ne: { lng: e_bound, lat: n_bound }, _sw: { lng: w_bound, lat: s_bound } } = dalatmap.getBounds()
-    const cntrd = current_city.centroids_etc[get_selected_building_id()]?.centroid
+    const cntrd = current_city.features_generated_props_for_frontend[get_selected_building_id()]?.centroid
     if (!cntrd) {
         return
     }

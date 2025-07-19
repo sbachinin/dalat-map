@@ -11,7 +11,7 @@ execSync(
 )
 
 execSync(
-    `node ./save_polygons_centroids_etc.mjs city=${city}`,
+    `node ./generate_features_props_for_frontend.mjs city=${city}`,
     { stdio: 'inherit' }
 )
 

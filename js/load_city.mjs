@@ -26,9 +26,9 @@ const files = [
     },
 
     {
-        filename: 'generated_for_runtime/centroids_etc.mjs',
-        propname: 'centroids_etc',
-        extractor: d => d.centroids_etc,
+        filename: 'generated_for_runtime/features_generated_props_for_frontend.mjs',
+        propname: 'features_generated_props_for_frontend',
+        extractor: d => d.features_generated_props_for_frontend,
     },
     {
         filename: 'constants.mjs',

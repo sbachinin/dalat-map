@@ -77,7 +77,6 @@ const boring_building_tiling_meta = {
     minzoom: BORING_BLDGS_POLYGONS_MINZOOM
 }
 
-const general_tile_layers_meta = [boring_building_tiling_meta]
 
 
 
@@ -126,7 +125,10 @@ let main_geojson = {
         .filter(is_not_duplicate)
 }
 
-
+write(
+    city_root_path + '/temp_data/features_to_generate_props_for.geojson',
+    main_geojson.features
+)
 
 
 
@@ -199,10 +201,6 @@ const generate_temp_mbtiles = (
         ${geojson_path}`);
 }
 
-write(
-    city_root_path + '/temp_data/features_to_make_centroids_for.geojson',
-    main_geojson.features
-)
 
 
 
@@ -218,7 +216,7 @@ write(
 // 5) temporary .mbtiles will be created for current layer's geojson
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
 city_assets.tile_layers_meta
-    .concat(general_tile_layers_meta)
+    .concat(boring_building_tiling_meta)
     .forEach(tile_layer => {
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
 
