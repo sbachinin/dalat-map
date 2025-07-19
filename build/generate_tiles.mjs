@@ -12,6 +12,7 @@ import {
     is_real_number,
     mkdir_if_needed,
     parse_args,
+    push_with_overwrite,
 } from './build_utils.mjs'
 import * as turf from '@turf/turf'
 import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
@@ -125,10 +126,6 @@ let main_geojson = {
         .filter(is_not_duplicate)
 }
 
-write(
-    city_root_path + '/temp_data/features_to_generate_props_for.geojson',
-    main_geojson.features
-)
 
 
 
@@ -223,6 +220,7 @@ city_assets.tile_layers_meta
         let layer_features = null
         if (tile_layer.get_features) {
             layer_features = tile_layer.get_features(main_geojson.features)
+            main_geojson.features = push_with_overwrite(main_geojson.features, layer_features)
         } else if (tile_layer.feature_filter) {
             layer_features = main_geojson.features
                 .filter(tile_layer.feature_filter)
@@ -257,6 +255,13 @@ city_assets.tile_layers_meta
             tile_layer.maxzoom
         )
     })
+
+
+
+write(
+    city_root_path + '/temp_data/features_to_generate_props_for.geojson',
+    main_geojson.features
+)
 
 
 const final_tiles_path = `../cities_tiles/${cityname}/tiles`

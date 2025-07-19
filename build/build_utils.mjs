@@ -76,3 +76,10 @@ export function calculate_minzoom(bounds, screen_width, screen_height) {
 
     return Math.floor(zoom)
 }
+
+
+export const push_with_overwrite = (arr1, arr2) => {
+    return arr1
+        .filter(f1 => !arr2.some(f2 => f2.id === f1.id))
+        .concat(arr2)
+}
