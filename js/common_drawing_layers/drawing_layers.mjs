@@ -96,8 +96,8 @@ export const french_bldg_circle = {
     // could use 'bldgs_centroids_points' source,
     // it would be consistent with how non-french squares are rendered,
     // but centroids source hasn't 'has_title' property
-    source: SOURCES_NAMES.CITY_TILES,
-    "source-layer": "french_building",
+    "source": "bldgs_centroids_points",
+    filter: ["==", ["get", "is_french"], true],
     layout: {
         "icon-image": "french_circle",
         "icon-size": [

@@ -2,16 +2,21 @@ import { get_geojson_source } from './utils/isomorphic_utils.mjs'
 import { current_city } from './load_city.mjs'
 import { SOURCES_NAMES } from './constants.mjs'
 import { get_centroid } from './utils/isomorphic_utils.mjs'
-import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
+import { does_feature_have_title, is_feature_selectable } from './utils/does_feature_have_details.mjs'
 
 
-const get_centroids_as_features = () => Object.entries(current_city.features_generated_props_for_frontend).map(([feat_id, data]) => {
+const get_centroids_as_features = () => Object.entries(current_city.features_generated_props_for_frontend).map(([feat_id, props]) => {
     return {
         "type": "Feature",
         id: feat_id,
         "geometry": {
             "type": "Point",
-            "coordinates": data.centroid
+            "coordinates": props.centroid
+        },
+        properties: {
+            ...props,
+            has_title: does_feature_have_title(feat_id, current_city.all_handmade_data),
+            is_selectable: is_feature_selectable(feat_id, current_city.all_handmade_data, current_city.fids_to_img_names)
         }
     }
 })
