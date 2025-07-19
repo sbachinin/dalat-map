@@ -387,11 +387,6 @@ export const boring_building_square = {
         "icon-image": "boring_square",
         "icon-size": 0.12,
         'icon-allow-overlap': true,
-    },
-    props_when_selected: {
-        layout: {
-            "icon-image": "boring_square_selected",
-        }
     }
 }
 

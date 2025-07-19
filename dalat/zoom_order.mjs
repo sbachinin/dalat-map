@@ -144,7 +144,7 @@ export const zoom_order = {
             drawing_importance: 0,
             filter: ['==', 'ele', '1503']
         },
-        {
+        /* {
             drawing_layers: [boring_building_square],
             filter: get_filter_by_fids(
                 hmd[1244767000],
@@ -153,9 +153,9 @@ export const zoom_order = {
                 hmd[4119185],
                 hmd[308446691]
             ),
-            maxzoom: 14,
+            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
             drawing_importance: 3
-        },
+        }, */
         {
             drawing_layers: [non_french_titles],
             filter: get_filter_by_fids(

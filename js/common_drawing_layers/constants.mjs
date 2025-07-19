@@ -18,7 +18,9 @@ export const BORING_BLDG_FILL_COLOR = 'hsl(43, 15%, 92%)'
 export const BORING_BLDG_WITH_DETAILS_BORDER_COLOR = 'hsl(187, 0%, 42.70%)'
 export const SELECTED_BORING_BLDG_TEXT_COLOR = 'hsl(187, 65.10%, 17.70%)'
 
-export const IMPORTANT_BORING_BLDG_FILL_COLOR = 'hsla(0, 0.00%, 75%, 0.65)'
+export const IMPORTANT_BORING_BLDG_FILL_COLOR = 'hsl(240, 60%, 85%)'
+export const BORING_SQUARE_COLOR = 'hsl(240, 60%, 70%)'
+
 export const IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR = 'hsla(232, 52.40%, 75.30%, 0.80)'
 export const SELECTED_BORING_BLDG_FILL_COLOR = 'hsla(51, 50%, 62.70%, 0.65)'
 
@@ -28,8 +30,7 @@ export const WATER_TITLE_COLOR = 'hsl(193, 100%, 20.4%)'
 
 export const PEAK_TTTLE_COLOR = 'hsl(30, 40%, 40%)'
 
-export const PALE_TITLES_COLOR = 'hsl(0, 0.00%, 40.40%)'
-export const BORING_SQUARE_COLOR = 'hsl(0, 0.00%, 60.40%)'
+export const PALE_TITLES_COLOR = 'hsl(0, 0.00%, 20%)'
 
 export const PALE_TITLES_SIZE = 11
 export const GRASS_COLOR = 'hsl(70, 50%, 70%)'

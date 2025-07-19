@@ -24,10 +24,6 @@ const icons_ids_to_commands = {
         ctx.fillStyle = BORING_SQUARE_COLOR
         ctx.fillRect(0, 0, 64, 64)
     },
-    'boring_square_selected': (ctx) => {
-        ctx.fillStyle = 'hsla(187, 71.10%, 52.70%, 0.65)'
-        ctx.fillRect(0, 0, 64, 64)
-    },
     'selected_square': (ctx) => {
         ctx.fillStyle = SELECTED_BORDER_COLOR
         ctx.fillRect(0, 0, 20, 20)
