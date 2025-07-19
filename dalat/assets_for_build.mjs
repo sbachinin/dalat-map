@@ -1,10 +1,10 @@
 import { all_handmade_data, land_areas_handmade_data as dalat_land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs"
 import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/common_drawing_layers/constants.mjs"
-import { is_one_of } from "../js/utils/isomorphic_utils.mjs"
+import { get_centroid, is_one_of } from "../js/utils/isomorphic_utils.mjs"
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf"
 import { get_titles_points_tiling_settings } from "../js/utils/titles_points.mjs"
-import { is_important_building } from "../js/utils/does_feature_have_details.mjs"
+import { is_feature_selectable, is_important_building } from "../js/utils/does_feature_have_details.mjs"
 import { fids_to_img_names } from "./static_data/fids_to_img_names.mjs"
 
 const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk", "motorway"]
@@ -12,6 +12,32 @@ const major_road_highway_values = ['tertiary', "primary", "primary_link", "secon
 export const assets_for_build = {
     map_bounds,
     html_title: 'Map of colonial architecture in Dalat',
+
+    make_features_props_for_frontend: main_geojson_features => {
+
+        // Centroids are generated to fly to selectable features
+        //    + to show circles, instead of polygons, at low zoom
+
+        const result = {}
+        main_geojson_features.forEach(f => {
+            if (!f.id) {
+                console.log(f)
+                process.exit(1)
+            }
+            const need_centroid = is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
+                || f.properties['building:architecture'] === 'french_colonial'
+
+            if (need_centroid) {
+                result[f.id] = {
+                    centroid: get_centroid(f),
+                    is_french: f.properties['building:architecture'] === 'french_colonial'
+                }
+            }
+        })
+        return result
+    },
+
+
     unimportant_buildings_filter: feat => {
         return feat.properties['building:architecture'] !== 'french_colonial'
             && feat.id !== 1275206355 // big c
