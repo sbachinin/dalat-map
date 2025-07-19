@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+export const generate_id = () => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+
 export const parse_args = () => {
     const params = {};
 

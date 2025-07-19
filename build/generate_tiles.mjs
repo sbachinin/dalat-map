@@ -9,6 +9,7 @@ import {
 } from '../js/common_drawing_layers/constants.mjs'
 import {
     calculate_minzoom,
+    generate_id,
     is_real_number,
     mkdir_if_needed,
     parse_args,
@@ -100,7 +101,7 @@ const custom_features = fs.existsSync(custom_features_path)
 const fix_id = f => {
     if (!f.id) {
         // 1. generate id if missing. Otherwise, features without id can be erased later here
-        f.id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+        f.id = generate_id()
     } else {
         // 2. numberify the id, trim non-numeric part
         f.id = +f.id.replace(/^(way|node|relation)\//, '')
@@ -219,7 +220,7 @@ city_assets.tile_layers_meta
 
         let layer_features = null
         if (tile_layer.get_features) {
-            layer_features = tile_layer.get_features(main_geojson.features)
+            layer_features = tile_layer.get_features(main_geojson.features).map(f => ({ ...f, id: f.id || generate_id() }))
             main_geojson.features = push_with_overwrite(main_geojson.features, layer_features)
         } else if (tile_layer.feature_filter) {
             layer_features = main_geojson.features
