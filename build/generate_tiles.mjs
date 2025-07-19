@@ -126,7 +126,10 @@ let main_geojson = {
         .filter(is_not_duplicate)
 }
 
-
+write(
+    city_root_path + '/temp_data/features_to_generate_props_for.geojson',
+    main_geojson.features
+)
 
 
 
@@ -199,10 +202,6 @@ const generate_temp_mbtiles = (
         ${geojson_path}`);
 }
 
-write(
-    city_root_path + '/temp_data/features_to_make_centroids_for.geojson',
-    main_geojson.features
-)
 
 
 

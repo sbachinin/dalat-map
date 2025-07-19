@@ -5,7 +5,7 @@ import { get_centroid } from './utils/isomorphic_utils.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 
 
-const get_centroids_as_features = () => Object.entries(current_city.centroids_etc).map(([feat_id, data]) => {
+const get_centroids_as_features = () => Object.entries(current_city.features_generated_props_for_frontend).map(([feat_id, data]) => {
     return {
         "type": "Feature",
         id: feat_id,
@@ -50,7 +50,7 @@ export const get_main_sources = () => {
             }
 
             if (f.geometry.type === 'Polygon' && is_feature_selectable(f.id, current_city.all_handmade_data, current_city.fids_to_img_names)) {
-                current_city.centroids_etc[f.id] = {
+                current_city.features_generated_props_for_frontend[f.id] = {
                     centroid: get_centroid(f)
                 }
             }

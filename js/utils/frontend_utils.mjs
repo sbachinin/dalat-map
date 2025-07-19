@@ -208,7 +208,7 @@ export const get_bldg_id_from_url = () => {
 
 
 export function get_center_for_bldg_with_offset(id) {
-    const cntrd = current_city.centroids_etc[id]?.centroid
+    const cntrd = current_city.features_generated_props_for_frontend[id]?.centroid
     if (!cntrd) {
         console.warn(`no centroid for ${id}`)
         return null

@@ -1,4 +1,4 @@
-export const centroids_etc = {
+export const features_generated_props_for_frontend = {
   "3231165": {
     "centroid": [
       107.590278,
