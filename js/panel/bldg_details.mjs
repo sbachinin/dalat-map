@@ -118,10 +118,10 @@ export const try_open_building = async (
                 if (should_try_to_fly) {
                     await try_fly_to_building(id)
                 }
-                select_building(id)
                 if (should_expand_panel) {
-                    panel.resize_to_content()
+                    await panel.resize_to_content()
                 }
+                select_building(id)
             })
     }
 }

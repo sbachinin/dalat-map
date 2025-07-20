@@ -79,9 +79,13 @@ export const panel = {
     async resize_to_content() {
         panel.set_size(panel.content_breadth)
 
-        // used transitionend here but it didn't work on iphone, 1st expand was quick
-        await wait(FIRST_EXPAND_TRANSITION_DURATION + FIRST_EXPAND_TRANSITION_DELAY)
-        panel.wrapper_element.classList.remove('pristine')
+        if (panel.is_pristine()) {
+            // used transitionend here but it didn't work on iphone, 1st expand was quick
+            await wait(FIRST_EXPAND_TRANSITION_DURATION + FIRST_EXPAND_TRANSITION_DELAY)
+            panel.wrapper_element.classList.remove('pristine')
+        } else {
+            await wait(EXPAND_TRANSITION_DURATION)
+        }
     },
     async toggle() {
         if (panel.is_pristine()) return
