@@ -16,6 +16,7 @@ import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from '../common_drawing_layers/consta
 import { current_city } from '../load_city.mjs'
 import { make_icons } from './bldg_details_icons.mjs'
 import { get_icon_as_ctx } from '../load_icons.mjs'
+import { activate_image } from '../lazy-image.mjs'
 
 const update_size_variables = () => {
     update_panel_thumbs_list_size_variables({
@@ -34,7 +35,11 @@ const set_panel_content = (id) => {
         ? create_panel_thumbs_list({
             images_names: feat_img_names
         })
-        : ''
+        : '';
+
+    thumbs_list_el && [...thumbs_list_el.querySelectorAll('a.lazy-image-wrapper')].slice(0, 2).forEach(img => {
+        activate_image(img)
+    })
 
     const dead_square = is_dead_building(id)
         ? `<img id="bldg-title-dead-square" src="${get_icon_as_ctx('black_square').canvas.toDataURL()}"> `
