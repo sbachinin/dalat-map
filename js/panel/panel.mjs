@@ -14,7 +14,7 @@ import { wait_for_sizeless_images_load } from './wait_for_sizeless_images_load.m
 
 const FIRST_EXPAND_TRANSITION_DURATION = 1200
 const FIRST_EXPAND_TRANSITION_DELAY = 1500
-const EXPAND_TRANSITION_DURATION = 300
+const EXPAND_TRANSITION_DURATION = 500
 const CONTENT_FADE_DURATION = 200
 
 
