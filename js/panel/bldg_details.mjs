@@ -101,7 +101,7 @@ export const try_open_building = async (
             await merriweather.load()
         }
         set_panel_content(id)
-        select_building(id)
+        
         if (should_push_history) {
             push_to_history({ id }, `?id=${id}${window.location.hash}`)
         }
@@ -113,6 +113,7 @@ export const try_open_building = async (
                 if (should_try_to_fly) {
                     await try_fly_to_building(id)
                 }
+                select_building(id)
                 if (should_expand_panel) {
                     panel.resize_to_content()
                 }
