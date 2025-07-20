@@ -128,7 +128,7 @@ export const try_open_building = async (
 
 const distance2d = (x1, y1, x2, y2) => Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
 
-export const coords_will_be_in_view = (
+const coords_will_be_in_view = (
     coords,
     padding = 40,
     panel_wil_be_expanded = true
