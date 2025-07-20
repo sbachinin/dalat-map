@@ -3,6 +3,7 @@ import {
     is_dead_building,
     is_mobile_device,
     is_mouse_device,
+    throttle,
 } from '../utils/frontend_utils.mjs'
 import { current_city } from '../load_city.mjs'
 import { panel } from './panel.mjs'
@@ -11,6 +12,7 @@ import { get_link_to_selected_bldg } from '../select_building.mjs'
 import { try_fly_to_building } from './bldg_details.mjs'
 import { get_selected_building_id } from '../selected_building_id.mjs'
 import { onclick_share } from './onclick_share.mjs'
+import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from '../common_drawing_layers/constants.mjs'
 
 function get_topmost_id(html_string) {
     const parser = new DOMParser()
@@ -169,7 +171,7 @@ const set_icons_listeners = () => {
                 all_icons.filter(icon => icon.tooltip_when?.includes('hover'))
             )
         })
-    }        
+    }
 }
 
 
@@ -192,3 +194,35 @@ export const make_icons = (fid) => {
     </div>`
 }
 
+
+export const update_flyto_button = throttle(() => {
+    const but_el = document.querySelector('#building-info__flyto')
+    if (!but_el) return
+
+    if (dalatmap.getZoom() < MINIMAL_ZOOM_ON_BUILDING_SELECT - 1) {
+        but_el.classList.remove('disabled')
+        return
+    }
+
+    // Previous solution utilized queryRenderedFeatures
+    // But it was unstable because relied on what is actually rendered atm
+    // So I switched to comparing centoid with map viewport's lngLat bounds, and this doesn't depend on network or anything.
+    // TODO: this doesn't consider the panel. So, when feature is covered by panel, it won't enable the button
+    const { _ne: { lng: e_bound, lat: n_bound }, _sw: { lng: w_bound, lat: s_bound } } = dalatmap.getBounds()
+    const cntrd = current_city.features_generated_props_for_frontend[get_selected_building_id()]?.centroid
+    if (!cntrd) {
+        return
+    }
+    const selected_bldg_is_visible = (
+        cntrd[0] > w_bound
+        && cntrd[0] < e_bound
+        && cntrd[1] > s_bound
+        && cntrd[1] < n_bound
+    )
+
+    if (selected_bldg_is_visible) {
+        but_el.classList.add('disabled')
+    } else {
+        but_el.classList.remove('disabled')
+    }
+}, 200, true)

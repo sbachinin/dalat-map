@@ -8,7 +8,7 @@ import { create_scale, update_scale } from './manage_scale.mjs'
 import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { get_style } from './style.mjs'
 import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
-import { try_open_building, update_flyto_button } from './panel/bldg_details.mjs'
+import { try_open_building } from './panel/bldg_details.mjs'
 import { get_bldg_id_from_url, get_center_for_bldg_with_offset } from './utils/frontend_utils.mjs'
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
 import { panel } from './panel/panel.mjs'
@@ -28,6 +28,7 @@ import { initialize_panel } from './panel/initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './load_city.mjs'
 import { DEFAULT_MAX_ZOOM } from './constants.mjs'
+import { update_flyto_button } from './panel/bldg_details_icons.mjs'
 
 globalThis.turf = { // because the following turf functions are used on build too, and build can't import turf from https, imports it from node_modules instead
     centerOfMass,
