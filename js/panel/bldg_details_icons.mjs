@@ -89,7 +89,7 @@ const buttons_icons = [
 
     {
         if: () => is_mobile_device && navigator.share,
-        get_markup: fid => `<div id="building-info__share" title="Share">
+        get_markup: fid => `<div id="building-info__share">
             ${svg_icons.share}
         </div>`,
         onclick: onclick_share
@@ -161,13 +161,15 @@ const set_icons_listeners = () => {
             ?.onclick(e)
     })
 
-    document.addEventListener('mouseover', (e) => {
-        if (!e.target.closest('#building-info__icons')) return
-        try_show_tooltip(
-            e.target,
-            all_icons.filter(icon => icon.tooltip_when?.includes('hover'))
-        )
-    })
+    if (is_mouse_device) {
+        document.addEventListener('mouseover', (e) => {
+            if (!e.target.closest('#building-info__icons')) return
+            try_show_tooltip(
+                e.target,
+                all_icons.filter(icon => icon.tooltip_when?.includes('hover'))
+            )
+        })
+    }        
 }
 
 
