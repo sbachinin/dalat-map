@@ -289,9 +289,11 @@ export const bldgs_handmade_data = {
         title_side: 'south'
     },
     "18645373": {
-        title: 'Thien Vuong\nCo Sat\nPagoda'
+        title: 'Thien Vuong\nCo Sat Pagoda',
+        title_side: 'north'
     },
     "475362774": {
+        title_side: 'south',
         title: 'Radio and\nTV station',
     },
     "361851706": {

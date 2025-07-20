@@ -125,11 +125,6 @@ export const french_bldg_circle = {
             14,
             1
         ],
-    },
-    props_when_selected: {
-        layout: {
-            "icon-size": 0.17
-        },
     }
 }
 
