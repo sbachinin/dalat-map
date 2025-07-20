@@ -321,3 +321,14 @@ export const is_dead_building = (fid) => {
         return fid === f.id && f.properties?.renderable_id === RENDERABLES_NAMES.DEAD_BUILDINGS
     })
 }
+
+
+
+
+export const find_bldg_id_by_image_filename = (filename) => {
+    const [bldg_id] = Object.entries(current_city.fids_to_img_names)
+        .find(([_, feat_img_names]) => {
+            return feat_img_names.includes(filename)
+        }) || [null]
+    return Number(bldg_id)
+}

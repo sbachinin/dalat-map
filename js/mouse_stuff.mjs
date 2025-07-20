@@ -3,9 +3,8 @@ import { display_highlights } from './highlights.mjs'
 import { try_open_building } from './panel/bldg_details.mjs'
 import { CURSOR_POINTER_MINZOOM } from './common_drawing_layers/constants.mjs'
 import {
-    debounce, is_mouse_device
+    debounce, find_bldg_id_by_image_filename, is_mouse_device
 } from './utils/frontend_utils.mjs'
-import { find_bldg_id_by_image_filename } from './utils/isomorphic_utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
