@@ -195,7 +195,7 @@ export const make_icons = (fid) => {
 }
 
 
-export const update_flyto_button = throttle(() => {
+export const update_flyto_button = () => {
     const but_el = document.querySelector('#building-info__flyto')
     if (!but_el) return
 
@@ -213,6 +213,7 @@ export const update_flyto_button = throttle(() => {
     if (!cntrd) {
         return
     }
+
     const selected_bldg_is_visible = (
         cntrd[0] > w_bound
         && cntrd[0] < e_bound
@@ -225,4 +226,6 @@ export const update_flyto_button = throttle(() => {
     } else {
         but_el.classList.remove('disabled')
     }
-}, 200, true)
+}
+
+export const throttled_update_flyto_button = throttle(update_flyto_button, 200, true)

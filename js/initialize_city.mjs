@@ -28,7 +28,7 @@ import { initialize_panel } from './panel/initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './load_city.mjs'
 import { DEFAULT_MAX_ZOOM } from './constants.mjs'
-import { update_flyto_button } from './panel/bldg_details_icons.mjs'
+import { throttled_update_flyto_button } from './panel/bldg_details_icons.mjs'
 
 globalThis.turf = { // because the following turf functions are used on build too, and build can't import turf from https, imports it from node_modules instead
     centerOfMass,
@@ -120,7 +120,7 @@ export const initialize_city = async (name) => {
     }
 
     map.on('move', () => {
-        update_flyto_button()
+        throttled_update_flyto_button()
 
         if (window.innerWidth < 768) {
             document.querySelector(`#custom-attribution details`).removeAttribute('open')
@@ -128,7 +128,7 @@ export const initialize_city = async (name) => {
     })
 
     map.on('zoom', () => {
-        update_flyto_button()
+        throttled_update_flyto_button()
         update_scale()
         update_zoom_buttons()
     })
