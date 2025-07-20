@@ -59,7 +59,7 @@ export const land_areas_handmade_data = {
     1303837487: {
         title: "Lam Vien\nsquare",
         area_type: AREA_TYPES.SQUARE,
-        title_coords: [108.4448809674085, 11.938695678915096]
+        title_coords: [108.4448809, 11.938695]
     },
     1353912255: {
         title: `Lam Dong\nchildren's hospital`,
@@ -107,7 +107,7 @@ export const land_areas_handmade_data = {
     1086020940: {
         title: "College",
         area_type: AREA_TYPES.INSTITUTION,
-        title_coords: [108.42800380452292, 11.938586878593512],
+        title_coords: [108.4280038, 11.9385868],
     },
     "1355564844": {
         title: "Military\nAcademy",
@@ -116,29 +116,30 @@ export const land_areas_handmade_data = {
     361692208: {},
     99660916: {
         title: 'Yersin\nPark',
+        title_coords: [108.447183, 11.9389602]
     },
     473547288: {
         title: 'Nuclear \nResearch \nInstitute',
         subtitle: `Originally built by the US in the 1960s. It houses Vietnam's only nuclear reactor, which is used for scientific purposes`,
-        title_coords: [108.45250268473643, 11.95580711711365]
+        title_coords: [108.4525026, 11.9558071]
     },
     1307493492: {
         title: 'Ana\nMandara \nResort',
-        title_coords: [108.4233402669314, 11.945999359025265],
+        title_coords: [108.4233402, 11.94599935],
         area_type: AREA_TYPES.INSTITUTION
     },
     99661171: {
         title: 'Golf\ncourse',
-        title_coords: [108.44573355685378, 11.948379021612126]
+        title_coords: [108.44573355, 11.94837902]
     },
     473556887: {
         title: 'Hospital',
-        title_coords: [108.43045966699538, 11.946530838356935],
+        title_coords: [108.4304596, 11.9465308],
         area_type: AREA_TYPES.INSTITUTION
     },
     99660966: {
         title: 'Anh Sang \npark',
-        title_coords: [108.43695899199463, 11.93885673022271],
+        title_coords: [108.4369589, 11.9388567],
     },
     969458761: {
         title: 'Da Lat \nUniversity',
@@ -158,23 +159,23 @@ export const lakes_handmade_data = {
     },
     125165263: {
         title: 'Tuyen Lam\nLake',
-        title_coords: [108.42535285552634, 11.893930932153538]
+        title_coords: [108.42535285, 11.893930]
     },
     141724748: {
         title: 'Da Thien\nlake',
-        title_coords: [108.45115998514689, 11.982616688724448]
+        title_coords: [108.4511599, 11.9826166]
     },
     141724891: {
         title: 'Chien Thang\nlake',
-        title_coords: [108.46564657614073, 11.974080820149084]
+        title_coords: [108.465646, 11.974080]
     },
     141724809: {
         title: 'Suoi Vang\nLake',
-        title_coords: [108.3682423133476, 12.00078429246257]
+        title_coords: [108.36824, 12.000784]
     },
     64737684: {
         title: 'Dankia\nLake',
-        title_coords: [108.38190723577048, 12.012793493488417]
+        title_coords: [108.381907, 12.0127934]
     }
 }
 
