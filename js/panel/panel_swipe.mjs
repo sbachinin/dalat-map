@@ -64,7 +64,13 @@ export const make_expandable_on_swipe = (panel) => {
     })
 
     const on_touchstart = (e) => {
-        if (e.target.closest('#building-info__subtitle')) return
+
+        const subtitle_target = e.target.closest('#building-info__subtitle')
+        if (subtitle_target
+            && subtitle_target.scrollHeight > subtitle_target.clientHeight
+        ) {
+            return
+        }
 
         if (panel.is_pristine()) return
 
