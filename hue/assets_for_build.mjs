@@ -217,7 +217,7 @@ export const assets_for_build = {
                             1346839222
                         ])))
                     const points = polygons.map(p => ({
-                        ...turf.centroid(p),
+                        ...turf.centerOfMass(p),
                         properties: { title: p.properties.title }
                     }))
                     return [...polygons, ...points]

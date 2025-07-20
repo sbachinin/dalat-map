@@ -1,4 +1,4 @@
-import { centroid } from 'https://esm.sh/@turf/centroid@7.2.0'
+import { centerOfMass } from 'https://esm.sh/@turf/center-of-mass@7.2.0'
 import { midpoint } from 'https://esm.sh/@turf/midpoint@7.2.0'
 import { polygonToLine } from 'https://esm.sh/@turf/polygon-to-line'
 import { nearestPointOnLine } from 'https://esm.sh/@turf/nearest-point-on-line'
@@ -30,7 +30,7 @@ import { current_city, load_city } from './load_city.mjs'
 import { DEFAULT_MAX_ZOOM } from './constants.mjs'
 
 globalThis.turf = { // because the following turf functions are used on build too, and build can't import turf from https, imports it from node_modules instead
-    centroid,
+    centerOfMass,
     midpoint,
     polygonToLine,
     nearestPointOnLine,

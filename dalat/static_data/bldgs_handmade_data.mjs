@@ -217,7 +217,7 @@ export const bldgs_handmade_data = {
         title: "Lam Dong\nAdministrative\nCenter",
     },
     "463866449": {
-        title: 'Bus Station'
+        title: 'Bus\nStation'
     },
     "475362782": {
         title: 'Lam Dong\nLibrary',
