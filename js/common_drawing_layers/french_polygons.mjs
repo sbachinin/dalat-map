@@ -91,7 +91,7 @@ const get_dark_outline_props = high_zoom_thickness => {
                     "interpolate",
                     ["linear", 2],
                     ["zoom"],
-                    c.SELECTED_SQUARE_MAXZOOM,
+                    14,
                     4,
                     15.5,
                     6

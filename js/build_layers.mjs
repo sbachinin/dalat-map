@@ -3,8 +3,6 @@ import { deep_merge_objects, pick } from "./utils/isomorphic_utils.mjs"
 import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
 import { current_city } from "./load_city.mjs"
 import { SOURCES_NAMES } from "./constants.mjs"
-import { selected_square } from "./common_drawing_layers/drawing_layers.mjs"
-import { SELECTED_SQUARE_MAXZOOM } from "./common_drawing_layers/constants.mjs"
 
 const join_style_filters = (...filters) => {
     // depending on the number of truthy filters, returns ["all", ...] OR the_only_truthy_one OR null
@@ -117,7 +115,7 @@ export const build_layers = () => {
             base_layer,
             {
                 id: `${SELECTED_STYLE_LAYER_PREFIX} ${base_layer.id}`,
-                minzoom: SELECTED_SQUARE_MAXZOOM,
+                minzoom: base_layer.minzoom,
                 paint: deep_merge_objects(base_layer.paint, base_layer.props_when_selected.paint),
                 layout: deep_merge_objects(base_layer.layout, base_layer.props_when_selected.layout),
                 filter: join_style_filters(
@@ -127,7 +125,7 @@ export const build_layers = () => {
             }
         ))
 
-    return ([...base_layers, ...selected_layers, selected_square])
+    return ([...base_layers, ...selected_layers])
         .map(layer => ({ ...layer, drawing_importance: undefined, props_when_selected: undefined }))
         .map(inject_city_constants)
 }

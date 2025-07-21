@@ -21,7 +21,6 @@ import {
     BRIGHT_LAKE_COLOR,
     PALE_LAKE_COLOR,
     AIRPORT_FILL_COLOR,
-    SELECTED_SQUARE_MAXZOOM
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 import { deep_merge_objects } from "../utils/isomorphic_utils.mjs";
@@ -383,22 +382,6 @@ export const boring_building_square = {
         "icon-size": 0.12,
         'icon-allow-overlap': true,
     }
-}
-
-
-
-export const selected_square = {
-    "id": SELECTED_STYLE_LAYER_PREFIX + "fat square to display at low zoom",
-    "type": "symbol",
-    source: 'bldgs_centroids_points',
-    minzoom: 10,
-    maxzoom: SELECTED_SQUARE_MAXZOOM,
-    "layout": {
-        "icon-image": "selected_square",
-        "icon-size": 1,
-        'icon-allow-overlap': true,
-    },
-    filter: ["==", ["id"], "nonexistent_id"]
 }
 
 
