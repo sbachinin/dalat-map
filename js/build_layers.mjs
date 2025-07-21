@@ -142,17 +142,30 @@ export const build_layers = () => {
                                 'hsl(340, 35.30%, 35.00%)',
                             ],
                             'line-width': [
-                                "case",
-                                ['==', ['feature-state', 'selected'], true],
-                                3,
-                                0
-                            ],
+                                "interpolate",
+                                ["linear"],
+                                ["zoom"],
+                                13,
+                                [
+                                    "case",
+                                    ['==', ['feature-state', 'selected'], true],
+                                    4,
+                                    0
+                                ],
+                                15.5,
+                                [
+                                    "case",
+                                    ['==', ['feature-state', 'selected'], true],
+                                    1.5,
+                                    0
+                                ],
+                            ]
                         },
                         layout: {
                             'line-join': 'round',
                         }
                     }
-                    
+
                     /* Creating the following "fill" layer ALMOST could be avoided,
                         and worked around by ["case", ... "selected" ...] block in base fill layer.
                         But base fill layer can disappear sooner than the selected border "closes" (eats all the space within it with its thickness),
