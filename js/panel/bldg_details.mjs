@@ -1,5 +1,5 @@
 import { panel, PANEL_CONTENT_TYPES } from './panel.mjs'
-import { select_building } from '../select_building.mjs'
+import { do_for_all_selected_layers, select_building } from '../select_building.mjs'
 import { get_selected_building_id } from '../selected_building_id.mjs'
 import { create_panel_thumbs_list } from './panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel_thumbs_list_size_manager.mjs'
@@ -101,12 +101,25 @@ export const try_open_building = async (
     }
 
     if (is_feature_selectable(id)) {
+
+        select_building(id)
+        /* 
+        
+                do_for_all_selected_layers(layer => {
+                    window.dalatmap.setLayoutProperty(layer.id, 'visibility', 'none')
+                    if (layer.type === 'fill') {
+                        window.dalatmap.setPaintProperty(layer.id, 'fill-opacity', 0)
+                    } else if (layer.type === 'line') {
+                        window.dalatmap.setPaintProperty(layer.id, 'line-opacity', 0)
+                    }
+                }) */
+
         if (document.fonts && !document.fonts.check('italic normal 400 1em Merriweather')) {
             const merriweather = new FontFaceObserver('Merriweather', { weight: 'normal', style: 'italic' })
             await merriweather.load()
         }
         set_panel_content(id)
-        
+
         if (should_push_history) {
             push_to_history({ id }, `?id=${id}${window.location.hash}`)
         }
@@ -119,9 +132,8 @@ export const try_open_building = async (
                     await try_fly_to_building(id)
                 }
                 if (should_expand_panel) {
-                    await panel.resize_to_content()
+                    panel.resize_to_content()
                 }
-                select_building(id)
             })
     }
 }
