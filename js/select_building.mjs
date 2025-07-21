@@ -1,35 +1,25 @@
+import { current_city } from "./load_city.mjs"
 import { get_selected_building_id, set_selected_building_id } from "./selected_building_id.mjs"
 
-export const SELECTED_STYLE_LAYER_PREFIX = 'Selected::'
-
 export const select_building = newid => {
-    if (newid !== get_selected_building_id()) {
-        set_selected_building_id(newid)
-        do_for_all_selected_layers(layer => {
-            const new_filter_id = newid === null ? 'nonexistent_id' : newid
+    const sel_id = get_selected_building_id()
+    if (newid !== sel_id) {
 
-            if (layer.filter.includes('all')) { // filter is "composite"
-                window.dalatmap.setFilter(
-                    layer.id,
-                    layer.filter.map(f => {
-                        if (f[0] === '==' && f[1][0] === 'id') { // is "id subfilter"
-                            return ['==', ['id'], new_filter_id]
-                        }
-                        return f
-                    })
-                )
-            } else {
-                window.dalatmap.setFilter(layer.id, ['==', ['id'], new_filter_id])
-            }
+        current_city.sources_of_selectable_features.forEach(({ source, sourceLayer }) => {
+            window.dalatmap.setFeatureState({
+                source,
+                sourceLayer,
+                id: newid
+            }, { selected: true })
+
+            sel_id && window.dalatmap.removeFeatureState({
+                source,
+                sourceLayer,
+                id: sel_id
+            }, 'selected')
         })
-    }
-}
 
-export const do_for_all_selected_layers = (cb) => {
-    for (const layer of window.dalatmap.getStyle().layers) {
-        if (layer.id.startsWith(SELECTED_STYLE_LAYER_PREFIX)) {
-            cb(layer)
-        }
+        set_selected_building_id(newid)
     }
 }
 

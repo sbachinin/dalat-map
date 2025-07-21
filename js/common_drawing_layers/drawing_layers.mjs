@@ -15,16 +15,12 @@ import {
     SQUARE_FILL_COLOR,
     IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR,
     BORING_BLDG_WITH_DETAILS_BORDER_COLOR,
-    SELECTED_BORING_BLDG_FILL_COLOR,
-    FRENCH_SELECTED_TITLE_HALO_COLOR,
-    SELECTED_BORING_BLDG_TEXT_COLOR,
     BRIGHT_LAKE_COLOR,
     PALE_LAKE_COLOR,
     AIRPORT_FILL_COLOR,
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 import { deep_merge_objects } from "../utils/isomorphic_utils.mjs";
-import { SELECTED_STYLE_LAYER_PREFIX } from "../select_building.mjs";
 
 
 export const titles_common_layout_props = {
@@ -76,13 +72,7 @@ export const french_buildings_titles = {
     paint: {
         'text-color': FRENCH_TITLES_TEXT_COLOR,
     },
-    props_when_selected: {
-        paint: {
-            "text-halo-color": FRENCH_SELECTED_TITLE_HALO_COLOR,
-            "text-halo-width": 5,
-            "text-halo-blur": 0
-        },
-    },
+    selectable: true,
     filter: ["==", ["get", "building:architecture"], 'french_colonial']
 }
 
@@ -313,22 +303,7 @@ export const non_french_titles = {
             PALE_TITLES_COLOR
         ]
     },
-    props_when_selected: {
-        layout: {
-            "text-size": [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                FIRST_CLASS_FRENCH_MINZOOM,
-                PALE_TITLES_SIZE - 0.5,
-                DEFAULT_MAX_ZOOM,
-                PALE_TITLES_SIZE + 0.5,
-            ],
-        },
-        paint: {
-            'text-color': SELECTED_BORING_BLDG_TEXT_COLOR
-        }
-    },
+    selectable: true,
     filter: ["!=", ["get", "building:architecture"], 'french_colonial']
 }
 
@@ -456,11 +431,7 @@ export const important_boring_building_fill = {
         "fill-color": IMPORTANT_BORING_BLDG_FILL_COLOR,
         "fill-antialias": true
     },
-    props_when_selected: {
-        paint: {
-            'fill-color': SELECTED_BORING_BLDG_FILL_COLOR
-        }
-    }
+    selectable: true
 }
 
 
@@ -473,7 +444,8 @@ export const selectable_boring_bldg_border = {
     'paint': {
         'line-color': BORING_BLDG_WITH_DETAILS_BORDER_COLOR
     },
-    filter: ["==", ["get", "is_selectable"], true]
+    filter: ["==", ["get", "is_selectable"], true],
+    selectable: true
 }
 
 

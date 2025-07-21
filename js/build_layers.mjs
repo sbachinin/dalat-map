@@ -1,8 +1,8 @@
-import { SELECTED_STYLE_LAYER_PREFIX } from "./select_building.mjs"
-import { deep_merge_objects, pick } from "./utils/isomorphic_utils.mjs"
+import { pick } from "./utils/isomorphic_utils.mjs"
 import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
 import { current_city } from "./load_city.mjs"
 import { SOURCES_NAMES } from "./constants.mjs"
+import { FRENCH_SELECTED_FILL_COLOR, FRENCH_SELECTED_TITLE_HALO_COLOR, SELECTED_BORDER_COLOR } from "./common_drawing_layers/constants.mjs"
 
 const join_style_filters = (...filters) => {
     // depending on the number of truthy filters, returns ["all", ...] OR the_only_truthy_one OR null
@@ -67,7 +67,7 @@ export const build_layers = () => {
                     const style_layer = {
                         id: `${zoom_level}: ${drawing_layer.name}`,
                         minzoom: +zoom_level,
-                        ...pick(drawing_layer, ['source', 'source-layer', 'type', 'layout', 'paint', 'props_when_selected']),
+                        ...pick(drawing_layer, ['source', 'source-layer', 'type', 'layout', 'paint', 'selectable']),
                     }
 
                     if (zoom_level_layer.maxzoom) {
@@ -104,28 +104,76 @@ export const build_layers = () => {
         }
         return l.drawing_importance
     }
-    const base_layers = ([...layers_from_zoom_order, ...layers_from_renderables])
+
+    current_city.sources_of_selectable_features = []
+
+    const selected_lines_layers = []
+    const all_layers = ([...layers_from_zoom_order, ...layers_from_renderables])
+        .map(l => {
+            if (l.selectable) {
+                current_city.sources_of_selectable_features.push({
+                    source: l.source,
+                    sourceLayer: l['source-layer']
+                })
+                if (l.type === 'symbol') {
+                    l.paint['text-halo-color'] = [
+                        "case",
+                        ['==', ['feature-state', 'selected'], true],
+                        FRENCH_SELECTED_TITLE_HALO_COLOR,
+                        'transparent'
+                    ]
+                    l.paint['text-halo-width'] = 5
+                    l.paint['text-halo-blur'] = 0
+                }
+                if (l.type === 'line') {
+                    const sl = {
+                        id: l.id + ' selected',
+                        type: 'line',
+                        source: l.source,
+                        paint: {
+                            'line-color': [
+                                'interpolate',
+                                ['linear'],
+                                ['zoom'],
+                                15,
+                                'hsl(340, 89%, 22%)',
+                                17.5,
+                                'hsl(340, 35.30%, 35.00%)',
+                            ],
+                            'line-width': [
+                                "case",
+                                ['==', ['feature-state', 'selected'], true],
+                                3,
+                                0
+                            ]
+
+                        }
+                    }
+                    if (l['source-layer']) {
+                        sl['source-layer'] = l['source-layer']
+                    }
+                    if (l.filter) {
+                        sl.filter = l.filter
+                    }
+                    selected_lines_layers.push(sl)
+                }
+                if (l.type === 'fill') {
+                    l.paint['fill-color'] = [
+                        "case",
+                        ['==', ['feature-state', 'selected'], true],
+                        FRENCH_SELECTED_FILL_COLOR,
+                        l.paint['fill-color']
+                    ]
+                }
+            }
+            return l
+        })
         .sort((a, b) => {
             return get_drawing_importance(b) - get_drawing_importance(a)
         })
 
-    const selected_layers = base_layers
-        .filter(l => !!l.props_when_selected)
-        .map(base_layer => deep_merge_objects(
-            base_layer,
-            {
-                id: `${SELECTED_STYLE_LAYER_PREFIX} ${base_layer.id}`,
-                minzoom: base_layer.minzoom,
-                paint: deep_merge_objects(base_layer.paint, base_layer.props_when_selected.paint),
-                layout: deep_merge_objects(base_layer.layout, base_layer.props_when_selected.layout),
-                filter: join_style_filters(
-                    base_layer.filter,
-                    ["==", ["id"], 'nonexistent_id'] // hide everything selected for a start
-                )
-            }
-        ))
 
-    return ([...base_layers, ...selected_layers])
-        .map(layer => ({ ...layer, drawing_importance: undefined, props_when_selected: undefined }))
+    return all_layers.concat(selected_lines_layers)
+        .map(layer => ({ ...layer, drawing_importance: undefined, selectable: undefined }))
         .map(inject_city_constants)
 }

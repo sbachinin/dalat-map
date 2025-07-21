@@ -24,11 +24,7 @@ export const french_detailless_bldg_fill = {
 export const french_detailful_bldg_fill = {
     "name": "French detailful building",
     ...french_fill_common_props,
-    props_when_selected: {
-        "paint": {
-            "fill-color": c.FRENCH_SELECTED_FILL_COLOR
-        }
-    },
+    selectable: true,
     filter: ["==", ["get", "is_selectable"], true]
 }
 
@@ -72,7 +68,7 @@ const get_dark_outline_props = high_zoom_thickness => {
         "source": SOURCES_NAMES.CITY_TILES,
         "source-layer": "french_building",
         'paint': {
-            'line-color': c.SELECTED_BORDER_COLOR,
+            'line-color': c.FRENCH_DARK_BORDER_COLOR,
             'line-width': [
                 "interpolate",
                 ["linear", 2],
@@ -85,20 +81,7 @@ const get_dark_outline_props = high_zoom_thickness => {
                 high_zoom_thickness
             ]
         },
-        props_when_selected: {
-            'paint': {
-                'line-width': [
-                    "interpolate",
-                    ["linear", 2],
-                    ["zoom"],
-                    14,
-                    4,
-                    15.5,
-                    6
-                ]
-            }
-        }
-
+        selectable: true
     }
 }
 

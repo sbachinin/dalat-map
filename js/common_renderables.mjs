@@ -21,11 +21,7 @@ export const get_dead_buildings_renderable = (dead_buildings_features, all_handm
                     "fill-antialias": true
                 },
                 filter: ["==", ["geometry-type"], "Polygon"],
-                props_when_selected: {
-                    "paint": {
-                        "fill-color": SELECTED_DEAD_FILL_COLOR
-                    }
-                }
+                selectable: true
             },
             {
                 type: 'line',
@@ -35,11 +31,7 @@ export const get_dead_buildings_renderable = (dead_buildings_features, all_handm
                     "line-width": 2,
                 },
                 filter: ["==", ["geometry-type"], "Polygon"],
-                props_when_selected: {
-                    layout: {
-                        visibility: 'visible'
-                    },
-                }
+                selectable: true
             },
             {
                 "name": "Dead buildings titles",
@@ -61,11 +53,7 @@ export const get_dead_buildings_renderable = (dead_buildings_features, all_handm
                 paint: {
                     'text-color': 'hsl(0, 0%, 40%)',
                 },
-                props_when_selected: {
-                    paint: {
-                        'text-color': 'hsl(0, 0%, 0%)'
-                    },
-                },
+                selectable: true,
                 filter: ["==", ["geometry-type"], "Point"]
             }
         ]
