@@ -127,6 +127,7 @@ export const build_layers = () => {
                 }
                 if (l.type === 'line') {
                     const sl = {
+                        drawing_importance: 2,
                         id: l.id + ' selected',
                         type: 'line',
                         source: l.source,
@@ -170,12 +171,12 @@ export const build_layers = () => {
             }
             return l
         })
-        .sort((a, b) => {
-            return get_drawing_importance(b) - get_drawing_importance(a)
-        })
 
 
     return all_layers.concat(selected_lines_layers)
+        .sort((a, b) => {
+            return get_drawing_importance(b) - get_drawing_importance(a)
+        })
         .map(layer => ({ ...layer, drawing_importance: undefined, selectable: undefined }))
         .map(inject_city_constants)
 }
