@@ -145,8 +145,10 @@ export const build_layers = () => {
                                 ['==', ['feature-state', 'selected'], true],
                                 3,
                                 0
-                            ]
-
+                            ],
+                        },
+                        layout: {
+                            'line-join': 'round',
                         }
                     }
                     if (l['source-layer']) {
