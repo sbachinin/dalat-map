@@ -132,15 +132,7 @@ export const build_layers = () => {
                         type: 'line',
                         source: base_layer.source,
                         paint: {
-                            'line-color': [
-                                'interpolate',
-                                ['linear'],
-                                ['zoom'],
-                                15,
-                                'hsl(340, 89%, 22%)',
-                                17.5,
-                                'hsl(340, 35.30%, 35.00%)',
-                            ],
+                            'line-color': 'hsl(340, 89%, 22%)',
                             'line-width': [
                                 "interpolate",
                                 ["linear"],
