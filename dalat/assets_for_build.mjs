@@ -24,15 +24,31 @@ export const assets_for_build = {
                 console.log(f)
                 process.exit(1)
             }
+
+            const props = {}
+
             const need_centroid = is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
                 || f.properties['building:architecture'] === 'french_colonial'
-
             if (need_centroid) {
-                result[f.id] = {
-                    centroid: get_centroid(f),
-                    is_french: f.properties['building:architecture'] === 'french_colonial'
-                }
+                props.centroid = get_centroid(f)
             }
+
+            if (f.properties['building:architecture'] === 'french_colonial') {
+                props.is_french = true
+            }
+
+            if (f.properties.building
+                && f.geometry.type !== 'Point'
+                && is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
+                && turf.area(f) < 80
+            ) {
+                props.is_small_building = true
+            }
+
+            if (Object.keys(props).length > 0) {
+                result[f.id] = props
+            }
+
         })
         return result
     },

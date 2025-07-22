@@ -7,12 +7,12 @@ import {
     create_element_from_Html,
     div,
     get_map_center_shift_px,
+    get_minimal_zoom_on_building_select,
     is_dead_building,
     is_landscape,
     push_to_history,
 } from '../utils/frontend_utils.mjs'
 import { is_feature_selectable } from '../utils/does_feature_have_details.mjs'
-import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from '../common_drawing_layers/constants.mjs'
 import { current_city } from '../load_city.mjs'
 import { make_icons } from './bldg_details_icons.mjs'
 import { get_icon_as_ctx } from '../load_icons.mjs'
@@ -164,9 +164,11 @@ export const try_fly_to_building = (
         }
         const feature_screen_xy = window.dalatmap.project(feature_center_arr)
         const map_zoom = window.dalatmap.getZoom()
+        let minimal_zoom_on_building_select = get_minimal_zoom_on_building_select(id)
+
         if (force
             || !coords_will_be_in_view(feature_screen_xy)
-            || map_zoom < MINIMAL_ZOOM_ON_BUILDING_SELECT
+            || map_zoom < minimal_zoom_on_building_select
         ) {
             const map_el = document.querySelector('#maplibregl-map')
             const distance_from_center = distance2d(
@@ -176,7 +178,7 @@ export const try_fly_to_building = (
                 map_el.offsetHeight / 2
             )
 
-            const target_zoom = Math.max(MINIMAL_ZOOM_ON_BUILDING_SELECT, map_zoom)
+            const target_zoom = Math.max(minimal_zoom_on_building_select, map_zoom)
             const zoom_diff = Math.abs(map_zoom - target_zoom)
             const duration = Math.max(distance_from_center, 500) * (zoom_diff + 1)
 

@@ -9,7 +9,7 @@ import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { get_style } from './style.mjs'
 import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
 import { try_open_building } from './panel/bldg_details.mjs'
-import { get_bldg_id_from_url, get_center_for_bldg_with_offset } from './utils/frontend_utils.mjs'
+import { get_bldg_id_from_url, get_center_for_bldg_with_offset, get_minimal_zoom_on_building_select } from './utils/frontend_utils.mjs'
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
 import { panel } from './panel/panel.mjs'
 import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
@@ -23,7 +23,6 @@ import './photoswipe_mutations_observer.mjs'
 import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
 import { initialize_highlights_button } from './panel/highlights_button.mjs'
-import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from './common_drawing_layers/constants.mjs'
 import { initialize_panel } from './panel/initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './load_city.mjs'
@@ -56,7 +55,7 @@ export const initialize_city = async (name) => {
         console.warn(`"id" parameter in the URL is not a selectable building id`)
     }
 
-    const zoom = (is_feature_selectable(initial_bldg_id) && MINIMAL_ZOOM_ON_BUILDING_SELECT)
+    const zoom = (is_feature_selectable(initial_bldg_id) && get_minimal_zoom_on_building_select(initial_bldg_id))
         || localStorage.getItem('map_zoom')
         || current_city.intro_zoom
 

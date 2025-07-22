@@ -1,5 +1,6 @@
 import * as svg_icons from '../svg_icons.mjs'
 import {
+    get_minimal_zoom_on_building_select,
     is_dead_building,
     is_mobile_device,
     is_mouse_device,
@@ -12,7 +13,6 @@ import { get_link_to_selected_bldg } from '../select_building.mjs'
 import { try_fly_to_building } from './bldg_details.mjs'
 import { get_selected_building_id } from '../selected_building_id.mjs'
 import { onclick_share } from './onclick_share.mjs'
-import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from '../common_drawing_layers/constants.mjs'
 
 function get_topmost_id(html_string) {
     const parser = new DOMParser()
@@ -199,7 +199,8 @@ export const update_flyto_button = () => {
     const but_el = document.querySelector('#building-info__flyto')
     if (!but_el) return
 
-    if (dalatmap.getZoom() < MINIMAL_ZOOM_ON_BUILDING_SELECT - 1) {
+    const mzobs = get_minimal_zoom_on_building_select(get_selected_building_id())
+    if (dalatmap.getZoom() < (mzobs - 1)) {
         but_el.classList.remove('disabled')
         return
     }

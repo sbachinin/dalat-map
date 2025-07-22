@@ -1,3 +1,4 @@
+import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from '../common_drawing_layers/constants.mjs';
 import { RENDERABLES_NAMES } from '../constants.mjs';
 import { current_city } from '../load_city.mjs';
 
@@ -331,4 +332,12 @@ export const find_bldg_id_by_image_filename = (filename) => {
             return feat_img_names.includes(filename)
         }) || [null]
     return Number(bldg_id)
+}
+
+
+export const get_minimal_zoom_on_building_select = (id) => {
+    if (current_city.features_generated_props_for_frontend[id]?.is_small_building) {
+        return MINIMAL_ZOOM_ON_BUILDING_SELECT + 1
+    }
+    return MINIMAL_ZOOM_ON_BUILDING_SELECT
 }
