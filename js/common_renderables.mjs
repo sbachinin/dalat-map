@@ -1,4 +1,4 @@
-import { FRENCH_DEAD_FILL_COLOR, SELECTED_DEAD_FILL_COLOR } from "./common_drawing_layers/constants.mjs";
+import { FRENCH_DEAD_FILL_COLOR } from "./common_drawing_layers/constants.mjs";
 import { titles_common_layout_props } from "./common_drawing_layers/drawing_layers.mjs";
 import { DEFAULT_MAX_ZOOM, RENDERABLES_NAMES } from "./constants.mjs";
 import { make_title_point_feature } from "./utils/titles_points.mjs"
