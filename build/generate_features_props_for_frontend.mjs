@@ -1,6 +1,8 @@
 import fs from 'fs'
 import { mkdir_if_needed, parse_args } from './build_utils.mjs'
 import * as turf from '@turf/turf'
+import { is_feature_selectable } from '../js/utils/does_feature_have_details.mjs'
+import { deep_merge_objects, get_centroid } from '../js/utils/isomorphic_utils.mjs'
 globalThis.turf = turf
 
 const { city } = parse_args()
@@ -23,8 +25,43 @@ all_contentful_features_ids.forEach(cfid => {
     }
 })
 
+// 1. Generate generic (city-agnostic) props
 
-const result = assets_for_build.make_features_props_for_frontend?.(all_geojson_features) || {}
+const all_features_generic_props = {}
+
+all_geojson_features.forEach(f => {
+    if (!f.id) {
+        console.log(f)
+        process.exit(1)
+    }
+
+    const single_feature_props = {}
+
+    if (is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)) {
+        single_feature_props.centroid = get_centroid(f)
+    }
+
+    if (f.properties.building
+        && f.geometry.type !== 'Point'
+        && is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
+        && turf.area(f) < 80
+    ) {
+        single_feature_props.is_small_building = true
+    }
+
+    all_features_generic_props[f.id] = single_feature_props
+})
+
+// 2. Generate city-specific props
+
+const all_features_city_specific_props = assets_for_build.make_features_props_for_frontend?.(all_geojson_features) || {}
+
+const result0 = deep_merge_objects(all_features_generic_props, all_features_city_specific_props)
+
+const result = Object.fromEntries(
+    Object.entries(result0)
+        .filter(([_, f_props]) => Object.keys(f_props).length > 0)
+)
 
 const outputContent = `export const features_generated_props_for_frontend = ${JSON.stringify(result, null, 2)};`
 mkdir_if_needed(city_root_path + '/generated_for_runtime')

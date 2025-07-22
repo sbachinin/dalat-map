@@ -863,8 +863,8 @@ export const features_generated_props_for_frontend = {
       108.469247,
       11.954834
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "971582174": {
     "centroid": [
@@ -1003,8 +1003,8 @@ export const features_generated_props_for_frontend = {
       108.450743,
       11.94299
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1302812580": {
     "centroid": [
@@ -1277,8 +1277,8 @@ export const features_generated_props_for_frontend = {
       108.428802,
       11.942863
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1304203773": {
     "centroid": [
@@ -1404,8 +1404,8 @@ export const features_generated_props_for_frontend = {
       108.435082,
       11.944877
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1304439935": {
     "centroid": [
@@ -1419,8 +1419,8 @@ export const features_generated_props_for_frontend = {
       108.435216,
       11.944615
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1304439939": {
     "centroid": [
@@ -1441,8 +1441,8 @@ export const features_generated_props_for_frontend = {
       108.434381,
       11.943787
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1304439944": {
     "centroid": [
@@ -1610,8 +1610,8 @@ export const features_generated_props_for_frontend = {
       108.429832,
       11.942746
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1305208733": {
     "centroid": [
@@ -1715,8 +1715,8 @@ export const features_generated_props_for_frontend = {
       108.471101,
       11.948797
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1307264376": {
     "centroid": [
@@ -2023,8 +2023,8 @@ export const features_generated_props_for_frontend = {
       108.432746,
       11.952011
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1308413664": {
     "centroid": [
@@ -2150,8 +2150,8 @@ export const features_generated_props_for_frontend = {
       108.432894,
       11.938626
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1308432157": {
     "centroid": [
@@ -2557,8 +2557,8 @@ export const features_generated_props_for_frontend = {
       108.43635,
       11.935893
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1312204692": {
     "centroid": [
@@ -2726,16 +2726,16 @@ export const features_generated_props_for_frontend = {
       108.431565,
       11.950391
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1314373882": {
     "centroid": [
       108.431698,
       11.950157
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1314373883": {
     "centroid": [
@@ -2763,8 +2763,8 @@ export const features_generated_props_for_frontend = {
       108.437618,
       11.948928
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1314373889": {
     "centroid": [
@@ -2806,16 +2806,16 @@ export const features_generated_props_for_frontend = {
       108.429595,
       11.94487
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1314373897": {
     "centroid": [
       108.429632,
       11.945032
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1314373898": {
     "centroid": [
@@ -2899,8 +2899,8 @@ export const features_generated_props_for_frontend = {
       108.433817,
       11.948495
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1315333434": {
     "centroid": [
@@ -2914,8 +2914,8 @@ export const features_generated_props_for_frontend = {
       108.428728,
       11.944543
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1315691248": {
     "centroid": [
@@ -2943,24 +2943,24 @@ export const features_generated_props_for_frontend = {
       108.435684,
       11.943708
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1316150307": {
     "centroid": [
       108.429146,
       11.94385
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1316150308": {
     "centroid": [
       108.428743,
       11.941747
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1316150309": {
     "centroid": [
@@ -2974,8 +2974,8 @@ export const features_generated_props_for_frontend = {
       108.430403,
       11.94248
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1316150311": {
     "centroid": [
@@ -3003,8 +3003,8 @@ export const features_generated_props_for_frontend = {
       108.425399,
       11.94408
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1316150317": {
     "centroid": [
@@ -3018,8 +3018,8 @@ export const features_generated_props_for_frontend = {
       108.426417,
       11.947464
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1316150319": {
     "centroid": [
@@ -3075,8 +3075,8 @@ export const features_generated_props_for_frontend = {
       108.43383,
       11.968133
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1317896186": {
     "centroid": [
@@ -3153,16 +3153,16 @@ export const features_generated_props_for_frontend = {
       108.435587,
       11.962789
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1317896198": {
     "centroid": [
       108.435265,
       11.963575
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1318953168": {
     "centroid": [
@@ -3239,8 +3239,8 @@ export const features_generated_props_for_frontend = {
       108.432763,
       11.965118
     ],
-    "is_french": true,
-    "is_small_building": true
+    "is_small_building": true,
+    "is_french": true
   },
   "1382535910": {
     "centroid": [

@@ -15,9 +15,6 @@ export const assets_for_build = {
 
     make_features_props_for_frontend: main_geojson_features => {
 
-        // Centroids are generated to fly to selectable features
-        //    + to show circles, instead of polygons, at low zoom
-
         const result = {}
         main_geojson_features.forEach(f => {
             if (!f.id) {
@@ -25,30 +22,14 @@ export const assets_for_build = {
                 process.exit(1)
             }
 
-            const props = {}
-
-            const need_centroid = is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
-                || f.properties['building:architecture'] === 'french_colonial'
-            if (need_centroid) {
-                props.centroid = get_centroid(f)
-            }
 
             if (f.properties['building:architecture'] === 'french_colonial') {
-                props.is_french = true
+                result[f.id] = {
+                    // centroid is needed for french bldg even if it's not selectable because centroid is used to draw a building's circle at low z
+                    centroid: get_centroid(f),
+                    is_french: true
+                }
             }
-
-            if (f.properties.building
-                && f.geometry.type !== 'Point'
-                && is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
-                && turf.area(f) < 80
-            ) {
-                props.is_small_building = true
-            }
-
-            if (Object.keys(props).length > 0) {
-                result[f.id] = props
-            }
-
         })
         return result
     },

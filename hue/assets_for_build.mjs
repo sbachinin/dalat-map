@@ -33,10 +33,7 @@ export const assets_for_build = {
     map_bounds,
     html_title: 'Map of colonial architecture in Hue',
 
-    make_features_props_for_frontend: main_geojson_features => {       
-
-        // Centroids are generated to fly to selectable features
-        //    + to show circles, instead of polygons, at low zoom
+    make_features_props_for_frontend: main_geojson_features => {
 
         const result = {}
         main_geojson_features.forEach(f => {
@@ -44,13 +41,13 @@ export const assets_for_build = {
                 console.log(f)
                 process.exit(1)
             }
-            const need_centroid = is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
-                || f.properties['building:architecture'] === 'french_colonial'
-            
-            if (need_centroid) {
+
+
+            if (f.properties['building:architecture'] === 'french_colonial') {
                 result[f.id] = {
+                    // centroid is needed for french bldg even if it's not selectable because centroid is used to draw a building's circle at low z
                     centroid: get_centroid(f),
-                    is_french: f.properties['building:architecture'] === 'french_colonial'
+                    is_french: true
                 }
             }
         })
