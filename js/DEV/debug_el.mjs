@@ -22,7 +22,11 @@ if (window.location.hostname.endsWith('localhost')
     port_switcher.addEventListener('click', () => {
         const parsedUrl = new URL(window.location.href)
         const subdomains = parsedUrl.hostname.split('.')
-        subdomains[0] = Number(subdomains[0]) + 1
+        if (!isNaN(Number(subdomains[0]))) {
+            subdomains[0] = Number(subdomains[0]) + 1
+        } else {
+            subdomains.unshift(1)
+        }
         parsedUrl.hostname = subdomains.join('.')
         port_switcher.href = parsedUrl.toString()
     })
