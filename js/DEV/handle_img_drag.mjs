@@ -26,6 +26,18 @@ onload_city(city => {
     )
 })
 
+const rendered_feat_is_bldg = f => {
+    // Looks like there is no 100% reliable way to answer this question
+    // because features don't necessarily (and perhaps never) contain something like properties.building === true
+    // (such properties are removed on tile generation, and they are not provided for renderables, etc, etc, so it's difficult to solve)
+    // But some rendered feature's props can give a clue
+    if (f.sourceLayer?.includes('building')) return true
+    if (f.source?.includes('building')) return true
+    if (f.layer.id.includes('building')) return true
+    if (f.properties?.renderable_id?.includes('building')) return true
+    return false
+}
+
 document.querySelector('#maplibregl-map').addEventListener("drop", e => {
     e.preventDefault()
 
@@ -41,7 +53,7 @@ document.querySelector('#maplibregl-map').addEventListener("drop", e => {
     // check that file was dropped on a building
 
     const rf = window.dalatmap.queryRenderedFeatures([e.clientX, e.clientY])
-    const building = rf.find(f => f.sourceLayer?.includes('building') && f.layer.type === 'fill')
+    const building = rf.find(rendered_feat_is_bldg)
 
     if (!building) {
         console.warn('no building at this screen point')

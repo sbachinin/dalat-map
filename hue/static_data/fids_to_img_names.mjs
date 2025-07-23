@@ -12,10 +12,15 @@ export const fids_to_img_names = {
     "118541430": [
         "IMG_9580 Copy.JPG",
         "IMG_9583 Copy.JPG",
-        "IMG_9581.PNG"
+        "IMG_9581.PNG",
+        "IMG_1018 Copy.JPG"
     ],
     "118541538": [
-        "IMG_7779.jpg"
+        "IMG_7779.jpg",
+        "IMG_1050 Copy.JPG"
+    ],
+    "118541852": [
+        "IMG_1047 Copy.JPG"
     ],
     "118541964": [
         "IMG_9666.PNG"
@@ -45,13 +50,16 @@ export const fids_to_img_names = {
     ],
     "205805244": [
         "IMG_0927 Copy.JPG",
-        "IMG_0933 Copy.JPG"
+        "IMG_0933 Copy.JPG",
+        "IMG_0947 Copy.JPG"
     ],
     "239972934": [
         "IMG_1020 Copy.JPG",
         "IMG_8633.JPG",
         "IMG_8972.PNG",
-        "IMG_8973.PNG"
+        "IMG_8973.PNG",
+        "IMG_1026 Copy.JPG",
+        "IMG_1027 Copy.JPG"
     ],
     "240266283": [
         "IMG_8647.JPG"
@@ -79,7 +87,8 @@ export const fids_to_img_names = {
         "IMG_0912 Copy.JPG"
     ],
     "695775623": [
-        "IMG_8347.jpg"
+        "IMG_8347.jpg",
+        "IMG_1054 Copy.JPG"
     ],
     "695775628": [
         "IMG_8776.JPG",
@@ -107,7 +116,8 @@ export const fids_to_img_names = {
     "732309921": [
         "IMG_6757.jpg",
         "IMG_8796.JPG",
-        "IMG_8970.PNG"
+        "IMG_8970.PNG",
+        "IMG_1041 Copy.JPG"
     ],
     "732309970": [
         "IMG_1070 Copy.JPG"
@@ -123,7 +133,9 @@ export const fids_to_img_names = {
         "IMG_1032 Copy.JPG",
         "IMG_1033 Copy.JPG",
         "IMG_1037 Copy.JPG",
-        "IMG_8921.PNG"
+        "IMG_8921.PNG",
+        "IMG_0994 Copy.JPG",
+        "IMG_1030 Copy.JPG"
     ],
     "1174028275": [
         "IMG_1045 Copy.JPG"
@@ -148,13 +160,23 @@ export const fids_to_img_names = {
         "IMG_6949 Copy.JPG"
     ],
     "1377444110": [
-        "IMG_6905 Copy.JPG"
+        "IMG_6905 Copy.JPG",
+        "IMG_1002 Copy.JPG",
+        "IMG_1004 Copy.JPG",
+        "IMG_1006 Copy.JPG"
+    ],
+    "1377444117": [
+        "IMG_1012 Copy.JPG",
+        "IMG_1013 Copy.JPG"
     ],
     "1377444118": [
         "IMG_8818.JPG"
     ],
     "1377444119": [
         "IMG_8979.PNG"
+    ],
+    "1377444120": [
+        "IMG_1014 Copy.JPG"
     ],
     "1377444127": [
         "IMG_8649 Copy.JPG"
@@ -174,7 +196,8 @@ export const fids_to_img_names = {
         "IMG_8641.JPG",
         "IMG_8825.JPG",
         "IMG_8826.JPG",
-        "An Ninh Seminary chapel Copy.JPG"
+        "An Ninh Seminary chapel Copy.JPG",
+        "IMG_1043 Copy.JPG"
     ],
     "1384219084": [
         "IMG_9665 Copy Copy.JPG"
@@ -197,11 +220,17 @@ export const fids_to_img_names = {
         "IMG_0988 Copy.JPG",
         "IMG_0990 Copy.JPG"
     ],
+    "1389775447": [
+        "IMG_0993 Copy.JPG"
+    ],
     "1389832834": [
         "IMG_8897.PNG"
     ],
     "4291675218324692": [
         "IMG_8890 Copy.JPG",
         "IMG_0914 Copy.JPG"
+    ],
+    "4204853453454355": [
+        "IMG_0962 Copy.JPG"
     ]
 }
