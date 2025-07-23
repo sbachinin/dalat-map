@@ -76,6 +76,7 @@ export const process_image = async (source_folder, source_filename, force = fals
     if (force || !fs.existsSync(thumb_img_path)) {
         const thumb_height = Math.round(215 / metadata.width * metadata.height)
         await processed_image
+            .clone()
             .resize(215, thumb_height)
             .jpeg({ quality: 95 })
             .toFile(thumb_img_path)
@@ -84,16 +85,15 @@ export const process_image = async (source_folder, source_filename, force = fals
     // 2. Create large image
     if (force || !fs.existsSync(large_img_path)) {
         const stats = await fs.promises.stat(source_file_path)
-        if (stats.size > 350 * 1024) {
+        if (stats.size > 350 * 1024) { // more than 350kb
             const large_height = Math.round(800 / metadata.width * metadata.height)
             await processed_image
+                .clone()
                 .resize(800, large_height)
                 .jpeg({ quality: 95 })
                 .toFile(large_img_path)
         } else {
-            await processed_image
-                .jpeg({ quality: 95 })
-                .toFile(large_img_path)
+            await fs.promises.copyFile(source_file_path, large_img_path)
         }
     }
 }
