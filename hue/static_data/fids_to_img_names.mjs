@@ -1,4 +1,10 @@
 export const fids_to_img_names = {
+    "19381147": [
+        "IMG_0943 Copy.JPG",
+        "IMG_0944 Copy.JPG",
+        "IMG_0945 Copy.JPG",
+        "Hổ_Quyền_1.jpg"
+    ],
     "118541181": [
         "IMG_8728.JPG",
         "AB5caB80X-zqxgqSeo3tdmxzjpyCmVscpHtzDU9zeToE3h_D0BPQM5KI8Z-8VXi7dkqji5K463dL8Yv5C6v-Ws3MKQ3o0hZdod3r1tb4yD0Aa7gU00r--jVXAU4L-7y975L1rs_yhqo=s2048-v1.jpg"
@@ -167,7 +173,8 @@ export const fids_to_img_names = {
         "IMG_8636.JPG",
         "IMG_8641.JPG",
         "IMG_8825.JPG",
-        "IMG_8826.JPG"
+        "IMG_8826.JPG",
+        "An Ninh Seminary chapel Copy.JPG"
     ],
     "1384219084": [
         "IMG_9665 Copy Copy.JPG"

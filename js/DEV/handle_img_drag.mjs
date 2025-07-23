@@ -41,17 +41,14 @@ document.querySelector('#maplibregl-map').addEventListener("drop", e => {
     // check that file was dropped on a building
 
     const rf = window.dalatmap.queryRenderedFeatures([e.clientX, e.clientY])
-    if (
-        !rf[0].sourceLayer.includes('building')
-        || rf[0].layer.type !== 'fill'
-    ) {
-        console.warn('not a building')
+    const building = rf.find(f => f.sourceLayer?.includes('building') && f.layer.type === 'fill')
+
+    if (!building) {
+        console.warn('no building at this screen point')
         return
     }
 
-    // check if such image wasn't already saved for such building
-
-    const feat_id = rf[0].id
+    const feat_id = building.id
     current_city.fids_to_img_names[feat_id] = current_city.fids_to_img_names[feat_id] || []
 
     if (current_city.fids_to_img_names[feat_id].includes(file.name)) {

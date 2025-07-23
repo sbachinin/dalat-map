@@ -50,6 +50,11 @@ export const buildings_handmade_data = {
         subtitle: 'Currently this building belongs to the Center For Vocational Education',
     },
 
+    "19381147": {
+        title: 'Arena for\nanimal fight',
+        title_side: 'south',
+    },
+
     "172763419": {
         title: 'Imperial city\nguard HQ',
         subtitle: `This building is clearly the one most european in Hue Citadel - and perhaps the least well preserved. It was built in the early 20th century, replacing a building of Royal treasury, and served as the Imperial city guard headquarters in 1936. Today it (presumably) houses the Hue College of Arts (or Fine Arts).`

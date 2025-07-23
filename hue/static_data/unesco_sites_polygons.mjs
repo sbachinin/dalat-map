@@ -406,7 +406,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
-        "properties": { title: 'Royal\nArena' },
+        "properties": {},
         "geometry": {
             "coordinates": [
                 [
