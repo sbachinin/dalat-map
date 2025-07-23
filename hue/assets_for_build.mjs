@@ -81,6 +81,11 @@ export const assets_for_build = {
                 }
             },
             {
+
+                name: 'stadiums',
+                feature_filter: f => f.properties?.leisure === 'pitch'
+            },
+            {
                 name: 'water_areas',
                 feature_filter: f => {
 

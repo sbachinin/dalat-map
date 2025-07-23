@@ -509,6 +509,17 @@ export const pedestrian_path = deep_merge_objects(
 )
 
 
+export const stadium_fill = {
+    "name": "Stadium fill",
+    "type": "fill",
+    "source": SOURCES_NAMES.CITY_TILES,
+    "source-layer": "stadiums",
+    "paint": {
+        "fill-color": 'hsl(120, 40%, 85%)'
+    }
+}
+
+
 export const water_areas_fill = {
     "name": "Water areas fill",
     "type": "fill",

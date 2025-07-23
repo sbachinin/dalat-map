@@ -7,7 +7,8 @@ import {
     non_french_titles,
     railway_line,
     water_areas_fill,
-    important_boring_building_fill
+    important_boring_building_fill,
+    stadium_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
@@ -95,6 +96,10 @@ export const zoom_order = {
         {
             drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border]
         }
+    ],
+
+    14.5: [
+        { drawing_layers: [stadium_fill] }
     ],
     15: [
         { drawing_layers: [non_french_titles] },

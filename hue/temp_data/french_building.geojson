@@ -108,7 +108,7 @@
     },
     "id": 1389775447,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -1931,7 +1931,7 @@
     },
     "id": 1377444120,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2068,7 +2068,7 @@
     },
     "id": 1377444117,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -5169,7 +5169,7 @@
     },
     "id": 118541852,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
