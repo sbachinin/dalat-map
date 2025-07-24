@@ -168,7 +168,7 @@ export const try_fly_to_building = (
 
         if (force
             || !coords_will_be_in_view(feature_screen_xy)
-            || map_zoom < minimal_zoom_on_building_select
+            || minimal_zoom_on_building_select - map_zoom > 1
         ) {
             const map_el = document.querySelector('#maplibregl-map')
             const distance_from_center = distance2d(

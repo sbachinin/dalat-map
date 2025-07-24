@@ -40,6 +40,28 @@ export const buildings_handmade_data = {
         year: 1979
     },
 
+    240266283: {
+        title: 'La Residence\nhotel',
+        year: 1930,
+        subtitle: 'This is perhaps the most clearly Art Deco building in Hue. Originally it was built as the residence of a high-ranking French official (the Résident Supérieur). Operates as a hotel since 2005.'
+    },
+
+    118792054: {
+        title: 'Phu Cam Cathedral',
+        year: '1963-2000',
+        subtitle: 'A grand colonial church was built on this site in 1902. It was demolished in the 1960s to make way for the current structure, which took nearly 40 years to complete.',
+        wikipedia: 'https://en.wikipedia.org/wiki/Ph%E1%BB%A7_Cam_Cathedral',
+        google: 'https://maps.app.goo.gl/n3bUekZiQAdJp2fZA'
+    },
+
+    240267335: {
+        title: 'Hue University',
+        year: 1927,
+        subtitle: 'A prime example of neoclassical architecture in Hue, this building today appears rather plain and is easily overlooked as a colonial-era structure.',
+        google: 'https://maps.app.goo.gl/5JjWfSHgpsnAMwxA9',
+
+    },
+
     173151284: {
         title: `National\nLibrary`,
         year: '1825',
@@ -129,9 +151,9 @@ export const buildings_handmade_data = {
     },
 
     // bach_dang_street: {
-        // rusty compass says that it's one of the iconic historic streets
-        // one stupid blogger shows a house No. 66 Bach Dang: 
-        // "was formerly a primary school named Saint Piere, built in 1924" (written in 2018)
+    // rusty compass says that it's one of the iconic historic streets
+    // one stupid blogger shows a house No. 66 Bach Dang: 
+    // "was formerly a primary school named Saint Piere, built in 1924" (written in 2018)
     // },
 
 
