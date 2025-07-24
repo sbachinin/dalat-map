@@ -42,8 +42,32 @@ export const buildings_handmade_data = {
 
     240266283: {
         title: 'La Residence\nhotel',
+        title_side: 'north',
         year: 1930,
         subtitle: 'This is perhaps the most clearly Art Deco building in Hue. Originally it was built as the residence of a high-ranking French official (the Résident Supérieur). Operates as a hotel since 2005.'
+    },
+
+    118541538: {
+        subtitle: 'As of 2025, this building houses the department of tropical diseases of Hue central hospital'
+    },
+    
+    1377450377: {
+        subtitle: 'As of 2025, this building belongs to the psychiatric department of Hue central hospital'
+    },
+
+    239972934: {
+        title: 'Museum of\nculture',
+        title_side: 'north'
+    },
+
+    175063593: {
+        title: 'Railway\nstation',
+        title_side: 'north',
+        year: 1908
+    },
+
+    1192697531: {
+        subtitle: 'As of 2025, this building houses the Union of literature and art associations'
     },
 
     118792054: {
@@ -52,6 +76,31 @@ export const buildings_handmade_data = {
         subtitle: 'A grand colonial church was built on this site in 1902. It was demolished in the 1960s to make way for the current structure, which took nearly 40 years to complete.',
         wikipedia: 'https://en.wikipedia.org/wiki/Ph%E1%BB%A7_Cam_Cathedral',
         google: 'https://maps.app.goo.gl/n3bUekZiQAdJp2fZA'
+    },
+
+    732309970: {
+        title: 'Mossy\ncondo',
+        title_side: 'south',
+    },
+
+    1174028275: {
+        title: 'Redemptorist\nmonastery',
+        year: 1925,
+        title_side: 'north',
+        google: 'https://maps.app.goo.gl/HWdR8iUjqZ6HZ69cA',
+
+    },
+
+    1172894102: {
+        title: 'Redemptorist\nchurch',
+        year: '1959-1962',
+        subtitle: `Honestly, it's one of the most ridiculous pieces of architecture I've ever seen`,
+        google: 'https://maps.app.goo.gl/zKjuh1W3cfKTbU1r9'
+    },
+
+    118542341: {
+        title: 'Gymnasium',
+        subtitle: 'This building, as far as I can tell, has probably been used for sports since the colonial era. Despite that remarkable history, the structure itself is visually quite uninteresting.',
     },
 
     240267335: {
@@ -135,7 +184,8 @@ export const buildings_handmade_data = {
 
     242940960: {
         title: 'Thien Dinh Palace',
-        subtitle: `This is the main structure of Khai Dinh tomb complex. It's basically a baroque palace (rather small one) with a vietnamese roof shape and ornaments - a rather audacious fusion that, in my view, works exceptionally well. Its construction took 11 years and ended in 1931. The king Khai Dinh was know for his French tendencies and was ridiculed a "paid employee of the French state", so it's no surprise that this Palace turned out so european, breaking with a long architectural tradition of vietnamese imperial tombs. This building is included in Unesco-protected complex of Hue monuments together with several other imperial tombs. One obvious architectural counterpart of this building is Kien Trung Palace of Hue Imperial city - also a european palace with vietnamese finish, although significantly larger and perhaps less ambitious in its architectural features (Its construction began almost simultaneously with Khai Dinh tomb but was completed much faster, in 1923).`,
+        subtitle: `This is the main structure of Khai Dinh tomb complex. It's basically a baroque palace (rather small one) with a vietnamese roof shape and ornaments - a rather audacious fusion that, in my view, works exceptionally well. Its construction took 11 years and ended in 1931. The king Khai Dinh was know for his French tendencies and was ridiculed a "paid employee of the French state", so it's no surprise that this Palace turned out so european, breaking with a long architectural tradition of vietnamese imperial tombs.
+        This building is included in Unesco-protected complex of Hue monuments together with several other imperial tombs. One obvious architectural counterpart of this building is Kien Trung Palace of Hue Imperial city - also a european palace with vietnamese finish, although significantly larger and perhaps less ambitious in its architectural features (Its construction began almost simultaneously with Khai Dinh tomb but was completed much faster, in 1923).`,
         links: [
             {
                 description: 'On Google Arts & Culture',

@@ -1,7 +1,6 @@
 import { display_highlights } from "../highlights.mjs";
 import { current_city, onload_city } from "../load_city.mjs";
 import { try_open_building } from "../panel/bldg_details.mjs";
-import { panel } from "../panel/panel.mjs";
 import { create_element_from_Html } from "../utils/frontend_utils.mjs";
 import { save_string_to_file } from "./save_string_to_file.mjs";
 
@@ -34,10 +33,10 @@ const rendered_feat_is_bldg = f => {
     // because features don't necessarily (and perhaps never) contain something like properties.building === true
     // (such properties are removed on tile generation, and they are not provided for renderables, etc, etc, so it's difficult to solve)
     // But some rendered feature's props can give a clue
-    if (f.sourceLayer?.includes('building')) return true
-    if (f.source?.includes('building')) return true
-    if (f.layer.id.includes('building')) return true
-    if (f.properties?.renderable_id?.includes('building')) return true
+    if (f.sourceLayer?.includes('building') || f.source?.includes('bldg')) return true
+    if (f.source?.includes('building') || f.source?.includes('bldg')) return true
+    if (f.layer.id.includes('building') || f.layer.id.includes('bldg')) return true
+    if (f.properties?.renderable_id?.includes('building') || f.properties?.renderable_id?.includes('bldg')) return true
     return false
 }
 
