@@ -5,11 +5,9 @@ export const buildings_handmade_data = {
         year: '1924'
     },
     "1377444111": {
-        title: 'Workshop',
         year: '1924'
     },
     "1377444112": {
-        title: 'Workshop',
         year: '1924'
     },
     "1377444113": {
@@ -43,7 +41,11 @@ export const buildings_handmade_data = {
     },
 
     173151284: {
-        title: `National Library of Nguyen Dynasty`
+        title: `National\nLibrary`,
+        year: '1825',
+        subtitle: 'Originally, it served as an archive for official documents. Built in the middle of the lake presumably to protect the important papers from fire. The volume and value of the materials stored here were said to be immense at the time. During the post-colonial wars, much of the archive was destroyed, though the building itself remained intact. It was later taken over by local residents and used as housing, with numerous makeshift extensions. In 2015, it was restored to its original design and transformed into some blend of library and museum.',
+        wikipedia: 'https://vi.wikipedia.org/wiki/T%C3%A0ng_Th%C6%B0_l%C3%A2u',
+        google: 'https://maps.app.goo.gl/dwyiebznHvdFeKDBA',
     },
 
     "118543157": {

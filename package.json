@@ -13,7 +13,7 @@
     "run_https_localhost": "http-server -S",
     "build": "node build.mjs",
     "build_city": "cd build && node ./build_city.mjs",
-    "example_build_city": "npm run build_city -- city=hue reprocess_old_photos"
+    "example_build_city": "npm run build_city -- city=hue reprocess_old_images"
   },
   "author": "",
   "license": "ISC",

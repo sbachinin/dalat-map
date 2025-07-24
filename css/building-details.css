@@ -79,6 +79,8 @@
 #building-info__subtitle {
     font-size: 14px;
     padding: 0 5px;
+    line-height: 1.5em;
+    max-width: 630px;
 }
 
 #building-info__year {

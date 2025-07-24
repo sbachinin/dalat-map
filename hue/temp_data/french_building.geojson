@@ -1732,7 +1732,7 @@
     },
     "id": 1377444125,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -1810,7 +1810,7 @@
     },
     "id": 1377444123,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -1861,7 +1861,7 @@
     },
     "id": 1377444122,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2111,7 +2111,7 @@
     },
     "id": 1377444116,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2251,8 +2251,8 @@
     },
     "id": 1377444112,
     "properties": {
-      "is_selectable": false,
-      "has_title": true
+      "is_selectable": true,
+      "has_title": false
     }
   },
   {
@@ -2287,7 +2287,7 @@
     "id": 1377444111,
     "properties": {
       "is_selectable": false,
-      "has_title": true
+      "has_title": false
     }
   },
   {
@@ -2356,7 +2356,7 @@
     },
     "id": 1377444109,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2402,24 +2402,24 @@
       "coordinates": [
         [
           [
-            107.5898607,
-            16.457791
+            107.5898614,
+            16.4577905
           ],
           [
-            107.5898698,
-            16.4577342
+            107.5898754,
+            16.4577137
           ],
           [
-            107.5899576,
-            16.457747
+            107.5899635,
+            16.4577284
           ],
           [
-            107.5899485,
-            16.4578039
+            107.5899495,
+            16.4578053
           ],
           [
-            107.5898607,
-            16.457791
+            107.5898614,
+            16.4577905
           ]
         ]
       ]
@@ -2477,7 +2477,7 @@
     },
     "id": 1377444106,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2512,7 +2512,7 @@
     },
     "id": 1377444105,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
@@ -2598,7 +2598,7 @@
     },
     "id": 1377444103,
     "properties": {
-      "is_selectable": false,
+      "is_selectable": true,
       "has_title": false
     }
   },
