@@ -53,6 +53,10 @@ export const buildings_handmade_data = {
     "19381147": {
         title: 'Arena for\nanimal fight',
         title_side: 'south',
+        year: '1820',
+        subtitle: 'During the Nguyen Dynasty, this arena hosted deadly battles between elephants and tigers — sacrifices to the gods during festivals and a source of entertainment for the king, mandarins, and the people.',
+        wikipedia: 'https://vi.wikipedia.org/wiki/H%E1%BB%95_Quy%E1%BB%81n',
+        google: 'https://maps.app.goo.gl/4yqq3HUnAtbo58zN8'
     },
 
     "172763419": {
@@ -62,7 +66,8 @@ export const buildings_handmade_data = {
 
     "531031540": {
         title: "Tinh Minh\nLau villa",
-        subtitle: `Current structure was built in 1927 as a medical clinic and in 1950 rebuilt as a private residence of the king Bao Dai`,
+        subtitle: `Current structure was built in 1927 as a medical clinic and in 1950 rebuilt as a private residence of the king Bao Dai.
+        It's one of the few structures in the Imperial City that survived the bombings of the 1960s and '70s. In later years, however, it fell into serious disrepair until a UNESCO-guided restoration began in the late 1990s.`,
         links: [
             {
                 description: 'Amazing 1998 photos of a ruin',

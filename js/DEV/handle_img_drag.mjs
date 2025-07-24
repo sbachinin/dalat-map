@@ -1,4 +1,7 @@
+import { display_highlights } from "../highlights.mjs";
 import { current_city, onload_city } from "../load_city.mjs";
+import { try_open_building } from "../panel/bldg_details.mjs";
+import { panel } from "../panel/panel.mjs";
 import { create_element_from_Html } from "../utils/frontend_utils.mjs";
 import { save_string_to_file } from "./save_string_to_file.mjs";
 
@@ -75,6 +78,12 @@ document.querySelector('#maplibregl-map').addEventListener("drop", e => {
         'Added a new img name. Total images count: ',
         Object.values(current_city.fids_to_img_names).flat().length
     )
+
+    // open & refresh the panel with this building details
+    // (-> make sure the image was added to the right building,
+    // because detection of what feature was the "drop target" is not completely reliable)
+    display_highlights(false)
+    try_open_building(feat_id)
 
     // add "save to file" warning-button
 
