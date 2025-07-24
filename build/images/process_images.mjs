@@ -47,6 +47,12 @@ const resize_from_folder = async (source_folder, force = false) => {
 
     for (const filename of filenames) {
         const file_path = path.join(source_folder, filename)
+
+        if (filename.endsWith(':Zone.Identifier')) {
+            fs.unlinkSync(file_path)
+            continue
+        }
+
         const stat = await fs_promises.stat(file_path)
 
         if (stat.isFile()) {
