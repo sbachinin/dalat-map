@@ -10,10 +10,6 @@ import {
 } from "../js/common_drawing_layers/constants.mjs";
 import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_drawing_layers/city_bulk.mjs";
 
-// TODO: importing like this from build/ is a smell
-// It means that frontend imports something that it doesn't need
-// In this case, this import is too small to bother.
-// But in principle, it's a bad design and needs to be improved
 import { get_dead_buildings_renderable } from "../js/common_renderables.mjs";
 import { get_point_feature } from "../js/utils/isomorphic_utils.mjs";
 import { all_handmade_data } from "./static_data/handmade_data.mjs"

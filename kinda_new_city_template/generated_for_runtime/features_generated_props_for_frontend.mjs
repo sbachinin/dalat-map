@@ -1,0 +1,1 @@
+export const features_generated_props_for_frontend = {};
