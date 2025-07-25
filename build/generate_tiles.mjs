@@ -174,6 +174,10 @@ const generate_temp_mbtiles = (
 ) => {
     const geojson_path = city_root_path + `/temp_data/${tile_layer_name}.geojson`
 
+    if (layer_features.length === 0) { // otherwise tippecanoe fails at .geojson containing only empty array
+        return
+    }
+
     write(geojson_path, layer_features)
 
     const temp_tiles_city_path = `${temp_tiles_path}/${cityname}`
