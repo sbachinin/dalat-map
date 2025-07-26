@@ -87,6 +87,7 @@ export const french_bldg_circle = {
     // but centroids source hasn't 'has_title' property
     "source": "bldgs_centroids_points",
     filter: ["==", ["get", "is_french"], true],
+    drawing_importance: 2,
     layout: {
         "icon-image": "french_circle",
         "icon-size": [
@@ -162,6 +163,7 @@ export const major_road_thicker_line = {
     "type": "line",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "major_roads",
+    drawing_importance: 4,
     "paint": {
         "line-color": road_color,
         "line-width": [
@@ -185,6 +187,7 @@ export const major_road_thinner_line = {
     "type": "line",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "major_roads",
+    drawing_importance: 3,
     "paint": {
         "line-color": [
             "interpolate",
@@ -215,6 +218,7 @@ export const tertiary_road = {
     name: 'Tertiary road',
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "major_roads",
+    drawing_importance: 4,
     type: 'line',
     "paint": {
 
@@ -244,6 +248,7 @@ export const land_areas_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'land_areas',
+    drawing_importance: 6,
     paint: {
         'fill-color': [
             "case",
@@ -269,6 +274,7 @@ export const towns_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'land_areas',
+    drawing_importance: 7,
     paint: {
         'fill-color': 'hsl(0, 0%, 93%)',
         'fill-antialias': true,
@@ -314,6 +320,7 @@ export const cable_car_line = {
     type: 'line',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'transportation_other',
+    drawing_importance: 4,
     "paint": {
         "line-color": "#6666ff",
         "line-width": [
@@ -352,6 +359,7 @@ export const boring_building_square = {
     "name": "Boring building square",
     "type": "symbol",
     source: 'bldgs_centroids_points',
+    drawing_importance: 3,
     "layout": {
         "icon-image": "boring_square",
         "icon-size": 0.12,
@@ -366,6 +374,7 @@ export const railway_line = {
     "type": "line",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "railway",
+    drawing_importance: 5,
     "layout": {
         "line-cap": "round",
         "line-join": "round"
@@ -408,6 +417,7 @@ export const boring_building_fill = {
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "boring_building",
+    drawing_importance: 5,
     "paint": {
         "fill-color": [
             "case",
@@ -427,6 +437,7 @@ export const important_boring_building_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'important_boring_building',
+    drawing_importance: 3,
     "paint": {
         "fill-color": IMPORTANT_BORING_BLDG_FILL_COLOR,
         "fill-antialias": true
@@ -441,6 +452,7 @@ export const selectable_boring_bldg_border = {
     'type': 'line',
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "important_boring_building",
+    drawing_importance: 3,
     'paint': {
         'line-color': BORING_BLDG_WITH_DETAILS_BORDER_COLOR
     },
@@ -469,6 +481,7 @@ export const minor_road = {
     "type": "line",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "minor_roads",
+    drawing_importance: 5,
     "layout": {
         "line-cap": "round",
         "line-join": "round",
@@ -525,6 +538,7 @@ export const water_areas_fill = {
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "water_areas",
+    drawing_importance: 6,
     "paint": {
         "fill-color": [
             "interpolate",
@@ -536,11 +550,28 @@ export const water_areas_fill = {
     }
 }
 
+export const sea_fill = {
+    ...water_areas_fill,
+    name: 'Sea fill',
+    'source-layer': 'sea_body',
+    drawing_importance: 10
+}
+
+export const island_fill = {
+    name: 'Island fill',
+    "type": "fill",
+    "source": SOURCES_NAMES.CITY_TILES,
+    "source-layer": "islands",
+    drawing_importance: 9,
+    "paint": { "fill-color": 'white' },
+}
+
 
 export const city_title = {
     "name": "City title",
     "type": "symbol",
     source: SOURCES_NAMES.CITY_TITLE,
+    drawing_importance: 1,
     layout: {
         "text-field": ["get", "title"],
         'text-size': 20,
@@ -560,6 +591,7 @@ export const river_lines = {
     minzoom: 12,
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'river_lines',
+    drawing_importance: 7,
     "layout": {
         "visibility": "visible",
         "line-cap": "round",

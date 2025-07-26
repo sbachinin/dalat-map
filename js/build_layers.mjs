@@ -67,7 +67,7 @@ export const build_layers = () => {
                     const style_layer = {
                         id: `${zoom_level}: ${drawing_layer.name}`,
                         minzoom: +zoom_level,
-                        ...pick(drawing_layer, ['source', 'source-layer', 'type', 'layout', 'paint', 'selectable']),
+                        ...pick(drawing_layer, ['source', 'source-layer', 'type', 'layout', 'paint', 'selectable', 'drawing_importance']),
                     }
 
                     if (zoom_level_layer.maxzoom) {
@@ -79,7 +79,9 @@ export const build_layers = () => {
                         style_layer.filter = maybe_filter
                     }
 
-                    style_layer.drawing_importance = zoom_level_layer.drawing_importance
+                    // Commented out because drawing_importance was moved to style (or "drawing") layers.
+                    // It could be nice to be able to override d_i in zoom_order. But it can also introduce more chaos. + There is no use case for this right now
+                    // if (zoom_level_layer.drawing_importance) style_layer.drawing_importance = zoom_level_layer.drawing_importance
 
                     return style_layer
                 })

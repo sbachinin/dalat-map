@@ -29,8 +29,7 @@ export const zoom_order = {
             filter: [
                 "any",
                 ['==', '$id', 99661171]
-            ],
-            drawing_importance: 6
+            ]
         },
 
         {
@@ -39,18 +38,13 @@ export const zoom_order = {
                 "any",
                 ['==', 'area_type', AREA_TYPES.TOWN],
             ],
-            drawing_importance: 7
         },
 
-        {
-            drawing_layers: [water_areas_fill],
-            drawing_importance: 5
-        },
+        { drawing_layers: [water_areas_fill] },
 
         {
             drawing_layers: [river_lines],
             "filter": ['==', 'name', 'Suối Cam Ly'],
-            drawing_importance: 7
         },
 
         {
@@ -64,7 +58,6 @@ export const zoom_order = {
 
         {
             drawing_layers: [city_title],
-            drawing_importance: 1,
             maxzoom: 12
         },
     ],
@@ -72,10 +65,11 @@ export const zoom_order = {
     11: [
         {
             drawing_layers: [peaks_triangles_with_titles],
-            drawing_importance: 0,
             filter: ['!=', 'ele', '1503']
         },
-        { drawing_layers: [cable_car_line, cable_car_endpoints] },
+        {
+            drawing_layers: [cable_car_line, cable_car_endpoints]
+        },
     ],
 
 
@@ -84,7 +78,6 @@ export const zoom_order = {
             drawing_layers: [french_bldg_circle],
             filter: ["==", ["get", "has_title"], true],
             maxzoom: FRENCH_GEOMETRIES_MINZOOM,
-            drawing_importance: 2
         }
     ],
 
@@ -104,7 +97,6 @@ export const zoom_order = {
             drawing_layers: [french_bldg_circle],
             filter: ["==", ["get", "is_selectable"], true],
             maxzoom: FRENCH_GEOMETRIES_MINZOOM,
-            drawing_importance: 2
         }
     ],
 
@@ -121,19 +113,16 @@ export const zoom_order = {
                 ]
 
             ],
-            drawing_importance: 6
         },
         {
             drawing_layers: [french_bldg_circle],
             maxzoom: FRENCH_GEOMETRIES_MINZOOM,
-            drawing_importance: 2
         }
     ],
     13: [
         {
             drawing_layers: [land_areas_fill],
             filter: ['==', 'is_small_area', true],
-            drawing_importance: 6
         },
 
         { drawing_layers: [railway_line] },
@@ -141,7 +130,6 @@ export const zoom_order = {
 
         {
             drawing_layers: [peaks_triangles_with_titles],
-            drawing_importance: 0,
             filter: ['==', 'ele', '1503']
         },
         /* {
@@ -154,7 +142,6 @@ export const zoom_order = {
                 hmd[308446691]
             ),
             maxzoom: FRENCH_GEOMETRIES_MINZOOM,
-            drawing_importance: 3
         }, */
         {
             drawing_layers: [non_french_titles],
@@ -174,15 +161,13 @@ export const zoom_order = {
             )
         },
         {
-            drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border],
-            drawing_importance: 3
+            drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border]
         }
     ],
     14: [
         {
             drawing_layers: [river_lines],
             "filter": ['!=', 'name', 'Suối Cam Ly'],
-            drawing_importance: 7
         },
         {
             filter: [
@@ -208,10 +193,11 @@ export const zoom_order = {
     ],
 
     15: [
-        { drawing_layers: [non_french_titles] },
         {
-            drawing_layers: [boring_building_fill],
-            drawing_importance: 5
+            drawing_layers: [non_french_titles]
+        },
+        {
+            drawing_layers: [boring_building_fill]
         },
     ]
 }

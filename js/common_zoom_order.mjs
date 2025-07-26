@@ -63,9 +63,6 @@ export const zoom_order = {
             // (basically, maplibre style layers without "selector" and minzoom part)
             drawing_layers: [],
 
-            // defaults to 1 (highest) and, as number goes up, move such stuff towards the beginning of the final layers array
-            drawing_importance: number,
-
             maxzoom: number
         }
     ]
@@ -74,20 +71,17 @@ export const zoom_order = {
     0: [
         {
             drawing_layers: [major_road_thicker_line],
-            drawing_importance: 4
         }
     ],
 
     12.5: [
         {
             drawing_layers: [major_road_thinner_line],
-            drawing_importance: 3
         }
     ],
     13: [
         {
             drawing_layers: [tertiary_road],
-            drawing_importance: 4
         }
     ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
@@ -97,7 +91,6 @@ export const zoom_order = {
                 french_detailless_thickening_outline,
                 french_detailless_bldg_fill
             ],
-            drawing_importance: 2
         },
         {
             drawing_layers: [
@@ -105,7 +98,6 @@ export const zoom_order = {
                 french_detailful_thickening_outline,
                 french_detailful_bldg_fill
             ],
-            drawing_importance: 2
         },
     ],
     14.5: [
@@ -113,7 +105,6 @@ export const zoom_order = {
         {
             drawing_layers: [minor_road],
             filter: ["in", "highway", "residential", "unclassified"],
-            drawing_importance: 5
         },
     ],
     15.5: [
@@ -125,11 +116,9 @@ export const zoom_order = {
                 "residential", "unclassified",
                 "footway", "path", "cycleway", "steps"
             ],
-            drawing_importance: 5
         },
         {
             drawing_layers: [pedestrian_path],
-            drawing_importance: 5
         },
     ]
 }

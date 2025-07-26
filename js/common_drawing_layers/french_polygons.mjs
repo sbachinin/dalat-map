@@ -5,6 +5,7 @@ export const french_fill_common_props = {
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "french_building",
+    drawing_importance: 2,
     "paint": {
         "fill-color": c.FRENCH_FILL_COLOR,
         "fill-antialias": true
@@ -19,7 +20,7 @@ export const french_fill_common_props = {
 export const french_detailless_bldg_fill = {
     "name": "French detailless building fill",
     ...french_fill_common_props,
-    filter: ["==", ["get", "is_selectable"], false]
+    filter: ["==", ["get", "is_selectable"], false],
 }
 export const french_detailful_bldg_fill = {
     "name": "French detailful building",
@@ -36,6 +37,7 @@ const french_thickening_outline_common_props = {
     'type': 'line',
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "french_building",
+    drawing_importance: 2,
     'paint': {
         'line-color': c.FRENCH_FILL_COLOR,
         'line-width': [
@@ -67,6 +69,7 @@ const get_dark_outline_props = high_zoom_thickness => {
         'type': 'line',
         "source": SOURCES_NAMES.CITY_TILES,
         "source-layer": "french_building",
+        drawing_importance: 2,
         'paint': {
             'line-color': c.FRENCH_DARK_BORDER_COLOR,
             'line-width': [

@@ -9,6 +9,7 @@ export const city_walls_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'city_walls_areas',
+    drawing_importance: 2,
     paint: {
         'fill-color': CITY_WALL_COLOR,
         'fill-antialias': true,
@@ -21,6 +22,7 @@ export const city_walls_thickening_outline = {
     type: 'line',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'city_walls_areas',
+    drawing_importance: 2,
     'paint': {
         'line-color': CITY_WALL_COLOR,
         'line-width': [
@@ -44,6 +46,7 @@ export const unesco_areas_fill = {
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
     filter: ["==", ["geometry-type"], "Polygon"],
+    drawing_importance: 6,
     paint: {
         'fill-color': 'hsl(60, 81.82%, 43.14%)',
         'fill-antialias': true,
@@ -65,6 +68,7 @@ export const unesco_areas_border = {
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
     filter: ["==", ["geometry-type"], "Polygon"],
+    drawing_importance: 6,
     paint: {
         'line-color': 'hsl(60, 81.82%, 43.14%)',
         'line-width': 1,
@@ -79,6 +83,7 @@ export const unesco_areas_titles = {
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
     filter: ["==", ["geometry-type"], "Point"],
+    drawing_importance: 0,
     layout: {
         'text-size': 12,
         'text-font': ['Lato Regular'],
@@ -96,6 +101,7 @@ export const non_french_bldgs_within_imperial_city_fill = {
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "non_french_bldgs_within_imperial_city",
+    drawing_importance: 5,
     "paint": {
         "fill-color": 'hsl(60, 20.82%, 63.14%)',
         "fill-opacity": interpolate(14, 0.5, 15, 1)
