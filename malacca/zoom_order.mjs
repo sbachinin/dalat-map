@@ -17,9 +17,30 @@ import { city_title, river_lines } from "../js/common_drawing_layers/drawing_lay
 import { FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
 import { constants as c } from './constants.mjs'
+import { SOURCES_NAMES } from "../js/constants.mjs";
 
 export const zoom_order = {
+
+
     0: [
+        {
+            drawing_layers: [{
+                ...water_areas_fill,
+                name: 'Sea fill',
+                'source-layer': 'sea_body',
+            }],
+            drawing_importance: 10
+        },
+        {
+            drawing_layers: [{
+                name: 'Island fill',
+                "type": "fill",
+                "source": SOURCES_NAMES.CITY_TILES,
+                "source-layer": "islands",
+                "paint": { "fill-color": 'white' }
+            }],
+            drawing_importance: 9
+        },
         // {
         //     drawing_layers: [towns_fill],
         //     filter: [

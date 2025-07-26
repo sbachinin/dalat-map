@@ -3,7 +3,7 @@
 // That will affect e.g. the minzoom for tile generation
 // export const minzoom = 10
 
-export const map_bounds = [102.139090,  2.119, 102.303, 2.322]
+export const map_bounds = [102.159090,  2.139407, 102.323, 2.279459]
 
 export const intro_zoom = 12.8
 

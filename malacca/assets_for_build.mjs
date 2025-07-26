@@ -6,6 +6,7 @@ import { area } from "@turf/turf"
 import { get_titles_points_tiling_settings } from "../js/utils/titles_points.mjs"
 import { is_feature_selectable, is_important_building } from "../js/utils/does_feature_have_details.mjs"
 import { fids_to_img_names } from "./static_data/fids_to_img_names.mjs"
+import { make_coastline } from "./make_coastline.mjs"
 
 const major_road_highway_values = ['tertiary', "primary", "primary_link", "secondary", "trunk", "motorway"]
 
@@ -41,6 +42,16 @@ export const assets_for_build = {
             && !is_important_building(feat.id, all_handmade_data, fids_to_img_names)
     },
     tile_layers_meta: [
+        {
+            name: 'sea_body',
+            get_features: make_coastline
+        },
+        {
+            name: 'islands',
+            feature_filter: f => is_one_of(f.properties.place, ['island', 'islet']),
+        },
+
+
         {
             name: 'important_boring_building',
             feature_filter: f => f.properties?.building
