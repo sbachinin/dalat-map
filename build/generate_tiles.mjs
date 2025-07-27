@@ -17,6 +17,7 @@ import {
 } from './build_utils.mjs'
 import * as turf from '@turf/turf'
 import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
+import { convert_link_roads } from './convert_link_roads.mjs'
 
 globalThis.turf = turf
 
@@ -118,6 +119,8 @@ const is_not_duplicate = f => { // because custom features may repeat the osm da
     seen_ids.add(f.id)
     return true
 }
+
+convert_link_roads(osm_features)
 
 let main_geojson = {
     type: 'FeatureCollection',
