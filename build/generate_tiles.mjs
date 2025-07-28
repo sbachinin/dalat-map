@@ -18,6 +18,8 @@ import {
 import * as turf from '@turf/turf'
 import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
 import { convert_link_roads } from './convert_link_roads.mjs'
+import { roads_config, roads_hierarchy } from '../js/roads_config.mjs'
+import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
 
 globalThis.turf = turf
 
@@ -209,6 +211,35 @@ const generate_temp_mbtiles = (
 
 
 
+const roads_tiling_meta = roads_config.map((layer_config, i) => {
+    const [minzoom, road_type_from] = Object.entries(layer_config)[0]
+    const min_hier_index = roads_hierarchy.indexOf(road_type_from)
+
+    let slice_to = roads_hierarchy.length
+    if (roads_config[i + 1]) {
+        slice_to = roads_hierarchy.indexOf(Object.values(roads_config[i + 1])[0])
+    }
+
+    const layer_road_types = roads_hierarchy.slice(min_hier_index, slice_to)
+    return {
+        name: 'roads_' + i,
+        feature_filter: f => f.geometry.type === 'LineString'
+            && is_one_of(f.properties.highway, layer_road_types),
+        feature_props_to_preserve: ['highway'],
+        minzoom: Number(minzoom)
+    }
+})
+
+
+main_geojson.features.forEach(f => {
+    if (f.geometry.type === 'LineString'
+        && f.properties.highway
+        && !roads_hierarchy.includes(f.properties.highway)
+        && f.properties.highway !== 'construction'
+    ) {
+        console.warn('highway', f.properties.highway, 'not in roads_hierarchy')
+    }
+})
 
 
 
@@ -221,6 +252,7 @@ const generate_temp_mbtiles = (
 // 5) temporary .mbtiles will be created for current layer's geojson
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
 city_assets.tile_layers_meta
+    .concat(roads_tiling_meta)
     .concat(boring_building_tiling_meta)
     .forEach(tile_layer => {
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
