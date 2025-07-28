@@ -22,22 +22,33 @@ export const interpolate = (z1, v1, z2, v2) => {
     ]
 }
 
-
 export const deep_merge_objects = (target, source) => {
+    if (!source) return target
+    if (!target) return source
+
     const result = { ...target }
 
     for (const key in source) {
-        if (source.hasOwnProperty(key) &&
-            typeof source[key] === 'object' &&
-            source[key] !== null &&
-            !Array.isArray(source[key])) {
-            result[key] = deep_merge_objects(result[key] || {}, source[key])
-        } else {
-            result[key] = source[key]
+        if (!source.hasOwnProperty(key)) {
+            continue
         }
-    }
+        const target_value = result[key]
+        const source_value = source[key]
 
+        if (Array.isArray(target_value) && Array.isArray(source_value)) {
+            result[key] = [...new Set([...target_value, ...source_value])]
+        } else if (is_object(target_value) && is_object(source_value)) {
+            result[key] = deep_merge_objects(target_value, source_value)
+        } else {
+            result[key] = source_value
+        }
+
+    }
     return result
+}
+
+function is_object(item) {
+    return item && typeof item === 'object' && !Array.isArray(item) && item !== null
 }
 
 
