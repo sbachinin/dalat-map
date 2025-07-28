@@ -41,6 +41,6 @@ export const roads_config = [
   { 13.5: 'secondary' },
   { 14.2: 'tertiary' },
   { 15: 'unclassified' },
-  { 15.5: 'living_street' },
-  { 15.5: 'footway' }
+  { 16: 'living_street' },
+  { 16: 'footway' }
 ]

@@ -20,7 +20,6 @@ import {
     AIRPORT_FILL_COLOR,
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
-import { deep_merge_objects } from "../utils/isomorphic_utils.mjs";
 
 
 export const titles_common_layout_props = {
@@ -155,15 +154,12 @@ export const peaks_triangles_with_titles = {
 
 
 const road_color = "hsl(30, 0%, 59%)"
-const darker_tertiary_road_color = "hsl(30, 0%, 71%)"
-const minor_road_color = "hsl(30, 0%, 73%)"
+export const minor_road_color = "hsl(30, 0%, 81%)"
 
 export const major_road_thicker_line = {
-    "name": "Major road thicker line",
+    "id": "Major road thicker line",
     "type": "line",
     "source": SOURCES_NAMES.CITY_TILES,
-    "source-layer": "major_roads",
-    drawing_importance: 4,
     "paint": {
         "line-color": road_color,
         "line-width": [
@@ -179,15 +175,13 @@ export const major_road_thicker_line = {
         "line-cap": "round",
         "line-join": "round",
     },
-    "filter": ["!in", "highway", "tertiary"]
+    drawing_importance: 4
 }
 
 export const major_road_thinner_line = {
-    "name": "Major road thinner line",
+    "id": "Major road thinner line",
     "type": "line",
     "source": SOURCES_NAMES.CITY_TILES,
-    "source-layer": "major_roads",
-    drawing_importance: 3,
     "paint": {
         "line-color": [
             "interpolate",
@@ -211,34 +205,9 @@ export const major_road_thinner_line = {
         "line-cap": "round",
         "line-join": "round",
     },
-    "filter": ["!in", "highway", "tertiary"],
+    drawing_importance: 3
 }
 
-export const tertiary_road = {
-    name: 'Tertiary road',
-    "source": SOURCES_NAMES.CITY_TILES,
-    "source-layer": "major_roads",
-    drawing_importance: 4,
-    type: 'line',
-    "paint": {
-
-        "line-color": darker_tertiary_road_color,
-        "line-width": [
-            "interpolate",
-            ["linear", 2],
-            ["zoom"],
-            10, 1,
-            14, 1.5,
-            16, 3.5,
-            20, 6
-        ],
-    },
-    "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-    },
-    "filter": ["in", "highway", "tertiary"],
-}
 
 
 
@@ -476,50 +445,6 @@ export const selectable_boring_bldg_border = {
 
 
 
-export const minor_road = {
-    "name": "Minor road",
-    "type": "line",
-    "source": SOURCES_NAMES.CITY_TILES,
-    "source-layer": "minor_roads",
-    drawing_importance: 5,
-    "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-    },
-    "paint": {
-        "line-width": [
-            "interpolate",
-            ["linear", 2],
-            ["zoom"],
-            13,
-            [
-                "case",
-                ["match", ["get", "highway"], ["residential", 'unclassified'], true, false],
-                1.3,
-                0.8
-            ],
-            20,
-            [
-                "case",
-                ["match", ["get", "highway"], ["residential", 'unclassified'], true, false],
-
-                4,
-                2
-            ],
-        ],
-        "line-color": minor_road_color,
-        'line-blur': 1,
-    }
-}
-
-export const pedestrian_path = deep_merge_objects(
-    minor_road,
-    {
-        name: 'Pedestrian path',
-        paint: { "line-dasharray": [2, 2] },
-        filter: ["in", "highway", "footway", "path", "cycleway", "steps"],
-    }
-)
 
 
 export const stadium_fill = {

@@ -33,15 +33,7 @@ It's nice to have some free space sometimes.
 
 */
 
-import {
-    major_road_thinner_line,
-    major_road_thicker_line, tertiary_road,
-    minor_road,
-    pedestrian_path,
-} from "./common_drawing_layers/drawing_layers.mjs";
-import {
-    FRENCH_GEOMETRIES_MINZOOM
-} from "./common_drawing_layers/constants.mjs";
+import { FRENCH_GEOMETRIES_MINZOOM } from "./common_drawing_layers/constants.mjs";
 import {
     french_detailful_bldg_fill,
     french_detailful_dark_outline,
@@ -59,8 +51,9 @@ export const zoom_order = {
         {
             filter: [],
 
-            // what and how to draw for these features?
-            // (basically, maplibre style layers without "selector" and minzoom part)
+            what and how to draw for these features?
+            (basically, maplibre style layers without "selector" and minzoom part)
+
             drawing_layers: [],
 
             maxzoom: number
@@ -68,22 +61,6 @@ export const zoom_order = {
     ]
     */
 
-    0: [
-        {
-            drawing_layers: [major_road_thicker_line],
-        }
-    ],
-
-    12.5: [
-        {
-            drawing_layers: [major_road_thinner_line],
-        }
-    ],
-    13: [
-        {
-            drawing_layers: [tertiary_road],
-        }
-    ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
             drawing_layers: [
@@ -98,27 +75,6 @@ export const zoom_order = {
                 french_detailful_thickening_outline,
                 french_detailful_bldg_fill
             ],
-        },
-    ],
-    14.5: [
-        
-        {
-            drawing_layers: [minor_road],
-            filter: ["in", "highway", "residential", "unclassified"],
-        },
-    ],
-    15.5: [
-        {
-            drawing_layers: [minor_road],
-            filter: [
-                "!in",
-                "highway",
-                "residential", "unclassified",
-                "footway", "path", "cycleway", "steps"
-            ],
-        },
-        {
-            drawing_layers: [pedestrian_path],
         },
     ]
 }

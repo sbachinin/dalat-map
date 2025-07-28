@@ -236,6 +236,7 @@ main_geojson.features.forEach(f => {
         && f.properties.highway
         && !roads_hierarchy.includes(f.properties.highway)
         && f.properties.highway !== 'construction'
+        && f.properties.highway !== 'proposed'
     ) {
         console.warn('highway', f.properties.highway, 'not in roads_hierarchy')
     }
