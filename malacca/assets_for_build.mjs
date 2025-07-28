@@ -92,7 +92,11 @@ export const assets_for_build = {
 
         {
             name: 'water_areas',
-            feature_filter: f => f.properties.natural === 'water'
+            feature_filter: f => f.properties.natural === 'water',
+            added_props: [{
+                name: 'is_river',
+                get_value: f => f.properties.water === 'river'
+            }]
         },
 
         {

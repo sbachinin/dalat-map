@@ -31,16 +31,10 @@ export const zoom_order = {
         {
             drawing_layers: [island_fill]
         },
-        // {
-        //     drawing_layers: [towns_fill],
-        //     filter: [
-        //         "any",
-        //         ['==', 'area_type', AREA_TYPES.TOWN],
-        //     ],
-        // },
 
         {
             drawing_layers: [water_areas_fill],
+            filter: ['==', ['get', 'is_river'], true],
         },
 
         {
@@ -105,7 +99,11 @@ export const zoom_order = {
             drawing_layers: [french_buildings_titles]
         },
     ],
-    [FRENCH_GEOMETRIES_MINZOOM]: [
+    13.5: [
+        {
+            drawing_layers: [water_areas_fill],
+            filter: ['!=', ['get', 'is_river'], true],
+        },
         {
             drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border],
         }
@@ -116,7 +114,7 @@ export const zoom_order = {
         }
     ],
 
-    15: [
+    15.3: [
         {
             drawing_layers: [non_french_titles]
         },
