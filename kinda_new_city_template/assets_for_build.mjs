@@ -1,5 +1,5 @@
 import { all_handmade_data, land_areas_handmade_data as dalat_land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs"
-import { AREA_TYPES, MINOR_ROADS_MINZOOM } from "../js/common_drawing_layers/constants.mjs"
+import { AREA_TYPES } from "../js/common_drawing_layers/constants.mjs"
 import { get_centroid, is_one_of } from "../js/utils/isomorphic_utils.mjs"
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf"
@@ -52,19 +52,6 @@ export const assets_for_build = {
         //     feature_filter: f => f.properties['building:architecture'] === 'french_colonial',
         //     added_props: ['is_selectable', 'has_title']
         // },
-        {
-            name: 'major_roads',
-            feature_filter: f => is_one_of(f.properties.highway, major_road_highway_values),
-            feature_props_to_preserve: ['highway']
-        },
-
-        {
-            name: 'minor_roads',
-            feature_filter: f => f.properties.highway
-                && !is_one_of(f.properties.highway, major_road_highway_values),
-            feature_props_to_preserve: ['highway'],
-            minzoom: MINOR_ROADS_MINZOOM
-        },
 
         {
             name: 'railway',

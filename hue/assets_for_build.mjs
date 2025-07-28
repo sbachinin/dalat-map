@@ -10,8 +10,6 @@ import { is_feature_selectable, is_important_building } from '../js/utils/does_f
 import { fids_to_img_names } from './static_data/fids_to_img_names.mjs'
 
 const dalat_layers_to_use_in_hue = [
-    'major_roads',
-    'minor_roads',
     'peaks',
 ]
 
