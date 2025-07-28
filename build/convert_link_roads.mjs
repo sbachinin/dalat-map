@@ -30,31 +30,7 @@ SOLUTION
         (There could be no such matching road, and in such case the "...link" class of current _link is left intact)
 */
 
-const road_hierarchy = [
-    // Major highways
-    "motorway",
-    "motorway_link",
-    "trunk",
-    "trunk_link",
-
-    // Arterial roads
-    "primary",
-    "primary_link",
-    "secondary",
-    "secondary_link",
-    "tertiary",
-    "tertiary_link",
-
-    // Local roads
-    "unclassified",
-    "residential",
-    "living_street",
-
-    // Service & tracks
-    "service",
-    "track"
-    // can be continued with some tiny roads....
-];
+import { roads_hierarchy } from "../js/roads_config.mjs"
 
 export const convert_link_roads = (all_osm_feats) => {
     const highways = all_osm_feats.filter(feat => feat.properties.highway)
@@ -64,10 +40,6 @@ export const convert_link_roads = (all_osm_feats) => {
         const end_A = this_link.geometry.coordinates[0]
         const end_B = this_link.geometry.coordinates[this_link.geometry.coordinates.length - 1]
 
-        if (this_link.id === 'way/1365894704') {
-            debugger
-        }
-
         const candidate_indexes = highways
             .filter(hw => {
                 return !hw.properties.highway.endsWith('_link')
@@ -76,12 +48,12 @@ export const convert_link_roads = (all_osm_feats) => {
                             || c[0] === end_B[0] && c[1] === end_B[1]
                     })
             })
-            .map(hw => road_hierarchy.indexOf(hw.properties.highway))
+            .map(hw => roads_hierarchy.indexOf(hw.properties.highway))
             .filter(i => i !== -1)
-            .filter(i => i > road_hierarchy.indexOf(this_link.properties.highway)) // less important than this_link
+            .filter(i => i > roads_hierarchy.indexOf(this_link.properties.highway)) // less important than this_link
             .sort((a, b) => a - b)
 
-        candidate_indexes[0] && (this_link.properties.highway = road_hierarchy[candidate_indexes[0]])
+        candidate_indexes[0] && (this_link.properties.highway = roads_hierarchy[candidate_indexes[0]])
 
         return
 
@@ -104,7 +76,7 @@ export const convert_link_roads = (all_osm_feats) => {
 
         const most_important_index_at_end_A = Math.min(
             ...adjoining_roads_at_end_A
-                .map(hw => road_hierarchy.indexOf(hw.properties.highway))
+                .map(hw => roads_hierarchy.indexOf(hw.properties.highway))
                 .filter(i => i !== -1)
         )
 
@@ -115,11 +87,11 @@ export const convert_link_roads = (all_osm_feats) => {
 
         const most_important_index_at_end_B = Math.min(
             ...adjoining_roads_at_end_B
-                .map(hw => road_hierarchy.indexOf(hw.properties.highway))
+                .map(hw => roads_hierarchy.indexOf(hw.properties.highway))
                 .filter(i => i !== -1)
         )
 
-        const lower_class_parent_road_type = road_hierarchy[
+        const lower_class_parent_road_type = roads_hierarchy[
             Math.max(most_important_index_at_end_A, most_important_index_at_end_B)
         ]
 
