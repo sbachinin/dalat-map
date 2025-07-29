@@ -18,7 +18,7 @@ import {
 import * as turf from '@turf/turf'
 import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
 import { convert_link_roads } from './convert_link_roads.mjs'
-import { roads_config, roads_hierarchy } from '../js/roads_config.mjs'
+import { roads_common_config, roads_hierarchy } from '../js/roads_config.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
 
 globalThis.turf = turf
@@ -211,13 +211,12 @@ const generate_temp_mbtiles = (
 
 
 
-const roads_tiling_meta = roads_config.map((layer_config, i) => {
-    const [minzoom, road_type_from] = Object.entries(layer_config)[0]
+const roads_tiling_meta = Object.entries(roads_common_config).map(([road_type_from, minzoom], i) => {
     const min_hier_index = roads_hierarchy.indexOf(road_type_from)
 
     let slice_to = roads_hierarchy.length
-    if (roads_config[i + 1]) {
-        slice_to = roads_hierarchy.indexOf(Object.values(roads_config[i + 1])[0])
+    if (Object.keys(roads_common_config)[i + 1]) {
+        slice_to = roads_hierarchy.indexOf(Object.keys(roads_common_config)[i + 1])
     }
 
     const layer_road_types = roads_hierarchy.slice(min_hier_index, slice_to)

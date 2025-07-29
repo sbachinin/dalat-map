@@ -36,11 +36,11 @@ export const roads_hierarchy = [
 */
 
 
-export const roads_config = [
-  { 0: 'motorway' },
-  { 13.5: 'secondary' },
-  { 14.2: 'tertiary' },
-  { 15: 'unclassified' },
-  { 16: 'living_street' },
-  { 16: 'footway' }
-]
+export const roads_common_config = {
+  motorway: 0,
+  secondary: 13.5,
+  tertiary: 14.2,
+  unclassified: 15,
+  living_street: 16,
+  footway: 16,
+}

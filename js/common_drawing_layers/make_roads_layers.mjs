@@ -1,11 +1,9 @@
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs"
-import { roads_config, roads_hierarchy } from "../roads_config.mjs"
+import { roads_common_config, roads_hierarchy } from "../roads_config.mjs"
 import { major_road_thicker_line, major_road_thinner_line, minor_road_color } from "./drawing_layers.mjs"
 
 export const make_roads_layers = () => {
-    return roads_config.flatMap((roads_layer, i) => {
-
-        const [minzoom, road_type_from] = Object.entries(roads_layer)[0]
+    return Object.entries(roads_common_config).flatMap(([road_type_from, minzoom], i) => {
 
         if (roads_hierarchy.indexOf(road_type_from) <= 5) { // For now, all 6 most important road types are styled the same
             return [
