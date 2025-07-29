@@ -20,6 +20,7 @@ import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
 import { convert_link_roads } from './convert_link_roads.mjs'
 import { roads_common_config, roads_hierarchy } from '../js/roads_config.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
+import { add_missing_tiling_props } from './tiling_common_props.mjs'
 
 globalThis.turf = turf
 
@@ -243,6 +244,7 @@ main_geojson.features.forEach(f => {
 })
 
 
+add_missing_tiling_props(city_assets.tile_layers_meta)
 
 
 // For each city's tile_layer:
@@ -275,7 +277,7 @@ city_assets.tile_layers_meta
                         } else if (prop === 'has_title') {
                             f.properties[prop] = does_feature_have_title(f.id, hmdata)
                         } else if (prop.name && prop.get_value) {
-                            f.properties[prop.name] = prop.get_value(f)
+                            f.properties[prop.name] = prop.get_value(f, hmdata)
                         }
                     })
                     return f

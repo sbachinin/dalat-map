@@ -56,8 +56,6 @@ export const assets_for_build = {
     tile_layers_meta: [
         {
             name: 'peaks',
-            feature_filter: f => f.properties.natural === 'peak',
-            feature_props_to_preserve: ['ele'],
             minzoom: 11
         },
         {

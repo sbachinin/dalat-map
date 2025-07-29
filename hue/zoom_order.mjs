@@ -46,9 +46,6 @@ export const zoom_order = {
             filter: ["==", ["get", "has_title"], true],
             maxzoom: FRENCH_GEOMETRIES_MINZOOM,
         },
-        {
-            drawing_layers: [peaks_triangles_with_titles],
-        }
     ],
 
     11.7: [
@@ -75,6 +72,10 @@ export const zoom_order = {
         {
             drawing_layers: [french_bldg_circle],
             maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+        },
+
+        {
+            drawing_layers: [peaks_triangles_with_titles],
         }
     ],
     13: [

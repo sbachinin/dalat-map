@@ -283,5 +283,8 @@ export const land_areas_handmade_data = {
 export const all_handmade_data = {
     ...buildings_handmade_data,
     ...lakes_handmade_data,
-    ...land_areas_handmade_data
+    ...land_areas_handmade_data,
+    5965275021: {
+        title: 'Ngu Binh\nMountain'
+    }
 }

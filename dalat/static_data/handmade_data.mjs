@@ -182,7 +182,10 @@ export const lakes_handmade_data = {
 export const all_handmade_data = {
     ...bldgs_handmade_data,
     ...land_areas_handmade_data,
-    ...lakes_handmade_data
+    ...lakes_handmade_data,
+    11048391402: {
+        title: 'Doi Cu Hill'
+    }
 }
 
 Object.keys(all_handmade_data).forEach((feat_id) => {

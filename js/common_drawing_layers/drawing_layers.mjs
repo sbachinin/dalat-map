@@ -132,7 +132,7 @@ export const peaks_triangles_with_titles = {
         "text-offset": [0, 0.4],
         'text-size': PALE_TITLES_SIZE - 1,
         'text-font': ['Lato Regular'],
-        "text-field": ["get", "ele"],
+        "text-field": ["get", "title"],
         "icon-image": "peak_triangle",
         "icon-size": 0.16
     },
