@@ -8,7 +8,8 @@ import {
     railway_line,
     water_areas_fill,
     important_boring_building_fill,
-    stadium_fill
+    stadium_fill,
+    peaks_triangles_with_titles
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
@@ -44,8 +45,12 @@ export const zoom_order = {
             drawing_layers: [french_bldg_circle],
             filter: ["==", ["get", "has_title"], true],
             maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+        },
+        {
+            drawing_layers: [peaks_triangles_with_titles],
         }
     ],
+
     11.7: [
         {
             drawing_layers: [river_lines],
