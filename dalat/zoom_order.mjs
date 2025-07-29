@@ -17,6 +17,7 @@ import {
     towns_fill,
     water_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
+import { french_polygons_drawing_layers } from "../js/common_drawing_layers/french_polygons.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { AREA_TYPES, FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
@@ -153,6 +154,12 @@ export const zoom_order = {
     ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
+            drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border]
+        },
+        {
+            drawing_layers: french_polygons_drawing_layers,
+        },
+        {
             drawing_layers: [non_french_titles],
             filter: get_filter_by_fids(
                 hmd[1244767000], // nguyen tomb
@@ -160,9 +167,6 @@ export const zoom_order = {
                 hmd[1355564844], // military academy
             )
         },
-        {
-            drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border]
-        }
     ],
     14: [
         {

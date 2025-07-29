@@ -14,6 +14,7 @@ import { city_title, river_lines } from "../js/common_drawing_layers/drawing_lay
 import { FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { city_walls_fill, city_walls_thickening_outline, non_french_bldgs_within_imperial_city_fill, unesco_areas_border, unesco_areas_fill, unesco_areas_titles } from "./drawing_layers.mjs";
 import { constants as c } from "./constants.mjs";
+import { french_polygons_drawing_layers } from "../js/common_drawing_layers/french_polygons.mjs";
 
 export const zoom_order = {
     0: [
@@ -76,6 +77,12 @@ export const zoom_order = {
             drawing_layers: [water_areas_fill],
             filter: ["==", ["get", "is_small_lake"], true],
         },
+    ],
+
+    [FRENCH_GEOMETRIES_MINZOOM]: [
+        {
+            drawing_layers: french_polygons_drawing_layers,
+        }
     ],
 
     14: [

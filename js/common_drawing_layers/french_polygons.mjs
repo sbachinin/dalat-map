@@ -1,7 +1,7 @@
 import { SOURCES_NAMES } from "../constants.mjs"
 import * as c from "./constants.mjs"
 
-export const french_fill_common_props = {
+const french_fill_common_props = {
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "french_building",
@@ -17,12 +17,12 @@ export const french_fill_common_props = {
 // the following separation was necessary
 // in order to render all detailful bldgs after all detailless,
 // to prevent the detailful bldgs' border from being covered by borderless buildings' parts
-export const french_detailless_bldg_fill = {
+const french_detailless_bldg_fill = {
     "name": "French detailless building fill",
     ...french_fill_common_props,
     filter: ["==", ["get", "is_selectable"], false],
 }
-export const french_detailful_bldg_fill = {
+const french_detailful_bldg_fill = {
     "name": "French detailful building",
     ...french_fill_common_props,
     selectable: true,
@@ -52,13 +52,13 @@ const french_thickening_outline_common_props = {
     },
 }
 
-export const french_detailless_thickening_outline = {
+const french_detailless_thickening_outline = {
     name: 'French bldg without details thickening outline',
     ...french_thickening_outline_common_props,
     filter: ["==", ["get", "is_selectable"], false],
 }
 
-export const french_detailful_thickening_outline = {
+const french_detailful_thickening_outline = {
     name: 'French bldg with details thickening outline',
     ...french_thickening_outline_common_props,
     filter: ["==", ["get", "is_selectable"], true]
@@ -88,14 +88,25 @@ const get_dark_outline_props = high_zoom_thickness => {
     }
 }
 
-export const french_detailless_dark_outline = {
+const french_detailless_dark_outline = {
     'name': 'French buildings without details dark outline',
     ...get_dark_outline_props(1),
     filter: ["==", ["get", "is_selectable"], false],
 }
 
-export const french_detailful_dark_outline = {
+const french_detailful_dark_outline = {
     'name': 'French buildings with details dark outline',
     ...get_dark_outline_props(4),
     filter: ["==", ["get", "is_selectable"], true]
 }
+
+
+
+export const french_polygons_drawing_layers = [
+    french_detailless_dark_outline,
+    french_detailless_thickening_outline,
+    french_detailless_bldg_fill,
+    french_detailful_dark_outline,
+    french_detailful_thickening_outline,
+    french_detailful_bldg_fill
+]

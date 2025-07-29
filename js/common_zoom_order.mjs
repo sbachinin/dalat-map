@@ -33,16 +33,6 @@ It's nice to have some free space sometimes.
 
 */
 
-import { FRENCH_GEOMETRIES_MINZOOM } from "./common_drawing_layers/constants.mjs";
-import {
-    french_detailful_bldg_fill,
-    french_detailful_dark_outline,
-    french_detailful_thickening_outline,
-    french_detailless_bldg_fill,
-    french_detailless_dark_outline,
-    french_detailless_thickening_outline
-} from "./common_drawing_layers/french_polygons.mjs";
-
 export const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
 
 export const zoom_order = {
@@ -60,21 +50,4 @@ export const zoom_order = {
         }
     ]
     */
-
-    [FRENCH_GEOMETRIES_MINZOOM]: [
-        {
-            drawing_layers: [
-                french_detailless_dark_outline,
-                french_detailless_thickening_outline,
-                french_detailless_bldg_fill
-            ],
-        },
-        {
-            drawing_layers: [
-                french_detailful_dark_outline,
-                french_detailful_thickening_outline,
-                french_detailful_bldg_fill
-            ],
-        },
-    ]
 }
