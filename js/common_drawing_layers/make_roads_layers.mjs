@@ -1,9 +1,12 @@
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs"
+import { current_city } from "../load_city.mjs"
 import { roads_common_config, roads_hierarchy } from "../roads_config.mjs"
 import { major_road_thicker_line, major_road_thinner_line, minor_road_color } from "./drawing_layers.mjs"
 
 export const make_roads_layers = () => {
-    return Object.entries(roads_common_config).flatMap(([road_type_from, minzoom], i) => {
+    const roads_config = {...roads_common_config, ...current_city.isomorphic_assets.roads_config}
+
+    return Object.entries(roads_config).flatMap(([road_type_from, minzoom], i) => {
 
         if (roads_hierarchy.indexOf(road_type_from) <= 5) { // For now, all 6 most important road types are styled the same
             return [
@@ -15,7 +18,7 @@ export const make_roads_layers = () => {
         // The following min_width calculation is nonsense but works for now.
         // min width is 2 for secondary roads and then goes down for lower-class roads
         const secondary_hier_i = roads_hierarchy.indexOf('secondary')
-        let min_width = 2 * (1 - (roads_hierarchy.indexOf(road_type_from) - secondary_hier_i) * 0.16)
+        let min_width = 1.6 * (1 - (roads_hierarchy.indexOf(road_type_from) - secondary_hier_i) * 0.16)
         min_width = Math.max(min_width, 1)
 
         const layer = {

@@ -87,13 +87,13 @@ export const renderables = [
                 minzoom: 10,
                 maxzoom: 15,
                 layout: {
-                    "text-field": "Lac Duong",
+                    "text-field": "Lac\nDuong",
                     'text-size': [
                         "interpolate",
                         ["linear"],
                         ["zoom"],
-                        10, 14,
-                        16, 24],
+                        10, 12,
+                        16, 18],
                     'text-font': ['Lato Regular']
                 },
                 paint: {

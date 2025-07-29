@@ -210,13 +210,14 @@ const generate_temp_mbtiles = (
 
 
 
-
-const roads_tiling_meta = Object.entries(roads_common_config).map(([road_type_from, minzoom], i) => {
+const i_ass = await import(city_root_path + '/isomorphic_assets.mjs')
+const roads_config = {...roads_common_config, ...i_ass.roads_config}
+const roads_tiling_meta = Object.entries(roads_config).map(([road_type_from, minzoom], i) => {
     const min_hier_index = roads_hierarchy.indexOf(road_type_from)
 
     let slice_to = roads_hierarchy.length
-    if (Object.keys(roads_common_config)[i + 1]) {
-        slice_to = roads_hierarchy.indexOf(Object.keys(roads_common_config)[i + 1])
+    if (Object.keys(roads_config)[i + 1]) {
+        slice_to = roads_hierarchy.indexOf(Object.keys(roads_config)[i + 1])
     }
 
     const layer_road_types = roads_hierarchy.slice(min_hier_index, slice_to)
