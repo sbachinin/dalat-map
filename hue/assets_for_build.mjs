@@ -1,6 +1,6 @@
 import * as turf from '@turf/turf'
 import { map_bounds } from './isomorphic_assets.mjs'
-import { get_centroid, is_one_of } from '../js/utils/isomorphic_utils.mjs'
+import { get_centroid, is_building_polygon, is_one_of } from '../js/utils/isomorphic_utils.mjs'
 import { all_handmade_data, lakes_handmade_data, land_areas_handmade_data } from './static_data/handmade_data.mjs'
 import { get_titles_points_tiling_settings } from '../js/utils/titles_points.mjs'
 import { unesco_sites_polygons } from './static_data/unesco_sites_polygons.mjs'
@@ -47,16 +47,18 @@ export const assets_for_build = {
         return result
     },
 
-    unimportant_buildings_filter: f => {
-        return f.properties['building:architecture'] !== 'french_colonial'
-            && !is_within_imperial_or_intersects(f)
-            && !is_important_building(f.id, all_handmade_data, fids_to_img_names)
-    },
-
     tile_layers_meta: [
         {
-            name: 'peaks',
-            minzoom: 11
+            name: 'boring_building',
+            get_features: all_osm_features => all_osm_features.filter(f => {
+                return is_building_polygon(f)
+                    && f.properties['building:architecture'] !== 'french_colonial'
+                    && !is_within_imperial_or_intersects(f)
+                    && !is_important_building(f.id, all_handmade_data, fids_to_img_names)
+            }),
+        },
+        {
+            name: 'peaks'
         },
         {
             name: 'important_boring_building',

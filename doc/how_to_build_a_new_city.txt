@@ -2,8 +2,7 @@ Add city bulk geometry
     just add city_bulk_geometry.mjs to city/static_data
 
 Decide what osm buildings will be taken as "unimportant" (gray)
-    set .unimportant_buildings_filter in city meta
-    (filter out important buildings and perhaps some totally undesirable ones)
+    add { name: "boring_building" } item to assets_for_build.tiling_config
 
 Create a tile layer that contains only some topical features from [OSM + custom]
     set .feature_filter in city_meta

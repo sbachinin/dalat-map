@@ -5,9 +5,6 @@ import {
     does_feature_have_title
 } from '../js/utils/does_feature_have_details.mjs'
 import {
-    BORING_BLDGS_POLYGONS_MINZOOM
-} from '../js/common_drawing_layers/constants.mjs'
-import {
     calculate_minzoom,
     generate_id,
     is_real_number,
@@ -20,7 +17,7 @@ import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
 import { convert_link_roads } from './convert_link_roads.mjs'
 import { roads_common_config, roads_hierarchy } from '../js/roads_config.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
-import { add_missing_tiling_props } from './tiling_common_props.mjs'
+import { add_missing_tiling_props } from './tiling_common_config.mjs'
 
 globalThis.turf = turf
 
@@ -64,24 +61,6 @@ exec(`osmtogeojson ${osm_output_path} > ${city_root_path}/temp_data/from_osm.geo
 
 
 
-
-
-
-
-
-
-const boring_building_tiling_meta = {
-    name: 'boring_building',
-    feature_filter: f => {
-        if (!f.properties?.building) return false
-        if (f.geometry.type === 'Point') return false
-        const cf = city_assets.unimportant_buildings_filter
-        if (cf) return cf(f)
-        return false
-    },
-    feature_props_to_preserve: ['building', 'building:architecture'],
-    minzoom: BORING_BLDGS_POLYGONS_MINZOOM
-}
 
 
 
@@ -212,7 +191,7 @@ const generate_temp_mbtiles = (
 
 
 const i_ass = await import(city_root_path + '/isomorphic_assets.mjs')
-const roads_config = {...roads_common_config, ...i_ass.roads_config}
+const roads_config = { ...roads_common_config, ...i_ass.roads_config }
 const roads_tiling_meta = Object.entries(roads_config).map(([road_type_from, minzoom], i) => {
     const min_hier_index = roads_hierarchy.indexOf(road_type_from)
 
@@ -256,7 +235,6 @@ add_missing_tiling_props(city_assets.tile_layers_meta)
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
 city_assets.tile_layers_meta
     .concat(roads_tiling_meta)
-    .concat(boring_building_tiling_meta)
     .forEach(tile_layer => {
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
 

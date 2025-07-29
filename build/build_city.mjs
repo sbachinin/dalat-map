@@ -4,7 +4,9 @@ import { parse_args } from "./build_utils.mjs"
 const args = parse_args()
 
 // config_to_adjust_manually
-const city = args.city || 'hue'
+const city = args.city || 'malacca'
+
+console.log('Building city:', city.toUpperCase())
 
 const should_generate_tiles = args.should_generate_tiles || 1
 const skip_osm_download = 1

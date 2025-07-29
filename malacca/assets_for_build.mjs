@@ -1,6 +1,6 @@
 import { all_handmade_data, land_areas_handmade_data as dalat_land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs"
 import { AREA_TYPES } from "../js/common_drawing_layers/constants.mjs"
-import { get_centroid, is_one_of } from "../js/utils/isomorphic_utils.mjs"
+import { get_centroid, is_building_polygon, is_one_of } from "../js/utils/isomorphic_utils.mjs"
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf"
 import { get_titles_points_tiling_settings } from "../js/utils/titles_points.mjs"
@@ -33,13 +33,14 @@ export const assets_for_build = {
         return result
     },
 
-
-    unimportant_buildings_filter: feat => {
-        return feat.properties['building:architecture'] !== 'french_colonial'
-            && feat.id !== 1275206355 // big c
-            && !is_important_building(feat.id, all_handmade_data, fids_to_img_names)
-    },
     tile_layers_meta: [
+        {
+            name: 'boring_building',
+            get_features: all_osm_features => all_osm_features.filter(f => {
+                return is_building_polygon(f)
+                && f.id !== 342659949
+            })
+        },
         {
             name: 'sea_body',
             get_features: make_coastline
@@ -69,10 +70,7 @@ export const assets_for_build = {
         },
 
         {
-            name: 'peaks',
-            feature_filter: f => f.properties.natural === 'peak',
-            feature_props_to_preserve: ['ele'],
-            minzoom: 11
+            name: 'peaks'
         },
 
         {

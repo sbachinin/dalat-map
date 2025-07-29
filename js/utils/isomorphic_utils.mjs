@@ -22,6 +22,8 @@ export const interpolate = (z1, v1, z2, v2) => {
     ]
 }
 
+export const is_building_polygon = f => f.properties?.building && f.geometry.type !== 'Point'
+
 export const deep_merge_objects = (target, source) => {
     if (!source) return target
     if (!target) return source
