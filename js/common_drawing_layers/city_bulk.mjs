@@ -47,7 +47,7 @@ export const city_bulk_border = {
             ["zoom"],
             c.CITY_BULK_FULL_OPACITY_MAXZOOM,
             1,
-            14.8,
+            '$$_CITY_BULK_DISAPPEARANCE_ZOOM',
             0.2
         ]
     }
