@@ -3,13 +3,11 @@ import { BORING_BLDGS_POLYGONS_MINZOOM } from "../js/common_drawing_layers/const
 const common_config = [
     {
         name: 'boring_building',
-        props_to_keep_in_osm_features: ['building', 'building:architecture'],
         minzoom: BORING_BLDGS_POLYGONS_MINZOOM,
     },
     {
         name: 'peaks',
         osm_feature_filter: f => f.properties.natural === 'peak',
-        props_to_keep_in_osm_features: ['ele'],
         props_to_add_to_osm_features: [
             {
                 name: 'title',

@@ -68,7 +68,6 @@ export const assets_for_build = {
                 && is_important_building(f.id, all_handmade_data, fids_to_img_names)
                 && !is_within_imperial_or_intersects(f),
             props_to_add_to_osm_features: ['is_selectable'],
-            props_to_keep_in_osm_features: ['building']
         },
         {
             name: 'non_french_bldgs_within_imperial_city',
@@ -167,14 +166,12 @@ export const assets_for_build = {
                 695949067,
                 695959214
             ]),
-            props_to_keep_in_osm_features: ['name', 'tunnel']
         },
         {
             name: 'french_building',
             osm_feature_filter: f => f.properties['building:architecture'] === 'french_colonial'
                 || f.id === 1384219085,
             props_to_add_to_osm_features: ['is_selectable', 'has_title'],
-            props_to_keep_in_osm_features: ['building', 'building:architecture']
         },
         {
             name: 'city_walls_areas',
@@ -185,7 +182,10 @@ export const assets_for_build = {
         {
             name: 'railway',
             osm_feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
-            props_to_keep_in_osm_features: ['railway', 'name:en']
+            props_to_add_to_osm_features: [{
+                name: 'is_main_railway_line',
+                get_value: f => f.properties["name:en"] === 'North–South railway'
+            }],
         },
 
         get_titles_points_tiling_settings(all_handmade_data, lakes_handmade_data),

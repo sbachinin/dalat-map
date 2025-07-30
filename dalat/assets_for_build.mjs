@@ -47,20 +47,17 @@ export const assets_for_build = {
             osm_feature_filter: f => f.properties?.building
                 && f.properties?.['building:architecture'] !== 'french_colonial'
                 && is_important_building(f.id, all_handmade_data, fids_to_img_names),
-            props_to_keep_in_osm_features: ['building'],
             props_to_add_to_osm_features: ['is_selectable']
         },
         {
             name: 'french_building',
             osm_feature_filter: f => f.properties['building:architecture'] === 'french_colonial',
             props_to_add_to_osm_features: ['is_selectable', 'has_title'],
-            props_to_keep_in_osm_features: ['building', 'building:architecture']
         },
 
         {
             name: 'railway',
             osm_feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
-            props_to_keep_in_osm_features: ['railway']
         },
 
         {
@@ -72,7 +69,6 @@ export const assets_for_build = {
             osm_feature_filter: f => is_one_of(f.properties.aerialway, [
                 'gondola', 'cable_car', 'station'
             ]),
-            props_to_keep_in_osm_features: ['aerialway'],
         },
 
         {
@@ -92,7 +88,10 @@ export const assets_for_build = {
             osm_feature_filter: f => (
                 f.properties.waterway === 'stream' || f.properties.waterway === 'river'
             ) && f.id !== 99661185, // skip the stretch of Cam Ly "inside" the Lake
-            props_to_keep_in_osm_features: ['name', 'tunnel']
+            props_to_add_to_osm_features: [{
+                name: 'is_cam_ly',
+                get_value: f => f.properties.name === 'Suối Cam Ly'
+            }]
         },
 
         {

@@ -45,7 +45,7 @@ export const zoom_order = {
 
         {
             drawing_layers: [river_lines],
-            "filter": ['==', 'name', 'Suối Cam Ly'],
+            "filter": ['==', 'is_cam_ly', true],
         },
 
         {
@@ -171,7 +171,7 @@ export const zoom_order = {
     14: [
         {
             drawing_layers: [river_lines],
-            "filter": ['!=', 'name', 'Suối Cam Ly'],
+            "filter": ['!=', 'is_cam_ly', true],
         },
         {
             filter: [

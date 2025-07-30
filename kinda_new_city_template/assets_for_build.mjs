@@ -57,7 +57,6 @@ export const assets_for_build = {
         {
             name: 'railway',
             osm_feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
-            props_to_keep_in_osm_features: ['railway']
         },
 
         {
@@ -74,7 +73,6 @@ export const assets_for_build = {
             osm_feature_filter: f => (
                 f.properties.waterway === 'stream' || f.properties.waterway === 'river'
             ) && f.id !== 99661185, // skip the stretch of Cam Ly "inside" the Lake
-            props_to_keep_in_osm_features: ['name', 'tunnel']
         },
 
         {

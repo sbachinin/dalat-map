@@ -29,7 +29,7 @@ export const zoom_order = {
         {
             drawing_layers: [railway_line],
             // exclude many secondary lines near the station
-            filter: ['==', ['get', 'name:en'], 'North–South railway'],
+            filter: ['==', ['get', 'is_main_railway_line'], true],
         },
         {
             drawing_layers: [city_walls_fill, city_walls_thickening_outline],
@@ -122,7 +122,7 @@ export const zoom_order = {
     16: [
         {
             drawing_layers: [railway_line],
-            filter: ['!=', ['get', 'name:en'], 'North–South railway'],
+            filter: ['!=', ['get', 'is_main_railway_line'], true],
         },
     ]
 }
