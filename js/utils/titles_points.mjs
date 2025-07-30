@@ -98,12 +98,14 @@ export const make_title_point_feature = (f, all_handmade_data, feature_type) => 
 export const get_titles_points_tiling_settings = (all_handmade_data, lakes_handmade_data) => {
     return {
         name: 'titles_points',
-        feature_filter: f => Boolean(all_handmade_data[f.id]?.title),
-        feature_transform: f => make_title_point_feature(
-            f,
-            all_handmade_data,
-            lakes_handmade_data[f.id] && 'water'
-        ),
-        feature_props_to_preserve: ['building:architecture']
+        get_custom_features: all_osm_features => {
+            return all_osm_features
+                .filter(f => Boolean(all_handmade_data[f.id]?.title) && f.geometry.type !== 'Point')
+                .map(f => make_title_point_feature(
+                    f,
+                    all_handmade_data,
+                    lakes_handmade_data[f.id] && 'water'
+                ))
+        }
     }
 }

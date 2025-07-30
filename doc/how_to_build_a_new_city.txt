@@ -5,7 +5,7 @@ Decide what osm buildings will be taken as "unimportant" (gray)
     add { name: "boring_building" } item to assets_for_build.tiling_config
 
 Create a tile layer that contains only some topical features from [OSM + custom]
-    set .feature_filter in city_meta
+    set .osm_feature_filter in city_meta
 
 Add features that don't come from OSM
     Add them to city/static_data/custom_features.geojson - they will be treated as regular OSM feature

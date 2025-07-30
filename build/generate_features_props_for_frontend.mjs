@@ -12,16 +12,20 @@ const fids_to_img_names = (await import(city_root_path + '/static_data/fids_to_i
 const ass = await import(city_root_path + '/assets_for_build.mjs')
 const assets_for_build = ass.assets_for_build
 
-const all_geojson_features = JSON.parse(
+const all_tiled_features = JSON.parse(
     fs.readFileSync(city_root_path + '/temp_data/features_to_generate_props_for.geojson', 'utf8')
 )
 
 
 // EXTRA: check that all contentful features have geojson
-const all_contentful_features_ids = Object.keys(all_handmade_data).concat(Object.keys(fids_to_img_names))
+const all_contentful_features_ids = [...new Set(
+    Object.keys(all_handmade_data)
+        .concat(Object.keys(fids_to_img_names))
+)]
+
 all_contentful_features_ids.forEach(cfid => {
-    if (!all_geojson_features.find(gjf => String(gjf.id) === String(cfid))) {
-        console.warn(`There is some data for feature id ${cfid} but no such geojson feature`)
+    if (!all_tiled_features.find(gjf => String(gjf.id) === String(cfid))) {
+        console.warn(`There is some data for feature id ${cfid} but no such geojson feature. Is this feature from renderables?`)
     }
 })
 
@@ -29,11 +33,13 @@ all_contentful_features_ids.forEach(cfid => {
 
 const all_features_generic_props = {}
 
-all_geojson_features.forEach(f => {
+all_tiled_features.forEach(f => {
     if (!f.id) {
         console.log(f)
         process.exit(1)
     }
+
+    if (f.geometry.type === 'Point') return
 
     const single_feature_props = {}
 
@@ -42,7 +48,6 @@ all_geojson_features.forEach(f => {
     }
 
     if (f.properties.building
-        && f.geometry.type !== 'Point'
         && is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
         && turf.area(f) < 80
     ) {
@@ -54,7 +59,7 @@ all_geojson_features.forEach(f => {
 
 // 2. Generate city-specific props
 
-const all_features_city_specific_props = assets_for_build.make_features_props_for_frontend?.(all_geojson_features) || {}
+const all_features_city_specific_props = assets_for_build.make_features_props_for_frontend?.(all_tiled_features) || {}
 
 const result0 = deep_merge_objects(all_features_generic_props, all_features_city_specific_props)
 

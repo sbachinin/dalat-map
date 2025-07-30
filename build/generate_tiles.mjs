@@ -63,8 +63,35 @@ exec(`osmtogeojson ${osm_output_path} > ${city_root_path}/temp_data/from_osm.geo
 
 
 
+
+
+
+
+// "preprocess osm data"
+
 const osm_geojson = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/from_osm.geojson', 'utf-8'))
+
+osm_geojson.features.forEach(f => {
+    f.id = +f.id.replace(/^(way|node|relation)\//, '') // numberify the id, trim non-numeric part
+})
+
 convert_link_roads(osm_geojson.features)
+
+osm_geojson.features.forEach(f => {
+    if (f.geometry.type === 'LineString'
+        && f.properties.highway
+        && !roads_hierarchy.includes(f.properties.highway)
+        && f.properties.highway !== 'construction'
+        && f.properties.highway !== 'proposed'
+    ) {
+        console.warn('highway', f.properties.highway, 'not in roads_hierarchy')
+    }
+})
+
+
+
+
+
 
 
 
@@ -78,11 +105,11 @@ const { fids_to_img_names } = await import(city_root_path + '/static_data/fids_t
 const clear_feature_props = (feature, tile_layer) => {
     const properties = {}
 
-    const preserved_props_names = tile_layer.feature_props_to_preserve || []
+    const preserved_props_names = tile_layer.props_to_keep_in_osm_features || []
 
-    if (Array.isArray(tile_layer.added_props)) {
+    if (Array.isArray(tile_layer.props_to_add_to_osm_features)) {
         // prop is either an object with a .name, or a string...
-        const added_props_names = tile_layer.added_props.map(p => p.name || p)
+        const added_props_names = tile_layer.props_to_add_to_osm_features.map(p => p.name || p)
         preserved_props_names.push(...added_props_names)
     }
 
@@ -157,85 +184,70 @@ const roads_tiling_config = Object.entries(roads_config).map(([road_type_from, m
     const layer_road_types = roads_hierarchy.slice(min_hier_index, slice_to)
     return {
         name: 'roads_' + i,
-        feature_filter: f => f.geometry.type === 'LineString'
+        osm_feature_filter: f => f.geometry.type === 'LineString'
             && is_one_of(f.properties.highway, layer_road_types),
-        feature_props_to_preserve: ['highway'],
+        props_to_keep_in_osm_features: ['highway'],
         minzoom: Number(minzoom)
     }
 })
 
 
-osm_geojson.features.forEach(f => {
-    if (f.geometry.type === 'LineString'
-        && f.properties.highway
-        && !roads_hierarchy.includes(f.properties.highway)
-        && f.properties.highway !== 'construction'
-        && f.properties.highway !== 'proposed'
-    ) {
-        console.warn('highway', f.properties.highway, 'not in roads_hierarchy')
-    }
-})
-
 
 add_missing_tiling_props(city_assets.tiling_config)
 
 
+
+
+/* 
+    
+    const fix_id = f => {
+        if (!f.id) {
+            // 1. generate id if missing. Otherwise, features without id can be erased later here
+            f.id = generate_id()
+        } else {
+            // 2. numberify the id, trim non-numeric part
+            f.id = +f.id.replace(/^(way|node|relation)\//, '')
+        }
+        return f
+    }
+    const seen_ids = new Set()
+    const is_not_duplicate = f => { // because custom features may repeat the osm data
+        if (seen_ids.has(f.id)) {
+            console.warn('duplicate id', f.id)
+            return false
+        }
+        seen_ids.add(f.id)
+        return true
+    }
+*/
+
+
 // For each city's tile_layer:
-// 1) tile_layer.feature_filter will be executed for ALL data
-// 2) only features specified in tile_layer.feature_props_to_preserve will be preserved
-// 3) features specified in tile_layer.added_props will be added
-// 4) result will be written
+// 1) tile_layer.osm_feature_filter will be executed for osm data
+// 2) only features specified in tile_layer.props_to_keep_in_osm_features will be preserved for osm features
+//     (custom features are assumed to have only necessary props, so there is no default cleansing)
+// 3) features specified in tile_layer.props_to_add_to_osm_features will be added to osm features
+// 4) features made from tile_layer.get_custom_features will be added to osm features
 // 5) temporary .mbtiles will be created for current layer's geojson
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
-city_assets.tiling_config
+const all_tiled_features = city_assets.tiling_config
     .concat(roads_tiling_config)
-    .forEach(tile_layer => {
+    .flatMap(tile_layer => {
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
 
-        let layer_features = null
-        if (tile_layer.get_custom_features) {
-            layer_features = tile_layer.get_custom_features(osm_geojson.features).map(f => ({ ...f, id: f.id || generate_id() }))
-            osm_geojson.features = push_with_overwrite(osm_geojson.features, layer_features)
+        if (!tile_layer.get_custom_features && !tile_layer.osm_feature_filter) {
+            throw new Error('tile_layer must have either get_custom_features or osm_feature_filter defined, tile_layer name: ' + tile_layer.name)
+        }
 
+        let layer_features = []
 
-
-            /* 
-            const custom_features_path = city_root_path + '/static_data/custom_features.geojson'
-            const custom_features = fs.existsSync(custom_features_path)
-                ? JSON.parse(fs.readFileSync(custom_features_path, 'utf-8')).features
-                : []
-            
-                
-                const fix_id = f => {
-                    if (!f.id) {
-                        // 1. generate id if missing. Otherwise, features without id can be erased later here
-                        f.id = generate_id()
-                    } else {
-                        // 2. numberify the id, trim non-numeric part
-                        f.id = +f.id.replace(/^(way|node|relation)\//, '')
-                    }
-                    return f
-                }
-                const seen_ids = new Set()
-                const is_not_duplicate = f => { // because custom features may repeat the osm data
-                    if (seen_ids.has(f.id)) {
-                        console.warn('duplicate id', f.id)
-                        return false
-                    }
-                    seen_ids.add(f.id)
-                    return true
-                }
-            */
-
-
-
-        } else if (tile_layer.feature_filter) {
+        if (tile_layer.osm_feature_filter) {
             layer_features = osm_geojson.features
-                .filter(tile_layer.feature_filter)
+                .filter(tile_layer.osm_feature_filter)
                 .map(f => {
-                    tile_layer.added_props?.forEach(prop => {
+                    tile_layer.props_to_add_to_osm_features?.forEach(prop => {
                         if (f.properties[prop] !== undefined) {
-                            throw new Error(`trying to add extra prop ${prop} to ${f.id} but feature already has it`)
+                            throw new Error(`trying to add extra prop "${prop}" to ${f.id} but feature already has it`)
                         }
                         if (prop === 'is_selectable') {
                             f.properties[prop] = is_feature_selectable(f.id, hmdata, fids_to_img_names)
@@ -248,12 +260,25 @@ city_assets.tiling_config
                     return f
                 })
                 .map(f => clear_feature_props(f, tile_layer))
-                .map(tile_layer.feature_transform || (f => f))
                 // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
                 .sort((a, b) => b.id - a.id)
 
-        } else {
-            throw new Error('tile_layer must have either get_custom_features or feature_filter defined, tile_layer name: ' + tile_layer.name)
+        }
+
+
+        if (tile_layer.get_custom_features) {
+            // id has to be nothing or a number, otherwise error
+            const custom_features = tile_layer.get_custom_features(osm_geojson.features)
+                .map(f => {
+                    if (typeof f.id === 'undefined') {
+                        f.id = generate_id() // 1. generate id if missing. Otherwise, features without id can be erased later here
+                    } else if (typeof f.id !== 'number') {
+                        throw new Error('custom feature id must be a number, instead got ' + typeof f.id + ' ' + f.id)
+                    }
+                    return f
+                })
+
+            layer_features = push_with_overwrite(layer_features, custom_features)
         }
 
         generate_temp_mbtiles(
@@ -262,13 +287,15 @@ city_assets.tiling_config
             tile_layer.minzoom,
             tile_layer.maxzoom
         )
+
+        return layer_features
     })
 
 
 
 write(
     city_root_path + '/temp_data/features_to_generate_props_for.geojson',
-    osm_geojson.features
+    all_tiled_features
 )
 
 

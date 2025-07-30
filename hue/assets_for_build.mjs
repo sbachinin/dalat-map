@@ -7,6 +7,7 @@ import { unesco_sites_polygons } from './static_data/unesco_sites_polygons.mjs'
 import imperial_city_border from './static_data/imperial_city_border.mjs'
 import { is_feature_selectable, is_important_building } from '../js/utils/does_feature_have_details.mjs'
 import { fids_to_img_names } from './static_data/fids_to_img_names.mjs'
+import * as custom_features from '../hue/static_data/custom_features.mjs'
 
 const hue_bulk_polygon = (await import('../hue/static_data/city_bulk_geometry.mjs')).default
 
@@ -26,17 +27,17 @@ export const assets_for_build = {
     map_bounds,
     html_title: 'Map of colonial architecture in Hue',
 
-    make_features_props_for_frontend: main_geojson_features => {
+    make_features_props_for_frontend: all_tiled_features => {
 
         const result = {}
-        main_geojson_features.forEach(f => {
+        all_tiled_features.forEach(f => {
             if (!f.id) {
                 console.log(f)
                 process.exit(1)
             }
 
 
-            if (f.properties['building:architecture'] === 'french_colonial') {
+            if (f.properties['building:architecture'] === 'french_colonial' && f.geometry.type !== 'Point') {
                 result[f.id] = {
                     // centroid is needed for french bldg even if it's not selectable because centroid is used to draw a building's circle at low z
                     centroid: get_centroid(f),
@@ -50,7 +51,7 @@ export const assets_for_build = {
     tiling_config: [
         {
             name: 'boring_building',
-            feature_filter: f => {
+            osm_feature_filter: f => {
                 return is_building_polygon(f)
                     && f.properties['building:architecture'] !== 'french_colonial'
                     && !is_within_imperial_or_intersects(f)
@@ -62,15 +63,16 @@ export const assets_for_build = {
         },
         {
             name: 'important_boring_building',
-            feature_filter: f => f.properties?.building
+            osm_feature_filter: f => f.properties?.building
                 && f.properties?.['building:architecture'] !== 'french_colonial'
                 && is_important_building(f.id, all_handmade_data, fids_to_img_names)
                 && !is_within_imperial_or_intersects(f),
-            added_props: ['is_selectable']
+            props_to_add_to_osm_features: ['is_selectable'],
+            props_to_keep_in_osm_features: ['building']
         },
         {
             name: 'non_french_bldgs_within_imperial_city',
-            feature_filter: f => {
+            osm_feature_filter: f => {
                 return f.properties.building
                     && f.geometry.type !== 'Point'
                     && f.properties['building:architecture'] !== 'french_colonial'
@@ -80,11 +82,11 @@ export const assets_for_build = {
         {
 
             name: 'stadiums',
-            feature_filter: f => f.properties?.leisure === 'pitch'
+            osm_feature_filter: f => f.properties?.leisure === 'pitch'
         },
         {
             name: 'water_areas',
-            feature_filter: f => {
+            osm_feature_filter: f => {
 
                 if (is_one_of(f.id, [
                     205805271,
@@ -124,7 +126,11 @@ export const assets_for_build = {
                     return true
                 }
             },
-            added_props: [{
+            get_custom_features: () => [
+                custom_features.large_bay_in_the_north,
+                custom_features.south_china_sea
+            ],
+            props_to_add_to_osm_features: [{
                 name: 'is_small_lake',
                 get_value: f => turf.area(f.geometry) < 20000
                     || is_one_of(f.id, [
@@ -141,7 +147,7 @@ export const assets_for_build = {
         },
         {
             name: 'river_lines',
-            feature_filter: f => (
+            osm_feature_filter: f => (
                 f.properties.waterway === 'stream' || f.properties.waterway === 'river'
             ) && !is_one_of(f.id, [
                 371992465,
@@ -161,34 +167,35 @@ export const assets_for_build = {
                 695949067,
                 695959214
             ]),
-            feature_props_to_preserve: ['name', 'tunnel']
+            props_to_keep_in_osm_features: ['name', 'tunnel']
         },
         {
             name: 'french_building',
-            feature_filter: f => f.properties['building:architecture'] === 'french_colonial'
+            osm_feature_filter: f => f.properties['building:architecture'] === 'french_colonial'
                 || f.id === 1384219085,
-            added_props: ['is_selectable', 'has_title']
+            props_to_add_to_osm_features: ['is_selectable', 'has_title'],
+            props_to_keep_in_osm_features: ['building', 'building:architecture']
         },
         {
             name: 'city_walls_areas',
-            feature_filter: f => {
+            osm_feature_filter: f => {
                 if (f.properties.barrier === 'city_wall' && f.geometry.type === 'Polygon') return true
             }
         },
         {
             name: 'railway',
-            feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
-            feature_props_to_preserve: ['railway', 'name:en']
+            osm_feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
+            props_to_keep_in_osm_features: ['railway', 'name:en']
         },
 
         get_titles_points_tiling_settings(all_handmade_data, lakes_handmade_data),
 
         {
             name: 'land_areas',
-            feature_filter: f => {
-                return land_areas_handmade_data.hasOwnProperty(f.id.toString())
+            osm_feature_filter: f => {
+                return land_areas_handmade_data[f.id.toString()]
             },
-            added_props: [
+            props_to_add_to_osm_features: [
                 {
                     name: 'area_type',
                     get_value: f => {

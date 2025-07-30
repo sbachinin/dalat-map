@@ -97,6 +97,9 @@ export const get_geojson_source = (features) => {
 export const within = (number, min, max) => Math.max(min, Math.min(number, max))
 
 export const get_centroid = f => {
+    if (f.geometry.type === 'Point') {
+        throw new Error(`Trying to get centroid of a point, it looks wrong. Feature id: ` + f.id)
+    }
     const raw_centroid = globalThis.turf.centerOfMass(f)
     return [
         Number(raw_centroid.geometry.coordinates[0].toFixed(6)),

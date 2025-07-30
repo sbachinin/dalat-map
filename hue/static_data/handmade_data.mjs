@@ -166,7 +166,6 @@ export const buildings_handmade_data = {
     },
 
     4204853453454355: {
-        // there is a good photo
         subtitle: "Demolished in 2017. Interestingly enough, it seems that the motive for demolition was simply cutting the maintenance costs rather than development projects (by 2025 nothing new was built on the site). It was too old for profitable commercial use but had to maintain a polished look in order not to ruin the grand view of the adjacent Hue Heritage hotel - a hopeless arrangement indeed."
     },
 

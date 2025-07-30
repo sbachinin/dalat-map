@@ -6,22 +6,22 @@ import { area } from "@turf/turf"
 import { get_titles_points_tiling_settings } from "../js/utils/titles_points.mjs"
 import { is_feature_selectable, is_important_building } from "../js/utils/does_feature_have_details.mjs"
 import { fids_to_img_names } from "./static_data/fids_to_img_names.mjs"
+import * as custom_features from "./static_data/custom_features.mjs"
 
 export const assets_for_build = {
     map_bounds,
     html_title: 'Map of colonial architecture in Dalat',
 
-    make_features_props_for_frontend: main_geojson_features => {
+    make_features_props_for_frontend: all_tiled_features => {
 
         const result = {}
-        main_geojson_features.forEach(f => {
+        all_tiled_features.forEach(f => {
             if (!f.id) {
                 console.log(f)
                 process.exit(1)
             }
 
-
-            if (f.properties['building:architecture'] === 'french_colonial') {
+            if (f.properties['building:architecture'] === 'french_colonial' && f.geometry.type !== 'Point') {
                 result[f.id] = {
                     // centroid is needed for french bldg even if it's not selectable because centroid is used to draw a building's circle at low z
                     centroid: get_centroid(f),
@@ -35,7 +35,7 @@ export const assets_for_build = {
     tiling_config: [
         {
             name: 'boring_building',
-            feature_filter: f => {
+            osm_feature_filter: f => {
                 return is_building_polygon(f)
                     && f.properties['building:architecture'] !== 'french_colonial'
                     && f.id !== 1275206355 // big c
@@ -44,21 +44,23 @@ export const assets_for_build = {
         },
         {
             name: 'important_boring_building',
-            feature_filter: f => f.properties?.building
+            osm_feature_filter: f => f.properties?.building
                 && f.properties?.['building:architecture'] !== 'french_colonial'
                 && is_important_building(f.id, all_handmade_data, fids_to_img_names),
-            added_props: ['is_selectable']
+            props_to_keep_in_osm_features: ['building'],
+            props_to_add_to_osm_features: ['is_selectable']
         },
         {
             name: 'french_building',
-            feature_filter: f => f.properties['building:architecture'] === 'french_colonial',
-            added_props: ['is_selectable', 'has_title']
+            osm_feature_filter: f => f.properties['building:architecture'] === 'french_colonial',
+            props_to_add_to_osm_features: ['is_selectable', 'has_title'],
+            props_to_keep_in_osm_features: ['building', 'building:architecture']
         },
 
         {
             name: 'railway',
-            feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
-            feature_props_to_preserve: ['railway']
+            osm_feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
+            props_to_keep_in_osm_features: ['railway']
         },
 
         {
@@ -67,15 +69,15 @@ export const assets_for_build = {
 
         {
             name: 'transportation_other',
-            feature_filter: f => is_one_of(f.properties.aerialway, [
+            osm_feature_filter: f => is_one_of(f.properties.aerialway, [
                 'gondola', 'cable_car', 'station'
             ]),
-            feature_props_to_preserve: ['aerialway'],
+            props_to_keep_in_osm_features: ['aerialway'],
         },
 
         {
             name: 'water_areas',
-            feature_filter: f => f.properties.natural === 'water'
+            osm_feature_filter: f => f.properties.natural === 'water'
                 && (f.properties.name === 'Hồ Xuân Hương'
                     || f.properties.name === 'Hồ Tuyền Lâm'
                     || f.properties.name === 'Hồ Chiến Thắng'
@@ -87,24 +89,23 @@ export const assets_for_build = {
 
         {
             name: 'river_lines',
-            feature_filter: f => (
+            osm_feature_filter: f => (
                 f.properties.waterway === 'stream' || f.properties.waterway === 'river'
             ) && f.id !== 99661185, // skip the stretch of Cam Ly "inside" the Lake
-            feature_props_to_preserve: ['name', 'tunnel']
+            props_to_keep_in_osm_features: ['name', 'tunnel']
         },
 
         {
             name: 'land_areas',
-            feature_filter: f => {
-                if (f.properties.name === 'Lac Duong') return true
+            osm_feature_filter: f => {
                 if (f.id === 1307493492) return false // not ana mandara
                 return dalat_land_areas_handmade_data.hasOwnProperty(f.id.toString())
             },
-            added_props: [
+            get_custom_features: () => [custom_features.lac_duong, custom_features.military_academy],
+            props_to_add_to_osm_features: [
                 {
                     name: 'area_type',
                     get_value: f => {
-                        if (f.properties.name === 'Lac Duong') return AREA_TYPES.TOWN
                         return dalat_land_areas_handmade_data[f.id.toString()]?.area_type || null
                     }
                 },

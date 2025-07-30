@@ -81,6 +81,7 @@ export function calculate_minzoom(bounds, screen_width, screen_height) {
 
 
 export const push_with_overwrite = (arr1, arr2) => {
+    // if there are features with the same id in both arr1 and arr2, take only the one from arr2
     return arr1
         .filter(f1 => !arr2.some(f2 => f2.id === f1.id))
         .concat(arr2)
