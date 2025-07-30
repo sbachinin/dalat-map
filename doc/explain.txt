@@ -32,7 +32,7 @@ Currently in renderables it's impossible to derive renderable's features from os
 
 ## HOW TITLES POINTS ARE (CAN BE) MADE
 
-In tile_layers_meta, add item by calling get_titles_points_tiling_settings(...),
+In tiling_config, add item by calling get_titles_points_tiling_settings(...),
 it contains feature filter and feature transform that will be applied in generate_tiles,
 matching geojson features from "main_geojson" to titles from handmade data,
 and making a Point features for every match.
@@ -70,7 +70,7 @@ Features come from:
 		including dead_buildings
 
 Tile layers come from
-	city_assets.tile_layers_meta
+	city_assets.tiling_config
 	"general_tile_layers_meta":
 		city bulk
 		boring bldgs

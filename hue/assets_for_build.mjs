@@ -47,7 +47,7 @@ export const assets_for_build = {
         return result
     },
 
-    tile_layers_meta: [
+    tiling_config: [
         {
             name: 'boring_building',
             get_features: all_osm_features => all_osm_features.filter(f => {

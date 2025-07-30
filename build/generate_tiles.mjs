@@ -192,7 +192,7 @@ const generate_temp_mbtiles = (
 
 const i_ass = await import(city_root_path + '/isomorphic_assets.mjs')
 const roads_config = { ...roads_common_config, ...i_ass.roads_config }
-const roads_tiling_meta = Object.entries(roads_config).map(([road_type_from, minzoom], i) => {
+const roads_tiling_config = Object.entries(roads_config).map(([road_type_from, minzoom], i) => {
     const min_hier_index = roads_hierarchy.indexOf(road_type_from)
 
     let slice_to = roads_hierarchy.length
@@ -223,7 +223,7 @@ main_geojson.features.forEach(f => {
 })
 
 
-add_missing_tiling_props(city_assets.tile_layers_meta)
+add_missing_tiling_props(city_assets.tiling_config)
 
 
 // For each city's tile_layer:
@@ -233,8 +233,8 @@ add_missing_tiling_props(city_assets.tile_layers_meta)
 // 4) result will be written
 // 5) temporary .mbtiles will be created for current layer's geojson
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
-city_assets.tile_layers_meta
-    .concat(roads_tiling_meta)
+city_assets.tiling_config
+    .concat(roads_tiling_config)
     .forEach(tile_layer => {
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
 
