@@ -63,54 +63,8 @@ exec(`osmtogeojson ${osm_output_path} > ${city_root_path}/temp_data/from_osm.geo
 
 
 
-
-
-
-
-
-
-
-
-// merge custom_features.geojson into osm geojson,
-// and bulk geometry (as polygon + as linestring) too,
-// prioritize custom features in case of duplicate ids
-
-const osm_features = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/from_osm.geojson', 'utf-8')).features
-const custom_features_path = city_root_path + '/static_data/custom_features.geojson'
-const custom_features = fs.existsSync(custom_features_path)
-    ? JSON.parse(fs.readFileSync(custom_features_path, 'utf-8')).features
-    : []
-
-const fix_id = f => {
-    if (!f.id) {
-        // 1. generate id if missing. Otherwise, features without id can be erased later here
-        f.id = generate_id()
-    } else {
-        // 2. numberify the id, trim non-numeric part
-        f.id = +f.id.replace(/^(way|node|relation)\//, '')
-    }
-    return f
-}
-
-const seen_ids = new Set()
-const is_not_duplicate = f => { // because custom features may repeat the osm data
-    if (seen_ids.has(f.id)) {
-        console.warn('duplicate id', f.id)
-        return false
-    }
-    seen_ids.add(f.id)
-    return true
-}
-
-convert_link_roads(osm_features)
-
-let main_geojson = {
-    type: 'FeatureCollection',
-    features: custom_features
-        .concat(osm_features)
-        .map(fix_id)
-        .filter(is_not_duplicate)
-}
+const osm_geojson = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/from_osm.geojson', 'utf-8'))
+convert_link_roads(osm_geojson.features)
 
 
 
@@ -211,7 +165,7 @@ const roads_tiling_config = Object.entries(roads_config).map(([road_type_from, m
 })
 
 
-main_geojson.features.forEach(f => {
+osm_geojson.features.forEach(f => {
     if (f.geometry.type === 'LineString'
         && f.properties.highway
         && !roads_hierarchy.includes(f.properties.highway)
@@ -240,10 +194,43 @@ city_assets.tiling_config
 
         let layer_features = null
         if (tile_layer.get_custom_features) {
-            layer_features = tile_layer.get_custom_features(main_geojson.features).map(f => ({ ...f, id: f.id || generate_id() }))
-            main_geojson.features = push_with_overwrite(main_geojson.features, layer_features)
+            layer_features = tile_layer.get_custom_features(osm_geojson.features).map(f => ({ ...f, id: f.id || generate_id() }))
+            osm_geojson.features = push_with_overwrite(osm_geojson.features, layer_features)
+
+
+
+            /* 
+            const custom_features_path = city_root_path + '/static_data/custom_features.geojson'
+            const custom_features = fs.existsSync(custom_features_path)
+                ? JSON.parse(fs.readFileSync(custom_features_path, 'utf-8')).features
+                : []
+            
+                
+                const fix_id = f => {
+                    if (!f.id) {
+                        // 1. generate id if missing. Otherwise, features without id can be erased later here
+                        f.id = generate_id()
+                    } else {
+                        // 2. numberify the id, trim non-numeric part
+                        f.id = +f.id.replace(/^(way|node|relation)\//, '')
+                    }
+                    return f
+                }
+                const seen_ids = new Set()
+                const is_not_duplicate = f => { // because custom features may repeat the osm data
+                    if (seen_ids.has(f.id)) {
+                        console.warn('duplicate id', f.id)
+                        return false
+                    }
+                    seen_ids.add(f.id)
+                    return true
+                }
+            */
+
+
+
         } else if (tile_layer.feature_filter) {
-            layer_features = main_geojson.features
+            layer_features = osm_geojson.features
                 .filter(tile_layer.feature_filter)
                 .map(f => {
                     tile_layer.added_props?.forEach(prop => {
@@ -281,7 +268,7 @@ city_assets.tiling_config
 
 write(
     city_root_path + '/temp_data/features_to_generate_props_for.geojson',
-    main_geojson.features
+    osm_geojson.features
 )
 
 
