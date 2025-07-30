@@ -36,14 +36,14 @@ export const assets_for_build = {
     tiling_config: [
         {
             name: 'boring_building',
-            get_features: all_osm_features => all_osm_features.filter(f => {
+            feature_filter: f => {
                 return is_building_polygon(f)
                 && f.id !== 342659949
-            })
+            }
         },
         {
             name: 'sea_body',
-            get_features: make_coastline
+            get_custom_features: make_coastline
         },
         {
             name: 'islands',

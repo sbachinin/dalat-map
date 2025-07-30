@@ -50,12 +50,12 @@ export const assets_for_build = {
     tiling_config: [
         {
             name: 'boring_building',
-            get_features: all_osm_features => all_osm_features.filter(f => {
+            feature_filter: f => {
                 return is_building_polygon(f)
                     && f.properties['building:architecture'] !== 'french_colonial'
                     && !is_within_imperial_or_intersects(f)
                     && !is_important_building(f.id, all_handmade_data, fids_to_img_names)
-            }),
+            },
         },
         {
             name: 'peaks'
@@ -206,7 +206,7 @@ export const assets_for_build = {
 
         {
             name: 'unesco_areas',
-            get_features: all_features => {
+            get_custom_features: all_features => {
                 const polygons = unesco_sites_polygons
                     .concat(imperial_city_border)
                     .concat(all_features.filter(f => is_one_of(Number(f.id), [

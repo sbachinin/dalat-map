@@ -35,11 +35,11 @@ export const assets_for_build = {
     tiling_config: [
         {
             name: 'boring_building',
-            get_features: all_osm_features => all_osm_features.filter(f => {
+            feature_filter: f => {
                 return is_building_polygon(f)
                     && f.id !== 1275206355 // big c
                     && !is_important_building(f.id, all_handmade_data, fids_to_img_names)
-            })
+            }
         },
         {
             name: 'important_boring_building',

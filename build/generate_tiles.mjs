@@ -239,8 +239,8 @@ city_assets.tiling_config
         if (!tile_layer.name) throw new Error('name not defined for tile_layer ' + tile_layer)
 
         let layer_features = null
-        if (tile_layer.get_features) {
-            layer_features = tile_layer.get_features(main_geojson.features).map(f => ({ ...f, id: f.id || generate_id() }))
+        if (tile_layer.get_custom_features) {
+            layer_features = tile_layer.get_custom_features(main_geojson.features).map(f => ({ ...f, id: f.id || generate_id() }))
             main_geojson.features = push_with_overwrite(main_geojson.features, layer_features)
         } else if (tile_layer.feature_filter) {
             layer_features = main_geojson.features
@@ -266,7 +266,7 @@ city_assets.tiling_config
                 .sort((a, b) => b.id - a.id)
 
         } else {
-            throw new Error('tile_layer must have either get_features or feature_filter defined, tile_layer name: ' + tile_layer.name)
+            throw new Error('tile_layer must have either get_custom_features or feature_filter defined, tile_layer name: ' + tile_layer.name)
         }
 
         generate_temp_mbtiles(
