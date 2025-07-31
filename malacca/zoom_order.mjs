@@ -33,8 +33,7 @@ export const zoom_order = {
         },
 
         {
-            drawing_layers: [water_areas_fill],
-            filter: ['==', ['get', 'is_river'], true],
+            drawing_layers: [{...water_areas_fill, 'source-layer': 'river_areas'}],
         },
 
         {
@@ -62,6 +61,17 @@ export const zoom_order = {
         {
             drawing_layers: [non_french_titles],
         },
+        {
+            drawing_layers: [{
+                name: 'Graveyard',
+                source: SOURCES_NAMES.CITY_TILES,
+                'source-layer': 'graveyard',
+                type: 'fill',
+                paint: {
+                    'fill-color': 'hsla(162, 45%, 80%, 1.00)',
+                },
+            }],
+        }
     ],
 
     12.2: [
@@ -100,10 +110,6 @@ export const zoom_order = {
         },
     ],
     13.5: [
-        {
-            drawing_layers: [water_areas_fill],
-            filter: ['!=', ['get', 'is_river'], true],
-        },
         {
             drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border],
         }

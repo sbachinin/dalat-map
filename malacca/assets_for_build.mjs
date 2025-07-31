@@ -51,6 +51,13 @@ export const assets_for_build = {
             }
         },
         {
+            name: 'graveyard',
+            osm_feature_filter: f => is_one_of(f.id, [
+                17961173, // bukit cina
+                242010620, // bukit serindit
+            ]) || f.properties.landuse === 'cemetery'
+        },
+        {
             name: 'sea_body',
             get_custom_features: make_coastline
         },
@@ -82,12 +89,8 @@ export const assets_for_build = {
         },
 
         {
-            name: 'water_areas',
-            osm_feature_filter: f => f.properties.natural === 'water',
-            props_to_add_to_osm_features: [{
-                name: 'is_river',
-                get_value: f => f.properties.water === 'river'
-            }]
+            name: 'river_areas',
+            osm_feature_filter: f => f.properties.natural === 'water' && f.properties.water === 'river'
         },
 
         {
