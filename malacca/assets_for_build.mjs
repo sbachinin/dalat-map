@@ -39,6 +39,15 @@ export const assets_for_build = {
             osm_feature_filter: f => {
                 return is_building_polygon(f)
                 && f.id !== 342659949
+                && f.id !== 12743796
+                && !f.properties.historic
+            }
+        },
+        {
+            name: 'historic_building',
+            osm_feature_filter: f => {
+                return is_building_polygon(f)
+                && f.properties.historic
             }
         },
         {

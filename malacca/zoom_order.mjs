@@ -111,6 +111,19 @@ export const zoom_order = {
     14: [
         {
             drawing_layers: [river_lines],
+        },
+        {
+            drawing_layers: [{
+                name: 'Historic building',
+                type: 'fill',
+                source: SOURCES_NAMES.CITY_TILES,
+                'source-layer': 'historic_building',
+                paint: {
+                    'fill-color': 'hsl(25, 70%, 40%)',
+                    'fill-antialias': true,
+                    'fill-opacity': 1
+                }
+            }],
         }
     ],
 
