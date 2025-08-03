@@ -97,6 +97,19 @@ export const add_mouse_stuff = () => {
 
 
         }
+
+        if (e.target.closest('#gotogoogle')) {
+            const bounds = window.dalatmap.getBounds()
+            const sw = bounds.getSouthWest()
+            const ne = bounds.getNorthEast()
+
+            const centerLat = (sw.lat + ne.lat) / 2
+            const centerLng = (sw.lng + ne.lng) / 2
+            const googleZoom = Math.round(window.dalatmap.getZoom())
+
+            const url = `https://www.google.com/maps/@${centerLat},${centerLng},${googleZoom}z`
+            window.open(url, '_blank')
+        }
     })
 
     initialize_custom_zoom_buttons()
