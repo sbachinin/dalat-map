@@ -5,7 +5,6 @@ import {
     FIRST_CLASS_FRENCH_MINZOOM,
     FRENCH_TITLES_TEXT_COLOR,
     GRASS_COLOR,
-    IMPORTANT_BORING_BLDG_FILL_COLOR,
     INSTITUTION_FILL_COLOR,
     WATER_TITLE_COLOR,
     PALE_TITLES_COLOR,
@@ -134,7 +133,7 @@ export const peaks_triangles_with_titles = {
         'text-font': ['Lato Regular'],
         "text-field": ["get", "title"],
         "icon-image": "peak_triangle",
-        "icon-size": 0.16
+        "icon-size": 0.24
     },
     paint: {
         'text-color': PEAK_TTTLE_COLOR
@@ -395,6 +394,8 @@ export const boring_building_fill = {
                 ['==', ['id'], 361851927],
             ],
             IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR,
+            ['==', ['get', 'has_title'], true],
+            'hsl(240, 27%, 91%)',
             BORING_BLDG_FILL_COLOR
         ],
         "fill-antialias": true,
@@ -408,7 +409,7 @@ export const important_boring_building_fill = {
     'source-layer': 'important_boring_building',
     drawing_importance: 3,
     "paint": {
-        "fill-color": IMPORTANT_BORING_BLDG_FILL_COLOR,
+        "fill-color": 'hsl(240, 50%, 87%)',
         "fill-antialias": true
     },
     selectable: true

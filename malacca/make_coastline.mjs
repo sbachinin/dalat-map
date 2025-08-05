@@ -1,12 +1,12 @@
 import { map_bounds } from "./isomorphic_assets.mjs"
 
-export const make_coastline = main_geojson => {
+export const make_coastline = main_geojson_feats => {
 
     // This is not yet a general-purpose coastline-creation function, it's for Melaka only, assuming that the coastline is rather horizontal and has no weird turns, and that sea is in the south.
     // It begins with finding the westmost point, which is kinda naive, it assumes that such point will necessarily belong to the main coastline and not to an island.
     // Islands could be created right in this function, taking all the lines that don't join the main coastline, but it feels a bit unreliable, so I chose to create islands in another layer by taking features with a 'place' property === 'island' or 'islet'.
 
-    const coast_lines = main_geojson.filter(f => f.properties.natural === 'coastline')
+    const coast_lines = main_geojson_feats.filter(f => f.properties.natural === 'coastline')
     const main_coastline_points = []
 
     let westmost_lng = 180

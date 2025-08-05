@@ -34,7 +34,25 @@ import { bldgs_handmade_data } from "./bldgs_handmade_data.mjs"
 
 export const land_areas_handmade_data = {
     // !!! empty items are needed here in order to generate land_areas tile layer
-    
+    17961173: {
+        title: 'Bukit Cina\n(ancient chinese\ncemetery)',
+        title_coords: [102.257651, 2.200041]
+    },
+    945813623: {
+        // forest around st john's fort
+    },
+
+    242010620: {
+        title: 'Bukit Serindit\n(old Christian cemetery)',
+    },
+
+    1419914017: {
+        title: 'Japanese\noccupation\nMemorial'
+    },
+
+    1293044462: {
+        title: 'Dutch\ngraveyard',
+    }
 }
 
 export const lakes_handmade_data = {

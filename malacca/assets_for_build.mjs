@@ -1,12 +1,13 @@
-import { all_handmade_data, land_areas_handmade_data as dalat_land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs"
+import { all_handmade_data, land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs"
 import { AREA_TYPES } from "../js/common_drawing_layers/constants.mjs"
 import { get_centroid, is_building_polygon, is_one_of } from "../js/utils/isomorphic_utils.mjs"
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf"
-import { get_titles_points_tiling_settings } from "../js/utils/titles_points.mjs"
 import { is_feature_selectable, is_important_building } from "../js/utils/does_feature_have_details.mjs"
 import { fids_to_img_names } from "./static_data/fids_to_img_names.mjs"
 import { make_coastline } from "./make_coastline.mjs"
+import { unesco_core_zone } from "./static_data/unesco_core_zone.mjs"
+import { make_polygon_feat } from "../js/utils/isomorphic_utils.mjs"
 
 export const assets_for_build = {
     map_bounds,
@@ -36,26 +37,59 @@ export const assets_for_build = {
     tiling_config: [
         {
             name: 'boring_building',
-            osm_feature_filter: f => {
-                return is_building_polygon(f)
-                && f.id !== 342659949
-                && f.id !== 12743796
-                && !f.properties.historic
-            }
+            get_custom_features: main_geojson_feats => {
+                return main_geojson_feats.filter(f => {
+                    return (
+                        is_building_polygon(f)
+                        && !f.properties.historic
+                        && f.id !== 342659949
+                        && f.id !== 12743796
+                    )
+                }).flatMap(f => {
+                    if (f.id === 12743795) {
+                        // split megamall
+                        return [
+                            make_polygon_feat(f.geometry.coordinates[0], 945759709, { has_title: true }),
+                            make_polygon_feat(f.geometry.coordinates[1], 104954181, { has_title: true })
+                        ]
+                    }
+                    return [{
+                        ...f,
+                        properties: { ...f.properties, has_title: !!all_handmade_data[f.id]?.title }
+                    }]
+                })
+            },
+            minzoom: 15
         },
         {
             name: 'historic_building',
             osm_feature_filter: f => {
-                return is_building_polygon(f)
-                && f.properties.historic
+                return f.id === 945813625 // st john fort is not a building
+                    || (is_building_polygon(f)
+                        && f.properties.historic)
             }
         },
+
+        {
+            name: 'important_boring_building',
+            osm_feature_filter: f => f.properties?.building
+                && !f.properties.historic
+                && is_feature_selectable(f.id, all_handmade_data, fids_to_img_names),
+            props_to_add_to_osm_features: ['is_selectable']
+        },
+
+        {
+            name: 'railway',
+            osm_feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
+        },
+
         {
             name: 'graveyard',
             osm_feature_filter: f => is_one_of(f.id, [
                 17961173, // bukit cina
                 242010620, // bukit serindit
-            ]) || f.properties.landuse === 'cemetery'
+                1314696670, // the one with white beautiful bldg in the west
+            ])
         },
         {
             name: 'sea_body',
@@ -64,24 +98,6 @@ export const assets_for_build = {
         {
             name: 'islands',
             osm_feature_filter: f => is_one_of(f.properties.place, ['island', 'islet']),
-        },
-
-
-        {
-            name: 'important_boring_building',
-            osm_feature_filter: f => f.properties?.building
-                && is_important_building(f.id, all_handmade_data, fids_to_img_names),
-            props_to_add_to_osm_features: ['is_selectable']
-        },
-        // {
-        //     name: 'french_building',
-        //     osm_feature_filter: f => f.properties['building:architecture'] === 'french_colonial',
-        //     props_to_add_to_osm_features: ['is_selectable', 'has_title']
-        // },
-
-        {
-            name: 'railway',
-            osm_feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
         },
 
         {
@@ -101,18 +117,21 @@ export const assets_for_build = {
         },
 
         {
+            name: 'unesco_core_zone',
+            get_custom_features: () => [unesco_core_zone]
+        },
+
+        {
             name: 'land_areas',
             osm_feature_filter: f => {
-                if (f.properties.name === 'Lac Duong') return true
-                if (f.id === 1307493492) return false // not ana mandara
-                return dalat_land_areas_handmade_data.hasOwnProperty(f.id.toString())
+                return land_areas_handmade_data.hasOwnProperty(f.id.toString())
             },
             props_to_add_to_osm_features: [
                 {
                     name: 'area_type',
                     get_value: f => {
                         if (f.properties.name === 'Lac Duong') return AREA_TYPES.TOWN
-                        return dalat_land_areas_handmade_data[f.id.toString()]?.area_type || null
+                        return land_areas_handmade_data[f.id.toString()]?.area_type || null
                     }
                 },
                 {
@@ -122,9 +141,6 @@ export const assets_for_build = {
                     }
                 }
             ]
-        },
-
-        get_titles_points_tiling_settings(all_handmade_data, lakes_handmade_data),
-
+        }
     ]
 }

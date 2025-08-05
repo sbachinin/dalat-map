@@ -67,11 +67,24 @@ const get_title_lat = (
     }
 }
 
+const is_water_feature = f => {
+    return f.properties.natural === 'water' ||
+        f.properties.natural === 'bay' ||
+        f.properties.natural === 'strait' ||
+        f.properties.natural === 'wetland' ||
+        f.properties.waterway === 'river' ||
+        f.properties.waterway === 'stream' ||
+        f.properties.waterway === 'canal' ||
+        f.properties.waterway === 'drain' ||
+        f.properties.waterway === 'ditch' ||
+        f.properties.landuse === 'reservoir' ||
+        f.properties.landuse === 'basin' ||
+        f.properties.place === 'ocean' ||
+        f.properties.place === 'sea'
+}
 
 
-
-
-export const make_title_point_feature = (f, all_handmade_data, feature_type) => {
+export const make_title_point_feature = (f, all_handmade_data) => {
     let coordinates = all_handmade_data[f.id].title_coords
     if (!coordinates) {
         const centroid = get_centroid(f)
@@ -84,28 +97,17 @@ export const make_title_point_feature = (f, all_handmade_data, feature_type) => 
     const title_props = {
         title: all_handmade_data[f.id].title,
         title_side: get_title_side(f, all_handmade_data),
-        feature_type,
         "symbol-sort-key": all_handmade_data[f.id]["symbol-sort-key"]
     }
+
+    if (is_water_feature(f)) {
+        title_props.feature_type = "water"
+    }
+
     return {
         type: "Feature",
         id: f.id,
         geometry: { type: "Point", coordinates },
         properties: { ...f.properties, ...title_props }
-    }
-}
-
-export const get_titles_points_tiling_settings = (all_handmade_data, lakes_handmade_data) => {
-    return {
-        name: 'titles_points',
-        get_custom_features: all_osm_features => {
-            return all_osm_features
-                .filter(f => Boolean(all_handmade_data[f.id]?.title) && f.geometry.type !== 'Point')
-                .map(f => make_title_point_feature(
-                    f,
-                    all_handmade_data,
-                    lakes_handmade_data[f.id] && 'water'
-                ))
-        }
     }
 }

@@ -19,6 +19,7 @@ import { roads_common_config, roads_hierarchy } from '../js/roads_config.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
 import { add_missing_tiling_props } from './tiling_common_config.mjs'
 import { nonessential_feature_props } from './nonessential_feature_props.mjs'
+import { make_title_point_feature } from '../js/utils/titles_points.mjs'
 
 globalThis.turf = turf
 
@@ -253,12 +254,17 @@ const all_tiled_features = city_assets.tiling_config
         return layer_features
     })
 
-
-
 write(
     city_root_path + '/temp_data/features_to_generate_props_for.geojson',
     all_tiled_features
 )
+
+
+const titles_points_feats = all_tiled_features
+    .filter(f => Boolean(hmdata[f.id]?.title) && f.geometry.type !== 'Point')
+    .map(f => make_title_point_feature(f, hmdata))
+
+generate_temp_mbtiles({ name: 'titles_points' }, titles_points_feats)
 
 
 const final_tiles_path = `../cities_tiles/${cityname}/tiles`

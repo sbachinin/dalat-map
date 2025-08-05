@@ -22,8 +22,6 @@ export const interpolate = (z1, v1, z2, v2) => {
     ]
 }
 
-export const is_building_polygon = f => f.properties?.building && f.geometry.type !== 'Point'
-
 export const deep_merge_objects = (target, source) => {
     if (!source) return target
     if (!target) return source
@@ -105,4 +103,20 @@ export const get_centroid = f => {
         Number(raw_centroid.geometry.coordinates[0].toFixed(6)),
         Number(raw_centroid.geometry.coordinates[1].toFixed(6))
     ]
+}
+
+
+
+export const is_building_polygon = f => f.properties?.building && f.geometry.type !== 'Point'
+
+export const make_polygon_feat = (coords, id, props) => {
+    return {
+        id,
+        type: 'Feature',
+        properties: props || {},
+        geometry: {
+            type: 'Polygon',
+            coordinates: coords,
+        }
+    }
 }

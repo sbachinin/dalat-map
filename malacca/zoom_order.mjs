@@ -26,6 +26,25 @@ export const zoom_order = {
 
     0: [
         {
+            drawing_layers: [{
+                name: 'unesco_core_zone',
+                source: SOURCES_NAMES.CITY_TILES,
+                'source-layer': 'unesco_core_zone',
+                type: 'fill',
+                paint: {
+                    'fill-color': `hsl(20, 100%, 80%)`,
+                    'fill-opacity': [
+                        "interpolate",
+                        ["linear"],
+                        ["zoom"],
+                        13.5, 1,
+                        14, 0
+                    ]
+                },
+            }]
+        },
+
+        {
             drawing_layers: [sea_fill]
         },
         {
@@ -68,7 +87,7 @@ export const zoom_order = {
                 'source-layer': 'graveyard',
                 type: 'fill',
                 paint: {
-                    'fill-color': 'hsla(162, 45%, 80%, 1.00)',
+                    'fill-color': 'hsla(162, 45%, 87%, 1.00)',
                 },
             }],
         }
@@ -125,7 +144,7 @@ export const zoom_order = {
                 source: SOURCES_NAMES.CITY_TILES,
                 'source-layer': 'historic_building',
                 paint: {
-                    'fill-color': 'hsl(25, 70%, 40%)',
+                    'fill-color': 'hsl(20, 100%, 80%)',
                     'fill-antialias': true,
                     'fill-opacity': 1
                 }

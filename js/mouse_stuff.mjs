@@ -19,7 +19,7 @@ export const add_mouse_stuff = () => {
     map.on('click', (e) => {
         navigator?.clipboard?.writeText?.(
             `[${e.lngLat.lng.toFixed(6)}, ${e.lngLat.lat.toFixed(6)}]`
-            // map.queryRenderedFeatures(e.point)?.[0]?.id
+            + ' ' + map.queryRenderedFeatures(e.point)?.[0]?.id
         )
         const clickable_feat = find_clickable_feat(e.point)
         if (clickable_feat) {
