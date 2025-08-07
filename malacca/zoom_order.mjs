@@ -87,7 +87,7 @@ export const zoom_order = {
                 'source-layer': 'graveyard',
                 type: 'fill',
                 paint: {
-                    'fill-color': 'hsla(162, 45%, 87%, 1.00)',
+                    'fill-color': 'hsl(162, 45%, 87%)',
                 },
             }],
         }
@@ -147,7 +147,8 @@ export const zoom_order = {
                     'fill-color': 'hsl(20, 100%, 80%)',
                     'fill-antialias': true,
                     'fill-opacity': 1
-                }
+                },
+                drawing_importance: 2
             }],
         }
     ],

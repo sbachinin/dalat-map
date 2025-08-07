@@ -43,7 +43,7 @@ export const land_areas_handmade_data = {
     },
 
     242010620: {
-        title: 'Bukit Serindit\n(old Christian cemetery)',
+        title: 'Bukit Serindit\n(old Christian\ncemetery)',
     },
 
     1419914017: {
@@ -52,6 +52,17 @@ export const land_areas_handmade_data = {
 
     1293044462: {
         title: 'Dutch\ngraveyard',
+    },
+
+    286023454: {
+        title: 'Mausoleum of\nHang Jebat',
+    },
+
+    712550643: {
+        // ayer salak cemetery
+    },
+    905284499: {
+        title: 'Prison\nmuseum',
     }
 }
 
