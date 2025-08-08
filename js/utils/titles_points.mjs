@@ -68,6 +68,9 @@ const get_title_lat = (
 }
 
 const is_water_feature = f => {
+    if (!f.properties) {
+        return false
+    }
     return f.properties.natural === 'water' ||
         f.properties.natural === 'bay' ||
         f.properties.natural === 'strait' ||
