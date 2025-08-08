@@ -324,6 +324,17 @@ export const is_dead_building = (fid) => {
 }
 
 
+export function parse_markdown_links(text) {
+    // Regular expression to match markdown links: [text](url)
+    const reg = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+    // Replace all matches with HTML anchor tags
+    return text.replace(reg, (match, linkText, url) => {
+        return `<a target='_blank' href='${url}'>${linkText}</a>`;
+    });
+}
+
+
 
 
 export const find_bldg_id_by_image_filename = (filename) => {

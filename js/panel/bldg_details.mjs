@@ -10,6 +10,7 @@ import {
     get_minimal_zoom_on_building_select,
     is_dead_building,
     is_landscape,
+    parse_markdown_links,
     push_to_history,
 } from '../utils/frontend_utils.mjs'
 import { is_feature_selectable } from '../utils/does_feature_have_details.mjs'
@@ -50,7 +51,9 @@ const set_panel_content = (id) => {
         : ''
 
     const subtitle = feat_hmd?.subtitle
-        ? `<div id="building-info__subtitle">${feat_hmd.subtitle.replace(/\n/g, '<br>')}</div>`
+        ? `<div id="building-info__subtitle">
+            ${parse_markdown_links(feat_hmd.subtitle).replace(/\n/g, '<br>')}
+        </div>`
         : ''
 
     const year = feat_hmd?.year

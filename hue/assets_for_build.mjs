@@ -165,6 +165,7 @@ export const assets_for_build = {
                 695949067,
                 695959214
             ]),
+            minzoom: 11
         },
         {
             name: 'french_building',
