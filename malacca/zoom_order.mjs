@@ -1,5 +1,3 @@
-import { get_filter_by_fids } from "../js/common_zoom_order.mjs";
-
 import {
     selectable_boring_bldg_border,
     boring_building_fill,
@@ -16,8 +14,7 @@ import {
     island_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
-import { FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
-import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
+import { AREA_TYPES, FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { constants as c } from './constants.mjs'
 import { SOURCES_NAMES } from "../js/constants.mjs";
 
@@ -81,15 +78,8 @@ export const zoom_order = {
             drawing_layers: [non_french_titles],
         },
         {
-            drawing_layers: [{
-                name: 'Graveyard',
-                source: SOURCES_NAMES.CITY_TILES,
-                'source-layer': 'graveyard',
-                type: 'fill',
-                paint: {
-                    'fill-color': 'hsl(162, 45%, 87%)',
-                },
-            }],
+            drawing_layers: [land_areas_fill],
+            filter: ['==', 'area_type', AREA_TYPES.CEMETERY],
         }
     ],
 

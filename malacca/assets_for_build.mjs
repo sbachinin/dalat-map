@@ -1,9 +1,9 @@
-import { all_handmade_data, land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs"
+import { all_handmade_data, land_areas_handmade_data } from "./static_data/handmade_data.mjs"
 import { AREA_TYPES } from "../js/common_drawing_layers/constants.mjs"
 import { get_centroid, is_building_polygon, is_one_of } from "../js/utils/isomorphic_utils.mjs"
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf"
-import { is_feature_selectable, is_important_building } from "../js/utils/does_feature_have_details.mjs"
+import { is_feature_selectable } from "../js/utils/does_feature_have_details.mjs"
 import { fids_to_img_names } from "./static_data/fids_to_img_names.mjs"
 import { make_coastline } from "./make_coastline.mjs"
 import { unesco_core_zone } from "./static_data/unesco_core_zone.mjs"
@@ -83,14 +83,6 @@ export const assets_for_build = {
             osm_feature_filter: f => f.properties.railway === 'rail' || f.properties.railway === 'station',
         },
 
-        {
-            name: 'graveyard',
-            osm_feature_filter: f => is_one_of(f.id, [
-                17961173, // bukit cina
-                242010620, // bukit serindit
-                1314696670, // the one with white beautiful bldg in the west
-            ])
-        },
         {
             name: 'sea_body',
             get_custom_features: make_coastline

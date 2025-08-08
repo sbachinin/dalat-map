@@ -36,7 +36,8 @@ export const land_areas_handmade_data = {
     // !!! empty items are needed here in order to generate land_areas tile layer
     17961173: {
         title: 'Bukit Cina\n(ancient chinese\ncemetery)',
-        title_coords: [102.257651, 2.200041]
+        title_coords: [102.257651, 2.200041],
+        area_type: AREA_TYPES.CEMETERY
     },
     945813623: {
         // forest around st john's fort
@@ -44,6 +45,7 @@ export const land_areas_handmade_data = {
 
     242010620: {
         title: 'Bukit Serindit\n(old Christian\ncemetery)',
+        area_type: AREA_TYPES.CEMETERY
     },
 
     1419914017: {
@@ -52,6 +54,7 @@ export const land_areas_handmade_data = {
 
     1293044462: {
         title: 'Dutch\ngraveyard',
+        area_type: AREA_TYPES.CEMETERY
     },
 
     286023454: {
@@ -59,15 +62,21 @@ export const land_areas_handmade_data = {
     },
 
     712550643: {
-        // ayer salak cemetery
+        area_type: AREA_TYPES.CEMETERY
     },
     905284499: {
         title: 'Prison\nmuseum',
-    }
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1314696670: { // the one with white beautiful bldg in the west
+        area_type: AREA_TYPES.CEMETERY
+    },
+
 }
 
 export const lakes_handmade_data = {
-    
+
 }
 
 export const all_handmade_data = {

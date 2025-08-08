@@ -30,8 +30,8 @@ export const PALE_TITLES_COLOR = 'hsl(0, 0.00%, 20%)'
 
 export const PALE_TITLES_SIZE = 11
 export const GRASS_COLOR = 'hsl(70, 50%, 70%)'
-export const INSTITUTION_FILL_COLOR = 'hsl(164, 20.30%, 85.00%)'
-export const CEMETERY_FILL_COLOR = 'hsl(0, 0.00%, 88.20%)'
+export const INSTITUTION_FILL_COLOR = 'hsl(164, 20.30%, 96.00%)'
+export const CEMETERY_FILL_COLOR = 'hsl(162, 45%, 87%)'
 export const SQUARE_FILL_COLOR = 'hsl(308, 69.10%, 92.90%)'
 export const AIRPORT_FILL_COLOR = 'hsl(240, 100%, 92%)'
 export const RAILWAY_LINE_COLOR = "hsl(14, 54%, 60%)"
