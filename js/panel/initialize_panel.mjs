@@ -9,7 +9,7 @@ export const initialize_panel = () => {
     return new Promise(resolve => {
 
         const should_open_panel = DEV_should_open_panel_on_pageload
-        const selected_bldg_id = get_bldg_id_from_url()
+        const selected_bldg_id = get_bldg_id_from_url(window.location.href)
 
         if (is_feature_selectable(selected_bldg_id)) {
             // * even if panel isn't expanded, selected building must is still "opened" (just "chosen", silently for now)

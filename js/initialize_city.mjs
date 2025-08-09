@@ -49,7 +49,7 @@ export const initialize_city = async (name) => {
         localStorage.removeItem('map_zoom')
     }
 
-    const initial_bldg_id = get_bldg_id_from_url()
+    const initial_bldg_id = get_bldg_id_from_url(window.location.href)
 
     if (initial_bldg_id && !is_feature_selectable(initial_bldg_id)) {
         console.warn(`"id" parameter in the URL is not a selectable building id`)

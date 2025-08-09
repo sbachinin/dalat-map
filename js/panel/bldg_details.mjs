@@ -52,7 +52,7 @@ const set_panel_content = (id) => {
 
     const subtitle = feat_hmd?.subtitle
         ? `<div id="building-info__subtitle">
-            ${parse_markdown_links(feat_hmd.subtitle).replace(/\n/g, '<br>')}
+            ${parse_markdown_links(feat_hmd.subtitle).replace(/\n/g, '<p class="tiny-paragraph"></p>')}
         </div>`
         : ''
 

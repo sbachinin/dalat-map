@@ -201,11 +201,6 @@ export const wait_once_for_transitionend = (el) => {
 
 export const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
-export const get_bldg_id_from_url = () => {
-    const id = new URL(window.location.href).searchParams.get('id')
-    return id ? Number(id) : null
-}
-
 
 
 export function get_center_for_bldg_with_offset(id) {
@@ -324,13 +319,30 @@ export const is_dead_building = (fid) => {
 }
 
 
+
+
+export const get_link_to_bldg = (id) => {
+    return window.location.origin + window.location.pathname + `?id=` + id
+}
+export const get_link_to_selected_bldg = () => {
+    return get_link_to_bldg(get_selected_building_id())
+}
+
+
+function is_only_digits(str) {
+    return /^\d+$/.test(str)
+}
+
 export function parse_markdown_links(text) {
     // Regular expression to match markdown links: [text](url)
-    const reg = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const reg = /\[([^\]]+)\]\(([^)]+)\)/g
 
     // Replace all matches with HTML anchor tags
     return text.replace(reg, (match, linkText, url) => {
-        return `<a target='_blank' href='${url}'>${linkText}</a>`;
+        if (is_only_digits(url)) { // instead of url there can be a bldg id -> should convert it to url
+            url = get_link_to_bldg(url)
+        }
+        return `<a target='_blank' href='${url}'>${linkText}</a>`
     });
 }
 
@@ -351,4 +363,16 @@ export const get_minimal_zoom_on_building_select = (id) => {
         return MINIMAL_ZOOM_ON_BUILDING_SELECT + 1
     }
     return MINIMAL_ZOOM_ON_BUILDING_SELECT
+}
+
+
+
+export const get_bldg_id_from_url = (url) => {
+    const id = new URL(url).searchParams.get('id')
+    return id ? Number(id) : null
+}
+
+export const get_cityname_from_url = (url) => {
+    const pathname_parts = new URL(url).pathname.split('/').filter(s => s.length > 0)
+    return pathname_parts[pathname_parts.length - 1]
 }

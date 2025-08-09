@@ -48,10 +48,9 @@
 #building-info {
     display: flex;
     flex-direction: column;
-    font-family: 'Merriweather', serif;
-    font-style: italic;
     /* flex-wrap: wrap; */
     align-items: center;
+    font-family: 'Inter', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Source Sans Pro', 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #building-info>* {
@@ -69,6 +68,8 @@
 
 #building-info__title {
     font-size: 18px;
+    font-family: 'Merriweather', serif;
+    font-style: italic;
 }
 
 #bldg-title-dead-square {

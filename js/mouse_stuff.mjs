@@ -3,13 +3,18 @@ import { display_highlights } from './highlights.mjs'
 import { try_open_building } from './panel/bldg_details.mjs'
 import { CURSOR_POINTER_MINZOOM } from './common_drawing_layers/constants.mjs'
 import {
-    debounce, find_bldg_id_by_image_filename, is_mouse_device
+    debounce,
+    find_bldg_id_by_image_filename,
+    get_bldg_id_from_url,
+    get_cityname_from_url,
+    is_mouse_device
 } from './utils/frontend_utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { show_tooltip } from './tooltip.mjs'
 import { find_clickable_feat } from './find_clickable_feat.mjs'
+import { current_city } from './load_city.mjs'
 
 
 
@@ -109,6 +114,23 @@ export const add_mouse_stuff = () => {
 
             const url = `https://www.google.com/maps/@${centerLat},${centerLng},${googleZoom}z`
             window.open(url, '_blank')
+        }
+
+        if (e.target.closest('a[href]')) {
+
+            // if it's a link to a building in the current city, just select this building
+            if (
+                get_cityname_from_url(e.target.href) === current_city.name
+                && e.target.id !== 'port-switcher'
+                && get_bldg_id_from_url(e.target.href) !== null
+            ) {
+                e.preventDefault()
+                try_open_building(get_bldg_id_from_url(e.target.href), true, true)
+            }
+
+            // it can be a link to highlights in the current city => open highlights
+
+            // it can be a link to smth in another city => do what?
         }
     })
 

@@ -103,12 +103,12 @@ export const bldgs_handmade_data = {
     },
 
     354761088: {
-        title: 'Stadthuys\n(Dutch city hall)',
+        title: 'Stadthuys\n(Dutch city hall,\n1650)',
         subtitle: `It was built by the Dutch in 1650 as a governor's office. Later it served many other functions, and today it is a house of the History and Ethnography Museum.
-It is promoted as the oldest remaining Dutch building in Southeast Asia — a claim that is actually not supported by historical evidence. It's only known that it was built shortly after Malacca was captured by the Dutch in 1641. It was built exactly where the Portuguese governor’s house used to be — destroyed during the Dutch victorious attack on Malacca. (The fighting was fierce.)
-Stadthuys was an architectural copy of the town hall of Hoorn in the Netherlands.
-The most interesting question for me is the color of the building. Why is Stadthuys, and all the surrounding buildings, painted in this awful red (or crimson, or brown) color? In Dutch times, Stadthuys was painted WHITE, and began to be painted red only under British rule around 1900. There are many versions of why it was done so, but I guess that was certainly not a question of beauty. The most plausible explanation is that white paint was expensive to maintain: the underlying brickwork is red, and after being uncovered by tropical rains, it all looked not very satisfactory. Switching to red paint just allowed it to be painted less often.
-Today the concept of "Red Square" of Melakka is an important part of the local tourist industry, so I guess the question of color must be settled once and forever. Which is a little tragic - not only this brown hue is bad, bad also the lack of color variation basically ruins the view.
+        It is promoted as the oldest remaining Dutch building in Southeast Asia — a claim that is actually not supported by historical evidence. It's only known that it was built shortly after Malacca was captured by the Dutch in 1641. It was built exactly where the Portuguese governor’s house used to be — destroyed during the Dutch victorious attack on Malacca. (The fighting was fierce.)
+        Stadthuys was an architectural copy of the town hall of Hoorn in the Netherlands.
+        The most interesting question for me is the color of the building. Why is Stadthuys, and all the surrounding buildings, painted in this awful red (or crimson, or brown) color? In Dutch times, Stadthuys was painted WHITE, and began to be painted red only under British rule around 1900. There are many versions of why it was done so, but I guess that was certainly not a question of beauty. The most plausible explanation is that white paint was expensive to maintain: the underlying brickwork is red, and after being uncovered by tropical rains, it all looked not very satisfactory. Switching to red paint just allowed it to be painted less often.
+        Today the concept of "Red Square" of Melakka is an important part of the local tourist industry, so I guess the question of color must be settled once and forever. Which is a little tragic - not only this brown hue is bad, bad also the lack of color variation basically ruins the view.
 `,
         wikipedia: 'https://en.wikipedia.org/wiki/Stadthuys',
         google: 'https://maps.app.goo.gl/5JjWfSHgpsnAMwxA9'
@@ -119,8 +119,6 @@ Today the concept of "Red Square" of Melakka is an important part of the local t
 
     1419186258: {
         title: 'Ruin with murals',
-
-
         subtitle: `I actually don't possess any valuable information about this building, but I think it's gorgeous. It looks like someone's fancy art project, in a way. Why? Because it's the only ruin in central Malacca that is explicitly open to the public and maintained by someone – meaning that someone keeps it relatively clean but without trying to make it look new. Which is a very good kind of maintenance, I think.
 
         I'm also curious about its preservation status: it's carefully excluded from UNESCO's "core" heritage area – the border is drawn precisely to include all the neighboring buildings but not this particular one. It must be some legal thing; I've no idea why it is so. But being outside this "core" area certainly makes it more likely for a building to be a ruin – and ruins are cool, so we shouldn't complain.
@@ -154,8 +152,23 @@ Today the concept of "Red Square" of Melakka is an important part of the local t
     },
 
     103942675: {
-        title: 'Clock tower',
+        title: 'Clock\ntower',
         year: 1886
+    },
+
+    104954182: {
+        title: 'Christ\nChurch (1753)',
+        subtitle: `Originally built as a Dutch Reformed church, it was converted to Anglican after the British takeover of Malacca in 1824.
+        For most of its history, like most other buildings around, it was painted white; it became red only in the early 20th century.
+        Over the years, several questionable architectural alterations have been made. The porch with three arches was added only in the mid-19th century, changing the façade quite dramatically.
+        The ugly lettering "Christ Church" appeared much later, perhaps in the end of 20th century. I can understand why it was introduced: the church, and the red square at large, desperately needs some variation in color and some "focal points". So it's good to have something extra, and white, on the facade of the church. However, the actual intervention just wasn't done well: position of the letters and the "typeface" are totally wrong, to my taste.
+        Despite all the abuse, Christ Church still looks cool - ancient and charismatic, even if a bit messy. I wish someone would find a better color for it - that would be such a gift to humanity.
+        This church remains Anglican to this day, in a sense of being actually used by the local Anglican community. Services are said to be held every Sunday — a bit of a surprise to me, because from the outside the church gives the impression of a cold monument rather than a community space.
+        The interior of the church is very unremarkable.`,
+    },
+
+    1420925974: {
+        subtitle: `As of 2025, this building has already gone halfway to becoming a banyan tree, making it difficult to see any architecture. I took the liberty of using some pictures from this [album](https://www.facebook.com/media/set/?set=oa.1328063684274548&type=3) showing its condition in 2021, when it was far less overgrown.`,
     },
 
     1251888430: {
@@ -216,7 +229,7 @@ Today the concept of "Red Square" of Melakka is an important part of the local t
         
         Porta is actually not entirely Portuguese, for it suffered some damage during the long and bloody siege of Melaka by the Dutch in 1641. Shortly after that it was renovated by the victors, and this explains the logo "ANNO 1670" inscribed on the gate's arch.
         
-        Nevertheless, Porta looks extremely ancient, so much so that it resembles a natural formation more than a piece of architecture, which is not bad. It must be something truly rare for Southeast Asia. Together with St. Paul’s Church, it’s something Malacca can truly be proud of. These two buildings, I believe, are the only remaining artifacts of Portuguese times in Malacca.`,
+        Nevertheless, Porta looks extremely ancient, so much so that it resembles a natural formation more than a piece of architecture, which is not bad. It must be something truly rare for Southeast Asia. Together with [St. Paul’s Church](170829535), it’s something Malacca can truly be proud of. These two buildings, I believe, are the only remaining artifacts of Portuguese times in Malacca.`,
         wikipedia: 'https://en.wikipedia.org/wiki/A_Famosa'
     },
 
@@ -301,11 +314,11 @@ Today the concept of "Red Square" of Melakka is an important part of the local t
     },
 
     283914096: {
-        title: `Aw Hai\nThian Temple`
+        title: `Aw Hai\nThian temple`
     },
 
     1173222966: {
-        title: 'Former Central\nFire Station',
+        title: 'Former central\nfire station',
         subtitle: `This gorgeous building is perhaps the most overlooked in Malacca.
         It was presumably built in 1910 and served as a fire station until the 1960s. The tower was used to spot fires, and the large openings facing Banda Kaba Street are where the fire engines were stationed.
         As of 2025, this building houses a museum dedicated to the history of golf. This sounds good, but the gallery looks quite lifeless, so it might not be operating anymore.
@@ -324,7 +337,7 @@ Today the concept of "Red Square" of Melakka is an important part of the local t
     },
 
     321953099: {
-        title: '"Bastion Building"',
+        title: '"Bastion building"',
         subtitle: `This was the head office of the British rubber giant Dunlop, which owned extensive rubber estates in southern Malaya. The name "Bastion" comes from the fact that it was built on the site where one of the bastions of the Portuguese fortress A Famosa once stood — though that was long before the construction of the Dunlop building.
         Some sources say that it was built in 1910, and others suggest 1948. To me the later date seems more believable - I was actually very surprised that it belongs to colonial times at all.
         Today it houses "The Malay and Islamic World Museum".`
@@ -334,7 +347,7 @@ Today the concept of "Red Square" of Melakka is an important part of the local t
         title: `St Mary's Church\n(Ayer Salak)`,
         year: 1848,
         subtitle: `This church serves the Chinese Catholic community of Ayer Salak village. It was likely built in the second half of the 19th century.
-        Note the use of laterite stone, exposed at ground floor level as a kind of decoration — a material also seen in other historic buildings in Malacca, most notably Porta de Santiago, the surviving gateway of the A Famosa fortress. There's also a laterite structure next to the church, apparently built for Christian missionaries in the colonial times. Laterite looks great in all these examples, and I wonder why it isn’t used more widely — perhaps it's a matter of durability.
+        Note the use of laterite stone, exposed at ground floor level as a kind of decoration — a material that was used in many iconic buildings in Malacca, such as A Famosa and Christ Church. There's also a laterite structure next to St Mary's, apparently built for Christian missionaries in the colonial times. In most cases (except [A Famosa](599113640)) laterite was painted over and it's a pity because the stone itself tends to look great, reddish and porous. It's not very durable, and St Mary's already has a lot of plaster patches over the laterite blocks but I think it doesn't spoil the overall view.
         St. Mary’s Church has experienced a visible revival over the past decade, undergoing restoration and gaining some public attention. Several years ago, it had a dreadful front porch appended to the original structure — but, miraculously, it was removed during the recent restoration - quite a triumph of common sense!`
     },
 
@@ -347,14 +360,92 @@ Today the concept of "Red Square" of Melakka is an important part of the local t
     },
 
     170829535: {
-        title: 'Church of\nSaint Paul',
+        title: 'Church of\nSaint Paul\n(1590)',
         subtitle: `This church is the oldest European building east of India.
-        It was built between 1566 and 1590, serving first as a Catholic church during Portuguese rule, then as a Protestant church for about a century under the Dutch. In 1744, it ceased to function as a church altogether: by then, Christ Church had been completed to serve as the main place of worship for the Protestant community, and St. Paul’s (or Bovenkerk, as the Dutch called it) was no longer needed. For a long time — well into the British era — it was used as a powder magazine. Today, it's a carefully preserved roofless ruin, beautiful and open to the public free of charge.`,
+        It was built between 1566 and 1590, serving first as a Catholic church during Portuguese rule, then as a Protestant church for about a century under the Dutch. In 1744, it ceased to function as a church altogether: by then, [Christ Church](104954182) had been completed to serve as the main place of worship for the Protestant community, and St. Paul’s (or Bovenkerk, as the Dutch called it) was no longer needed.
+        For a long time — well into the British era — it was used as a powder magazine. Today, it's a carefully preserved roofless ruin, beautiful and open to the public free of charge.`,
     },
 
     170829525: {
         title: 'Lighthouse',
         year: 1814
-    }
+    },
 
+    499599663: {
+        title: 'Abandoned\nUgly Planetarium'
+    },
+
+    1420733320: {
+        title: 'Sri Angala\nParameswari\ntemple',
+        year: 1888
+    },
+
+    1420734293: {
+        title: 'Sri Kailasanathar\ntemple',
+        year: 1887
+    },
+
+    1420734514: {
+        title: 'Chetti\nMuseum'
+    },
+
+    1420735606: {
+        title: 'Sri Muthu\nMariamman temple',
+        year: 1822
+    },
+
+    1420858252: {
+        subtitle: 'This must have been a seaside house of the important Chan family, the one who owns and manages the Baba & Nyonya Heritage Museum in central Malacca.'
+    },
+
+    1314692866: {
+        title: 'Gospel\nchapel'
+    },
+
+    1420859122: {
+        title: 'Nam Hoe\nVilla'
+    },
+
+    19438690: {
+        title: 'General\nhospital',
+        title_coords: [102.262141, 2.217232],
+    },
+
+    17729433: {
+        title: 'Melaka Sentral\n(bus terminal)'
+    },
+
+    548119344: {
+        title: 'Police\nstation'
+    },
+
+    548119349: {
+        title: 'Tenaga Nasional\n(electricity company)'
+    },
+
+    1418824950: {
+        year: 1913
+    },
+
+
+
+
+
+
+
+
+
+    // happened to be outside the bounds:
+    /* 
+
+    1172686257: {
+        title: 'Machap\nold mosque',
+        year: 1865
+    },
+
+    620734082: {
+        title: 'Chinese\nmosque (new)'
+    }, 
+    
+    */
 }

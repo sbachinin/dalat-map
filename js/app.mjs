@@ -1,7 +1,7 @@
 import { initialize_city } from './initialize_city.mjs'
+import { get_cityname_from_url } from './utils/frontend_utils.mjs'
 
-const pathname_parts = new URL(location.href).pathname.split('/').filter(s => s.length > 0)
-const current_city = pathname_parts[pathname_parts.length - 1]
+const current_city = get_cityname_from_url(location.href)
 
 if (current_city) {
     const res = await fetch(`../${current_city}/isomorphic_assets.mjs`) // check if such city exists

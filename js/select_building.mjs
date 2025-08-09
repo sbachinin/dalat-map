@@ -22,7 +22,3 @@ export const select_building = newid => {
         set_selected_building_id(newid)
     }
 }
-
-export const get_link_to_selected_bldg = () => {
-    return window.location.origin + window.location.pathname + `?id=` + get_selected_building_id()
-}

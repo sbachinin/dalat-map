@@ -1,14 +1,17 @@
-import { current_city } from "../load_city.mjs";
-import { get_link_to_selected_bldg } from "../select_building.mjs";
-import { get_selected_building_id } from "../selected_building_id.mjs";
-import { can_share_files, get_image_file_from_element } from "../utils/frontend_utils.mjs";
+import { current_city } from "../load_city.mjs"
+import { get_selected_building_id } from "../selected_building_id.mjs"
+import { 
+    can_share_files, 
+    get_image_file_from_element,
+    get_link_to_selected_bldg,
+ } from "../utils/frontend_utils.mjs"
 
 export const onclick_share = async () => {
     const bldg_data = current_city.all_handmade_data[get_selected_building_id()]
 
     let files = undefined // shouldn't pass files if sharing of files is not supported
 
-    const img = document.querySelector('#building-details #panel-thumbs-list .slide-wrapper:first-child img');
+    const img = document.querySelector('#building-details #panel-thumbs-list .slide-wrapper:first-child img')
 
     if (img && can_share_files()) {
         try {
