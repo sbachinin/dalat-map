@@ -124,7 +124,7 @@ const clear_feature_props = (f) => {
 }
 
 
-
+const i_ass = await import(city_root_path + '/isomorphic_assets.mjs')
 
 const smallest_possible_minzoom = calculate_minzoom(city_assets.map_bounds, 320, 568)  // Assuming that smallest device (the one that will need the smallest minzoom) is Iphone SE
 
@@ -150,9 +150,9 @@ const generate_temp_mbtiles = (tile_layer_config, layer_features) => {
     if (is_real_number(tile_layer_config.minzoom)) {
         minz = Math.max(tile_layer_config.minzoom, smallest_possible_minzoom)
     }
-    let maxz = DEFAULT_MAX_ZOOM
+    let maxz = i_ass.max_zoom || DEFAULT_MAX_ZOOM
     if (is_real_number(tile_layer_config.maxzoom)) {
-        maxz = Math.min(tile_layer_config.maxzoom, DEFAULT_MAX_ZOOM)
+        maxz = Math.min(tile_layer_config.maxzoom, maxz)
     }
 
     exec(`
@@ -165,7 +165,6 @@ const generate_temp_mbtiles = (tile_layer_config, layer_features) => {
 
 
 
-const i_ass = await import(city_root_path + '/isomorphic_assets.mjs')
 const roads_config = { ...roads_common_config, ...i_ass.roads_config }
 const roads_tiling_config = Object.entries(roads_config).map(([road_type_from, minzoom], i) => {
     const min_hier_index = roads_hierarchy.indexOf(road_type_from)

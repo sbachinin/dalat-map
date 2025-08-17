@@ -73,7 +73,7 @@ export const initialize_city = async (name) => {
                 [current_city.map_bounds[2], current_city.map_bounds[3]]
             ],
             antialias: true,
-            maxZoom: DEFAULT_MAX_ZOOM,
+            maxZoom: current_city.max_zoom || DEFAULT_MAX_ZOOM,
             fadeDuration: 0,
             pitchWithRotate: false,
             maxPitch: 0

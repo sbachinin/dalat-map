@@ -13,7 +13,7 @@ const common_config = [
                 name: 'title',
                 get_value: (f, all_handmade_data) => {
                     if (all_handmade_data[f.id]?.title) {
-                        return all_handmade_data[f.id].title + '\n' + f.properties.ele
+                        return all_handmade_data[f.id].title + '\n' + (f.properties.ele || '')
                     }
                     return f.properties.ele
                 }
