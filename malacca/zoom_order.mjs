@@ -11,7 +11,8 @@ import {
     important_boring_building_fill,
     water_areas_fill,
     sea_fill,
-    island_fill
+    island_fill,
+    bridge_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { AREA_TYPES, FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
@@ -22,6 +23,15 @@ export const zoom_order = {
 
 
     0: [
+        {
+            drawing_layers: [land_areas_fill],
+            filter: [
+                'any',
+                ['==', '$id', 610242612],
+                ['==', '$id', 1422407517],
+                ['==', 'area_type', AREA_TYPES.AIRPORT]
+            ],
+        },
         {
             drawing_layers: [{
                 name: 'unesco_core_zone',
@@ -61,6 +71,11 @@ export const zoom_order = {
     11: [
         {
             drawing_layers: [peaks_triangles_with_titles],
+            filter: [
+                "all",
+                ["!=", '$id', 8808910111],
+                ["!=", '$id', 8807317455]
+            ]
         },
     ],
 
@@ -140,6 +155,12 @@ export const zoom_order = {
                 },
                 drawing_importance: 2
             }],
+        }
+    ],
+
+    14.5: [
+        {
+            drawing_layers: [bridge_areas_fill]
         }
     ],
 

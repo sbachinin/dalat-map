@@ -236,6 +236,20 @@ export const land_areas_fill = {
     filter: ["!=", "area_type", AREA_TYPES.TOWN],
 }
 
+export const bridge_areas_fill = {
+    name: 'Bridge areas fill',
+    type: 'fill',
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'bridge_areas',
+    drawing_importance: 5,
+    paint: {
+        'fill-color': '#fff',
+        'fill-antialias': true,
+        'fill-opacity': 1
+    }
+}
+
+
 
 export const towns_fill = {
     name: 'Towns fill',

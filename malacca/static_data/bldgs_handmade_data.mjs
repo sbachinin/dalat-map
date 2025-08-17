@@ -1,6 +1,8 @@
 export const bldgs_handmade_data = {
     1282328479: {
-        title: 'Ruin of\nCapitol Theatre',
+        title: `Ruin of
+        Capitol
+        Theatre`,
         subtitle: 'One of the most notable examples of Art deco style in Melaka. It was opened around 1936 as a dance hall with a bar. In late 1960s it was converted to a cinema that worked for some 20 years.',
     },
 
@@ -28,7 +30,38 @@ export const bldgs_handmade_data = {
 
     1418866690: {
         title: 'Sacred Heart\nChapel\n(abandoned)',
-        year: 'A catholic chapel built in the early 1800s, abandoned since 1960s due to the lack of Portuguse catholics left in the area.'
+        year: 'A catholic chapel built around 1860s, abandoned since 1960s due to the lack of Portuguse catholics left in the area.'
+    },
+
+    1421097277: {
+        subtitle: `This is one of about 20 British "bungalows" in the area called Bukit Peringgit (named after the hill on which it stands). These lovely structures were likely built in the early 1930s, around the same time as the general hospital - perhaps they were an integral part of the hospital, being very close to it and having a similar (and rather modest) architecture. Most have sophisticated floor plans and are partly raised on decorative pillars.
+        Today the bungalows are generally in good shape and constitute a part of idyllic landscape with carefully mowed lawns and lots of trees, etc. Though I believe these landscapes are not meant for general public. Today many of these building are probably occupied by some bodies of regional government.
+        Around 2010, there was an interesting project of converting Bukit Peringgit to a museum area. This particular building became a museum of Macau, and another one housed museum of Cuba. The whole idea sounds pretty cool, but apparently it gained very little public attention, perhaps due to its remoteness from central Malacca, and after several years the museums were closed and became offices again.`
+    },
+
+    1418808937: {
+        title: `Meng Seng
+        Charitable
+        Association`,
+        subtitle: `Today this building looks a bit plain and easy to overlook, especially due to the proximity of a giant modern hotel. However, its original version was a really elegant, very Art-deco structure built, I think, in the 1920s. A later upgrade from 2 to 3 stories made it more modernist and stark, but still a decent piece of architecture.
+        It’s also an important place in Malaysian patriotic history: in 1954 it hosted a fundraising event that is believed to have contributed significantly to Malaysia’s upcoming independence.
+        A decade earlier, during the Japanese occupation of Malacca, the building served as the headquarters of the Japanese military police, where many local citizens — including some leaders of the charitable organization — were tortured and executed.`
+    },
+
+    1418811231: {
+        title: `Jiu Huang
+            Gong Temple`
+    },
+
+    285843748: {
+        title: `Guang Fu
+        Kong Temple`
+    },
+
+
+    1421344811: {
+        title: `Tiong Hoo
+            Villa`
     },
 
     1418936038: {
@@ -41,11 +74,59 @@ export const bldgs_handmade_data = {
     },
 
     945813625: {
-        title: 'St. John\'s\nFort'
+        title: 'St. John\'s\nFort',
+        subtitle: `Perhaps there isn't much architectural food here, but it's a genuine old fort, unspoilt by tourist industry, with beautiful little forest with many beautiful macaques.
+        The surviving version of the fort was built in the 18th century by the Dutch. Before that, the site was occupied by an older Portuguese structure.`,
+        google: 'https://maps.app.goo.gl/BnrtUrVZjhUgW7eG7',
+    },
+
+    1421928554: {
+        title: `Yong Chuan
+        Tian Temple (1837)`,
     },
 
     1419141054: {
         subtitle: 'As of 2025, the building houses a hotel with the telling name Casugria Dutch Residence 1810'
+    },
+
+    1421961223: {
+        title: `Baba & Nyonya
+        Museum`,
+        subtitle: `The museum showcases the local history of the Baba-Nyonya, or Peranakan — people of mixed Chinese-Malay ancestry. It was established by the family that has owned this large house since it was built in 1896.`,
+        google: 'https://maps.app.goo.gl/xXRUxxQzfHdav9oU8',
+    },
+
+    1422283014: {
+        title: `Wah Teck Keong
+        Temple (1863)`,
+    },
+
+    816077082: {
+        title: 'School'
+    },
+
+    191349385: {
+        title: 'Hypermarket'
+    },
+
+    191501725: {
+        title: 'Shopping mall'
+    },
+
+    1365761985: {
+        title: 'College'
+    },
+
+    1251914599: {
+        title: `Tamil
+        Methodist
+        Church`
+    },
+
+    1421981316: {
+        title: `Malaqa
+        House
+        Museum`
     },
 
     1419147294: {
@@ -75,18 +156,26 @@ export const bldgs_handmade_data = {
     },
 
     104350374: {
-        title: 'Vinayagar\n(Hindu) Temple',
-        subtitle: `(A longer title is Sri Poyatha Moorthi Temple) - the oldest existing Hindu temple in Malaysia. It was built in 1781 (according to Wikipedia), and the existing building is possibly the original one.
-        It's also one of the few existing Chitty temples in Malaysia. (Chitty are an ethnic group originating from southern India, who settled in Malacca around 16th century).
-        Chitty temples tend to be relatively simple, compared to most other variants to Hindu architecture, - and this structure is also a rather modest one.`,
+        title: `Vinayagar
+        Temple (1781)`,
+        year: 1781,
+        subtitle: `(full title: Sri Poyyatha Vinayagar Moorthi Temple) - The oldest existing Hindu temple in Malaysia.
+        It's also one of the few existing Chitty temples in the country. (Chitty, or Chetty, are an ethnic group originating from southern India, who settled in Malacca around 16th century).
+        Chitty temples tend to be relatively simple, compared to most other variants to Hindu architecture, - and this structure is also a rather modest one.
+        Other old Chitty temples, such as [this one](1420733320), can be seen in Chitty district of Malacca.`,
         wikipedia: 'https://en.wikipedia.org/wiki/Sri_Poyatha_Moorthi_Temple'
     },
 
     104093866: {
-        title: 'Kampung Kling Mosque',
-        year: 1872,
+        title: `Kampung Kling
+        Mosque (1872)`,
         wikepedia: 'https://en.wikipedia.org/wiki/Kampung_Kling_Mosque'
 
+    },
+
+    104350340: {
+        title: `San Duo
+        temple`
     },
 
     1418808927: {
@@ -127,7 +216,8 @@ export const bldgs_handmade_data = {
     },
 
     1252223239: {
-        title: `St Peter's Church`,
+        title: `St Peter's
+        Church (1710)`,
         subtitle: `It's the oldest functioning Roman Catholic church in Malaysia. It was built in 1710, shortly after certain historical events that ended the oppression suffered by Portuguese Catholics in Malacca. The oppression began in 1641, when Malacca fell to the Dutch (Calvinist Protestants), and lasted until 1703, when the Dutch formed an alliance with Portugal and decided to soften their treatment of Portuguese Catholics.
         However, some degree of discrimination remained, and this explains the remote location of this church — in its time, it must have been really far from Malacca proper. Today it's remote enough to be outside the UNESCO heritage area - not only the "core" heritage zone but even outside the extensive "buffer" zone. As a result, the surrounding area is open to modern large-scale development, and St. Peter’s is already dwarfed by nearby high-rise buildings.
         The architecture of this church is very much Portuguese - for instance, it has a lot in common with the 16th-century Church of Saint Francis in Kochi (Kerala, India), where Vasco de Gama was buried.
@@ -141,13 +231,14 @@ export const bldgs_handmade_data = {
     },
 
     561628302: {
-        title: 'Majestic Hotel',
+        title: `Majestic
+        Hotel`,
         year: 1920
     },
 
     514939878: {
-        title: 'Poh San\nTeng Temple',
-        year: 1795,
+        title: `Poh San Teng
+        Temple (1795)`,
         wikipedia: 'https://en.wikipedia.org/wiki/Poh_San_Teng_Temple'
     },
 
@@ -182,7 +273,8 @@ export const bldgs_handmade_data = {
     1419889651: {
         title: 'Chee Family Ancestral Hall',
         year: '1920s',
-        subtitle: `The grandest mansion on Malacca's 'Millionaire's Street' (formerly Heeren Street, now Jalan Tun Tan Cheng Lock), where the wealthiest Baba-Nyonya merchants (of mixed Chinese and Malay descent) once lived. This structure was built in the 1920s for the Chee family and remains the family's private residence to this day.`
+        subtitle: `The grandest mansion on Malacca's 'Millionaire's Street' (formerly Heeren Street, now Jalan Tun Tan Cheng Lock), where the wealthiest Baba-Nyonya merchants (of mixed Chinese and Malay descent) once lived. This structure was built in the 1920s for the Chee family and remains the family's private residence to this day.
+        This last fact is actually quite amuzing: the most opulent building in Melaka is also one of the few, if not the only, private places in the historic center of the town. Not converted into a riceball restaurant or some nonsensical gallery! This means that Melaka still retains some mistery, which is important.`
     },
 
     1419355007: {
@@ -201,19 +293,84 @@ export const bldgs_handmade_data = {
         subtitle: 'In 1969, when construction of this terminal (called Tun Ali) was completed, it was the largest in Malaysia and the most modern in Southeast Asia. In addition to transport-related offices, it housed the largest department store in Melaka, a high-end hotel, and plenty of stalls and restaurants. It was perhaps the liveliest place in Melaka — but only until the 1990s. In 2005, the terminal was closed in favor of the present Melaka Sentral. Some trade still remained in the old building, but in 2020 the last businesses were forcefully evicted, and since then it has stood completely empty.'
     },
 
+
+    1422597716: {
+        title: `Tomb of
+        Hang Kasturi`,
+        subtitle: `This is basically one of the oldest objects in central Malacca, together with the [tomb of Hang Jebat](1422597717). For such an important structure, it's extremely easy to miss, being part of a parking lot.
+        It must have been built in the 15th century, and the person buried here was a mighty warrior who served the sultan of Malacca.`,
+        google: 'https://maps.app.goo.gl/LPRv59ZNgobhRTq66'
+    },
+
+    1422597717: {
+        title: `Tomb of
+        Hang Jebat`,
+        year: '15th century',
+    },
+
     1272211872: { title: 'Shopping\nmall' },
+
+    952998009: {
+        title: 'Empty\nshopping\ncenter',
+    },
+
+    286266824: {
+        title: 'Chinese\nMethodist church',
+    },
+
+    1365762716: {
+        title: 'Hotel'
+    },
+
+    508134679: {
+        title: 'Abandoned\nshopping mall'
+    },
+
+    286840883: {
+        title: 'Shopping mall'
+    },
+
+    1418866688: {
+        title: `Disused
+        "New Oriental"
+        cinema
+        `
+    },
+
+    1015253721: {
+        title: `Church of
+        St Theresa`,
+        year: 1941,
+    },
+
+    1293099106: {
+        title: `Sri Subramaniar
+        Troupathai Amman
+        Alayam (Hindu) temple`
+    },
+
+    1421126600: {
+        title: `Seck Kia
+    Eenh (Buddhist) Temple`,
+        year: 1920
+    },
+
+    1293103600: {
+        title: `Guan Di Miao
+        (Taoist temple)`
+    },
+
+
+
 
     545598664: { title: 'Traffic\npolice' },
 
     284937538: {
-        title: 'Kampung Hulu\nMosque\n(the oldest)',
+        title: `Kampung Hulu
+        Mosque (1728)`,
         year: 1728,
-        subtitle: `The oldest mosque in Malacca. To a non-expert eye, it looks very similar to many other old mosques in the town, with its three-tier pyramidal roof. Basically, about 95% of what you see is the roof itself — so it all comes down to the choice of roofing material. As of 2025, it's covered in dark-green modern metal sheets, not at all aesthetically pleasing. I wonder what it looked like before the advent of these cheap metal roofs. If it was originally covered in clay tiles (just imagining), the impression must have been completely different — though it would certainly be terribly difficult to maintain.`
-    },
-
-    912357349: {
-        title: `Cheng Hoon\nTeng Temple`,
-
+        subtitle: `The oldest mosque in Malacca. To a non-expert eye, it looks very similar to many other old mosques in the town, with its three-tier pyramidal roof. Basically, about 95% of what you see is the roof itself — so it all comes down to the choice of roofing material.
+        As of 2025, it's covered in dark-green modern metal sheets, not at all aesthetically pleasing. Before the sheets, it must have had clay tiles, and it must have been a much better sight. [Tengkera mosque](904900821) today is a good example of such tiled roof.`
     },
 
     170829541: {
@@ -222,7 +379,8 @@ export const bldgs_handmade_data = {
     },
 
     599113640: {
-        title: '"A Famosa"',
+        title: `"A Famosa"
+        (1512)`,
         subtitle: `This small structure is what remains of a Portuguese fortress built here in the early 16th century, and demolished, almost entirely, in the beginning of the 19th century.
         The name "A Famosa" refers to the fortress as a whole, while the remaining piece is just the gateway — properly known as Porta de Santiago.
         Strictly speaking, several other parts of the fortress survive to this day - foundations of its bastions that can be found around the St Paul's hill, exposed to the public.
@@ -283,7 +441,53 @@ export const bldgs_handmade_data = {
         subtitle: `This building was completed in 1917 and served as the clubhouse of the Malacca Club until 1984. Today, it houses a museum dedicated to the proclamation of independence of Malaysia.
         A somewhat unconventional piece of architecture, with these onion-shaped domes, it might have looked interesting in earlier days. As of 2025, it's painted very badly in some bright and funny colors, making it difficult to enjoy the view.
         The area behind the club, known today as "Forbidden Garden of Melaka Sultanate", must have been the club's sporting grounds for most of the 20th century.
-        As for the Club itself, it has a slightly longer history. It was formed in 1880, being the first European social club in Malacca (and was certainly quite exclusive). It still exists today and has two venues in Malacca where members are treated to various cultural and sporting events.`
+        As for the Club itself, it has a slightly longer history. It was formed in 1880, being the first European social club in Malacca (and was certainly quite exclusive). It still exists today and has two venues in Malacca where members are treated to various cultural and sporting events.`,
+        google: 'https://maps.app.goo.gl/otzi4PemeLCVzNLv8',
+    },
+
+    1422459265: {
+        title: `Geographer
+        cafe`
+    },
+
+    1422462387: {
+        title: `Hokkien Huay
+        Kuan Temple`
+    },
+    
+
+    1418818819: {
+        subtitle: 'A very similar [building](1418818813) can be seen on the same street'
+    },
+
+    1422047113: {
+        title: `Abandoned
+        "Arab City"`
+    },
+
+    1422073097: {
+        title: `Malacca Straits
+        Mosque (new,
+        Disney-style)`
+    },
+
+    653819674: {
+        title: `City
+        council`
+    },
+
+    505420008: {
+        title: `Shopping
+        mall`
+    },
+
+    653814663: {
+        title: `Shopping
+        mall`
+    },
+
+    1422445169: {
+        title: 'Courthouse'
     },
 
     599121850: {
@@ -308,9 +512,11 @@ export const bldgs_handmade_data = {
     },
 
     912357349: {
-        title: 'Oldest\nChinese temple\nin Malaysia',
-        subtitle: `"Cheng Hoon Teng" Temple was probably built in the mid-17th century, though some sources suggest it may be even older. It's a "multi-doctrine" temple where Buddhism, Confucianism, and Taoism are practiced.
-        It is known as an outstanding example of successful heritage conservation in Southeast Asia. Around the year 2000, a notable restoration project was carried out, carefully utilizing traditional craftsmanship and materials, and adhering to the "minimal intervention" principle. This conservation work received an important award from UNESCO and became a model for many other such projects in the region.`
+        title: `Chen Hoon Teng
+        Temple (1645)`,
+        subtitle: `This is the oldest chinese temple in Malaysia. Some sources suggest that it might have been built earlier than 17th century.
+        It's a "multi-doctrine" temple where Buddhism, Confucianism, and Taoism are practiced.
+        It is known also as an outstanding example of successful heritage conservation in Southeast Asia. Around the year 2000, a notable restoration project was carried out, carefully utilizing traditional craftsmanship and materials, and adhering to the "minimal intervention" principle. This conservation work received an important award from UNESCO and became a model for many other such projects in the region.`
     },
 
     283914096: {
@@ -347,7 +553,9 @@ export const bldgs_handmade_data = {
         title: `St Mary's Church\n(Ayer Salak)`,
         year: 1848,
         subtitle: `This church serves the Chinese Catholic community of Ayer Salak village. It was likely built in the second half of the 19th century.
-        Note the use of laterite stone, exposed at ground floor level as a kind of decoration — a material that was used in many iconic buildings in Malacca, such as A Famosa and Christ Church. There's also a laterite structure next to St Mary's, apparently built for Christian missionaries in the colonial times. In most cases (except [A Famosa](599113640)) laterite was painted over and it's a pity because the stone itself tends to look great, reddish and porous. It's not very durable, and St Mary's already has a lot of plaster patches over the laterite blocks but I think it doesn't spoil the overall view.
+        Note the use of laterite stone, exposed at ground floor level as a kind of decoration. Many of the important historic buildings in Malacca are built of laterite but it's almost always plastered over, except [A Famosa](599113640) and [St Paul's church](170829535). In both these cases, laterite looks amazing, though it's difficult to say how expensive the maintenance is.
+        There's also a laterite structure next to St Mary's, apparently built for Christian missionaries in the colonial times. It's a very simple and casual building but still laterite blocks make it look more interesting.
+        Perhaps laterite tends to be hidden because it's not very durable - the stones of St Mary's are not in perfect shape, with lots of plaster patches, however I think it doesn't ruin the overall impression.
         St. Mary’s Church has experienced a visible revival over the past decade, undergoing restoration and gaining some public attention. Several years ago, it had a dreadful front porch appended to the original structure — but, miraculously, it was removed during the recent restoration - quite a triumph of common sense!`
     },
 
@@ -360,10 +568,59 @@ export const bldgs_handmade_data = {
     },
 
     170829535: {
-        title: 'Church of\nSaint Paul\n(1590)',
+        title: 'Church of\nSt Paul (1590)',
         subtitle: `This church is the oldest European building east of India.
         It was built between 1566 and 1590, serving first as a Catholic church during Portuguese rule, then as a Protestant church for about a century under the Dutch. In 1744, it ceased to function as a church altogether: by then, [Christ Church](104954182) had been completed to serve as the main place of worship for the Protestant community, and St. Paul’s (or Bovenkerk, as the Dutch called it) was no longer needed.
-        For a long time — well into the British era — it was used as a powder magazine. Today, it's a carefully preserved roofless ruin, beautiful and open to the public free of charge.`,
+        For a long time — well into the British era — it was used as a powder magazine. I guess it was during this period that it stopped being plastered and painted white and became a kind of maintained ruin. Today, it remains a ruin, beautiful and open to the public free of charge.`,
+    },
+
+    1421454978: {
+        title: `Minaret of
+        the old Tengkera
+        mosque (1728)`,
+        year: 1728,
+        subtitle: `This is the oldest surviving Islamic building in Malacca, and also one of the candidates for the oldest Islamic building in the whole of Malaysia.
+        In older times, it stood very close to the seaside.
+        The Tengkera mosque to which the minaret belonged no longer exists. A newer (and surviving) [mosque](904900821) of the same name was built nearby in 1780.`
+    },
+
+    904900821: {
+        title: `Tengkera
+        mosque`,
+        year: '1780(?)',
+        subtitle: `It was the state mosque (the main mosque of Malacca state) before the giant Al-Azim was built.
+        It's one of the few mosques in Malacca with a tiled roof, not disfigured by modern metal sheets.`
+    },
+
+    733615327: {
+        title: 'Hotel'
+    },
+
+    1421679390: {
+        title: `Masjid Al-Ibadah
+        Bukit Piatu`
+    },
+
+    1421686233: {
+        title: `Chok Hoon
+        Tong Temple`
+    },
+
+    599120620: {
+        title: `Chapel of the
+        Holy Infant Jesus`,
+        subtitle: `This building is said to date from 1859. However, something went terribly wrong with its facade, and today it doesn’t look historic at all. This can be a result of the most recent reconstruction, carried out around 2020. Today the facade is distinctly modern in its layout and materials, and also totally irrelevant to other parts of the chapel.`,
+        google: `https://maps.app.goo.gl/Q6WNBWHbhKX9h8zz5`
+    },
+
+    816077087: {
+        title: `Association of
+        Hakka people`
+    },
+
+    19455318: {
+        title: `Abandoned
+        Hotel`
     },
 
     170829525: {
@@ -377,7 +634,13 @@ export const bldgs_handmade_data = {
 
     1420733320: {
         title: 'Sri Angala\nParameswari\ntemple',
-        year: 1888
+        year: 1888,
+        links: [
+            {
+                url: 'https://artsandculture.google.com/streetview/angalaa-parameswari-kovil-temple/jwEn-h4z-jrDow?sv_lng=102.24125217128955&sv_lat=2.2049067805218727&sv_h=262.57&sv_p=-13.299999999999997&sv_pid=JxksQay5P1Pc-NboofrAvg&sv_z=1',
+                description: 'On Google Arts and Culture'
+            }
+        ]
     },
 
     1420734293: {
@@ -406,11 +669,6 @@ export const bldgs_handmade_data = {
         title: 'Nam Hoe\nVilla'
     },
 
-    19438690: {
-        title: 'General\nhospital',
-        title_coords: [102.262141, 2.217232],
-    },
-
     17729433: {
         title: 'Melaka Sentral\n(bus terminal)'
     },
@@ -427,10 +685,76 @@ export const bldgs_handmade_data = {
         year: 1913
     },
 
+    545606075: {
+        title: `Al-Azim Mosque
+        (the main one)`
+    },
 
+    1421108267: {
+        title: `Poh Onn
+        Kong Temple`
+    },
 
+    764950697: {
+        title: `Al-Hameden
+        Mosque (1865)`,
+    },
 
+    1422219137: {
+        title: `An exemplary
+        traditional
+        Malay house`
+    },
 
+    1419588730: {
+        title: `Tian Yi Tang
+            temple`
+    },
+
+    768331769: {
+        title: 'Hotel'
+    },
+
+    1422256442: {
+        title: `Masjid
+        Pengkalan Rama`
+    },
+
+    682726937: {
+        title: 'Hotel'
+    },
+
+    1422265477: {
+        title: `Masjid
+            Al-Khairiah`
+    },
+
+    617111090: {
+        title: `Encore
+        (performing
+        art centre)`
+    },
+
+    1293044465: {
+        title: 'Hotel'
+    },
+
+    918104646: {
+        title: 'Hospital',
+        title_coords: [102.252345, 2.202312]
+    },
+
+    1272186845: {
+        title: 'Hotel'
+    },
+
+    1418686373: {
+        title: 'Hotel'
+    },
+
+    342659949: {
+        title: 'Shopping\nmall'
+    },
 
 
 

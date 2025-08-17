@@ -11,7 +11,7 @@ export const FRENCH_DEAD_FILL_COLOR = 'hsl(0, 0.00%, 45.30%)'
 export const FRENCH_DARK_BORDER_COLOR = 'hsl(340, 20%, 35.00%)'
 export const SELECTED_BORDER_COLOR = 'hsl(340, 35.30%, 35.00%)'
 export const FRENCH_LIGHTER_BORDER_COLOR = 'hsl(340, 0%, 50.00%)'
-export const BORING_BLDG_FILL_COLOR = 'hsl(43, 15%, 92%)'
+export const BORING_BLDG_FILL_COLOR = 'hsl(43, 15%, 90%)'
 export const BORING_BLDG_WITH_DETAILS_BORDER_COLOR = 'hsl(187, 0%, 42.70%)'
 export const SELECTED_BORING_BLDG_TEXT_COLOR = 'hsl(187, 65.10%, 17.70%)'
 
@@ -29,11 +29,11 @@ export const PEAK_TTTLE_COLOR = 'hsl(30, 40%, 40%)'
 export const PALE_TITLES_COLOR = 'hsl(0, 0.00%, 20%)'
 
 export const PALE_TITLES_SIZE = 11
-export const GRASS_COLOR = 'hsl(70, 50%, 70%)'
-export const INSTITUTION_FILL_COLOR = 'hsl(164, 20.30%, 96.00%)'
+export const GRASS_COLOR = 'hsl(70, 40%, 75%)'
+export const INSTITUTION_FILL_COLOR = 'hsl(39, 34%, 95.5%)' // 'hsl(164, 20.30%, 96.00%)'
 export const CEMETERY_FILL_COLOR = 'hsl(162, 45%, 87%)'
 export const SQUARE_FILL_COLOR = 'hsl(308, 69.10%, 92.90%)'
-export const AIRPORT_FILL_COLOR = 'hsl(240, 100%, 92%)'
+export const AIRPORT_FILL_COLOR = 'hsl(240, 50%, 93%)'
 export const RAILWAY_LINE_COLOR = "hsl(14, 54%, 60%)"
 
 
@@ -51,7 +51,8 @@ export const AREA_TYPES = {
     CEMETERY: 'cemetery',
     SQUARE: 'square',
     TOWN: 'town',
-    AIRPORT: 'airport'
+    AIRPORT: 'airport',
+    BRIDGE: 'bridge'
 }
 
 export const MINIMAL_ZOOM_ON_BUILDING_SELECT = 15.5

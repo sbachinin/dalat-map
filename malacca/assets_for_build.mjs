@@ -42,8 +42,8 @@ export const assets_for_build = {
                     return (
                         is_building_polygon(f)
                         && !f.properties.historic
-                        && f.id !== 342659949
                         && f.id !== 12743796
+                        && f.id !== 383041700
                     )
                 }).flatMap(f => {
                     if (f.id === 12743795) {
@@ -105,12 +105,17 @@ export const assets_for_build = {
             name: 'river_lines',
             osm_feature_filter: f => (
                 f.properties.waterway === 'stream' || f.properties.waterway === 'river'
-            ) && f.id !== 99661185, // skip the stretch of Cam Ly "inside" the Lake
+            ) && f.id !== 104350337
         },
 
         {
             name: 'unesco_core_zone',
             get_custom_features: () => [unesco_core_zone]
+        },
+
+        {
+            name: 'bridge_areas',
+            osm_feature_filter: f => f.properties?.man_made === 'bridge'
         },
 
         {
@@ -122,7 +127,6 @@ export const assets_for_build = {
                 {
                     name: 'area_type',
                     get_value: f => {
-                        if (f.properties.name === 'Lac Duong') return AREA_TYPES.TOWN
                         return land_areas_handmade_data[f.id.toString()]?.area_type || null
                     }
                 },
