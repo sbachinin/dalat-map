@@ -454,7 +454,6 @@ export const bldgs_handmade_data = {
         title: `Hokkien Huay
         Kuan Temple`
     },
-    
 
     1418818819: {
         subtitle: 'A very similar [building](1418818813) can be seen on the same street'
@@ -495,7 +494,29 @@ export const bldgs_handmade_data = {
     },
 
     1117709976: {
-        subtitle: 'Good example of a traditional Malay house, this structure is part of the very old and very tiny Kampung Ketek neighborhood.'
+        subtitle: 'A basic, but lovely, example of a traditional Malay house. This structure is part of the very old and very tiny Kampung Ketek neighborhood.'
+    },
+
+    1346859240: {
+        subtitle: `This must be a very early version of a Dutch shophouse, with a very low ground floor. It is also one of the best-preserved examples from the Dutch period, carefully restored in 2005.`,
+        year: '18th century'
+    },
+
+    1421135623: {
+        subtitle: `In 2025 this building was undergoing a serious renovation, getting a much more jovial look with arched colonial windows instead of the barrack-style ones.
+        Before the renovation, it housed the Malacca Commercial institute.`
+    },
+
+    1422989183: {
+        title: `Masjid
+        Bukit Beruang`
+    },
+
+    1422959907: {
+        title: `Masjid Lama
+        Bukit Bayan`,
+        subtitle: `I failed to find any information about this mosque but it must be a special one. It's perhaps the most elegant that I've seen in Melaka, with a somewhat baroque character. (But in general, it seems that elegance wasn't a major concern for the mosque builders in this part of the world).
+        Age of this mosque is also unknown to me but I guess that it must be from 19th century or earlier.`
     },
 
     1418808935: {
@@ -553,14 +574,54 @@ export const bldgs_handmade_data = {
         title: `St Mary's Church\n(Ayer Salak)`,
         year: 1848,
         subtitle: `This church serves the Chinese Catholic community of Ayer Salak village. It was likely built in the second half of the 19th century.
-        Note the use of laterite stone, exposed at ground floor level as a kind of decoration. Many of the important historic buildings in Malacca are built of laterite but it's almost always plastered over, except [A Famosa](599113640) and [St Paul's church](170829535). In both these cases, laterite looks amazing, though it's difficult to say how expensive the maintenance is.
+        Note the use of laterite stone, exposed at ground floor level as a kind of decoration. Many of the important historic buildings in Malacca are built of laterite but it's almost always plastered over. The reason is apparently that it's not very durable, and in case of St Mary's the laterite stones are not in the best condition, having lots of plaster patches and beginning to look less than perfect (but not yet ruining the overall impression, as far as I can see).
+        In the central Malacca laterite can be seen in [A Famosa](599113640) and [St Paul's church](170829535) - there it looks really good, however, it's difficult to say how expensive the maintenance is.
         There's also a laterite structure next to St Mary's, apparently built for Christian missionaries in the colonial times. It's a very simple and casual building but still laterite blocks make it look more interesting.
-        Perhaps laterite tends to be hidden because it's not very durable - the stones of St Mary's are not in perfect shape, with lots of plaster patches, however I think it doesn't ruin the overall impression.
         St. Mary’s Church has experienced a visible revival over the past decade, undergoing restoration and gaining some public attention. Several years ago, it had a dreadful front porch appended to the original structure — but, miraculously, it was removed during the recent restoration - quite a triumph of common sense!`
     },
 
     19435897: {
         title: 'Int. ferry\nterminal'
+    },
+
+    1304252937: {
+        title: `"Villa
+        Sentosa"`,
+        subtitle: `This building is meant to familiarize foreign tourists with the Malay traditional house. It's the prettiest object in the area called Kampung Morten - which is meant to be an exemplary Malay village. It's one of the nearest traditional villages to the historic center of Malacca, and it also has an unusually high concentration of wooden houses - about 50 in a very compact area. Therefore it was made into a tourist destination, looking fake, with lots of funny banners and no life.
+        Villa Sentosa in itself is not too bad - at least it allows one to understand the main principles of the Malay rural house: it is mostly a timber structure (without the use of nails, at least in theory), very spacious, raised on stilts, with a sophisticated floor plan composed of many specialized rooms, each looking (from outside) almost like a separate little building. Perhaps the only important feature that is lacking is the very steep gabled roof that can be seen in many other (much simpler) houses of Kampung Morten.
+        Villa Sentosa overall is a decent place to visit, but it's certainly an extremely rich and polished version of the Malay house - the real traditional houses tend to be modest and casual, although often beautiful and full of character, often painted in jovial and fairly attractive colors. This kind of architecture is gradually disappearing but is still not difficult to find in almost any part of Malacca, with the exception of the historic center.
+        Villa Sentosa reminds me of this wonderful [house](1421454302); at least it has the same kind of stilted veranda ("serambi").`
+    },
+
+    1223999079: {
+        title: `Malacca state
+        secretariat`
+    },
+
+    1304252944: {
+        title: 'Hotel'
+    },
+
+    1203116163: {
+        title: 'Hotel'
+    },
+
+    1423488105: {
+
+    },
+
+    1423488109: {
+        subtitle: `This must have been built in the 1920s. It's one of the two architectural gems (the other being [this one](1423488105)) of Solok Gaung village. These structures are very different in design but certainly share a lot of common history. From what I've learned from Facebook discussions, today they belong to one family.
+        For a long time this building had a ruinous exterior, but in 2024 or 25 it was restored and painted in this blueish color. I'm not sure if it was the best choice.`
+    },
+
+    1203116162: {
+        title: `Business
+        center`
+    },
+
+    1421097273: {
+        subtitle: 'Note an interesting transformation: around 2015 this building was slightly redesigned, getting a very different second-floor layout, with many more windows.'
     },
 
     1365761976: {
@@ -757,6 +818,11 @@ export const bldgs_handmade_data = {
     },
 
 
+    1300063014: {
+        title: `Masjid
+        An-Nur
+        Peringgit`
+    },
 
 
     // happened to be outside the bounds:

@@ -53,6 +53,10 @@ const resize_from_folder = async (source_folder, force = false) => {
             continue
         }
 
+        if (filename.startsWith('ignored_')) {
+            continue
+        }
+
         const stat = await fs_promises.stat(file_path)
 
         if (stat.isFile()) {
@@ -70,3 +74,69 @@ for (const some_src_folder of src_folders) {
 }
 
 console.log('Images have been resized')
+
+
+
+
+
+
+
+
+// 1. add new osmid_ images to fids_to_img_names
+
+/*
+In "large" folder, find all files that begin with "osmid_",
+from the filename take the part after the first _ and before the second _, if there is a second one.
+check that this part is numeric only, exit if no.
+Take the file [city_folder]/static_data/fids_to_img_names.mjs, from it import const fids_to_img_names
+In this object, find the id that corresponds to the numeric part of the osmid_... filename.
+If there is no such entry, initialize it with an empty array.
+Append to the entry's filename_string array the osmid_... filename, if it wasn't there before.
+*/
+const { fids_to_img_names } = await import(`../../${cityname}/static_data/fids_to_img_names.mjs`)
+
+const osmid_filenames = fs.readdirSync(large_folder)
+    .filter(f => f.startsWith('osmid_'))
+
+for (const osmid_filename of osmid_filenames) {
+    const osmid = path.parse(osmid_filename).name.split('_')[1]
+
+    if (!osmid.match(/^[0-9]+$/)) {
+        console.log('Non-numeric osmid in', osmid_filename)
+        process.exit(1)
+    }
+
+    if (!fids_to_img_names[osmid]) {
+        fids_to_img_names[osmid] = []
+    }
+
+    if (!fids_to_img_names[osmid].includes(osmid_filename)) {
+        fids_to_img_names[osmid].push(osmid_filename)
+    }
+}
+
+
+
+// 2. go through fids_to_img_names and remove the images that aren't found in large/
+
+const large_filenames = fs.readdirSync(large_folder)
+    .map(f => path.parse(f).base)
+
+for (const osmid in fids_to_img_names) {
+    fids_to_img_names[osmid] = fids_to_img_names[osmid].filter(f => large_filenames.includes(f))
+}
+
+
+
+
+
+
+
+const obj_as_str = JSON.stringify(fids_to_img_names, null, 2)
+
+fs.writeFileSync(
+    `../../${cityname}/static_data/fids_to_img_names.mjs`,
+    `export const fids_to_img_names = ${obj_as_str}`
+)
+
+console.log('"osmid_..." files names were written to fids_to_img_names')
