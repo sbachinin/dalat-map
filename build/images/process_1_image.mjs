@@ -57,7 +57,7 @@ export const process_image = async (source_folder, source_filename, force = fals
         processed_image = processed_image.rotate(-90)
     } */
 
-    const output_filename = path.basename(source_file_path) // filename
+    const output_filename = source_filename.split('.')[0] + '.jpg'
 
     // city_folder must be a part of sourceFolder string that ends with 'cities_images/[cityname]'
     const city_images_root_folder = source_folder.split('/src')[0]
