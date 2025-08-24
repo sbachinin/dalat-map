@@ -5,6 +5,7 @@ import heicConvert from 'heic-convert'
 import { is_running_from_cmd_line } from '../build_utils.mjs'
 
 const supported_formats = ['.png', '.jpg', '.jpeg', '.gif', '.heic']
+const max_area = 800 * 1067 * 2
 
 const convert_heic_to_jpg = async (inputPath, outputPath) => {
     const inputBuffer = await fs.promises.readFile(inputPath)
@@ -86,10 +87,14 @@ export const process_image = async (source_folder, source_filename, force = fals
     if (force || !fs.existsSync(large_img_path)) {
         const stats = await fs.promises.stat(source_file_path)
         if (stats.size > 350 * 1024) { // more than 350kb
-            const large_height = Math.round(800 / metadata.width * metadata.height)
+            const area = Math.min(max_area, metadata.width * metadata.height)
+            const ratio = metadata.width / metadata.height
             await processed_image
                 .clone()
-                .resize(800, large_height)
+                .resize(
+                    Math.round(Math.sqrt(area * ratio)),
+                    Math.round(Math.sqrt(area / ratio))
+                )
                 .jpeg({ quality: 95 })
                 .toFile(large_img_path)
         } else {
