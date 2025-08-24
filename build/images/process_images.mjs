@@ -29,19 +29,6 @@ fs.mkdirSync(thumbs_folder, { recursive: true })
 fs.mkdirSync(large_folder, { recursive: true })
 
 
-if (force) {
-    // Clear output folders
-    [thumbs_folder, large_folder].forEach(folder => {
-        fs.readdirSync(folder).forEach(filename => {
-            const file_path = path.join(folder, filename)
-            if (fs.statSync(file_path).isFile()) {
-                fs.unlinkSync(file_path)
-            }
-        })
-    })
-}
-
-
 const resize_from_folder = async (source_folder, force = false) => {
     const filenames = await fs_promises.readdir(source_folder)
 
@@ -68,6 +55,40 @@ const resize_from_folder = async (source_folder, force = false) => {
 const src_folders = fs.readdirSync(city_images_folder + '/src/')
     .map(f => city_images_folder + '/src/' + f)
     .filter(f => fs.statSync(f).isDirectory())
+
+
+
+
+// Fail if there are duplicate image basenames
+// (otherwise, having images with same basename but different extension, only 1 file will end up in dist/, and some will be lost)
+
+const all_imgs_names = new Set()
+for (const some_src_folder of src_folders) {
+    const filenames = fs.readdirSync(some_src_folder)
+    for (const filename of filenames) {
+        const name = filename.split('.')[0]
+        if (all_imgs_names.has(name)) {
+            console.log('Duplicate image basename:', path.join(some_src_folder, filename))
+            process.exit(1)
+        }
+        all_imgs_names.add(name)
+    }
+}
+
+
+
+
+if (force) {
+    // Clear output folders
+    [thumbs_folder, large_folder].forEach(folder => {
+        fs.readdirSync(folder).forEach(filename => {
+            const file_path = path.join(folder, filename)
+            if (fs.statSync(file_path).isFile()) {
+                fs.unlinkSync(file_path)
+            }
+        })
+    })
+}
 
 for (const some_src_folder of src_folders) {
     await resize_from_folder(some_src_folder, force)
