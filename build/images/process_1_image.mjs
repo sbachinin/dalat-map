@@ -85,21 +85,18 @@ export const process_image = async (source_folder, source_filename, force = fals
 
     // 2. Create large image
     if (force || !fs.existsSync(large_img_path)) {
-        const stats = await fs.promises.stat(source_file_path)
-        if (stats.size > 350 * 1024) { // more than 350kb
-            const area = Math.min(max_area, metadata.width * metadata.height)
-            const ratio = metadata.width / metadata.height
-            await processed_image
-                .clone()
-                .resize(
-                    Math.round(Math.sqrt(area * ratio)),
-                    Math.round(Math.sqrt(area / ratio))
-                )
-                .jpeg({ quality: 95 })
-                .toFile(large_img_path)
-        } else {
-            await fs.promises.copyFile(source_file_path, large_img_path)
-        }
+        const area = Math.min(max_area, metadata.width * metadata.height)
+        const ratio = metadata.width / metadata.height
+        const size = [
+            Math.round(Math.sqrt(area * ratio)),
+            Math.round(Math.sqrt(area / ratio))
+        ]
+        global.images_sizes[output_filename] = size
+        await processed_image
+            .clone()
+            .resize(...size)
+            .jpeg({ quality: 95 })
+            .toFile(large_img_path)
     }
 }
 

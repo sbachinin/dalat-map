@@ -1,3 +1,4 @@
+import { current_city } from "./load_city.mjs"
 import { create_element_from_Html } from "./utils/frontend_utils.mjs"
 
 const do_once_visible = (el, cb) => {
@@ -29,11 +30,12 @@ export const activate_image = (el) => {
 }
 
 export const create_lazy_image = src => {
+    const filename = src.split('/').pop()
     const el = create_element_from_Html(
         `<a class='lazy-image-wrapper'
             data-pswp-src="${src.replace('thumbs', 'large')}"
-            data-pswp-width="800"
-            data-pswp-height="1066"
+            data-pswp-width="${current_city.images_sizes[filename]?.[0]}"
+            data-pswp-height="${current_city.images_sizes[filename]?.[1]}"
         >
             <div class="img-loader" style="display: none"></div>
             <img data-src="${src}" class="lazy">

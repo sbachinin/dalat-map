@@ -20,6 +20,11 @@ const files = [
         extractor: d => d.fids_to_img_names,
     },
     {
+        filename: 'static_data/images_sizes.mjs',
+        propname: 'images_sizes',
+        extractor: d => d.images_sizes,
+    },
+    {
         filename: 'renderables.mjs',
         propname: 'renderables',
         extractor: d => d.renderables,

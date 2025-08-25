@@ -4,8 +4,8 @@ import { parse_args } from '../build_utils.mjs'
 import { process_image } from './process_1_image.mjs'
 import fs from 'fs'
 import * as fs_promises from 'fs/promises'
-
 import path from 'path'
+import sharp from 'sharp'
 
 const { city: cityname, force } = parse_args()
 
@@ -153,11 +153,26 @@ for (const osmid in fids_to_img_names) {
 
 
 
-const obj_as_str = JSON.stringify(fids_to_img_names, null, 2)
-
+const fids_as_str = JSON.stringify(fids_to_img_names, null, 2)
 fs.writeFileSync(
     `../../${cityname}/static_data/fids_to_img_names.mjs`,
-    `export const fids_to_img_names = ${obj_as_str}`
+    `export const fids_to_img_names = ${fids_as_str}`
 )
-
 console.log('"osmid_..." files names were written to fids_to_img_names')
+
+
+
+
+const files = fs.readdirSync(large_folder)
+const sizes = {}
+for (const file of files) {
+    const file_path = path.join(large_folder, file)
+    const metadata = await sharp(file_path).metadata()
+    sizes[file] = [metadata.width, metadata.height]
+}
+const sizes_as_str = JSON.stringify(sizes, null, 2)
+fs.writeFileSync(
+    `../../${cityname}/static_data/images_sizes.mjs`,
+    `export const images_sizes = ${sizes_as_str}`
+)
+console.log(`Images sizes were written to images_sizes.mjs`)
