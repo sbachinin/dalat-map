@@ -19,7 +19,8 @@ export const init_photoswipe = () => {
         wheelToZoom: true,
         zoom: false,
         counter: false,
-        hideAnimationDuration: PSWP_HIDE_ANIMATION_DURATION
+        hideAnimationDuration: PSWP_HIDE_ANIMATION_DURATION,
+        maxZoomLevel: 1
     })
 
     lightbox.init()
