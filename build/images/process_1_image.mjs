@@ -87,14 +87,10 @@ export const process_image = async (source_folder, source_filename, force = fals
     if (force || !fs.existsSync(large_img_path)) {
         const area = Math.min(max_area, metadata.width * metadata.height)
         const ratio = metadata.width / metadata.height
-        const size = [
-            Math.round(Math.sqrt(area * ratio)),
-            Math.round(Math.sqrt(area / ratio))
-        ]
-        global.images_sizes[output_filename] = size
         await processed_image
             .clone()
-            .resize(...size)
+            .resize(Math.round(Math.sqrt(area * ratio)),
+                Math.round(Math.sqrt(area / ratio)))
             .jpeg({ quality: 95 })
             .toFile(large_img_path)
     }

@@ -85,8 +85,9 @@ osm_geojson.features.forEach(f => {
         && !roads_hierarchy.includes(f.properties.highway)
         && f.properties.highway !== 'construction'
         && f.properties.highway !== 'proposed'
+        && f.properties.highway !== '*'
     ) {
-        console.warn('highway', f.properties.highway, 'not in roads_hierarchy')
+        console.warn('highway', f.properties.highway, 'not in roads_hierarchy, perhaps it must be included?')
     }
 })
 

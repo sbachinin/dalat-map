@@ -216,6 +216,13 @@ export const features_generated_props_for_frontend = {
       2.200249
     ]
   },
+  "1418814949": {
+    "centroid": [
+      102.259374,
+      2.197577
+    ],
+    "is_small_building": true
+  },
   "1418818819": {
     "centroid": [
       102.252866,
@@ -402,12 +409,6 @@ export const features_generated_props_for_frontend = {
     "centroid": [
       102.261319,
       2.221785
-    ]
-  },
-  "1421515193": {
-    "centroid": [
-      102.247895,
-      2.209021
     ]
   },
   "1421686229": {
@@ -922,6 +923,24 @@ export const features_generated_props_for_frontend = {
     "centroid": [
       102.162502,
       2.240597
+    ]
+  },
+  "1424758463": {
+    "centroid": [
+      102.303756,
+      2.181367
+    ]
+  },
+  "1424828662": {
+    "centroid": [
+      102.26156,
+      2.188311
+    ]
+  },
+  "1424832390": {
+    "centroid": [
+      102.267213,
+      2.189912
     ]
   }
 };

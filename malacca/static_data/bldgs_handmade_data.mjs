@@ -598,6 +598,17 @@ export const bldgs_handmade_data = {
         secretariat`
     },
 
+    1300064087: {
+        title: `Al-Falihin Mosque`
+    },
+
+
+    1424762253: {
+        title: `Al-Abrar
+        Mosque
+        Semabok`
+    },
+
     1304252944: {
         title: 'Hotel'
     },
