@@ -15,6 +15,10 @@ export const images_sizes = {
     1299,
     1080
   ],
+  "osmid_1418808937.jpg": [
+    1248,
+    1080
+  ],
   "osmid_1418814949.jpg": [
     1216,
     1080

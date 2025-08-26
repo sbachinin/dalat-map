@@ -75,10 +75,11 @@ export const process_image = async (source_folder, source_filename, force = fals
 
     // 1. Create thumbnail
     if (force || !fs.existsSync(thumb_img_path)) {
-        const thumb_height = Math.round(215 / metadata.width * metadata.height)
+        const thumb_height = 287
+        const thumb_width = Math.round(287 * (metadata.width / metadata.height))
         await processed_image
             .clone()
-            .resize(215, thumb_height)
+            .resize(thumb_width, thumb_height)
             .jpeg({ quality: 95 })
             .toFile(thumb_img_path)
     }

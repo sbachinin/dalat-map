@@ -24,6 +24,9 @@ export const fids_to_img_names = {
   "1346859240": [
     "osmid_1346859240.jpg"
   ],
+  "1418808937": [
+    "osmid_1418808937.jpg"
+  ],
   "1418814949": [
     "osmid_1418814949.jpg"
   ],
