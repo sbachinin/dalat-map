@@ -18,6 +18,7 @@ import { city_title, river_lines } from "../js/common_drawing_layers/drawing_lay
 import { AREA_TYPES, FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { constants as c } from './constants.mjs'
 import { SOURCES_NAMES } from "../js/constants.mjs";
+import { historic_polygons } from "../js/common_drawing_layers/historic_polygons.mjs";
 
 export const zoom_order = {
 
@@ -59,7 +60,7 @@ export const zoom_order = {
         },
 
         {
-            drawing_layers: [{...water_areas_fill, 'source-layer': 'river_areas'}],
+            drawing_layers: [{ ...water_areas_fill, 'source-layer': 'river_areas' }],
         },
 
         {
@@ -142,19 +143,9 @@ export const zoom_order = {
         {
             drawing_layers: [river_lines],
         },
+
         {
-            drawing_layers: [{
-                name: 'Historic building',
-                type: 'fill',
-                source: SOURCES_NAMES.CITY_TILES,
-                'source-layer': 'historic_building',
-                paint: {
-                    'fill-color': 'hsl(20, 100%, 80%)',
-                    'fill-antialias': true,
-                    'fill-opacity': 1
-                },
-                drawing_importance: 2
-            }],
+            drawing_layers: historic_polygons.map(l => ({ ...l, 'source-layer': 'historic_building' }))
         }
     ],
 

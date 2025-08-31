@@ -17,7 +17,7 @@ import {
     towns_fill,
     water_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
-import { french_polygons_drawing_layers } from "../js/common_drawing_layers/french_polygons.mjs";
+import { historic_polygons } from "../js/common_drawing_layers/historic_polygons.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { AREA_TYPES, FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
@@ -157,7 +157,7 @@ export const zoom_order = {
             drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border]
         },
         {
-            drawing_layers: french_polygons_drawing_layers,
+            drawing_layers: historic_polygons.map(l => ({...l, 'source-layer': 'french_building'})),
         },
         {
             drawing_layers: [non_french_titles],

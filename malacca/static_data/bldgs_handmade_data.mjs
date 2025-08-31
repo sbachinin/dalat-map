@@ -593,6 +593,18 @@ export const bldgs_handmade_data = {
         Villa Sentosa reminds me of this wonderful [house](1421454302); at least it has the same kind of stilted veranda ("serambi").`
     },
 
+    1421351456: {
+        subtitle: `As of 2025, it's a holiday rental.`
+    },
+
+    1421351454: {
+        subtitle: `As of 2025, it's a holiday rental`
+    },
+
+    1421454277: {
+        subtitle: `As of 2025, this building is painted very badly. Seeing it for the first time, I failed to recognize it as colonial due to its current funny appearance. However, some ruinous photos from before 2015 (when it was radically renovated) show that it's essentially a very interesting piece of architecture, and it only needs a more thoughful approach to painting.`
+    },
+
     1223999079: {
         title: `Malacca state
         secretariat`
@@ -607,6 +619,11 @@ export const bldgs_handmade_data = {
         title: `Al-Abrar
         Mosque
         Semabok`
+    },
+
+    1419147293: {
+        title: `Masonic
+        lodge`
     },
 
     1304252944: {

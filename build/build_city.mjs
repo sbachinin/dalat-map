@@ -4,21 +4,21 @@ import { parse_args } from "./build_utils.mjs"
 const args = parse_args()
 
 // config_to_adjust_manually
-const city = args.city || 'malacca'
-
-console.log('Building city:', city.toUpperCase())
-
 const defaults = {
+    city: 'malacca',
     generate_tiles: 1,
-    skip_osm_download: 0,
-    process_images: 1,
+    skip_osm_download: 1,
+    process_images: 0,
     purge_old_images: 1
 }
 
+const city = args.city || defaults.city
 const generate_tiles = args.generate_tiles || defaults.generate_tiles
 const skip_osm_download = defaults.skip_osm_download
 const process_images = args.process_images || defaults.process_images
 const purge_old_images = args.purge_old_images || defaults.purge_old_images
+
+console.log('Building city:', city.toUpperCase())
 
 /*
     Images should be processed first

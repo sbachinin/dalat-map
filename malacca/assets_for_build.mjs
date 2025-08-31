@@ -67,7 +67,8 @@ export const assets_for_build = {
                 return f.id === 945813625 // st john fort is not a building
                     || (is_building_polygon(f)
                         && f.properties.historic)
-            }
+            },
+            props_to_add_to_osm_features: ['is_selectable', 'has_title'],
         },
 
         {
