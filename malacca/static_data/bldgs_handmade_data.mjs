@@ -708,8 +708,7 @@ export const bldgs_handmade_data = {
     },
 
     19455318: {
-        title: `Abandoned
-        Hotel`
+        title: `Hotel`
     },
 
     170829525: {

@@ -6,9 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "validate_images_data": "node chores/validate_images_data.mjs ",
-    "validate_highlights": "node chores/validate_highlights.mjs",
-    "process_all_images_for_city": "cd build/images && node ./process_images.mjs",
-    "___process_all_images_for_city_example": "npm run process_all_images_for_city -- city=hue force      ::::: force means rebuild ALL images, including those already present in dist/...",
     "copy_tiles_to_windows": "cp -r dalat-map-tiles/tiles /mnt/c/Users/Admin/projects/dalat-map/dalat-map-tiles/",
     "run_https_localhost": "http-server -S",
     "build": "node build.mjs",
