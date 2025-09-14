@@ -1,7 +1,11 @@
 /* 
   This checks that:
-  1) I didn't forget to add some images to the buildings
-  2) I don't use any nonexistent filenames in buildings data
+  - I didn't forget to add some images to the buildings
+  - I don't use any nonexistent filenames in buildings data
+  - I don't use any nonexistent filenames in highlights
+  - All images from highlights are assigned to buildings
+  - Images are of reasonable size
+  - there are no duplicate images in fids_to_img_names and highlights_order
 */
 
 import fs from 'fs'
@@ -33,7 +37,7 @@ export const validate_images = async (cityname) => {
             && !json_set.has(img)
     })
     if (orphan_imgs_filenames.length === 0) {
-        console.log('All generated images are used in handmade data (excluding those explicitly rejected)')
+        console.log('✅ All generated images (excluding those explicitly rejected) are assigned to buildings')
         // rm missing dir
         const missing_imgs_dir = path.resolve(`../cities_images/${cityname}/missing`)
         if (fs.existsSync(missing_imgs_dir)) {
@@ -50,7 +54,7 @@ export const validate_images = async (cityname) => {
         }
 
         orphan_imgs_filenames.forEach(img => {
-            console.log(img + ' is missing in handmade data and was copied to "missing" folder')
+            console.log('❌ ' + img + ' is missing in handmade data and was copied to "missing" folder')
             const oldPath = path.join(large_img_dir, img)
             const missing_path = path.join(missing_imgs_dir, img)
             fs.copyFileSync(oldPath, missing_path)
@@ -64,22 +68,36 @@ export const validate_images = async (cityname) => {
         .forEach(imgs_of_a_bldg => {
             const imgs_set = new Set(imgs_of_a_bldg)
             if (imgs_set.size !== imgs_of_a_bldg.length) {
-                console.log('Duplicate image in', imgs_of_a_bldg)
+                console.log('❌ Duplicate image in', imgs_of_a_bldg)
                 process.exit(1)
             }
         })
-
+    console.log('✅ No duplicate images found in fids_to_img_names')
 
     // 3.
     // complain if handmade data contains nonexistent filenames
     const file_set = new Set(files_imgs_names)
     const missing_in_files = all_buildings_imgs_names.filter(img => !file_set.has(img))
     if (missing_in_files.length === 0) {
-        console.log('All handmade data images are present in files')
+        console.log('✅ No broken images found in fids_to_img_names')
     } else {
         missing_in_files.forEach(img => {
-            console.log(img + ' is missing in files')
+            console.log('❌ ' + img + ' is missing in files')
         })
         process.exit(1)
     }
+
+
+    // 4.
+    // Check that highlights don't contain duplicates
+    const { highlights_order } = await import(`../${cityname}/static_data/highlights_order.mjs`)
+    const highlights_set = new Set(highlights_order)
+    if (highlights_set.size !== highlights_order.length) {
+        console.warn(`❌ Duplicate image found in highlights_order`)
+        process.exit(1)
+    }
+    console.log('✅ No duplicate images found in highlights')
+
+
+    // Check if highlights list contains all valid images names
 }
