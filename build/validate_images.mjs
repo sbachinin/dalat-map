@@ -129,4 +129,19 @@ export const validate_images = async (cityname) => {
         console.log('✅ All highlights images are assigned to buildings')
     }
 
+    // 7.
+    // Check that all images are of reasonable size
+    const SIZE_LIMIT = 1000 * 1024 // in kb
+    const too_heavy_imgs = files_imgs_names.filter(file => {
+        const file_path = path.join(large_img_dir, file)
+        const stats = fs.statSync(file_path)
+        if (stats.isFile() && stats.size > SIZE_LIMIT) {
+            console.log(`\x1b[33m⚠️  Warning:\x1b[0m ${file} is ${(stats.size / 1024).toFixed(1)} KB`)
+            return true
+        }
+    })
+
+    if (too_heavy_imgs.length === 0) {
+        console.log('✅ No large/ images are too heavy')
+    }
 }
