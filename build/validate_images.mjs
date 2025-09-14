@@ -1,11 +1,10 @@
 /* 
   This checks that:
-  - I didn't forget to add some images to the buildings
-  - I don't use any nonexistent filenames in buildings data
-  - I don't use any nonexistent filenames in highlights
+  - I didn't forget to add some images (files) to the buildings
+  - I don't use any nonexistent filenames in buildings data and highlights
+  - there are no duplicate images in fids_to_img_names and highlights_order
   - All images from highlights are assigned to buildings
   - Images are of reasonable size
-  - there are no duplicate images in fids_to_img_names and highlights_order
 */
 
 import fs from 'fs'
@@ -110,4 +109,24 @@ export const validate_images = async (cityname) => {
         })
         process.exit(1)
     }
+
+    // 6.
+    // Check that all highlights are assigned to buildings
+    // * I compare names without extension:
+    // * Because highligts order is taken from google photos where .heic files are still .heic,
+    // * and fids_to_img_names contains "final" images names with heic already converted to jpg
+    const all_buildings_imgs_basenames = all_buildings_imgs_names
+        .map(img_name => img_name.split('.')[0])
+
+    const missing_highlights = highlights_order.filter(
+        hl_name => !all_buildings_imgs_basenames.includes(hl_name.split('.')[0])
+    )
+    if (missing_highlights.length > 0) {
+        console.log('❌ ' + missing_highlights.length + ` highlights don't belong to any buildings in fids_to_imgs_names:`)
+        missing_highlights.forEach(hl => console.log(hl))
+        process.exit(1)
+    } else {
+        console.log('✅ All highlights images are assigned to buildings')
+    }
+
 }
