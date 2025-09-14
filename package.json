@@ -5,7 +5,6 @@
   "main": "maplibre-gl-450.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "validate_images_data": "node chores/validate_images_data.mjs ",
     "copy_tiles_to_windows": "cp -r dalat-map-tiles/tiles /mnt/c/Users/Admin/projects/dalat-map/dalat-map-tiles/",
     "run_https_localhost": "http-server -S",
     "build": "node build.mjs",
