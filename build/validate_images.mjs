@@ -76,13 +76,13 @@ export const validate_images = async (cityname) => {
 
     // 3.
     // complain if handmade data contains nonexistent filenames
-    const file_set = new Set(files_imgs_names)
-    const missing_in_files = all_buildings_imgs_names.filter(img => !file_set.has(img))
-    if (missing_in_files.length === 0) {
+    const imgs_filenames_set = new Set(files_imgs_names)
+    const bldgs_imgs_missing_in_files = all_buildings_imgs_names.filter(img => !imgs_filenames_set.has(img))
+    if (bldgs_imgs_missing_in_files.length === 0) {
         console.log('✅ No broken images found in fids_to_img_names')
     } else {
-        missing_in_files.forEach(img => {
-            console.log('❌ ' + img + ' is missing in files')
+        bldgs_imgs_missing_in_files.forEach(img => {
+            console.log('❌ ' + img + ' in fids_to_img_names is missing in files')
         })
         process.exit(1)
     }
@@ -99,5 +99,15 @@ export const validate_images = async (cityname) => {
     console.log('✅ No duplicate images found in highlights')
 
 
-    // Check if highlights list contains all valid images names
+    // 5.
+    // Check that highlights list doesn't contain nonexistent images names    
+    const hl_imgs_missing_in_files = highlights_order.filter(img => !imgs_filenames_set.has(img))
+    if (hl_imgs_missing_in_files.length === 0) {
+        console.log('✅ No broken images found in highlights_order')
+    } else {
+        hl_imgs_missing_in_files.forEach(img => {
+            console.log('❌ ' + img + ' from highlights is missing in files')
+        })
+        process.exit(1)
+    }
 }
