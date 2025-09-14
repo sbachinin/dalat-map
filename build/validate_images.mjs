@@ -23,7 +23,7 @@ export const validate_images = async (cityname) => {
         .flatMap(arr => arr)
 
 
-
+    // 1.
     // Check if I failed to add all available images to handmade data
     // copy them to "missing" folder to drop them later to their buildings
     const missing_imgs_dir = path.resolve(`../cities_images/${cityname}/missing`)
@@ -58,9 +58,19 @@ export const validate_images = async (cityname) => {
     }
 
 
+    // 2.
+    // Check that no buildings contain duplicate images
+    Object.values(fids_to_img_names)
+        .forEach(imgs_of_a_bldg => {
+            const imgs_set = new Set(imgs_of_a_bldg)
+            if (imgs_set.size !== imgs_of_a_bldg.length) {
+                console.log('Duplicate image in', imgs_of_a_bldg)
+                process.exit(1)
+            }
+        })
 
 
-
+    // 3.
     // complain if handmade data contains nonexistent filenames
     const file_set = new Set(files_imgs_names)
     const missing_in_files = all_buildings_imgs_names.filter(img => !file_set.has(img))
