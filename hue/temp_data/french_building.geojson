@@ -6,6 +6,1280 @@
       "coordinates": [
         [
           [
+            107.5824929,
+            16.4819428
+          ],
+          [
+            107.5824189,
+            16.4818815
+          ],
+          [
+            107.5824736,
+            16.4818201
+          ],
+          [
+            107.5825475,
+            16.4818778
+          ],
+          [
+            107.5824929,
+            16.4819428
+          ]
+        ]
+      ]
+    },
+    "id": 1430147546,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5830695,
+            16.4808875
+          ],
+          [
+            107.5830934,
+            16.4808542
+          ],
+          [
+            107.5832429,
+            16.4809584
+          ],
+          [
+            107.583219,
+            16.4809909
+          ],
+          [
+            107.5830695,
+            16.4808875
+          ]
+        ]
+      ]
+    },
+    "id": 1430140352,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5829116,
+            16.4807804
+          ],
+          [
+            107.5829355,
+            16.4807493
+          ],
+          [
+            107.583068,
+            16.4808387
+          ],
+          [
+            107.5830449,
+            16.4808705
+          ],
+          [
+            107.5829116,
+            16.4807804
+          ]
+        ]
+      ]
+    },
+    "id": 1430140351,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5842129,
+            16.4789034
+          ],
+          [
+            107.5841576,
+            16.4788592
+          ],
+          [
+            107.5842031,
+            16.4788047
+          ],
+          [
+            107.5842589,
+            16.4788484
+          ],
+          [
+            107.5842129,
+            16.4789034
+          ]
+        ]
+      ]
+    },
+    "id": 1430134965,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5861297,
+            16.4825748
+          ],
+          [
+            107.5860964,
+            16.4824791
+          ],
+          [
+            107.5861647,
+            16.4824561
+          ],
+          [
+            107.5861986,
+            16.4825524
+          ],
+          [
+            107.5861297,
+            16.4825748
+          ]
+        ]
+      ]
+    },
+    "id": 1430134964,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5860649,
+            16.4823761
+          ],
+          [
+            107.5860322,
+            16.4822737
+          ],
+          [
+            107.5861198,
+            16.4822468
+          ],
+          [
+            107.586153,
+            16.4823498
+          ],
+          [
+            107.5860649,
+            16.4823761
+          ]
+        ]
+      ]
+    },
+    "id": 1430134963,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5859143,
+            16.4815499
+          ],
+          [
+            107.5858801,
+            16.481429
+          ],
+          [
+            107.5859686,
+            16.4814039
+          ],
+          [
+            107.5860034,
+            16.4815261
+          ],
+          [
+            107.5859143,
+            16.4815499
+          ]
+        ]
+      ]
+    },
+    "id": 1430131350,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.579643,
+            16.485585
+          ],
+          [
+            107.579566,
+            16.4855377
+          ],
+          [
+            107.5796276,
+            16.4854439
+          ],
+          [
+            107.5797054,
+            16.4854927
+          ],
+          [
+            107.579643,
+            16.485585
+          ]
+        ]
+      ]
+    },
+    "id": 1430131349,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5797278,
+            16.4854602
+          ],
+          [
+            107.579653,
+            16.48541
+          ],
+          [
+            107.5797154,
+            16.4853206
+          ],
+          [
+            107.5797917,
+            16.4853686
+          ],
+          [
+            107.5797278,
+            16.4854602
+          ]
+        ]
+      ]
+    },
+    "id": 1430131348,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5804272,
+            16.4846019
+          ],
+          [
+            107.5803461,
+            16.4845447
+          ],
+          [
+            107.5803729,
+            16.4845074
+          ],
+          [
+            107.580456,
+            16.4845652
+          ],
+          [
+            107.5804272,
+            16.4846019
+          ]
+        ]
+      ]
+    },
+    "id": 1430131347,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5801248,
+            16.4848771
+          ],
+          [
+            107.580052,
+            16.4848278
+          ],
+          [
+            107.580118,
+            16.4847382
+          ],
+          [
+            107.5801908,
+            16.4847874
+          ],
+          [
+            107.5801248,
+            16.4848771
+          ]
+        ]
+      ]
+    },
+    "id": 1430131346,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5807617,
+            16.4840533
+          ],
+          [
+            107.5806866,
+            16.4840031
+          ],
+          [
+            107.5807617,
+            16.4838983
+          ],
+          [
+            107.5808382,
+            16.483951
+          ],
+          [
+            107.5807617,
+            16.4840533
+          ]
+        ]
+      ]
+    },
+    "id": 1430131345,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5808791,
+            16.4838829
+          ],
+          [
+            107.5808234,
+            16.4838347
+          ],
+          [
+            107.5808952,
+            16.4837569
+          ],
+          [
+            107.5809515,
+            16.4838032
+          ],
+          [
+            107.5808791,
+            16.4838829
+          ]
+        ]
+      ]
+    },
+    "id": 1430131344,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5859029,
+            16.4798775
+          ],
+          [
+            107.5858865,
+            16.479807
+          ],
+          [
+            107.5859682,
+            16.4797896
+          ],
+          [
+            107.5859845,
+            16.4798601
+          ],
+          [
+            107.5859029,
+            16.4798775
+          ]
+        ]
+      ]
+    },
+    "id": 1429986274,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5851708,
+            16.4796431
+          ],
+          [
+            107.585215,
+            16.4795862
+          ],
+          [
+            107.585273,
+            16.4796286
+          ],
+          [
+            107.5852278,
+            16.4796859
+          ],
+          [
+            107.5851708,
+            16.4796431
+          ]
+        ]
+      ]
+    },
+    "id": 1429986273,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5842299,
+            16.4810363
+          ],
+          [
+            107.5841663,
+            16.4809912
+          ],
+          [
+            107.5842301,
+            16.4809086
+          ],
+          [
+            107.5842936,
+            16.4809537
+          ],
+          [
+            107.5842299,
+            16.4810363
+          ]
+        ]
+      ]
+    },
+    "id": 1429986272,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5835382,
+            16.4820269
+          ],
+          [
+            107.5834894,
+            16.4819718
+          ],
+          [
+            107.5835534,
+            16.4819163
+          ],
+          [
+            107.5836047,
+            16.4819713
+          ],
+          [
+            107.5835382,
+            16.4820269
+          ]
+        ]
+      ]
+    },
+    "id": 1429986271,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5835128,
+            16.4818607
+          ],
+          [
+            107.5836042,
+            16.4817438
+          ],
+          [
+            107.583682,
+            16.4818003
+          ],
+          [
+            107.583592,
+            16.4819182
+          ],
+          [
+            107.5835128,
+            16.4818607
+          ]
+        ]
+      ]
+    },
+    "id": 1429986270,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.582096,
+            16.4836939
+          ],
+          [
+            107.582138,
+            16.483644
+          ],
+          [
+            107.582288,
+            16.4837756
+          ],
+          [
+            107.5822413,
+            16.4838232
+          ],
+          [
+            107.582096,
+            16.4836939
+          ]
+        ]
+      ]
+    },
+    "id": 1429986269,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5850738,
+            16.4780567
+          ],
+          [
+            107.5851094,
+            16.4780103
+          ],
+          [
+            107.5852198,
+            16.4780892
+          ],
+          [
+            107.5851847,
+            16.4781345
+          ],
+          [
+            107.5850738,
+            16.4780567
+          ]
+        ]
+      ]
+    },
+    "id": 1429986268,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5852887,
+            16.4782633
+          ],
+          [
+            107.5852156,
+            16.4782106
+          ],
+          [
+            107.5852539,
+            16.4781624
+          ],
+          [
+            107.585327,
+            16.4782142
+          ],
+          [
+            107.5852887,
+            16.4782633
+          ]
+        ]
+      ]
+    },
+    "id": 1429964576,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5912259,
+            16.4885081
+          ],
+          [
+            107.5912246,
+            16.4884674
+          ],
+          [
+            107.591267,
+            16.4884644
+          ],
+          [
+            107.591267,
+            16.48845
+          ],
+          [
+            107.5913254,
+            16.4884466
+          ],
+          [
+            107.5913299,
+            16.4885586
+          ],
+          [
+            107.591271,
+            16.4885607
+          ],
+          [
+            107.5912697,
+            16.4885064
+          ],
+          [
+            107.5912259,
+            16.4885081
+          ]
+        ]
+      ]
+    },
+    "id": 1429951012,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5905329,
+            16.4846854
+          ],
+          [
+            107.5905189,
+            16.4846205
+          ],
+          [
+            107.5905872,
+            16.4846065
+          ],
+          [
+            107.5906006,
+            16.484672
+          ],
+          [
+            107.5905329,
+            16.4846854
+          ]
+        ]
+      ]
+    },
+    "id": 1429951011,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5901878,
+            16.4833323
+          ],
+          [
+            107.5901791,
+            16.4832686
+          ],
+          [
+            107.5902363,
+            16.4832614
+          ],
+          [
+            107.590245,
+            16.4833251
+          ],
+          [
+            107.5901878,
+            16.4833323
+          ]
+        ]
+      ]
+    },
+    "id": 1429943740,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5899903,
+            16.4814959
+          ],
+          [
+            107.5899796,
+            16.481404
+          ],
+          [
+            107.5900272,
+            16.4813989
+          ],
+          [
+            107.5900379,
+            16.4814914
+          ],
+          [
+            107.5899903,
+            16.4814959
+          ]
+        ]
+      ]
+    },
+    "id": 1429943739,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.589675,
+            16.4781368
+          ],
+          [
+            107.5895957,
+            16.4781438
+          ],
+          [
+            107.5895903,
+            16.4780879
+          ],
+          [
+            107.5896696,
+            16.4780809
+          ],
+          [
+            107.589675,
+            16.4781368
+          ]
+        ]
+      ]
+    },
+    "id": 1429934563,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5898089,
+            16.4779056
+          ],
+          [
+            107.5898019,
+            16.4778214
+          ],
+          [
+            107.5900846,
+            16.4777963
+          ],
+          [
+            107.59009,
+            16.4778813
+          ],
+          [
+            107.5898089,
+            16.4779056
+          ]
+        ]
+      ]
+    },
+    "id": 1429934562,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5768435,
+            16.4943494
+          ],
+          [
+            107.5768851,
+            16.4942903
+          ],
+          [
+            107.5769437,
+            16.494328
+          ],
+          [
+            107.5769028,
+            16.4943863
+          ],
+          [
+            107.5768435,
+            16.4943494
+          ]
+        ]
+      ]
+    },
+    "id": 1429934561,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5897654,
+            16.4571003
+          ],
+          [
+            107.5896547,
+            16.4571003
+          ],
+          [
+            107.5896554,
+            16.4570353
+          ],
+          [
+            107.5897647,
+            16.4570347
+          ],
+          [
+            107.5897654,
+            16.4571003
+          ]
+        ]
+      ]
+    },
+    "id": 1429934560,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5902894,
+            16.4573757
+          ],
+          [
+            107.5902917,
+            16.4573029
+          ],
+          [
+            107.5904044,
+            16.4573057
+          ],
+          [
+            107.590402,
+            16.4573785
+          ],
+          [
+            107.5902894,
+            16.4573757
+          ]
+        ]
+      ]
+    },
+    "id": 1429934559,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5689492,
+            16.4550519
+          ],
+          [
+            107.5689836,
+            16.4549562
+          ],
+          [
+            107.5691196,
+            16.455001
+          ],
+          [
+            107.5690852,
+            16.4550956
+          ],
+          [
+            107.5689492,
+            16.4550519
+          ]
+        ]
+      ]
+    },
+    "id": 1429743637,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5895855,
+            16.4772895
+          ],
+          [
+            107.5894422,
+            16.4773136
+          ],
+          [
+            107.5894304,
+            16.4772489
+          ],
+          [
+            107.5895737,
+            16.4772248
+          ],
+          [
+            107.5895855,
+            16.4772895
+          ]
+        ]
+      ]
+    },
+    "id": 1429733606,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5895048,
+            16.475935
+          ],
+          [
+            107.5894865,
+            16.4758675
+          ],
+          [
+            107.5896209,
+            16.4758339
+          ],
+          [
+            107.5896392,
+            16.4759015
+          ],
+          [
+            107.5895048,
+            16.475935
+          ]
+        ]
+      ]
+    },
+    "id": 1429724168,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5878566,
+            16.4761604
+          ],
+          [
+            107.587875,
+            16.4761352
+          ],
+          [
+            107.5880168,
+            16.4762301
+          ],
+          [
+            107.5879985,
+            16.4762553
+          ],
+          [
+            107.5878566,
+            16.4761604
+          ]
+        ]
+      ]
+    },
+    "id": 1429722848,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
             107.5854153,
             16.4605525
           ],
@@ -669,43 +1943,6 @@
       ]
     },
     "id": 1379319485,
-    "properties": {
-      "building": "yes",
-      "building:architecture": "french_colonial",
-      "is_selectable": false,
-      "has_title": false
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [
-            107.5901944,
-            16.4783839
-          ],
-          [
-            107.5900936,
-            16.4783905
-          ],
-          [
-            107.5900886,
-            16.4783195
-          ],
-          [
-            107.5901894,
-            16.4783129
-          ],
-          [
-            107.5901944,
-            16.4783839
-          ]
-        ]
-      ]
-    },
-    "id": 1379291124,
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
@@ -5007,6 +6244,43 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
+      "has_title": false
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            107.5810301,
+            16.4838305
+          ],
+          [
+            107.580841,
+            16.4836977
+          ],
+          [
+            107.5808674,
+            16.483663
+          ],
+          [
+            107.5810566,
+            16.4837959
+          ],
+          [
+            107.5810301,
+            16.4838305
+          ]
+        ]
+      ]
+    },
+    "id": 118542866,
+    "properties": {
+      "building": "yes",
+      "building:architecture": "french_colonial",
+      "is_selectable": false,
       "has_title": false
     }
   },

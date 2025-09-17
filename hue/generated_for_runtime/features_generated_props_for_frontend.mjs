@@ -130,6 +130,13 @@ export const features_generated_props_for_frontend = {
     ],
     "is_french": true
   },
+  "118542866": {
+    "centroid": [
+      107.580949,
+      16.483747
+    ],
+    "is_french": true
+  },
   "118543157": {
     "centroid": [
       107.589158,
@@ -184,6 +191,12 @@ export const features_generated_props_for_frontend = {
       16.472099
     ],
     "is_french": true
+  },
+  "174746317": {
+    "centroid": [
+      107.57735,
+      16.485848
+    ]
   },
   "175063593": {
     "centroid": [
@@ -834,13 +847,6 @@ export const features_generated_props_for_frontend = {
     ],
     "is_french": true
   },
-  "1379291124": {
-    "centroid": [
-      107.590142,
-      16.478352
-    ],
-    "is_french": true
-  },
   "1379319485": {
     "centroid": [
       107.594742,
@@ -972,5 +978,249 @@ export const features_generated_props_for_frontend = {
       16.457752
     ],
     "is_small_building": true
+  },
+  "1429722848": {
+    "centroid": [
+      107.587937,
+      16.476195
+    ],
+    "is_small_building": true,
+    "is_french": true
+  },
+  "1429724168": {
+    "centroid": [
+      107.589563,
+      16.475884
+    ],
+    "is_french": true
+  },
+  "1429733606": {
+    "centroid": [
+      107.589508,
+      16.477269
+    ],
+    "is_french": true
+  },
+  "1429743637": {
+    "centroid": [
+      107.569034,
+      16.455026
+    ],
+    "is_french": true
+  },
+  "1429934559": {
+    "centroid": [
+      107.590347,
+      16.457341
+    ],
+    "is_french": true
+  },
+  "1429934560": {
+    "centroid": [
+      107.58971,
+      16.457068
+    ],
+    "is_french": true
+  },
+  "1429934561": {
+    "centroid": [
+      107.576894,
+      16.494338
+    ],
+    "is_french": true
+  },
+  "1429934562": {
+    "centroid": [
+      107.589947,
+      16.477851
+    ],
+    "is_french": true
+  },
+  "1429934563": {
+    "centroid": [
+      107.589633,
+      16.478112
+    ],
+    "is_french": true
+  },
+  "1429943739": {
+    "centroid": [
+      107.590009,
+      16.481448
+    ],
+    "is_french": true
+  },
+  "1429943740": {
+    "centroid": [
+      107.590212,
+      16.483297
+    ],
+    "is_small_building": true,
+    "is_french": true
+  },
+  "1429951011": {
+    "centroid": [
+      107.59056,
+      16.484646
+    ],
+    "is_french": true
+  },
+  "1429951012": {
+    "centroid": [
+      107.591287,
+      16.4885
+    ],
+    "is_french": true
+  },
+  "1429964576": {
+    "centroid": [
+      107.585271,
+      16.478213
+    ],
+    "is_small_building": true,
+    "is_french": true
+  },
+  "1429986268": {
+    "centroid": [
+      107.585147,
+      16.478073
+    ],
+    "is_french": true
+  },
+  "1429986269": {
+    "centroid": [
+      107.582191,
+      16.483734
+    ],
+    "is_french": true
+  },
+  "1429986270": {
+    "centroid": [
+      107.583598,
+      16.481831
+    ],
+    "is_french": true
+  },
+  "1429986271": {
+    "centroid": [
+      107.583547,
+      16.481972
+    ],
+    "is_french": true
+  },
+  "1429986272": {
+    "centroid": [
+      107.58423,
+      16.480972
+    ],
+    "is_french": true
+  },
+  "1429986273": {
+    "centroid": [
+      107.585222,
+      16.479636
+    ],
+    "is_french": true
+  },
+  "1429986274": {
+    "centroid": [
+      107.585936,
+      16.479834
+    ],
+    "is_small_building": true,
+    "is_french": true
+  },
+  "1430131344": {
+    "centroid": [
+      107.580887,
+      16.48382
+    ],
+    "is_french": true
+  },
+  "1430131345": {
+    "centroid": [
+      107.580762,
+      16.483976
+    ],
+    "is_french": true
+  },
+  "1430131346": {
+    "centroid": [
+      107.580121,
+      16.484808
+    ],
+    "is_french": true
+  },
+  "1430131347": {
+    "centroid": [
+      107.580401,
+      16.484555
+    ],
+    "is_french": true
+  },
+  "1430131348": {
+    "centroid": [
+      107.579722,
+      16.48539
+    ],
+    "is_french": true
+  },
+  "1430131349": {
+    "centroid": [
+      107.579636,
+      16.485515
+    ],
+    "is_french": true
+  },
+  "1430131350": {
+    "centroid": [
+      107.585942,
+      16.481477
+    ],
+    "is_french": true
+  },
+  "1430134963": {
+    "centroid": [
+      107.586093,
+      16.482312
+    ],
+    "is_french": true
+  },
+  "1430134964": {
+    "centroid": [
+      107.586147,
+      16.482516
+    ],
+    "is_french": true
+  },
+  "1430134965": {
+    "centroid": [
+      107.584208,
+      16.478854
+    ],
+    "is_small_building": true,
+    "is_french": true
+  },
+  "1430140351": {
+    "centroid": [
+      107.58299,
+      16.48081
+    ],
+    "is_small_building": true,
+    "is_french": true
+  },
+  "1430140352": {
+    "centroid": [
+      107.583156,
+      16.480923
+    ],
+    "is_french": true
+  },
+  "1430147546": {
+    "centroid": [
+      107.582483,
+      16.481881
+    ],
+    "is_french": true
   }
 };

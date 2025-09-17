@@ -50,7 +50,7 @@ export const buildings_handmade_data = {
     118541538: {
         subtitle: 'As of 2025, this building houses the department of tropical diseases of Hue central hospital'
     },
-    
+
     1377450377: {
         subtitle: 'As of 2025, this building belongs to the psychiatric department of Hue central hospital'
     },
@@ -159,6 +159,14 @@ export const buildings_handmade_data = {
 
     },
 
+    695770492: {
+        subtitle: `This building was erected from the ground up in 2022. Before that, a very modest one-storey building stood on this site. I have no information about whether the current building is a replica of something that existed in colonial times (and may have been destroyed during the war, for example). However, I bet this is a brand new building, looking at how similar it is to both lateral blocks of Hai Ba Trung school campus, - it's identical in architecture but shorter. Such uniformity seems to be a little strange for a french colonial project like this. But, regradless of its authenticity, this building in itself looks great and convincingly colonial.`
+    },
+
+    118541723: {
+        subtitle: `This building, once so beautiful, was renovated in 2024 in order to shoot a scene of some vietnamese horror movie. This renovation was certainly one of the major architectural atrocities conducted in Hue.`
+    },
+
     4291675218324692: {
         title: "Chapel of\nJeanne d’Arc school",
         title_side: 'south',
@@ -171,7 +179,7 @@ export const buildings_handmade_data = {
 
     730227961: {
         title: 'Chapel of\nHue Seminary',
-        subtitle: `This is a very hidden piece of architecture that I discovered by accident on the web. Otherwise, it would be quite difficult to spot, as it is situated deep within the restricted grounds of the Hue Major Seminary. Its history is also unclear. I can only say that at present it’s perhaps far from its best appearance, painted in rather dull whitish tones. A bit earlier, around 2015, the color scheme was much better, with yellow as the dominant color. At that time, it must have been a truly delightful sight.`
+        subtitle: `This is a very hidden piece of architecture that I discovered by accident on the web.Otherwise, it would be quite difficult to spot, as it is situated deep within the restricted grounds of the Hue Major Seminary.Its history is also unclear.I can only say that at present it’s perhaps far from its best appearance, painted in rather dull whitish tones.A bit earlier, around 2015, the color scheme was much better, with yellow as the dominant color.At that time, it must have been a truly delightful sight.`
     },
 
     285990348: {

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<style>
+    .id-link {
+        display: block;
+        padding: 10px;
+        width: max-content;
+    }
+
+    .one-building {
+        margin-bottom: 1em;
+        border: 1px solid #ccc;
+        padding: 0 10px 10px;
+    }
+
+    img {
+        max-width: 200px;
+        margin: 5px;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div id="output"></div>
+    <script>
+        const params = new URLSearchParams(location.search)
+        const city = params.get('city')
+        if (!city) {
+            document.getElementById('output').textContent = '(no city provided)'
+        } else {
+            const modulePath = `../${city}/static_data/fids_to_img_names.mjs`
+            import(modulePath).then(mod => {
+                const ftin = mod.fids_to_img_names
+
+                for (const [fid, images] of Object.entries(ftin)) {
+                    const section = document.createElement('div')
+                    section.classList.add('one-building')
+
+                    const id_link = document.createElement('a')
+                    id_link.classList.add('id-link')
+                    id_link.target = '_blank'
+                    id_link.href = `./${city}/?id=${fid}`
+                    id_link.textContent = `FID ${fid}`
+                    section.appendChild(id_link)
+
+                    images.forEach(filename => {
+                        const img = document.createElement('img')
+                        img.src = `../cities_images/${city}/dist/thumbs/${filename}`
+                        section.appendChild(img)
+                    })
+
+                    document.getElementById('output').appendChild(section)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
