@@ -20,10 +20,6 @@ export const parse_args = () => {
     return params;
 }
 
-export const is_running_from_cmd_line = () => {
-    return path.basename(fileURLToPath(import.meta.url)) === path.basename(process.argv[1])
-}
-
 export const mkdir = (path) => {
     try {
         fs.mkdirSync(path, { recursive: true })

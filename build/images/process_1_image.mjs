@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import sharp from 'sharp'
 import heicConvert from 'heic-convert'
-import { is_running_from_cmd_line } from '../build_utils.mjs'
 
 const supported_formats = ['.png', '.jpg', '.jpeg', '.gif', '.heic']
 const max_area = 800 * 1067 * 2
@@ -34,21 +33,18 @@ export const process_image = async (source_folder, source_filename, force = fals
 
     let source_file_path = path.join(source_folder, source_filename)
 
-    if (ext === '.heic') {
-        const jpg_file_path = source_file_path.replace(/\.heic$/i, '.jpg')
-        if (force || !fs.existsSync(jpg_file_path)) {
-            console.log('Converting HEIC:', source_filename)
-            await convert_heic_to_jpg(source_file_path, jpg_file_path)
-            source_file_path = jpg_file_path
-        } else {
-            console.log('Skipping already converted HEIC:', source_filename)
-            return
-        }
-    }
-
     console.log('Processing:', source_file_path)
 
-    const sharp_image = sharp(source_file_path)
+    let sharp_input = source_file_path
+    if (ext === '.heic') {
+        const inputBuffer = await fs.promises.readFile(source_file_path)
+        sharp_input = await heicConvert({
+            buffer: inputBuffer,
+            format: 'JPEG',
+            quality: 1
+        })
+    }
+    const sharp_image = sharp(sharp_input)
     const metadata = await sharp_image.metadata()
 
     // Rotate if landscape
@@ -100,8 +96,10 @@ export const process_image = async (source_folder, source_filename, force = fals
 
 
 // To run from CLI: "node process_1_image.mjs ../../cities_images/hue/src/highlights/IMG_7326.HEIC"
-
-if (is_running_from_cmd_line() && process.argv.length > 2) {
+if (
+    import.meta.url === `file://${process.argv[1]}` // running from CLI
+    && process.argv.length > 2
+) {
     const image_path = process.argv[2]
     const folder = path.dirname(image_path)
     const filename = path.basename(image_path)
