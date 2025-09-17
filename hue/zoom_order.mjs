@@ -16,6 +16,7 @@ import { FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants
 import { city_walls_fill, city_walls_thickening_outline, non_french_bldgs_within_imperial_city_fill, unesco_areas_border, unesco_areas_fill, unesco_areas_titles } from "./drawing_layers.mjs";
 import { constants as c } from "./constants.mjs";
 import { historic_polygons } from "../js/common_drawing_layers/historic_polygons.mjs";
+import { SOURCES_NAMES } from "../js/constants.mjs";
 
 export const zoom_order = {
     0: [
@@ -100,7 +101,23 @@ export const zoom_order = {
         },
         {
             drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border]
-        }
+        },
+        {
+            // needs a higher importance to appear on top of city wall, plus a distinct color 
+            filter: ['any', ['==', '$id', 174746317]],
+            drawing_layers: [{
+                "name": "City gate fill",
+                "type": "fill",
+                "source": SOURCES_NAMES.CITY_TILES,
+                "source-layer": "important_boring_building",
+                drawing_importance: 1,
+                "paint": {
+                    "fill-color": '#8975d7ff',
+                    "fill-antialias": true,
+                },
+                selectable: true
+            }],
+        },
     ],
 
     14.5: [
