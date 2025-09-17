@@ -62,16 +62,19 @@ const src_folders = fs.readdirSync(city_images_folder + '/src/')
 // Fail if there are duplicate image basenames
 // (otherwise, having images with same basename but different extension, only 1 file will end up in dist/, and some will be lost)
 
-const all_imgs_names = new Set()
+const all_imgs_basenames = new Set()
 for (const some_src_folder of src_folders) {
     const filenames = fs.readdirSync(some_src_folder)
     for (const filename of filenames) {
+        if (filename.endsWith(':Zone.Identifier')) {
+            continue
+        }
         const name = filename.split('.')[0]
-        if (all_imgs_names.has(name)) {
+        if (all_imgs_basenames.has(name)) {
             console.log('Duplicate image basename:', path.join(some_src_folder, filename))
             process.exit(1)
         }
-        all_imgs_names.add(name)
+        all_imgs_basenames.add(name)
     }
 }
 
