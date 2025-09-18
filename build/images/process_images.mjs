@@ -28,59 +28,6 @@ const large_folder = city_images_folder + '/dist/large'
 fs.mkdirSync(thumbs_folder, { recursive: true })
 fs.mkdirSync(large_folder, { recursive: true })
 
-
-const resize_from_folder = async (source_folder, force = false) => {
-    const filenames = await fs_promises.readdir(source_folder)
-
-    for (const filename of filenames) {
-        const file_path = path.join(source_folder, filename)
-
-        if (filename.endsWith(':Zone.Identifier')) {
-            fs.unlinkSync(file_path)
-            continue
-        }
-
-        if (filename.startsWith('ignored_')) {
-            continue
-        }
-
-        const stat = await fs_promises.stat(file_path)
-
-        if (stat.isFile()) {
-            await process_1_image(file_path, force)
-        }
-    }
-}
-
-const src_folders = fs.readdirSync(city_images_folder + '/src/')
-    .map(f => city_images_folder + '/src/' + f)
-    .filter(f => fs.statSync(f).isDirectory())
-
-
-
-
-// Fail if there are duplicate image basenames
-// (otherwise, having images with same basename but different extension, only 1 file will end up in dist/, and some will be lost)
-
-const all_imgs_basenames = new Set()
-for (const some_src_folder of src_folders) {
-    const filenames = fs.readdirSync(some_src_folder)
-    for (const filename of filenames) {
-        if (filename.endsWith(':Zone.Identifier')) {
-            continue
-        }
-        const name = filename.split('.')[0]
-        if (all_imgs_basenames.has(name)) {
-            console.log('Duplicate image basename:', path.join(some_src_folder, filename))
-            process.exit(1)
-        }
-        all_imgs_basenames.add(name)
-    }
-}
-
-
-
-
 if (force) {
     // Clear output folders
     [thumbs_folder, large_folder].forEach(folder => {
@@ -93,8 +40,43 @@ if (force) {
     })
 }
 
-for (const some_src_folder of src_folders) {
-    await resize_from_folder(some_src_folder, force)
+
+const entries = await fs_promises.readdir(
+    city_images_folder + '/src/',
+    { recursive: true, withFileTypes: true },
+    (err) => { err && console.error('Error:', err) }
+)
+const all_src_files_paths = entries
+    .filter(dirent => dirent.isFile())
+    .map(dirent => path.join(dirent.path, dirent.name))
+
+const previous_basenames = []
+
+
+
+for (const file_path of all_src_files_paths) {
+    if (file_path.endsWith(':Zone.Identifier')) {
+        fs.unlinkSync(file_path)
+        continue
+    }
+
+    const basename = path.parse(file_path).name
+
+    if (basename.startsWith('ignored_')) {
+        continue
+    }
+
+    if (previous_basenames.includes(basename)) {
+        // (Otherwise, having images with same basename but different extension,
+        // or different images with same name in different folders,
+        // only 1 file will end up in dist/, and some will be lost)
+        console.error('Duplicate image basename:', file_path)
+        process.exit(1)
+    } else {
+        previous_basenames.push(basename)
+    }
+
+    await process_1_image(file_path, force)
 }
 
 console.log('Images have been resized')
