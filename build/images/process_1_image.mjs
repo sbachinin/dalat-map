@@ -6,16 +6,6 @@ import heicConvert from 'heic-convert'
 const supported_formats = ['.png', '.jpg', '.jpeg', '.gif', '.heic']
 const max_area = 800 * 1067 * 2
 
-const convert_heic_to_jpg = async (inputPath, outputPath) => {
-    const inputBuffer = await fs.promises.readFile(inputPath)
-    const outputBuffer = await heicConvert({
-        buffer: inputBuffer,
-        format: 'JPEG',
-        quality: 1
-    })
-    await fs.promises.writeFile(outputPath, outputBuffer)
-}
-
 export const process_image = async (source_folder, source_filename, force = false) => {
 
     // this script can only be run with a path that contains: 'cities_images/[cityname]/src/....'
@@ -33,6 +23,19 @@ export const process_image = async (source_folder, source_filename, force = fals
 
     let source_file_path = path.join(source_folder, source_filename)
 
+    const output_filename = source_filename.split('.')[0] + '.jpg'
+    const city_images_root_folder = source_folder.split('/src')[0] // ...../'cities_images/[cityname]'
+    const thumb_img_path = path.join(city_images_root_folder, 'dist', 'thumbs', output_filename)
+    const large_img_path = path.join(city_images_root_folder, 'dist', 'large', output_filename)
+
+    if (
+        !force
+        && fs.existsSync(large_img_path)
+        && fs.existsSync(thumb_img_path)
+    ) {
+        return
+    }
+
     console.log('Processing:', source_file_path)
 
     let sharp_input = source_file_path
@@ -47,21 +50,6 @@ export const process_image = async (source_folder, source_filename, force = fals
     const sharp_image = sharp(sharp_input)
     const metadata = await sharp_image.metadata()
 
-    // Rotate if landscape
-    let processed_image = sharp_image
-    /* if (metadata.width > metadata.height) {
-        console.log('Rotating:', source_file_path)
-        processed_image = processed_image.rotate(-90)
-    } */
-
-    const output_filename = source_filename.split('.')[0] + '.jpg'
-
-    // city_folder must be a part of sourceFolder string that ends with 'cities_images/[cityname]'
-    const city_images_root_folder = source_folder.split('/src')[0]
-
-    const thumb_img_path = path.join(city_images_root_folder, 'dist', 'thumbs', output_filename)
-    const large_img_path = path.join(city_images_root_folder, 'dist', 'large', output_filename)
-
     if (!fs.existsSync(path.dirname(thumb_img_path))) {
         fs.mkdirSync(path.dirname(thumb_img_path), { recursive: true })
     }
@@ -70,27 +58,23 @@ export const process_image = async (source_folder, source_filename, force = fals
     }
 
     // 1. Create thumbnail
-    if (force || !fs.existsSync(thumb_img_path)) {
-        const thumb_height = 287
-        const thumb_width = Math.round(287 * (metadata.width / metadata.height))
-        await processed_image
-            .clone()
-            .resize(thumb_width, thumb_height)
-            .jpeg({ quality: 95 })
-            .toFile(thumb_img_path)
-    }
+    const thumb_height = 287
+    const thumb_width = Math.round(287 * (metadata.width / metadata.height))
+    await sharp_image
+        .clone()
+        .resize(thumb_width, thumb_height)
+        .jpeg({ quality: 95 })
+        .toFile(thumb_img_path)
 
     // 2. Create large image
-    if (force || !fs.existsSync(large_img_path)) {
-        const area = Math.min(max_area, metadata.width * metadata.height)
-        const ratio = metadata.width / metadata.height
-        await processed_image
-            .clone()
-            .resize(Math.round(Math.sqrt(area * ratio)),
-                Math.round(Math.sqrt(area / ratio)))
-            .jpeg({ quality: 95 })
-            .toFile(large_img_path)
-    }
+    const area = Math.min(max_area, metadata.width * metadata.height)
+    const ratio = metadata.width / metadata.height
+    await sharp_image
+        .clone()
+        .resize(Math.round(Math.sqrt(area * ratio)),
+            Math.round(Math.sqrt(area / ratio)))
+        .jpeg({ quality: 95 })
+        .toFile(large_img_path)
 }
 
 
