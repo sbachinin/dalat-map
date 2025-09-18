@@ -1,7 +1,7 @@
 // Args: "force" and "city=<city_name>"
 
 import { parse_args } from '../build_utils.mjs'
-import { process_image } from './process_1_image.mjs'
+import { process_1_image } from './process_1_image.mjs'
 import fs from 'fs'
 import * as fs_promises from 'fs/promises'
 import path from 'path'
@@ -47,7 +47,7 @@ const resize_from_folder = async (source_folder, force = false) => {
         const stat = await fs_promises.stat(file_path)
 
         if (stat.isFile()) {
-            await process_image(source_folder, filename, force)
+            await process_1_image(file_path, force)
         }
     }
 }

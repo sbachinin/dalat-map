@@ -6,7 +6,10 @@ import heicConvert from 'heic-convert'
 const supported_formats = ['.png', '.jpg', '.jpeg', '.gif', '.heic']
 const max_area = 800 * 1067 * 2
 
-export const process_image = async (source_folder, source_filename, force = false) => {
+export const process_1_image = async (source_file_path, force = false) => {
+
+    const source_folder = path.dirname(source_file_path)
+    const source_filename = path.basename(source_file_path)
 
     // this script can only be run with a path that contains: 'cities_images/[cityname]/src/....'
     const is_valid_path = /cities_images\/[^\/]+\/src/.test(source_folder)
@@ -20,8 +23,6 @@ export const process_image = async (source_folder, source_filename, force = fals
         console.error('Unsupported image format:', source_filename)
         process.exit(1)
     }
-
-    let source_file_path = path.join(source_folder, source_filename)
 
     const output_filename = source_filename.split('.')[0] + '.jpg'
     const city_images_root_folder = source_folder.split('/src')[0] // ...../'cities_images/[cityname]'
@@ -79,15 +80,12 @@ export const process_image = async (source_folder, source_filename, force = fals
 
 
 
-// To run from CLI: "node process_1_image.mjs ../../cities_images/hue/src/highlights/IMG_7326.HEIC"
+// To run from CLI: "node process_1_image ../../cities_images/hue/src/highlights/IMG_7326.HEIC"
 if (
     import.meta.url === `file://${process.argv[1]}` // running from CLI
     && process.argv.length > 2
 ) {
-    const image_path = process.argv[2]
-    const folder = path.dirname(image_path)
-    const filename = path.basename(image_path)
-    process_image(folder, filename, true).catch(err => {
+    process_1_image(process.argv[2], true).catch(err => {
         console.error('Error processing image:', err)
     })
 }
