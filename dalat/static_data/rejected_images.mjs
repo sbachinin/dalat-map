@@ -1,4 +1,4 @@
-export const rejected_imgs = [
+export const rejected_images = [
     "IMG_9858~3.jpg", 'IMG_0475~2.jpg', 'IMG_0613~2.jpg',
     'IMG_0708~4.jpg', 'IMG_0724.jpg', 'IMG_0745~5.jpg',
     'IMG_0758~4.jpg', 'IMG_0808.jpg', 'IMG_1468~5.jpg',
