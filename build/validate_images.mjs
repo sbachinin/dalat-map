@@ -74,9 +74,11 @@ export const validate_images = async (cityname) => {
     console.log('✅ No duplicate images found in fids_to_img_names')
 
     // 3.
-    // complain if handmade data contains nonexistent filenames
-    const imgs_filenames_set = new Set(files_imgs_names)
-    const bldgs_imgs_missing_in_files = all_buildings_imgs_names.filter(img => !imgs_filenames_set.has(img))
+    // complain if fids_to_img_names contains nonexistent filenames
+    const imgs_filenames_set = new Set(files_imgs_names.map(img => img.toLowerCase()))
+    const bldgs_imgs_missing_in_files = all_buildings_imgs_names
+        .map(img => img.toLowerCase())
+        .filter(img => !imgs_filenames_set.has(img))
     if (bldgs_imgs_missing_in_files.length === 0) {
         console.log('✅ No broken images found in fids_to_img_names')
     } else {

@@ -123,17 +123,6 @@ for (const osmid_filename of osmid_filenames) {
 
 
 
-// 2. go through fids_to_img_names and remove the images that aren't found in large/
-
-const large_filenames = fs.readdirSync(large_folder)
-    .map(f => path.parse(f).base)
-
-for (const osmid in fids_to_img_names) {
-    fids_to_img_names[osmid] = fids_to_img_names[osmid].filter(f => large_filenames.includes(f))
-}
-
-
-
 
 
 
