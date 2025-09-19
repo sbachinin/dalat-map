@@ -21,14 +21,14 @@ export const validate_images = async (cityname) => {
         rejected_images = (await import(city_root_dir + '/static_data/rejected_images.mjs')).rejected_images
     } catch (e) { }
 
-    const files_imgs_names = fs.readdirSync(large_img_dir)
+    const large_img_files_names = fs.readdirSync(large_img_dir)
     const all_buildings_imgs_names = Object.values(fids_to_img_names)
         .flatMap(arr => arr)
 
 
     // 0.
     // Check that all files_imgs_names are jpg
-    const non_jpg_imgs = files_imgs_names.filter(img => !img.endsWith('.jpg'))
+    const non_jpg_imgs = large_img_files_names.filter(img => !img.endsWith('.jpg'))
     if (non_jpg_imgs.length > 0) {
         console.log('❌ Some images are not jpg:', non_jpg_imgs)
         process.exit(1)
@@ -51,10 +51,10 @@ export const validate_images = async (cityname) => {
     // Check if I failed to add all available images to handmade data
     // copy them to "missing" folder to drop them later to their buildings
     const missing_imgs_dir = path.resolve(`../cities_images/${cityname}/missing`)
-    const json_set = new Set(all_buildings_imgs_names)
-    const orphan_imgs_filenames = files_imgs_names.filter(img => {
+    const names_set = new Set(all_buildings_imgs_names)
+    const orphan_imgs_filenames = large_img_files_names.filter(img => {
         return !rejected_images.includes(img) // some imgs are omitted intentionally => don't yell
-            && !json_set.has(img)
+            && !names_set.has(img)
     })
     if (orphan_imgs_filenames.length === 0) {
         console.log('✅ All generated images (excluding those explicitly rejected) are assigned to buildings')
@@ -74,7 +74,7 @@ export const validate_images = async (cityname) => {
         }
 
         orphan_imgs_filenames.forEach(img => {
-            console.log('❌ ' + img + ' is missing in handmade data and was copied to "missing" folder')
+            console.log('❌ ' + img + ' is not assigned to any building and was copied to "missing" folder')
             const oldPath = path.join(large_img_dir, img)
             const missing_path = path.join(missing_imgs_dir, img)
             fs.copyFileSync(oldPath, missing_path)
@@ -96,7 +96,7 @@ export const validate_images = async (cityname) => {
 
     // 3.
     // complain if fids_to_img_names contains nonexistent filenames
-    const imgs_filenames_set = new Set(files_imgs_names.map(img => img.toLowerCase()))
+    const imgs_filenames_set = new Set(large_img_files_names.map(img => img.toLowerCase()))
     const bldgs_imgs_missing_in_files = all_buildings_imgs_names
         .map(img => img.toLowerCase())
         .filter(img => !imgs_filenames_set.has(img))
@@ -155,7 +155,7 @@ export const validate_images = async (cityname) => {
     // 7.
     // Check that all images are of reasonable size
     const SIZE_LIMIT = 1000 * 1024 // in kb
-    const too_heavy_imgs = files_imgs_names.filter(file => {
+    const too_heavy_imgs = large_img_files_names.filter(file => {
         const file_path = path.join(large_img_dir, file)
         const stats = fs.statSync(file_path)
         if (stats.isFile() && stats.size > SIZE_LIMIT) {
