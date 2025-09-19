@@ -34,7 +34,7 @@ const set_panel_content = (id) => {
 
     const thumbs_list_el = feat_img_names?.length
         ? create_panel_thumbs_list({
-            images_names: feat_img_names
+            images_basenames: feat_img_names
         })
         : '';
 

@@ -122,7 +122,7 @@ export function throttle(func, wait, trailing = false) {
     return throttled;
 }
 
-export const get_image_url = (name, img_type) => {
+export const get_image_url = (basename /* without extension */, img_type) => {
     return (
         window.location.origin
         + `/cities_images/`
@@ -130,7 +130,7 @@ export const get_image_url = (name, img_type) => {
         + `/dist/`
         + img_type
         + `/`
-        + name.replace('HEIC', 'jpg')
+        + basename + '.jpg'
     )
 }
 

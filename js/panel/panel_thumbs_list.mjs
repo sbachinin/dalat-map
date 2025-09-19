@@ -33,11 +33,11 @@ const create_highlights_title = () => {
     )
 }
 
-export const create_panel_thumbs_list = ({ images_names, content_type = PANEL_CONTENT_TYPES.BUILDING }) => {
-    const slide_els = images_names.map(
-        name => {
+export const create_panel_thumbs_list = ({ images_basenames, content_type = PANEL_CONTENT_TYPES.BUILDING }) => {
+    const slide_els = images_basenames.map(
+        basename => {
             const wr = create_element_from_Html(`<div class="slide-wrapper"></div>`)
-            wr.appendChild(create_lazy_image(get_image_url(name, 'thumbs')))
+            wr.appendChild(create_lazy_image(get_image_url(basename, 'thumbs')))
             return wr
         }
     )
