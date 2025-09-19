@@ -346,13 +346,14 @@ export function parse_markdown_links(text) {
     });
 }
 
-
-
+const before_last_dot = (str) => {
+    return str.substring(0, str.lastIndexOf('.'))
+}
 
 export const find_bldg_id_by_image_filename = (filename) => {
     const [bldg_id] = Object.entries(current_city.fids_to_img_names)
         .find(([_, feat_img_names]) => {
-            return feat_img_names.includes(filename)
+            return feat_img_names.includes(before_last_dot(filename))
         }) || [null]
     return Number(bldg_id)
 }
