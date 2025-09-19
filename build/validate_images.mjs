@@ -15,21 +15,44 @@ export const validate_images = async (cityname) => {
     const large_img_dir = path.resolve(`../cities_images/${cityname}/dist/large`)
     const city_root_dir = `../${cityname}`
     const fids_to_img_names = (await import(city_root_dir + '/static_data/fids_to_img_names.mjs')).fids_to_img_names
+    const { highlights_order } = await import(`../${cityname}/static_data/highlights_order.mjs`)
+
 
     const large_img_files_names = fs.readdirSync(large_img_dir)
     const all_buildings_imgs_basenames = Object.values(fids_to_img_names)
         .flatMap(arr => arr)
 
 
-    // 0.
-    // Check that all files_imgs_names are jpg
+    // ----------------
+    // Check that all names in fids_to_img_names are basenames, without extensions
+    all_buildings_imgs_basenames.forEach(n => {
+        if (path.parse(n).name !== n) {
+            console.log('❌ Non-basename in fids_to_img_names:', n)
+            process.exit(1)
+        }
+    })
+
+
+    // ----------------
+    // Check that all names in highligts_order are basenames, without extensions
+    highlights_order.forEach(n => {
+        if (path.parse(n).name !== n) {
+            console.log('❌ Non-basename in highlights_order:', n)
+            process.exit(1)
+        }
+    })
+
+
+    // ----------------
+    // Check that all files_imgs_names are jpg (and not JPG!)
     const non_jpg_imgs = large_img_files_names.filter(img => !img.endsWith('.jpg'))
     if (non_jpg_imgs.length > 0) {
         console.log('❌ Some images are not jpg:', non_jpg_imgs)
         process.exit(1)
     }
 
-    // 0.1
+
+    // ----------------
     // Check that thumbs/ and large/ contain files with same names 
     const files_in_thumbs = fs.readdirSync(path.resolve(`../cities_images/${cityname}/dist/thumbs`))
     const files_in_large = fs.readdirSync(path.resolve(`../cities_images/${cityname}/dist/large`))
@@ -42,7 +65,7 @@ export const validate_images = async (cityname) => {
     }
 
 
-    // 1.
+    // ----------------
     // Check if I failed to add all available images to handmade data
     // copy them to "unassigned" folder to drop them later to their buildings
     const assigned_images_basenames_set = new Set(all_buildings_imgs_basenames)
@@ -60,7 +83,7 @@ export const validate_images = async (cityname) => {
     }
 
 
-    // 2.
+    // ----------------
     // Check that no buildings contain duplicate images
     Object.values(fids_to_img_names)
         .forEach(imgs_of_a_bldg => {
@@ -72,7 +95,7 @@ export const validate_images = async (cityname) => {
         })
     console.log('✅ No duplicate images found in fids_to_img_names')
 
-    // 3.
+    // ----------------
     // complain if fids_to_img_names contains nonexistent filenames
     const imgs_files_basenames_set = new Set(large_img_files_names.map(img => img.split('.')[0]))
     const bldgs_imgs_missing_in_files = all_buildings_imgs_basenames
@@ -87,9 +110,8 @@ export const validate_images = async (cityname) => {
     }
 
 
-    // 4.
+    // ----------------
     // Check that highlights don't contain duplicates
-    const { highlights_order } = await import(`../${cityname}/static_data/highlights_order.mjs`)
     const highlights_set = new Set(highlights_order)
     if (highlights_set.size !== highlights_order.length) {
         console.warn(`❌ Duplicate image found in highlights_order`)
@@ -98,7 +120,7 @@ export const validate_images = async (cityname) => {
     console.log('✅ No duplicate images found in highlights')
 
 
-    // 5.
+    // ----------------
     // Check that highlights list doesn't contain nonexistent images names    
     const hl_imgs_missing_in_files = highlights_order.filter(img => !imgs_files_basenames_set.has(img))
     if (hl_imgs_missing_in_files.length === 0) {
@@ -110,7 +132,8 @@ export const validate_images = async (cityname) => {
         process.exit(1)
     }
 
-    // 6.
+
+    // ----------------
     // Check that all highlights are assigned to buildings
     // * I compare names without extension:
     // * Because highligts order is taken from google photos where .heic files are still .heic,
@@ -120,13 +143,14 @@ export const validate_images = async (cityname) => {
     )
     if (missing_highlights.length > 0) {
         console.log('❌ ' + missing_highlights.length + ` highlights don't belong to any buildings in fids_to_imgs_names:`)
-        missing_highlights.forEach(hl => console.log(hl))
+        missing_highlights.forEach(hl => console.log(`${path.join(large_img_dir, hl)}.jpg`))
         process.exit(1)
     } else {
         console.log('✅ All highlights images are assigned to buildings')
     }
 
-    // 7.
+
+    // ----------------
     // Check that all images are of reasonable size
     const SIZE_LIMIT = 1000 * 1024 // in kb
     const too_heavy_imgs = large_img_files_names.filter(file => {
