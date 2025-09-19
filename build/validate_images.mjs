@@ -16,11 +16,6 @@ export const validate_images = async (cityname) => {
     const city_root_dir = `../${cityname}`
     const fids_to_img_names = (await import(city_root_dir + '/static_data/fids_to_img_names.mjs')).fids_to_img_names
 
-    let rejected_images = []
-    try {
-        rejected_images = (await import(city_root_dir + '/static_data/rejected_images.mjs')).rejected_images
-    } catch (e) { }
-
     const large_img_files_names = fs.readdirSync(large_img_dir)
     const all_buildings_imgs_basenames = Object.values(fids_to_img_names)
         .flatMap(arr => arr)
@@ -50,35 +45,18 @@ export const validate_images = async (cityname) => {
     // 1.
     // Check if I failed to add all available images to handmade data
     // copy them to "unassigned" folder to drop them later to their buildings
-    const unassigned_imgs_dir = path.resolve(`../cities_images/${cityname}/unassigned`)
     const assigned_images_basenames_set = new Set(all_buildings_imgs_basenames)
-    const orphan_imgs_filenames = large_img_files_names.filter(img => {
-        return !rejected_images.includes(img) // some imgs are omitted intentionally => don't yell
-            && !assigned_images_basenames_set.has(img.split('.')[0])
-    })
-    if (orphan_imgs_filenames.length === 0) {
+    const orphan_imgs_basenames = large_img_files_names
+        .map(n => n.split('.')[0])
+        .filter(n => !assigned_images_basenames_set.has(n))
+    if (orphan_imgs_basenames.length === 0) {
         console.log('✅ All generated images (excluding those explicitly rejected) are assigned to buildings')
-        // rm unassigned dir
-        const missing_imgs_dir = path.resolve(`../cities_images/${cityname}/unassigned`)
-        if (fs.existsSync(missing_imgs_dir)) {
-            fs.rmSync(missing_imgs_dir, { recursive: true, force: true })
-        }
     } else {
-        // make sure "unassigned" folder exists and is empty
-        if (fs.existsSync(unassigned_imgs_dir)) {
-            fs.readdirSync(unassigned_imgs_dir).forEach(file => {
-                fs.unlinkSync(path.join(unassigned_imgs_dir, file))
-            })
-        } else {
-            fs.mkdirSync(unassigned_imgs_dir)
-        }
-
-        orphan_imgs_filenames.forEach(img => {
-            console.log('⚠️ ' + img + ' is not assigned to any building and was copied to "unassigned" folder')
-            const oldPath = path.join(large_img_dir, img)
-            const missing_path = path.join(unassigned_imgs_dir, img)
-            fs.copyFileSync(oldPath, missing_path)
-        })
+        fs.writeFileSync(
+            path.resolve(`../${cityname}/static_data/unassigned_images.mjs`),
+            'export const unassigned_images = ' + JSON.stringify(orphan_imgs_basenames, null, 2)
+        )
+        console.log('⚠️ ', orphan_imgs_basenames.length, 'images are not assigned to buildings')
     }
 
 
