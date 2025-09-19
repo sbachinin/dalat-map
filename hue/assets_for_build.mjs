@@ -69,6 +69,10 @@ export const assets_for_build = {
             props_to_add_to_osm_features: ['is_selectable'],
         },
         {
+            name: 'bridge_areas',
+            osm_feature_filter: f => f.properties?.man_made === 'bridge'
+        },
+        {
             name: 'non_french_bldgs_within_imperial_city',
             osm_feature_filter: f => {
                 return f.properties.building

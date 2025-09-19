@@ -9,7 +9,8 @@ import {
     water_areas_fill,
     important_boring_building_fill,
     stadium_fill,
-    peaks_triangles_with_titles
+    peaks_triangles_with_titles,
+    bridge_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
@@ -89,6 +90,9 @@ export const zoom_order = {
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
             drawing_layers: historic_polygons.map(l => ({ ...l, 'source-layer': 'french_building' })),
+        },
+        {
+            drawing_layers: [bridge_areas_fill]
         }
     ],
 
