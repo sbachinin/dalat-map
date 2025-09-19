@@ -49,8 +49,8 @@ export const validate_images = async (cityname) => {
 
     // 1.
     // Check if I failed to add all available images to handmade data
-    // copy them to "missing" folder to drop them later to their buildings
-    const missing_imgs_dir = path.resolve(`../cities_images/${cityname}/missing`)
+    // copy them to "unassigned" folder to drop them later to their buildings
+    const unassigned_imgs_dir = path.resolve(`../cities_images/${cityname}/unassigned`)
     const assigned_images_basenames_set = new Set(all_buildings_imgs_basenames)
     const orphan_imgs_filenames = large_img_files_names.filter(img => {
         return !rejected_images.includes(img) // some imgs are omitted intentionally => don't yell
@@ -58,25 +58,25 @@ export const validate_images = async (cityname) => {
     })
     if (orphan_imgs_filenames.length === 0) {
         console.log('✅ All generated images (excluding those explicitly rejected) are assigned to buildings')
-        // rm missing dir
-        const missing_imgs_dir = path.resolve(`../cities_images/${cityname}/missing`)
+        // rm unassigned dir
+        const missing_imgs_dir = path.resolve(`../cities_images/${cityname}/unassigned`)
         if (fs.existsSync(missing_imgs_dir)) {
             fs.rmSync(missing_imgs_dir, { recursive: true, force: true })
         }
     } else {
-        // make sure "missing" folder exists and is empty
-        if (fs.existsSync(missing_imgs_dir)) {
-            fs.readdirSync(missing_imgs_dir).forEach(file => {
-                fs.unlinkSync(path.join(missing_imgs_dir, file))
+        // make sure "unassigned" folder exists and is empty
+        if (fs.existsSync(unassigned_imgs_dir)) {
+            fs.readdirSync(unassigned_imgs_dir).forEach(file => {
+                fs.unlinkSync(path.join(unassigned_imgs_dir, file))
             })
         } else {
-            fs.mkdirSync(missing_imgs_dir)
+            fs.mkdirSync(unassigned_imgs_dir)
         }
 
         orphan_imgs_filenames.forEach(img => {
-            console.log('⚠️ ' + img + ' is not assigned to any building and was copied to "missing" folder')
+            console.log('⚠️ ' + img + ' is not assigned to any building and was copied to "unassigned" folder')
             const oldPath = path.join(large_img_dir, img)
-            const missing_path = path.join(missing_imgs_dir, img)
+            const missing_path = path.join(unassigned_imgs_dir, img)
             fs.copyFileSync(oldPath, missing_path)
         })
     }
