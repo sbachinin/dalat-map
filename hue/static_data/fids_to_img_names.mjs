@@ -1,580 +1,582 @@
 export const fids_to_img_names = {
   "3231165": [
-    "IMG_8722.JPG",
-    "IMG_8721.JPG",
-    "IMG_8720.JPG"
+    "IMG_8722",
+    "IMG_8721",
+    "IMG_8720"
   ],
   "19381147": [
-    "IMG_0943 Copy.JPG",
-    "IMG_0944 Copy.JPG",
-    "IMG_0945 Copy.JPG",
-    "Hổ_Quyền_1.jpg",
-    "Annam_-_Hué_-_Eléphants_amenés_dans_l'arène_pour_le_combat_avec_les_Tigres.jpg"
+    "IMG_0943 Copy",
+    "IMG_0944 Copy",
+    "IMG_0945 Copy",
+    "Hổ_Quyền_1",
+    "Annam_-_Hué_-_Eléphants_amenés_dans_l'arène_pour_le_combat_avec_les_Tigres"
   ],
   "118541181": [
-    "IMG_8728.JPG",
-    "IMG_8109.jpg",
-    "IMG_8729.JPG",
-    "IMG_8734.JPG",
-    "IMG_9573.PNG"
+    "IMG_8728",
+    "IMG_8109",
+    "IMG_8729",
+    "IMG_8734",
+    "IMG_9573"
   ],
   "118541430": [
-    "IMG_9580 Copy.JPG",
-    "IMG_9583 Copy.JPG",
-    "IMG_9581.PNG",
-    "IMG_1018 Copy.JPG",
-    "IMG_9572.PNG"
+    "IMG_9580 Copy",
+    "IMG_9583 Copy",
+    "IMG_9581",
+    "IMG_1018 Copy",
+    "IMG_9572"
   ],
   "118541538": [
-    "IMG_7779.jpg",
-    "IMG_1050 Copy.JPG",
-    "IMG_7750.jpg",
-    "IMG_7792.jpg",
-    "IMG_7808.jpg",
-    "IMG_7815 Copy.JPG"
+    "IMG_7779",
+    "IMG_1050 Copy",
+    "IMG_7750",
+    "IMG_7792",
+    "IMG_7808",
+    "IMG_7815 Copy"
   ],
   "118541719": [
-    "IMG_8364.jpg",
-    "IMG_7798.jpg"
+    "IMG_8364",
+    "IMG_7798"
   ],
   "118541723": [
-    "IMG_7509.jpg",
-    "osmid_118541723.jpg"
+    "IMG_7509",
+    "osmid_118541723"
   ],
   "118541852": [
-    "IMG_1047 Copy.JPG",
-    "IMG_7683 Copy.JPG"
+    "IMG_1047 Copy",
+    "IMG_7683 Copy"
   ],
   "118541964": [
-    "IMG_9666.PNG",
-    "IMG_6782.jpg"
+    "IMG_9666",
+    "IMG_6782"
   ],
   "118542146": [
-    "IMG_7067.jpg",
-    "IMG_7068.jpg",
-    "IMG_7127.jpg",
-    "IMG_7140 Copy.JPG",
-    "xavier Copy.JPG",
-    "xavier2 Copy.JPG"
+    "IMG_7067",
+    "IMG_7068",
+    "IMG_7127",
+    "IMG_7140 Copy",
+    "xavier Copy",
+    "xavier2 Copy"
   ],
   "118542220": [
-    "IMG_5618.jpg",
-    "IMG_8797.JPG",
-    "IMG_8837.JPG",
-    "IMG_5570.jpg",
-    "IMG_5578.jpg",
-    "IMG_5589.jpg",
-    "IMG_5594.jpg",
-    "IMG_5606.jpg"
+    "IMG_5618",
+    "IMG_8797",
+    "IMG_8837",
+    "IMG_5570",
+    "IMG_5578",
+    "IMG_5589",
+    "IMG_5594",
+    "IMG_5606"
   ],
   "118542341": [
-    "IMG_7660.jpg",
-    "IMG_7674.jpg"
+    "IMG_7660",
+    "IMG_7674"
   ],
   "118542346": [
-    "IMG_7988.jpg",
-    "IMG_8832.JPG",
-    "IMG_7989.jpg",
-    "IMG_7992.jpg"
+    "IMG_7988",
+    "IMG_8832",
+    "IMG_7989",
+    "IMG_7992"
   ],
   "118542431": [
-    "IMG_8064.jpg",
-    "IMG_8724.JPG"
+    "IMG_8064",
+    "IMG_8724"
   ],
   "118542754": [
-    "osmid_118542754.jpg"
+    "osmid_118542754"
   ],
   "118543157": [
-    "IMG_8910.PNG",
-    "IMG_8844.JPG"
+    "IMG_8910",
+    "IMG_8844"
   ],
   "118792054": [
-    "new phu cam cathedral.png",
-    "old phu cam cathedral.jpg",
-    "old phu cam cathedral 2.jpg"
+    "new phu cam cathedral",
+    "old phu cam cathedral",
+    "old phu cam cathedral 2"
   ],
   "172763419": [
-    "IMG_8948 Copy.JPG",
-    "french-colonial-architecture-in-imperial-city-of-hue-vietnam-v0-clpq2mz79ozd1 Copy.JPG",
-    "IMG_8905.PNG"
+    "IMG_8948 Copy",
+    "french-colonial-architecture-in-imperial-city-of-hue-vietnam-v0-clpq2mz79ozd1 Copy",
+    "IMG_8905"
   ],
   "172802373": [
-    "IMG_9605 Copy.JPG"
+    "IMG_9605 Copy"
   ],
   "173151284": [
-    "IMG_9812 Copy.JPG",
-    "IMG_9816 Copy.JPG",
-    "IMG_9811.PNG",
-    "IMG_9814.PNG",
-    "IMG_9820.PNG",
-    "382.jpg",
-    "Khamphahue_Ho-Hoc-hai_TangThoLau~2.jpg",
-    "nguyen library corner~2.jpg",
-    "nguyen library passage.jpg",
-    "nguyen_library_side~2.jpg"
+    "IMG_9812 Copy",
+    "IMG_9816 Copy",
+    "IMG_9811",
+    "IMG_9814",
+    "IMG_9820",
+    "382",
+    "Khamphahue_Ho-Hoc-hai_TangThoLau~2",
+    "nguyen library corner~2",
+    "nguyen library passage",
+    "nguyen_library_side~2",
+    "osmid_173151284"
   ],
   "173793328": [
-    "IMG_9958 Copy.JPG"
+    "IMG_9958 Copy"
   ],
   "174746317": [
-    "osmid_174746317.jpg"
+    "osmid_174746317"
   ],
   "175063593": [
-    "IMG_8644.JPG",
-    "IMG_8646.JPG"
+    "IMG_8644",
+    "IMG_8646"
   ],
   "205805244": [
-    "IMG_0927 Copy.JPG",
-    "IMG_0933 Copy.JPG",
-    "IMG_0947 Copy.JPG"
+    "IMG_0927 Copy",
+    "IMG_0933 Copy",
+    "IMG_0947 Copy"
   ],
   "239972934": [
-    "IMG_8972.PNG",
-    "IMG_8973.PNG",
-    "IMG_1026 Copy.JPG",
-    "IMG_1027 Copy.JPG",
-    "IMG_8620.JPG",
-    "osmid_239972934.jpg"
+    "IMG_8972",
+    "IMG_8973",
+    "IMG_1026 Copy",
+    "IMG_1027 Copy",
+    "IMG_8620",
+    "osmid_239972934"
   ],
   "240266283": [
-    "IMG_8647.JPG",
-    "IMG_7421.jpg",
-    "IMG_7430.jpg",
-    "IMG_8648.JPG"
+    "IMG_8647",
+    "IMG_7421",
+    "IMG_7430",
+    "IMG_8648"
   ],
   "240267335": [
-    "IMG_7402.jpg",
-    "IMG_7404.jpg",
-    "IMG_7405.jpg",
-    "IMG_7410.jpg"
+    "IMG_7402",
+    "IMG_7404",
+    "IMG_7405",
+    "IMG_7410"
   ],
   "242940960": [
-    "IMG_8949.PNG",
-    "IMG_1061 Copy.JPG",
-    "IMG_8868.JPG",
-    "khai dinh 100.jpg"
+    "IMG_8949",
+    "IMG_1061 Copy",
+    "IMG_8868",
+    "khai dinh 100"
   ],
   "242940961": [
-    "IMG_8871.JPG"
+    "IMG_8871"
   ],
   "285990348": [
-    "IMG_8992.JPG"
+    "IMG_8992"
   ],
   "531031540": [
-    "IMG_9946 Copy.JPG",
-    "IMG_9624.PNG",
-    "IMG_1078 Copy.JPG",
-    "IMG_9616.PNG",
-    "IMG_9617.PNG",
-    "IMG_9621.PNG",
-    "IMG_9619.PNG",
-    "IMG_9622.PNG",
-    "IMG_9936 Copy.JPG"
+    "IMG_9946 Copy",
+    "IMG_9624",
+    "IMG_1078 Copy",
+    "IMG_9616",
+    "IMG_9617",
+    "IMG_9621",
+    "IMG_9619",
+    "IMG_9622",
+    "IMG_9936 Copy"
   ],
   "617991241": [
-    "Ngu Tien Office 2.jpg",
-    "Ngu Tien Office.jpg"
+    "Ngu Tien Office 2",
+    "Ngu Tien Office"
   ],
   "695770483": [
-    "IMG_8668.JPG"
+    "IMG_8668"
   ],
   "695770484": [
-    "IMG_7975.jpg",
-    "IMG_8675.JPG",
-    "IMG_7962.jpg",
-    "IMG_7963.jpg",
-    "IMG_7971.jpg",
-    "IMG_8672.JPG"
+    "IMG_7975",
+    "IMG_8675",
+    "IMG_7962",
+    "IMG_7963",
+    "IMG_7971",
+    "IMG_8672"
   ],
   "695770487": [
-    "IMG_9602.PNG"
+    "IMG_9602"
   ],
   "695770489": [
-    "IMG_7952.jpg",
-    "IMG_7916.jpg",
-    "IMG_7949.jpg"
+    "IMG_7952",
+    "IMG_7916",
+    "IMG_7949"
   ],
   "695770492": [
-    "IMG_8838.JPG",
-    "IMG_9585 Copy.JPG",
-    "IMG_7850.jpg",
-    "IMG_7937.jpg",
-    "IMG_7942.jpg",
-    "IMG_8831.JPG"
+    "IMG_8838",
+    "IMG_9585 Copy",
+    "IMG_7850",
+    "IMG_7937",
+    "IMG_7942",
+    "IMG_8831"
   ],
   "695775615": [
-    "IMG_0857 Copy.JPG",
-    "IMG_0912 Copy.JPG"
+    "IMG_0857 Copy",
+    "IMG_0912 Copy"
   ],
   "695775623": [
-    "IMG_8347.jpg",
-    "IMG_1054 Copy.JPG",
-    "IMG_8345.jpg"
+    "IMG_8347",
+    "IMG_1054 Copy",
+    "IMG_8345"
   ],
   "695775628": [
-    "IMG_8776.JPG",
-    "IMG_8787.JPG",
-    "IMG_8788.JPG",
-    "IMG_8266.jpg",
-    "IMG_8777.JPG",
-    "IMG_8778.JPG",
-    "IMG_8789.JPG"
+    "IMG_8776",
+    "IMG_8787",
+    "IMG_8788",
+    "IMG_8266",
+    "IMG_8777",
+    "IMG_8778",
+    "IMG_8789"
   ],
   "695775639": [
-    "IMG_1059 Copy.JPG",
-    "IMG_8771.JPG",
-    "IMG_1057 Copy.JPG",
-    "IMG_8742.JPG"
+    "IMG_1059 Copy",
+    "IMG_8771",
+    "IMG_1057 Copy",
+    "IMG_8742"
   ],
   "695810701": [
-    "IMG_9949 Copy.JPG",
-    "IMG_9948 Copy.JPG"
+    "IMG_9949 Copy",
+    "IMG_9948 Copy",
+    "osmid_695810701"
   ],
   "730227939": [
-    "IMG_0873 Copy.JPG"
+    "IMG_0873 Copy"
   ],
   "730227961": [
-    "IMG_1074 Copy.JPG",
-    "IMG_0851 Copy Copy.JPG",
-    "seminary - upscaled Copy.JPG"
+    "IMG_1074 Copy",
+    "IMG_0851 Copy Copy",
+    "seminary - upscaled Copy"
   ],
   "732304130": [
-    "IMG_7031.jpg"
+    "IMG_7031"
   ],
   "732304151": [
-    "IMG_8657.JPG",
-    "IMG_7050.jpg",
-    "IMG_7054 Copy.JPG"
+    "IMG_8657",
+    "IMG_7050",
+    "IMG_7054 Copy"
   ],
   "732309921": [
-    "IMG_6757.jpg",
-    "IMG_8796.JPG",
-    "IMG_8970.PNG",
-    "IMG_1041 Copy.JPG",
-    "IMG_6749.jpg",
-    "IMG_6759.jpg",
-    "IMG_8812.JPG"
+    "IMG_6757",
+    "IMG_8796",
+    "IMG_8970",
+    "IMG_1041 Copy",
+    "IMG_6749",
+    "IMG_6759",
+    "IMG_8812"
   ],
   "732309922": [
-    "IMG_6772.jpg",
-    "IMG_6775.jpg",
-    "IMG_6800.jpg"
+    "IMG_6772",
+    "IMG_6775",
+    "IMG_6800"
   ],
   "732309970": [
-    "IMG_1070 Copy.JPG",
-    "IMG_7690 Copy.JPG",
-    "IMG_7696 Copy.JPG"
+    "IMG_1070 Copy",
+    "IMG_7690 Copy",
+    "IMG_7696 Copy"
   ],
   "1075011937": [
-    "IMG_0937 Copy.JPG"
+    "IMG_0937 Copy"
   ],
   "1172897443": [
-    "AC9h4nqhk69_kFnpZeoC7jRRCaL7CRCjcjOeAiMmgLfNsdWEUBE3P85wPo3IoaHCqfK4xXdsxYaVovEp3D8v1Te-Uq63wup0oYibDnEW7qZ34tStHm92qgGSU13LyevBLAds1gtkPyQe9A=s3072-v1~2.jpg"
+    "AC9h4nqhk69_kFnpZeoC7jRRCaL7CRCjcjOeAiMmgLfNsdWEUBE3P85wPo3IoaHCqfK4xXdsxYaVovEp3D8v1Te-Uq63wup0oYibDnEW7qZ34tStHm92qgGSU13LyevBLAds1gtkPyQe9A=s3072-v1~2"
   ],
   "1172897446": [
-    "IMG_1031 Copy.JPG",
-    "IMG_1032 Copy.JPG",
-    "IMG_1033 Copy.JPG",
-    "IMG_1037 Copy.JPG",
-    "IMG_8921.PNG",
-    "IMG_0994 Copy.JPG",
-    "IMG_1030 Copy.JPG",
-    "IMG_6547.jpg",
-    "IMG_6559.jpg",
-    "IMG_6565.jpg",
-    "IMG_6592.jpg",
-    "IMG_6601.jpg",
-    "IMG_6616.jpg",
-    "IMG_6623.jpg",
-    "IMG_6649.jpg",
-    "IMG_6653.jpg",
-    "IMG_6654.jpg",
-    "IMG_8806.JPG",
-    "IMG_8938.PNG",
-    "IMG_8940.PNG",
-    "IMG_8941.PNG",
-    "unnamed.jpg"
+    "IMG_1031 Copy",
+    "IMG_1032 Copy",
+    "IMG_1033 Copy",
+    "IMG_1037 Copy",
+    "IMG_8921",
+    "IMG_0994 Copy",
+    "IMG_1030 Copy",
+    "IMG_6547",
+    "IMG_6559",
+    "IMG_6565",
+    "IMG_6592",
+    "IMG_6601",
+    "IMG_6616",
+    "IMG_6623",
+    "IMG_6649",
+    "IMG_6653",
+    "IMG_6654",
+    "IMG_8806",
+    "IMG_8938",
+    "IMG_8940",
+    "IMG_8941",
+    "unnamed"
   ],
   "1174028275": [
-    "IMG_1045 Copy.JPG",
-    "IMG_7627.jpg",
-    "IMG_7633.jpg",
-    "IMG_7637.jpg"
+    "IMG_1045 Copy",
+    "IMG_7627",
+    "IMG_7633",
+    "IMG_7637"
   ],
   "1174028276": [
-    "IMG_7643.jpg",
-    "IMG_7653.jpg",
-    "IMG_8982.PNG"
+    "IMG_7643",
+    "IMG_7653",
+    "IMG_8982"
   ],
   "1192697531": [
-    "IMG_7160.jpg",
-    "IMG_7174.jpg",
-    "IMG_8021.jpg",
-    "IMG_8944.PNG",
-    "IMG_7146.jpg",
-    "IMG_7164.jpg",
-    "IMG_7171.jpg",
-    "IMG_7180.jpg",
-    "IMG_7197.jpg",
-    "IMG_7199.jpg",
-    "IMG_7201.jpg",
-    "IMG_7997.jpg",
-    "IMG_8036.jpg",
-    "IMG_8624 Copy.JPG",
-    "IMG_8718.JPG",
-    "IMG_8716.JPG"
+    "IMG_7160",
+    "IMG_7174",
+    "IMG_8021",
+    "IMG_8944",
+    "IMG_7146",
+    "IMG_7164",
+    "IMG_7171",
+    "IMG_7180",
+    "IMG_7197",
+    "IMG_7199",
+    "IMG_7201",
+    "IMG_7997",
+    "IMG_8036",
+    "IMG_8624 Copy",
+    "IMG_8718",
+    "IMG_8716"
   ],
   "1332014338": [
-    "IMG_8827.JPG"
+    "IMG_8827"
   ],
   "1377444102": [
-    "IMG_8971.PNG",
-    "IMG_6674.jpg"
+    "IMG_8971",
+    "IMG_6674"
   ],
   "1377444103": [
-    "IMG_6694.jpg"
+    "IMG_6694"
   ],
   "1377444104": [
-    "IMG_8810.JPG"
+    "IMG_8810"
   ],
   "1377444105": [
-    "IMG_6708.jpg",
-    "IMG_6710.jpg"
+    "IMG_6708",
+    "IMG_6710"
   ],
   "1377444106": [
-    "IMG_6734.jpg",
-    "IMG_6737.jpg"
+    "IMG_6734",
+    "IMG_6737"
   ],
   "1377444108": [
-    "IMG_0998 Copy.JPG",
-    "IMG_6949 Copy.JPG"
+    "IMG_0998 Copy",
+    "IMG_6949 Copy"
   ],
   "1377444109": [
-    "IMG_6898 Copy.JPG"
+    "IMG_6898 Copy"
   ],
   "1377444110": [
-    "IMG_6905 Copy.JPG",
-    "IMG_1002 Copy.JPG",
-    "IMG_1004 Copy.JPG",
-    "IMG_1006 Copy.JPG",
-    "IMG_6871.jpg",
-    "IMG_6908.jpg"
+    "IMG_6905 Copy",
+    "IMG_1002 Copy",
+    "IMG_1004 Copy",
+    "IMG_1006 Copy",
+    "IMG_6871",
+    "IMG_6908"
   ],
   "1377444112": [
-    "IMG_6927.jpg",
-    "IMG_6934.jpg"
+    "IMG_6927",
+    "IMG_6934"
   ],
   "1377444116": [
-    "IMG_6958.jpg",
-    "IMG_6967.jpg"
+    "IMG_6958",
+    "IMG_6967"
   ],
   "1377444117": [
-    "IMG_1012 Copy.JPG",
-    "IMG_1013 Copy.JPG",
-    "IMG_6988.jpg"
+    "IMG_1012 Copy",
+    "IMG_1013 Copy",
+    "IMG_6988"
   ],
   "1377444118": [
-    "IMG_8818.JPG",
-    "IMG_6996.jpg",
-    "IMG_6999.jpg",
-    "IMG_7013.jpg"
+    "IMG_8818",
+    "IMG_6996",
+    "IMG_6999",
+    "IMG_7013"
   ],
   "1377444119": [
-    "IMG_8979.PNG",
-    "IMG_7043.jpg",
-    "IMG_7046.jpg"
+    "IMG_8979",
+    "IMG_7043",
+    "IMG_7046"
   ],
   "1377444120": [
-    "IMG_1014 Copy.JPG",
-    "IMG_7075.jpg",
-    "IMG_7103.jpg",
-    "IMG_8912.PNG"
+    "IMG_1014 Copy",
+    "IMG_7075",
+    "IMG_7103",
+    "IMG_8912"
   ],
   "1377444122": [
-    "IMG_7118.jpg"
+    "IMG_7118"
   ],
   "1377444123": [
-    "IMG_7142.jpg"
+    "IMG_7142"
   ],
   "1377444124": [
-    "IMG_7434.jpg"
+    "IMG_7434"
   ],
   "1377444125": [
-    "IMG_7395.jpg",
-    "IMG_7398.jpg"
+    "IMG_7395",
+    "IMG_7398"
   ],
   "1377444127": [
-    "IMG_8649 Copy.JPG",
-    "IMG_7439.jpg",
-    "IMG_7446.jpg"
+    "IMG_8649 Copy",
+    "IMG_7439",
+    "IMG_7446"
   ],
   "1377444128": [
-    "IMG_7471.jpg"
+    "IMG_7471"
   ],
   "1377444129": [
-    "IMG_7480.jpg"
+    "IMG_7480"
   ],
   "1377444130": [
-    "IMG_7455.jpg",
-    "IMG_7463.jpg",
-    "IMG_8650.JPG"
+    "IMG_7455",
+    "IMG_7463",
+    "IMG_8650"
   ],
   "1377450371": [
-    "IMG_7500.jpg"
+    "IMG_7500"
   ],
   "1377450372": [
-    "IMG_7540.jpg"
+    "IMG_7540"
   ],
   "1377450373": [
-    "IMG_7553 Copy.JPG"
+    "IMG_7553 Copy"
   ],
   "1377450375": [
-    "IMG_7727.jpg",
-    "IMG_7735.jpg",
-    "IMG_7747.jpg",
-    "IMG_7732.jpg"
+    "IMG_7727",
+    "IMG_7735",
+    "IMG_7747",
+    "IMG_7732"
   ],
   "1377450376": [
-    "IMG_8652 Copy.JPG"
+    "IMG_8652 Copy"
   ],
   "1377450377": [
-    "IMG_7829.jpg",
-    "IMG_7832.jpg",
-    "IMG_8665.JPG",
-    "IMG_8666.JPG"
+    "IMG_7829",
+    "IMG_7832",
+    "IMG_8665",
+    "IMG_8666"
   ],
   "1377450379": [
-    "IMG_8087.jpg"
+    "IMG_8087"
   ],
   "1377968893": [
-    "IMG_8233.jpg",
-    "IMG_8775.JPG"
+    "IMG_8233",
+    "IMG_8775"
   ],
   "1379241616": [
-    "IMG_8183.jpg",
-    "IMG_8170.jpg",
-    "IMG_8185.jpg"
+    "IMG_8183",
+    "IMG_8170",
+    "IMG_8185"
   ],
   "1379241617": [
-    "IMG_8158.jpg"
+    "IMG_8158"
   ],
   "1379241618": [
-    "IMG_8140.jpg",
-    "IMG_8141.jpg"
+    "IMG_8140",
+    "IMG_8141"
   ],
   "1379241620": [
-    "IMG_9635 Copy.JPG",
-    "osmid_1379241620.jpg"
+    "IMG_9635 Copy",
+    "osmid_1379241620"
   ],
   "1379612602": [
-    "IMG_7326.jpg",
-    "IMG_8636.JPG",
-    "IMG_8641.JPG",
-    "IMG_8825.JPG",
-    "IMG_8826.JPG",
-    "An Ninh Seminary chapel Copy.JPG",
-    "IMG_1043 Copy.JPG",
-    "IMG_7332.jpg",
-    "IMG_7345.jpg",
-    "IMG_7355.jpg",
-    "IMG_7361.jpg",
-    "IMG_7363.jpg",
-    "IMG_8638.JPG"
+    "IMG_7326",
+    "IMG_8636",
+    "IMG_8641",
+    "IMG_8825",
+    "IMG_8826",
+    "An Ninh Seminary chapel Copy",
+    "IMG_1043 Copy",
+    "IMG_7332",
+    "IMG_7345",
+    "IMG_7355",
+    "IMG_7361",
+    "IMG_7363",
+    "IMG_8638"
   ],
   "1384219084": [
-    "IMG_9665 Copy Copy.JPG"
+    "IMG_9665 Copy Copy"
   ],
   "1384219085": [
-    "IMG_9810 Copy.JPG",
-    "AF1QipOreUJWye3ozlhcx2_qyQtjQgRhzbVl0fYKkJTZ=s3072-v1.jpg"
+    "IMG_9810 Copy",
+    "AF1QipOreUJWye3ozlhcx2_qyQtjQgRhzbVl0fYKkJTZ=s3072-v1"
   ],
   "1388418415": [
-    "IMG_0905 Copy.JPG"
+    "IMG_0905 Copy"
   ],
   "1388473478": [
-    "IMG_0867 Copy Copy.JPG",
-    "carmelite3 Copy.JPG"
+    "IMG_0867 Copy Copy",
+    "carmelite3 Copy"
   ],
   "1388509039": [
-    "kim long church Copy.JPG"
+    "kim long church Copy"
   ],
   "1388902200": [
-    "IMG_5032~2.jpg",
-    "IMG_4933~2.jpg",
-    "IMG_4947~2.jpg",
-    "IMG_4951.jpg",
-    "IMG_4955.jpg",
-    "IMG_4970.jpg",
-    "IMG_4971.jpg",
-    "IMG_4983.jpg",
-    "IMG_4985.jpg",
-    "IMG_5004~2.jpg",
-    "IMG_5021.jpg",
-    "IMG_5031~2.jpg",
-    "Snapseed Copy.JPG"
+    "IMG_5032~2",
+    "IMG_4933~2",
+    "IMG_4947~2",
+    "IMG_4951",
+    "IMG_4955",
+    "IMG_4970",
+    "IMG_4971",
+    "IMG_4983",
+    "IMG_4985",
+    "IMG_5004~2",
+    "IMG_5021",
+    "IMG_5031~2",
+    "Snapseed Copy"
   ],
   "1388902201": [
-    "IMG_0988 Copy.JPG",
-    "IMG_0990 Copy.JPG"
+    "IMG_0988 Copy",
+    "IMG_0990 Copy"
   ],
   "1389775447": [
-    "IMG_0993 Copy.JPG",
-    "IMG_5627 Copy.JPG",
-    "IMG_5631 Copy.JPG",
-    "IMG_8798 Copy.JPG"
+    "IMG_0993 Copy",
+    "IMG_5627 Copy",
+    "IMG_5631 Copy",
+    "IMG_8798 Copy"
   ],
   "1389832833": [
-    "IMG_7879.jpg",
-    "IMG_7883.jpg"
+    "IMG_7879",
+    "IMG_7883"
   ],
   "1389832834": [
-    "IMG_8897.PNG",
-    "IMG_7890.jpg",
-    "IMG_7902.jpg",
-    "IMG_7905.jpg",
-    "IMG_7915.jpg",
-    "IMG_8669.JPG"
+    "IMG_8897",
+    "IMG_7890",
+    "IMG_7902",
+    "IMG_7905",
+    "IMG_7915",
+    "IMG_8669"
   ],
   "1416870249": [
-    "IMG_6832.jpg",
-    "IMG_6835.jpg"
+    "IMG_6832",
+    "IMG_6835"
   ],
   "1429722848": [
-    "osmid_1429722848.jpg"
+    "osmid_1429722848"
   ],
   "1429724168": [
-    "osmid_1429724168.jpg"
+    "osmid_1429724168"
   ],
   "1429733606": [
-    "osmid_1429733606.jpg",
-    "osmid_1429733606_2.jpg"
+    "osmid_1429733606",
+    "osmid_1429733606_2"
   ],
   "1429943740": [
-    "osmid_1429943740.jpg"
+    "osmid_1429943740"
   ],
   "1429964576": [
-    "osmid_1429964576.jpg"
+    "osmid_1429964576"
   ],
   "1429986274": [
-    "osmid_1429986274.jpg"
+    "osmid_1429986274"
   ],
   "1430134965": [
-    "osmid_1430134965.jpg"
+    "osmid_1430134965"
   ],
   "1430140351": [
-    "osmid_1430140351.jpg"
+    "osmid_1430140351"
   ],
   "1430140352": [
-    "osmid_1430140352.jpg"
+    "osmid_1430140352"
   ],
   "4291675218324692": [
-    "IMG_8890 Copy.JPG",
-    "IMG_0914 Copy.JPG"
+    "IMG_8890 Copy",
+    "IMG_0914 Copy"
   ],
   "4204853453454355": [
-    "IMG_0962 Copy.JPG"
+    "IMG_0962 Copy"
   ],
   "4204853453494286": [
-    "osmid_4204853453494286.jpg"
+    "osmid_4204853453494286"
   ]
 }
