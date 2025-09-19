@@ -22,7 +22,7 @@ export const validate_images = async (cityname) => {
     } catch (e) { }
 
     const large_img_files_names = fs.readdirSync(large_img_dir)
-    const all_buildings_imgs_names = Object.values(fids_to_img_names)
+    const all_buildings_imgs_basenames = Object.values(fids_to_img_names)
         .flatMap(arr => arr)
 
 
@@ -51,10 +51,10 @@ export const validate_images = async (cityname) => {
     // Check if I failed to add all available images to handmade data
     // copy them to "missing" folder to drop them later to their buildings
     const missing_imgs_dir = path.resolve(`../cities_images/${cityname}/missing`)
-    const names_set = new Set(all_buildings_imgs_names)
+    const assigned_images_basenames_set = new Set(all_buildings_imgs_basenames)
     const orphan_imgs_filenames = large_img_files_names.filter(img => {
         return !rejected_images.includes(img) // some imgs are omitted intentionally => don't yell
-            && !names_set.has(img)
+            && !assigned_images_basenames_set.has(img.split('.')[0])
     })
     if (orphan_imgs_filenames.length === 0) {
         console.log('✅ All generated images (excluding those explicitly rejected) are assigned to buildings')
@@ -74,7 +74,7 @@ export const validate_images = async (cityname) => {
         }
 
         orphan_imgs_filenames.forEach(img => {
-            console.log('❌ ' + img + ' is not assigned to any building and was copied to "missing" folder')
+            console.log('⚠️ ' + img + ' is not assigned to any building and was copied to "missing" folder')
             const oldPath = path.join(large_img_dir, img)
             const missing_path = path.join(missing_imgs_dir, img)
             fs.copyFileSync(oldPath, missing_path)
@@ -96,10 +96,9 @@ export const validate_images = async (cityname) => {
 
     // 3.
     // complain if fids_to_img_names contains nonexistent filenames
-    const imgs_filenames_set = new Set(large_img_files_names.map(img => img.toLowerCase()))
-    const bldgs_imgs_missing_in_files = all_buildings_imgs_names
-        .map(img => img.toLowerCase())
-        .filter(img => !imgs_filenames_set.has(img))
+    const imgs_files_basenames_set = new Set(large_img_files_names.map(img => img.split('.')[0]))
+    const bldgs_imgs_missing_in_files = all_buildings_imgs_basenames
+        .filter(img => !imgs_files_basenames_set.has(img))
     if (bldgs_imgs_missing_in_files.length === 0) {
         console.log('✅ No broken images found in fids_to_img_names')
     } else {
@@ -123,7 +122,7 @@ export const validate_images = async (cityname) => {
 
     // 5.
     // Check that highlights list doesn't contain nonexistent images names    
-    const hl_imgs_missing_in_files = highlights_order.filter(img => !imgs_filenames_set.has(img))
+    const hl_imgs_missing_in_files = highlights_order.filter(img => !imgs_files_basenames_set.has(img))
     if (hl_imgs_missing_in_files.length === 0) {
         console.log('✅ No broken images found in highlights_order')
     } else {
@@ -138,9 +137,6 @@ export const validate_images = async (cityname) => {
     // * I compare names without extension:
     // * Because highligts order is taken from google photos where .heic files are still .heic,
     // * and fids_to_img_names contains "final" images names with heic already converted to jpg
-    const all_buildings_imgs_basenames = all_buildings_imgs_names
-        .map(img_name => img_name.split('.')[0])
-
     const missing_highlights = highlights_order.filter(
         hl_name => !all_buildings_imgs_basenames.includes(hl_name.split('.')[0])
     )

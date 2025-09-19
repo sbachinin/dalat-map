@@ -33,7 +33,7 @@
             import(modulePath).then(mod => {
                 const ftin = mod.fids_to_img_names
 
-                for (const [fid, images] of Object.entries(ftin)) {
+                for (const [fid, images_basenames] of Object.entries(ftin)) {
                     const section = document.createElement('div')
                     section.classList.add('one-building')
 
@@ -44,9 +44,9 @@
                     id_link.textContent = `FID ${fid}`
                     section.appendChild(id_link)
 
-                    images.forEach(filename => {
+                    images_basenames.forEach(basename => {
                         const img = document.createElement('img')
-                        img.src = `../cities_images/${city}/dist/thumbs/${filename}`
+                        img.src = `../cities_images/${city}/dist/thumbs/${basename}.jpg`
                         section.appendChild(img)
                     })
 
