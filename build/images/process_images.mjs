@@ -128,7 +128,7 @@ for (const osmid_filename of osmid_filenames) {
 
 
 
-const fids_as_str = JSON.stringify(fids_to_img_names, null, 2)
+const fids_as_str = JSON.stringify(fids_to_img_names, null, 4)
 fs.writeFileSync(
     `../../${cityname}/static_data/fids_to_img_names.mjs`,
     `export const fids_to_img_names = ${fids_as_str}`

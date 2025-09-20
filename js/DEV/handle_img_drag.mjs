@@ -1,7 +1,7 @@
 import { display_highlights } from "../highlights.mjs";
 import { current_city, onload_city } from "../load_city.mjs";
 import { try_open_building } from "../panel/bldg_details.mjs";
-import { create_element_from_Html } from "../utils/frontend_utils.mjs";
+import { before_last_dot, create_element_from_Html } from "../utils/frontend_utils.mjs";
 import { save_string_to_file } from "./save_string_to_file.mjs";
 
 document.querySelector('#maplibregl-map').addEventListener("dragover", e => {
@@ -47,10 +47,6 @@ document.querySelector('#maplibregl-map').addEventListener("drop", e => {
 
     const file = e.dataTransfer.files[0]
     if (!file) { console.warn('no file dropped'); return }
-    if (file.name.endsWith('.heic') || file.name.endsWith('.HEIC')) {
-        console.warn(`HEIC file shouldn't be dropped here. Drop only files that will be eventually used on a page (of compatible formats)`)
-        return
-    }
 
     // check that file was dropped on a building
 
@@ -65,16 +61,18 @@ document.querySelector('#maplibregl-map').addEventListener("drop", e => {
     const feat_id = building.id
     current_city.fids_to_img_names[feat_id] = current_city.fids_to_img_names[feat_id] || []
 
-    if (current_city.fids_to_img_names[feat_id].includes(file.name)) {
-        console.log('already have such filename for this feature')
+    const basename = before_last_dot(file.name)
+
+    if (current_city.fids_to_img_names[feat_id].includes(basename)) {
+        console.log('already have such file basename for this feature')
         return
     }
 
     // add image
 
-    current_city.fids_to_img_names[feat_id].push(file.name)
+    current_city.fids_to_img_names[feat_id].push(basename)
     console.log(
-        'Added a new img name. Total images count: ',
+        'Added a new img basename. Total images count: ',
         Object.values(current_city.fids_to_img_names).flat().length
     )
 

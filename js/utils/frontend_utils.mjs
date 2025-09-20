@@ -346,7 +346,7 @@ export function parse_markdown_links(text) {
     });
 }
 
-const before_last_dot = (str) => {
+export const before_last_dot = (str) => {
     return str.substring(0, str.lastIndexOf('.'))
 }
 
