@@ -1219,7 +1219,7 @@ export const features_generated_props_for_frontend = {
   "1430147546": {
     "centroid": [
       107.582483,
-      16.481881
+      16.48188
     ],
     "is_french": true
   }

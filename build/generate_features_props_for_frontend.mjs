@@ -25,7 +25,7 @@ const all_contentful_features_ids = [...new Set(
 
 all_contentful_features_ids.forEach(cfid => {
     if (!all_tiled_features.find(gjf => String(gjf.id) === String(cfid))) {
-        console.warn(`There is some data for feature id ${cfid} but no such geojson feature. Is this feature from renderables?`)
+        console.warn(`There is some data for feature id ${cfid} but no such TILED geojson feature. Perhaps it's not meant to be tiled, and then it's ok.`)
     }
 })
 

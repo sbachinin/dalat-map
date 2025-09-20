@@ -105,7 +105,8 @@ const osmid_filenames = fs.readdirSync(large_folder)
     .filter(f => f.startsWith('osmid_'))
 
 for (const osmid_filename of osmid_filenames) {
-    const osmid = path.parse(osmid_filename).name.split('_')[1]
+    const osmid_file_basename = path.parse(osmid_filename).name
+    const osmid = osmid_file_basename.split('_')[1]
 
     if (!osmid.match(/^[0-9]+$/)) {
         console.log('Non-numeric osmid in', osmid_filename)
@@ -116,8 +117,8 @@ for (const osmid_filename of osmid_filenames) {
         fids_to_img_names[osmid] = []
     }
 
-    if (!fids_to_img_names[osmid].includes(osmid_filename)) {
-        fids_to_img_names[osmid].push(osmid_filename)
+    if (!fids_to_img_names[osmid].includes(osmid_file_basename)) {
+        fids_to_img_names[osmid].push(osmid_file_basename)
     }
 }
 
