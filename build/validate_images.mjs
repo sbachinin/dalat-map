@@ -157,7 +157,7 @@ export const validate_images = async (cityname) => {
         const file_path = path.join(large_img_dir, file)
         const stats = fs.statSync(file_path)
         if (stats.isFile() && stats.size > SIZE_LIMIT) {
-            console.log(`\x1b[33m⚠️  Warning:\x1b[0m ${file} is ${(stats.size / 1024).toFixed(1)} KB`)
+            console.log(`\x1b[33m⚠️  Warning:\x1b[0m ${path.join(large_img_dir, file)} is ${(stats.size / 1024).toFixed(1)} KB`)
             return true
         }
     })

@@ -135,7 +135,9 @@ export const fids_to_img_names = {
     "IMG_1026 Copy",
     "IMG_1027 Copy",
     "IMG_8620",
-    "osmid_239972934"
+    "osmid_239972934",
+    "IMG_1020 Copy",
+    "IMG_8633"
   ],
   "240266283": [
     "IMG_8647",
@@ -193,7 +195,8 @@ export const fids_to_img_names = {
   "695770489": [
     "IMG_7952",
     "IMG_7916",
-    "IMG_7949"
+    "IMG_7949",
+    "IMG_8674"
   ],
   "695770492": [
     "IMG_8838",
