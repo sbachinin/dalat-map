@@ -7,6 +7,10 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    margin: 0;
+
+    /* This was added to prevent pull-to-refresh when swiping the panel in Firefox on Android */
+    overscroll-behavior-y: contain;
 }
 
 body {
