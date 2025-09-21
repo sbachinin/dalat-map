@@ -2,7 +2,7 @@ import { set_css_num_var, is_landscape, is_mouse_device } from '../utils/fronten
 import { panel } from './panel.mjs'
 import { panel_thumbs_list_id } from './panel_thumbs_list.mjs'
 
-export const THUMB_GAP = 4
+export const THUMB_GAP = 7
 set_css_num_var('--thumb-gap', THUMB_GAP, 'px')
 
 const THUMB_IDEAL_WIDTH = 215
