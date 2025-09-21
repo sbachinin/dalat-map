@@ -11,6 +11,10 @@
     #panel-thumbs-list {
         flex-wrap: wrap;
         height: max-content;
+
+        /* Must expand freely within var(--thumbs-list-width-in-landscape) */
+        /* It worked without this max-content for thumbs list in building details, but for some reason didn't work for highlights list (it shrank to 1 col) */
+        width: max-content;
     }
 }
 

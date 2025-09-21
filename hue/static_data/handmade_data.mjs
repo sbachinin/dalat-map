@@ -60,6 +60,11 @@ export const buildings_handmade_data = {
         title_side: 'north'
     },
 
+    1431465867: {
+        title: `Tuy Ly Vuong
+        Palace`
+    },
+
     175063593: {
         title: 'Railway\nstation',
         title_side: 'north',
