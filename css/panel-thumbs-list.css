@@ -10,6 +10,7 @@
 @media (orientation: landscape) {
     #panel-thumbs-list {
         flex-wrap: wrap;
+        justify-content: center;
         height: max-content;
 
         /* Must expand freely within var(--thumbs-list-width-in-landscape) */
