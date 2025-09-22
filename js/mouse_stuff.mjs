@@ -22,10 +22,14 @@ export const add_mouse_stuff = () => {
     const map = window.dalatmap
 
     map.on('click', (e) => {
-        /* navigator?.clipboard?.writeText?.(
+        // !! Don't call navigator.clipboard.writeText here!
+        // At any rate, it shouldn't be called in production
+        // Because in android firefox this resulted in having just a message "Copied to clipboard", instead of proper click behaviour
+
+        console.log(
             `[${e.lngLat.lng.toFixed(6)}, ${e.lngLat.lat.toFixed(6)}]`
             + ' ' + map.queryRenderedFeatures(e.point)?.[0]?.id
-        ) */
+        )
         const clickable_feat = find_clickable_feat(e.point)
         if (clickable_feat) {
             try_open_building(clickable_feat.id, true, true)

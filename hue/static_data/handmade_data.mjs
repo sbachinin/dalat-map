@@ -71,6 +71,7 @@ export const buildings_handmade_data = {
     239985079: {
         title: `Abandoned
         waterpark`,
+        title_coords: [107.576808, 16.409635]
     },
 
     239972934: {
@@ -306,6 +307,85 @@ export const land_areas_handmade_data = {
     217466613: {
         title: 'Phu Bai\nInternational\nAirport',
         area_type: AREA_TYPES.AIRPORT
+    },
+
+    1172894104: {
+        // greenish area around an dinh palace
+    },
+
+    39456101: {
+        // green island
+    },
+    1180918087: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery',
+        title_coords: [107.592386, 16.444863]
+    },
+    1180918090: {
+        area_type: AREA_TYPES.CEMETERY,
+    },
+    1180918092: {
+        area_type: AREA_TYPES.CEMETERY,
+    },
+    1180743119: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery'
+    },
+    1180743120: {
+        area_type: AREA_TYPES.CEMETERY
+    },
+    1181145133: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery'
+    },
+    1181118321: {
+        area_type: AREA_TYPES.CEMETERY,
+    },
+    1181076366: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery',
+        title_coords: [107.600882, 16.429978]
+    },
+    1181246511: {
+        area_type: AREA_TYPES.CEMETERY,
+    },
+    1181246512: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery',
+        title_coords: [107.593106, 16.424417]
+    },
+    590077789: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery',
+        title_coords: [107.562807, 16.446736]
+    },
+    589021821: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery',
+        title_coords: [107.555492, 16.446089]
+    },
+    205794922: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery',
+        title_coords: [107.556075, 16.433106]
+    },
+    211038385: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery',
+        title_coords: [107.539802, 16.455323]
+    },
+    1183249970: {
+        area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery',
+        title_coords: [107.530066, 16.460502]
+    },
+    1075018793: {
+        title: `Hill park with
+        war bunkers`
+    },
+    1170979640: {
+        title: `Bao Quoc
+        temple`
     }
 }
 
