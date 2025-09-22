@@ -1,11 +1,3 @@
-#building-details #panel-thumbs-list img {
-    width: var(--thumb-width);
-    height: var(--thumb-height);
-    cursor: pointer;
-    display: grid;
-    gap: var(--thumb-gap);
-}
-
 #building-details {
     display: flex;
     justify-content: center;

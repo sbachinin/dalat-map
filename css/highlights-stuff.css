@@ -66,10 +66,6 @@
 }
 
 @media (orientation: portrait) and (pointer: fine) {
-    #highlights-title {
-        width: var(--thumb-width);
-        height: var(--thumb-height);
-    }
 
     #highlights-title-arrow {
         transform: rotate(45deg);

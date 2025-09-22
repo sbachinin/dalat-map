@@ -1611,6 +1611,10 @@ export const images_sizes = {
     1426,
     1197
   ],
+  "osmid_1388509039.jpg": [
+    1132,
+    1509
+  ],
   "osmid_1429722848.jpg": [
     1132,
     1509
@@ -1650,6 +1654,10 @@ export const images_sizes = {
   "osmid_1430140352.jpg": [
     1639,
     1041
+  ],
+  "osmid_1431680514.jpg": [
+    1131,
+    1509
   ],
   "osmid_173151284.jpg": [
     1628,

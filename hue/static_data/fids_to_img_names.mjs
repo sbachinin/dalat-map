@@ -501,7 +501,8 @@ export const fids_to_img_names = {
         "carmelite3 Copy"
     ],
     "1388509039": [
-        "kim long church Copy"
+        "kim long church Copy",
+        "osmid_1388509039"
     ],
     "1388902200": [
         "IMG_5032~2",
@@ -571,6 +572,9 @@ export const fids_to_img_names = {
     ],
     "1430140352": [
         "osmid_1430140352"
+    ],
+    "1431680514": [
+        "osmid_1431680514"
     ],
     "4291675218324692": [
         "IMG_8890 Copy",

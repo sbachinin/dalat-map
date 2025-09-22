@@ -40,8 +40,6 @@
 
 
 #panel-thumbs-list img {
-    width: var(--thumb-width);
-    height: var(--thumb-height);
     cursor: pointer;
 }
 

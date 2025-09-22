@@ -55,6 +55,24 @@ export const buildings_handmade_data = {
         subtitle: 'As of 2025, this building belongs to the psychiatric department of Hue central hospital'
     },
 
+    1431655095: {
+        title: `Kilns (What
+        remains of an
+        old factory)`,
+        subtitle: 'This is the only remaining structure of a cement factory built here in 1896 by a french private company. It was almost completely demolished by 2021, allegedly because of being a serious air polluter. (No doubt it was.) Kilns are bottle-shaped brick structures where the lime was burned (calcinated) for some construction purposes. Kilns can be found in many parts of the world, but their vietnamese variety has some unique features. The historical importance of these structures was recognized by the local government, and some plans of renovation are being made.'
+    },
+
+    1431680514: {
+        title: `Huyen Khong
+        temple`,
+        subtitle: `Built fairly recently, this building is a slightly simplified version of the magnificent 6th-century Mahabodhi temple in India. (It's where Siddhartha Gautama attained enlightenment under the Bodhi Tree.)`
+    },
+
+    239985079: {
+        title: `Abandoned
+        waterpark`,
+    },
+
     239972934: {
         title: 'Museum of\nculture',
         title_side: 'north'
