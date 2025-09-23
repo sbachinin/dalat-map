@@ -2,7 +2,13 @@ import { SOURCES_NAMES } from "../js/constants.mjs";
 import { interpolate } from "../js/utils/isomorphic_utils.mjs";
 import { constants as c } from "./constants.mjs";
 
-export const CITY_WALL_COLOR = 'hsl(45, 85%, 0%)'
+export const CITY_WALL_COLOR = [
+    'interpolate',
+    ['linear'],
+    ['zoom'],
+    10, 'hsl(45, 85%, 0%)',
+    17, 'hsl(45, 0%, 70%)'
+]
 
 export const city_walls_fill = {
     name: 'City walls fill',

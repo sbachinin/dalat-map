@@ -79,6 +79,17 @@ export const buildings_handmade_data = {
         title_side: 'north'
     },
 
+    1044435601: {
+        title: `College of
+        Agriculture
+        and Forestry`
+    },
+
+    1044435624: {
+        title: `College
+        of arts`
+    },
+
     1431465867: {
         title: `Tuy Ly Vuong
         Palace`
