@@ -174,14 +174,14 @@ function derive_selected_variants_for_selectable_fill(base_layer) {
                 [
                     "case",
                     ['==', ['feature-state', 'selected'], true],
-                    4,
+                    3,
                     0
                 ],
                 15.5,
                 [
                     "case",
                     ['==', ['feature-state', 'selected'], true],
-                    1.5,
+                    1.2,
                     0
                 ],
             ]

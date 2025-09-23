@@ -120,3 +120,6 @@ export const make_polygon_feat = (coords, id, props) => {
         }
     }
 }
+
+// ###1
+export const THUMB_INTRINSIC_HEIGHT = 287

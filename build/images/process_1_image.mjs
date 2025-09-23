@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import sharp from 'sharp'
 import heicConvert from 'heic-convert'
+import { THUMB_INTRINSIC_HEIGHT } from '../../js/utils/isomorphic_utils.mjs'
 
 const supported_formats = ['.png', '.jpg', '.jpeg', '.gif', '.heic']
 const max_area = 800 * 1067 * 2
@@ -59,11 +60,10 @@ export const process_1_image = async (source_file_path, force = false) => {
     }
 
     // 1. Create thumbnail
-    const thumb_height = 287
-    const thumb_width = Math.round(287 * (metadata.width / metadata.height))
+    const thumb_width = Math.floor(THUMB_INTRINSIC_HEIGHT * (metadata.width / metadata.height))
     await sharp_image
         .clone()
-        .resize(thumb_width, thumb_height)
+        .resize(thumb_width, THUMB_INTRINSIC_HEIGHT)
         .jpeg({ quality: 95 })
         .toFile(thumb_img_path)
 

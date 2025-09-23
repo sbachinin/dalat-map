@@ -11,6 +11,7 @@
     #panel-thumbs-list {
         flex-wrap: wrap;
         justify-content: space-evenly;
+        align-items: center;
         height: max-content;
 
         /* Must expand freely within var(--thumbs-list-width-in-landscape) */

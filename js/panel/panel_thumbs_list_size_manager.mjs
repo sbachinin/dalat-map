@@ -1,23 +1,20 @@
 import { set_css_num_var } from '../utils/frontend_utils.mjs'
+import { THUMB_INTRINSIC_HEIGHT } from '../utils/isomorphic_utils.mjs'
 import { panel_thumbs_list_id } from './panel_thumbs_list.mjs'
 
 export const THUMB_GAP = 7
 set_css_num_var('--thumb-gap', THUMB_GAP, 'px')
 
-const THUMB_IDEAL_WIDTH = 215
-const THUMB_IDEAL_HEIGHT = 286
-const img_ratio = THUMB_IDEAL_WIDTH / THUMB_IDEAL_HEIGHT
-
+const THUMB_IDEAL_RATIO = 3 / 4
 
 export const update_panel_thumbs_list_size_variables = ({
     max_width_ratio
 }) => {
 
-    let thumb_ideal_width = THUMB_IDEAL_WIDTH
-    let thumb_ideal_height = THUMB_IDEAL_HEIGHT
     // on a small device 1 image can be higher than viewport...
-    thumb_ideal_height = Math.min(THUMB_IDEAL_HEIGHT, window.innerHeight - THUMB_GAP * 2)
-    thumb_ideal_width = thumb_ideal_height * img_ratio
+    const thumb_ideal_height = Math.min(THUMB_INTRINSIC_HEIGHT, Math.ceil(window.innerHeight - THUMB_GAP * 2))
+
+    const thumb_ideal_width = Math.ceil(thumb_ideal_height * THUMB_IDEAL_RATIO)
 
 
 
