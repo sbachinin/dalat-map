@@ -29,7 +29,7 @@ export const activate_image = (el) => {
     });
 }
 
-export const create_lazy_image = src => {
+export const create_lazy_image = (src, width, aspect_ratio) => {
     const filename = src.split('/').pop()
     const el = create_element_from_Html(
         `<a class='lazy-image-wrapper'
@@ -38,7 +38,7 @@ export const create_lazy_image = src => {
             data-pswp-height="${current_city.images_sizes[filename]?.[1]}"
         >
             <div class="img-loader" style="display: none"></div>
-            <img data-src="${src}" class="lazy">
+            <img data-src="${src}" class="lazy" style="width: ${width}px; aspect-ratio: ${aspect_ratio}">
         </a>`
     )
     do_once_visible(el, () => activate_image(el))

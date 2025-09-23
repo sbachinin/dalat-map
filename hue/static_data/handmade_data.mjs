@@ -178,7 +178,7 @@ export const buildings_handmade_data = {
         It's one of the few structures in the Imperial City that survived the bombings of the 1960s and '70s. In later years, however, it fell into serious disrepair until a UNESCO-guided restoration began in the late 1990s.`,
         links: [
             {
-                description: 'Amazing 1998 photos of a ruin',
+                description: 'More photos of a ruin from 1998',
                 url: 'https://www.facebook.com/media/set/?set=a.1716030635284698.1073741847.1714188455468916&type=3&_rdr'
             }
         ]

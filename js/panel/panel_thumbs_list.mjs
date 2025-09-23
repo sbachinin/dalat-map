@@ -1,6 +1,8 @@
 import { create_lazy_image } from "../lazy-image.mjs";
+import { current_city } from "../load_city.mjs";
 import { bldg_link_html } from "../photoswipe_mutations_observer.mjs";
 import { create_element_from_Html, get_image_url, is_mouse_device } from "../utils/frontend_utils.mjs";
+import { THUMB_INTRINSIC_HEIGHT } from "../utils/isomorphic_utils.mjs";
 import { PANEL_CONTENT_TYPES } from "./panel.mjs";
 
 const imageFadingDuration = 160
@@ -37,7 +39,13 @@ export const create_panel_thumbs_list = ({ images_basenames, content_type = PANE
     const slide_els = images_basenames.map(
         basename => {
             const wr = create_element_from_Html(`<div class="slide-wrapper"></div>`)
-            wr.appendChild(create_lazy_image(get_image_url(basename, 'thumbs')))
+            const large_size = current_city.images_sizes[basename + '.jpg']
+            const aspect_ratio = large_size[0] / large_size[1]
+            wr.appendChild(create_lazy_image(
+                get_image_url(basename, 'thumbs'),
+                THUMB_INTRINSIC_HEIGHT * aspect_ratio,
+                aspect_ratio
+            ))
             return wr
         }
     )

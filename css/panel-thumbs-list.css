@@ -31,6 +31,7 @@
 
 #panel-thumbs-list img {
     cursor: pointer;
+    max-width: 100%; /* calc(var(--thumbs-list-width-in-landscape) - (var(--thumb-gap) * 2)); */
 }
 
 .slide-wrapper {
