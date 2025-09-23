@@ -13,18 +13,11 @@ export const update_panel_thumbs_list_size_variables = ({
     max_width_ratio
 }) => {
 
-    let thumb_width = THUMB_IDEAL_WIDTH
-    let thumb_height = THUMB_IDEAL_HEIGHT
+    let thumb_ideal_width = THUMB_IDEAL_WIDTH
+    let thumb_ideal_height = THUMB_IDEAL_HEIGHT
     // on a small device 1 image can be higher than viewport...
-    thumb_height = Math.min(THUMB_IDEAL_HEIGHT, window.innerHeight - THUMB_GAP * 2)
-    thumb_width = thumb_height * img_ratio
-
-    // thumb size vars have to be set anyway because there are (can be) tiny differences btw sizes of actual image files
-    set_css_num_var('--thumb-height', thumb_height, 'px')
-    set_css_num_var('--thumb-width', thumb_width, 'px')
-
-
-
+    thumb_ideal_height = Math.min(THUMB_IDEAL_HEIGHT, window.innerHeight - THUMB_GAP * 2)
+    thumb_ideal_width = thumb_ideal_height * img_ratio
 
 
 
@@ -32,13 +25,13 @@ export const update_panel_thumbs_list_size_variables = ({
     I made it using something like grid-template-columns: repeat(...) + max-width
     But it failed in FF (it displayed always 1 column) that's why I switched to manual js solution
     */
-    const one_column_width = thumb_width + THUMB_GAP * 2
-    const two_columns_width = thumb_width * 2 + THUMB_GAP * 3
+    const one_column_width = thumb_ideal_width + THUMB_GAP * 2
+    const two_columns_width = thumb_ideal_width * 2 + THUMB_GAP * 3
     let width_in_landscape = one_column_width
     const enough_width_for_2cols = two_columns_width < window.innerWidth * max_width_ratio / 100
     const should_try_to_expand_to_2_cols = document.querySelectorAll(`#${panel_thumbs_list_id} img`).length > 5
     if (should_try_to_expand_to_2_cols && enough_width_for_2cols) {
-        width_in_landscape += thumb_width + THUMB_GAP
+        width_in_landscape += thumb_ideal_width + THUMB_GAP
     }
 
 
@@ -52,7 +45,7 @@ export const update_panel_thumbs_list_size_variables = ({
     )
     set_css_num_var(
         '--thumbs-list-height-in-portrait',
-        thumb_height + THUMB_GAP * 2,
+        thumb_ideal_height + THUMB_GAP * 2,
         'px'
     )
 }
