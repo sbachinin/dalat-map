@@ -10,7 +10,7 @@
 @media (orientation: landscape), (pointer: fine) {
     #panel-thumbs-list {
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-evenly;
         height: max-content;
 
         /* Must expand freely within var(--thumbs-list-width-in-landscape) */
