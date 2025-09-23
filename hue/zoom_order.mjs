@@ -108,19 +108,48 @@ export const zoom_order = {
         },
         {
             // needs a higher importance to appear on top of city wall, plus a distinct color 
-            filter: ['any', ['==', '$id', 174746317]],
-            drawing_layers: [{
-                "name": "City gate fill",
-                "type": "fill",
-                "source": SOURCES_NAMES.CITY_TILES,
-                "source-layer": "important_boring_building",
-                drawing_importance: 1,
-                "paint": {
-                    "fill-color": '#8975d7ff',
-                    "fill-antialias": true,
+            filter: ['==', ['get', 'historic'], 'city_gate'],
+            drawing_layers: [
+                {
+                    "name": "City gate fill",
+                    "type": "fill",
+                    "source": SOURCES_NAMES.CITY_TILES,
+                    "source-layer": "important_boring_building",
+                    drawing_importance: 1,
+                    "paint": {
+                        "fill-color": 'hsl(273, 61%, 75%)',
+                        "fill-antialias": true,
+                    },
+                    selectable: true
                 },
-                selectable: true
-            }],
+                // city gate title
+                // looked really bad
+                // tried different rotation but was too complex, each one need another angle
+                /* {
+                    "name": "City gate title",
+                    "type": "symbol",
+                    "source": SOURCES_NAMES.CITY_TILES,
+                    "source-layer": "important_boring_building",
+                    drawing_importance: 1,
+                    layout: {
+                        'text-field': `City gate`,
+                        "text-font": ["Lato Regular"],
+                        'text-rotate': [
+                            "case",
+                            ["any",
+                                ["==", "id", '367959066'],
+                                ["==", "id", '367959068'],
+                                ["==", "id", '174746317'],
+                                ["==", "id", '695810694']
+                            ],
+                            50,
+                            -50
+                        ]
+                    },
+                    "paint": {},
+                    selectable: true
+                } */
+            ],
         },
     ],
 

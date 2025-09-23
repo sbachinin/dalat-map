@@ -64,7 +64,10 @@ export const assets_for_build = {
             name: 'important_boring_building',
             osm_feature_filter: f => f.properties?.building
                 && f.properties?.['building:architecture'] !== 'french_colonial'
-                && is_important_building(f.id, all_handmade_data, fids_to_img_names)
+                && (
+                    is_important_building(f.id, all_handmade_data, fids_to_img_names)
+                    || f.properties?.historic === 'city_gate'
+                )
                 && !is_within_imperial_or_intersects(f),
             props_to_add_to_osm_features: ['is_selectable'],
         },

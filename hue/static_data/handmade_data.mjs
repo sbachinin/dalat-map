@@ -309,6 +309,10 @@ export const land_areas_handmade_data = {
         area_type: AREA_TYPES.AIRPORT
     },
 
+    218423471: {
+        // park to the northeast of imperial
+    },
+
     1172894104: {
         // greenish area around an dinh palace
     },
