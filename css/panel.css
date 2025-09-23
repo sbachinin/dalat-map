@@ -1,9 +1,11 @@
-@media (orientation: portrait) {
+@media (orientation: portrait) and (pointer: coarse) {
     #panel-expander {
         height: var(--panel-breadth);
     }
 
     #panel {
+        overflow-x: scroll;
+        overflow-y: hidden;
         top: 0;
         width: 100vw;
         /*
@@ -11,6 +13,11 @@
         Content has to be able to scroll itself vertically.
         */
         height: max-content;
+    }
+
+    #panel,
+    #panel * {
+        max-height: var(--thumbs-list-height-in-portrait);
     }
 
     #panel-expand-tappable-margin {
@@ -21,29 +28,7 @@
     }
 }
 
-/* on portrait+mobile, scroll the content horizontally */
-@media (orientation: portrait) and (pointer: coarse) {
-    #panel {
-        overflow-x: scroll;
-        overflow-y: hidden;
-    }
-
-    #panel,
-    #panel * {
-        max-height: var(--thumbs-list-height-in-portrait);
-    }
-}
-
-@media (orientation: portrait) and (pointer: fine) {
-    #panel {
-        /* in desktop+portrait panel is not restricted to 1 row */
-        height: max-content;
-        max-height: calc(var(--thumbs-list-height-in-portrait) * 1.6);
-        overflow-y: scroll;
-    }
-}
-
-@media (orientation: landscape) {
+@media (orientation: landscape), (pointer: fine) {
     #panel-expander {
         width: var(--panel-breadth);
         order: 1;
@@ -89,7 +74,7 @@
     box-sizing: border-box;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape), (pointer: fine) {
     #panel * {
         max-width: var(--thumbs-list-width-in-landscape);
     }

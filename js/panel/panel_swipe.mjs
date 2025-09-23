@@ -1,6 +1,6 @@
 import {
-    is_landscape,
-    get_panel_shown_breadth
+    get_panel_shown_breadth,
+    panel_is_vertical
 } from '../utils/frontend_utils.mjs'
 import { within } from '../utils/isomorphic_utils.mjs'
 
@@ -89,7 +89,7 @@ export const make_expandable_on_swipe = (panel) => {
                 panel_full_size: panel.content_breadth,
                 touch_start_XY: e.changedTouches[0],
                 drag_start_coord: null,
-                drag_axis: is_landscape() ? 'x' : 'y',
+                drag_axis: panel_is_vertical() ? 'x' : 'y',
                 content_was_scrolled: false,
                 had_touchmove: false,
                 touch_start_timestamp: Date.now()

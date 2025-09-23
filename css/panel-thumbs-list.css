@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape), (pointer: fine) {
     #panel-thumbs-list {
         flex-wrap: wrap;
         justify-content: center;
@@ -19,20 +19,9 @@
     }
 }
 
-@media (orientation: portrait) {
-    #panel-thumbs-list {
-        height: var(--thumbs-list-height-in-portrait);
-    }
-}
-
-@media (orientation: portrait) and (pointer: fine) {
-    #panel-thumbs-list {
-        height: max-content;
-    }
-}
-
 @media (orientation: portrait) and (pointer: coarse) {
     #panel-thumbs-list {
+        height: var(--thumbs-list-height-in-portrait);
         width: max-content;
         flex-wrap: nowrap;
     }

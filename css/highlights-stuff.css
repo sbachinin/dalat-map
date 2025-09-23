@@ -38,7 +38,7 @@
     justify-content: center;
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (pointer: coarse) {
     #highlights-title {
         flex-direction: column;
         justify-content: center;
@@ -55,20 +55,13 @@
     height: 40px;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape), (pointer: fine) {
     #highlights-title {
         width: 100%;
     }
 
     #highlights-title-arrow {
         transform: rotate(90deg);
-    }
-}
-
-@media (orientation: portrait) and (pointer: fine) {
-
-    #highlights-title-arrow {
-        transform: rotate(45deg);
     }
 }
 

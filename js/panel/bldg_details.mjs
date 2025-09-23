@@ -9,7 +9,7 @@ import {
     get_map_center_shift_px,
     get_minimal_zoom_on_building_select,
     is_dead_building,
-    is_landscape,
+    panel_is_vertical,
     parse_markdown_links,
     push_to_history,
 } from '../utils/frontend_utils.mjs'
@@ -142,7 +142,7 @@ const coords_will_be_in_view = (
     let left_bound = padding
     let bottom_bound = window.innerHeight - padding
     if (panel_wil_be_expanded) {
-        if (is_landscape()) {
+        if (panel_is_vertical()) {
             left_bound += panel.content_breadth
         } else {
             bottom_bound -= panel.content_breadth

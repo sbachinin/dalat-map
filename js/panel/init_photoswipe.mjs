@@ -1,5 +1,5 @@
 import PhotoSwipeLightbox from '../../photoswipe/dist/photoswipe-lightbox.esm.min.js'
-import { is_landscape } from '../utils/frontend_utils.mjs'
+import { panel_is_vertical } from '../utils/frontend_utils.mjs'
 import { panel } from './panel.mjs'
 
 export let lightbox = null
@@ -43,7 +43,7 @@ export const init_photoswipe = () => {
 
         let top = undefined
         let left = undefined
-        if (is_landscape()) {
+        if (panel_is_vertical()) {
             top = thumb_i.offsetTop - (panel_el.offsetHeight - thumb_i.offsetHeight) / 2
         } else {
             left = thumb_i.offsetLeft - (panel_el.offsetWidth - thumb_i.offsetWidth) / 2

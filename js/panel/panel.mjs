@@ -3,11 +3,11 @@ import {
     set_css_num_var,
     debounce,
     is_mouse_device,
-    is_landscape,
     wait_once_for_transitionend,
     wait_1frame,
     wait,
     get_panel_shown_breadth,
+    panel_is_vertical,
 } from '../utils/frontend_utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 import { wait_for_sizeless_images_load } from './wait_for_sizeless_images_load.mjs'
@@ -40,7 +40,7 @@ const subscribers = {
 }
 
 const get_panel_body_breadth = _ => { // height/width with scrollbar
-    return panel.body_element[is_landscape() ? 'offsetWidth' : 'offsetHeight']
+    return panel.body_element[panel_is_vertical() ? 'offsetWidth' : 'offsetHeight']
 }
 
 const update_expand_button = debounce(async () => {

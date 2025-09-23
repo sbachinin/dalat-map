@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape), (pointer: fine) {
     #building-details {
         width: max-content;
     }

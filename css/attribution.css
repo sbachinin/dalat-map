@@ -1,10 +1,10 @@
-@media (orientation: landscape) {
+@media (orientation: landscape), (pointer: fine) {
     #custom-attribution {
         justify-self: flex-end;
     }
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (pointer: coarse) {
     #custom-attribution {
         order: 3;
         width: max-content;

@@ -2,8 +2,6 @@ import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from '../common_drawing_layers/consta
 import { RENDERABLES_NAMES } from '../constants.mjs';
 import { current_city } from '../load_city.mjs';
 
-export const is_landscape = () => window.matchMedia("(orientation: landscape)").matches
-
 export const is_mouse_device = window.matchMedia("(pointer: fine)").matches
 
 export const is_mobile_device = (() => {
@@ -169,14 +167,19 @@ export const get_panel_shown_breadth = () => {
     return get_css_var_num('--panel-breadth')
 }
 
+export const panel_is_vertical = _ => {
+    return is_mouse_device
+        || window.matchMedia("(orientation: landscape)").matches
+}
+
 // half-panel-breadth shift
 // By passing certain "breadth", user decides
 // if he's interested in "max breadth" (that of content), or an "actual breadth" (that of panel-expander element)
 // "Content breadth" is used to retrieve "future breadth" before expand, e.g. when flying to bldg
 export const get_map_center_shift_px = breadth => {
     return [
-        is_landscape() ? (breadth / 2) : 0,
-        is_landscape() ? 0 : -(breadth / 2)
+        panel_is_vertical() ? (breadth / 2) : 0,
+        panel_is_vertical() ? 0 : -(breadth / 2)
     ]
 }
 

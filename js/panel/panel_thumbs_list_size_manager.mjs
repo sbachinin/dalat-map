@@ -1,5 +1,4 @@
-import { set_css_num_var, is_landscape, is_mouse_device } from '../utils/frontend_utils.mjs'
-import { panel } from './panel.mjs'
+import { set_css_num_var } from '../utils/frontend_utils.mjs'
 import { panel_thumbs_list_id } from './panel_thumbs_list.mjs'
 
 export const THUMB_GAP = 7
@@ -13,33 +12,12 @@ const img_ratio = THUMB_IDEAL_WIDTH / THUMB_IDEAL_HEIGHT
 export const update_panel_thumbs_list_size_variables = ({
     max_width_ratio
 }) => {
-    const is_portrait_desktop = !is_landscape() && is_mouse_device
 
-
-
-
-
-    // In portrait & desktop, shrink the thumbs to avoid empty hor space
-    
     let thumb_width = THUMB_IDEAL_WIDTH
     let thumb_height = THUMB_IDEAL_HEIGHT
-    if (is_portrait_desktop && panel.content?.element) {
-        const wrapper_width_without_scrollbar = panel.content.element.clientWidth
-        const row_initial_length = Math.floor(
-            (wrapper_width_without_scrollbar - THUMB_GAP) / (THUMB_IDEAL_WIDTH + THUMB_GAP)
-        )
-        thumb_width = (wrapper_width_without_scrollbar - THUMB_GAP) / (row_initial_length + 1)
-            - THUMB_GAP
-            - /* otherwise some occasional bad wrapping */ 0.5
-        thumb_width = (wrapper_width_without_scrollbar - THUMB_GAP) / (row_initial_length + 1) - THUMB_GAP - 0.5
-        thumb_width = (wrapper_width_without_scrollbar - THUMB_GAP) / (row_initial_length + 1)
-            - THUMB_GAP
-            - /* otherwise some occasional bad wrapping */ 0.5
-        thumb_height = thumb_width / img_ratio
-    } else { // otherwise it can be a small device where 1 image doesn't fit into viewport height...
-        thumb_height = Math.min(THUMB_IDEAL_HEIGHT, window.innerHeight - THUMB_GAP * 2)
-        thumb_width = thumb_height * img_ratio
-    }
+    // on a small device 1 image can be higher than viewport...
+    thumb_height = Math.min(THUMB_IDEAL_HEIGHT, window.innerHeight - THUMB_GAP * 2)
+    thumb_width = thumb_height * img_ratio
 
     // thumb size vars have to be set anyway because there are (can be) tiny differences btw sizes of actual image files
     set_css_num_var('--thumb-height', thumb_height, 'px')

@@ -13,7 +13,7 @@
 }
 
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (pointer: coarse) {
     #non-map {
         grid-template-rows: 1fr auto;
     }
@@ -39,7 +39,7 @@
     }
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape), (pointer: fine) {
     #non-map {
         grid-template-columns: auto 1fr;
     }
