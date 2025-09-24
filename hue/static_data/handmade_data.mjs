@@ -190,6 +190,19 @@ export const buildings_handmade_data = {
         subtitle: `This pavilion is named Thai Binh, meaning something like "Supreme Peace". It was designed to serve as the emperor Khai Dinh's refuge from official ceremonies and other tedious events. It's one of the few original (not restored, but remaining from colonial times) buildings of the Imperial city. Completed in 1921, Thai Binh suffered remarkably little damage during the wars.`
     },
 
+    536536844: {
+        title: `Meridian
+        Gate`
+    },
+
+    531031593: {
+        title: `Flag tower`
+    },
+
+    172657563: {
+        title: 'Royal theatre'
+    },
+
     1172897446: {
         title: 'An Dinh Palace',
         subtitle: `Built in 1919 as a private residence of Emperor Khai Dinh. Being outside Hue's Imperial city and having a distinctly european architectural style, this palace was a very bold statement of Khai Dinh's separation from traditional Confucian imperial power.
@@ -227,6 +240,7 @@ export const buildings_handmade_data = {
         title: 'Kien Trung\nPalace',
         subtitle: `Boldly eclectic building combining european and vietnamese principles in its overall layout and decoration.
         Built in 1921-23, used as the main residence of king Bao Dai; destroyed, almost completely, in 1947 during the First Indochina War; restored in 2019-23.
+        Its today’s appearance produces a baffling impression — very new, very brightly colored and wildly ornamental. It's difficult to see the architecture behind this glittering shell. No doubt the restoration followed the colonial prototype, but still, it's difficult to believe that the palace looked like that in its early days. Perhaps some time is necessary to make it look more authentic.
         A lot of similarities can be found between this structure and An Dinh palace - a more radically europian piece of architecture, built just before Kien Trung.`
     },
 
@@ -256,7 +270,7 @@ export const buildings_handmade_data = {
 
 
     695810806: {
-        title: 'Tho Chi gate'
+        // title: 'Tho Chi gate'
         // great 2 pictures in borrowed album (need to choose only 1)
         // 1 img i added to highlights
     },

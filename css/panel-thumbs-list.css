@@ -1,13 +1,14 @@
 #panel-thumbs-list {
     display: flex;
-    align-items: start;
+    align-items: center;
     flex-wrap: wrap;
     gap: var(--thumb-gap);
     padding: var(--thumb-gap);
     box-sizing: border-box;
 }
 
-@media (orientation: landscape), (pointer: fine) {
+@media (orientation: landscape),
+(pointer: fine) {
     #panel-thumbs-list {
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -25,12 +26,16 @@
         width: max-content;
         flex-wrap: nowrap;
     }
+
+    #panel-thumbs-list .slide-wrapper img {
+        max-width: calc(100vw - 20px);
+    }
 }
 
 
 #panel-thumbs-list img {
     cursor: pointer;
-    max-width: 100%; /* calc(var(--thumbs-list-width-in-landscape) - (var(--thumb-gap) * 2)); */
+    max-width: 100%;
 }
 
 .slide-wrapper {

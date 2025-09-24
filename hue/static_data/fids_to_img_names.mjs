@@ -93,6 +93,10 @@ export const fids_to_img_names = {
         "old phu cam cathedral",
         "old phu cam cathedral 2"
     ],
+    "172657562": [
+        "osmid_172657562",
+        "osmid_172657562_2"
+    ],
     "172763419": [
         "IMG_8948 Copy",
         "french-colonial-architecture-in-imperial-city-of-hue-vietnam-v0-clpq2mz79ozd1 Copy",
@@ -139,7 +143,8 @@ export const fids_to_img_names = {
         "osmid_239445949_6",
         "osmid_239445949_7",
         "osmid_239445949_8",
-        "osmid_239445949_9"
+        "osmid_239445949_9",
+        "osmid_239445949_11"
     ],
     "239972934": [
         "IMG_8972",
@@ -173,7 +178,10 @@ export const fids_to_img_names = {
         "IMG_8871"
     ],
     "285990348": [
-        "IMG_8992"
+        "IMG_8992",
+        "osmid_285990348_2",
+        "osmid_285990348_3",
+        "osmid_285990348_4"
     ],
     "367959068": [
         "osmid_367959068"
@@ -187,7 +195,8 @@ export const fids_to_img_names = {
         "IMG_9621",
         "IMG_9619",
         "IMG_9622",
-        "IMG_9936 Copy"
+        "IMG_9936 Copy",
+        "osmid_531031540"
     ],
     "617991241": [
         "Ngu Tien Office 2",

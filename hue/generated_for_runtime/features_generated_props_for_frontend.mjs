@@ -150,6 +150,12 @@ export const features_generated_props_for_frontend = {
       16.452598
     ]
   },
+  "172657562": {
+    "centroid": [
+      107.579165,
+      16.467707
+    ]
+  },
   "172763419": {
     "centroid": [
       107.579765,
