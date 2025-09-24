@@ -54,7 +54,6 @@ export const unassigned_images = [
   "IMG_8894",
   "IMG_8899",
   "IMG_8903 Copy",
-  "IMG_8921 Copy",
   "IMG_9576 Copy",
   "IMG_9577 Copy",
   "IMG_9604",

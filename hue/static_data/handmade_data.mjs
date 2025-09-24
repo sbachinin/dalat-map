@@ -184,6 +184,12 @@ export const buildings_handmade_data = {
         ]
     },
 
+    239445949: {
+        title: `Emperor's
+        reading retreat`,
+        subtitle: `This pavilion is named Thai Binh, meaning something like "Supreme Peace". It was designed to serve as the emperor Khai Dinh's refuge from official ceremonies and other tedious events. It's one of the few original (not restored, but remaining from colonial times) buildings of the Imperial city. Completed in 1921, Thai Binh suffered remarkably little damage during the wars.`
+    },
+
     1172897446: {
         title: 'An Dinh Palace',
         subtitle: `Built in 1919 as a private residence of Emperor Khai Dinh. Being outside Hue's Imperial city and having a distinctly european architectural style, this palace was a very bold statement of Khai Dinh's separation from traditional Confucian imperial power.

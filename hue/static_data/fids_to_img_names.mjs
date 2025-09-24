@@ -129,6 +129,18 @@ export const fids_to_img_names = {
         "IMG_0933 Copy",
         "IMG_0947 Copy"
     ],
+    "239445949": [
+        "osmid_239445949",
+        "osmid_239445949_10",
+        "osmid_239445949_2",
+        "osmid_239445949_3",
+        "osmid_239445949_4",
+        "osmid_239445949_5",
+        "osmid_239445949_6",
+        "osmid_239445949_7",
+        "osmid_239445949_8",
+        "osmid_239445949_9"
+    ],
     "239972934": [
         "IMG_8972",
         "IMG_8973",
@@ -162,6 +174,9 @@ export const fids_to_img_names = {
     ],
     "285990348": [
         "IMG_8992"
+    ],
+    "367959068": [
+        "osmid_367959068"
     ],
     "531031540": [
         "IMG_9946 Copy",
@@ -282,6 +297,7 @@ export const fids_to_img_names = {
         "IMG_1033 Copy",
         "IMG_1037 Copy",
         "IMG_8921",
+        "IMG_8921 Copy",
         "IMG_0994 Copy",
         "IMG_1030 Copy",
         "IMG_6547",
@@ -572,6 +588,9 @@ export const fids_to_img_names = {
     ],
     "1430140352": [
         "osmid_1430140352"
+    ],
+    "1431655095": [
+        "osmid_1431655095"
     ],
     "1431680514": [
         "osmid_1431680514"
