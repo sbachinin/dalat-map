@@ -42,7 +42,7 @@ export const update_panel_thumbs_list_size_variables = ({
     )
     set_css_num_var(
         '--thumbs-list-height-in-portrait',
-        thumb_ideal_height + THUMB_GAP * 2,
+        THUMB_INTRINSIC_HEIGHT + THUMB_GAP * 2,
         'px'
     )
 }

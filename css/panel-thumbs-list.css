@@ -22,7 +22,6 @@
 
 @media (orientation: portrait) and (pointer: coarse) {
     #panel-thumbs-list {
-        height: var(--thumbs-list-height-in-portrait);
         width: max-content;
         flex-wrap: nowrap;
     }
