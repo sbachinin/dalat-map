@@ -62,7 +62,7 @@ export const city_bulk_title = {
     layout: {
         'text-field': 'Approx. residential limits',
         'text-size': c.PALE_TITLES_SIZE - 1.5,
-        'text-font': ['Lato Regular'],
+        'text-font': ['Noto Sans Regular'],
         'symbol-placement': 'line',
         "symbol-spacing": 300,
         "text-offset": [0, 1],

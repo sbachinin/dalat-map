@@ -121,34 +121,8 @@ export const zoom_order = {
                         "fill-antialias": true,
                     },
                     selectable: true
-                },
-                // city gate title
-                // looked really bad
-                // tried different rotation but was too complex, each one need another angle
-                /* {
-                    "name": "City gate title",
-                    "type": "symbol",
-                    "source": SOURCES_NAMES.CITY_TILES,
-                    "source-layer": "important_boring_building",
-                    drawing_importance: 1,
-                    layout: {
-                        'text-field': `City gate`,
-                        "text-font": ["Lato Regular"],
-                        'text-rotate': [
-                            "case",
-                            ["any",
-                                ["==", "id", '367959066'],
-                                ["==", "id", '367959068'],
-                                ["==", "id", '174746317'],
-                                ["==", "id", '695810694']
-                            ],
-                            50,
-                            -50
-                        ]
-                    },
-                    "paint": {},
-                    selectable: true
-                } */
+                }
+                
             ],
         },
     ],

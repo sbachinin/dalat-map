@@ -28,7 +28,7 @@ export const renderables = [
                 type: 'symbol',
                 "layout": {
                     "text-field": "Cable car",
-                    "text-font": ["Lato Regular"],
+                    "text-font": ["Noto Sans Regular"],
                     "text-size": [
                         "interpolate",
                         ["linear"],
@@ -67,7 +67,7 @@ export const renderables = [
                     "text-anchor": "top",
                     "text-offset": [0, 0.2],
                     'text-size': PALE_TITLES_SIZE,
-                    'text-font': ['Lato Regular'],
+                    'text-font': ['Noto Sans Regular'],
                     "symbol-sort-key": 1,
                 },
                 paint: {
@@ -94,7 +94,7 @@ export const renderables = [
                         ["zoom"],
                         10, 12,
                         16, 18],
-                    'text-font': ['Lato Regular']
+                    'text-font': ['Noto Sans Regular']
                 },
                 paint: {
                     'text-color': PALE_TITLES_COLOR
@@ -140,7 +140,7 @@ export const renderables = [
                         ["zoom"],
                         10, 8,
                         14, 16],
-                    'text-font': ['Lato Regular']
+                    'text-font': ['Noto Sans Regular']
                 },
                 paint: {
                     'text-color': WATER_TITLE_COLOR

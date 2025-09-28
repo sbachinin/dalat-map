@@ -11,7 +11,7 @@ import { get_title_renderable } from "../js/utils/get_title_renderable.mjs"
 import { CITY_WALL_COLOR } from "./drawing_layers.mjs"
 import { interpolate } from "../js/utils/isomorphic_utils.mjs"
 import { constants as c } from "./constants.mjs"
-import { all_handmade_data } from "./static_data/handmade_data.mjs"
+import { all_handmade_data, markets_titles } from "./static_data/handmade_data.mjs"
 
 export const renderables = [
     {
@@ -27,7 +27,7 @@ export const renderables = [
         'Citadel',
         [107.57323734, 16.47511394],
         [11.5, 14.5],
-        'Lato Regular',
+        'Noto Sans Regular',
         PALE_TITLES_COLOR,
         interpolate(10, 14, 16, 24)
     ),
@@ -57,7 +57,7 @@ export const renderables = [
         'Imperial\nCity',
         [107.5776242, 16.46931831],
         [12.5, 14],
-        'Lato Regular',
+        'Noto Sans Regular',
         PALE_TITLES_COLOR,
         interpolate(12.5, 12, 14, 16)
     ),
@@ -66,7 +66,7 @@ export const renderables = [
         'Purple\n(Forbidden)\nCity',
         [107.5772269, 16.47014294],
         [14, 15],
-        'Lato Regular',
+        'Noto Sans Regular',
         c.PURPLE_CITY_COLOR,
         interpolate(14, 12, 15, 16)
     ),
@@ -148,7 +148,7 @@ export const renderables = [
             ]
         ],
         [11, 15],
-        'Lato Regular',
+        'Noto Sans Regular',
         WATER_TITLE_COLOR,
         interpolate(11, 11, 15, 24),
         'bottom'
@@ -167,7 +167,7 @@ export const renderables = [
             ]
         ],
         [11, 15],
-        'Lato Regular',
+        'Noto Sans Regular',
         WATER_TITLE_COLOR,
         interpolate(11, 11, 15, 24),
         'bottom'
@@ -203,4 +203,34 @@ export const renderables = [
     },
 
     get_dead_buildings_renderable(dead_buildings_geojson, all_handmade_data),
+
+
+    {
+        id: 'Markets_Titles',
+        get_features: () => {
+            return Object.entries(markets_titles).map(([fid, { title, title_coords }]) => {
+                return {
+                    type: 'Feature',
+                    id: fid,
+                    properties: { title },
+                    geometry: {
+                        type: 'Point',
+                        coordinates: title_coords
+                    }
+                }
+            })
+        },
+        style_layers: [{
+            type: 'symbol',
+            layout: {
+                "text-field": ['get', 'title'],
+                'text-size': 12,
+                'text-font': ['Noto Sans Regular'],
+            },
+            paint: {
+                "text-color": PALE_TITLES_COLOR,
+            },
+            minzoom: 14.3
+        }]
+    }
 ]

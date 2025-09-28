@@ -130,7 +130,7 @@ export const peaks_triangles_with_titles = {
         "text-anchor": "top",
         "text-offset": [0, 0.4],
         'text-size': PALE_TITLES_SIZE - 1,
-        'text-font': ['Lato Regular'],
+        'text-font': ['Noto Sans Regular'],
         "text-field": ["get", "title"],
         "icon-image": "peak_triangle",
         "icon-size": 0.24
@@ -281,7 +281,7 @@ export const non_french_titles = {
             DEFAULT_MAX_ZOOM,
             PALE_TITLES_SIZE,
         ],
-        'text-font': ['Lato Regular']
+        'text-font': ['Noto Sans Regular']
     },
     paint: {
         'text-color': [
@@ -382,7 +382,7 @@ export const railway_station_titles_with_squares = {
         "text-anchor": "top",
         "text-offset": [0, 0.2],
         'text-size': PALE_TITLES_SIZE,
-        'text-font': ['Lato Regular'],
+        'text-font': ['Noto Sans Regular'],
         'text-field': 'Trai Mat\nstation',
         "icon-image": "boring_square",
         "icon-size": 0.15,
@@ -515,7 +515,7 @@ export const city_title = {
     layout: {
         "text-field": ["get", "title"],
         'text-size': 20,
-        'text-font': ['Lato Regular'],
+        'text-font': ['Noto Sans Regular'],
     },
     paint: {
         "text-halo-color": "hsl(0, 0%, 100%)",

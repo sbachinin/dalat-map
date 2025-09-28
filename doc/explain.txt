@@ -5,6 +5,12 @@
 
 They are things that describe some unique feauture (or a small class of features) in one file, without having separate meta in sources, style layers etc.
 
+{
+	id,
+	get_features,
+	style_layers: []
+}
+
 They are frontend-only for now.
 They used to be "isomorphic" - they were tiled on build.
 It wasn't clear how benefitial it was (unique features mustn't be too many, and performance impact must be small)

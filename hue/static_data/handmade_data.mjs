@@ -1,6 +1,120 @@
 import { AREA_TYPES } from "../../js/common_drawing_layers/constants.mjs"
 
 export const buildings_handmade_data = {
+
+
+    /* 1433190508: {
+        // turned out it's outside the map, and not interesting enough to extend to it
+        title: `Linh Thuy
+        church`,
+    }, */
+
+    1433191883: {
+        title: `Lại Ân
+        church`,
+    },
+
+    1433199817: {
+        title: `Nam Phổ
+        church`,
+        subtitle: `This building was demolished around 2024 to make way for a larger church. This looks like a part of some sweeping catholic modernization campaign, for many other colonial churches in the vicinity of Hue have disappeared around the same time.`,
+        dead: true
+    },
+
+    1433206537: {
+        title: `An Nhơn
+        church`,
+        subtitle: 'It seems this was a lovely little church some time ago. However, after the recent paint job in 2024, it looks really ugly and is hardly recognizable as colonial.'
+    },
+
+    1433210182: {
+        title: `Tân Mỹ
+        church`,
+    },
+
+    1433304540: {
+        title: `Ngọc Hồ
+        church`,
+        subtitle: `In 2021, this church was extended by adding a bell tower, making it overall at least twice as tall. For this reason, I cannot classify it as a colonial building.
+
+        However, it must be said that this church is rather fortunate—it was not replaced by something entirely new, and the new bell tower is not entirely bad; for a moment, I thought it was an original one.
+
+        The location is said to be quite pretty and tranquil, so I think it can be recommended for a visit.`,
+        dead: true
+    },
+
+    /*
+    // tiny brutalist one in the west, no good pics
+    885012165: {
+        title: `Bo Dien
+        church`
+    }, */
+
+    1433313074: {
+        title: `An Truyền
+        church`
+    },
+
+    /* 
+    // no good photos. Only very low res "before and after"
+    1433211261: {
+        title: `Dong Lam
+        church`,
+        dead: true
+    }, */
+
+    1433241176: {
+        title: `Quy Lai
+        church`
+    },
+
+    205795043: {
+        title: `Phước Duyên
+        tower`
+    },
+
+    1433243405: {
+        title: `Đốc Sơ church`,
+        dead: true,
+        subtitle: `This building was removed around 2023 and replaced by a very different structure shaped like a Vietnamese conical hat. Interestingly, the condition of the old church was not especially bad, and the new church is not any larger than the old one. It seems that the parish (or some larger Catholic organization) simply did not like the design and wanted a more modern (or more patriotic) church. As far as I can tell, this approach is not unusual: Vietnamese Catholic society aspires to keep up with the times, and this means that outdated architectural works are replaced from time to time with something more modern. This process must have begun right after independence, judging by Phu Cam Cathedral - the grandest church in Hue,  demolished in the 1960s, because it certainly did not convey the right message to the people.
+
+        In 2023-2024, there was another small modernization campaign that swept away several more colonial churches within Hue and its vicinity.
+
+        Today, this area still has perhaps 15-20 Catholic colonial churches. My overall impression is that in the mid-20th century, Hue must have had at least 5 times as many. Basically, it was once full of colonial churches - mostly small parish ones, but of great architectural quality and diversity.
+        I also suspect that at least a half of all the modern churches seen today in this area must have french predecessors.`
+    },
+
+    1433495412: {
+        title: `Hương Cần
+        church`,
+        subtitle: `With a new coat of bad blueish paint, this church in 2025 is not of great visual interest. However, it is still surprising to see the original colonial architecture mostly untouched (or rebuilt?), which is rare in Hue. Small old parish churches in this area are quickly disappearing, and in 2020s this process seems to have accelerated. A couple of churches very similar to the current one has gone very recently: [Doc So church](1433243405) was demolished and [Ngoc Ho](1433304540) was extended to become a totally different building.`
+    },
+/* 
+    // no good photos, only 1 crap
+    1433244190: {
+        title: 'Ke Sung church',
+        dead: true,
+        subtitle: 'It was demolished around 2023'
+    },
+ */
+    1433225026: {
+        title: `An Vân church`
+    },
+
+    /* 1433239491: {
+        // outside the bounds
+        title: 'Ha Uc church'
+    }, */
+
+    1430131350: {
+        // subtitle: `Temple of Princess Ngoc Son` (now a private residence, open for pre-arranged visits). A kind of garden house. So it's many things and unclear.
+    },
+
+    1433193496: {
+        title: `Mậu Tài
+        church`
+    },
+
     "1377444109": { // Hue Industrial College main ancient bldg
         year: '1924'
     },
@@ -77,17 +191,6 @@ export const buildings_handmade_data = {
     239972934: {
         title: 'Museum of\nculture',
         title_side: 'north'
-    },
-
-    1044435601: {
-        title: `College of
-        Agriculture
-        and Forestry`
-    },
-
-    1044435624: {
-        title: `College
-        of arts`
     },
 
     1431465867: {
@@ -335,6 +438,20 @@ export const lakes_handmade_data = {
 }
 
 export const land_areas_handmade_data = {
+
+    1044435601: {
+        title: `College of
+        Agriculture
+        and Forestry`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1044435624: {
+        title: `College
+        of arts`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
     217466613: {
         title: 'Phu Bai\nInternational\nAirport',
         area_type: AREA_TYPES.AIRPORT
@@ -356,12 +473,21 @@ export const land_areas_handmade_data = {
         title: 'Cemetery',
         title_coords: [107.592386, 16.444863]
     },
+
+
+    // forests in southeast
+    1176313887: {},
+    588726451: {},
+
     1180918090: {
         area_type: AREA_TYPES.CEMETERY,
     },
     1180918092: {
         area_type: AREA_TYPES.CEMETERY,
+        title: 'Cemetery',
+        title_coords: [107.597237, 16.443547]
     },
+
     1180743119: {
         area_type: AREA_TYPES.CEMETERY,
         title: 'Cemetery'
@@ -424,6 +550,194 @@ export const land_areas_handmade_data = {
     }
 }
 
+export const markets_titles = {
+    1: {
+        title: `Đông Ba
+        market`,
+        title_coords: [107.588672, 16.472537]
+    },
+    2: {
+        title: `Tây Lộc
+        market`,
+        title_coords: [107.567329, 16.473349]
+    },
+    3: {
+        title: `An Cựu
+        market`,
+        title_coords: [107.600683, 16.457475]
+    },
+    4: {
+        title: `Bến Ngự
+        market`,
+        title_coords: [107.583952, 16.4552299]
+    },
+    5: {
+        title: `Mai
+        market`,
+        title_coords: [107.59655603, 16.49485456]
+    },
+    6: {
+        title: `Cống
+        market`,
+        title_coords: [107.5993780, 16.47010932]
+    },
+    7: {
+        title: `An Hòa
+        market`,
+        title_coords: [107.557349, 16.4814801]
+    },
+    8: {
+        title: `Làng Chuồn
+        market`,
+        title_coords: [107.6337020, 16.50790098]
+    },
+    9: {
+        title: `Tây Linh
+        market`,
+        title_coords: [107.570745942, 16.481324584]
+    },
+    10: {
+        title: `Trường An
+        market`,
+        title_coords: [107.58472711, 16.44326869]
+    },
+
+    11: {
+        title: `Cồn
+        market`,
+        title_coords: [107.5902333, 16.4812817]
+    },
+
+    12: {
+        title: `Vĩ Dạ
+        market`,
+        title_coords: [107.5958124, 16.48292876]
+    },
+    13: {
+        title: `Phú Bình
+        market`,
+        title_coords: [107.57825309, 16.487905232]
+    },
+    14: {
+        title: `Tứ Hạ
+        market`,
+        title_coords: [107.48067694, 16.52150219]
+    },
+    15: {
+        title: `Thông
+        market`,
+        title_coords: [107.5435393, 16.46380891]
+    },
+    16: {
+        title: `Thuận Hòa
+        market`,
+        title_coords: [107.57421366, 16.468180268]
+    },
+    17: {
+        title: `Phú Tân
+        market`,
+        title_coords: [107.63314354, 16.53756935]
+    },
+    18: {
+        title: `Tây Ba
+        market`,
+        title_coords: [107.56055899, 16.536133764]
+    },
+    19: {
+        title: `Nọ market`,
+        title_coords: [107.59998640, 16.51196465]
+    },
+    20: {
+        title: `Thần Phù
+        market`,
+        title_coords: [107.65645694, 16.42430584]
+    },
+    21: {
+        title: `Quảng Vinh
+        market`,
+        title_coords: [107.49386941, 16.55685300]
+    },
+    22: {
+        title: `Dinh
+        market`,
+        title_coords: [107.5912788, 16.491102917]
+    },
+    23: {
+        title: `Cự Lại
+        market`,
+        title_coords: [107.70171319, 16.52360118]
+    },
+    24: {
+        title: `Hôm Dạ Lê
+        Chánh market`,
+        title_coords: [107.62664635, 16.490474319]
+    },
+    25: {
+        title: `Phường Đúc
+        market`,
+        title_coords: [107.56468772, 16.45404601]
+    },
+    26: {
+        title: `Văn Xá
+        market`,
+        title_coords: [107.49726860, 16.51564318]
+    },
+    27: {
+        title: `Thanh Toàn
+        market`,
+        title_coords: [107.64292888, 16.466205620]
+    },
+    28: {
+        title: `Thuận Lộc
+        market`,
+        title_coords: [107.58231166, 16.47829238]
+    },
+    29: {
+        title: `Sam
+        market`,
+        title_coords: [107.649291833, 16.4819327]
+    },
+    30: {
+        title: `Phú Mậu
+        market`,
+        title_coords: [107.58038739, 16.51824665]
+    },
+    31: {
+        title: `Hương Sơ
+        market`,
+        title_coords: [107.5663230, 16.49351372]
+    },
+    32: {
+        title: `An Truyền
+        market`,
+        title_coords: [107.633702470, 16.507906660]
+    },
+    33: {
+        title: `Kim Long
+        market`,
+        title_coords: [107.56010728, 16.466080119]
+    },
+    34: {
+        title: `Tân Mỹ
+        market`,
+        title_coords: [107.63639183, 16.54823037]
+    },
+    35: {
+        title: `Triều Thuỷ
+        market`,
+        title_coords: [107.6277281, 16.51487975]
+    },
+    36: {
+        title: `Phước Vĩnh
+        market`,
+        title_coords: [107.59176775, 16.4524927]
+    },
+    37: {
+        title: `Đình
+        market`,
+        title_coords: [107.52561661, 16.439077783]
+    }
+}
 
 export const all_handmade_data = {
     ...buildings_handmade_data,

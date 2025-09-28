@@ -92,7 +92,7 @@ export const unesco_areas_titles = {
     drawing_importance: 0,
     layout: {
         'text-size': 12,
-        'text-font': ['Lato Regular'],
+        'text-font': ['Noto Sans Regular'],
         "text-field": ["get", "title"],
     },
     paint: {
