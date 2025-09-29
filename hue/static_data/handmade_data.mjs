@@ -194,8 +194,8 @@ export const buildings_handmade_data = {
     },
 
     1431465867: {
-        title: `Tuy Ly Vuong
-        Palace`
+        title: `Tomb of
+        Tuy Lý Vương`
     },
 
     175063593: {

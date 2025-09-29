@@ -36,7 +36,7 @@ export const handle_zoom_to_show_in_debug_el = () => {
     if (debugel === null) return
 
     const show_zoom = () => {
-        document.querySelector('#debug-zoom').innerHTML = window.dalatmap.getZoom()
+        document.querySelector('#debug-zoom').innerHTML = window.dalatmap.getZoom().toFixed(1)
     }
     window.dalatmap.on('moveend', show_zoom)
     show_zoom()
