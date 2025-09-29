@@ -33,22 +33,26 @@ export const init_photoswipe = () => {
     lightbox.on('close', () => {
         const slide_i = lightbox.pswp.currIndex
 
-        const panel_el = panel.body_element
-        const thumb_i = document.querySelectorAll(`#panel-thumbs-list img`)[slide_i]
+        const thumb_at_i = document.querySelectorAll(`#panel-thumbs-list img`)[slide_i]
 
-        if (!thumb_i) {
+        if (!thumb_at_i) {
             console.warn('Bug. No thumb found at an index of last slide. Cancel trying to auto-scroll the thumb list.')
             return
         }
 
-        let top = undefined
-        let left = undefined
-        if (panel_is_vertical()) {
-            top = thumb_i.offsetTop - (panel_el.offsetHeight - thumb_i.offsetHeight) / 2
-        } else {
-            left = thumb_i.offsetLeft - (panel_el.offsetWidth - thumb_i.offsetWidth) / 2
+        const rect = thumb_at_i.getBoundingClientRect()
+        const vert_in_view = rect.top < window.innerHeight && rect.bottom > 0
+        const hor_in_view = rect.left < window.innerWidth && rect.right > 0
+        const thumb_is_at_least_partly_visible = vert_in_view && hor_in_view
+
+        if (!thumb_is_at_least_partly_visible) {
+            thumb_at_i.scrollIntoView({
+                behavior: 'instant',
+                block: 'center',
+                inline: 'center',
+                container: 'nearest'
+            })
         }
 
-        panel_el.scrollTo({ top, left, behavior: 'auto' })
     })
 }
