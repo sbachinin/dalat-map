@@ -34,7 +34,7 @@ export const init_photoswipe = () => {
         const slide_i = lightbox.pswp.currIndex
 
         const panel_el = panel.body_element
-        const thumb_i = document.querySelectorAll(`#panel-thumbs-list > *`)[slide_i]
+        const thumb_i = document.querySelectorAll(`#panel-thumbs-list img`)[slide_i]
 
         if (!thumb_i) {
             console.warn('Bug. No thumb found at an index of last slide. Cancel trying to auto-scroll the thumb list.')

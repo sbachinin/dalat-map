@@ -15,7 +15,7 @@ const create_highlights_title = () => {
     svg.classList.remove('invisible')
 
     return create_element_from_Html(
-        `<div class="slide-wrapper" id="highlights-title">
+        `<div id="highlights-title">
             ${svg.outerHTML}
             <div id="higlights-title-letters">
                 <div>Hi</div>
