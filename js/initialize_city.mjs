@@ -12,12 +12,10 @@ import { try_open_building } from './panel/bldg_details.mjs'
 import { get_bldg_id_from_url, get_center_for_bldg_with_offset, get_minimal_zoom_on_building_select } from './utils/frontend_utils.mjs'
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
 import { panel } from './panel/panel.mjs'
-import { handle_zoom_to_show_in_debug_el } from './DEV/debug_el.mjs'
 import { load_icons } from './load_icons.mjs'
 import {
     DEV_skip_map_rendering,
     DEV_map_mock,
-    DEV_show_debug_el
 } from './DEV/constants.mjs'
 import './photoswipe_mutations_observer.mjs'
 import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
@@ -114,10 +112,6 @@ export const initialize_city = async (name) => {
         document.querySelector(`#custom-attribution [title]`)?.removeAttribute('title')
     })
 
-    if (DEV_show_debug_el) {
-        handle_zoom_to_show_in_debug_el()
-    }
-
     map.on('move', () => {
         throttled_update_flyto_button()
 
@@ -142,13 +136,22 @@ export const initialize_city = async (name) => {
     window.addEventListener('resize', onresize)
     window.addEventListener('orientationchange', onresize)
 
-
     if (window.location.hostname.endsWith('localhost')) {
-        const script = document.createElement('script')
-        script.src = '../js/DEV/handle_img_drag.mjs'
-        script.async = true
-        script.type = 'module'
-        document.body.appendChild(script)
+        const make_script = (src) => {
+            const script = document.createElement('script')
+            script.src = src
+            script.async = true
+            script.type = 'module'
+            return script
+        }
+
+        document.body.appendChild(
+            make_script('../js/DEV/handle_img_drag.mjs')
+        )
+
+        document.body.appendChild(
+            make_script('../js/DEV/debug_el.mjs')
+        )
     }
 
     window.addEventListener("popstate", (event) => {
