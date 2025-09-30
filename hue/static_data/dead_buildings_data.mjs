@@ -1,5 +1,5 @@
 export const dead_buildings_data = {
-    1433243405: {
+    1433243405346257: {
         title: `Đốc Sơ church`,
         subtitle: `This building was removed around 2023 and replaced by a very different structure shaped like a Vietnamese conical hat. Interestingly, the condition of the old church was not especially bad, and the new church is not any larger than the old one. It seems that the parish (or some larger Catholic organization) simply did not like the design and wanted a more modern (or more patriotic) church. As far as I can tell, this approach is not unusual: Vietnamese Catholic society aspires to keep up with the times, and this means that outdated architectural works are replaced from time to time with something more modern. This process must have begun right after independence, judging by Phu Cam Cathedral - the grandest church in Hue,  demolished in the 1960s, because it certainly did not convey the right message to the people.
 
@@ -37,7 +37,7 @@ export const dead_buildings_data = {
     },
 
 
-    1433199817: {
+    1433199817649827: {
         title: `Nam Phổ
         church`,
         subtitle: `This building was demolished around 2024 to make way for a larger church. This looks like a part of some sweeping catholic modernization campaign, for many other colonial churches in the vicinity of Hue have disappeared around the same time.`,
@@ -71,7 +71,7 @@ export const dead_buildings_data = {
     },
 
 
-    1433304540421: {
+    1433304540947235: {
         title: `Ngọc Hồ
         church`,
         subtitle: `In 2021, this church was extended by adding a bell tower, making it overall at least twice as tall. For this reason, I cannot classify it as a colonial building.

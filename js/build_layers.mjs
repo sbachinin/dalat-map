@@ -118,7 +118,6 @@ export const build_layers = () => {
     ])
 
     if (Object.keys(current_city.dead_buildings_data || {}).length) {
-        console.log(dead_buildings_layers)
         all_layers.push(...dead_buildings_layers)
     }
 

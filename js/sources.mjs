@@ -32,8 +32,7 @@ export const get_main_sources = () => {
             type: 'vector',
             tiles: [`${window.location.origin}/cities_tiles/${current_city.name}/tiles/{z}/{x}/{y}.pbf`],
             minzoom: 10,
-        },
-        bldgs_centroids_points: get_geojson_source(get_centroids_as_features())
+        }
     }
 
     if (current_city.city_title_coords) {
@@ -71,10 +70,7 @@ export const get_main_sources = () => {
         })
     }) || []
 
-    current_city.features_from_renderables_as_array = features_from_renderables
-
     sources[SOURCES_NAMES.RENDERABLES] = get_geojson_source(features_from_renderables)
-
 
     if (Object.keys(current_city.dead_buildings_data || {}).length) {
         const dead_buildings_features = []
@@ -91,6 +87,10 @@ export const get_main_sources = () => {
             }
             dead_buildings_features.push(main_feature)
 
+            current_city.features_generated_props_for_frontend[fid] = {
+                centroid: get_centroid(main_feature)
+            }
+
             if (fdata.title) {
                 dead_buildings_features.push(
                     make_title_point_feature(main_feature, current_city.dead_buildings_data)
@@ -100,6 +100,10 @@ export const get_main_sources = () => {
         sources[SOURCES_NAMES.DEAD_BUILDINGS] = get_geojson_source(dead_buildings_features)
     }
 
+
+    sources.bldgs_centroids_points = get_geojson_source(
+        get_centroids_as_features()
+    )
 
     return sources
 }
