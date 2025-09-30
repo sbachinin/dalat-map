@@ -1,7 +1,6 @@
 import * as svg_icons from '../svg_icons.mjs'
 import {
     get_minimal_zoom_on_building_select,
-    is_dead_building,
     is_mobile_device,
     is_mouse_device,
     throttle,
@@ -23,7 +22,7 @@ function get_topmost_id(html_string) {
 
 const info_icons = [
     {
-        if: is_dead_building,
+        if: fid => !!current_city.dead_buildings_data?.[fid],
         get_markup: fid => `<div id="building-info__dead">
                 <img src="../auxiliary_images/skull.png">
             </div>`,

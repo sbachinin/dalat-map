@@ -73,7 +73,6 @@ Features come from:
 		bulk,
 		custom_features,
 	renderables
-		including dead_buildings
 
 Tile layers come from
 	city_assets.tiling_config

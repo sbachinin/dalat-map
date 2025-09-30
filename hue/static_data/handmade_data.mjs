@@ -14,13 +14,6 @@ export const buildings_handmade_data = {
         church`,
     },
 
-    1433199817: {
-        title: `Nam Phổ
-        church`,
-        subtitle: `This building was demolished around 2024 to make way for a larger church. This looks like a part of some sweeping catholic modernization campaign, for many other colonial churches in the vicinity of Hue have disappeared around the same time.`,
-        dead: true
-    },
-
     1433206537: {
         title: `An Nhơn
         church`,
@@ -30,17 +23,6 @@ export const buildings_handmade_data = {
     1433210182: {
         title: `Tân Mỹ
         church`,
-    },
-
-    1433304540: {
-        title: `Ngọc Hồ
-        church`,
-        subtitle: `In 2021, this church was extended by adding a bell tower, making it overall at least twice as tall. For this reason, I cannot classify it as a colonial building.
-
-        However, it must be said that this church is rather fortunate—it was not replaced by something entirely new, and the new bell tower is not entirely bad; for a moment, I thought it was an original one.
-
-        The location is said to be quite pretty and tranquil, so I think it can be recommended for a visit.`,
-        dead: true
     },
 
     /*
@@ -55,14 +37,6 @@ export const buildings_handmade_data = {
         church`
     },
 
-    /* 
-    // no good photos. Only very low res "before and after"
-    1433211261: {
-        title: `Dong Lam
-        church`,
-        dead: true
-    }, */
-
     1433241176: {
         title: `Quy Lai
         church`
@@ -73,30 +47,12 @@ export const buildings_handmade_data = {
         tower`
     },
 
-    1433243405: {
-        title: `Đốc Sơ church`,
-        dead: true,
-        subtitle: `This building was removed around 2023 and replaced by a very different structure shaped like a Vietnamese conical hat. Interestingly, the condition of the old church was not especially bad, and the new church is not any larger than the old one. It seems that the parish (or some larger Catholic organization) simply did not like the design and wanted a more modern (or more patriotic) church. As far as I can tell, this approach is not unusual: Vietnamese Catholic society aspires to keep up with the times, and this means that outdated architectural works are replaced from time to time with something more modern. This process must have begun right after independence, judging by Phu Cam Cathedral - the grandest church in Hue,  demolished in the 1960s, because it certainly did not convey the right message to the people.
-
-        In 2023-2024, there was another small modernization campaign that swept away several more colonial churches within Hue and its vicinity.
-
-        Today, this area still has perhaps 15-20 Catholic colonial churches. My overall impression is that in the mid-20th century, Hue must have had at least 5 times as many. Basically, it was once full of colonial churches - mostly small parish ones, but of great architectural quality and diversity.
-        I also suspect that at least a half of all the modern churches seen today in this area must have french predecessors.`
-    },
-
     1433495412: {
         title: `Hương Cần
         church`,
         subtitle: `With a new coat of bad blueish paint, this church in 2025 is not of great visual interest. However, it is still surprising to see the original colonial architecture mostly untouched (or rebuilt?), which is rare in Hue. Small old parish churches in this area are quickly disappearing, and in 2020s this process seems to have accelerated. A couple of churches very similar to the current one has gone very recently: [Doc So church](1433243405) was demolished and [Ngoc Ho](1433304540) was extended to become a totally different building.`
     },
-/* 
-    // no good photos, only 1 crap
-    1433244190: {
-        title: 'Ke Sung church',
-        dead: true,
-        subtitle: 'It was demolished around 2023'
-    },
- */
+
     1433225026: {
         title: `An Vân church`
     },
@@ -209,7 +165,8 @@ export const buildings_handmade_data = {
     },
 
     118792054: {
-        title: 'Phu Cam Cathedral',
+        title: `Phu Cam
+        Cathedral`,
         year: '1963-2000',
         subtitle: 'A grand colonial church was built on this site in 1902. It was demolished in the 1960s to make way for the current structure, which took nearly 40 years to complete.',
         wikipedia: 'https://en.wikipedia.org/wiki/Ph%E1%BB%A7_Cam_Cathedral',
@@ -322,16 +279,6 @@ export const buildings_handmade_data = {
 
     118541723: {
         subtitle: `This building, once so beautiful, was renovated in 2024 in order to shoot a scene of some vietnamese horror movie. This renovation was certainly one of the major architectural atrocities conducted in Hue.`
-    },
-
-    4291675218324692: {
-        title: "Chapel of\nJeanne d’Arc school",
-        title_side: 'south',
-        subtitle: `This chapel once belonged to the "Institution Jeanne d’Arc", a catholic high school for girls. Later it became a regular vietnamese school but retained a remarkably antiquated look until the sweeping demolition in 2022. Besides the chapel, there stood 2 or 3 colonial classroom buildings with an arcade passage connecting them. In 2025 the campus was newly opened with a totally different arrangement of buildings and no trace of anything historical.`
-    },
-
-    4204853453454355: {
-        subtitle: "Demolished in 2017. Interestingly enough, it seems that the motive for demolition was simply cutting the maintenance costs rather than development projects (by 2025 nothing new was built on the site). It was too old for profitable commercial use but had to maintain a polished look in order not to ruin the grand view of the adjacent Hue Heritage hotel - a hopeless arrangement indeed."
     },
 
     730227961: {
@@ -542,7 +489,8 @@ export const land_areas_handmade_data = {
     },
     1075018793: {
         title: `Hill park with
-        war bunkers`
+        war bunkers`,
+        title_coords: [107.564143, 16.427908]
     },
     1170979640: {
         title: `Bao Quoc
@@ -738,6 +686,7 @@ export const markets_titles = {
         title_coords: [107.52561661, 16.439077783]
     }
 }
+
 
 export const all_handmade_data = {
     ...buildings_handmade_data,

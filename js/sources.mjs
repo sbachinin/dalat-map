@@ -3,6 +3,7 @@ import { current_city } from './load_city.mjs'
 import { SOURCES_NAMES } from './constants.mjs'
 import { get_centroid } from './utils/isomorphic_utils.mjs'
 import { does_feature_have_title, is_feature_selectable } from './utils/does_feature_have_details.mjs'
+import { make_title_point_feature } from './utils/titles_points.mjs'
 
 
 const get_centroids_as_features = () => Object.entries(current_city.features_generated_props_for_frontend).map(([feat_id, props]) => {
@@ -73,6 +74,32 @@ export const get_main_sources = () => {
     current_city.features_from_renderables_as_array = features_from_renderables
 
     sources[SOURCES_NAMES.RENDERABLES] = get_geojson_source(features_from_renderables)
+
+
+    if (Object.keys(current_city.dead_buildings_data || {}).length) {
+        const dead_buildings_features = []
+        for (const [fid, fdata] of Object.entries(current_city.dead_buildings_data)) {
+            if (!fdata.geometry) {
+                console.warn('no geometry for dead building', fid)
+                continue
+            }
+            const main_feature = {
+                type: 'Feature',
+                id: fid,
+                properties: { building: true, is_dead: true },
+                geometry: fdata.geometry
+            }
+            dead_buildings_features.push(main_feature)
+
+            if (fdata.title) {
+                dead_buildings_features.push(
+                    make_title_point_feature(main_feature, current_city.dead_buildings_data)
+                )
+            }
+        }
+        sources[SOURCES_NAMES.DEAD_BUILDINGS] = get_geojson_source(dead_buildings_features)
+    }
+
 
     return sources
 }

@@ -4,6 +4,7 @@ import { current_city } from "./load_city.mjs"
 import { SOURCES_NAMES } from "./constants.mjs"
 import { FRENCH_SELECTED_FILL_COLOR, FRENCH_SELECTED_TITLE_HALO_COLOR } from "./common_drawing_layers/constants.mjs"
 import { make_roads_layers } from "./common_drawing_layers/make_roads_layers.mjs"
+import { dead_buildings_layers } from "./common_drawing_layers/dead_buildings.mjs"
 
 const join_style_filters = (...filters) => {
     // depending on the number of truthy filters, returns ["all", ...] OR the_only_truthy_one OR null
@@ -113,8 +114,15 @@ export const build_layers = () => {
     const all_layers = ([
         ...make_roads_layers(),
         ...layers_from_zoom_order,
-        ...layers_from_renderables
-    ]).map(adjust_props_for_selectable_symbol_layer)
+        ...layers_from_renderables,
+    ])
+
+    if (Object.keys(current_city.dead_buildings_data || {}).length) {
+        console.log(dead_buildings_layers)
+        all_layers.push(...dead_buildings_layers)
+    }
+
+    all_layers.forEach(adjust_props_for_selectable_symbol_layer)
 
     current_city.sources_of_selectable_features = all_layers
         .filter(l => l.selectable)
@@ -151,7 +159,6 @@ function adjust_props_for_selectable_symbol_layer(layer) {
         layer.paint['text-halo-width'] = 5
         layer.paint['text-halo-blur'] = 0
     }
-    return layer
 }
 
 

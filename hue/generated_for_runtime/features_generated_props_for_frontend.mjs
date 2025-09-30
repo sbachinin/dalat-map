@@ -1273,13 +1273,6 @@ export const features_generated_props_for_frontend = {
     ],
     "is_french": true
   },
-  "1433199817": {
-    "centroid": [
-      107.596885,
-      16.494384
-    ],
-    "is_french": true
-  },
   "1433206537": {
     "centroid": [
       107.593317,
@@ -1307,26 +1300,6 @@ export const features_generated_props_for_frontend = {
       16.546037
     ],
     "is_french": true
-  },
-  "1433243405": {
-    "centroid": [
-      107.554813,
-      16.485029
-    ],
-    "is_french": true
-  },
-  "1433244190": {
-    "centroid": [
-      107.717864,
-      16.512653
-    ],
-    "is_french": true
-  },
-  "1433304540": {
-    "centroid": [
-      107.557906,
-      16.427487
-    ]
   },
   "1433313074": {
     "centroid": [

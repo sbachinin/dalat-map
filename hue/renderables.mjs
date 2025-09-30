@@ -1,17 +1,15 @@
 import city_bulk_geometry from "./static_data/city_bulk_geometry.mjs"
 import imperial_city_border from "./static_data/imperial_city_border.mjs"
-import dead_buildings_geojson from "./static_data/dead_buildings_geojson.mjs"
 
 import { get_polygon_as_linestring } from '../js/utils/frontend_utils.mjs'
 
 import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_drawing_layers/city_bulk.mjs"
 import { PALE_TITLES_COLOR, WATER_TITLE_COLOR } from "../js/common_drawing_layers/constants.mjs"
-import { get_dead_buildings_renderable } from "../js/common_renderables.mjs"
 import { get_title_renderable } from "../js/utils/get_title_renderable.mjs"
 import { CITY_WALL_COLOR } from "./drawing_layers.mjs"
 import { interpolate } from "../js/utils/isomorphic_utils.mjs"
 import { constants as c } from "./constants.mjs"
-import { all_handmade_data, markets_titles } from "./static_data/handmade_data.mjs"
+import { markets_titles } from "./static_data/handmade_data.mjs"
 
 export const renderables = [
     {
@@ -201,9 +199,6 @@ export const renderables = [
             }
         ]
     },
-
-    get_dead_buildings_renderable(dead_buildings_geojson, all_handmade_data),
-
 
     {
         id: 'Markets_Titles',

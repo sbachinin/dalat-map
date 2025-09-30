@@ -26,23 +26,23 @@ const get_all_lats = feature => {
 // Returns 'south', 'north' or 'center'
 // 'Left' and 'right' could also make sense but there was no need so far
 const get_title_side = (f, hmdata) => {
-    const f_hmdata = hmdata[f.id]
+    const hm_side = hmdata[f.id]?.title_side
 
-    let title_side = 'center'
-
-    if (f_hmdata?.title_side) {
+    if (hm_side !== undefined) {
         if (
-            !['south', 'north', 'center'].includes(f_hmdata.title_side)) {
-            console.warn('This title side is not supported: ', f_hmdata.title_side)
+            !['south', 'north', 'center'].includes(hm_side)) {
+            console.warn('This title side is not supported: ', hm_side)
             return null
         }
-        title_side = f_hmdata.title_side
-
-    } else if (f.properties['building:architecture'] === 'french_colonial') {
-        title_side = 'south'
+        return hm_side
     }
 
-    return title_side
+    if (f.properties?.building || f.properties?.is_dead) {
+        return 'south'
+    }
+
+    // probably it's a land area
+    return 'center'
 }
 
 
@@ -87,20 +87,20 @@ const is_water_feature = f => {
 }
 
 
-export const make_title_point_feature = (f, all_handmade_data) => {
-    let coordinates = all_handmade_data[f.id].title_coords
+export const make_title_point_feature = (f, handmade_data) => {
+    let coordinates = handmade_data[f.id].title_coords
     if (!coordinates) {
         const centroid = get_centroid(f)
         coordinates = [
             centroid[0],
-            get_title_lat(f, all_handmade_data, centroid)
+            get_title_lat(f, handmade_data, centroid)
         ]
     }
 
     const title_props = {
-        title: all_handmade_data[f.id].title,
-        title_side: get_title_side(f, all_handmade_data),
-        "symbol-sort-key": all_handmade_data[f.id]["symbol-sort-key"]
+        title: handmade_data[f.id].title,
+        title_side: get_title_side(f, handmade_data),
+        "symbol-sort-key": handmade_data[f.id]["symbol-sort-key"]
     }
 
     if (is_water_feature(f)) {

@@ -1,5 +1,4 @@
 import { MINIMAL_ZOOM_ON_BUILDING_SELECT } from '../common_drawing_layers/constants.mjs';
-import { RENDERABLES_NAMES } from '../constants.mjs';
 import { current_city } from '../load_city.mjs';
 
 export const is_mouse_device = window.matchMedia("(pointer: fine)").matches
@@ -312,13 +311,6 @@ export const get_polygon_as_linestring = (f) => {
             coordinates: f.geometry.coordinates[0],
         }
     }
-}
-
-
-export const is_dead_building = (fid) => {
-    return current_city.features_from_renderables_as_array.find(f => {
-        return fid === f.id && f.properties?.renderable_id === RENDERABLES_NAMES.DEAD_BUILDINGS
-    })
 }
 
 

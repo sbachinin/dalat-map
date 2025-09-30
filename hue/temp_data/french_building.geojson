@@ -117,80 +117,6 @@
       "coordinates": [
         [
           [
-            107.7177814,
-            16.5126049
-          ],
-          [
-            107.7178397,
-            16.5125633
-          ],
-          [
-            107.7179469,
-            16.5127013
-          ],
-          [
-            107.7178886,
-            16.5127429
-          ],
-          [
-            107.7177814,
-            16.5126049
-          ]
-        ]
-      ]
-    },
-    "id": 1433244190,
-    "properties": {
-      "building": "yes",
-      "building:architecture": "french_colonial",
-      "is_selectable": false,
-      "has_title": false
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [
-            107.5547255,
-            16.4851286
-          ],
-          [
-            107.5547752,
-            16.4849035
-          ],
-          [
-            107.5549005,
-            16.4849292
-          ],
-          [
-            107.5548503,
-            16.4851543
-          ],
-          [
-            107.5547255,
-            16.4851286
-          ]
-        ]
-      ]
-    },
-    "id": 1433243405,
-    "properties": {
-      "building": "yes",
-      "building:architecture": "french_colonial",
-      "is_selectable": true,
-      "has_title": true
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [
             107.5974485,
             16.5461122
           ],
@@ -325,43 +251,6 @@
       ]
     },
     "id": 1433206537,
-    "properties": {
-      "building": "yes",
-      "building:architecture": "french_colonial",
-      "is_selectable": true,
-      "has_title": true
-    }
-  },
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [
-            107.5967853,
-            16.494415
-          ],
-          [
-            107.5967938,
-            16.4943367
-          ],
-          [
-            107.596984,
-            16.494353
-          ],
-          [
-            107.5969763,
-            16.494432
-          ],
-          [
-            107.5967853,
-            16.494415
-          ]
-        ]
-      ]
-    },
-    "id": 1433199817,
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",

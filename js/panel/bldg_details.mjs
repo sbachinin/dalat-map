@@ -8,7 +8,6 @@ import {
     div,
     get_map_center_shift_px,
     get_minimal_zoom_on_building_select,
-    is_dead_building,
     panel_is_vertical,
     parse_markdown_links,
     push_to_history,
@@ -42,7 +41,7 @@ const set_panel_content = (id) => {
         activate_image(img)
     })
 
-    const dead_square = is_dead_building(id)
+    const dead_square = current_city.dead_buildings_data?.[id]
         ? `<img id="bldg-title-dead-square" src="${get_icon_as_ctx('black_square').canvas.toDataURL()}"> `
         : ''
 
