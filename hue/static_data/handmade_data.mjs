@@ -319,13 +319,6 @@ export const buildings_handmade_data = {
         // 1 img i added to highlights
     },
 
-    695810777: {
-        // amazing gate to the north of Tho Ninh hall
-        images: [
-            '639809557_95265c9866_6k.jpg'
-        ]
-    },
-
     695810701: {
         hint: 'Tam Toa', // (no title here, such title is displayed for a unesco area)
         year: 1903

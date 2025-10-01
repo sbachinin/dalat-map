@@ -1,3 +1,5 @@
+import { create_element_from_Html } from "../js/utils/frontend_utils.mjs"
+
 const params = new URLSearchParams(location.search)
 const cityname = params.get('city')
 if (!cityname) {
@@ -41,14 +43,21 @@ function display_unassigned_images(cityname, unassigned_images) {
     if (!unassigned_images) {
         return
     }
-    const section = document.createElement('div')
-    section.classList.add('unassigned-images')
-    section.innerHTML = '<h2>Unassigned images</h2>'
-    unassigned_images.forEach(basename => {
-        const img = document.createElement('img')
-        img.src = `../cities_images/${cityname}/dist/thumbs/${basename}.jpg`
-        img.loading = "lazy"
-        section.appendChild(img)
-    })
+    const section = create_element_from_Html(`
+        <div
+            class="unassigned-images"
+            style="display: flex; flex-wrap: wrap; align-items: center;"
+        >
+            <h2 style="width: 100%; font-size: 30px;">UNASSIGNED IMAGES</h2>
+            ${unassigned_images.map(basename => `
+                <div class="unassigned-image" style="max-width: 210px;">
+                    <img src="../cities_images/${cityname}/dist/thumbs/${basename}.jpg" loading="lazy">
+                    <div class="img-name" style="word-wrap: anywhere;">${basename}</div>
+                </div>
+            `).join('')}
+        </div >
+    `)
+
+
     document.getElementById('output').appendChild(section)
 }
