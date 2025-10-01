@@ -113,7 +113,7 @@ export const try_open_building = async (
         set_panel_content(id)
 
         if (should_push_history) {
-            push_to_history({ id }, `?id=${id}${window.location.hash}`)
+            push_to_history(`?id=${id}${window.location.hash}`)
         }
 
         panel.once(

@@ -97,6 +97,12 @@ export const fids_to_img_names = {
         "osmid_172657562",
         "osmid_172657562_2"
     ],
+    "172657564": [
+        "osmid_172657564_2"
+    ],
+    "172657567": [
+        "osmid_172657567"
+    ],
     "172763419": [
         "IMG_8948 Copy",
         "french-colonial-architecture-in-imperial-city-of-hue-vietnam-v0-clpq2mz79ozd1 Copy",
@@ -207,6 +213,9 @@ export const fids_to_img_names = {
         "Ngu Tien Office 2",
         "Ngu Tien Office"
     ],
+    "690841003": [
+        "osmid_690841003"
+    ],
     "695770483": [
         "IMG_8668"
     ],
@@ -264,6 +273,10 @@ export const fids_to_img_names = {
         "IMG_9948 Copy",
         "osmid_695810701"
     ],
+    "695810807": [
+        "osmid_695810807_1",
+        "osmid_695810807_2"
+    ],
     "730227939": [
         "IMG_0873 Copy"
     ],
@@ -301,6 +314,9 @@ export const fids_to_img_names = {
     ],
     "1075011937": [
         "IMG_0937 Copy"
+    ],
+    "1075014561": [
+        "osmid_1075014561"
     ],
     "1172897443": [
         "AC9h4nqhk69_kFnpZeoC7jRRCaL7CRCjcjOeAiMmgLfNsdWEUBE3P85wPo3IoaHCqfK4xXdsxYaVovEp3D8v1Te-Uq63wup0oYibDnEW7qZ34tStHm92qgGSU13LyevBLAds1gtkPyQe9A=s3072-v1~2"
@@ -641,6 +657,10 @@ export const fids_to_img_names = {
     ],
     "1433495412": [
         "586"
+    ],
+    "1434539371": [
+        "osmid_1434539371",
+        "osmid_1434539371_2"
     ],
     "1433199817649827": [
         "636",

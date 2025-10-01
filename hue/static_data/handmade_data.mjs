@@ -324,6 +324,11 @@ export const buildings_handmade_data = {
         year: 1903
     },
 
+    1075014561: {
+        title: `Temple of
+        martial arts`
+    },
+
     1379612602: {
         title: `Chapel of\nKim Long orphanage (?)`,
         subtitle: `This gorgeous building is currently part of a hospital compound, serving — I'm guessing — as a warehouse. Unreliable sources on the web suggest that it once belonged to a Christian orphanage that operated until 1975. (The orphanage was recently restored, but at a different nearby location.)

@@ -154,12 +154,13 @@ export const create_element_from_Html = htmlString => {
     return div.firstElementChild
 }
 
-export const push_to_history = (state, url) => {
-    if (JSON.stringify(history.state) === JSON.stringify(state)) {
-        console.log('state did not change, skip writing to history')
+export const push_to_history = (url) => {
+    if (url === window.location.href) {
+        console.log('Trying to write the same url to history! This will be ignored.')
         return
     }
-    history.pushState(state, "", url)
+    
+    history.pushState({}, "", url)
 }
 
 export const get_panel_shown_breadth = () => {

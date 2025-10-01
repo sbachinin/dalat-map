@@ -34,7 +34,7 @@ export const display_highlights = (should_push_history = false) => {
 
     const url_without_id = window.location.origin + window.location.pathname + window.location.hash
     if (should_push_history) {
-        push_to_history({ id: null }, url_without_id)
+        push_to_history(url_without_id)
     }
 
     panel.on('scroll', 'highlights list', debounce(e => {

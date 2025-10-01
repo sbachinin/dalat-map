@@ -155,8 +155,9 @@ export const initialize_city = async (name) => {
     }
 
     window.addEventListener("popstate", (event) => {
-        if (event.state?.id && is_feature_selectable(event.state?.id)) {
-            try_open_building(event.state.id, false, true, false)
+        const id = Number(new URLSearchParams(window.location.search).get('id'))
+        if (id && is_feature_selectable(id)) {
+            try_open_building(id, false, true, false)
         } else {
             display_highlights(false)
         }
