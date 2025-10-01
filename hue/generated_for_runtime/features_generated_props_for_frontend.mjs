@@ -504,7 +504,7 @@ export const features_generated_props_for_frontend = {
   },
   "1075014561": {
     "centroid": [
-      107.540033,
+      107.540014,
       16.453623
     ]
   },
@@ -1354,5 +1354,12 @@ export const features_generated_props_for_frontend = {
       16.512515
     ],
     "is_french": true
+  },
+  "1434539371": {
+    "centroid": [
+      107.540148,
+      16.453534
+    ],
+    "is_small_building": true
   }
 };

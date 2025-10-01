@@ -326,7 +326,8 @@ export const buildings_handmade_data = {
 
     1075014561: {
         title: `Temple of
-        martial arts`
+        martial arts`,
+        title_side: 'north'
     },
 
     1379612602: {
