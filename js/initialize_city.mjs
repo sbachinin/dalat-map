@@ -155,7 +155,7 @@ export const initialize_city = async (name) => {
     }
 
     window.addEventListener("popstate", (event) => {
-        if (is_feature_selectable(event.state?.id)) {
+        if (event.state?.id && is_feature_selectable(event.state?.id)) {
             try_open_building(event.state.id, false, true, false)
         } else {
             display_highlights(false)
