@@ -71,12 +71,9 @@ export const load_city = async (name) => {
         results_obj[f.propname] = f.extractor(results[i])
     })
 
-    if (results_obj.dead_buildings_data) {
-        for (const [_, fdata] of Object.entries(results_obj.dead_buildings_data)) {
-            fdata.is_dead = true
-        }
-        Object.assign(results_obj.all_handmade_data, results_obj.dead_buildings_data)
-    }
+    Object.assign(
+        results_obj.all_handmade_data,
+        results_obj.dead_buildings_data || {})
 
     current_city = {
         name,

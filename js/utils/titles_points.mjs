@@ -37,7 +37,7 @@ const get_title_side = (f, hmdata) => {
         return hm_side
     }
 
-    if (f.properties?.building || f.properties?.is_dead) {
+    if (f.properties?.building) {
         return 'south'
     }
 

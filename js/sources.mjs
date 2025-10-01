@@ -82,7 +82,7 @@ export const get_main_sources = () => {
             const main_feature = {
                 type: 'Feature',
                 id: fid,
-                properties: { building: true, is_dead: true },
+                properties: { building: true },
                 geometry: fdata.geometry
             }
             dead_buildings_features.push(main_feature)
