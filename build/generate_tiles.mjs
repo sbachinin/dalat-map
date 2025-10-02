@@ -32,7 +32,7 @@ const exec = (command) => {
 }
 
 
-const { skip_osm_download, city: cityname } = parse_args()
+const { city: cityname } = parse_args()
 
 const city_root_path = `../${cityname}`
 
@@ -44,21 +44,10 @@ if (!fs.existsSync(city_root_path)) {
 const ass = await import(city_root_path + '/assets_for_build.mjs')
 const city_assets = ass.assets_for_build
 
-mkdir_if_needed(city_root_path + `/temp_data`)
+mkdir_if_needed(city_root_path + `/temp_data/topical`)
 
-exec(`rm -f ${city_root_path}/temp_data/*.geojson`)
+exec(`rm -f ${city_root_path}/temp_data/topical/*.geojson`)
 
-const osm_output_path = city_root_path + `/temp_data/output.osm`
-
-if (!skip_osm_download) {
-    exec(`rm -f ${osm_output_path}`)
-
-    const bbox = city_assets.map_bounds.join(',')
-    const url = `https://overpass-api.de/api/map?bbox=${bbox}`;
-    exec(`curl -o ${osm_output_path} "${url}"`)
-}
-
-exec(`osmtogeojson ${osm_output_path} > ${city_root_path}/temp_data/from_osm.geojson`)
 
 
 
@@ -71,7 +60,7 @@ exec(`osmtogeojson ${osm_output_path} > ${city_root_path}/temp_data/from_osm.geo
 
 // "preprocess osm data"
 
-const osm_geojson = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/from_osm.geojson', 'utf-8'))
+const osm_geojson = JSON.parse(fs.readFileSync(city_root_path + '/temp_data/all_from_osm.geojson', 'utf-8'))
 
 osm_geojson.features.forEach(f => {
     f.id = +f.id.replace(/^(way|node|relation)\//, '') // numberify the id, trim non-numeric part
@@ -132,7 +121,7 @@ const smallest_possible_minzoom = calculate_minzoom(city_assets.map_bounds, 320,
 const all_mbtiles_paths = []
 
 const generate_temp_mbtiles = (tile_layer_config, layer_features) => {
-    const geojson_path = city_root_path + `/temp_data/${tile_layer_config.name}.geojson`
+    const geojson_path = city_root_path + `/temp_data/topical/${tile_layer_config.name}.geojson`
 
     if (layer_features.length === 0) { // otherwise tippecanoe fails at .geojson containing only empty array
         return

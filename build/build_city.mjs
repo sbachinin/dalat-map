@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import { parse_args } from "./build_utils.mjs"
 import { validate_images } from './validate_images.mjs'
+import { update_osm_data } from './update_osm_data.mjs';
 
 // config_to_adjust_manually
 const defaults = {
@@ -36,6 +37,10 @@ if (process_images) {
 
 if (shall_validate_images) {
     await validate_images(city)
+}
+
+if (!skip_osm_download) {
+    await update_osm_data(city)
 }
 
 if (generate_tiles) {

@@ -1,4 +1,4 @@
-*/temp_data/*.geojson
+*/temp_data/**/*.geojson
 cities_tiles/*
 *.osm
 oldlayers
