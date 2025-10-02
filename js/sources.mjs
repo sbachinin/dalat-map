@@ -105,5 +105,13 @@ export const get_main_sources = () => {
         get_centroids_as_features()
     )
 
+    sources['selected-building'] = {
+        type: 'geojson',
+        data: {
+            type: 'FeatureCollection',
+            features: []
+        }
+    }
+
     return sources
 }

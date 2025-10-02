@@ -24,7 +24,6 @@ const historic_detailless_bldg_fill = {
 const historic_detailful_bldg_fill = {
     "name": "Historic detailful building",
     ...historic_fill_common_props,
-    selectable: true,
     filter: ["==", ["get", "is_selectable"], true]
 }
 
@@ -81,7 +80,6 @@ const get_dark_outline_props = high_zoom_thickness => {
                 high_zoom_thickness
             ]
         },
-        selectable: true
     }
 }
 

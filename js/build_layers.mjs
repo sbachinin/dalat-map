@@ -2,8 +2,8 @@ import { pick } from "./utils/isomorphic_utils.mjs"
 import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
 import { current_city } from "./load_city.mjs"
 import { SOURCES_NAMES } from "./constants.mjs"
-import { FRENCH_SELECTED_FILL_COLOR, FRENCH_SELECTED_TITLE_HALO_COLOR } from "./common_drawing_layers/constants.mjs"
 import { make_roads_layers } from "./common_drawing_layers/make_roads_layers.mjs"
+import { layers_for_selected_feature } from "./common_drawing_layers/layers_for_selected_feature.mjs"
 import { dead_buildings_layers } from "./common_drawing_layers/dead_buildings.mjs"
 
 const join_style_filters = (...filters) => {
@@ -51,7 +51,6 @@ const merge_zoom_order = (zo1, zo2) => { // common + city-specific zoom_order
 }
 
 // zoom_order -> normal maplibre style layers
-// + create selected layers and append them to the end
 export const build_layers = () => {
     const zo = merge_zoom_order(common_zoom_order, current_city.zoom_order)
     const layers_from_zoom_order = Object.entries(zo)
@@ -69,7 +68,7 @@ export const build_layers = () => {
                     const style_layer = {
                         id: `${zoom_level}: ${drawing_layer.name}`,
                         minzoom: +zoom_level,
-                        ...pick(drawing_layer, ['source', 'source-layer', 'type', 'layout', 'paint', 'selectable', 'drawing_importance']),
+                        ...pick(drawing_layer, ['source', 'source-layer', 'type', 'layout', 'paint', 'drawing_importance']),
                     }
 
                     if (zoom_level_layer.maxzoom) {
@@ -109,8 +108,6 @@ export const build_layers = () => {
         return l.drawing_importance
     }
 
-    current_city.sources_of_selectable_features = []
-
     const all_layers = ([
         ...make_roads_layers(),
         ...layers_from_zoom_order,
@@ -121,111 +118,9 @@ export const build_layers = () => {
         all_layers.push(...dead_buildings_layers)
     }
 
-    all_layers.forEach(adjust_props_for_selectable_symbol_layer)
-
-    current_city.sources_of_selectable_features = all_layers
-        .filter(l => l.selectable)
-        .map(l => ({
-            source: l.source,
-            sourceLayer: l['source-layer']
-        }))
-        .filter((l, i, arr) => arr.findIndex(l2 => l2.source === l.source && l2.sourceLayer === l.sourceLayer) === i)
-
-    const selected_layers = all_layers
-        .filter(l => l.selectable && l.type === 'fill')
-        .flatMap(derive_selected_variants_for_selectable_fill)
-
-    return all_layers.concat(selected_layers)
+    return all_layers.concat(layers_for_selected_feature)
         .sort((a, b) => {
             return get_drawing_importance(b) - get_drawing_importance(a)
         })
         .map(inject_city_constants)
-}
-
-
-
-
-
-
-function adjust_props_for_selectable_symbol_layer(layer) {
-    if (layer.type === 'symbol' && layer.selectable) {
-        layer.paint['text-halo-color'] = [
-            "case",
-            ['==', ['feature-state', 'selected'], true],
-            FRENCH_SELECTED_TITLE_HALO_COLOR,
-            'transparent'
-        ]
-        layer.paint['text-halo-width'] = 5
-        layer.paint['text-halo-blur'] = 0
-    }
-}
-
-
-function derive_selected_variants_for_selectable_fill(base_layer) {
-
-    // dedicated selected fill and border layers are created only for "fill" base layer
-    // otherwise it would be harder to avoid duplicates in selected []
-    const line_layer = {
-        drawing_importance: 2,
-        id: base_layer.id + ' selected border',
-        type: 'line',
-        source: base_layer.source,
-        paint: {
-            'line-color': 'hsl(340, 89%, 22%)',
-            'line-width': [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                13,
-                [
-                    "case",
-                    ['==', ['feature-state', 'selected'], true],
-                    3,
-                    0
-                ],
-                15.5,
-                [
-                    "case",
-                    ['==', ['feature-state', 'selected'], true],
-                    1.2,
-                    0
-                ],
-            ]
-        },
-        layout: {
-            'line-join': 'round',
-        }
-    }
-
-    /* Creating the following "fill" layer ALMOST could be avoided,
-        and worked around by ["case", ... "selected" ...] block in base fill layer.
-        But base fill layer can disappear sooner than the selected border "closes" (eats all the space within it with its thickness),
-        and so for some zoom range the border would have empty space inside it
-    */
-
-    const fill_layer = {
-        drawing_importance: base_layer.drawing_importance, // it will come after base layer, so will will be rendered on top
-        id: base_layer.id + ' selected',
-        type: 'fill',
-        source: base_layer.source,
-        paint: {
-            ...base_layer.paint,
-            'fill-color': [
-                "case",
-                ['==', ['feature-state', 'selected'], true],
-                FRENCH_SELECTED_FILL_COLOR,
-                'transparent'
-            ],
-        },
-    }
-    if (base_layer['source-layer']) {
-        line_layer['source-layer'] = base_layer['source-layer']
-        fill_layer['source-layer'] = base_layer['source-layer']
-    }
-    if (base_layer.filter) {
-        line_layer.filter = base_layer.filter
-        fill_layer.filter = base_layer.filter
-    }
-
-    return [fill_layer, line_layer]
 }

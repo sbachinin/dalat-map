@@ -81,6 +81,7 @@ Tile layers come from
 		boring bldgs
 
 Style layers come from
-	zoom_order -> drawing_layers (+ "selectable" variants made at runtime)
+	zoom_order -> drawing_layers
 	"simple" layers defined in style.mjs
 	renderables
+	layers for selected building

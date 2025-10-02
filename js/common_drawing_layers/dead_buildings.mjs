@@ -13,7 +13,6 @@ export const dead_buildings_layers = [
             "fill-antialias": true
         },
         filter: ["==", ["geometry-type"], "Polygon"],
-        selectable: true,
         drawing_importance: 1
     },
     {
@@ -26,7 +25,6 @@ export const dead_buildings_layers = [
             "line-width": 2,
         },
         filter: ["==", ["geometry-type"], "Polygon"],
-        selectable: true
     },
     {
         "id": "Dead buildings titles",
@@ -49,7 +47,6 @@ export const dead_buildings_layers = [
         paint: {
             'text-color': 'hsl(0, 0%, 40%)',
         },
-        selectable: true,
         filter: ["==", ["geometry-type"], "Point"]
     }
 ]

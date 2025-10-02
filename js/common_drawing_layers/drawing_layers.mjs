@@ -70,7 +70,6 @@ export const french_buildings_titles = {
     paint: {
         'text-color': FRENCH_TITLES_TEXT_COLOR,
     },
-    selectable: true,
     filter: ["==", ["get", "building:architecture"], 'french_colonial']
 }
 
@@ -291,7 +290,6 @@ export const non_french_titles = {
             PALE_TITLES_COLOR
         ]
     },
-    selectable: true,
     filter: ["!=", ["get", "building:architecture"], 'french_colonial']
 }
 
@@ -426,7 +424,6 @@ export const important_boring_building_fill = {
         "fill-color": 'hsl(240, 50%, 87%)',
         "fill-antialias": true
     },
-    selectable: true
 }
 
 
@@ -441,7 +438,6 @@ export const selectable_boring_bldg_border = {
         'line-color': BORING_BLDG_WITH_DETAILS_BORDER_COLOR
     },
     filter: ["==", ["get", "is_selectable"], true],
-    selectable: true
 }
 
 

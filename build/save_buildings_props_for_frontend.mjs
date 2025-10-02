@@ -28,6 +28,6 @@ export const save_buildings_props_for_frontend = async (cityname) => {
     })
 
     fs.writeFileSync(
-        city_root_path + '/static_data/contentful_buildings_props_from_osm.mjs',
+        city_root_path + '/generated_for_runtime/contentful_buildings_props_from_osm.mjs',
         `export const contentful_buildings_props_from_osm = ${JSON.stringify(props, null, 2)};`)
 }

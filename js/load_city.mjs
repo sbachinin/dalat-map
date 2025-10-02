@@ -40,6 +40,12 @@ const files = [
         propname: 'features_generated_props_for_frontend',
         extractor: d => d.features_generated_props_for_frontend,
     },
+
+    {
+        filename: 'generated_for_runtime/contentful_buildings_props_from_osm.mjs',
+        propname: 'contentful_buildings_props_from_osm',
+        extractor: d => d.contentful_buildings_props_from_osm,
+    },
     {
         filename: 'constants.mjs',
         propname: 'constants',
