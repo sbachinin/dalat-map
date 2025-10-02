@@ -89,19 +89,12 @@ const historic_detailless_dark_outline = {
     filter: ["!=", ["get", "is_selectable"], true],
 }
 
-const historic_detailful_dark_outline = {
-    'name': 'Historic buildings with details dark outline',
-    ...get_dark_outline_props(4),
-    filter: ["==", ["get", "is_selectable"], true]
-}
-
 
 
 export const historic_polygons = [
     historic_detailless_dark_outline,
     historic_detailless_thickening_outline,
     historic_detailless_bldg_fill,
-    historic_detailful_dark_outline,
     historic_detailful_thickening_outline,
     historic_detailful_bldg_fill
 ]

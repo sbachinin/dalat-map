@@ -428,19 +428,6 @@ export const important_boring_building_fill = {
 
 
 
-export const selectable_boring_bldg_border = {
-    name: 'Selectable boring building border',
-    'type': 'line',
-    "source": SOURCES_NAMES.CITY_TILES,
-    "source-layer": "important_boring_building",
-    drawing_importance: 3,
-    'paint': {
-        'line-color': BORING_BLDG_WITH_DETAILS_BORDER_COLOR
-    },
-    filter: ["==", ["get", "is_selectable"], true],
-}
-
-
 
 
 

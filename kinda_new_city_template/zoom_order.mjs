@@ -1,7 +1,6 @@
 import { get_filter_by_fids } from "../js/common_zoom_order.mjs";
 
 import {
-    selectable_boring_bldg_border,
     boring_building_fill,
     french_bldg_circle,
     french_buildings_titles,
@@ -95,7 +94,7 @@ export const zoom_order = {
     ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
-            drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border],
+            drawing_layers: [important_boring_building_fill],
         }
     ],
     14: [

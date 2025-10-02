@@ -1,7 +1,6 @@
 import { get_filter_by_fids } from "../js/common_zoom_order.mjs";
 
 import {
-    selectable_boring_bldg_border,
     boring_building_fill,
     boring_building_square,
     cable_car_endpoints,
@@ -154,7 +153,7 @@ export const zoom_order = {
     ],
     [FRENCH_GEOMETRIES_MINZOOM]: [
         {
-            drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border]
+            drawing_layers: [important_boring_building_fill]
         },
         {
             drawing_layers: historic_polygons.map(l => ({...l, 'source-layer': 'french_building'})),

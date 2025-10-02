@@ -4,7 +4,7 @@ import { get_centroid, is_building_polygon, is_one_of } from '../js/utils/isomor
 import { all_handmade_data, lakes_handmade_data, land_areas_handmade_data } from './static_data/handmade_data.mjs'
 import { unesco_sites_polygons } from './static_data/unesco_sites_polygons.mjs'
 import imperial_city_border from './static_data/imperial_city_border.mjs'
-import { is_feature_selectable, is_important_building } from '../js/utils/does_feature_have_details.mjs'
+import { is_important_building } from '../js/utils/does_feature_have_details.mjs'
 import { fids_to_img_names } from './static_data/fids_to_img_names.mjs'
 import * as custom_features from '../hue/static_data/custom_features.mjs'
 

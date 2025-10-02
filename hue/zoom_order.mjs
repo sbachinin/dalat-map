@@ -1,5 +1,4 @@
 import {
-    selectable_boring_bldg_border,
     boring_building_fill,
     french_bldg_circle,
     french_buildings_titles,
@@ -104,7 +103,7 @@ export const zoom_order = {
             drawing_layers: [french_buildings_titles]
         },
         {
-            drawing_layers: [important_boring_building_fill, selectable_boring_bldg_border]
+            drawing_layers: [important_boring_building_fill]
         },
         {
             // needs a higher importance to appear on top of city wall, plus a distinct color 
@@ -137,9 +136,6 @@ export const zoom_order = {
         },
         {
             drawing_layers: [boring_building_fill],
-        },
-        {
-            drawing_layers: [selectable_boring_bldg_border],
         }
     ],
     16: [

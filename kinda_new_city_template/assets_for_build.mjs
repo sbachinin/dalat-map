@@ -1,9 +1,9 @@
 import { all_handmade_data, land_areas_handmade_data as dalat_land_areas_handmade_data, lakes_handmade_data } from "./static_data/handmade_data.mjs"
 import { AREA_TYPES } from "../js/common_drawing_layers/constants.mjs"
-import { get_centroid, is_building_polygon, is_one_of } from "../js/utils/isomorphic_utils.mjs"
+import { is_building_polygon } from "../js/utils/isomorphic_utils.mjs"
 import { map_bounds } from "./isomorphic_assets.mjs"
 import { area } from "@turf/turf"
-import { is_feature_selectable, is_important_building } from "../js/utils/does_feature_have_details.mjs"
+import { is_important_building } from "../js/utils/does_feature_have_details.mjs"
 import { fids_to_img_names } from "./static_data/fids_to_img_names.mjs"
 
 export const assets_for_build = {
