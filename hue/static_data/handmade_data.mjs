@@ -1,7 +1,10 @@
 import { AREA_TYPES } from "../../js/common_drawing_layers/constants.mjs"
+import { dead_buildings_data } from "./dead_buildings_data.mjs"
+
 
 export const buildings_handmade_data = {
 
+    ...dead_buildings_data,
 
     /* 1433190508: {
         // turned out it's outside the map, and not interesting enough to extend to it

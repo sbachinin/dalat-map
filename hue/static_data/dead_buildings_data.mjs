@@ -1,3 +1,5 @@
+// Keeping these in a separate file is not important
+
 export const dead_buildings_data = {
     1433243405346257: {
         title: `Đốc Sơ church`,

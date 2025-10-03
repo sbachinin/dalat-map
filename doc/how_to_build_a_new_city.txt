@@ -12,8 +12,8 @@ Add features that don't come from OSM
     Can specify a dedicated tile_layer in city meta for such added features
 
 Add dead_buildings
-    add static_data/dead_buildings_data.mjs, as in Hue
-        (each entry must have "geometry")
+    put their geometries to city/static_data/custom_features_for_tiling/dead_buildings.mjs (this exact filename, I guess)
+    reference these geometries by id in handmade data
 
 Display city title (at early zoom)
     add city_title_coords to [city]/isomorphic_utils
