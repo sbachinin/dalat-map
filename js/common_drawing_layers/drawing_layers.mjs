@@ -17,6 +17,7 @@ import {
     PALE_LAKE_COLOR,
     AIRPORT_FILL_COLOR,
     FRENCH_DARK_BORDER_COLOR,
+    FRENCH_GEOMETRIES_MINZOOM,
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 

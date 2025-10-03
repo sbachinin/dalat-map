@@ -81,19 +81,6 @@ osm_geojson.features.forEach(f => {
 })
 
 
-
-// i need to know the number of occurences of each feature property
-
-const props_occurences = {}
-
-osm_geojson.features.forEach(f => {
-    Object.keys(f.properties).forEach(p => {
-        props_occurences[p] = props_occurences[p] || 0
-        props_occurences[p]++
-    })
-})
-
-
 const temp_tiles_path = `../cities_tiles/temp`
 
 const { all_handmade_data: hmdata } = await import(city_root_path + '/static_data/handmade_data.mjs')
