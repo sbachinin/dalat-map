@@ -9,15 +9,6 @@ const { city } = parse_args()
 const city_root_path = `../${city}`
 const all_handmade_data = (await import(city_root_path + '/static_data/handmade_data.mjs')).all_handmade_data
 
-let dead_buildings_data = null
-
-try {
-    const module = await import(city_root_path + '/static_data/dead_buildings_data.mjs')
-    dead_buildings_data = module.dead_buildings_data
-} catch (err) {
-    console.error('Could not load dead_buildings_data.mjs:', err)
-}
-
 const fids_to_img_names = (await import(city_root_path + '/static_data/fids_to_img_names.mjs')).fids_to_img_names
 const ass = await import(city_root_path + '/assets_for_build.mjs')
 const assets_for_build = ass.assets_for_build
@@ -34,10 +25,7 @@ const all_contentful_features_ids = [...new Set(
 )]
 
 all_contentful_features_ids.forEach(cfid => {
-    if (
-        !all_tiled_features.find(gjf => String(gjf.id) === String(cfid))
-        && !dead_buildings_data?.[cfid]
-    ) {
+    if (!all_tiled_features.find(gjf => String(gjf.id) === String(cfid))) {
         console.warn(`There is some data for feature id ${cfid} but no such TILED geojson feature. Perhaps it's not meant to be tiled, and then it's ok.`)
     }
 })
