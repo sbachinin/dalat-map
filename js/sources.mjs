@@ -105,6 +105,27 @@ export const get_main_sources = () => {
         get_centroids_as_features()
     )
 
+
+    sources['selectable-buildings'] = {
+        type: 'geojson',
+        data: {
+            type: 'FeatureCollection',
+            features: Object.entries(current_city.contentful_buildings_props_from_osm)
+                .filter(([fid]) => is_feature_selectable(fid))
+                .map(([fid, props]) => {
+                    return {
+                        id: fid,
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Polygon',
+                            coordinates: props.polygon
+                        },
+                        properties: {}
+                    }
+                })
+        }
+    }
+
     sources['selected-building'] = {
         type: 'geojson',
         data: {

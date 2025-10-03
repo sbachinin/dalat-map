@@ -5,6 +5,7 @@ import { SOURCES_NAMES } from "./constants.mjs"
 import { make_roads_layers } from "./common_drawing_layers/make_roads_layers.mjs"
 import { layers_for_selected_feature } from "./common_drawing_layers/layers_for_selected_feature.mjs"
 import { dead_buildings_layers } from "./common_drawing_layers/dead_buildings.mjs"
+import { selectable_border } from "./common_drawing_layers/drawing_layers.mjs"
 
 const join_style_filters = (...filters) => {
     // depending on the number of truthy filters, returns ["all", ...] OR the_only_truthy_one OR null
@@ -118,7 +119,9 @@ export const build_layers = () => {
         all_layers.push(...dead_buildings_layers)
     }
 
-    return all_layers.concat(layers_for_selected_feature)
+    return all_layers
+        .concat([selectable_border])
+        .concat(layers_for_selected_feature)
         .sort((a, b) => {
             return get_drawing_importance(b) - get_drawing_importance(a)
         })

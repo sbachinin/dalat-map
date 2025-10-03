@@ -29,7 +29,7 @@ const historic_detailful_bldg_fill = {
 
 
 
-const HISTORIC_POLYGONS_MAX_THICKENING = 0.7
+export const HISTORIC_POLYGONS_MAX_THICKENING = 0.7
 
 const historic_thickening_outline_common_props = {
     'type': 'line',

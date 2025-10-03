@@ -13,10 +13,10 @@ import {
     RAILWAY_LINE_COLOR,
     SQUARE_FILL_COLOR,
     IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR,
-    BORING_BLDG_WITH_DETAILS_BORDER_COLOR,
     BRIGHT_LAKE_COLOR,
     PALE_LAKE_COLOR,
     AIRPORT_FILL_COLOR,
+    FRENCH_DARK_BORDER_COLOR,
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 
@@ -539,5 +539,20 @@ export const river_lines = {
             18,
             6
         ]
+    },
+}
+
+
+
+
+
+export const selectable_border = {
+    id: 'Selectable border',
+    'type': 'line',
+    "source": 'selectable-buildings',
+    drawing_importance: 2,
+    'paint': {
+        'line-color': FRENCH_DARK_BORDER_COLOR,
+        'line-width': 1.5
     },
 }

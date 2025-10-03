@@ -247,10 +247,11 @@ export const buildings_handmade_data = {
     239445949: {
         title: `Emperor's
         reading retreat`,
+        title_side: 'north',
         subtitle: `This pavilion is named Thai Binh, meaning something like "Supreme Peace". It was designed to serve as the emperor Khai Dinh's refuge from official ceremonies and other tedious events. It's one of the few original (not restored, but remaining from colonial times) buildings of the Imperial city. Completed in 1921, Thai Binh suffered remarkably little damage during the wars.`
     },
 
-    536536844: {
+    172657562: {
         title: `Meridian
         Gate`
     },
@@ -343,7 +344,7 @@ export const buildings_handmade_data = {
 
     1388509039: {
         title: 'Kim Long Church',
-        subtitle: `Construction of this building took more than 20 years and was finished in 1940. This is one of the largest colonial churches in Hue, but also one of the ugliest. It has an unfortunate kindergarten-like feel, due to, first of all, the nasty pinkish paint (certainly an artifact of recent renovations — all well-maintained churches in Hue are painted very badly), and also a bit too playful ornamentation on the facade (which might be part of the original architecture, but I'm only guessing).`
+        subtitle: `Construction of this building took more than 20 years and was finished in 1940. This is one of the largest colonial churches in Hue, and a curious eclectic piece of architecture. In 2025, it's badly painted in some pinkish kindergarten-style color and lacks much visual interest (similarly to most colonial churches in Hue)`
     },
 
     695775615: {
