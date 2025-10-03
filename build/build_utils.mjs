@@ -1,6 +1,8 @@
 import fs from 'fs'
-import path from 'path'
 import { fileURLToPath } from 'url'
+import { readdir } from 'fs/promises'
+import { join } from 'path'
+import { pathToFileURL } from 'url'
 
 export const generate_id = () => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
 
@@ -95,4 +97,23 @@ export const remove_duplicates_by_id = features => {
         ids.add(f.id)
     }
     return unique_features.reverse()
+}
+
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = join(__filename, '..')
+
+export async function import_from_all_mjs_files(folder) {
+    const dirPath = join(__dirname, folder)
+    const files = await readdir(dirPath)
+
+    const imports = []
+    for (const file of files) {
+        if (file.endsWith('.mjs')) {
+            const modulePath = pathToFileURL(join(dirPath, file)).href
+            const mod = await import(modulePath)
+            imports.push({ file, module: mod })
+        }
+    }
+    return imports
 }

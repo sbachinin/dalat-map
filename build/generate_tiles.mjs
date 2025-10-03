@@ -7,6 +7,7 @@ import {
 import {
     calculate_minzoom,
     generate_id,
+    import_from_all_mjs_files,
     is_real_number,
     mkdir_if_needed,
     parse_args,
@@ -180,7 +181,29 @@ add_missing_tiling_props(city_assets.tiling_config)
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
 const layers = {};
 
-// generate layers from custom_features_for_tiling/
+
+// generate layer for each .mjs file in custom_features_for_tiling/
+const modules = await import_from_all_mjs_files(city_root_path + '/static_data/custom_geometries_for_tiling')
+for (const { file, module } of modules) {
+    const layer_name = file.split('.')[0]
+    const features_data = module.default
+    layers[layer_name] = {
+        config: { name: layer_name },
+        features: Object.entries(features_data).map(([id, fdata]) => {
+            const ftype = typeof fdata[0] === 'number' && fdata.length === 2 ? 'Point' : 'Polygon'
+            return {
+                id: Number(id),
+                type: 'Feature',
+                geometry: {
+                    type: ftype,
+                    coordinates: fdata
+                },
+                properties: {}
+            }
+        })
+    }
+}
+
 
 ([
     ...city_assets.tiling_config,

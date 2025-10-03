@@ -1,4 +1,4 @@
-export const custom_geometries_for_tiling = {
+export default {
     1433243405346257: [
         [
             [
