@@ -553,6 +553,14 @@ export const selectable_border = {
     drawing_importance: 2,
     'paint': {
         'line-color': FRENCH_DARK_BORDER_COLOR,
-        'line-width': 1.5
+        'line-width': [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            0, 0,
+            FRENCH_GEOMETRIES_MINZOOM, 0.2,
+            16, 2
+        ]
     },
+    minzoom: FRENCH_GEOMETRIES_MINZOOM
 }

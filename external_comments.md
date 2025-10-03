@@ -42,7 +42,8 @@
     1) save all such geometries from osm for frontend during build, in a plain js object
     2) on frontend, from this object take all selectable ones,
         make polygon features for them in a separate geojson source,
-        draw them from this source with a dedicated "selectable border" style layer
+        draw them from this source with a dedicated "selectable border" style layer.
+        Having one source is cool because otherwise, if selectable features come from many sources, it will mean also multiplication of style layers, for they have to point to certain sources.
         (Therefore, the "normal features" CAN be unaware of being selectable,
         unless they want to style their selectability in some special way)
     3) once feature is selected, take its geometry from "osm props for frontend",

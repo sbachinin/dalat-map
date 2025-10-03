@@ -8,7 +8,7 @@ export const DARKER_FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 87.50%)'
 export const FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 63.50%)'
 export const FRENCH_DEAD_FILL_COLOR = 'hsl(0, 0.00%, 45.30%)'
 
-export const FRENCH_DARK_BORDER_COLOR = 'hsl(340, 20%, 35.00%)'
+export const FRENCH_DARK_BORDER_COLOR = 'hsl(340, 0%, 35.00%)'
 export const SELECTED_BORDER_COLOR = 'hsl(340, 35.30%, 35.00%)'
 export const FRENCH_LIGHTER_BORDER_COLOR = 'hsl(340, 0%, 50.00%)'
 export const BORING_BLDG_FILL_COLOR = 'hsl(43, 15%, 90%)'
