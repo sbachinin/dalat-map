@@ -10,7 +10,7 @@ import {
     is_real_number,
     mkdir_if_needed,
     parse_args,
-    push_with_overwrite,
+    remove_duplicates_by_id,
 } from './build_utils.mjs'
 import * as turf from '@turf/turf'
 import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
@@ -107,29 +107,32 @@ const smallest_possible_minzoom = calculate_minzoom(city_assets.map_bounds, 320,
 
 const all_mbtiles_paths = []
 
-const generate_temp_mbtiles = (tile_layer_config, layer_features) => {
-    const geojson_path = city_root_path + `/temp_data/topical/${tile_layer_config.name}.geojson`
+const generate_temp_mbtiles = (layer) => {
+    if (!layer.config) {
+        debugger
+    }
+    const geojson_path = city_root_path + `/temp_data/topical/${layer.config.name}.geojson`
 
-    if (layer_features.length === 0) { // otherwise tippecanoe fails at .geojson containing only empty array
+    if (layer.features.length === 0) { // otherwise tippecanoe fails at .geojson containing only empty array
         return
     }
 
     write(geojson_path,
-        layer_features.map(clear_feature_props))
+        layer.features.map(clear_feature_props))
 
     const temp_tiles_city_path = `${temp_tiles_path}/${cityname}`
     mkdir_if_needed(temp_tiles_city_path)
 
-    const temp_mbtiles_path = `${temp_tiles_city_path}/${tile_layer_config.name}.mbtiles`
+    const temp_mbtiles_path = `${temp_tiles_city_path}/${layer.config.name}.mbtiles`
     all_mbtiles_paths.push(temp_mbtiles_path)
 
     let minz = smallest_possible_minzoom
-    if (is_real_number(tile_layer_config.minzoom)) {
-        minz = Math.max(tile_layer_config.minzoom, smallest_possible_minzoom)
+    if (is_real_number(layer.config.minzoom)) {
+        minz = Math.max(layer.config.minzoom, smallest_possible_minzoom)
     }
     let maxz = i_ass.max_zoom || DEFAULT_MAX_ZOOM
-    if (is_real_number(tile_layer_config.maxzoom)) {
-        maxz = Math.min(tile_layer_config.maxzoom, maxz)
+    if (is_real_number(layer.config.maxzoom)) {
+        maxz = Math.min(layer.config.maxzoom, maxz)
     }
 
     exec(`
@@ -175,60 +178,77 @@ add_missing_tiling_props(city_assets.tiling_config)
 // 4) features made from tile_layer.get_custom_features will be added to osm features
 // 5) temporary .mbtiles will be created for current layer's geojson
 // (it's to enable individual minzooms for layers; then all .mbtiles are joined)
-const all_tiled_features = city_assets.tiling_config
-    .concat(roads_tiling_config)
-    .flatMap(tile_layer_config => {
-        if (!tile_layer_config.name) throw new Error('name not defined for tile_layer ' + tile_layer_config)
+const layers = {};
 
-        if (!tile_layer_config.get_custom_features && !tile_layer_config.osm_feature_filter) {
-            throw new Error('tile_layer must have either get_custom_features or osm_feature_filter defined, tile_layer name: ' + tile_layer_config.name)
-        }
+// generate layers from custom_features_for_tiling/
 
-        let layer_features = []
+([
+    ...city_assets.tiling_config,
+    ...roads_tiling_config
+]).forEach(tile_layer_config => {
+    if (!tile_layer_config.name) throw new Error('name not defined for tile_layer ' + tile_layer_config)
 
-        if (tile_layer_config.osm_feature_filter) {
-            layer_features = osm_geojson.features
-                .filter(tile_layer_config.osm_feature_filter)
-                .map(f => {
-                    tile_layer_config.props_to_add_to_osm_features?.forEach(prop => {
-                        if (f.properties[prop] !== undefined) {
-                            throw new Error(`trying to add extra prop "${prop}" to ${f.id} but feature already has it`)
-                        }
-                        if (prop === 'is_selectable') {
-                            f.properties[prop] = is_feature_selectable(f.id, hmdata, fids_to_img_names)
-                        } else if (prop === 'has_title') {
-                            f.properties[prop] = does_feature_have_title(f.id, hmdata)
-                        } else if (prop.name && prop.get_value) {
-                            f.properties[prop.name] = prop.get_value(f, hmdata)
-                        }
-                    })
-                    return f
-                })
-                // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
-                .sort((a, b) => b.id - a.id)
+    if (!tile_layer_config.get_custom_features && !tile_layer_config.osm_feature_filter) {
+        throw new Error('tile_layer must have either get_custom_features or osm_feature_filter defined, tile_layer name: ' + tile_layer_config.name)
+    }
 
-        }
-
-
-        if (tile_layer_config.get_custom_features) {
-            // id has to be nothing or a number, otherwise error
-            const custom_features = tile_layer_config.get_custom_features(osm_geojson.features)
-                .map(f => {
-                    if (typeof f.id === 'undefined') {
-                        f.id = generate_id() // 1. generate id if missing. Otherwise, features without id can be erased later here
-                    } else if (typeof f.id !== 'number') {
-                        throw new Error('custom feature id must be a number, instead got ' + typeof f.id + ' ' + f.id)
+    let filtered_osm_features = []
+    if (tile_layer_config.osm_feature_filter) {
+        filtered_osm_features = osm_geojson.features
+            .filter(tile_layer_config.osm_feature_filter)
+            .map(f => {
+                tile_layer_config.props_to_add_to_osm_features?.forEach(prop => {
+                    if (f.properties[prop] !== undefined) {
+                        throw new Error(`trying to add extra prop "${prop}" to ${f.id} but feature already has it`)
                     }
-                    return f
+                    if (prop === 'is_selectable') {
+                        f.properties[prop] = is_feature_selectable(f.id, hmdata, fids_to_img_names)
+                    } else if (prop === 'has_title') {
+                        f.properties[prop] = does_feature_have_title(f.id, hmdata)
+                    } else if (prop.name && prop.get_value) {
+                        f.properties[prop.name] = prop.get_value(f, hmdata)
+                    }
                 })
+                return f
+            })
+            // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
+            .sort((a, b) => b.id - a.id)
 
-            layer_features = push_with_overwrite(layer_features, custom_features)
-        }
+    }
 
-        generate_temp_mbtiles(tile_layer_config, layer_features)
+    let custom_features = []
+    if (tile_layer_config.get_custom_features) {
+        // id has to be nothing or a number, otherwise error
+        custom_features = tile_layer_config.get_custom_features(osm_geojson.features)
+            .map(f => {
+                if (typeof f.id === 'undefined') {
+                    f.id = generate_id() // 1. generate id if missing. Otherwise, features without id can be erased later here
+                } else if (typeof f.id !== 'number') {
+                    throw new Error('custom feature id must be a number, instead got ' + typeof f.id + ' ' + f.id)
+                }
+                return f
+            })
+    }
 
-        return layer_features
-    })
+    let layer_features = [
+        ...filtered_osm_features,
+        ...custom_features,
+    ]
+
+    layer_features = remove_duplicates_by_id(layer_features) // take only last feature with the same id => custom feature wins
+
+    // * (this overwrites previously written layer with same name)
+    // So, it there is a file custom_features_for_tiling/dead_buildings,
+    // + 'dead_buildings' entry in tiling_config, the second will prevail
+    layers[tile_layer_config.name] = {
+        config: tile_layer_config,
+        features: layer_features,
+    }
+})
+
+Object.values(layers).forEach(generate_temp_mbtiles)
+
+const all_tiled_features = Object.values(layers).flatMap(l => l.features)
 
 write(
     city_root_path + '/temp_data/features_to_generate_props_for.geojson',
@@ -240,7 +260,10 @@ const titles_points_feats = all_tiled_features
     .filter(f => Boolean(hmdata[f.id]?.title) && f.geometry.type !== 'Point')
     .map(f => make_title_point_feature(f, hmdata))
 
-generate_temp_mbtiles({ name: 'titles_points' }, titles_points_feats)
+generate_temp_mbtiles({
+    config: { name: 'titles_points' },
+    features: titles_points_feats
+})
 
 
 const final_tiles_path = `../cities_tiles/${cityname}/tiles`

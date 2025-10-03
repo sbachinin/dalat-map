@@ -82,3 +82,17 @@ export const push_with_overwrite = (arr1, arr2) => {
         .filter(f1 => !arr2.some(f2 => f2.id === f1.id))
         .concat(arr2)
 }
+
+// take only last one with same id
+export const remove_duplicates_by_id = features => {
+    const ids = new Set()
+    const unique_features = []
+    for (const f of features.reverse()) {
+        if (ids.has(f.id)) {
+            continue
+        }
+        unique_features.push(f)
+        ids.add(f.id)
+    }
+    return unique_features.reverse()
+}
