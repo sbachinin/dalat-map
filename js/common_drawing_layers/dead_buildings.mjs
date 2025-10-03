@@ -5,7 +5,8 @@ import { titles_common_layout_props } from "./drawing_layers.mjs";
 export const dead_buildings_layers = [
     {
         id: "Dead buildings fill",
-        source: SOURCES_NAMES.DEAD_BUILDINGS,
+        source: SOURCES_NAMES.CITY_TILES,
+        'source-layer': 'dead_buildings',
         "type": "fill",
         "minzoom": 14,
         "paint": {
@@ -15,9 +16,10 @@ export const dead_buildings_layers = [
         filter: ["==", ["geometry-type"], "Polygon"],
         drawing_importance: 1
     },
-    {
+    /* {
         id: "Dead buildings border",
-        source: SOURCES_NAMES.DEAD_BUILDINGS,
+        source: SOURCES_NAMES.CITY_TILES,
+        'source-layer': 'dead_buildings',
         type: 'line',
         "minzoom": 14,
         "paint": {
@@ -25,10 +27,11 @@ export const dead_buildings_layers = [
             "line-width": 2,
         },
         filter: ["==", ["geometry-type"], "Polygon"],
-    },
+    }, */
     {
         "id": "Dead buildings titles",
-        "source": SOURCES_NAMES.DEAD_BUILDINGS,
+        "source": SOURCES_NAMES.CITY_TILES,
+        'source-layer': 'dead_buildings',
         "type": "symbol",
         "minzoom": 15.5,
         layout: {

@@ -15,11 +15,6 @@ const files = [
         extractor: d => d.all_handmade_data,
     },
     {
-        filename: 'static_data/dead_buildings_data.mjs',
-        propname: 'dead_buildings_data',
-        extractor: d => d.dead_buildings_data,
-    },
-    {
         filename: 'static_data/fids_to_img_names.mjs',
         propname: 'fids_to_img_names',
         extractor: d => d.fids_to_img_names,
@@ -76,10 +71,6 @@ export const load_city = async (name) => {
     files.forEach((f, i) => {
         results_obj[f.propname] = f.extractor(results[i])
     })
-
-    Object.assign(
-        results_obj.all_handmade_data,
-        results_obj.dead_buildings_data || {})
 
     current_city = {
         name,

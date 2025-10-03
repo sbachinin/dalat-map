@@ -72,35 +72,6 @@ export const get_main_sources = () => {
 
     sources[SOURCES_NAMES.RENDERABLES] = get_geojson_source(features_from_renderables)
 
-    if (Object.keys(current_city.dead_buildings_data || {}).length) {
-        const dead_buildings_features = []
-        for (const [fid, fdata] of Object.entries(current_city.dead_buildings_data)) {
-            if (!fdata.geometry) {
-                console.warn('no geometry for dead building', fid)
-                continue
-            }
-            const main_feature = {
-                type: 'Feature',
-                id: fid,
-                properties: { building: true },
-                geometry: fdata.geometry
-            }
-            dead_buildings_features.push(main_feature)
-
-            current_city.features_generated_props_for_frontend[fid] = {
-                centroid: get_centroid(main_feature)
-            }
-
-            if (fdata.title) {
-                dead_buildings_features.push(
-                    make_title_point_feature(main_feature, current_city.dead_buildings_data)
-                )
-            }
-        }
-        sources[SOURCES_NAMES.DEAD_BUILDINGS] = get_geojson_source(dead_buildings_features)
-    }
-
-
     sources.bldgs_centroids_points = get_geojson_source(
         get_centroids_as_features()
     )
