@@ -30,3 +30,20 @@
     Wider thumbs will certainly disrupt this order, taking more width than an ideal thumb.
     Such thumbs, except some extremely wide ones, will be displayed in their full intrinsic size,
         and certainly only 1 such thumb per row.
+
+
+
+
+###2 How selectable and selected geometries are being drawn (highlighted)
+    Basically, selected and selectable stuff CAN be completely detached from drawing "normal features",
+    for reasons of code simplicity and uniformity
+        - no need to handle each kind of selectable buildings individually to ensure it's highlighted once selected,
+        no need to search for a selected feature across many sources.
+    1) save all such geometries from osm for frontend during build, in a plain js object
+    2) on frontend, from this object take all selectable ones,
+        make polygon features for them in a separate geojson source,
+        draw them from this source with a dedicated "selectable border" style layer
+        (Therefore, the "normal features" CAN be unaware of being selectable,
+        unless they want to style their selectability in some special way)
+    3) once feature is selected, take its geometry from "osm props for frontend",
+        put it as the only feature in a 'selected-building' source

@@ -116,7 +116,7 @@ export const zoom_order = {
                     "source-layer": "important_boring_building",
                     drawing_importance: 1.5,
                     "paint": {
-                        "fill-color": 'hsl(273, 45%, 50%)',
+                        "fill-color": 'hsl(273, 100%, 90%)',
                         "fill-antialias": true,
                     }
                 }

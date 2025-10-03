@@ -105,7 +105,7 @@ export const get_main_sources = () => {
         get_centroids_as_features()
     )
 
-
+    // ###2
     sources['selectable-buildings'] = {
         type: 'geojson',
         data: {

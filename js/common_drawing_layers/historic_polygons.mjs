@@ -86,7 +86,6 @@ const get_dark_outline_props = high_zoom_thickness => {
 const historic_detailless_dark_outline = {
     'name': 'Historic buildings without details dark outline',
     ...get_dark_outline_props(1),
-    filter: ["!=", ["get", "is_selectable"], true],
 }
 
 
