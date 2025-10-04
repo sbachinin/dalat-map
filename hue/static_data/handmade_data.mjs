@@ -144,6 +144,7 @@ export const buildings_handmade_data = {
 
     "118542146": {
         title: 'Francis Xavier\nChurch',
+        title_side: 'north',
         subtitle: `In a way, it's the most important of all colonial churches in Hue, and possibly the oldest. However, it was severely damaged during the Tet Offensive in 1968. By 1972, the church was mostly restored, but still lacked the bell tower. Photos from that time show an incomplete but really beautiful version of the building. In 2008, a full restoration was completed — as far as I can tell, the original design was followed, but without much scrutiny. Some minor simplifications sneaked in, and most notably, the bell tower became thinner, which really ruined the overall proportions. (The most reliable part is the ground-floor arcade that wasn't destroyed in the war). Also — traditionally for churches in Hue — the paint was chosen very poorly. As a result, today the building doesn’t look colonial at all (and perhaps that wasn’t the goal of the restoration). It’s not the worst church in Hue, but I hesitate to consider it a historical building.`,
         year: '1911'
     },
@@ -454,7 +455,7 @@ export const land_areas_handmade_data = {
     695770482: {
         title: `Hai Ba Trung
         high school`,
-        title_coords: [107.5848829, 16.4606216],
+        title_coords: [107.584708, 16.460662],
         area_type: AREA_TYPES.INSTITUTION
     },
 

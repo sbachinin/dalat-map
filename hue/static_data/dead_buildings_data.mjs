@@ -61,7 +61,7 @@ export const dead_buildings_data = {
     },
     4291675218324692: {
         title: "Chapel of\nJeanne d’Arc school",
-        title_side: 'south',
+        title_side: 'north',
         subtitle: `This chapel once belonged to the "Institution Jeanne d’Arc", a catholic high school for girls. Later it became a regular vietnamese school but retained a remarkably antiquated look until the sweeping demolition in 2022. Besides the chapel, there stood 2 or 3 colonial classroom buildings with an arcade passage connecting them. In 2025 the campus was newly opened with a totally different arrangement of buildings and no trace of anything historical.`,
     }
 }

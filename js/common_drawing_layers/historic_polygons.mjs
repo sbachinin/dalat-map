@@ -61,37 +61,31 @@ const historic_detailful_thickening_outline = {
     filter: ["==", ["get", "is_selectable"], true]
 }
 
-const get_dark_outline_props = high_zoom_thickness => {
-    return {
-        'type': 'line',
-        "source": SOURCES_NAMES.CITY_TILES,
-        drawing_importance: 2,
-        'paint': {
-            'line-color': c.FRENCH_DARK_BORDER_COLOR,
-            'line-width': [
-                "interpolate",
-                ["linear", 2],
-                ["zoom"],
-                // at low zoom, this outline has only visual purpose
-                // (it's very narrow behind the thickening and adds some clarity to polygons)
-                14,
-                HISTORIC_POLYGONS_MAX_THICKENING + 1,
-                15.5,
-                high_zoom_thickness
-            ]
-        },
-    }
-}
 
-const historic_detailless_dark_outline = {
-    'name': 'Historic buildings without details dark outline',
-    ...get_dark_outline_props(1),
+// It's very narrow, not looking like a border, but just making the polygons a little crisper
+const historic_dark_outline = {
+    'name': 'Historic buildings dark outline',
+    'type': 'line',
+    "source": SOURCES_NAMES.CITY_TILES,
+    drawing_importance: 2,
+    'paint': {
+        'line-color': c.FRENCH_DARK_BORDER_COLOR,
+        'line-width': [
+            "interpolate",
+            ["linear", 2],
+            ["zoom"],
+            14,
+            HISTORIC_POLYGONS_MAX_THICKENING + 0.5,
+            15.5,
+            1
+        ]
+    },
 }
 
 
 
 export const historic_polygons = [
-    historic_detailless_dark_outline,
+    historic_dark_outline,
     historic_detailless_thickening_outline,
     historic_detailless_bldg_fill,
     historic_detailful_thickening_outline,

@@ -203,7 +203,9 @@ for (const { file, module } of modules) {
                     type: ftype,
                     coordinates: fdata
                 },
-                properties: {}
+                properties: {
+                    // building? (if features in buildings_handmade_data?)
+                }
             }
         })
     }
