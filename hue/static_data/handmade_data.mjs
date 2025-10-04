@@ -6,6 +6,21 @@ export const buildings_handmade_data = {
 
     ...dead_buildings_data,
 
+    240143621: {
+        title: `Central
+        indoor stadium`
+    },
+
+    1435288831: {
+        title: `Northern
+        bus station`
+    },
+
+    260244336: {
+        title: `Southern
+        bus station`
+    },
+
     493381029: {
         title: `Thien An
         monastery
@@ -15,33 +30,27 @@ export const buildings_handmade_data = {
 
     632173205: {
         title: 'Library',
-        title_side: 'center'
     },
 
     240131252: {
         title: `Hotel`,
-        title_side: 'center'
     },
 
     1280445132: {
         title: 'Hotel',
-        title_side: 'center'
     },
 
     731095046: {
         title: 'Hotel',
-        title_side: 'center'
     },
 
     218439300: {
         title: 'Supermarket',
-        title_side: 'center'
     },
 
     695770476: {
         title: `People's
         commitee`,
-        title_side: 'center'
     },
 
     /* 1433190508: {
@@ -53,7 +62,6 @@ export const buildings_handmade_data = {
     749331141: {
         title: `The
         skyscraper`,
-        title_side: 'center'
     },
 
     1433191883: {
@@ -427,6 +435,9 @@ export const lakes_handmade_data = {
 }
 
 export const land_areas_handmade_data = {
+    217466613: {
+        title: 'Airport'
+    },
 
     1435265548: {
         title: `Dieu De

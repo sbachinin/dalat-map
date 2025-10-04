@@ -1,3 +1,4 @@
+import { is_feature_selectable } from "./does_feature_have_details.mjs"
 import { get_centroid } from "./isomorphic_utils.mjs"
 
 const get_all_lats = feature => {
@@ -37,7 +38,9 @@ const get_title_side = (f, hmdata) => {
         return hm_side
     }
 
-    if (f.properties?.building) {
+    if (f.properties?.building
+        && is_feature_selectable(f.id)
+    ) {
         return 'south'
     }
 

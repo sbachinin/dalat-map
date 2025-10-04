@@ -48,6 +48,10 @@ const files = [
         extractor: d => d.highlights_order,
     }
 ]
+
+export const current_city = {}
+globalThis.current_city = current_city
+
 export const load_city = async (name) => {
 
     // The following "import" creates uncaught error and blank map if file is not found
@@ -67,24 +71,17 @@ export const load_city = async (name) => {
         results_obj[f.propname] = f.extractor(results[i])
     })
 
-    current_city = {
+    const new_current_city = {
         name,
         ...results_obj,
         ...results_obj.isomorphic_assets
     }
 
-    current_city.intro_zoom = current_city.intro_zoom || 12
+    Object.keys(current_city).forEach(k => delete current_city[k])
 
-    onload_listeners.forEach(cb => cb(current_city))
+    Object.assign(
+        current_city,
+        { intro_zoom: 12 }, // default, can be overridden from city's isomorphic_assets
+        new_current_city,
+    )
 }
-
-const onload_listeners = []
-
-export const onload_city = (cb) => {
-    onload_listeners.push(cb)
-    if (current_city) {
-        cb(current_city)
-    }
-}
-
-export let current_city = null

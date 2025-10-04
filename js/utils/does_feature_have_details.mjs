@@ -1,9 +1,7 @@
-import { current_city } from "../load_city.mjs"
-
 export const is_feature_selectable = (
     id,
-    hmdata = current_city?.all_handmade_data,
-    fids_to_img_names = current_city?.fids_to_img_names
+    hmdata = globalThis.current_city?.all_handmade_data,
+    fids_to_img_names = globalThis.current_city?.fids_to_img_names
 ) => {
     if (!hmdata) {
         throw new Error('hmdata is undefined')

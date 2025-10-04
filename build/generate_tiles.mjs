@@ -85,8 +85,10 @@ osm_geojson.features.forEach(f => {
 
 const temp_tiles_path = `../cities_tiles/temp`
 
-const { all_handmade_data: hmdata } = await import(city_root_path + '/static_data/handmade_data.mjs')
+const { all_handmade_data } = await import(city_root_path + '/static_data/handmade_data.mjs')
 const { fids_to_img_names } = await import(city_root_path + '/static_data/fids_to_img_names.mjs')
+
+globalThis.current_city = { all_handmade_data, fids_to_img_names }
 
 const clear_feature_props = (f) => {
     return {
@@ -232,11 +234,11 @@ for (const { file, module } of modules) {
                         throw new Error(`trying to add extra prop "${prop}" to ${f.id} but feature already has it`)
                     }
                     if (prop === 'is_selectable') {
-                        f.properties[prop] = is_feature_selectable(f.id, hmdata, fids_to_img_names)
+                        f.properties[prop] = is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
                     } else if (prop === 'has_title') {
-                        f.properties[prop] = does_feature_have_title(f.id, hmdata)
+                        f.properties[prop] = does_feature_have_title(f.id, all_handmade_data)
                     } else if (prop.name && prop.get_value) {
-                        f.properties[prop.name] = prop.get_value(f, hmdata)
+                        f.properties[prop.name] = prop.get_value(f, all_handmade_data)
                     }
                 })
                 return f
@@ -287,8 +289,8 @@ write(
 
 
 const titles_points_feats = all_tiled_features
-    .filter(f => Boolean(hmdata[f.id]?.title) && f.geometry.type !== 'Point')
-    .map(f => make_title_point_feature(f, hmdata))
+    .filter(f => Boolean(all_handmade_data[f.id]?.title) && f.geometry.type !== 'Point')
+    .map(f => make_title_point_feature(f, all_handmade_data))
 
 generate_temp_mbtiles({
     config: { name: 'titles_points' },
@@ -300,7 +302,7 @@ generate_temp_mbtiles({
 generate_temp_mbtiles({
     config: { name: 'selectable_polygons' },
     features: all_tiled_features
-        .filter(f => is_feature_selectable(f.id, hmdata, fids_to_img_names))
+        .filter(f => is_feature_selectable(f.id, all_handmade_data, fids_to_img_names))
 })
 
 

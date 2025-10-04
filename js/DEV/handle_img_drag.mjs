@@ -1,5 +1,5 @@
 import { display_highlights } from "../highlights.mjs";
-import { current_city, onload_city } from "../load_city.mjs";
+import { current_city } from "../load_city.mjs";
 import { try_open_building } from "../panel/bldg_details.mjs";
 import { before_last_dot, create_element_from_Html } from "../utils/frontend_utils.mjs";
 import { save_string_to_file } from "./save_string_to_file.mjs";
@@ -20,13 +20,6 @@ document.querySelector('#maplibregl-map').addEventListener("dragover", e => {
 
     One possible source of bugs here (not tested yet) is how it behaves when switching cities at runtime.
 */
-
-onload_city(city => {
-    localStorage.setItem(
-        city.name + '_fids_to_img_names',
-        JSON.stringify(city.fids_to_img_names)
-    )
-})
 
 const rendered_feat_is_bldg = f => {
     // Looks like there is no 100% reliable way to answer this question
