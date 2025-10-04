@@ -7,6 +7,7 @@ import {
 import {
     calculate_minzoom,
     generate_id,
+    getArrayDepth,
     import_from_all_mjs_files,
     is_real_number,
     mkdir_if_needed,
@@ -190,7 +191,11 @@ for (const { file, module } of modules) {
     layers[layer_name] = {
         config: { name: layer_name },
         features: Object.entries(features_data).map(([id, fdata]) => {
-            const ftype = typeof fdata[0] === 'number' && fdata.length === 2 ? 'Point' : 'Polygon'
+            const depth = getArrayDepth(fdata)
+            let ftype = 'Point'
+            if (depth === 2) ftype = 'LineString'
+            if (depth === 3) ftype = 'Polygon'
+            if (depth === 4) ftype = 'MultiPolygon'
             return {
                 id: Number(id),
                 type: 'Feature',

@@ -6,11 +6,55 @@ export const buildings_handmade_data = {
 
     ...dead_buildings_data,
 
+    493381029: {
+        title: `Thien An
+        monastery
+        (catholic)`,
+        title_side: 'center'
+    },
+
+    632173205: {
+        title: 'Library',
+        title_side: 'center'
+    },
+
+    240131252: {
+        title: `Hotel`,
+        title_side: 'center'
+    },
+
+    1280445132: {
+        title: 'Hotel',
+        title_side: 'center'
+    },
+
+    731095046: {
+        title: 'Hotel',
+        title_side: 'center'
+    },
+
+    218439300: {
+        title: 'Supermarket',
+        title_side: 'center'
+    },
+
+    695770476: {
+        title: `People's
+        commitee`,
+        title_side: 'center'
+    },
+
     /* 1433190508: {
         // turned out it's outside the map, and not interesting enough to extend to it
         title: `Linh Thuy
         church`,
     }, */
+
+    749331141: {
+        title: `The
+        skyscraper`,
+        title_side: 'center'
+    },
 
     1433191883: {
         title: `Lại Ân
@@ -20,7 +64,7 @@ export const buildings_handmade_data = {
     1433206537: {
         title: `An Nhơn
         church`,
-        subtitle: 'It seems this was a lovely little church some time ago. However, after the recent paint job in 2024, it looks really ugly and is hardly recognizable as colonial.'
+        subtitle: 'It seems this was a lovely little church some time ago (on the picture). However, after the recent paint job in 2024, it looks really ugly (not shown here) and is hardly recognizable as colonial.'
     },
 
     1433210182: {
@@ -382,6 +426,97 @@ export const lakes_handmade_data = {
 }
 
 export const land_areas_handmade_data = {
+
+    1435265548: {
+        title: `Dieu De
+        pagoda`
+    },
+
+    1174326145: {
+        title: `Từ Hiếu
+        pagoda`
+    },
+
+    436421074: {
+        title: `College of
+        sciences`,
+        title_coords: [107.592804, 16.459754],
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1033709968: {
+        title: `Industrial
+        college`,
+        area_type: AREA_TYPES.INSTITUTION,
+        title_coords: [107.587893, 16.457163]
+    },
+
+    695770482: {
+        title: `Hai Ba Trung
+        high school`,
+        title_coords: [107.5848829, 16.4606216],
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1033709046: {
+        title: `University
+        of Medicine
+        and Pharmacy`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1033709047: {
+        title: `Medical
+        college`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    695775622: {
+        title: `High school
+        for the
+        gifted`,
+        title_coords: [107.583487, 16.459864],
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    3229124: {
+        // stadium track
+    },
+
+    10138638: {
+        title: `Academy
+        of music`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    438257497: {
+        title: `Hospital`,
+        title_coords: [107.587270, 16.462025],
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1023330891: {
+        title: `College
+        of tourism`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1084960041: {
+        title: `College
+        of education`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    695770493: {
+        // other part of hospital
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1033691531: {
+        title: `University
+        of education`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
 
     1044435601: {
         title: `College of

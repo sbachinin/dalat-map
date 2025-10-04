@@ -4,6 +4,19 @@ import { readdir } from 'fs/promises'
 import { join } from 'path'
 import { pathToFileURL } from 'url'
 
+export function getArrayDepth(arr) {
+    if (!Array.isArray(arr)) {
+        return 0;
+    }
+
+    if (arr.length === 0) {
+        return 1;
+    }
+
+    const depths = arr.map(item => getArrayDepth(item));
+    return 1 + Math.max(...depths);
+}
+
 export const generate_id = () => Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
 
 export const parse_args = () => {

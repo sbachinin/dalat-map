@@ -216,7 +216,7 @@ export const land_areas_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'land_areas',
-    drawing_importance: 6,
+    drawing_importance: 6.1,
     paint: {
         'fill-color': [
             "case",
@@ -566,3 +566,5 @@ export const selectable_border = {
     },
     minzoom: FRENCH_GEOMETRIES_MINZOOM
 }
+
+//  A LITTLE DARKER GEOMETRIES?
