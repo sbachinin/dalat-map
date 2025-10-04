@@ -39,15 +39,14 @@
     for reasons of code simplicity and uniformity
         - no need to handle each kind of selectable buildings individually to ensure it's highlighted once selected,
         no need to search for a selected feature across many sources.
-    1) save all such geometries from osm for frontend during build, in a plain js object
-    2) on frontend, from this object take all selectable ones,
-        make polygon features for them in a separate geojson source,
-        draw them from this source with a dedicated "selectable border" style layer.
+    1) save all such geometries to a dedicated tile layer
+    2) on frontend, draw all features from "selectable_polygons" source-layer with a dedicated "selectable border" style layer.
         Having one source is cool because otherwise, if selectable features come from many sources, it will mean also multiplication of style layers, for they have to point to certain sources.
         (Therefore, the "normal features" CAN be unaware of being selectable,
         unless they want to style their selectability in some special way)
-    3) once feature is selected, take its geometry from "osm props for frontend",
-        put it as the only feature in a 'selected-building' source
+    3) once feature is selected, setFeatureState "selected" for a "selectable_polygons" source-layer, and display it using separate style layers that draw fill/border only for a feature with "selected" feature-state
+
+    *** a previous solution involved not having a separate tile layer for selectable features, but saving their geometries in a js object for frontend to access. On frontend I made a geojson source from these geometries. It worked almost ok but unpleasant aspect was that runtime-generated geojson geometries slightly differed from those tiled geometries of "normal" features. (Difference btw tippecanoe and maplibre's built-in tiling lib). And so a selectable border didn't match the bounds of normal fill layers. So I chose to use only 1 tiling mechanism, and it was certainly a build-stage solution, not frontend, because accessing "all selectable geometries" on frontend is quite a task.
 
 ###3
     Deadness of a building is determined by its presence in custom_features_for_tiling/dead_buildings.mjs

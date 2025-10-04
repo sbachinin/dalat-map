@@ -289,6 +289,14 @@ generate_temp_mbtiles({
 })
 
 
+
+generate_temp_mbtiles({
+    config: { name: 'selectable_polygons' },
+    features: all_tiled_features
+        .filter(f => is_feature_selectable(f.id, hmdata, fids_to_img_names))
+})
+
+
 const final_tiles_path = `../cities_tiles/${cityname}/tiles`
 mkdir_if_needed(final_tiles_path)
 exec(`rm -rf ${final_tiles_path}/*`)

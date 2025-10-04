@@ -1,4 +1,4 @@
-import { current_city } from "./load_city.mjs"
+import { SOURCES_NAMES } from "./constants.mjs"
 import { get_selected_building_id, set_selected_building_id } from "./selected_building_id.mjs"
 
 // ###2
@@ -6,24 +6,23 @@ export const select_building = newid => {
     const sel_id = get_selected_building_id()
     if (newid !== sel_id) {
 
-        const source = window.dalatmap.getSource('selected-building')
+        window.dalatmap.setFeatureState(
+            {
+                source: SOURCES_NAMES.CITY_TILES,
+                sourceLayer: 'selectable_polygons',
+                id: sel_id
+            },
+            { selected: false }
+        )
 
-        const data = {
-            type: 'FeatureCollection',
-            features: []
-        }
-        if (newid) {
-            data.features = [{
-                type: 'Feature',
-                geometry: {
-                    type: 'Polygon',
-                    coordinates: current_city.contentful_buildings_props_from_osm[newid].polygon
-                },
-                properties: { name: 'Hanoi' }
-            }]
-        }
-
-        source.setData(data)
+        window.dalatmap.setFeatureState(
+            {
+                source: SOURCES_NAMES.CITY_TILES,
+                sourceLayer: 'selectable_polygons',
+                id: newid
+            },
+            { selected: true }
+        )
 
         set_selected_building_id(newid)
     }

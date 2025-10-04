@@ -1,3 +1,4 @@
+import { SOURCES_NAMES } from "../constants.mjs"
 import { FRENCH_SELECTED_FILL_COLOR } from "./constants.mjs"
 
 
@@ -19,9 +20,15 @@ const selected_fill_layer = {
     drawing_importance: 1, // it will come after base layer, so will will be rendered on top
     id: 'Selected feature fill',
     type: 'fill',
-    source: 'selected-building',
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'selectable_polygons',
     paint: {
-        "fill-color": FRENCH_SELECTED_FILL_COLOR,
+        "fill-color": [
+            'case',
+            ['!=', ['feature-state', 'selected'], true],
+            'transparent',
+            FRENCH_SELECTED_FILL_COLOR
+        ],
         "fill-antialias": true
     }
 }
@@ -31,18 +38,16 @@ const selected_border_layer = {
     drawing_importance: 1,
     id: 'Selected feature border',
     type: 'line',
-    source: 'selected-building',
+    source: SOURCES_NAMES.CITY_TILES,
+    'source-layer': 'selectable_polygons',
     paint: {
         'line-color': 'hsl(340, 89%, 22%)',
         'line-width': [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            13,
-            3,
-            15.5,
-            1.2,
-        ]
+            'case',
+            ['!=', ['feature-state', 'selected'], true],
+            0,
+            2.5
+        ],
     },
     layout: {
         'line-join': 'round',

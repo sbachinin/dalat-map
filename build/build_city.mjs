@@ -2,7 +2,6 @@ import { execSync } from 'child_process';
 import { parse_args } from "./build_utils.mjs"
 import { validate_images } from './validate_images.mjs'
 import { update_osm_data } from './update_osm_data.mjs';
-import { save_buildings_props_for_frontend } from './save_buildings_props_for_frontend.mjs';
 
 // config_to_adjust_manually
 const defaults = {
@@ -43,8 +42,6 @@ if (shall_validate_images) {
 if (!skip_osm_download) {
     await update_osm_data(city)
 }
-
-save_buildings_props_for_frontend(city)
 
 if (generate_tiles) {
     execSync(

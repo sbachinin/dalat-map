@@ -550,7 +550,8 @@ export const river_lines = {
 export const selectable_border = {
     id: 'Selectable border',
     'type': 'line',
-    "source": 'selectable-buildings',
+    source: SOURCES_NAMES.CITY_TILES,
+    "source-layer": 'selectable_polygons',
     drawing_importance: 2,
     'paint': {
         'line-color': FRENCH_DARK_BORDER_COLOR,
