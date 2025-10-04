@@ -22,7 +22,7 @@ function get_topmost_id(html_string) {
 
 const info_icons = [
     {
-        if: fid => !!current_city.dead_buildings_data?.[fid],
+        if: fid => current_city.features_generated_props_for_frontend[fid]?.is_dead,
         get_markup: fid => `<div id="building-info__dead">
                 <img src="../auxiliary_images/skull.png">
             </div>`,

@@ -1366,36 +1366,42 @@ export const features_generated_props_for_frontend = {
     "centroid": [
       107.554833,
       16.485036
-    ]
+    ],
+    "is_dead": true
   },
   "1433199817649827": {
     "centroid": [
       107.596885,
       16.494384
-    ]
+    ],
+    "is_dead": true
   },
   "1433304540947235": {
     "centroid": [
       107.557906,
       16.427487
-    ]
+    ],
+    "is_dead": true
   },
   "4204853453494286": {
     "centroid": [
       107.590089,
       16.478998
-    ]
+    ],
+    "is_dead": true
   },
   "4204853453454355": {
     "centroid": [
       107.591228,
       16.462703
-    ]
+    ],
+    "is_dead": true
   },
   "4291675218324692": {
     "centroid": [
       107.591979,
       16.464834
-    ]
+    ],
+    "is_dead": true
   }
 };

@@ -14,6 +14,8 @@ Add features that don't come from OSM
 Add dead_buildings
     put their geometries to city/static_data/custom_features_for_tiling/dead_buildings.mjs (this exact filename, I guess)
     reference these geometries by id in handmade data
+        * is_dead prop in handmade data will do nothing
+            (bldg is considered dead if it's in static.../dead_... file)
 
 Display city title (at early zoom)
     add city_title_coords to [city]/isomorphic_utils

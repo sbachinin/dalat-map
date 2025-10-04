@@ -48,3 +48,8 @@
         unless they want to style their selectability in some special way)
     3) once feature is selected, take its geometry from "osm props for frontend",
         put it as the only feature in a 'selected-building' source
+
+###3
+    Deadness of a building is determined by its presence in custom_features_for_tiling/dead_buildings.mjs
+    To get dead geometries on a map, it must be enough to have them in this file.
+    Handmade data is assigned to dead buildings just as a regular item in buildings_handmade_data, without any attrs like "is_dead"

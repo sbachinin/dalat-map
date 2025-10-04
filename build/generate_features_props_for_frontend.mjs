@@ -10,6 +10,14 @@ const city_root_path = `../${city}`
 const all_handmade_data = (await import(city_root_path + '/static_data/handmade_data.mjs')).all_handmade_data
 
 const fids_to_img_names = (await import(city_root_path + '/static_data/fids_to_img_names.mjs')).fids_to_img_names
+
+
+let dead_buildings_geometries = {}
+try {
+    const mod = await import(city_root_path + '/static_data/custom_geometries_for_tiling/dead_buildings.mjs')
+    dead_buildings_geometries = mod.default
+} catch (e) {}
+
 const ass = await import(city_root_path + '/assets_for_build.mjs')
 const assets_for_build = ass.assets_for_build
 
@@ -53,6 +61,9 @@ all_tiled_features.forEach(f => {
         && turf.area(f) < 80
     ) {
         single_feature_props.is_small_building = true
+    }
+    if (Object.keys(dead_buildings_geometries).includes(String(f.id))) {
+        single_feature_props.is_dead = true
     }
 
     all_features_generic_props[f.id] = single_feature_props

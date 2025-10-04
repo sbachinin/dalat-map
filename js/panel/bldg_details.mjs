@@ -41,7 +41,7 @@ const set_panel_content = (id) => {
         activate_image(img)
     })
 
-    const dead_square = current_city.dead_buildings_data?.[id]
+    const dead_square = current_city.features_generated_props_for_frontend[id]?.is_dead
         ? `<img id="bldg-title-dead-square" src="${get_icon_as_ctx('black_square').canvas.toDataURL()}"> `
         : ''
 
