@@ -45,12 +45,11 @@ export const assets_for_build = {
             osm_feature_filter: f => f.properties?.building
                 && f.properties?.['building:architecture'] !== 'french_colonial'
                 && is_important_building(f.id, all_handmade_data, fids_to_img_names),
-            props_to_add_to_osm_features: ['is_selectable']
         },
         {
             name: 'french_building',
             osm_feature_filter: f => f.properties['building:architecture'] === 'french_colonial',
-            props_to_add_to_osm_features: ['is_selectable', 'has_title'],
+            props_to_add_to_osm_features: ['has_title'],
         },
 
         {

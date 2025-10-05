@@ -231,9 +231,7 @@ for (const { file, module } of modules) {
                     if (f.properties[extra_prop] !== undefined) {
                         throw new Error(`trying to add extra prop "${extra_prop}" to ${f.id} but feature already has it`)
                     }
-                    if (extra_prop === 'is_selectable') {
-                        f.properties[extra_prop] = is_feature_selectable(f.id)
-                    } else if (extra_prop === 'has_title') {
+                    if (extra_prop === 'has_title') {
                         f.properties[extra_prop] = does_feature_have_title(f.id)
                     } else if (extra_prop.name && extra_prop.get_value) {
                         f.properties[extra_prop.name] = extra_prop.get_value(f, all_handmade_data)
