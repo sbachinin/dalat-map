@@ -79,10 +79,6 @@ export const french_buildings_titles = {
 export const french_bldg_circle = {
     "name": "French building circle",
     "type": "symbol",
-
-    // could use 'bldgs_centroids_points' source,
-    // it would be consistent with how non-french squares are rendered,
-    // but centroids source hasn't 'has_title' property
     "source": "bldgs_centroids_points",
     filter: ["==", ["get", "is_french"], true],
     drawing_importance: 2,
@@ -407,8 +403,6 @@ export const boring_building_fill = {
                 ['==', ['id'], 361851927],
             ],
             IMPORTANT_BORING_BLDG_IN_FOREST_FILL_COLOR,
-            ['==', ['get', 'has_title'], true],
-            'hsl(240, 27%, 91%)',
             BORING_BLDG_FILL_COLOR
         ],
         "fill-antialias": true,

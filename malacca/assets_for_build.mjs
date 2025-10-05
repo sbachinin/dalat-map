@@ -44,7 +44,8 @@ export const assets_for_build = {
                         && f.id !== 12743796
                         && f.id !== 383041700
                     )
-                }).flatMap(f => {
+                })
+                /* .flatMap(f => {
                     if (f.id === 12743795) {
                         // split megamall
                         return [
@@ -56,18 +57,17 @@ export const assets_for_build = {
                         ...f,
                         properties: { ...f.properties, has_title: !!all_handmade_data[f.id]?.title }
                     }]
-                })
+                }) */
             },
             minzoom: 15
         },
         {
             name: 'historic_building',
             osm_feature_filter: f => {
-                return f.id === 945813625 // st john fort is not a building
+                return f.id === 945813625 // st john fort has no "building" prop in osm
                     || (is_building_polygon(f)
                         && f.properties.historic)
             },
-            props_to_add_to_osm_features: ['has_title'],
         },
 
         {

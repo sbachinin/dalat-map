@@ -49,7 +49,6 @@ export const assets_for_build = {
         {
             name: 'french_building',
             osm_feature_filter: f => f.properties['building:architecture'] === 'french_colonial',
-            props_to_add_to_osm_features: ['has_title'],
         },
 
         {

@@ -178,7 +178,6 @@ export const assets_for_build = {
             name: 'french_building',
             osm_feature_filter: f => f.properties['building:architecture'] === 'french_colonial'
                 || f.id === 1384219085,
-            props_to_add_to_osm_features: ['is_selectable', 'has_title'],
         },
         {
             name: 'city_walls_areas',
