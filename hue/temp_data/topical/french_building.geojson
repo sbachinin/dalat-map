@@ -3898,7 +3898,7 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": false,
-      "has_title": true
+      "has_title": false
     }
   },
   {
@@ -3935,7 +3935,7 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": false
+      "has_title": true
     }
   },
   {

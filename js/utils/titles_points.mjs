@@ -88,20 +88,21 @@ const is_water_feature = f => {
 }
 
 
-export const make_title_point_feature = (f, handmade_data) => {
-    let coordinates = handmade_data[f.id].title_coords
+export const make_title_point_feature = f => {
+    const hmdata = globalThis.current_city.all_handmade_data
+    let coordinates = hmdata[f.id].title_coords
     if (!coordinates) {
         const centroid = get_centroid(f)
         coordinates = [
             centroid[0],
-            get_title_lat(f, handmade_data, centroid)
+            get_title_lat(f, hmdata, centroid)
         ]
     }
 
     const title_props = {
-        title: handmade_data[f.id].title,
-        title_side: get_title_side(f, handmade_data),
-        "symbol-sort-key": handmade_data[f.id]["symbol-sort-key"]
+        title: hmdata[f.id].title,
+        title_side: get_title_side(f, hmdata),
+        "symbol-sort-key": hmdata[f.id]["symbol-sort-key"]
     }
 
     if (is_water_feature(f)) {

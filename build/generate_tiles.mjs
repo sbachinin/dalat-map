@@ -227,16 +227,16 @@ for (const { file, module } of modules) {
         filtered_osm_features = osm_geojson.features
             .filter(tile_layer_config.osm_feature_filter)
             .map(f => {
-                tile_layer_config.props_to_add_to_osm_features?.forEach(prop => {
-                    if (f.properties[prop] !== undefined) {
-                        throw new Error(`trying to add extra prop "${prop}" to ${f.id} but feature already has it`)
+                tile_layer_config.props_to_add_to_osm_features?.forEach(extra_prop => {
+                    if (f.properties[extra_prop] !== undefined) {
+                        throw new Error(`trying to add extra prop "${extra_prop}" to ${f.id} but feature already has it`)
                     }
-                    if (prop === 'is_selectable') {
-                        f.properties[prop] = is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
-                    } else if (prop === 'has_title') {
-                        f.properties[prop] = does_feature_have_title(f.id, all_handmade_data)
-                    } else if (prop.name && prop.get_value) {
-                        f.properties[prop.name] = prop.get_value(f, all_handmade_data)
+                    if (extra_prop === 'is_selectable') {
+                        f.properties[extra_prop] = is_feature_selectable(f.id)
+                    } else if (extra_prop === 'has_title') {
+                        f.properties[extra_prop] = does_feature_have_title(f.id)
+                    } else if (extra_prop.name && extra_prop.get_value) {
+                        f.properties[extra_prop.name] = extra_prop.get_value(f, all_handmade_data)
                     }
                 })
                 return f
@@ -300,7 +300,7 @@ generate_temp_mbtiles({
 generate_temp_mbtiles({
     config: { name: 'selectable_polygons' },
     features: all_tiled_features
-        .filter(f => is_feature_selectable(f.id, all_handmade_data, fids_to_img_names))
+        .filter(f => is_feature_selectable(f.id))
 })
 
 

@@ -129,13 +129,7 @@ export const buildings_handmade_data = {
     "1377444109": { // Hue Industrial College main ancient bldg
         year: '1924'
     },
-    "1377444111": {
-        year: '1924'
-    },
     "1377444112": {
-        year: '1924'
-    },
-    "1377444113": {
         title: 'Workshop',
         year: '1924'
     },

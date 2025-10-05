@@ -3,7 +3,6 @@ import { current_city } from './load_city.mjs'
 import { SOURCES_NAMES } from './constants.mjs'
 import { get_centroid } from './utils/isomorphic_utils.mjs'
 import { does_feature_have_title, is_feature_selectable } from './utils/does_feature_have_details.mjs'
-import { make_title_point_feature } from './utils/titles_points.mjs'
 
 
 const get_centroids_as_features = () => Object.entries(current_city.features_generated_props_for_frontend).map(([feat_id, props]) => {

@@ -26,7 +26,7 @@ export const is_feature_selectable = (
     )
 }
 
-export const does_feature_have_title = (id, hmdata = current_city?.all_handmade_data) => {
+export const does_feature_have_title = (id, hmdata = globalThis.current_city?.all_handmade_data) => {
     if (!hmdata) {
         throw new Error('hmdata is undefined')
     }
@@ -39,8 +39,8 @@ export const does_feature_have_title = (id, hmdata = current_city?.all_handmade_
 
 export const is_important_building = (
     fid,
-    hmdata = current_city?.all_handmade_data,
-    fids_to_img_names = current_city?.fids_to_img_names
+    hmdata = globalThis.current_city?.all_handmade_data,
+    fids_to_img_names = globalThis.current_city?.fids_to_img_names
 ) => {
     return is_feature_selectable(fid, hmdata, fids_to_img_names)
         || does_feature_have_title(fid, hmdata)
