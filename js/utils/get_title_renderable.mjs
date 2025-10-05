@@ -18,8 +18,8 @@ const hash_coordinates = coords => {
 
 // remove all chars that are forbidden in tippecanoe tile layer names
 const slugify = text => text.toLowerCase()
-.replace(/[^a-z0-9_-]/g, '')
-.replace(/^[0-9]/, 'l') // canoe id can't start with number
+    .replace(/[^a-z0-9_-]/g, '')
+    .replace(/^[0-9]/, 'l') // canoe id can't start with number
 
 export const get_title_renderable = (
     text,
@@ -52,7 +52,7 @@ export const get_title_renderable = (
                     "text-field": text,
                     'text-size': size,
                     'text-font': [font],
-                    'text-rotate': ["get", "text_rotate"],
+                    'text-rotate': ['coalesce', ['get', 'text_rotate'], 0],
                     'text-anchor': text_anchor,
                     'text-offset': text_anchor === 'bottom' ? [0, -0.1] : [0, 0],
                 },
