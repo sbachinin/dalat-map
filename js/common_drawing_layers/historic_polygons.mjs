@@ -1,30 +1,15 @@
 import { SOURCES_NAMES } from "../constants.mjs"
 import * as c from "./constants.mjs"
 
-const historic_fill_common_props = {
+const historic_bldg_fill = {
+    "name": "Historic detailful building",
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     drawing_importance: 2,
     "paint": {
         "fill-color": c.FRENCH_FILL_COLOR,
         "fill-antialias": true
-    },
-}
-
-
-
-// the following separation was necessary
-// in order to render all detailful bldgs after all detailless,
-// to prevent the detailful bldgs' border from being covered by borderless buildings' parts
-const historic_detailless_bldg_fill = {
-    "name": "Historic detailless building fill",
-    ...historic_fill_common_props,
-    filter: ["!=", ["get", "is_selectable"], true],
-}
-const historic_detailful_bldg_fill = {
-    "name": "Historic detailful building",
-    ...historic_fill_common_props,
-    filter: ["==", ["get", "is_selectable"], true]
+    }
 }
 
 
@@ -87,7 +72,6 @@ const historic_dark_outline = {
 export const historic_polygons = [
     historic_dark_outline,
     historic_detailless_thickening_outline,
-    historic_detailless_bldg_fill,
     historic_detailful_thickening_outline,
-    historic_detailful_bldg_fill
+    historic_bldg_fill
 ]
