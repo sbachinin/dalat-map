@@ -1,5 +1,5 @@
-import { is_feature_selectable } from "./does_feature_have_details.mjs"
-import { get_centroid } from "./isomorphic_utils.mjs"
+import { is_feature_selectable } from "../js/utils/does_feature_have_details.mjs"
+import { get_centroid } from "../js/utils/isomorphic_utils.mjs"
 
 const get_all_lats = feature => {
     if (!feature?.geometry?.coordinates) {
