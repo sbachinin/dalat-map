@@ -288,7 +288,7 @@ export const features_generated_props_for_frontend = {
       107.590277,
       16.398955
     ],
-    "is_small_building": true
+    "is_small_selectable_thing": true
   },
   "285990348": {
     "centroid": [
@@ -329,7 +329,7 @@ export const features_generated_props_for_frontend = {
       107.577214,
       16.466551
     ],
-    "is_small_building": true
+    "is_small_selectable_thing": true
   },
   "695770483": {
     "centroid": [
@@ -433,7 +433,7 @@ export const features_generated_props_for_frontend = {
       107.584112,
       16.471316
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "695810737": {
@@ -448,7 +448,7 @@ export const features_generated_props_for_frontend = {
       107.576261,
       16.46776
     ],
-    "is_small_building": true
+    "is_small_selectable_thing": true
   },
   "730227939": {
     "centroid": [
@@ -735,7 +735,7 @@ export const features_generated_props_for_frontend = {
       107.580637,
       16.457728
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1377444128": {
@@ -750,7 +750,7 @@ export const features_generated_props_for_frontend = {
       107.585231,
       16.455178
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1377444130": {
@@ -765,7 +765,7 @@ export const features_generated_props_for_frontend = {
       107.589244,
       16.454432
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1377450372": {
@@ -801,7 +801,7 @@ export const features_generated_props_for_frontend = {
       107.58891,
       16.459737
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1377450377": {
@@ -879,7 +879,7 @@ export const features_generated_props_for_frontend = {
       107.58718,
       16.477048
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1379291121": {
@@ -964,7 +964,7 @@ export const features_generated_props_for_frontend = {
       107.599677,
       16.457084
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1384219085": {
@@ -972,6 +972,7 @@ export const features_generated_props_for_frontend = {
       107.598411,
       16.456422
     ],
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1388418415": {
@@ -1033,14 +1034,14 @@ export const features_generated_props_for_frontend = {
       107.590022,
       16.457752
     ],
-    "is_small_building": true
+    "is_small_selectable_thing": true
   },
   "1429722848": {
     "centroid": [
       107.587937,
       16.476195
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1429724168": {
@@ -1111,7 +1112,7 @@ export const features_generated_props_for_frontend = {
       107.590212,
       16.483297
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1429951011": {
@@ -1133,7 +1134,7 @@ export const features_generated_props_for_frontend = {
       107.585271,
       16.478213
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1429986268": {
@@ -1183,7 +1184,7 @@ export const features_generated_props_for_frontend = {
       107.585936,
       16.479834
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1430131344": {
@@ -1254,7 +1255,7 @@ export const features_generated_props_for_frontend = {
       107.584208,
       16.478854
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1430140351": {
@@ -1262,7 +1263,7 @@ export const features_generated_props_for_frontend = {
       107.58299,
       16.48081
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1430140352": {
@@ -1345,7 +1346,7 @@ export const features_generated_props_for_frontend = {
       107.630476,
       16.506312
     ],
-    "is_small_building": true,
+    "is_small_selectable_thing": true,
     "is_french": true
   },
   "1433495412": {
@@ -1360,7 +1361,7 @@ export const features_generated_props_for_frontend = {
       107.540148,
       16.453534
     ],
-    "is_small_building": true
+    "is_small_selectable_thing": true
   },
   "1433243405346257": {
     "centroid": [

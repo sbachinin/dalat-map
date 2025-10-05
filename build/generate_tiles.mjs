@@ -186,7 +186,7 @@ const layers = {};
 
 
 // generate layer for each .mjs file in custom_features_for_tiling/
-const modules = await import_from_all_mjs_files(city_root_path + '/static_data/custom_geometries_for_tiling')
+const modules = await import_from_all_mjs_files(city_root_path + '/static_data/custom_buildings_geometries_for_tiling')
 for (const { file, module } of modules) {
     const layer_name = file.split('.')[0]
     const features_data = module.default
@@ -194,10 +194,8 @@ for (const { file, module } of modules) {
         config: { name: layer_name },
         features: Object.entries(features_data).map(([id, fdata]) => {
             const depth = getArrayDepth(fdata)
-            let ftype = 'Point'
-            if (depth === 2) ftype = 'LineString'
-            if (depth === 3) ftype = 'Polygon'
-            if (depth === 4) ftype = 'MultiPolygon'
+            if (depth < 3) throw new Error('Custom building geometry must have depth >= 3 (only polygon or multi). Id: ' + id)
+            const ftype = depth === 3 ? 'Polygon' : 'MultiPolygon'
             return {
                 id: Number(id),
                 type: 'Feature',
@@ -206,7 +204,7 @@ for (const { file, module } of modules) {
                     coordinates: fdata
                 },
                 properties: {
-                    // building? (if features in buildings_handmade_data?)
+                    building: 'custom' // could be just 'true'
                 }
             }
         })

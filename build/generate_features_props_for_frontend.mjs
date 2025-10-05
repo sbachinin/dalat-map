@@ -14,7 +14,7 @@ const fids_to_img_names = (await import(city_root_path + '/static_data/fids_to_i
 
 let dead_buildings_geometries = {}
 try {
-    const mod = await import(city_root_path + '/static_data/custom_geometries_for_tiling/dead_buildings.mjs')
+    const mod = await import(city_root_path + '/static_data/custom_buildings_geometries_for_tiling/dead_buildings.mjs')
     dead_buildings_geometries = mod.default
 } catch (e) {}
 
