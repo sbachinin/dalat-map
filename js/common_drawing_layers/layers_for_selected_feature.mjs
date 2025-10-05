@@ -1,5 +1,5 @@
 import { SOURCES_NAMES } from "../constants.mjs"
-import { FRENCH_SELECTED_FILL_COLOR } from "./constants.mjs"
+import { FRENCH_GEOMETRIES_MINZOOM, FRENCH_SELECTED_FILL_COLOR } from "./constants.mjs"
 
 
 
@@ -30,7 +30,8 @@ const selected_fill_layer = {
             FRENCH_SELECTED_FILL_COLOR
         ],
         "fill-antialias": true
-    }
+    },
+    minzoom: FRENCH_GEOMETRIES_MINZOOM
 }
 
 
@@ -51,7 +52,8 @@ const selected_border_layer = {
     },
     layout: {
         'line-join': 'round',
-    }
+    },
+    minzoom: FRENCH_GEOMETRIES_MINZOOM
 }
 
 export const layers_for_selected_feature = [selected_fill_layer, selected_border_layer]
