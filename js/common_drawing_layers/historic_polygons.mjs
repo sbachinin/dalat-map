@@ -16,7 +16,9 @@ const historic_bldg_fill = {
 
 export const HISTORIC_POLYGONS_MAX_THICKENING = 0.7
 
-const historic_thickening_outline_common_props = {
+
+const historic_thickening_outline = {
+    name: 'Historic bldg with details thickening outline',
     'type': 'line',
     "source": SOURCES_NAMES.CITY_TILES,
     drawing_importance: 2,
@@ -32,18 +34,6 @@ const historic_thickening_outline_common_props = {
             0
         ]
     },
-}
-
-const historic_detailless_thickening_outline = {
-    name: 'Historic bldg without details thickening outline',
-    ...historic_thickening_outline_common_props,
-    filter: ["!=", ["get", "is_selectable"], true],
-}
-
-const historic_detailful_thickening_outline = {
-    name: 'Historic bldg with details thickening outline',
-    ...historic_thickening_outline_common_props,
-    filter: ["==", ["get", "is_selectable"], true]
 }
 
 
@@ -71,7 +61,6 @@ const historic_dark_outline = {
 
 export const historic_polygons = [
     historic_dark_outline,
-    historic_detailless_thickening_outline,
-    historic_detailful_thickening_outline,
+    historic_thickening_outline,
     historic_bldg_fill
 ]
