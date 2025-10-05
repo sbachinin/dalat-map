@@ -56,11 +56,11 @@ all_tiled_features.forEach(f => {
         single_feature_props.centroid = get_centroid(f)
     }
 
-    if (f.properties.building
-        && is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
+    if (
+        is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
         && turf.area(f) < 80
     ) {
-        single_feature_props.is_small_building = true
+        single_feature_props.is_small_selectable_thing = true
     }
     if (Object.keys(dead_buildings_geometries).includes(String(f.id))) {
         single_feature_props.is_dead = true

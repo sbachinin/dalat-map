@@ -38,9 +38,7 @@ const get_title_side = (f, hmdata) => {
         return hm_side
     }
 
-    if (f.properties?.building
-        && is_feature_selectable(f.id)
-    ) {
+    if (is_feature_selectable(f.id)) {
         return 'south'
     }
 

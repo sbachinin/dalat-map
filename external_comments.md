@@ -51,4 +51,5 @@
 ###3
     Deadness of a building is determined by its presence in custom_features_for_tiling/dead_buildings.mjs
     To get dead geometries on a map, it must be enough to have them in this file.
-    Handmade data is assigned to dead buildings just as a regular item in buildings_handmade_data, without any attrs like "is_dead"
+    Handmade data is assigned to dead buildings just as a regular item in buildings_handmade_data, without any attrs like "is_dead".
+    "is_dead" is generated as part of features_generated_props_for_frontend.
