@@ -5,22 +5,6 @@ import { get_centroid } from './utils/isomorphic_utils.mjs'
 import { does_feature_have_title, is_feature_selectable } from './utils/does_feature_have_details.mjs'
 
 
-const get_centroids_as_features = () => Object.entries(current_city.features_generated_props_for_frontend).map(([feat_id, props]) => {
-    return {
-        "type": "Feature",
-        id: feat_id,
-        "geometry": {
-            "type": "Point",
-            "coordinates": props.centroid
-        },
-        properties: {
-            ...props,
-            has_title: does_feature_have_title(feat_id, current_city.all_handmade_data),
-            is_selectable: is_feature_selectable(feat_id, current_city.all_handmade_data, current_city.fids_to_img_names)
-        }
-    }
-})
-
 export const get_main_sources = () => {
     if (!current_city) {
         throw new Error('current_city is undefined in get_main_sources, there is some mistake here')
@@ -73,6 +57,27 @@ export const get_main_sources = () => {
 
     sources.bldgs_centroids_points = get_geojson_source(
         get_centroids_as_features())
+
+
+    function get_centroids_as_features() {
+        return Object.entries(current_city.features_generated_props_for_frontend)
+            .map(([feat_id, props]) => {
+                return {
+                    "type": "Feature",
+                    id: feat_id,
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": props.centroid
+                    },
+                    properties: {
+                        ...props,
+                        has_title: does_feature_have_title(feat_id, current_city.all_handmade_data),
+                        is_selectable: is_feature_selectable(feat_id, current_city.all_handmade_data, current_city.fids_to_img_names)
+                    }
+                }
+            })
+    }
+
 
     // ###4
     sources.selected_centroid_pin_point = get_geojson_source([])
