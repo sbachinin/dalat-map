@@ -349,6 +349,7 @@ export const buildings_handmade_data = {
 
     242940960: {
         title: 'Thien Dinh Palace',
+        title_side: 'north',
         subtitle: `This is the main structure of Khai Dinh tomb complex. It's basically a baroque palace (rather small one) with a vietnamese roof shape and ornaments - a rather audacious fusion that, in my view, works exceptionally well. Its construction took 11 years and ended in 1931. The king Khai Dinh was know for his French tendencies and was ridiculed a "paid employee of the French state", so it's no surprise that this Palace turned out so european, breaking with a long architectural tradition of vietnamese imperial tombs.
         This building is included in Unesco-protected complex of Hue monuments together with several other imperial tombs. One obvious architectural counterpart of this building is [Kien Trung Palace](285990348) of Hue Imperial city - also a european palace with vietnamese finish, although significantly larger and perhaps less ambitious in its architectural features (Its construction began almost simultaneously with Khai Dinh tomb but was completed much faster, in 1923).`,
         links: [
@@ -360,7 +361,7 @@ export const buildings_handmade_data = {
     },
 
     242940961: {
-        title: 'Thien Dinh stele pavilion',
+        title: 'Stele pavilion',
         // a pavilion in the center of khai dinh
         subtitile: `This structure houses a large stele - inscribed stone tablet containing a summary of deceased emperor's life. It's a common feature of all royal tombs of Nguyen dynasty, always  standing in the center of the tomb complex. This pavilion, like the quaint palace above it, breaks many architectural traditions of vietnamese imperial tombs by including some european features: arched openings, romanesque columns and octagonal plan (instead of traditionally rectangular). Carvings depict some national motives but their style is rather western - less geometric and more ornate.`
     },

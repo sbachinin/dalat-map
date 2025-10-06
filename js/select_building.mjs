@@ -25,20 +25,18 @@ export const select_building = newid => {
         )
 
 
-        const cntrd = current_city.features_generated_props_for_frontend[newid]?.centroid
-        window.dalatmap.getSource('selected_centroid_pin_point')
-            .setData({
-                type: 'FeatureCollection',
-                features: [
-                    {
-                        type: 'Feature',
-                        geometry: {
-                            type: 'Point',
-                            coordinates: cntrd
-                        },
-                    }
-                ]
+
+        const data = { type: 'FeatureCollection', features: [] }
+        if (newid) {
+            data.features.push({
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: current_city.features_generated_props_for_frontend[newid]?.centroid
+                }
             })
+        }
+        window.dalatmap.getSource('selected_centroid_pin_point').setData(data)
 
 
         set_selected_building_id(newid)
