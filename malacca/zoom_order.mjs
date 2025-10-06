@@ -14,7 +14,7 @@ import {
     bridge_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
-import { AREA_TYPES, FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
+import { AREA_TYPES, MAJOR_BUILDINGS_POLYGONS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { constants as c } from './constants.mjs'
 import { SOURCES_NAMES } from "../js/constants.mjs";
 import { historic_polygons } from "../js/common_drawing_layers/historic_polygons.mjs";
@@ -84,7 +84,7 @@ export const zoom_order = {
         {
             drawing_layers: [french_bldg_circle],
             filter: ["==", ["get", "has_title"], true],
-            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
     ],
 
@@ -102,7 +102,7 @@ export const zoom_order = {
         {
             drawing_layers: [french_bldg_circle],
             filter: ["==", ["get", "is_selectable"], true],
-            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
     ],
 
@@ -113,7 +113,7 @@ export const zoom_order = {
         },
         {
             drawing_layers: [french_bldg_circle],
-            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
     ],
     13: [

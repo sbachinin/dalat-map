@@ -18,7 +18,7 @@ import {
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { historic_polygons } from "../js/common_drawing_layers/historic_polygons.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
-import { AREA_TYPES, FRENCH_GEOMETRIES_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
+import { AREA_TYPES, MAJOR_BUILDINGS_POLYGONS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
 import { constants as c } from './constants.mjs'
 
@@ -77,7 +77,7 @@ export const zoom_order = {
         {
             drawing_layers: [french_bldg_circle],
             filter: ["==", ["get", "has_title"], true],
-            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
     ],
 
@@ -96,7 +96,7 @@ export const zoom_order = {
         {
             drawing_layers: [french_bldg_circle],
             filter: ["==", ["get", "is_selectable"], true],
-            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
     ],
 
@@ -116,7 +116,7 @@ export const zoom_order = {
         },
         {
             drawing_layers: [french_bldg_circle],
-            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
     ],
     13: [
@@ -141,7 +141,7 @@ export const zoom_order = {
                 hmd[4119185],
                 hmd[308446691]
             ),
-            maxzoom: FRENCH_GEOMETRIES_MINZOOM,
+            maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }, */
         {
             drawing_layers: [non_french_titles],
@@ -151,7 +151,7 @@ export const zoom_order = {
         },
         { drawing_layers: [french_buildings_titles] },
     ],
-    [FRENCH_GEOMETRIES_MINZOOM]: [
+    [MAJOR_BUILDINGS_POLYGONS_MINZOOM]: [
         {
             drawing_layers: [important_boring_building_fill]
         },

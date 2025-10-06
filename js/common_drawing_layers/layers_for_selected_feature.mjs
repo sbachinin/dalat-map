@@ -1,5 +1,5 @@
 import { SOURCES_NAMES } from "../constants.mjs"
-import { FRENCH_GEOMETRIES_MINZOOM, FRENCH_SELECTED_FILL_COLOR } from "./constants.mjs"
+import { MAJOR_BUILDINGS_POLYGONS_MINZOOM, FRENCH_SELECTED_FILL_COLOR } from "./constants.mjs"
 
 
 
@@ -31,7 +31,7 @@ const selected_fill_layer = {
         ],
         "fill-antialias": true
     },
-    minzoom: FRENCH_GEOMETRIES_MINZOOM
+    minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM
 }
 
 
@@ -55,7 +55,7 @@ const selected_thickening_outline = {
     layout: {
         'line-join': 'miter',
     },
-    minzoom: FRENCH_GEOMETRIES_MINZOOM
+    minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM
 }
 
 
@@ -69,7 +69,7 @@ const selected_border_layer = {
         'line-color': 'hsl(340, 89%, 22%)',
         'line-width': [
             'interpolate', ['linear'], ['zoom'],
-            FRENCH_GEOMETRIES_MINZOOM, 3,
+            MAJOR_BUILDINGS_POLYGONS_MINZOOM, 3,
             15, 4
         ],
         'line-opacity': [
@@ -82,7 +82,7 @@ const selected_border_layer = {
     layout: {
         'line-join': 'miter',
     },
-    minzoom: FRENCH_GEOMETRIES_MINZOOM
+    minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM
 }
 
 const selected_pin_layer = {
@@ -97,7 +97,7 @@ const selected_pin_layer = {
         'icon-allow-overlap': false
     },
     // Idea: pin shouldn't show together with buildings polygons because it didn't look nice
-    maxzoom: FRENCH_GEOMETRIES_MINZOOM
+    maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM
 }
 
 export const layers_for_selected_feature = [
