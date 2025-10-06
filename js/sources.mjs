@@ -72,8 +72,10 @@ export const get_main_sources = () => {
     sources[SOURCES_NAMES.RENDERABLES] = get_geojson_source(features_from_renderables)
 
     sources.bldgs_centroids_points = get_geojson_source(
-        get_centroids_as_features()
-    )
+        get_centroids_as_features())
+
+    // ###4
+    sources.selected_centroid_pin_point = get_geojson_source([])
 
     return sources
 }

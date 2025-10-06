@@ -1,4 +1,8 @@
-import { WATER_TITLE_COLOR, BORING_SQUARE_COLOR } from "./common_drawing_layers/constants.mjs"
+import {
+    WATER_TITLE_COLOR,
+    BORING_SQUARE_COLOR,
+    FRENCH_SELECTED_FILL_COLOR
+} from "./common_drawing_layers/constants.mjs"
 
 const icons_ids_to_commands = {
     'french_circle': (ctx) => {
@@ -28,7 +32,48 @@ const icons_ids_to_commands = {
         ctx.fillStyle = 'black'
         ctx.fillRect(0, 0, 64, 64)
     },
+    'pin': (ctx) => {
+        const scale = 64 / 20
+        ctx.translate(2 * scale, 2 * scale)
+        ctx.scale(scale, scale)
+
+        // --- Outer teardrop shape ---
+        ctx.beginPath()
+        ctx.moveTo(3.37892, 10.2236)
+        ctx.lineTo(8, 16)
+        ctx.lineTo(12.6211, 10.2236)
+        ctx.bezierCurveTo(13.5137, 9.10788, 14, 7.72154, 14, 6.29266)
+        ctx.lineTo(14, 6)
+        ctx.bezierCurveTo(14, 2.68629, 11.3137, 0, 8, 0)
+        ctx.bezierCurveTo(4.68629, 0, 2, 2.68629, 2, 6)
+        ctx.lineTo(2, 6.29266)
+        ctx.bezierCurveTo(2, 7.72154, 2.4863, 9.10788, 3.37892, 10.2236)
+        ctx.closePath()
+
+        // White fill with black border
+        ctx.fillStyle = '#fff'
+        ctx.strokeStyle = '#000'
+        ctx.lineWidth = 0.4
+        ctx.fill()
+        ctx.stroke()
+
+        // black circle
+        ctx.beginPath()
+        ctx.arc(8, 6, 3, 0, Math.PI * 2)
+        ctx.closePath()
+        ctx.fillStyle = '#000'
+        ctx.fill()
+
+        // bright circle
+        ctx.beginPath()
+        ctx.arc(8, 6, 2, 0, Math.PI * 2)
+        ctx.closePath()
+        ctx.fillStyle = FRENCH_SELECTED_FILL_COLOR
+        ctx.fill()
+    }
 }
+
+
 
 export const get_icon_as_ctx = (id, xy = [64, 64]) => {
     const canvas = document.createElement("canvas")
@@ -40,7 +85,7 @@ export const get_icon_as_ctx = (id, xy = [64, 64]) => {
 }
 
 
-export const load_icons = async () => {
+export const load_icons = () => {
 
     window.dalatmap.on("styleimagemissing", (e) => {
         const id = e.id
@@ -51,15 +96,9 @@ export const load_icons = async () => {
 
         const ctx = get_icon_as_ctx(id, dimensions)
 
-        /* else (id === 'skull-icon') {
-            window.dalatmap
-                .loadImage(`../auxiliary_images/skull.png`)
-                .then(image => window.dalatmap.addImage('skull-icon', image.data))
-            return
-        } */
-
-
         const imageData = ctx.getImageData(0, 0, ...dimensions)
         window.dalatmap.addImage(id, imageData, { pixelRatio: 2 })
     })
+
+    window.dalatmap.fire('styleimagemissing', { id: 'pin' })
 }

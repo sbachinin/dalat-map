@@ -315,7 +315,9 @@ export const buildings_handmade_data = {
     },
 
     1172897446: {
-        title: 'An Dinh Palace',
+        title: `An Dinh
+        Palace`,
+        title_side: 'north',
         subtitle: `Built in 1919 as a private residence of Emperor Khai Dinh. Being outside Hue's Imperial city and having a distinctly european architectural style, this palace was a very bold statement of Khai Dinh's separation from traditional Confucian imperial power.
         It's not included in Unesco's "Complex of Hue monuments" and it takes a brief moment to understand why is that.
         This palace is one of the most opulent structures built in Hue by the Nguyen dynasty.

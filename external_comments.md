@@ -45,6 +45,7 @@
         (Therefore, the "normal features" CAN be unaware of being selectable,
         unless they want to style their selectability in some special way)
     3) once feature is selected, setFeatureState "selected" for a "selectable_polygons" source-layer, and display it using separate style layers that draw fill/border only for a feature with "selected" feature-state
+        + At low z, draw a pin using "selected_centroid_pin_point" source. Reason for having a separate source is given in ###4
 
     *** a previous solution involved not having a separate tile layer for selectable features, but saving their geometries in a js object for frontend to access. On frontend I made a geojson source from these geometries. It worked almost ok but unpleasant aspect was that runtime-generated geojson geometries slightly differed from those tiled geometries of "normal" features. (Difference btw tippecanoe and maplibre's built-in tiling lib). And so a selectable border didn't match the bounds of normal fill layers. So I chose to use only 1 tiling mechanism, and it was certainly a build-stage solution, not frontend, because accessing "all selectable geometries" on frontend is quite a task.
 
@@ -53,3 +54,13 @@
     To get dead geometries on a map, it must be enough to have them in this file.
     Handmade data is assigned to dead buildings just as a regular item in buildings_handmade_data, without any attrs like "is_dead".
     "is_dead" is generated as part of features_generated_props_for_frontend.
+
+
+
+###4 Reason for having a separate 'selected_centroid_pin_point' source, instead of just filtering the "bldgs_centroids_points" to show the selected pin:
+    Otherwise I couldn't prevent the "pin" icon from overlapping with titles, and not to blink due to intersection with other selectable things.
+    'icon-allow-overlap': false led to quirky blinking of a pin due perhaps to its overlapping with other (invisible) pins from same source
+    Other invisible features actually were "present" on the map because I couldn't properly filter them out based on feature-state,
+    because feature-state can be used neither in .filter nor in .layout, so "filtering" was achived using paint props like opacity,
+    and it led to collision of the visible pin with invisible pins.
+    This might be bullshit and later done otherwise.
