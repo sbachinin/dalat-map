@@ -72,7 +72,8 @@ export const get_main_sources = () => {
                     properties: {
                         ...props,
                         has_title: does_feature_have_title(feat_id, current_city.all_handmade_data),
-                        is_selectable: is_feature_selectable(feat_id, current_city.all_handmade_data, current_city.fids_to_img_names)
+                        is_selectable: is_feature_selectable(feat_id, current_city.all_handmade_data, current_city.fids_to_img_names),
+                        is_dead: current_city.features_generated_props_for_frontend[feat_id]?.is_dead
                     }
                 }
             })

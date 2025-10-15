@@ -6,7 +6,7 @@ export const FRENCH_TITLES_TEXT_COLOR = 'hsl(300, 20%, 25.40%)'
 export const FRENCH_SELECTED_TITLE_HALO_COLOR = 'hsl(44, 98%, 77%)'
 export const DARKER_FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 87.50%)'
 export const FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 63.50%)'
-export const FRENCH_DEAD_FILL_COLOR = 'hsl(0, 0.00%, 35.30%)'
+export const DEAD_BUILDING_FILL_COLOR = 'hsl(0, 0.00%, 35.30%)'
 
 export const FRENCH_DARK_BORDER_COLOR = 'hsl(340, 0%, 35.00%)'
 export const SELECTED_BORDER_COLOR = 'hsl(340, 35.30%, 35.00%)'
@@ -40,6 +40,8 @@ export const RAILWAY_LINE_COLOR = "hsl(14, 54%, 60%)"
 export const FIRST_CLASS_FRENCH_MINZOOM = 12.8
 export const MAJOR_BUILDINGS_POLYGONS_MINZOOM = 13.7
 export const MINOR_ROADS_MINZOOM = MAJOR_BUILDINGS_POLYGONS_MINZOOM
+
+export const DEAD_BUILDINGS_CIRCLES_MINZOOM = 12.5
 
 
 export const CITY_BULK_FULL_OPACITY_MAXZOOM = 11.5

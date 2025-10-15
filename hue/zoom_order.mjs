@@ -120,7 +120,6 @@ export const zoom_order = {
                         "fill-antialias": true,
                     }
                 }
-                
             ],
         },
     ],

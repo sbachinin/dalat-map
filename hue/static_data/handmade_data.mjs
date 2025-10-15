@@ -367,6 +367,11 @@ export const buildings_handmade_data = {
     },
 
 
+    118541901: {
+        title: `House of
+        culture`
+    },
+
     695810806: {
         // title: 'Tho Chi gate'
         // great 2 pictures in borrowed album (need to choose only 1)
@@ -450,6 +455,22 @@ export const land_areas_handmade_data = {
         title: `College of
         sciences`,
         title_coords: [107.592804, 16.459754],
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1211159963: {
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1441813877: {
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1441813870: {
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    1441813871: {
         area_type: AREA_TYPES.INSTITUTION
     },
 

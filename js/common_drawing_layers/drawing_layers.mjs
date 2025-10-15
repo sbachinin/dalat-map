@@ -291,7 +291,6 @@ export const non_french_titles = {
 }
 
 
-
 export const cable_car_line = {
     "name": "Cable car line",
     type: 'line',
@@ -341,7 +340,8 @@ export const boring_building_square = {
         "icon-image": "boring_square",
         "icon-size": 0.12,
         'icon-allow-overlap': true,
-    }
+    },
+    // filter: specify it in city's zoom_order, because every city will have a different concept of what bldgs must be excluded from here
 }
 
 

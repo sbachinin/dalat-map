@@ -1,5 +1,9 @@
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
-import { FRENCH_DEAD_FILL_COLOR } from "./constants.mjs";
+import {
+    DEAD_BUILDING_FILL_COLOR,
+    DEAD_BUILDINGS_CIRCLES_MINZOOM,
+    MAJOR_BUILDINGS_POLYGONS_MINZOOM
+} from "./constants.mjs";
 import { titles_common_layout_props } from "./drawing_layers.mjs";
 
 export const dead_buildings_layers = [
@@ -8,9 +12,9 @@ export const dead_buildings_layers = [
         source: SOURCES_NAMES.CITY_TILES,
         'source-layer': 'dead_buildings',
         "type": "fill",
-        "minzoom": 14,
+        "minzoom": MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         "paint": {
-            "fill-color": FRENCH_DEAD_FILL_COLOR,
+            "fill-color": DEAD_BUILDING_FILL_COLOR,
             "fill-antialias": true
         },
         filter: ["==", ["geometry-type"], "Polygon"],
@@ -21,7 +25,7 @@ export const dead_buildings_layers = [
         source: SOURCES_NAMES.CITY_TILES,
         'source-layer': 'dead_buildings',
         type: 'line',
-        "minzoom": 14,
+        "minzoom": MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         "paint": {
             "line-color": FRENCH_DEAD_FILL_COLOR,
             "line-width": 2,
@@ -51,5 +55,20 @@ export const dead_buildings_layers = [
             'text-color': 'hsl(0, 0%, 40%)',
         },
         filter: ["==", ["geometry-type"], "Point"]
+    },
+
+    {
+        "id": "Dead building circle",
+        "type": "symbol",
+        source: 'bldgs_centroids_points',
+        drawing_importance: 3,
+        "layout": {
+            "icon-image": "dead_circle",
+            "icon-size": 0.12,
+            'icon-allow-overlap': true,
+        },
+        filter: ['==', ['get', 'is_dead'], true],
+        minzoom: DEAD_BUILDINGS_CIRCLES_MINZOOM,
+        maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM
     }
 ]

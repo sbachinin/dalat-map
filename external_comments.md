@@ -54,6 +54,9 @@
     To get dead geometries on a map, it must be enough to have them in this file.
     Handmade data is assigned to dead buildings just as a regular item in buildings_handmade_data, without any attrs like "is_dead".
     "is_dead" is generated as part of features_generated_props_for_frontend.
+    Style layers for dead buildings are included automatically in build_layers.
+    Minzoom for "dead buildings circles" for now is taken from a "global" (city-ignorant) const, 
+        but it'd be better to be able to redefine this const for a particular city.
 
 
 

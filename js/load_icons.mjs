@@ -1,7 +1,8 @@
 import {
     WATER_TITLE_COLOR,
     BORING_SQUARE_COLOR,
-    FRENCH_SELECTED_FILL_COLOR
+    FRENCH_SELECTED_FILL_COLOR,
+    DEAD_BUILDING_FILL_COLOR
 } from "./common_drawing_layers/constants.mjs"
 
 const icons_ids_to_commands = {
@@ -11,6 +12,14 @@ const icons_ids_to_commands = {
         ctx.arc(32, 32, 30, 0, Math.PI * 2) // Center (32, 32), Radius 30
         ctx.fill()
     },
+
+    'dead_circle': ctx => {
+        ctx.fillStyle = DEAD_BUILDING_FILL_COLOR
+        ctx.beginPath()
+        ctx.arc(32, 32, 30, 0, Math.PI * 2)
+        ctx.fill()
+    },
+
     'water_square': (ctx) => {
         ctx.fillStyle = WATER_TITLE_COLOR
         ctx.fillRect(0, 0, 64, 64)
