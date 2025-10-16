@@ -67,3 +67,23 @@
     because feature-state can be used neither in .filter nor in .layout, so "filtering" was achived using paint props like opacity,
     and it led to collision of the visible pin with invisible pins.
     This might be bullshit and later done otherwise.
+
+
+###5
+    flyTo instead of easeTo because:
+    it seems to be the only way to avoid the cinematic curve.
+    Curve is bad because
+    1) I just don't like how it looks
+    2) Curve will break near the map bounds.
+    EaseTo in theory must be less curvy but in practice it still curves,
+    and in some cases it's not pretty.
+    I'm not sure if there's a way to cancel curviness for easeTo,
+    but I found such a way for flyTo ({curve: 0.1})
+    ({curve: 0} for some reason didn't work, map froze on mobile, I was lazy to debug, and 0.1 works ok)
+    ------
+    offset is passed as an option,
+    however, this option is known to be quite buggy.
+    A more reliable solution would be to incorporate offset into the
+    calculation of "center" option.
+    But it was a bit cumbersome because offset must be
+    calculated for the target zoom, not the current one.

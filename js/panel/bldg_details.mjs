@@ -184,16 +184,13 @@ export const try_fly_to_building = (
             const zoom_diff = Math.abs(map_zoom - target_zoom)
             const duration = Math.max(distance_from_center, 500) * (zoom_diff + 1)
 
-            window.dalatmap.easeTo({
-                /* I used to get center from get_center_for_bldg_with_offset(id)
-                 and avoid passing offset
-                 but in case of changing zooming this smart offset value was wrong
-                 for it was calculated for initial zoom level
-                */
+            // ###5
+            window.dalatmap.flyTo({
                 center: current_city.features_generated_props_for_frontend[id]?.centroid,
                 offset: get_map_center_shift_px(panel.content_breadth),
                 zoom: target_zoom,
-                duration
+                duration,
+                curve: 0.1
             })
 
             // Here map.on('moveend') was used instead of setTimeout.
