@@ -357,7 +357,7 @@ export const find_bldg_id_by_image_filename = (filename) => {
 
 export const get_minimal_zoom_on_building_select = (id) => {
     if (current_city.features_generated_props_for_frontend[id]?.is_small_selectable_thing) {
-        return MINIMAL_ZOOM_ON_BUILDING_SELECT + 1
+        return MINIMAL_ZOOM_ON_BUILDING_SELECT + 0.7
     }
     return MINIMAL_ZOOM_ON_BUILDING_SELECT
 }

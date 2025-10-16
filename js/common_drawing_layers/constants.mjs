@@ -57,7 +57,7 @@ export const AREA_TYPES = {
     BRIDGE: 'bridge'
 }
 
-export const MINIMAL_ZOOM_ON_BUILDING_SELECT = 15.5
+export const MINIMAL_ZOOM_ON_BUILDING_SELECT = 15.2
 
 export const SECONDARY_BLDGS_MINZOOM = 13.3
 
