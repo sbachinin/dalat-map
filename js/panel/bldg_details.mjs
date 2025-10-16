@@ -181,8 +181,14 @@ export const try_fly_to_building = (
             )
 
             const target_zoom = Math.max(minimal_zoom_on_building_select, map_zoom)
+            let duration = distance_from_center
+
             const zoom_diff = Math.abs(map_zoom - target_zoom)
-            const duration = Math.max(distance_from_center, 500) * (zoom_diff + 1)
+            duration *= (zoom_diff * 3 + 1) // longer if zoom change
+
+            const mindur = 700
+            const maxdur = 2000
+            duration = Math.min(Math.max(duration, mindur), maxdur)
 
             // ###5
             window.dalatmap.flyTo({
@@ -197,7 +203,7 @@ export const try_fly_to_building = (
             // It looked cooler but failed on my gpu-deficient desktop
             // where easeTo wasn't really animated and moveend wasn't fired.
             // It's a very marginal case but still setTimeout looks more reliable.
-            // Besides moveend, in case of its failure, will be fired as a surprise in the end of any subsequent map swipe - super ugly
+            // Besides, moveend, in case of its failure, will be fired as a surprise in the end of any subsequent map swipe - super ugly
             setTimeout(resolve, duration)
 
         } else {
