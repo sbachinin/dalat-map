@@ -166,51 +166,53 @@ export const try_fly_to_building = (
         }
         const feature_screen_xy = window.dalatmap.project(feature_center_arr)
         const map_zoom = window.dalatmap.getZoom()
-        let minimal_zoom_on_building_select = get_minimal_zoom_on_building_select(id)
 
-        if (force
-            || !coords_will_be_in_view(feature_screen_xy)
-            || minimal_zoom_on_building_select - map_zoom > 1
+        const minimal_zoom_on_building_select = get_minimal_zoom_on_building_select(id)
+        const target_zoom = Math.max(minimal_zoom_on_building_select, map_zoom)
+
+        if (
+            coords_will_be_in_view(feature_screen_xy)
+            && (target_zoom - map_zoom) < 0.7 // zoomed in enough - (within the tolerance amount)
+            && !force
         ) {
-            const map_el = document.querySelector('#maplibregl-map')
-            const distance_from_center = distance2d(
-                feature_screen_xy.x,
-                feature_screen_xy.y,
-                map_el.offsetWidth / 2,
-                map_el.offsetHeight / 2
-            )
-
-            const target_zoom = Math.max(minimal_zoom_on_building_select, map_zoom)
-            let duration = distance_from_center
-
-            const zoom_diff = Math.abs(map_zoom - target_zoom)
-            if (zoom_diff < 0.7) return
-
-            duration *= (zoom_diff * 3 + 1) // longer if zoom change
-
-            const mindur = 700
-            const maxdur = 2000
-            duration = Math.min(Math.max(duration, mindur), maxdur)
-
-            // ###5
-            window.dalatmap.flyTo({
-                center: current_city.features_generated_props_for_frontend[id]?.centroid,
-                offset: get_map_center_shift_px(panel.content_breadth),
-                zoom: target_zoom,
-                duration,
-                curve: 0.1
-            })
-
-            // Here map.on('moveend') was used instead of setTimeout.
-            // It looked cooler but failed on my gpu-deficient desktop
-            // where easeTo wasn't really animated and moveend wasn't fired.
-            // It's a very marginal case but still setTimeout looks more reliable.
-            // Besides, moveend, in case of its failure, will be fired as a surprise in the end of any subsequent map swipe - super ugly
-            setTimeout(resolve, duration)
-
-        } else {
             resolve()
+            return
         }
+
+
+
+        const map_el = document.querySelector('#maplibregl-map')
+        const distance_from_center = distance2d(
+            feature_screen_xy.x,
+            feature_screen_xy.y,
+            map_el.offsetWidth / 2,
+            map_el.offsetHeight / 2
+        )
+
+        let duration = distance_from_center
+        const zoom_diff = Math.abs(map_zoom - target_zoom)
+        duration *= (zoom_diff * 3 + 1) // longer if zoom change
+
+        const mindur = 700
+        const maxdur = 2000
+        duration = Math.min(Math.max(duration, mindur), maxdur)
+
+        // ###5
+        window.dalatmap.flyTo({
+            center: current_city.features_generated_props_for_frontend[id]?.centroid,
+            offset: get_map_center_shift_px(panel.content_breadth),
+            zoom: target_zoom,
+            duration,
+            curve: 0.1
+        })
+
+        // Here map.on('moveend') was used instead of setTimeout.
+        // It looked cooler but failed on my gpu-deficient desktop
+        // where easeTo wasn't really animated and moveend wasn't fired.
+        // It's a very marginal case but still setTimeout looks more reliable.
+        // Besides, moveend, in case of its failure, will be fired as a surprise in the end of any subsequent map swipe - super ugly
+        setTimeout(resolve, duration)
+
     })
 
 }
