@@ -8,17 +8,21 @@ import { get_bldg_id_from_url } from "../utils/frontend_utils.mjs"
 export const initialize_panel = () => {
     return new Promise(resolve => {
 
-        const should_open_panel = DEV_should_open_panel_on_pageload
+        const should_expand_panel = DEV_should_open_panel_on_pageload
         const selected_bldg_id = get_bldg_id_from_url(window.location.href)
 
         if (is_feature_selectable(selected_bldg_id)) {
-            // * even if panel isn't expanded, selected building must is still "opened" (just "chosen", silently for now)
-            try_open_building(selected_bldg_id, false, false, should_open_panel)
-        } else if (should_open_panel) {
+            // * even if panel isn't expanded, selected building must still be "opened" (just "chosen", silently for now)
+            try_open_building(selected_bldg_id, {
+                should_push_history: false,
+                should_try_to_fly: false,
+                should_expand_panel
+            })
+        } else if (should_expand_panel) {
             display_highlights()
         }
 
-        if (should_open_panel) {
+        if (should_expand_panel) {
             panel.once('begin transition to new size', 'app', resolve)
             panel.expand_button_el.classList.add('inward')
         } else {

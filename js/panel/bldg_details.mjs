@@ -93,9 +93,12 @@ const set_panel_content = (id) => {
 
 export const try_open_building = async (
     id,
-    should_push_history = false,
-    should_try_to_fly = false,
-    should_expand_panel = true
+    {
+        should_push_history = false,
+        should_expand_panel = true,
+        should_try_to_fly = false,
+        should_preserve_zoom = false
+    } = {}
 ) => {
     if (id === get_selected_building_id()) {
         panel.resize_to_content() // meaning, expand the panel if it was collapsed
@@ -121,7 +124,7 @@ export const try_open_building = async (
             'fly to newly opened building',
             async () => {
                 if (should_try_to_fly) {
-                    await try_fly_to_building(id)
+                    await try_fly_to_building(id, { should_preserve_zoom })
                 }
                 if (should_expand_panel) {
                     panel.resize_to_content()
@@ -155,7 +158,10 @@ const coords_will_be_in_view = (
 
 export const try_fly_to_building = (
     id,
-    { force = false } = {}
+    {
+        force = false,
+        should_preserve_zoom = false
+    } = {}
 ) => {
     return new Promise((resolve) => {
         const feature_center_arr = current_city.features_generated_props_for_frontend[id]?.centroid
@@ -167,12 +173,13 @@ export const try_fly_to_building = (
         const feature_screen_xy = window.dalatmap.project(feature_center_arr)
         const map_zoom = window.dalatmap.getZoom()
 
-        const minimal_zoom_on_building_select = get_minimal_zoom_on_building_select(id)
-        const target_zoom = Math.max(minimal_zoom_on_building_select, map_zoom)
-
+        const target_zoom = should_preserve_zoom
+            ? map_zoom
+            : Math.max(get_minimal_zoom_on_building_select(id), map_zoom)
+        
         if (
             coords_will_be_in_view(feature_screen_xy)
-            && (target_zoom - map_zoom) < 0.7 // zoomed in enough - (within the tolerance amount)
+            && target_zoom <= map_zoom // need not zoom
             && !force
         ) {
             resolve()

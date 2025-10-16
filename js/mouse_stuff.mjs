@@ -32,7 +32,10 @@ export const add_mouse_stuff = () => {
         )
         const clickable_feat = find_clickable_feat(e.point)
         if (clickable_feat) {
-            try_open_building(clickable_feat.id, true, true)
+            try_open_building(clickable_feat.id, {
+                should_push_history: true,
+                should_try_to_fly: true
+            })
         } else if (!panel.is_pristine()) {
             panel.set_size(0)
         }
@@ -99,7 +102,10 @@ export const add_mouse_stuff = () => {
                 ? 0 // because pswp has no closing animation on desktop
                 : PSWP_HIDE_ANIMATION_DURATION + 200
             setTimeout(
-                () => try_open_building(bldg_id, true, true),
+                () => try_open_building(bldg_id, {
+                    should_push_history: true,
+                    should_try_to_fly: true
+                }),
                 open_building_delay
             )
             lightbox?.pswp?.close()
@@ -129,7 +135,10 @@ export const add_mouse_stuff = () => {
                 && get_bldg_id_from_url(e.target.href) !== null
             ) {
                 e.preventDefault()
-                try_open_building(get_bldg_id_from_url(e.target.href), true, true)
+                try_open_building(get_bldg_id_from_url(e.target.href), {
+                    should_push_history: true,
+                    should_try_to_fly: true
+                })
             }
 
             // it can be a link to highlights in the current city => open highlights

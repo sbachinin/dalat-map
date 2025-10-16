@@ -450,7 +450,8 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
-        "properties": { title: 'Duc Duc Tomb' },
+        "properties": { title: `Duc Duc
+            Tomb` },
         "geometry": {
             "coordinates": [
                 [
