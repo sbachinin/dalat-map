@@ -185,7 +185,7 @@ export const buildings_handmade_data = {
     1431680514: {
         title: `Huyen Khong
         temple`,
-        subtitle: `Built fairly recently, this structure is a slightly simplified version of the magnificent 6th-century Mahabodhi temple in India. (It's where Siddhartha Gautama attained enlightenment under the Bodhi Tree.)`
+        subtitle: `Built fairly recently, this structure is a slightly simplified version of the magnificent 6th-century Mahabodhi temple in India. (A place where Siddhartha Gautama attained enlightenment under the Bodhi Tree.)`
     },
 
     239985079: {

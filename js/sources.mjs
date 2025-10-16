@@ -79,9 +79,5 @@ export const get_main_sources = () => {
             })
     }
 
-
-    // ###4
-    sources.selected_centroid_pin_point = get_geojson_source([])
-
     return sources
 }

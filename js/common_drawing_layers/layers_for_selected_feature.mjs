@@ -23,15 +23,11 @@ const selected_fill_layer = {
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'selectable_polygons',
     paint: {
-        "fill-color": [
-            'case',
-            ['!=', ['feature-state', 'selected'], true],
-            'transparent',
-            FRENCH_SELECTED_FILL_COLOR
-        ],
+        "fill-color": FRENCH_SELECTED_FILL_COLOR,
         "fill-antialias": true
     },
-    minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM
+    minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
+    filter: ['==', '', 2]
 }
 
 
@@ -44,18 +40,13 @@ const selected_thickening_outline = {
     'source-layer': 'selectable_polygons',
     paint: {
         'line-color': FRENCH_SELECTED_FILL_COLOR,
-        'line-width': 1,
-        'line-opacity': [
-            'case',
-            ['!=', ['feature-state', 'selected'], true],
-            0,
-            1
-        ]
+        'line-width': 1
     },
     layout: {
         'line-join': 'miter',
     },
-    minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM
+    minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
+    filter: ['==', '', 2]
 }
 
 
@@ -71,33 +62,31 @@ const selected_border_layer = {
             'interpolate', ['linear'], ['zoom'],
             MAJOR_BUILDINGS_POLYGONS_MINZOOM, 3,
             15, 4
-        ],
-        'line-opacity': [
-            'case',
-            ['!=', ['feature-state', 'selected'], true],
-            0,
-            1
         ]
     },
     layout: {
         'line-join': 'miter',
     },
-    minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM
+    minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
+    filter: ['==', '', 2]
 }
 
 const selected_pin_layer = {
     drawing_importance: 0,
     id: 'Selected feature pin',
     type: 'symbol',
-    source: 'selected_centroid_pin_point',
+    source: 'bldgs_centroids_points',
     layout: {
         'icon-image': 'pin',
         'icon-size': 0.8,
         'icon-anchor': 'bottom',
         'icon-allow-overlap': false
     },
+
     // Idea: pin shouldn't show together with buildings polygons because it didn't look nice
-    maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM
+    maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
+
+    filter: ['==', '', 2]
 }
 
 export const layers_for_selected_feature = [

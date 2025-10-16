@@ -44,10 +44,10 @@
         Having one source is cool because otherwise, if selectable features come from many sources, it will mean also multiplication of style layers, for they have to point to certain sources.
         (Therefore, the "normal features" CAN be unaware of being selectable,
         unless they want to style their selectability in some special way)
-    3) once feature is selected, setFeatureState "selected" for a "selectable_polygons" source-layer, and display it using separate style layers that draw fill/border only for a feature with "selected" feature-state
-        + At low z, draw a pin using "selected_centroid_pin_point" source. Reason for having a separate source is given in ###4
+    3) once feature is selected, setFilter on all "style layers for selected feature", including pin.
+        Pin is drawn from bldgs_centroids_points source.
 
-    *** a previous solution involved not having a separate tile layer for selectable features, but saving their geometries in a js object for frontend to access. On frontend I made a geojson source from these geometries. It worked almost ok but unpleasant aspect was that runtime-generated geojson geometries slightly differed from those tiled geometries of "normal" features. (Difference btw tippecanoe and maplibre's built-in tiling lib). And so a selectable border didn't match the bounds of normal fill layers. So I chose to use only 1 tiling mechanism, and it was certainly a build-stage solution, not frontend, because accessing "all selectable geometries" on frontend is quite a task.
+    *** a previous solution involved not having a separate tile layer for selectable features, but saving their geometries in a js object for frontend to access. On frontend I made a geojson source from these geometries. It worked almost ok but unpleasant aspect was that runtime-generated geojson geometries slightly differed from those tiled geometries of "normal" features. (Difference btw tippecanoe and maplibre's built-in geojson-vt). And so a selectable border didn't match the bounds of normal fill layers. So I chose to use only 1 tiling mechanism, and it was certainly a build-stage solution, not frontend, because accessing "all selectable geometries" on frontend is quite a task.
 
 ###3
     Deadness of a building is determined by its presence in custom_features_for_tiling/dead_buildings.mjs
@@ -57,16 +57,6 @@
     Style layers for dead buildings are included automatically in build_layers.
     Minzoom for "dead buildings circles" for now is taken from a "global" (city-ignorant) const, 
         but it'd be better to be able to redefine this const for a particular city.
-
-
-
-###4 Reason for having a separate 'selected_centroid_pin_point' source, instead of just filtering the "bldgs_centroids_points" to show the selected pin:
-    Otherwise I couldn't prevent the "pin" icon from overlapping with titles, and not to blink due to intersection with other selectable things.
-    'icon-allow-overlap': false led to quirky blinking of a pin due perhaps to its overlapping with other (invisible) pins from same source
-    Other invisible features actually were "present" on the map because I couldn't properly filter them out based on feature-state,
-    because feature-state can be used neither in .filter nor in .layout, so "filtering" was achived using paint props like opacity,
-    and it led to collision of the visible pin with invisible pins.
-    This might be bullshit and later done otherwise.
 
 
 ###5
