@@ -80,16 +80,15 @@ export const historic_building_circle = {
     "name": "Historic building circle",
     "type": "symbol",
     "source": "bldgs_centroids_points",
-    filter: ["==", ["get", "is_historic"], true],
+    filter: [
+        "all",
+        ["==", ["get", "is_historic"], true],
+        ["==", ["get", "is_selectable"], true]
+    ],    
     drawing_importance: 2,
     layout: {
         "icon-image": "historic_circle",
-        "icon-size": [
-            "case",
-            ["==", ["get", "has_title"], true],
-            0.15,
-            0.12
-        ],
+        "icon-size": 0.12,
         "icon-allow-overlap": true,
     },
     paint: {
@@ -100,12 +99,7 @@ export const historic_building_circle = {
             ["linear"],
             ["zoom"],
             FIRST_CLASS_FRENCH_MINZOOM,
-            [
-                "case",
-                ["==", ["get", "has_title"], true],
-                1,
-                0.6
-            ],
+            0.7,
             14,
             1
         ],
