@@ -5,7 +5,7 @@ import {
     boring_building_square,
     cable_car_endpoints,
     cable_car_line,
-    french_bldg_circle,
+    historic_building_circle,
     french_buildings_titles,
     land_areas_fill,
     non_french_titles,
@@ -75,7 +75,7 @@ export const zoom_order = {
 
     11.5: [
         {
-            drawing_layers: [french_bldg_circle],
+            drawing_layers: [historic_building_circle],
             filter: ["==", ["get", "has_title"], true],
             maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
@@ -94,7 +94,7 @@ export const zoom_order = {
 
     12.2: [
         {
-            drawing_layers: [french_bldg_circle],
+            drawing_layers: [historic_building_circle],
             filter: ["==", ["get", "is_selectable"], true],
             maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
@@ -115,7 +115,7 @@ export const zoom_order = {
             ],
         },
         {
-            drawing_layers: [french_bldg_circle],
+            drawing_layers: [historic_building_circle],
             maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
     ],

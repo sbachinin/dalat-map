@@ -23,7 +23,7 @@ export const assets_for_build = {
                 result[f.id] = {
                     // centroid is needed for french bldg even if it's not selectable because centroid is used to draw a building's circle at low z
                     centroid: get_centroid(f),
-                    is_french: true
+                    is_historic: true
                 }
             }
         })

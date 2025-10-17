@@ -6,7 +6,7 @@ import {
 } from "./common_drawing_layers/constants.mjs"
 
 const icons_ids_to_commands = {
-    'french_circle': (ctx) => {
+    'historic_circle': (ctx) => {
         ctx.fillStyle = 'hsl(22, 100%, 60%)'
         ctx.beginPath()
         ctx.arc(32, 32, 30, 0, Math.PI * 2) // Center (32, 32), Radius 30

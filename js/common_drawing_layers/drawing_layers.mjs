@@ -76,14 +76,14 @@ export const french_buildings_titles = {
 
 
 
-export const french_bldg_circle = {
-    "name": "French building circle",
+export const historic_building_circle = {
+    "name": "Historic building circle",
     "type": "symbol",
     "source": "bldgs_centroids_points",
-    filter: ["==", ["get", "is_french"], true],
+    filter: ["==", ["get", "is_historic"], true],
     drawing_importance: 2,
     layout: {
-        "icon-image": "french_circle",
+        "icon-image": "historic_circle",
         "icon-size": [
             "case",
             ["==", ["get", "has_title"], true],
