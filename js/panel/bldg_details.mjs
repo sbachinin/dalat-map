@@ -212,7 +212,7 @@ export const try_fly_to_building = (
 
         let duration = distance_from_center
         const zoom_diff = Math.abs(map_zoom - target_zoom)
-        duration *= (zoom_diff * 3 + 1) // longer if zoom change
+        duration += (zoom_diff * 400) // longer if zoom change
 
         const mindur = 700
         const maxdur = 2000

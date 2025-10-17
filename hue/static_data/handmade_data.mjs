@@ -336,6 +336,7 @@ export const buildings_handmade_data = {
 
     730227961: {
         title: 'Chapel of\nHue Seminary',
+        title_side: 'north',
         subtitle: `This is a very hidden piece of architecture that I discovered by accident on the web.Otherwise, it would be quite difficult to spot, as it is situated deep within the restricted grounds of the Hue Major Seminary.Its history is also unclear.I can only say that at present it’s perhaps far from its best appearance, painted in rather dull whitish tones.A bit earlier, around 2015, the color scheme was much better, with yellow as the dominant color.At that time, it must have been a truly delightful sight.`
     },
 
