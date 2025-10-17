@@ -77,3 +77,25 @@
     calculation of "center" option.
     But it was a bit cumbersome because offset must be
     calculated for the target zoom, not the current one.
+
+###5.1 Yet unsloved PROBLEM (small but eventually to be solved)
+    : map bounds are not respected when calculating the flight destination: center, zoom & offset
+    Current calculation is naive and acts as if map wasn't constrained.
+    This, in theory, can lead to having some newly selected buildings invisible behind the panel.
+    It's of course more likely when such features are near the bounds.
+    But it can also occur due to having very low z, for features located almost anywhere on the map.
+    The problem showed up when I tried to implement back/forward WITHOUT changing z. (It was a fun feature, looked cool but not sure how useful is).
+    With "preserved zoom", when zoom was near-minimal (and thus map had almost no space for maneuver at current z),
+        it was often decided that "A flight is needed to prevent a building from being covered by panel",
+        -> a flight actually happened, but only on one useless axis, whereas on an important axis there was no space.
+        -> It looked like a tiny useless move, and that "something is going wrong"
+    This forced me to rollback this "preserved zoom" feature,
+        because without this feature the likelyhood of the described problem is much lower:
+        If on building select I ALWAYS ZOOM IN TO THE BUILDING, then the problem is negligible
+            and scoped only to the near-bounds buildings, which might be covered by the panel in some rare situations.
+    But, however unlikely this problem is, it shall be eventually solved,
+    because the amount of near-bounds features is potentially infinite, and the problem is real, though tiny.
+    When solution for this is found,
+        I then can entertain myself by re-introducing the "preserve zoom on B/F" behaviour, if it still looks interesting.
+            (It looked interesting indeed, providing a "bird-eye view" of previously selected locations,
+            but it's unclear if it's likely to be used by many users, for it's only observable on back/forward)

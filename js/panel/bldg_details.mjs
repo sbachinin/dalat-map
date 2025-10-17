@@ -97,7 +97,6 @@ export const try_open_building = async (
         should_push_history = false,
         should_expand_panel = true,
         should_try_to_fly = false,
-        should_preserve_zoom = false
     } = {}
 ) => {
     if (id === get_selected_building_id()) {
@@ -129,7 +128,7 @@ export const try_open_building = async (
                 'fly to newly opened building',
                 async () => {
                     if (should_try_to_fly) {
-                        await try_fly_to_building(id, { should_preserve_zoom })
+                        await try_fly_to_building(id)
                     }
                     resolve()
 
@@ -174,7 +173,6 @@ export const try_fly_to_building = (
     id,
     {
         force = false,
-        should_preserve_zoom = false
     } = {}
 ) => {
     return new Promise((resolve) => {
@@ -187,9 +185,7 @@ export const try_fly_to_building = (
         const feature_screen_xy = window.dalatmap.project(feature_center_arr)
         const map_zoom = window.dalatmap.getZoom()
 
-        const target_zoom = should_preserve_zoom
-            ? map_zoom
-            : Math.max(get_minimal_zoom_on_building_select(id), map_zoom)
+        const target_zoom = Math.max(get_minimal_zoom_on_building_select(id), map_zoom)
 
         if (
             coords_will_be_in_view(feature_screen_xy)
@@ -217,6 +213,8 @@ export const try_fly_to_building = (
         const mindur = 700
         const maxdur = 2000
         duration = Math.min(Math.max(duration, mindur), maxdur)
+
+        // ###5.1 Yet unsloved problem: map bounds shall be respected when deciding on center, zoom & offset
 
         // ###5
         window.dalatmap.flyTo({

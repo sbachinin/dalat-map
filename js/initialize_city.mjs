@@ -161,7 +161,6 @@ export const initialize_city = async (name) => {
                 should_push_history: false,
                 should_expand_panel: false,
                 should_try_to_fly: true,
-                should_preserve_zoom: true
             })
         } else {
             display_highlights(false)
