@@ -325,17 +325,21 @@ export const cable_car_endpoints = {
 }
 
 
-export const boring_building_square = {
-    "name": "Boring building square",
+export const boring_building_circle = {
+    "name": "Boring building circle",
     "type": "symbol",
     source: 'bldgs_centroids_points',
-    drawing_importance: 3,
+    drawing_importance: 2.1, // slightly below historic circles
     "layout": {
-        "icon-image": "boring_square",
+        "icon-image": "boring_circle",
         "icon-size": 0.12,
         'icon-allow-overlap': true,
     },
-    // filter: specify it in city's zoom_order, because every city will have a different concept of what bldgs must be excluded from here
+    filter: [
+        "all",
+        ["!=", ["get", "is_historic"], true],
+        ["==", ["get", "is_selectable"], true]
+    ]
 }
 
 

@@ -2,7 +2,7 @@ import { get_filter_by_fids } from "../js/common_zoom_order.mjs";
 
 import {
     boring_building_fill,
-    boring_building_square,
+    boring_building_circle,
     cable_car_endpoints,
     cable_car_line,
     historic_building_circle,

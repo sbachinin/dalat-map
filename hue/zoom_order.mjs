@@ -9,7 +9,8 @@ import {
     important_boring_building_fill,
     stadium_fill,
     peaks_triangles_with_titles,
-    bridge_areas_fill
+    bridge_areas_fill,
+    boring_building_circle
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { MAJOR_BUILDINGS_POLYGONS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
@@ -56,6 +57,10 @@ export const zoom_order = {
         {
             drawing_layers: [historic_building_circle],
             filter: ["==", ["get", "is_selectable"], true],
+            maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
+        },
+        {
+            drawing_layers: [boring_building_circle],
             maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }
     ],
