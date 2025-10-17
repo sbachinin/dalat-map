@@ -119,19 +119,33 @@ export const try_open_building = async (
             push_to_history(`?id=${id}${window.location.hash}`)
         }
 
-        panel.once(
-            'new content breadth',
-            'fly to newly opened building',
-            async () => {
-                if (should_try_to_fly) {
-                    await try_fly_to_building(id, { should_preserve_zoom })
+        // wait for flight to end or to be cancelled right away
+        await new Promise(resolve => {
+            if (!should_try_to_fly) {
+                resolve()
+            }
+            panel.once(
+                'new content breadth',
+                'fly to newly opened building',
+                async () => {
+                    if (should_try_to_fly) {
+                        await try_fly_to_building(id, { should_preserve_zoom })
+                    }
+                    resolve()
+
+                    if (should_expand_panel) {
+                        panel.resize_to_content()
+                    }
                 }
-                if (should_expand_panel) {
-                    panel.resize_to_content()
-                }
-            })
+            )
+        })
+
+        // after flight ends, or doesn't happen
+
+        window.dalatmap.setFilter('Selected feature pin', ['==', ["id"], id])
     }
 }
+
 
 const distance2d = (x1, y1, x2, y2) => Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1))
 
@@ -176,7 +190,7 @@ export const try_fly_to_building = (
         const target_zoom = should_preserve_zoom
             ? map_zoom
             : Math.max(get_minimal_zoom_on_building_select(id), map_zoom)
-        
+
         if (
             coords_will_be_in_view(feature_screen_xy)
             && target_zoom <= map_zoom // need not zoom

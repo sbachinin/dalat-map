@@ -72,7 +72,7 @@ export const initialize_city = async (name) => {
             ],
             antialias: true,
             maxZoom: current_city.max_zoom || DEFAULT_MAX_ZOOM,
-            fadeDuration: 0,
+            // fadeDuration: 1000,
             pitchWithRotate: false,
             maxPitch: 0
         })
