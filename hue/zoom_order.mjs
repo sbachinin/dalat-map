@@ -93,19 +93,10 @@ export const zoom_order = {
 
     [MAJOR_BUILDINGS_POLYGONS_MINZOOM]: [
         {
-            drawing_layers: historic_polygons.map(l => ({ ...l, 'source-layer': 'french_building' })),
-        },
-        {
             drawing_layers: [bridge_areas_fill]
-        }
-    ],
-
-    14: [
-        {
-            drawing_layers: [non_french_bldgs_within_imperial_city_fill],
         },
         {
-            drawing_layers: [french_buildings_titles]
+            drawing_layers: historic_polygons.map(l => ({ ...l, 'source-layer': 'french_building' })),
         },
         {
             drawing_layers: [important_boring_building_fill]
@@ -126,6 +117,15 @@ export const zoom_order = {
                     }
                 }
             ],
+        },
+    ],
+
+    14: [
+        {
+            drawing_layers: [non_french_bldgs_within_imperial_city_fill],
+        },
+        {
+            drawing_layers: [french_buildings_titles]
         },
     ],
 
