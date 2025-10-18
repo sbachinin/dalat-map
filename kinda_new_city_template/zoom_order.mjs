@@ -3,7 +3,7 @@ import { get_filter_by_fids } from "../js/common_zoom_order.mjs";
 import {
     boring_building_fill,
     historic_building_circle,
-    french_buildings_titles,
+    historic_buildings_titles,
     land_areas_fill,
     non_french_titles,
     peaks_triangles_with_titles,
@@ -90,7 +90,7 @@ export const zoom_order = {
         { drawing_layers: [railway_line] },
         { drawing_layers: [railway_station_titles_with_squares] },
 
-        { drawing_layers: [french_buildings_titles] },
+        { drawing_layers: [historic_buildings_titles] },
     ],
     [MAJOR_BUILDINGS_POLYGONS_MINZOOM]: [
         {

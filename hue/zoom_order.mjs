@@ -1,7 +1,7 @@
 import {
     boring_building_fill,
     historic_building_circle,
-    french_buildings_titles,
+    historic_buildings_titles,
     land_areas_fill,
     non_french_titles,
     railway_line,
@@ -125,7 +125,7 @@ export const zoom_order = {
             drawing_layers: [non_french_bldgs_within_imperial_city_fill],
         },
         {
-            drawing_layers: [french_buildings_titles]
+            drawing_layers: [historic_buildings_titles]
         },
     ],
 

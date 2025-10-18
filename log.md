@@ -27,6 +27,11 @@ IMPORTANT
 MPORTANT
 
 
+"Angry maps"
+"Maps of buildings and cities"
+"Maps for humans"
+
+
 WHY TILE UNIQUE FEATURES AT ALL? (RNDRBLS)
 
 handle new dalat pictures (dalat extra album)

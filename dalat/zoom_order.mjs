@@ -6,7 +6,7 @@ import {
     cable_car_endpoints,
     cable_car_line,
     historic_building_circle,
-    french_buildings_titles,
+    historic_buildings_titles,
     land_areas_fill,
     non_french_titles,
     peaks_triangles_with_titles,
@@ -149,7 +149,7 @@ export const zoom_order = {
                 hmd[969458761], // university
             ),
         },
-        { drawing_layers: [french_buildings_titles] },
+        { drawing_layers: [historic_buildings_titles] },
     ],
     [MAJOR_BUILDINGS_POLYGONS_MINZOOM]: [
         {

@@ -61,8 +61,8 @@ export const titles_common_layout_props = {
 }
 
 
-export const french_buildings_titles = {
-    "name": "French buildings titles",
+export const historic_buildings_titles = {
+    "name": "Historic buildings titles",
     "type": "symbol",
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'polygons_titles_points',
