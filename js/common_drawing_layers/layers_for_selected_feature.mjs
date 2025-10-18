@@ -71,9 +71,11 @@ const selected_border_layer = {
     filter: ['==', '', 2]
 }
 
+export const pin_style_layer_id = 'Selected feature pin'
+
 const selected_pin_layer = {
     drawing_importance: 0,
-    id: 'Selected feature pin',
+    id: pin_style_layer_id,
     type: 'symbol',
     source: 'bldgs_centroids_points',
     layout: {

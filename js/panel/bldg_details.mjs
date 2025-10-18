@@ -17,6 +17,7 @@ import { current_city } from '../load_city.mjs'
 import { make_icons } from './bldg_details_icons.mjs'
 import { get_icon_as_ctx } from '../load_icons.mjs'
 import { activate_image } from '../lazy-image.mjs'
+import { pin_style_layer_id } from '../common_drawing_layers/layers_for_selected_feature.mjs'
 
 const update_size_variables = () => {
     update_panel_thumbs_list_size_variables({
@@ -141,7 +142,7 @@ export const try_open_building = async (
 
         // after flight ends, or doesn't happen
 
-        window.dalatmap.setFilter('Selected feature pin', ['==', ["id"], id])
+        window.dalatmap.setFilter(pin_style_layer_id, ['==', ["id"], id])
     }
 }
 
