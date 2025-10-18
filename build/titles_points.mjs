@@ -88,31 +88,31 @@ const is_water_feature = f => {
 }
 
 
-export const make_title_point_feature = f => {
+export const make_title_point_feature = base_feat => {
     const hmdata = globalThis.current_city.all_handmade_data
-    let coordinates = hmdata[f.id].title_coords
+    let coordinates = hmdata[base_feat.id].title_coords
     if (!coordinates) {
-        const centroid = get_centroid(f)
+        const centroid = get_centroid(base_feat)
         coordinates = [
             centroid[0],
-            get_title_lat(f, hmdata, centroid)
+            get_title_lat(base_feat, hmdata, centroid)
         ]
     }
 
     const title_props = {
-        title: hmdata[f.id].title,
-        title_side: get_title_side(f, hmdata),
-        "symbol-sort-key": hmdata[f.id]["symbol-sort-key"]
+        title: hmdata[base_feat.id].title,
+        title_side: get_title_side(base_feat, hmdata),
+        "symbol-sort-key": hmdata[base_feat.id]["symbol-sort-key"]
     }
 
-    if (is_water_feature(f)) {
+    if (is_water_feature(base_feat)) {
         title_props.feature_type = "water"
     }
 
     return {
         type: "Feature",
-        id: f.id,
+        id: base_feat.id,
         geometry: { type: "Point", coordinates },
-        properties: { ...f.properties, ...title_props }
+        properties: { ...base_feat.properties, ...title_props }
     }
 }
