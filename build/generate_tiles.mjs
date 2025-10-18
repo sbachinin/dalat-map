@@ -296,13 +296,13 @@ write(
 )
 
 
-const titles_points_feats = all_tiled_features
+const polygons_titles_points_feats = all_tiled_features
     .filter(f => Boolean(all_handmade_data[f.id]?.title) && f.geometry.type !== 'Point')
     .map(f => make_title_point_feature(f, all_handmade_data))
 
 generate_temp_mbtiles({
-    config: { name: 'titles_points' },
-    features: titles_points_feats
+    config: { name: 'polygons_titles_points' },
+    features: polygons_titles_points_feats
 })
 
 
