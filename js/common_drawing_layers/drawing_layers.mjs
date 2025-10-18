@@ -338,7 +338,8 @@ export const boring_building_circle = {
     filter: [
         "all",
         ["!=", ["get", "is_historic"], true],
-        ["==", ["get", "is_selectable"], true]
+        ["==", ["get", "is_selectable"], true],
+        ["!=", ["get", "is_dead"], true]
     ]
 }
 
