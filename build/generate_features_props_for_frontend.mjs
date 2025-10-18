@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { mkdir_if_needed, parse_args } from './build_utils.mjs'
 import * as turf from '@turf/turf'
-import { is_feature_selectable } from '../js/utils/does_feature_have_details.mjs'
+import { does_feature_have_title, is_feature_selectable } from '../js/utils/does_feature_have_details.mjs'
 import { deep_merge_objects, get_centroid } from '../js/utils/isomorphic_utils.mjs'
 globalThis.turf = turf
 
@@ -16,7 +16,7 @@ let dead_buildings_geometries = {}
 try {
     const mod = await import(city_root_path + '/static_data/custom_buildings_geometries_for_tiling/dead_buildings.mjs')
     dead_buildings_geometries = mod.default
-} catch (e) {}
+} catch (e) { }
 
 const ass = await import(city_root_path + '/assets_for_build.mjs')
 const assets_for_build = ass.assets_for_build
@@ -52,7 +52,11 @@ all_tiled_features.forEach(f => {
 
     const single_feature_props = {}
 
-    if (is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)) {
+    if (
+        is_feature_selectable(f.id, all_handmade_data, fids_to_img_names)
+        || does_feature_have_title(f.id, all_handmade_data) // this is not really needed now, because no circles are drawn for title-only feats, but it's not heavy and nice to have just in case
+        || f.properties?.is_historic
+    ) {
         single_feature_props.centroid = get_centroid(f)
     }
 
@@ -64,6 +68,10 @@ all_tiled_features.forEach(f => {
     }
     if (Object.keys(dead_buildings_geometries).includes(String(f.id))) {
         single_feature_props.is_dead = true
+    }
+
+    if (f.properties?.is_historic) {
+        single_feature_props.is_historic = true
     }
 
     all_features_generic_props[f.id] = single_feature_props

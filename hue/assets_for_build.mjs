@@ -26,27 +26,6 @@ export const assets_for_build = {
     map_bounds,
     html_title: 'Map of colonial architecture in Hue',
 
-    make_features_props_for_frontend: all_tiled_features => {
-
-        const result = {}
-        all_tiled_features.forEach(f => {
-            if (!f.id) {
-                console.log(f)
-                process.exit(1)
-            }
-
-
-            if (f.properties['building:architecture'] === 'french_colonial' && f.geometry.type !== 'Point') {
-                result[f.id] = {
-                    // centroid is needed for french bldg even if it's not selectable because centroid is used to draw a building's circle at low z
-                    centroid: get_centroid(f),
-                    is_historic: true
-                }
-            }
-        })
-        return result
-    },
-
     tiling_config: [
         {
             name: 'boring_building',

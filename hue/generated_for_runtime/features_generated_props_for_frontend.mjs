@@ -13,6 +13,12 @@ export const features_generated_props_for_frontend = {
     ],
     "is_historic": true
   },
+  "10138638": {
+    "centroid": [
+      107.578176,
+      16.458949
+    ]
+  },
   "19381147": {
     "centroid": [
       107.554575,
@@ -67,6 +73,12 @@ export const features_generated_props_for_frontend = {
       16.458453
     ],
     "is_historic": true
+  },
+  "118541901": {
+    "centroid": [
+      107.602256,
+      16.480553
+    ]
   },
   "118541964": {
     "centroid": [
@@ -156,6 +168,12 @@ export const features_generated_props_for_frontend = {
       16.467707
     ]
   },
+  "172657563": {
+    "centroid": [
+      107.578484,
+      16.470304
+    ]
+  },
   "172657564": {
     "centroid": [
       107.577063,
@@ -223,6 +241,12 @@ export const features_generated_props_for_frontend = {
     ],
     "is_historic": true
   },
+  "205794922": {
+    "centroid": [
+      107.555451,
+      16.433425
+    ]
+  },
   "205795043": {
     "centroid": [
       107.545029,
@@ -233,6 +257,24 @@ export const features_generated_props_for_frontend = {
     "centroid": [
       107.565396,
       16.433184
+    ]
+  },
+  "211038385": {
+    "centroid": [
+      107.539218,
+      16.455566
+    ]
+  },
+  "217466613": {
+    "centroid": [
+      107.703955,
+      16.398875
+    ]
+  },
+  "218439300": {
+    "centroid": [
+      107.599205,
+      16.460453
     ]
   },
   "239445949": {
@@ -262,6 +304,24 @@ export const features_generated_props_for_frontend = {
     ],
     "is_historic": true
   },
+  "239985079": {
+    "centroid": [
+      107.578566,
+      16.407956
+    ]
+  },
+  "240131252": {
+    "centroid": [
+      107.598116,
+      16.461364
+    ]
+  },
+  "240143621": {
+    "centroid": [
+      107.60278,
+      16.465534
+    ]
+  },
   "240266283": {
     "centroid": [
       107.580137,
@@ -290,6 +350,12 @@ export const features_generated_props_for_frontend = {
     ],
     "is_small_selectable_thing": true
   },
+  "260244336": {
+    "centroid": [
+      107.605972,
+      16.450512
+    ]
+  },
   "285990348": {
     "centroid": [
       107.576516,
@@ -303,12 +369,48 @@ export const features_generated_props_for_frontend = {
       16.466244
     ]
   },
+  "436421074": {
+    "centroid": [
+      107.59268,
+      16.459618
+    ]
+  },
+  "438257497": {
+    "centroid": [
+      107.587171,
+      16.462384
+    ]
+  },
+  "493381029": {
+    "centroid": [
+      107.582187,
+      16.410835
+    ]
+  },
   "531031540": {
     "centroid": [
       107.575258,
       16.468543
     ],
     "is_historic": true
+  },
+  "531031593": {
+    "centroid": [
+      107.580292,
+      16.466316
+    ]
+  },
+  "589021821": {
+    "centroid": [
+      107.555793,
+      16.4465
+    ]
+  },
+  "590077789": {
+    "centroid": [
+      107.562893,
+      16.447372
+    ]
   },
   "617523830": {
     "centroid": [
@@ -324,12 +426,30 @@ export const features_generated_props_for_frontend = {
     ],
     "is_historic": true
   },
+  "632173205": {
+    "centroid": [
+      107.596867,
+      16.464105
+    ]
+  },
   "690841003": {
     "centroid": [
       107.577214,
       16.466551
     ],
     "is_small_selectable_thing": true
+  },
+  "695770476": {
+    "centroid": [
+      107.585244,
+      16.461936
+    ]
+  },
+  "695770482": {
+    "centroid": [
+      107.584899,
+      16.460464
+    ]
   },
   "695770483": {
     "centroid": [
@@ -370,6 +490,12 @@ export const features_generated_props_for_frontend = {
     "centroid": [
       107.578,
       16.45827
+    ]
+  },
+  "695775622": {
+    "centroid": [
+      107.583814,
+      16.459534
     ]
   },
   "695775623": {
@@ -464,6 +590,12 @@ export const features_generated_props_for_frontend = {
     ],
     "is_historic": true
   },
+  "731095046": {
+    "centroid": [
+      107.593587,
+      16.470682
+    ]
+  },
   "732304130": {
     "centroid": [
       107.591982,
@@ -496,6 +628,54 @@ export const features_generated_props_for_frontend = {
       16.460921
     ]
   },
+  "749331141": {
+    "centroid": [
+      107.594238,
+      16.463008
+    ]
+  },
+  "1023330891": {
+    "centroid": [
+      107.595969,
+      16.467503
+    ]
+  },
+  "1033691531": {
+    "centroid": [
+      107.592384,
+      16.468039
+    ]
+  },
+  "1033709046": {
+    "centroid": [
+      107.587845,
+      16.459203
+    ]
+  },
+  "1033709047": {
+    "centroid": [
+      107.586334,
+      16.458533
+    ]
+  },
+  "1033709968": {
+    "centroid": [
+      107.587966,
+      16.457009
+    ]
+  },
+  "1044435601": {
+    "centroid": [
+      107.572674,
+      16.477503
+    ]
+  },
+  "1044435624": {
+    "centroid": [
+      107.574232,
+      16.47816
+    ]
+  },
   "1075011937": {
     "centroid": [
       107.572536,
@@ -506,6 +686,24 @@ export const features_generated_props_for_frontend = {
     "centroid": [
       107.540014,
       16.453623
+    ]
+  },
+  "1075018793": {
+    "centroid": [
+      107.563929,
+      16.428269
+    ]
+  },
+  "1084960041": {
+    "centroid": [
+      107.597787,
+      16.459776
+    ]
+  },
+  "1170979640": {
+    "centroid": [
+      107.579733,
+      16.454167
     ]
   },
   "1172894102": {
@@ -541,12 +739,66 @@ export const features_generated_props_for_frontend = {
     ],
     "is_historic": true
   },
+  "1174326145": {
+    "centroid": [
+      107.572345,
+      16.43902
+    ]
+  },
+  "1180743119": {
+    "centroid": [
+      107.587103,
+      16.437967
+    ]
+  },
+  "1180918087": {
+    "centroid": [
+      107.59244,
+      16.446173
+    ]
+  },
+  "1180918092": {
+    "centroid": [
+      107.597219,
+      16.442471
+    ]
+  },
+  "1181076366": {
+    "centroid": [
+      107.603073,
+      16.428229
+    ]
+  },
+  "1181145133": {
+    "centroid": [
+      107.595269,
+      16.435663
+    ]
+  },
+  "1181246512": {
+    "centroid": [
+      107.593196,
+      16.42377
+    ]
+  },
+  "1183249970": {
+    "centroid": [
+      107.528573,
+      16.460184
+    ]
+  },
   "1192697531": {
     "centroid": [
       107.588961,
       16.465684
     ],
     "is_historic": true
+  },
+  "1280445132": {
+    "centroid": [
+      107.59358,
+      16.465865
+    ]
   },
   "1332014338": {
     "centroid": [
@@ -1280,6 +1532,12 @@ export const features_generated_props_for_frontend = {
     ],
     "is_historic": true
   },
+  "1431465867": {
+    "centroid": [
+      107.596305,
+      16.480245
+    ]
+  },
   "1431655095": {
     "centroid": [
       107.549596,
@@ -1362,6 +1620,18 @@ export const features_generated_props_for_frontend = {
       16.453534
     ],
     "is_small_selectable_thing": true
+  },
+  "1435265548": {
+    "centroid": [
+      107.58729,
+      16.477787
+    ]
+  },
+  "1435288831": {
+    "centroid": [
+      107.546584,
+      16.486035
+    ]
   },
   "1435839836": {
     "centroid": [
