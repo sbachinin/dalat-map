@@ -82,7 +82,7 @@ export const historic_buildings_titles = {
     paint: {
         'text-color': HISTORIC_TITLES_TEXT_COLOR,
     },
-    filter: ["==", ["get", "building:architecture"], 'french_colonial']
+    filter: ["==", ["get", "is_historic"], true]
 }
 
 
@@ -292,7 +292,7 @@ export const non_french_titles = {
             PALE_TITLES_COLOR
         ]
     },
-    filter: ["!=", ["get", "building:architecture"], 'french_colonial']
+    filter: ["!=", ["get", "is_historic"], true]
 }
 
 

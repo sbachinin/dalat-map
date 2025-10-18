@@ -43,6 +43,10 @@ if (!fs.existsSync(city_root_path)) {
     process.exit(1)
 }
 
+
+const { all_handmade_data } = await import(city_root_path + '/static_data/handmade_data.mjs')
+const { fids_to_img_names } = await import(city_root_path + '/static_data/fids_to_img_names.mjs')
+const i_ass = await import(city_root_path + '/isomorphic_assets.mjs')
 const ass = await import(city_root_path + '/assets_for_build.mjs')
 const city_assets = ass.assets_for_build
 
@@ -85,9 +89,6 @@ osm_geojson.features.forEach(f => {
 
 const temp_tiles_path = `../cities_tiles/temp`
 
-const { all_handmade_data } = await import(city_root_path + '/static_data/handmade_data.mjs')
-const { fids_to_img_names } = await import(city_root_path + '/static_data/fids_to_img_names.mjs')
-
 globalThis.current_city = { all_handmade_data, fids_to_img_names }
 
 const clear_feature_props = (f) => {
@@ -104,8 +105,6 @@ const clear_feature_props = (f) => {
     }
 }
 
-
-const i_ass = await import(city_root_path + '/isomorphic_assets.mjs')
 
 const smallest_possible_minzoom = calculate_minzoom(city_assets.map_bounds, 320, 568)  // Assuming that smallest device (the one that will need the smallest minzoom) is Iphone SE
 
@@ -236,19 +235,6 @@ for (const { file, module } of modules) {
                     }
                 })
 
-                if (is_feature_selectable(f.id)) {
-                    f.properties.is_selectable = true
-                }
-
-                if (does_feature_have_title(f.id)) {
-                    f.properties.has_title = true
-                }
-
-                const area_type = all_handmade_data[f.id]?.area_type
-                if (area_type) {
-                    f.properties.area_type = area_type
-                }
-
                 return f
             })
             // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed
@@ -274,6 +260,25 @@ for (const { file, module } of modules) {
         ...filtered_osm_features,
         ...custom_features,
     ]
+
+    layer_features.forEach(f => {
+        if (is_feature_selectable(f.id)) {
+            f.properties.is_selectable = true
+        }
+
+        if (does_feature_have_title(f.id)) {
+            f.properties.has_title = true
+        }
+
+        const area_type = all_handmade_data[f.id]?.area_type
+        if (area_type) {
+            f.properties.area_type = area_type
+        }
+
+        if (i_ass.is_building_historic(f)) {
+            f.properties.is_historic = true
+        }
+    })
 
     layer_features = remove_duplicates_by_id(layer_features) // take only last feature with the same id => custom feature wins
 

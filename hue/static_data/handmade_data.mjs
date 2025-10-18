@@ -311,7 +311,8 @@ export const buildings_handmade_data = {
     },
 
     172657563: {
-        title: 'Royal theatre'
+        title: `Royal
+        theatre`
     },
 
     1172897446: {

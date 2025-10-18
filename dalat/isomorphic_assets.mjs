@@ -15,3 +15,5 @@ export const city_title_coords = [108.442055, 11.951744]
 export const roads_config = {
     secondary: 12.2
 }
+
+export const is_building_historic = f => f.properties?.['building:architecture'] === 'french_colonial'

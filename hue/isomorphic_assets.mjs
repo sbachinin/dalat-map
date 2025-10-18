@@ -7,3 +7,5 @@ export const roads_config = {
     tertiary: 13.4,
     unclassified: 14.5
 }
+
+export const is_building_historic = f => f.properties?.['building:architecture'] === 'french_colonial'

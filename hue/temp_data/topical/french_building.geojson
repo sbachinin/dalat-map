@@ -31,7 +31,8 @@
     "id": 1435839836,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -68,7 +69,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -104,7 +106,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -141,7 +144,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -178,7 +182,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -215,7 +220,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -252,7 +258,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -289,7 +296,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -326,7 +334,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -363,7 +372,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -398,7 +408,8 @@
     "id": 1430147546,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -434,7 +445,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -470,7 +482,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -506,7 +519,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -541,7 +555,8 @@
     "id": 1430134964,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -576,7 +591,8 @@
     "id": 1430134963,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -612,7 +628,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -647,7 +664,8 @@
     "id": 1430131349,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -682,7 +700,8 @@
     "id": 1430131348,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -717,7 +736,8 @@
     "id": 1430131347,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -752,7 +772,8 @@
     "id": 1430131346,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -787,7 +808,8 @@
     "id": 1430131345,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -822,7 +844,8 @@
     "id": 1430131344,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -858,7 +881,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -893,7 +917,8 @@
     "id": 1429986273,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -928,7 +953,8 @@
     "id": 1429986272,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -963,7 +989,8 @@
     "id": 1429986271,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -998,7 +1025,8 @@
     "id": 1429986270,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1033,7 +1061,8 @@
     "id": 1429986269,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1068,7 +1097,8 @@
     "id": 1429986268,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1104,7 +1134,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1155,7 +1186,8 @@
     "id": 1429951012,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1190,7 +1222,8 @@
     "id": 1429951011,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1226,7 +1259,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1261,7 +1295,8 @@
     "id": 1429943739,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1296,7 +1331,8 @@
     "id": 1429934563,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1331,7 +1367,8 @@
     "id": 1429934562,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1366,7 +1403,8 @@
     "id": 1429934561,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1401,7 +1439,8 @@
     "id": 1429934560,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1436,7 +1475,8 @@
     "id": 1429934559,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1471,7 +1511,8 @@
     "id": 1429743637,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1507,7 +1548,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1543,7 +1585,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1579,7 +1622,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1615,7 +1659,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1651,7 +1696,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1695,7 +1741,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1732,7 +1779,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -1793,7 +1841,8 @@
       "building": "chapel",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -1829,7 +1878,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1866,7 +1916,8 @@
       "area": "yes",
       "building:architecture": "french_colonial",
       "historic": "yes",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1902,7 +1953,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -1937,7 +1989,8 @@
     "id": 1379888871,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -1972,7 +2025,8 @@
     "id": 1379888870,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2017,7 +2071,8 @@
       "building": "church",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -2052,7 +2107,8 @@
     "id": 1379319489,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2115,7 +2171,8 @@
     "id": 1379319488,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2150,7 +2207,8 @@
     "id": 1379319487,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2185,7 +2243,8 @@
     "id": 1379319486,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2236,7 +2295,8 @@
     "id": 1379319485,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2271,7 +2331,8 @@
     "id": 1379291123,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2306,7 +2367,8 @@
     "id": 1379291122,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2373,7 +2435,8 @@
     "id": 1379291121,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2409,7 +2472,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -2445,7 +2509,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -2481,7 +2546,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -2517,7 +2583,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -2552,7 +2619,8 @@
     "id": 1379241610,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2587,7 +2655,8 @@
     "id": 1379241609,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2623,7 +2692,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -2674,7 +2744,8 @@
     "id": 1377968892,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2738,7 +2809,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -2805,7 +2877,8 @@
     "id": 1377450378,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -2841,7 +2914,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -2877,7 +2951,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -2929,7 +3004,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -2964,7 +3040,8 @@
     "id": 1377450374,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -3016,7 +3093,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3052,7 +3130,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3088,7 +3167,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3124,7 +3204,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3160,7 +3241,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3196,7 +3278,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3232,7 +3315,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3267,7 +3351,8 @@
     "id": 1377444126,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -3311,7 +3396,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3355,7 +3441,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3391,7 +3478,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3443,7 +3531,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3478,7 +3567,8 @@
     "id": 1377444121,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -3514,7 +3604,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3558,7 +3649,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3602,7 +3694,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3654,7 +3747,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3698,7 +3792,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3733,7 +3828,8 @@
     "id": 1377444115,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -3768,7 +3864,8 @@
     "id": 1377444114,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -3803,7 +3900,8 @@
     "id": 1377444113,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -3840,7 +3938,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -3875,7 +3974,8 @@
     "id": 1377444111,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -3911,7 +4011,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3947,7 +4048,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -3983,7 +4085,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4018,7 +4121,8 @@
     "id": 1377444107,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -4070,7 +4174,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4106,7 +4211,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4158,7 +4264,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4194,7 +4301,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4238,7 +4346,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4282,7 +4391,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4334,7 +4444,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4370,7 +4481,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4423,7 +4535,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -4462,7 +4575,8 @@
       "castle_type": "palace",
       "historic": "castle",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -4498,7 +4612,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4534,7 +4649,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4571,7 +4687,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -4647,7 +4764,8 @@
     "properties": {
       "building": "chapel",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4698,7 +4816,8 @@
     "id": 695810737,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -4734,7 +4853,8 @@
     "properties": {
       "building": "temple",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4769,7 +4889,8 @@
     "id": 695775640,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -4845,7 +4966,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -4880,7 +5002,8 @@
     "id": 695775638,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -4915,7 +5038,8 @@
     "id": 695775637,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -4998,7 +5122,8 @@
     "id": 695775636,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -5057,7 +5182,8 @@
     "id": 695775634,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -5109,7 +5235,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -5145,7 +5272,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -5181,7 +5309,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -5249,7 +5378,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -5285,7 +5415,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -5369,7 +5500,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -5437,7 +5569,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -5505,7 +5638,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -5540,7 +5674,8 @@
     "id": 617523830,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -5613,7 +5748,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -5672,7 +5808,8 @@
       "castle_type": "palace",
       "historic": "castle",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -5717,7 +5854,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -5802,7 +5940,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -5927,7 +6066,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -5964,7 +6104,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -6015,7 +6156,8 @@
     "id": 239972926,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -6050,7 +6192,8 @@
     "id": 239448810,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -6135,7 +6278,8 @@
       "building": "train_station",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -6186,7 +6330,8 @@
     "id": 173793329,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -6222,7 +6367,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -6257,7 +6403,8 @@
     "id": 173793327,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -6307,7 +6454,8 @@
       "building:architecture": "french_colonial",
       "historic": "building",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -6352,7 +6500,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "historic": "yes",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -6389,7 +6538,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -6425,7 +6575,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -6460,7 +6611,8 @@
     "id": 118542866,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -6560,7 +6712,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -6596,7 +6749,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -6679,7 +6833,8 @@
     "id": 118542427,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -6763,7 +6918,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -6800,7 +6956,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   },
   {
@@ -6835,7 +6992,8 @@
     "id": 118542338,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -6879,7 +7037,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -6915,7 +7074,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -6959,7 +7119,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -6995,7 +7156,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -7031,7 +7193,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -7067,7 +7230,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -7132,7 +7296,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "community_centre": "cultural_centre",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -7168,7 +7333,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "is_selectable": true
+      "is_selectable": true,
+      "is_historic": true
     }
   },
   {
@@ -7212,7 +7378,8 @@
     "properties": {
       "building": "yes",
       "building:architecture": "french_colonial",
-      "museum": "art"
+      "museum": "art",
+      "is_historic": true
     }
   },
   {
@@ -7307,7 +7474,8 @@
     "id": 9669095,
     "properties": {
       "building": "yes",
-      "building:architecture": "french_colonial"
+      "building:architecture": "french_colonial",
+      "is_historic": true
     }
   },
   {
@@ -7378,7 +7546,8 @@
       "building": "yes",
       "building:architecture": "french_colonial",
       "is_selectable": true,
-      "has_title": true
+      "has_title": true,
+      "is_historic": true
     }
   }
 ]
