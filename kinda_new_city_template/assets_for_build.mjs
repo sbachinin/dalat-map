@@ -77,13 +77,6 @@ export const assets_for_build = {
             },
             props_to_add_to_osm_features: [
                 {
-                    name: 'area_type',
-                    get_value: f => {
-                        if (f.properties.name === 'Lac Duong') return AREA_TYPES.TOWN
-                        return dalat_land_areas_handmade_data[f.id.toString()]?.area_type || null
-                    }
-                },
-                {
                     name: 'is_small_area',
                     get_value: f => {
                         return area(f.geometry) < 80000

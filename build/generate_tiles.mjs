@@ -244,6 +244,11 @@ for (const { file, module } of modules) {
                     f.properties.has_title = true
                 }
 
+                const area_type = all_handmade_data[f.id]?.area_type
+                if (area_type) {
+                    f.properties.area_type = area_type
+                }
+
                 return f
             })
             // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed

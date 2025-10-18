@@ -199,12 +199,6 @@ export const assets_for_build = {
                 return land_areas_handmade_data[f.id.toString()]
             },
             props_to_add_to_osm_features: [
-                {
-                    name: 'area_type',
-                    get_value: f => {
-                        return land_areas_handmade_data[f.id.toString()]?.area_type || null
-                    }
-                },
                 // { it works in Dalat, here it's not clear if it's necessary
                 //     name: 'is_small_area',
                 //     get_value: f => {

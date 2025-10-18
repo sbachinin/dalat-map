@@ -31,6 +31,7 @@ export const nonessential_feature_props = [
     'frequency',
     'crossing',
     'payment:cash',
+    'aerodrome:type', 'official_name',
 
 
     // ?

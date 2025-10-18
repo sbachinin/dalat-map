@@ -99,12 +99,6 @@ export const assets_for_build = {
             get_custom_features: () => [custom_features.lac_duong, custom_features.military_academy],
             props_to_add_to_osm_features: [
                 {
-                    name: 'area_type',
-                    get_value: f => {
-                        return dalat_land_areas_handmade_data[f.id.toString()]?.area_type || null
-                    }
-                },
-                {
                     name: 'is_small_area',
                     get_value: f => {
                         return area(f.geometry) < 80000
