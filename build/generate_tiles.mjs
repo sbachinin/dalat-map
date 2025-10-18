@@ -235,6 +235,15 @@ for (const { file, module } of modules) {
                         f.properties[extra_prop.name] = extra_prop.get_value(f, all_handmade_data)
                     }
                 })
+
+                if (is_feature_selectable(f.id)) {
+                    f.properties.is_selectable = true
+                }
+
+                if (does_feature_have_title(f.id)) {
+                    f.properties.has_title = true
+                }
+
                 return f
             })
             // sort is just to get a more readable git diff, in case I want to track osm data changes, e.g. what french bldgs were removed

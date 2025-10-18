@@ -414,7 +414,12 @@ export const important_boring_building_fill = {
     'source-layer': 'important_boring_building',
     drawing_importance: 3,
     "paint": {
-        "fill-color": 'hsl(240, 50%, 87%)',
+        "fill-color": [
+            'case',
+            ['==', ['get', 'is_selectable'], true],
+            'hsl(240, 50%, 87%)',
+            'hsl(240, 35%, 91%)'
+        ],
         "fill-antialias": true
     },
 }
