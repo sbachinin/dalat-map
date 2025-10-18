@@ -46,8 +46,10 @@ const set_panel_content = (id) => {
         ? `<img id="bldg-title-dead-square" src="${get_icon_as_ctx('black_square').canvas.toDataURL()}"> `
         : ''
 
-    const title = feat_hmd?.title
-        ? `<div id="building-info__title">${dead_square}${feat_hmd.title}</div>`
+    const title_text = feat_hmd?.title_for_panel_only || feat_hmd?.title
+
+    const title = title_text
+        ? `<div id="building-info__title">${dead_square}${title_text}</div>`
         : ''
 
     const subtitle = feat_hmd?.subtitle

@@ -130,7 +130,7 @@ export const buildings_handmade_data = {
         year: '1924'
     },
     "1377444112": {
-        title: 'Workshop',
+        title_for_panel_only: 'Workshop',
         year: '1924'
     },
 
@@ -244,7 +244,7 @@ export const buildings_handmade_data = {
     },
 
     118542341: {
-        title: 'Gymnasium',
+        title_for_panel_only: 'Gymnasium',
         subtitle: 'This building, as far as I can tell, has probably been used for sports since the colonial era. Despite that remarkable history, the structure itself is visually quite uninteresting.',
     },
 
@@ -278,12 +278,12 @@ export const buildings_handmade_data = {
     },
 
     "172763419": {
-        title: 'Imperial city\nguard HQ',
+        title_for_panel_only: 'Imperial city\nguard HQ',
         subtitle: `This building is clearly the one most european in Hue Citadel - and perhaps the least well preserved. It was built in the early 20th century, replacing a building of Royal treasury, and served as the Imperial city guard headquarters in 1936. Today it (presumably) houses the Hue College of Arts (or Fine Arts).`
     },
 
     "531031540": {
-        title: "Tinh Minh\nLau villa",
+        title_for_panel_only: "Tinh Minh\nLau villa",
         subtitle: `Current structure was built in 1927 as a medical clinic and in 1950 rebuilt as a private residence of the king Bao Dai.
         It's one of the few structures in the Imperial City that survived the bombings of the 1960s and '70s. In later years, however, it fell into serious disrepair until a UNESCO-guided restoration began in the late 1990s.`,
         links: [

@@ -33,6 +33,9 @@ export const does_feature_have_title = (id, hmdata = globalThis.current_city?.al
     return Boolean(
         typeof hmdata[id]?.title === 'string'
         && hmdata[id]?.title.length > 0
+    ) || Boolean(
+        typeof hmdata[id]?.title_for_panel_only === 'string'
+        && hmdata[id]?.title_for_panel_only.length > 0
     )
 }
 
