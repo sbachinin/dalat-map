@@ -90,7 +90,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
-        "properties": { title: "Long An Palace" },
+        "properties": { /* title: "Long An Palace" */ },
         "geometry": {
             "coordinates": [
                 [
@@ -122,7 +122,7 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
-        "properties": { title: 'Royal National University' },
+        "properties": { /* title: 'Royal National University' */ },
         "geometry": {
             "coordinates": [
                 [
@@ -154,7 +154,7 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
-        "properties": { title: 'Tam Toa' },
+        "properties": { /* title: 'Tam Toa' */ },
         "geometry": {
             "coordinates": [
                 [

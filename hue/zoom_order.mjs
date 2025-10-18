@@ -102,6 +102,9 @@ export const zoom_order = {
             drawing_layers: [important_boring_building_fill]
         },
         {
+            drawing_layers: [non_french_bldgs_within_imperial_city_fill],
+        },
+        {
             // needs a higher importance to appear on top of city wall, plus a distinct color 
             filter: ['==', ['get', 'historic'], 'city_gate'],
             drawing_layers: [
@@ -121,9 +124,6 @@ export const zoom_order = {
     ],
 
     14: [
-        {
-            drawing_layers: [non_french_bldgs_within_imperial_city_fill],
-        },
         {
             drawing_layers: [historic_buildings_titles]
         },
