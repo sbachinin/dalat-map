@@ -3,6 +3,9 @@ export const FRENCH_SELECTED_FILL_COLOR = 'hsl(42, 97.80%, 53.50%)'
 // TODO this one is actually outdated, purplish
 export const HISTORIC_TITLES_TEXT_COLOR = 'hsl(300, 20%, 25.40%)'
 
+export const SELECTABLE_BORING_FILL_COLOR = 'hsl(240, 50%, 87%)'
+export const TITLED_NONSELECTABLE_BORING_FILL_COLOR = 'hsl(240, 35%, 91%)'
+
 export const SELECTED_TITLE_HALO_COLOR = 'hsl(44, 98%, 77%)'
 export const DARKER_FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 87.50%)'
 export const FRENCH_FILL_COLOR = 'hsl(22, 97.80%, 63.50%)'

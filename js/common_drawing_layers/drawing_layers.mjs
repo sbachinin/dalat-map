@@ -19,6 +19,8 @@ import {
     FRENCH_DARK_BORDER_COLOR,
     MAJOR_BUILDINGS_POLYGONS_MINZOOM,
     SELECTED_TITLE_HALO_COLOR,
+    SELECTABLE_BORING_FILL_COLOR,
+    TITLED_NONSELECTABLE_BORING_FILL_COLOR,
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 
@@ -429,8 +431,8 @@ export const important_boring_building_fill = {
         "fill-color": [
             'case',
             ['==', ['get', 'is_selectable'], true],
-            'hsl(240, 50%, 87%)',
-            'hsl(240, 35%, 91%)'
+            SELECTABLE_BORING_FILL_COLOR,
+            TITLED_NONSELECTABLE_BORING_FILL_COLOR
         ],
         "fill-antialias": true
     },
