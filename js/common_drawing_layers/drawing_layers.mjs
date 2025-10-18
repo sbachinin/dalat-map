@@ -3,7 +3,7 @@ import {
     BORING_BLDG_FILL_COLOR,
     CEMETERY_FILL_COLOR,
     FIRST_CLASS_FRENCH_MINZOOM,
-    FRENCH_TITLES_TEXT_COLOR,
+    HISTORIC_TITLES_TEXT_COLOR,
     GRASS_COLOR,
     INSTITUTION_FILL_COLOR,
     WATER_TITLE_COLOR,
@@ -80,7 +80,7 @@ export const french_buildings_titles = {
         'text-font': ['Merriweather Italic']
     },
     paint: {
-        'text-color': FRENCH_TITLES_TEXT_COLOR,
+        'text-color': HISTORIC_TITLES_TEXT_COLOR,
     },
     filter: ["==", ["get", "building:architecture"], 'french_colonial']
 }
