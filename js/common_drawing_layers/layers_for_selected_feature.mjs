@@ -2,20 +2,6 @@ import { SOURCES_NAMES } from "../constants.mjs"
 import { MAJOR_BUILDINGS_POLYGONS_MINZOOM, FRENCH_SELECTED_FILL_COLOR } from "./constants.mjs"
 
 
-
-// selected title will disappear for now
-/* 
-        layer.paint['text-halo-color'] = [
-            "case",
-            ['==', ['feature-state', 'selected'], true],
-            FRENCH_SELECTED_TITLE_HALO_COLOR,
-            'transparent'
-        ]
-        layer.paint['text-halo-width'] = 5
-        layer.paint['text-halo-blur'] = 0
- */
-
-
 const selected_fill_layer = {
     drawing_importance: 1, // it will come after base layer, so will will be rendered on top
     id: 'Selected feature fill',

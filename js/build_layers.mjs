@@ -5,7 +5,7 @@ import { SOURCES_NAMES } from "./constants.mjs"
 import { make_roads_layers } from "./common_drawing_layers/make_roads_layers.mjs"
 import { layers_for_selected_feature } from "./common_drawing_layers/layers_for_selected_feature.mjs"
 import { dead_buildings_layers } from "./common_drawing_layers/dead_buildings.mjs"
-import { selectable_border } from "./common_drawing_layers/drawing_layers.mjs"
+import { selectable_border, selected_text_halo_props } from "./common_drawing_layers/drawing_layers.mjs"
 
 const join_style_filters = (...filters) => {
     // depending on the number of truthy filters, returns ["all", ...] OR the_only_truthy_one OR null
@@ -126,4 +126,22 @@ export const build_layers = () => {
             return get_drawing_importance(b) - get_drawing_importance(a)
         })
         .map(inject_city_constants)
+        .map(add_selected_halo_props_for_texts)
+}
+
+
+function add_selected_halo_props_for_texts(l) {
+    if (
+        l.type === 'symbol'
+        && l.layout['text-field']
+    ) {
+        return {
+            ...l,
+            paint: {
+                ...l.paint,
+                ...selected_text_halo_props
+            }
+        }
+    }
+    return l
 }

@@ -18,9 +18,20 @@ import {
     AIRPORT_FILL_COLOR,
     FRENCH_DARK_BORDER_COLOR,
     MAJOR_BUILDINGS_POLYGONS_MINZOOM,
+    SELECTED_TITLE_HALO_COLOR,
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 
+export const selected_text_halo_props = {
+    'text-halo-color': SELECTED_TITLE_HALO_COLOR,
+    'text-halo-width': [
+        'case',
+        ['==', ['feature-state', 'selected'], true],
+        1.5,
+        0,
+    ],
+    'text-halo-blur': 0
+}
 
 export const titles_common_layout_props = {
     "text-field": ["get", "title"],
@@ -84,7 +95,7 @@ export const historic_building_circle = {
         "all",
         ["==", ["get", "is_historic"], true],
         ["==", ["get", "is_selectable"], true]
-    ],    
+    ],
     drawing_importance: 2,
     layout: {
         "icon-image": "historic_circle",
