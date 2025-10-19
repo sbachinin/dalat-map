@@ -51,7 +51,8 @@ export const city_bulk_border = {
             '$$_CITY_BULK_DISAPPEARANCE_ZOOM',
             0.2
         ]
-    }
+    },
+    drawing_importance: DR_IM.CITY_BULK
 }
 
 

@@ -16,6 +16,11 @@ export const buildings_handmade_data = {
         bus station`
     },
 
+    239449133: {
+        title: `Bus
+        station`
+    },
+
     260244336: {
         title: `Southern
         bus station`
@@ -439,6 +444,11 @@ export const lakes_handmade_data = {
 }
 
 export const land_areas_handmade_data = {
+    1409730893: {
+        title: 'School',
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
     217466613: {
         title: 'Airport'
     },

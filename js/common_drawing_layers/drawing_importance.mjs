@@ -31,9 +31,10 @@ export const DR_IM = {
     UNESCO_AREAS: 6,
     WATER_AREAS_FILL: 6,
 
-    LAND_AREAS: 6.1,
+    CITY_BULK: 6.1,
 
-    CITY_BULK: 7,
+    LAND_AREAS: 6.2,
+
     TOWNS_FILL: 7,
     RIVER_LINES: 7,
 
