@@ -1,11 +1,12 @@
 import { SOURCES_NAMES } from "../constants.mjs"
 import * as c from "./constants.mjs"
+import { DR_IM } from "./drawing_importance.mjs"
 
 const historic_bldg_fill = {
     "name": "Historic detailful building",
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
-    drawing_importance: 2,
+    drawing_importance: DR_IM.HISTORIC_POLYGONS,
     "paint": {
         "fill-color": c.FRENCH_FILL_COLOR,
         "fill-antialias": true
@@ -21,7 +22,7 @@ const historic_thickening_outline = {
     name: 'Historic bldg with details thickening outline',
     'type': 'line',
     "source": SOURCES_NAMES.CITY_TILES,
-    drawing_importance: 2,
+    drawing_importance: DR_IM.HISTORIC_POLYGONS,
     'paint': {
         'line-color': c.FRENCH_FILL_COLOR,
         'line-width': [
@@ -42,7 +43,7 @@ const historic_dark_outline = {
     'name': 'Historic buildings dark outline',
     'type': 'line',
     "source": SOURCES_NAMES.CITY_TILES,
-    drawing_importance: 2,
+    drawing_importance: DR_IM.HISTORIC_POLYGONS,
     'paint': {
         'line-color': c.FRENCH_DARK_BORDER_COLOR,
         'line-width': [

@@ -18,6 +18,7 @@ import { city_walls_fill, city_walls_thickening_outline, non_french_bldgs_within
 import { constants as c } from "./constants.mjs";
 import { historic_polygons } from "../js/common_drawing_layers/historic_polygons.mjs";
 import { SOURCES_NAMES } from "../js/constants.mjs";
+import { DR_IM } from "../js/common_drawing_layers/drawing_importance.mjs";
 
 export const zoom_order = {
     0: [
@@ -113,7 +114,7 @@ export const zoom_order = {
                     "type": "fill",
                     "source": SOURCES_NAMES.CITY_TILES,
                     "source-layer": "important_boring_building",
-                    drawing_importance: 1.5,
+                    drawing_importance: DR_IM._1_5,
                     "paint": {
                         "fill-color": 'hsl(273, 100%, 90%)',
                         "fill-antialias": true,

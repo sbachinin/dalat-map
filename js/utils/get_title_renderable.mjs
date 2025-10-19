@@ -1,3 +1,4 @@
+import { DR_IM } from '../common_drawing_layers/drawing_importance.mjs'
 import { get_midPoint_feature_with_text_rotate } from './get_midPoint_feature_with_text_rotate.mjs'
 import { get_point_feature } from "./isomorphic_utils.mjs"
 
@@ -59,7 +60,7 @@ export const get_title_renderable = (
                 paint: {
                     'text-color': color
                 },
-                drawing_importance: 0,
+                drawing_importance: DR_IM.TITLES,
             }
         ]
     }

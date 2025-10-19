@@ -10,6 +10,7 @@ import { CITY_WALL_COLOR } from "./drawing_layers.mjs"
 import { interpolate } from "../js/utils/isomorphic_utils.mjs"
 import { constants as c } from "./constants.mjs"
 import { markets_titles } from "./static_data/handmade_data.mjs"
+import { DR_IM } from "../js/common_drawing_layers/drawing_importance.mjs"
 
 export const renderables = [
     {
@@ -195,7 +196,7 @@ export const renderables = [
                     'line-opacity': 0.5,
                     'line-width': 2
                 },
-                drawing_importance: 8
+                drawing_importance: DR_IM._8
             }
         ]
     },

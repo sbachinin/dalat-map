@@ -1,9 +1,10 @@
 import * as c from "./constants.mjs"
+import { DR_IM } from "./drawing_importance.mjs"
 
 export const city_bulk_fill = {
     type: 'fill',
     filter: ['==', ['geometry-type'], 'Polygon'],
-    drawing_importance: 7,
+    drawing_importance: DR_IM.CITY_BULK,
     paint: {
         'fill-color': c.CITY_BULK_FULL_COLOR,
         'fill-antialias': true,

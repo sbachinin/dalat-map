@@ -1,9 +1,10 @@
 import { SOURCES_NAMES } from "../constants.mjs"
 import { MAJOR_BUILDINGS_POLYGONS_MINZOOM, FRENCH_SELECTED_FILL_COLOR } from "./constants.mjs"
+import { DR_IM } from "./drawing_importance.mjs"
 
 
 const selected_fill_layer = {
-    drawing_importance: 1, // it will come after base layer, so will will be rendered on top
+    drawing_importance: DR_IM.SELECTED_POLYGON, // it will come after base layer, so will will be rendered on top
     id: 'Selected feature fill',
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
@@ -19,7 +20,7 @@ const selected_fill_layer = {
 
 
 const selected_thickening_outline = {
-    drawing_importance: 1,
+    drawing_importance: DR_IM.SELECTED_POLYGON,
     id: 'Selected feature thickening outline',
     type: 'line',
     source: SOURCES_NAMES.CITY_TILES,
@@ -37,7 +38,7 @@ const selected_thickening_outline = {
 
 
 const selected_border_layer = {
-    drawing_importance: 1,
+    drawing_importance: DR_IM.SELECTED_POLYGON,
     id: 'Selected feature border',
     type: 'line',
     source: SOURCES_NAMES.CITY_TILES,
@@ -60,7 +61,7 @@ const selected_border_layer = {
 export const pin_style_layer_id = 'Selected feature pin'
 
 const selected_pin_layer = {
-    drawing_importance: 0,
+    drawing_importance: DR_IM.PIN,
     id: pin_style_layer_id,
     type: 'symbol',
     source: 'bldgs_centroids_points',

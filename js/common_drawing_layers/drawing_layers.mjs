@@ -22,6 +22,7 @@ import {
     TITLED_NONSELECTABLE_BORING_FILL_COLOR,
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
+import { DR_IM } from "./drawing_importance.mjs";
 
 export const selected_text_halo_props = {
     'text-halo-color': SELECTED_TITLE_HALO_COLOR,
@@ -97,7 +98,7 @@ export const historic_building_circle = {
         ["==", ["get", "is_historic"], true],
         ["==", ["get", "is_selectable"], true]
     ],
-    drawing_importance: 2,
+    drawing_importance: DR_IM.HISTORIC_CIRCLES,
     layout: {
         "icon-image": "historic_circle",
         "icon-size": 0.12,
@@ -174,7 +175,7 @@ export const major_road_thicker_line = {
         "line-cap": "round",
         "line-join": "round",
     },
-    drawing_importance: 4
+    drawing_importance: DR_IM.MAJOR_ROADS_THICK
 }
 
 export const major_road_thinner_line = {
@@ -204,7 +205,7 @@ export const major_road_thinner_line = {
         "line-cap": "round",
         "line-join": "round",
     },
-    drawing_importance: 3
+    drawing_importance: DR_IM.MAJOR_ROADS_THIN
 }
 
 
@@ -216,7 +217,7 @@ export const land_areas_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'land_areas',
-    drawing_importance: 6.1,
+    drawing_importance: DR_IM.LAND_AREAS,
     paint: {
         'fill-color': [
             "case",
@@ -241,7 +242,7 @@ export const bridge_areas_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'bridge_areas',
-    drawing_importance: 5,
+    drawing_importance: DR_IM.BRIDGE_AREAS,
     paint: {
         'fill-color': '#fff',
         'fill-antialias': true,
@@ -256,7 +257,7 @@ export const towns_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'land_areas',
-    drawing_importance: 7,
+    drawing_importance: DR_IM.TOWNS_FILL,
     paint: {
         'fill-color': 'hsl(0, 0%, 93%)',
         'fill-antialias': true,
@@ -300,7 +301,7 @@ export const cable_car_line = {
     type: 'line',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'transportation_other',
-    drawing_importance: 4,
+    drawing_importance: DR_IM.CABLE_CAR_LINE,
     "paint": {
         "line-color": "#6666ff",
         "line-width": [
@@ -339,7 +340,7 @@ export const boring_building_circle = {
     "name": "Boring building circle",
     "type": "symbol",
     source: 'bldgs_centroids_points',
-    drawing_importance: 2.1, // slightly below historic circles
+    drawing_importance: DR_IM.BORING_CIRCLES,
     "layout": {
         "icon-image": "boring_circle",
         "icon-size": 0.12,
@@ -360,7 +361,7 @@ export const railway_line = {
     "type": "line",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "railway",
-    drawing_importance: 5,
+    drawing_importance: DR_IM.RAILWAY_LINE,
     "layout": {
         "line-cap": "round",
         "line-join": "round"
@@ -403,7 +404,7 @@ export const boring_building_fill = {
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "boring_building",
-    drawing_importance: 5,
+    drawing_importance: DR_IM.BORING_BLDG_FILL,
     "paint": {
         "fill-color": [
             "case",
@@ -423,7 +424,7 @@ export const important_boring_building_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'important_boring_building',
-    drawing_importance: 3,
+    drawing_importance: DR_IM.IMPORTANT_BORING_BLDG_FILL,
     "paint": {
         "fill-color": [
             'case',
@@ -470,7 +471,7 @@ export const water_areas_fill = {
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "water_areas",
-    drawing_importance: 6,
+    drawing_importance: DR_IM.WATER_AREAS_FILL,
     "paint": {
         "fill-color": [
             "interpolate",
@@ -486,7 +487,7 @@ export const sea_fill = {
     ...water_areas_fill,
     name: 'Sea fill',
     'source-layer': 'sea_body',
-    drawing_importance: 10
+    drawing_importance: DR_IM.SEA_FILL
 }
 
 export const island_fill = {
@@ -494,7 +495,7 @@ export const island_fill = {
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "islands",
-    drawing_importance: 9,
+    drawing_importance: DR_IM.ISLAND_FILL,
     "paint": { "fill-color": 'white' },
 }
 
@@ -503,7 +504,7 @@ export const city_title = {
     "name": "City title",
     "type": "symbol",
     source: SOURCES_NAMES.CITY_TITLE,
-    drawing_importance: 1,
+    drawing_importance: DR_IM.CITY_TITLE,
     layout: {
         "text-field": ["get", "title"],
         'text-size': 20,
@@ -523,7 +524,7 @@ export const river_lines = {
     minzoom: 12,
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'river_lines',
-    drawing_importance: 7,
+    drawing_importance: DR_IM.RIVER_LINES,
     "layout": {
         "visibility": "visible",
         "line-cap": "round",
@@ -560,7 +561,7 @@ export const selectable_border = {
     'type': 'line',
     source: SOURCES_NAMES.CITY_TILES,
     "source-layer": 'selectable_polygons',
-    drawing_importance: 2,
+    drawing_importance: DR_IM.SELECTABLE_BORDER,
     'paint': {
         'line-color': FRENCH_DARK_BORDER_COLOR,
         'line-width': [

@@ -1,6 +1,7 @@
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs"
 import { current_city } from "../load_city.mjs"
 import { roads_common_config, roads_hierarchy } from "../roads_config.mjs"
+import { DR_IM } from "./drawing_importance.mjs"
 import { major_road_thicker_line, major_road_thinner_line, minor_road_color } from "./drawing_layers.mjs"
 
 export const make_roads_layers = () => {
@@ -27,7 +28,7 @@ export const make_roads_layers = () => {
             source: SOURCES_NAMES.CITY_TILES,
             'source-layer': 'roads_' + i,
             minzoom: +minzoom,
-            drawing_importance: 4,
+            drawing_importance: DR_IM.ROADS,
             paint: {
                 "line-width": [
                     "interpolate",

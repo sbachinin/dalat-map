@@ -1,0 +1,46 @@
+export const DR_IM = {
+    TITLES: 0,
+    PIN: 0,
+
+    DEAD_BUILDINGS_FILL: 1,
+    CITY_TITLE: 1,
+    SELECTED_POLYGON: 1,
+
+    _1_5: 1.5,
+
+    CITY_WALLS: 2,
+    HISTORIC_CIRCLES: 2,
+    SELECTABLE_BORDER: 2,
+    HISTORIC_POLYGONS: 2,
+
+    BORING_CIRCLES: 2.1, // slightly below historic circles
+
+    DEAD_BUILDINGS_CIRCLES: 3,
+    MAJOR_ROADS_THIN: 3,
+    IMPORTANT_BORING_BLDG_FILL: 3,
+
+    MAJOR_ROADS_THICK: 4,
+    ROADS: 4,
+    CABLE_CAR_LINE: 4,
+
+    _5: 5,
+    BRIDGE_AREAS: 5,
+    RAILWAY_LINE: 5,
+    BORING_BLDG_FILL: 5,
+
+    UNESCO_AREAS: 6,
+    WATER_AREAS_FILL: 6,
+
+    LAND_AREAS: 6.1,
+
+    CITY_BULK: 7,
+    TOWNS_FILL: 7,
+    RIVER_LINES: 7,
+
+    _8: 8,
+
+    ISLAND_FILL: 9,
+
+    SEA_FILL: 10
+
+}

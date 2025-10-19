@@ -6,6 +6,7 @@ import { make_roads_layers } from "./common_drawing_layers/make_roads_layers.mjs
 import { layers_for_selected_feature } from "./common_drawing_layers/layers_for_selected_feature.mjs"
 import { dead_buildings_layers } from "./common_drawing_layers/dead_buildings.mjs"
 import { selectable_border, selected_text_halo_props } from "./common_drawing_layers/drawing_layers.mjs"
+import { DR_IM } from "./common_drawing_layers/drawing_importance.mjs"
 
 const join_style_filters = (...filters) => {
     // depending on the number of truthy filters, returns ["all", ...] OR the_only_truthy_one OR null
@@ -102,7 +103,7 @@ export const build_layers = () => {
     const get_drawing_importance = l => {
         if (!l.drawing_importance) {
             if (l.type === 'symbol') {
-                return 0
+                return DR_IM.TITLES
             }
             return Infinity
         }

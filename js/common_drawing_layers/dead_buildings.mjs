@@ -4,6 +4,7 @@ import {
     DEAD_BUILDINGS_CIRCLES_MINZOOM,
     MAJOR_BUILDINGS_POLYGONS_MINZOOM
 } from "./constants.mjs";
+import { DR_IM } from "./drawing_importance.mjs";
 import { titles_common_layout_props } from "./drawing_layers.mjs";
 
 export const dead_buildings_layers = [
@@ -18,7 +19,7 @@ export const dead_buildings_layers = [
             "fill-antialias": true
         },
         filter: ["==", ["geometry-type"], "Polygon"],
-        drawing_importance: 1
+        drawing_importance: DR_IM.DEAD_BUILDINGS_FILL
     },
     /* {
         id: "Dead buildings border",
@@ -61,7 +62,7 @@ export const dead_buildings_layers = [
         "id": "Dead building circle",
         "type": "symbol",
         source: 'bldgs_centroids_points',
-        drawing_importance: 3,
+        drawing_importance: DR_IM.DEAD_BUILDINGS_CIRCLES,
         "layout": {
             "icon-image": "dead_circle",
             "icon-size": 0.12,
