@@ -1,4 +1,4 @@
-import { SELECTABLE_BORING_FILL_COLOR, TITLED_NONSELECTABLE_BORING_FILL_COLOR } from "../js/common_drawing_layers/constants.mjs";
+import { SELECTABLE_BORING_FILL_COLOR, TITLED_NONSELECTABLE_BORING_FILL_COLOR, UNESCO_AREA_BORDER_COLOR, UNESCO_AREA_FILL_COLOR } from "../js/common_drawing_layers/constants.mjs";
 import { DR_IM } from "../js/common_drawing_layers/drawing_importance.mjs";
 import { SOURCES_NAMES } from "../js/constants.mjs";
 import { interpolate } from "../js/utils/isomorphic_utils.mjs";
@@ -54,19 +54,11 @@ export const unesco_areas_fill = {
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
     filter: ["==", ["geometry-type"], "Polygon"],
-    drawing_importance: DR_IM.UNESCO_AREAS,
+    drawing_importance: DR_IM.LAND_AREAS,
     paint: {
-        'fill-color': 'hsl(60, 81.82%, 43.14%)',
+        'fill-color': UNESCO_AREA_FILL_COLOR,
         'fill-antialias': true,
-        'fill-opacity': [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            10,
-            0.3,
-            15,
-            0.1
-        ]
+        'fill-opacity': interpolate(12, 0.2, 15, 0.1)
     }
 }
 
@@ -76,11 +68,11 @@ export const unesco_areas_border = {
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
     filter: ["==", ["geometry-type"], "Polygon"],
-    drawing_importance: DR_IM.UNESCO_AREAS,
+    drawing_importance: DR_IM.LAND_AREAS,
     paint: {
-        'line-color': 'hsl(60, 81.82%, 43.14%)',
+        'line-color': UNESCO_AREA_BORDER_COLOR,
         'line-width': 1,
-        'line-opacity': interpolate(c.CITY_BULK_DISAPPEARANCE_ZOOM, 0.65, 15, 0)
+        'line-opacity': interpolate(12, 0.2, 15, 0.1)
     },
 }
 
@@ -109,7 +101,7 @@ export const non_french_bldgs_within_imperial_city_fill = {
     "type": "fill",
     "source": SOURCES_NAMES.CITY_TILES,
     "source-layer": "non_french_bldgs_within_imperial_city",
-    drawing_importance: DR_IM._5,
+    drawing_importance: DR_IM.IMPORTANT_BORING_BLDG_FILL,
     "paint": {
         "fill-color": SELECTABLE_BORING_FILL_COLOR, // 'hsl(60, 20.82%, 63.14%)',
         "fill-opacity": interpolate(14, 0.5, 15, 1)

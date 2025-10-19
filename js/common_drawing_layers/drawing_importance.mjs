@@ -6,8 +6,6 @@ export const DR_IM = {
     CITY_TITLE: 1,
     SELECTED_POLYGON: 1,
 
-    _1_5: 1.5,
-
     CITY_WALLS: 2,
     HISTORIC_CIRCLES: 2,
     SELECTABLE_BORDER: 2,
@@ -23,12 +21,10 @@ export const DR_IM = {
     ROADS: 4,
     CABLE_CAR_LINE: 4,
 
-    _5: 5,
     BRIDGE_AREAS: 5,
     RAILWAY_LINE: 5,
     BORING_BLDG_FILL: 5,
 
-    UNESCO_AREAS: 6,
     WATER_AREAS_FILL: 6,
     RIVER_LINES: 6.05,
 
@@ -37,8 +33,6 @@ export const DR_IM = {
     LAND_AREAS: 6.2,
 
     TOWNS_FILL: 7,
-
-    _8: 8,
 
     ISLAND_FILL: 9,
 

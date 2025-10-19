@@ -196,7 +196,7 @@ export const renderables = [
                     'line-opacity': 0.5,
                     'line-width': 2
                 },
-                drawing_importance: DR_IM._8
+                drawing_importance: DR_IM.LAND_AREAS
             }
         ]
     },

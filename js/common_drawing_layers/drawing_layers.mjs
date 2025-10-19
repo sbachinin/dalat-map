@@ -570,7 +570,7 @@ export const selectable_border = {
             ["zoom"],
             0, 0,
             MAJOR_BUILDINGS_POLYGONS_MINZOOM, 0.2,
-            16, 2
+            16, 1.5
         ]
     },
     minzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM

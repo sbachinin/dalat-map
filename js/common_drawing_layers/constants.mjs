@@ -39,6 +39,9 @@ export const SQUARE_FILL_COLOR = 'hsl(308, 69.10%, 92.90%)'
 export const AIRPORT_FILL_COLOR = 'hsl(240, 50%, 93%)'
 export const RAILWAY_LINE_COLOR = "hsl(14, 54%, 60%)"
 
+export const UNESCO_AREA_FILL_COLOR = 'hsl(25, 81.82%, 60.14%)'
+export const UNESCO_AREA_BORDER_COLOR = 'hsl(25, 81.82%, 60.14%)'
+
 
 export const MAJOR_BUILDINGS_POLYGONS_MINZOOM = 13.7
 export const MINOR_ROADS_MINZOOM = MAJOR_BUILDINGS_POLYGONS_MINZOOM

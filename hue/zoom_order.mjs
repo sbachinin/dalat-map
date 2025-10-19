@@ -114,7 +114,7 @@ export const zoom_order = {
                     "type": "fill",
                     "source": SOURCES_NAMES.CITY_TILES,
                     "source-layer": "important_boring_building",
-                    drawing_importance: DR_IM._1_5,
+                    drawing_importance: DR_IM.CITY_WALLS - 0.01,
                     "paint": {
                         "fill-color": 'hsl(273, 100%, 90%)',
                         "fill-antialias": true,
