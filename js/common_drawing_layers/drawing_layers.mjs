@@ -2,7 +2,6 @@ import {
     AREA_TYPES,
     BORING_BLDG_FILL_COLOR,
     CEMETERY_FILL_COLOR,
-    FIRST_CLASS_FRENCH_MINZOOM,
     HISTORIC_TITLES_TEXT_COLOR,
     GRASS_COLOR,
     INSTITUTION_FILL_COLOR,
@@ -106,14 +105,12 @@ export const historic_building_circle = {
     },
     paint: {
         "icon-opacity": [
-            // at first only titled bldgs are fully opaque,
-            // others are faded in from 35%
             "interpolate",
             ["linear"],
             ["zoom"],
-            FIRST_CLASS_FRENCH_MINZOOM,
+            MAJOR_BUILDINGS_POLYGONS_MINZOOM - 2,
             0.7,
-            14,
+            MAJOR_BUILDINGS_POLYGONS_MINZOOM,
             1
         ],
     }
@@ -279,7 +276,7 @@ export const non_french_titles = {
             "interpolate",
             ["linear"],
             ["zoom"],
-            FIRST_CLASS_FRENCH_MINZOOM,
+            MAJOR_BUILDINGS_POLYGONS_MINZOOM - 1,
             PALE_TITLES_SIZE - 1.5,
             DEFAULT_MAX_ZOOM,
             PALE_TITLES_SIZE,
