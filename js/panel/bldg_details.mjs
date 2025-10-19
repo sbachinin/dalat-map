@@ -131,7 +131,7 @@ export const try_open_building = async (
                 'fly to newly opened building',
                 async () => {
                     if (should_try_to_fly) {
-                        await try_fly_to_building(id)
+                        await try_fly_to_building(id, { should_expand_panel })
                     }
                     resolve()
 
@@ -153,13 +153,13 @@ const distance2d = (x1, y1, x2, y2) => Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y
 
 const coords_will_be_in_view = (
     coords,
+    panel_will_be_expanded,
     padding = 40,
-    panel_wil_be_expanded = true
 ) => {
 
     let left_bound = padding
     let bottom_bound = window.innerHeight - padding
-    if (panel_wil_be_expanded) {
+    if (panel_will_be_expanded) {
         if (panel_is_vertical()) {
             left_bound += panel.content_breadth
         } else {
@@ -176,6 +176,7 @@ export const try_fly_to_building = (
     id,
     {
         force = false,
+        should_expand_panel
     } = {}
 ) => {
     return new Promise((resolve) => {
@@ -190,8 +191,11 @@ export const try_fly_to_building = (
 
         const target_zoom = Math.max(get_minimal_zoom_on_building_select(id), map_zoom)
 
+        const panel_will_be_expanded = should_expand_panel
+            || panel.is_rather_expanded()
+
         if (
-            coords_will_be_in_view(feature_screen_xy)
+            coords_will_be_in_view(feature_screen_xy, panel_will_be_expanded)
             && target_zoom <= map_zoom // need not zoom
             && !force
         ) {
@@ -216,13 +220,16 @@ export const try_fly_to_building = (
         const mindur = 700
         const maxdur = 2000
         duration = Math.min(Math.max(duration, mindur), maxdur)
+        const offset = panel_will_be_expanded
+            ? get_map_center_shift_px(panel.content_breadth)
+            : [0, 0]
 
         // ###5.1 Yet unsloved problem: map bounds shall be respected when deciding on center, zoom & offset
 
         // ###5
         window.dalatmap.flyTo({
             center: current_city.features_generated_props_for_frontend[id]?.centroid,
-            offset: get_map_center_shift_px(panel.content_breadth),
+            offset,
             zoom: target_zoom,
             duration,
             curve: 0.1
