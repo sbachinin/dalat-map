@@ -76,7 +76,6 @@ export const unesco_areas_border = {
     },
 }
 
-// unesco_areas_titles
 export const unesco_areas_titles = {
     name: 'UNESCO areas titles',
     type: 'symbol',
@@ -85,12 +84,12 @@ export const unesco_areas_titles = {
     filter: ["==", ["geometry-type"], "Point"],
     drawing_importance: DR_IM.TITLES,
     layout: {
-        'text-size': 12,
+        'text-size': interpolate(12, 9, 15, 12),
         'text-font': ['Noto Sans Regular'],
         "text-field": ["get", "title"],
     },
     paint: {
-        'text-color': 'hsl(60, 71.82%, 13.14%)'
+        'text-color': 'hsl(25, 71.82%, 20%)'
     },
 }
 

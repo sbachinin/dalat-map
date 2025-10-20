@@ -203,7 +203,8 @@ export const assets_for_build = {
                     properties: { title: p.properties.title }
                 }))
                 return [...polygons, ...points]
-            }
+            },
+            minzoom: 11
         }
 
     ],

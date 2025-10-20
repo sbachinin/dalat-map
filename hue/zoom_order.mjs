@@ -51,6 +51,12 @@ export const zoom_order = {
         },
     ],
 
+    11: [
+        {
+            drawing_layers: [unesco_areas_fill, unesco_areas_border],
+        },
+    ],
+
     11.7: [
         {
             drawing_layers: [river_lines],
@@ -67,9 +73,6 @@ export const zoom_order = {
     ],
 
     [c.CITY_BULK_DISAPPEARANCE_ZOOM]: [
-        {
-            drawing_layers: [unesco_areas_fill, unesco_areas_border],
-        },
         {
             drawing_layers: [unesco_areas_titles]
         }

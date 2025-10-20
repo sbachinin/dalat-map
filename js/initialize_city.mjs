@@ -136,7 +136,10 @@ export const initialize_city = async (name) => {
     window.addEventListener('resize', onresize)
     window.addEventListener('orientationchange', onresize)
 
-    if (window.location.hostname.endsWith('localhost')) {
+    if (
+        window.location.hostname.endsWith('localhost')
+        || window.location.hostname.match('192.168')
+    ) {
         const make_script = (src) => {
             const script = document.createElement('script')
             script.src = src

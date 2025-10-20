@@ -1449,7 +1449,8 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
-        "properties": { title: 'Minh Mang Tomb' },
+        "properties": { title: `Minh Mang
+            Tomb` },
         "geometry": {
             "coordinates": [
                 [
@@ -1893,7 +1894,8 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
-        "properties": { title: 'Tran Hai Fortress' },
+        "properties": { title: `Tran Hai
+            Fortress` },
         "geometry": {
             "coordinates": [
                 [
