@@ -105,8 +105,30 @@
 
 
 
+###6 Why, if there was second touch during panel swipe, the panel is collapsed on touchend?
+    This is to mitigate (but perhaps not to solve completely) the ugly blinking-jumping panel movements,
+        occuring when
+            1) first finger landed on the panel and started dragging it;
+            2) second finger landed ... anywhere? (most likely because user tries to pinch the map but touches the panel's draggable parts with first finger)
+            (* when panel is touched by the SECOND finger, the panel swipe is prevented easily and reliably, and there is no problem).
+        Therefore, the panel dragging possibly already began but the user actually meant a different thing.
+        (this happened to me in practice).
+        in such situation it seems necessary to return the panel to the original pre-swipe condition with as little fuss as possible.
+        So,
+            1) while swipe is in process, and the second touch is detected, stop swiping (leave the panel where it is at the moment).
+            2) on swipe end, collapse panel
+                This, in theory, is not necessarily the "minimal fuss" strategy -
+                    what if panel was expanded initially?
+                    But I think it's a very unlikely case, if possible at all.
+                    It seems more likely (and the only thing that happened for me) is that user pinches "inwards" (from the corners to the center),
+                    and the panel is collapsed - in such case panel can expand undesirably, and this I think sums up the problem. - There can be other possible misbehaviours here but I haven't encountered them yet.
+                    So, for simplicity, I ignore the multitude of possibilities and just always collapse the panel.
+                    It can be delusional, and perhaps later will need a better solution, but for now I prefer not to overengineer.
+                    Efficiency of current solution is difficult to test, but at least a very ugly "trembling" stuff has gone for sure.
 
-###___ How custom land areas CAN be made, such as unesco sites in Hue
+
+
+###\\\\\\\\\\\\\\     How custom land areas CAN be made, such as unesco sites in Hue
     1. Get features for tiling using assets_for_build:
         specify a dedicated tile layer, get_custom_features from wherever you want,
             e.g. .mjs file in [city]/static_data folder

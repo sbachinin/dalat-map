@@ -125,6 +125,12 @@ export const make_expandable_on_swipe = (panel) => {
             e.preventDefault()
         }
 
+        if (e.touches.length > 1) {
+            e.preventDefault()
+            current_swipe.had_second_touch = true
+            return
+        }
+
         if (!current_swipe) return
 
         if (current_swipe.content_was_scrolled
@@ -163,6 +169,13 @@ export const make_expandable_on_swipe = (panel) => {
         panel.wrapper_element.classList.remove('notransition')
 
         if (!current_swipe) return
+
+        if (current_swipe.had_second_touch) {
+            // ###6 WHY
+            panel.set_size(0)
+            return
+        }
+
         if (!current_swipe.had_touchmove) return
         if (current_swipe.content_was_scrolled && !current_swipe.drag_start_coord) return
 
