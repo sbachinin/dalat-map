@@ -250,7 +250,7 @@ for (const { file, module } of modules) {
                 if (typeof f.id === 'undefined') {
                     f.id = generate_id() // 1. generate id if missing. Otherwise, features without id can be erased later here
                 } else if (typeof f.id !== 'number') {
-                    throw new Error('custom feature id must be a number, instead got ' + typeof f.id + ' ' + f.id)
+                    throw new Error(`custom feature id must be a number, instead got ${typeof f.id} ${f.id}`)
                 }
                 return f
             })
@@ -302,7 +302,8 @@ write(
 
 
 const polygons_titles_points_feats = all_tiled_features
-    .filter(f => Boolean(all_handmade_data[f.id]?.title) && f.geometry.type !== 'Point')
+    .filter(f => f.geometry.type === 'Polygon' || f.geometry.type === 'MultiPolygon')
+    .filter(f => Boolean(all_handmade_data[f.id]?.title) || f.properties?.title)
     .map(f => make_title_point_feature(f, all_handmade_data))
 
 generate_temp_mbtiles({

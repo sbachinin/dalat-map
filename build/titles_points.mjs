@@ -26,8 +26,8 @@ const get_all_lats = feature => {
 // and french (positioned at south if title_side not specified).
 // Returns 'south', 'north' or 'center'
 // 'Left' and 'right' could also make sense but there was no need so far
-const get_title_side = (f, hmdata) => {
-    const hm_side = hmdata[f.id]?.title_side
+const get_title_side = (f_geojson, f_props) => {
+    const hm_side = f_props.title_side
 
     if (hm_side !== undefined) {
         if (
@@ -38,7 +38,7 @@ const get_title_side = (f, hmdata) => {
         return hm_side
     }
 
-    if (is_feature_selectable(f.id)) {
+    if (is_feature_selectable(f_geojson.id)) {
         return 'south'
     }
 
@@ -49,20 +49,20 @@ const get_title_side = (f, hmdata) => {
 
 
 const get_title_lat = (
-    f, // geojson feature
-    hmd,
+    f_geojson, // geojson feature
+    f_props,
     centroid
 ) => {
-    const title_side = get_title_side(f, hmd)
+    const title_side = get_title_side(f_geojson, f_props)
     if (title_side === null) {
-        console.warn('Invalid title_side for feature', f.id)
+        console.warn('Invalid title_side for feature', f_geojson.id)
         process.exit(1)
     }
 
     if (title_side === 'south') {
-        return Math.min(...get_all_lats(f))
+        return Math.min(...get_all_lats(f_geojson))
     } else if (title_side === 'north') {
-        return Math.max(...get_all_lats(f))
+        return Math.max(...get_all_lats(f_geojson))
     } else if (title_side === 'center') {
         return centroid[1]
     }
@@ -90,19 +90,24 @@ const is_water_feature = f => {
 
 export const make_title_point_feature = base_feat => {
     const hmdata = globalThis.current_city.all_handmade_data
-    let coordinates = hmdata[base_feat.id].title_coords
-    if (!coordinates) {
-        const centroid = get_centroid(base_feat)
-        coordinates = [
-            centroid[0],
-            get_title_lat(base_feat, hmdata, centroid)
-        ]
+    const f_props = {
+        ...base_feat.properties,
+        ...(hmdata[base_feat.id] || {}),
+    }
+    if (!f_props.title) {
+        throw new Error(`Feature ${base_feat.id} has no title`)
     }
 
+    const coordinates = f_props.title_coords
+        || [
+            get_centroid(base_feat)[0],
+            get_title_lat(base_feat, f_props, get_centroid(base_feat))
+        ]
+
     const title_props = {
-        title: hmdata[base_feat.id].title,
-        title_side: get_title_side(base_feat, hmdata),
-        "symbol-sort-key": hmdata[base_feat.id]["symbol-sort-key"]
+        title: f_props.title,
+        title_side: get_title_side(base_feat, f_props),
+        "symbol-sort-key": f_props["symbol-sort-key"]
     }
 
     if (is_water_feature(base_feat)) {

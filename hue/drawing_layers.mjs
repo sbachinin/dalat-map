@@ -1,8 +1,11 @@
-import { SELECTABLE_BORING_FILL_COLOR, TITLED_NONSELECTABLE_BORING_FILL_COLOR, UNESCO_AREA_BORDER_COLOR, UNESCO_AREA_FILL_COLOR } from "../js/common_drawing_layers/constants.mjs";
+import {
+    SELECTABLE_BORING_FILL_COLOR,
+    UNESCO_AREA_BORDER_COLOR,
+    UNESCO_AREA_FILL_COLOR
+} from "../js/common_drawing_layers/constants.mjs";
 import { DR_IM } from "../js/common_drawing_layers/drawing_importance.mjs";
 import { SOURCES_NAMES } from "../js/constants.mjs";
 import { interpolate } from "../js/utils/isomorphic_utils.mjs";
-import { constants as c } from "./constants.mjs";
 
 export const CITY_WALL_COLOR = [
     'interpolate',
@@ -53,7 +56,6 @@ export const unesco_areas_fill = {
     type: 'fill',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
-    filter: ["==", ["geometry-type"], "Polygon"],
     drawing_importance: DR_IM.LAND_AREAS,
     paint: {
         'fill-color': UNESCO_AREA_FILL_COLOR,
@@ -67,29 +69,11 @@ export const unesco_areas_border = {
     type: 'line',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'unesco_areas',
-    filter: ["==", ["geometry-type"], "Polygon"],
     drawing_importance: DR_IM.LAND_AREAS,
     paint: {
         'line-color': UNESCO_AREA_BORDER_COLOR,
         'line-width': 1,
         'line-opacity': interpolate(12, 0.2, 15, 0.1)
-    },
-}
-
-export const unesco_areas_titles = {
-    name: 'UNESCO areas titles',
-    type: 'symbol',
-    source: SOURCES_NAMES.CITY_TILES,
-    'source-layer': 'unesco_areas',
-    filter: ["==", ["geometry-type"], "Point"],
-    drawing_importance: DR_IM.TITLES,
-    layout: {
-        'text-size': interpolate(12, 9, 15, 12),
-        'text-font': ['Noto Sans Regular'],
-        "text-field": ["get", "title"],
-    },
-    paint: {
-        'text-color': 'hsl(25, 71.82%, 20%)'
     },
 }
 

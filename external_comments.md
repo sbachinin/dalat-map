@@ -101,3 +101,16 @@
         I then can entertain myself by re-introducing the "preserve zoom on B/F" behaviour, if it still looks interesting.
             (It looked interesting indeed, providing a "bird-eye view" of previously selected locations,
             but it's unclear if it's likely to be used by many users, for it's only observable on back/forward)
+
+
+
+
+
+###___ How custom land areas CAN be made, such as unesco sites in Hue
+    1. Get features for tiling using assets_for_build:
+        specify a dedicated tile layer, get_custom_features from wherever you want,
+            e.g. .mjs file in [city]/static_data folder
+        * within custom geojson, it's possible to provide props for a polygon's title,
+            such as "title" and "title_side", and they will be processed just as same props from handmade data.
+    2. Draw these features from a dedicated tile layer using dedicated style layers,
+        pushed into style.layers by for example including them into zoom_order

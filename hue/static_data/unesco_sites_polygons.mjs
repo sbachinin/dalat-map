@@ -1,6 +1,7 @@
 export const unesco_sites_polygons = [
     {
         "type": "Feature",
+        id: 12300001,
         "properties": {
             "title": "Thien Mu\nPagoda"
         },
@@ -48,14 +49,6 @@ export const unesco_sites_polygons = [
                         16.453802645733603
                     ],
                     [
-                        107.54385233730852,
-                        16.45340362389034
-                    ],
-                    [
-                        107.54401365904835,
-                        16.45388146620205
-                    ],
-                    [
                         107.54403783649525,
                         16.453765529503713
                     ],
@@ -90,6 +83,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 12300002,
         "properties": { /* title: "Long An Palace" */ },
         "geometry": {
             "coordinates": [
@@ -122,6 +116,7 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
+        id: 12300003,
         "properties": { /* title: 'Royal National University' */ },
         "geometry": {
             "coordinates": [
@@ -154,6 +149,7 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
+        id: 12300004,
         "properties": { /* title: 'Tam Toa' */ },
         "geometry": {
             "coordinates": [
@@ -185,6 +181,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 12300005,
         "properties": { hint: 'area with flag tower of citadel' },
         "geometry": {
             "coordinates": [
@@ -244,7 +241,8 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
-        "properties": { title: 'Temple\nof Letters' },
+        id: 12300006,
+        "properties": { title: 'Temple\nof Letters', title_coords: [107.538844, 16.453219] },
         "geometry": {
             "coordinates": [
                 [
@@ -331,7 +329,12 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
-        "properties": { title: 'Voi Re\nTemple' },
+        id: 12300007,
+        "properties": {
+            title: 'Voi Re\nTemple',
+            title_coords: [107.552774, 16.448135],
+            title_side: 'north'
+        },
         "geometry": {
             "coordinates": [
                 [
@@ -406,6 +409,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 12300008,
         "properties": {},
         "geometry": {
             "coordinates": [
@@ -450,7 +454,9 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
-        "properties": { title: `Duc Duc
+        id: 12300009,
+        "properties": {
+            title: `Duc Duc
             Tomb` },
         "geometry": {
             "coordinates": [
@@ -610,6 +616,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 123000010,
         "properties": { title: 'Nam Giao\nEsplanade' },
         "geometry": {
             "coordinates": [
@@ -713,7 +720,11 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
-        "properties": { title: 'Tu Duc Tomb' },
+        id: 123000011,
+        "properties": {
+            title: 'Tu Duc Tomb',
+            title_coords: [107.565713, 16.432525]
+        },
         "geometry": {
             "coordinates": [
                 [
@@ -840,6 +851,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 123000012,
         "properties": {},
         "geometry": {
             "coordinates": [
@@ -887,6 +899,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 123000013,
         "properties": {
             "title": "Vinh Thai tomb"
         },
@@ -920,6 +933,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 123000014,
         "properties": {
             "title": "Tomb of Empress Thánh Cung"
         },
@@ -953,6 +967,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 123000015,
         "properties": {
             "title": "Tomb of\nDong Khanh"
         },
@@ -1026,6 +1041,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 123000016,
         "properties": {
             "title": "Tomb of\nPrince Nguyen\nPhuc Canh"
         },
@@ -1059,6 +1075,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 123000017,
         "properties": {
             "title": "Tomb of the\nprinces of Dong\nKhanh dynasty"
         },
@@ -1104,6 +1121,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 123000018,
         "properties": { title: 'Hon Chen\nTemple' },
         "geometry": {
             "coordinates": [
@@ -1171,6 +1189,7 @@ export const unesco_sites_polygons = [
     },
     {
         "type": "Feature",
+        id: 123000019,
         "properties": { title: 'Thieu Tri\nTomb' },
         "geometry": {
             "coordinates": [
@@ -1371,6 +1390,7 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
+        id: 123000020,
         "properties": { /* title: 'Khai Dinh Tomb' */ }, // title removed because it conflicted with the palace title
         "geometry": {
             "coordinates": [[
@@ -1449,7 +1469,9 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
-        "properties": { title: `Minh Mang
+        id: 123000021,
+        "properties": {
+            title: `Minh Mang
             Tomb` },
         "geometry": {
             "coordinates": [
@@ -1626,6 +1648,7 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
+        id: 123000022,
         "properties": { title: 'Gia Long Tomb' },
         "geometry": {
             "coordinates": [
@@ -1894,7 +1917,9 @@ export const unesco_sites_polygons = [
 
     {
         "type": "Feature",
-        "properties": { title: `Tran Hai
+        id: 123000023,
+        "properties": {
+            title: `Tran Hai
             Fortress` },
         "geometry": {
             "coordinates": [

@@ -14,7 +14,13 @@ import {
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { MAJOR_BUILDINGS_POLYGONS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
-import { city_walls_fill, city_walls_thickening_outline, non_french_bldgs_within_imperial_city_fill, unesco_areas_border, unesco_areas_fill, unesco_areas_titles } from "./drawing_layers.mjs";
+import {
+    city_walls_fill,
+    city_walls_thickening_outline,
+    non_french_bldgs_within_imperial_city_fill,
+    unesco_areas_border,
+    unesco_areas_fill
+} from "./drawing_layers.mjs";
 import { constants as c } from "./constants.mjs";
 import { historic_polygons } from "../js/common_drawing_layers/historic_polygons.mjs";
 import { SOURCES_NAMES } from "../js/constants.mjs";
@@ -74,7 +80,14 @@ export const zoom_order = {
 
     [c.CITY_BULK_DISAPPEARANCE_ZOOM]: [
         {
-            drawing_layers: [unesco_areas_titles]
+            drawing_layers: [non_french_titles],
+            filter: ['all',
+                ['==', ['get', 'area_type'], 'unesco'],
+                ['!=', ['id'], 123000013],
+                ['!=', ['id'], 123000014],
+                ['!=', ['id'], 123000016],
+                ['!=', ['id'], 123000017],
+            ]
         }
     ],
 

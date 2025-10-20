@@ -33,7 +33,7 @@ It's nice to have some free space sometimes.
 
 */
 
-export const get_filter_by_fids = (...features) => ["any", ...features.map(f => ["==", ["id"], +f.id])]
+export const get_filter_by_fids = (...features_hmd) => ["any", ...features_hmd.map(f => ["==", ["id"], +f.id])]
 
 export const zoom_order = {
     /*
