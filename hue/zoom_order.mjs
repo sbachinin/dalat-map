@@ -106,6 +106,13 @@ export const zoom_order = {
             drawing_layers: [water_areas_fill],
             filter: ["==", ["get", "is_small_lake"], true],
         },
+        {
+            drawing_layers: [non_french_titles]
+        },
+
+        {
+            drawing_layers: [historic_buildings_titles]
+        },
     ],
 
     [MAJOR_BUILDINGS_POLYGONS_MINZOOM]: [
@@ -141,9 +148,6 @@ export const zoom_order = {
     ],
 
     14: [
-        {
-            drawing_layers: [historic_buildings_titles]
-        },
     ],
 
     14.5: [
@@ -152,9 +156,6 @@ export const zoom_order = {
         }
     ],
     15: [
-        {
-            drawing_layers: [non_french_titles]
-        },
         {
             drawing_layers: [boring_building_fill],
         }
