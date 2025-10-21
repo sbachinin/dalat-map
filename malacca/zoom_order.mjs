@@ -3,7 +3,7 @@ import {
     historic_building_circle,
     french_buildings_titles,
     land_areas_fill,
-    non_french_titles,
+    non_historic_titles,
     peaks_triangles_with_titles,
     railway_line,
     railway_station_titles_with_squares,
@@ -90,7 +90,7 @@ export const zoom_order = {
 
     12: [
         {
-            drawing_layers: [non_french_titles],
+            drawing_layers: [non_historic_titles],
         },
         {
             drawing_layers: [land_areas_fill],
@@ -155,9 +155,6 @@ export const zoom_order = {
     ],
 
     15.3: [
-        {
-            drawing_layers: [non_french_titles]
-        },
         {
             drawing_layers: [boring_building_fill],
         },

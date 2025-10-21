@@ -3,7 +3,7 @@ import {
     historic_building_circle,
     historic_buildings_titles,
     land_areas_fill,
-    non_french_titles,
+    non_historic_titles,
     railway_line,
     water_areas_fill,
     important_boring_building_fill,
@@ -80,7 +80,7 @@ export const zoom_order = {
 
     [c.CITY_BULK_DISAPPEARANCE_ZOOM]: [
         {
-            drawing_layers: [non_french_titles],
+            drawing_layers: [non_historic_titles],
             filter: ['all',
                 ['==', ['get', 'area_type'], 'unesco'],
                 ['!=', ['id'], 123000013],
@@ -107,7 +107,7 @@ export const zoom_order = {
             filter: ["==", ["get", "is_small_lake"], true],
         },
         {
-            drawing_layers: [non_french_titles]
+            drawing_layers: [non_historic_titles]
         },
 
         {

@@ -8,7 +8,7 @@ import {
     historic_building_circle,
     historic_buildings_titles,
     land_areas_fill,
-    non_french_titles,
+    non_historic_titles,
     peaks_triangles_with_titles,
     railway_line,
     railway_station_titles_with_squares,
@@ -53,7 +53,7 @@ export const zoom_order = {
                 hmd[141724809], // smaller lake near ankroet
                 hmd[64737684], // bigger lake near ankroet
             ),
-            drawing_layers: [non_french_titles]
+            drawing_layers: [non_historic_titles]
         },
 
         {
@@ -83,7 +83,7 @@ export const zoom_order = {
 
     12: [
         {
-            drawing_layers: [non_french_titles],
+            drawing_layers: [non_historic_titles],
             filter: get_filter_by_fids(
                 hmd[99661171], // golf course
                 hmd[463866449], // bus station
@@ -144,7 +144,7 @@ export const zoom_order = {
             maxzoom: MAJOR_BUILDINGS_POLYGONS_MINZOOM,
         }, */
         {
-            drawing_layers: [non_french_titles],
+            drawing_layers: [non_historic_titles],
             filter: get_filter_by_fids(
                 hmd[969458761], // university
             ),
@@ -159,7 +159,7 @@ export const zoom_order = {
             drawing_layers: historic_polygons.map(l => ({...l, 'source-layer': 'french_building'})),
         },
         {
-            drawing_layers: [non_french_titles],
+            drawing_layers: [non_historic_titles],
             filter: get_filter_by_fids(
                 hmd[1244767000], // nguyen tomb
                 hmd[473547288], // nuclear research
@@ -191,13 +191,13 @@ export const zoom_order = {
                     hmd[99660916], // yersin park
                 )
             ],
-            drawing_layers: [non_french_titles]
+            drawing_layers: [non_historic_titles]
         },
     ],
 
     15: [
         {
-            drawing_layers: [non_french_titles]
+            drawing_layers: [non_historic_titles]
         },
         {
             drawing_layers: [boring_building_fill]

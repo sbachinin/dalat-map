@@ -3,7 +3,8 @@ export const unesco_sites_polygons = [
         "type": "Feature",
         id: 12300001,
         "properties": {
-            "title": "Thien Mu\nPagoda"
+            "title": `Thiên Mụ
+            pagoda`
         },
         "geometry": {
             "coordinates": [

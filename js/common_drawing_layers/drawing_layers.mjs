@@ -266,7 +266,7 @@ export const towns_fill = {
     filter: ["==", "area_type", AREA_TYPES.TOWN],
 }
 
-export const non_french_titles = {
+export const non_historic_titles = {
     name: "Non french titles",
     "type": "symbol",
     "source": SOURCES_NAMES.CITY_TILES,

@@ -77,7 +77,10 @@ export const assets_for_build = {
                     242927543,
                     242927542,
                     1075011956,
-                    3237013
+                    3237013,
+                    7157358,
+                    206109702,
+                    206109703
                 ])) return true
 
                 if (is_one_of(f.id, [

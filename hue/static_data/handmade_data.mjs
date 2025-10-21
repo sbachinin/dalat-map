@@ -6,6 +6,12 @@ export const buildings_handmade_data = {
 
     ...dead_buildings_data,
 
+    205805244: {
+        title: `Stele
+        pavilion`, // in tu duc
+        title_side: 'north'
+    },
+
     240143621: {
         title: `Central
         indoor stadium`
@@ -440,10 +446,39 @@ During the wars and long afterward, it was in serious decline and stopped being 
 
 
 export const lakes_handmade_data = {
-
 }
 
 export const land_areas_handmade_data = {
+
+    1443635075: {
+        title: `Thiền Lâm
+        pagoda`
+    },
+    1443636347: {
+        title: `Phước Duyên
+        pagoda`
+    },
+    1443607933: {
+        title: `Huyền Không
+        Sơn Thường
+        pagoda`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+    631871502: {
+        title: `Từ Đàm
+        pagoda`,
+        area_type: AREA_TYPES.INSTITUTION
+    },
+
+
+    // parks along the Perfume river in the center
+    240252016: {},
+    35926965: {},
+    217767781: {},
+    217766984: {},
+
+
     1409730893: {
         title: 'School',
         area_type: AREA_TYPES.INSTITUTION
@@ -667,8 +702,8 @@ export const land_areas_handmade_data = {
         title_coords: [107.564143, 16.427908]
     },
     1170979640: {
-        title: `Bao Quoc
-        temple`
+        title: `Báo Quốc
+        pagoda`
     }
 }
 

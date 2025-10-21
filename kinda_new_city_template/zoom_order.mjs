@@ -5,7 +5,7 @@ import {
     historic_building_circle,
     historic_buildings_titles,
     land_areas_fill,
-    non_french_titles,
+    non_historic_titles,
     peaks_triangles_with_titles,
     railway_line,
     railway_station_titles_with_squares,
@@ -54,7 +54,7 @@ export const zoom_order = {
 
     12: [
         {
-            drawing_layers: [non_french_titles],
+            drawing_layers: [non_historic_titles],
             filter: get_filter_by_fids(
                 hmd[99661171], // golf course
                 hmd[463866449], // bus station
@@ -104,7 +104,7 @@ export const zoom_order = {
     ],
 
     15: [
-        { drawing_layers: [non_french_titles] },
+        { drawing_layers: [non_historic_titles] },
         {
             drawing_layers: [boring_building_fill],
         },
