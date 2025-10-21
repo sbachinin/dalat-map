@@ -207,6 +207,12 @@ export const features_generated_props_for_frontend = {
     ],
     "is_historic": true
   },
+  "173151286": {
+    "centroid": [
+      107.577178,
+      16.480239
+    ]
+  },
   "173793327": {
     "centroid": [
       107.584128,
@@ -1662,6 +1668,12 @@ export const features_generated_props_for_frontend = {
     "centroid": [
       107.493468,
       16.450894
+    ]
+  },
+  "1443635075": {
+    "centroid": [
+      107.575616,
+      16.438323
     ]
   },
   "1433243405346257": {

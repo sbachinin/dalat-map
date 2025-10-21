@@ -63,7 +63,7 @@ export const renderables = [
 
     get_title_renderable(
         'Purple\n(Forbidden)\nCity',
-        [107.5772269, 16.47014294],
+        [107.5772269, 16.46974294],
         [14, 15],
         'Noto Sans Regular',
         c.PURPLE_CITY_COLOR,

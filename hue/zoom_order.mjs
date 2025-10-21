@@ -107,7 +107,8 @@ export const zoom_order = {
             filter: ["==", ["get", "is_small_lake"], true],
         },
         {
-            drawing_layers: [non_historic_titles]
+            drawing_layers: [non_historic_titles],
+            filter: ['==', ['get', 'is_selectable'], true]
         },
 
         {
@@ -148,6 +149,10 @@ export const zoom_order = {
     ],
 
     14: [
+        {
+            drawing_layers: [non_historic_titles],
+            filter: ['!=', ['get', 'is_selectable'], true]
+        },
     ],
 
     14.5: [

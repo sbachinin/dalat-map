@@ -6,6 +6,11 @@ export const buildings_handmade_data = {
 
     ...dead_buildings_data,
 
+    173151286: {
+        title: `Ngọc Hương
+        pagoda`
+    },
+
     205805244: {
         title: `Stele
         pavilion`, // in tu duc
@@ -19,7 +24,8 @@ export const buildings_handmade_data = {
 
     1435288831: {
         title: `Northern
-        bus station`
+        bus station`,
+        title_side: 'north'
     },
 
     239449133: {
@@ -145,7 +151,7 @@ export const buildings_handmade_data = {
         year: '1924'
     },
 
-    1388902201: {
+    1388902200: {
         title: 'Gorgeous\nsoviet condo',
         title_side: 'south',
         subtitle: `This residential complex neither belongs to the colonial era nor is it a recognized architectural landmark. Still I can't resist including it in the "colonial highlights" of Hue because, first of all, this complex is a sheer architectural delight, and secondly, it's a very foreign piece of architecture, introduced by a very different civilization - soviet in this case. 
@@ -206,13 +212,19 @@ export const buildings_handmade_data = {
     },
 
     239972934: {
-        title: 'Museum of\nculture',
+        title_for_panel_only: 'Museum of\nculture',
         title_side: 'north'
     },
 
     1431465867: {
         title: `Tomb of
         Tuy Lý Vương`
+    },
+
+    118542346: {
+        title: `Le Cercle
+        Sportif`,
+        subtitle: `This example of the Streamline Moderne style (a variety of Art Deco) was likely built in the 1930s. It served as a sports and social club for colonial officials and Hue's elite. In postcolonial times, it continued to function as a sports venue until it was repurposed in the early 2020s into a restaurant and event space. The “sportif” part of the name was dropped, and today it is known simply as “Le Cercle.”`
     },
 
     175063593: {
@@ -222,7 +234,7 @@ export const buildings_handmade_data = {
     },
 
     1192697531: {
-        subtitle: 'As of 2025, this building houses the Union of literature and art associations'
+        subtitle: `This building is known as the seat of the regional Union of Literature and Art Associations. However, in 2025 it appears rather abandoned. In 2022, local officials announced that the building will be "relocated" to another site in Hue, but this decision had not been implemented by spring 2025.`
     },
 
     118792054: {

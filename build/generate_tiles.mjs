@@ -186,12 +186,10 @@ const layers = {};
 
 // generate layer for each .mjs file in custom_features_for_tiling/
 const modules = await import_from_all_mjs_files(city_root_path + '/static_data/custom_buildings_geometries_for_tiling')
-for (const { file, module } of modules) {
-    const layer_name = file.split('.')[0]
-    const features_data = module.default
-    layers[layer_name] = {
-        config: { name: layer_name },
-        features: Object.entries(features_data).map(([id, fdata]) => {
+
+const custom_features_tiling_config = modules.map(({ file, module }) => {
+    const get_custom_features = () => {
+        return Object.entries(module.default).map(([id, fdata]) => {
             const depth = getArrayDepth(fdata)
             if (depth < 3) throw new Error('Custom building geometry must have depth >= 3 (only polygon or multi). Id: ' + id)
             const ftype = depth === 3 ? 'Polygon' : 'MultiPolygon'
@@ -208,12 +206,17 @@ for (const { file, module } of modules) {
             }
         })
     }
-}
+    return {
+        name: file.split('.')[0],
+        get_custom_features
+    }
+});
 
 
 ([
     ...city_assets.tiling_config,
-    ...roads_tiling_config
+    ...roads_tiling_config,
+    ...custom_features_tiling_config
 ]).forEach(tile_layer_config => {
     if (!tile_layer_config.name) throw new Error('name not defined for tile_layer ' + tile_layer_config)
 
