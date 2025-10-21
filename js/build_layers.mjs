@@ -7,6 +7,7 @@ import { layers_for_selected_feature } from "./common_drawing_layers/layers_for_
 import { dead_buildings_layers } from "./common_drawing_layers/dead_buildings.mjs"
 import { selectable_border, selected_text_halo_props } from "./common_drawing_layers/drawing_layers.mjs"
 import { DR_IM } from "./common_drawing_layers/drawing_importance.mjs"
+import { NON_SELECTABLE_TITLE_OPACITY } from "./common_drawing_layers/constants.mjs"
 
 const join_style_filters = (...filters) => {
     // depending on the number of truthy filters, returns ["all", ...] OR the_only_truthy_one OR null
@@ -92,12 +93,25 @@ export const build_layers = () => {
         })
 
     const layers_from_renderables = current_city.renderables.flatMap(r => {
-        return r.style_layers.map(sl => ({
-            ...sl,
-            id: r.id + " " + sl.type,
-            source: SOURCES_NAMES.RENDERABLES,
-            filter: join_style_filters(sl.filter, ["==", ["get", "renderable_id"], r.id])
-        }))
+        return r.style_layers.map(sl => {
+            const result = {
+                ...sl,
+                id: r.id + " " + sl.type,
+                source: SOURCES_NAMES.RENDERABLES,
+                filter: join_style_filters(sl.filter, ["==", ["get", "renderable_id"], r.id]),
+            }
+
+            if (
+                sl.type === 'symbol'
+                && sl.layout['text-field']
+                && !sl.paint['text-opacity']
+            ) {
+                // Renderable should be dumb and non-selectable, therefore bleak,
+                // Unless text-opacity is explicitly set in particular renderable
+                result.paint['text-opacity'] = NON_SELECTABLE_TITLE_OPACITY
+            }
+            return result
+        })
     })
 
     const get_drawing_importance = l => {
@@ -128,6 +142,7 @@ export const build_layers = () => {
         })
         .map(inject_city_constants)
         .map(add_selected_halo_props_for_texts)
+        .map(add_text_opacity)
 }
 
 
@@ -141,6 +156,28 @@ function add_selected_halo_props_for_texts(l) {
             paint: {
                 ...l.paint,
                 ...selected_text_halo_props
+            }
+        }
+    }
+    return l
+}
+
+function add_text_opacity(l) {
+    if (
+        l['source-layer'] === 'polygons_titles_points'
+        && l.type === 'symbol'
+        && l.layout['text-field']
+    ) {
+        return {
+            ...l,
+            paint: {
+                'text-opacity': [
+                    'case',
+                    ['==', ['get', 'is_selectable'], true],
+                    1,
+                    NON_SELECTABLE_TITLE_OPACITY
+                ],
+                ...l.paint,
             }
         }
     }

@@ -21,42 +21,6 @@ export const dead_buildings_layers = [
         filter: ["==", ["geometry-type"], "Polygon"],
         drawing_importance: DR_IM.DEAD_BUILDINGS_FILL
     },
-    /* {
-        id: "Dead buildings border",
-        source: SOURCES_NAMES.CITY_TILES,
-        'source-layer': 'dead_buildings',
-        type: 'line',
-        "minzoom": MAJOR_BUILDINGS_POLYGONS_MINZOOM,
-        "paint": {
-            "line-color": FRENCH_DEAD_FILL_COLOR,
-            "line-width": 2,
-        },
-        filter: ["==", ["geometry-type"], "Polygon"],
-    }, */
-    {
-        "id": "Dead buildings titles",
-        "source": SOURCES_NAMES.CITY_TILES,
-        'source-layer': 'dead_buildings',
-        "type": "symbol",
-        "minzoom": 15.5,
-        layout: {
-            ...titles_common_layout_props,
-            'text-size': [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
-                14,
-                12,
-                DEFAULT_MAX_ZOOM,
-                16
-            ],
-            'text-font': ['Merriweather Italic']
-        },
-        paint: {
-            'text-color': 'hsl(0, 0%, 40%)',
-        },
-        filter: ["==", ["geometry-type"], "Point"]
-    },
 
     {
         "id": "Dead building circle",

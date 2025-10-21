@@ -234,7 +234,7 @@ export const buildings_handmade_data = {
     },
 
     1192697531: {
-        subtitle: `This building is known as the seat of the regional Union of Literature and Art Associations. However, in 2025 it appears rather abandoned. In 2022, local officials announced that the building will be "relocated" to another site in Hue, but this decision had not been implemented by spring 2025.`
+        subtitle: `This villa is known as the seat of the regional Union of Literature and Art Associations. In 2022, local officials announced that it was going to be “relocated” to another site in Huế. As of spring 2025, this plan had not yet been implemented. I suppose the relocation may have proved technically impossible, while outright demolition could be incompatible with preservation laws. In any case, it seems this building may not last much longer. By 2025, it looks rather abandoned — perhaps the literary association has already been moved elsewhere as part of the demolition plan.`
     },
 
     118792054: {

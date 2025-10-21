@@ -53,6 +53,8 @@ export const CITY_BULK_FULL_OPACITY_MAXZOOM = 11.5
 export const CITY_BULK_FULL_COLOR = 'hsl(0,0%,76%)'
 export const CITY_BULK_TITLE_COLOR = 'hsl(16, 56%, 70%)'
 
+export const NON_SELECTABLE_TITLE_OPACITY = 0.55
+
 export const AREA_TYPES = {
     INSTITUTION: 'institution',
     CEMETERY: 'cemetery',
