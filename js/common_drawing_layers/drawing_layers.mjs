@@ -23,6 +23,7 @@ import {
 } from "./constants.mjs";
 import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
 import { DR_IM } from "./drawing_importance.mjs";
+import { interpolate } from "../utils/isomorphic_utils.mjs";
 
 export const selected_text_halo_props = {
     'text-halo-color': SELECTED_TITLE_HALO_COLOR,
@@ -70,15 +71,10 @@ export const historic_buildings_titles = {
     'source-layer': 'polygons_titles_points',
     layout: {
         ...titles_common_layout_props,
-        'text-size': [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            14,
-            12,
-            DEFAULT_MAX_ZOOM,
-            16
-        ],
+        'text-size': interpolate(
+            14, 12,
+            DEFAULT_MAX_ZOOM, 16
+        ),
         'text-font': ['Merriweather Italic']
     },
     paint: {
@@ -105,15 +101,10 @@ export const historic_building_circle = {
         "icon-allow-overlap": true,
     },
     paint: {
-        "icon-opacity": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            MAJOR_BUILDINGS_POLYGONS_MINZOOM - 2,
-            0.7,
-            MAJOR_BUILDINGS_POLYGONS_MINZOOM,
-            1
-        ],
+        "icon-opacity": interpolate(
+            MAJOR_BUILDINGS_POLYGONS_MINZOOM - 2, 0.7,
+            MAJOR_BUILDINGS_POLYGONS_MINZOOM, 1
+        ),
     }
 }
 
@@ -162,14 +153,11 @@ export const major_road_thicker_line = {
     "source": SOURCES_NAMES.CITY_TILES,
     "paint": {
         "line-color": road_color,
-        "line-width": [
-            "interpolate",
-            ["linear", 2],
-            ["zoom"],
+        "line-width": interpolate(
             12, 1.5,
             16, 6,
             20, 9
-        ]
+        )
     },
     "layout": {
         "line-cap": "round",
@@ -183,23 +171,16 @@ export const major_road_thinner_line = {
     "type": "line",
     "source": SOURCES_NAMES.CITY_TILES,
     "paint": {
-        "line-color": [
-            "interpolate",
-            ["linear", 2],
-            ["zoom"],
-            12.5,
-            road_color,
-            13.8,
-            '#e4e4e4'
-        ],
-        "line-width": [
-            "interpolate",
-            ["linear", 2],
-            ["zoom"],
+        "line-color": interpolate(
+            12.5, road_color,
+            13.8, '#e4e4e4'
+
+        ),
+        "line-width": interpolate(
             14, 1.5,
             16, 3,
             20, 5
-        ]
+        )
     },
     "layout": {
         "line-cap": "round",
@@ -273,15 +254,12 @@ export const non_historic_titles = {
     'source-layer': 'polygons_titles_points',
     layout: {
         ...titles_common_layout_props,
-        'text-size': [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
+        'text-size': interpolate(
             MAJOR_BUILDINGS_POLYGONS_MINZOOM - 1,
             PALE_TITLES_SIZE - 1.5,
             DEFAULT_MAX_ZOOM,
-            PALE_TITLES_SIZE,
-        ],
+            PALE_TITLES_SIZE
+        ),
         'text-font': ['Noto Sans Regular']
     },
     paint: {
@@ -304,11 +282,10 @@ export const cable_car_line = {
     drawing_importance: DR_IM.CABLE_CAR_LINE,
     "paint": {
         "line-color": "#6666ff",
-        "line-width": [
-            "interpolate", ["linear"], ["zoom"],
+        "line-width": interpolate(
             10, 1,
             15, 2
-        ],
+        ),
         "line-dasharray": [1, 1]
     },
     "filter": ["in", ["get", "aerialway"], ["literal", ["gondola", "cable_car"]]]
@@ -322,15 +299,10 @@ export const cable_car_endpoints = {
     "filter": ["==", ["get", "aerialway"], "station"],
     "layout": {
         "icon-image": "boring_square",
-        "icon-size": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            11,
-            0.12,
-            16,
-            0.22
-        ],
+        "icon-size": interpolate(
+            11, 0.12,
+            16, 0.22
+        ),
         'icon-allow-overlap': true,
     }
 }
@@ -368,12 +340,11 @@ export const railway_line = {
     },
     "paint": {
         "line-color": RAILWAY_LINE_COLOR,
-        "line-width": [
-            "interpolate", ["linear"], ["zoom"],
+        "line-width": interpolate(
             10, 1,
             14, 2,
             16, 3
-        ],
+        ),
     },
     filter: ["==", ["get", "railway"], "rail"],
 }
