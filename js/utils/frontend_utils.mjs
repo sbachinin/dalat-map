@@ -154,13 +154,16 @@ export const create_element_from_Html = htmlString => {
     return div.firstElementChild
 }
 
-export const push_to_history = (url) => {
-    if (url === window.location.href) {
+/* search_params: '' or '?id=123' */
+export const push_to_history = (search_params) => {
+    if (search_params === window.location.search) {
         console.log('Trying to write the same url to history! This will be ignored.')
-        return
+    } else if (search_params === '') {
+        // highlights
+        history.pushState({}, "", `/${current_city.name}`)
+    } else {
+        history.pushState({}, "", search_params)
     }
-    
-    history.pushState({}, "", url)
 }
 
 export const get_panel_shown_breadth = () => {

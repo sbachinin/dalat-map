@@ -224,6 +224,7 @@ export const buildings_handmade_data = {
     118542346: {
         title: `Le Cercle
         Sportif`,
+        title_side: 'north',
         subtitle: `This example of the Streamline Moderne style (a variety of Art Deco) was likely built in the 1930s. It served as a sports and social club for colonial officials and Hue's elite. In postcolonial times, it continued to function as a sports venue until it was repurposed in the early 2020s into a restaurant and event space. The “sportif” part of the name was dropped, and today it is known simply as “Le Cercle.”`
     },
 

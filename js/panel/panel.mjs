@@ -76,6 +76,7 @@ export const panel = {
         return panel.wrapper_element.classList.contains('pristine')
     },
 
+    // word "resize" instead of "expand" because it's not always expand: if new content is smaller than old, it's a partial collapse
     async resize_to_content() {
         panel.set_size(panel.content_breadth)
 
