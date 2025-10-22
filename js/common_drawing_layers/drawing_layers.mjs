@@ -21,7 +21,7 @@ import {
     SELECTABLE_BORING_FILL_COLOR,
     TITLED_NONSELECTABLE_BORING_FILL_COLOR,
 } from "./constants.mjs";
-import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
+import { DEFAULT_MAX_ZOOM, SOURCES_NAMES, TTTLES_MAIN_TILE_LAYER } from "../constants.mjs";
 import { DR_IM } from "./drawing_importance.mjs";
 import { interpolate } from "../utils/isomorphic_utils.mjs";
 
@@ -68,7 +68,7 @@ export const historic_buildings_titles = {
     "name": "Historic buildings titles",
     "type": "symbol",
     source: SOURCES_NAMES.CITY_TILES,
-    'source-layer': 'polygons_titles_points',
+    'source-layer': TTTLES_MAIN_TILE_LAYER,
     layout: {
         ...titles_common_layout_props,
         'text-size': interpolate(
@@ -252,7 +252,7 @@ export const non_historic_titles = {
     name: "Non french titles",
     "type": "symbol",
     "source": SOURCES_NAMES.CITY_TILES,
-    'source-layer': 'polygons_titles_points',
+    'source-layer': TTTLES_MAIN_TILE_LAYER,
     layout: {
         ...titles_common_layout_props,
         'text-size': interpolate(

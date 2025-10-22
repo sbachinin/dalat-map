@@ -15,7 +15,7 @@ import {
     remove_duplicates_by_id,
 } from './build_utils.mjs'
 import * as turf from '@turf/turf'
-import { DEFAULT_MAX_ZOOM } from '../js/constants.mjs'
+import { DEFAULT_MAX_ZOOM, TTTLES_MAIN_TILE_LAYER } from '../js/constants.mjs'
 import { convert_link_roads } from './convert_link_roads.mjs'
 import { roads_common_config, roads_hierarchy } from '../js/roads_config.mjs'
 import { is_one_of } from '../js/utils/isomorphic_utils.mjs'
@@ -310,7 +310,7 @@ const polygons_titles_points_feats = all_tiled_features
     .map(f => make_title_point_feature(f, all_handmade_data))
 
 generate_temp_mbtiles({
-    config: { name: 'polygons_titles_points' },
+    config: { name: TTTLES_MAIN_TILE_LAYER },
     features: polygons_titles_points_feats
 })
 

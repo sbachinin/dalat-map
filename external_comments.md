@@ -47,7 +47,7 @@
     3) once feature is selected,
         - highlight geometries: setFilter on all "style layers for selected feature", including pin.
         - add pin icon for low Z: it's drawn from bldgs_centroids_points source, filtered also via setFilter, but this setFilter is delayed until the end of flight, to avoid blinking of the new pin
-        - highlight titles: setFeatureState "selected" in polygons_titles_points source (and hopefully titles of all kinds will get highlighted without extra setup because in build_layers I add bunch of conditional halo props to each textual style layer)
+        - highlight titles: setFeatureState "selected" in TTTLES_MAIN_TILE_LAYER (and hopefully titles of all kinds will get highlighted without extra setup because in build_layers I add bunch of conditional halo props to each textual style layer)
 
     *** a previous solution involved not having a separate tile layer for selectable features, but saving their geometries in a js object for frontend to access. On frontend I made a geojson source from these geometries. It worked almost ok but unpleasant aspect was that runtime-generated geojson geometries slightly differed from those tiled geometries of "normal" features. (Difference btw tippecanoe and maplibre's built-in geojson-vt). And so a selectable border didn't match the bounds of normal fill layers. So I chose to use only 1 tiling mechanism, and it was certainly a build-stage solution, not frontend, because accessing "all selectable geometries" on frontend is quite a task.
 

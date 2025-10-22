@@ -1,5 +1,5 @@
 import { layers_for_selected_feature, pin_style_layer_id } from "./common_drawing_layers/layers_for_selected_feature.mjs"
-import { SOURCES_NAMES } from "./constants.mjs"
+import { SOURCES_NAMES, TTTLES_MAIN_TILE_LAYER } from "./constants.mjs"
 import { get_selected_building_id, set_selected_building_id } from "./selected_building_id.mjs"
 
 // ###2
@@ -21,11 +21,11 @@ export const select_building = (new_id) => {
 
 
         window.dalatmap.setFeatureState(
-            { source: SOURCES_NAMES.CITY_TILES, sourceLayer: 'polygons_titles_points', id: sel_id },
+            { source: SOURCES_NAMES.CITY_TILES, sourceLayer: TTTLES_MAIN_TILE_LAYER, id: sel_id },
             { selected: false }
         )
         window.dalatmap.setFeatureState(
-            { source: SOURCES_NAMES.CITY_TILES, sourceLayer: 'polygons_titles_points', id: new_id },
+            { source: SOURCES_NAMES.CITY_TILES, sourceLayer: TTTLES_MAIN_TILE_LAYER, id: new_id },
             { selected: true }
         )
 
