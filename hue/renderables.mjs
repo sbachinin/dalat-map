@@ -4,7 +4,6 @@ import imperial_city_border from "./static_data/imperial_city_border.mjs"
 import { get_polygon_as_linestring } from '../js/utils/frontend_utils.mjs'
 
 import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_drawing_layers/city_bulk.mjs"
-import { PALE_TITLES_COLOR, WATER_TITLE_COLOR } from "../js/common_drawing_layers/constants.mjs"
 import { get_title_renderable } from "../js/utils/get_title_renderable.mjs"
 import { CITY_WALL_COLOR } from "./drawing_layers.mjs"
 import { interpolate } from "../js/utils/isomorphic_utils.mjs"
@@ -12,6 +11,10 @@ import { constants as c } from "./constants.mjs"
 import { markets_titles } from "./static_data/handmade_data.mjs"
 import { DR_IM } from "../js/common_drawing_layers/drawing_importance.mjs"
 import { non_historic_titles } from "../js/common_drawing_layers/drawing_layers.mjs"
+import {
+    PALE_TITLES_COLOR,
+    WATER_TITLE_COLOR
+} from "../js/common_drawing_layers/colors.mjs"
 
 export const renderables = [
     {

@@ -1,5 +1,6 @@
 import { SOURCES_NAMES } from "../constants.mjs"
-import { MAJOR_BUILDINGS_POLYGONS_MINZOOM, FRENCH_SELECTED_FILL_COLOR } from "./constants.mjs"
+import { FRENCH_SELECTED_FILL_COLOR } from "./colors.mjs"
+import { MAJOR_BUILDINGS_POLYGONS_MINZOOM } from "./constants.mjs"
 import { DR_IM } from "./drawing_importance.mjs"
 
 

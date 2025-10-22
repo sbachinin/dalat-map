@@ -1,11 +1,10 @@
-import { DEFAULT_MAX_ZOOM, SOURCES_NAMES } from "../constants.mjs";
+import { SOURCES_NAMES } from "../constants.mjs";
+import { DEAD_BUILDING_FILL_COLOR } from "./colors.mjs";
 import {
-    DEAD_BUILDING_FILL_COLOR,
     DEAD_BUILDINGS_CIRCLES_MINZOOM,
     MAJOR_BUILDINGS_POLYGONS_MINZOOM
 } from "./constants.mjs";
 import { DR_IM } from "./drawing_importance.mjs";
-import { titles_common_layout_props } from "./drawing_layers.mjs";
 
 export const dead_buildings_layers = [
     {

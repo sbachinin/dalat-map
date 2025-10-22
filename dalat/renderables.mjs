@@ -3,13 +3,15 @@ import { get_polygon_as_linestring } from '../js/utils/frontend_utils.mjs'
 import { get_midPoint_feature_with_text_rotate } from "../js/utils/get_midPoint_feature_with_text_rotate.mjs"
 
 import {
-    PALE_TITLES_COLOR,
     PALE_TITLES_SIZE,
-    WATER_TITLE_COLOR
 } from "../js/common_drawing_layers/constants.mjs";
 import { city_bulk_border, city_bulk_fill, city_bulk_title } from "../js/common_drawing_layers/city_bulk.mjs";
 
 import { get_point_feature } from "../js/utils/isomorphic_utils.mjs";
+import {
+    PALE_TITLES_COLOR,
+    WATER_TITLE_COLOR
+} from "../js/common_drawing_layers/colors.mjs";
 
 
 export const renderables = [

@@ -1,9 +1,9 @@
 import {
-    WATER_TITLE_COLOR,
     BORING_CIRCLE_COLOR,
+    DEAD_BUILDING_FILL_COLOR,
     FRENCH_SELECTED_FILL_COLOR,
-    DEAD_BUILDING_FILL_COLOR
-} from "./common_drawing_layers/constants.mjs"
+    WATER_TITLE_COLOR,
+} from "./common_drawing_layers/colors.mjs"
 
 const icons_ids_to_commands = {
     'historic_circle': (ctx) => {
@@ -12,7 +12,7 @@ const icons_ids_to_commands = {
         ctx.arc(32, 32, 30, 0, Math.PI * 2) // Center (32, 32), Radius 30
         ctx.fill()
     },
-    
+
     'boring_circle': (ctx) => {
         ctx.fillStyle = BORING_CIRCLE_COLOR
         ctx.beginPath()

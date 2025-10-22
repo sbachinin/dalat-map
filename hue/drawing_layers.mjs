@@ -1,8 +1,4 @@
-import {
-    SELECTABLE_BORING_FILL_COLOR,
-    UNESCO_AREA_BORDER_COLOR,
-    UNESCO_AREA_FILL_COLOR
-} from "../js/common_drawing_layers/constants.mjs";
+import { SELECTABLE_BORING_FILL_COLOR, UNESCO_AREA_BORDER_COLOR, UNESCO_AREA_FILL_COLOR } from "../js/common_drawing_layers/colors.mjs";
 import { DR_IM } from "../js/common_drawing_layers/drawing_importance.mjs";
 import { SOURCES_NAMES } from "../js/constants.mjs";
 import { interpolate } from "../js/utils/isomorphic_utils.mjs";
@@ -86,7 +82,7 @@ export const non_french_bldgs_within_imperial_city_fill = {
     "source-layer": "non_french_bldgs_within_imperial_city",
     drawing_importance: DR_IM.IMPORTANT_BORING_BLDG_FILL,
     "paint": {
-        "fill-color": SELECTABLE_BORING_FILL_COLOR, // 'hsl(60, 20.82%, 63.14%)',
+        "fill-color": SELECTABLE_BORING_FILL_COLOR,
         "fill-opacity": interpolate(14, 0.5, 15, 1)
     }
 }

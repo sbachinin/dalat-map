@@ -1,3 +1,4 @@
+import { CITY_BULK_FULL_COLOR, CITY_BULK_TITLE_COLOR } from "./colors.mjs"
 import * as c from "./constants.mjs"
 import { DR_IM } from "./drawing_importance.mjs"
 
@@ -6,7 +7,7 @@ export const city_bulk_fill = {
     filter: ['==', ['geometry-type'], 'Polygon'],
     drawing_importance: DR_IM.CITY_BULK,
     paint: {
-        'fill-color': c.CITY_BULK_FULL_COLOR,
+        'fill-color': CITY_BULK_FULL_COLOR,
         'fill-antialias': true,
         "fill-opacity": [
             "interpolate",
@@ -71,6 +72,6 @@ export const city_bulk_title = {
         "text-letter-spacing": 0.07,
     },
     paint: {
-        'text-color': c.CITY_BULK_TITLE_COLOR
+        'text-color': CITY_BULK_TITLE_COLOR
     }
 }
