@@ -470,25 +470,6 @@ export const island_fill = {
     "paint": { "fill-color": 'white' },
 }
 
-
-export const city_title = {
-    "name": "City title",
-    "type": "symbol",
-    source: SOURCES_NAMES.CITY_TITLE,
-    drawing_importance: DR_IM.CITY_TITLE,
-    layout: {
-        "text-field": ["get", "title"],
-        'text-size': 20,
-        'text-font': ['Noto Sans Regular'],
-    },
-    paint: {
-        "text-halo-color": "hsl(0, 0%, 100%)",
-        "text-halo-width": 10,
-        "text-halo-blur": 0
-    }
-}
-
-
 export const river_lines = {
     name: 'River lines',
     type: 'line',

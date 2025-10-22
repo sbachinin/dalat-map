@@ -12,7 +12,7 @@ import {
     important_boring_building_fill,
     water_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
-import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
+import { river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { MAJOR_BUILDINGS_POLYGONS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
 import { constants as c } from './constants.mjs'
@@ -29,11 +29,6 @@ export const zoom_order = {
 
         {
             drawing_layers: [water_areas_fill],
-        },
-
-        {
-            drawing_layers: [city_title],
-            maxzoom: 12
         },
     ],
 

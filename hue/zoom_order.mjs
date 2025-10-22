@@ -12,7 +12,7 @@ import {
     bridge_areas_fill,
     boring_building_circle
 } from "../js/common_drawing_layers/drawing_layers.mjs";
-import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
+import { river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { MAJOR_BUILDINGS_POLYGONS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import {
     city_walls_fill,
@@ -44,10 +44,6 @@ export const zoom_order = {
             drawing_layers: [city_walls_fill, city_walls_thickening_outline],
         },
 
-        {
-            drawing_layers: [city_title],
-            maxzoom: 11.4
-        },
     ],
     10.5: [
         {

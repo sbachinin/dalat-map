@@ -3,7 +3,6 @@ export const DR_IM = {
     PIN: 0,
 
     DEAD_BUILDINGS_FILL: 1,
-    CITY_TITLE: 1,
     SELECTED_POLYGON: 1,
 
     CITY_WALLS: 2,

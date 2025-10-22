@@ -10,8 +10,6 @@ export const map_bounds = [108.3378, 11.8540, 108.5587, 12.0360]
 
 export const intro_zoom = MAJOR_BUILDINGS_POLYGONS_MINZOOM
 
-export const city_title_coords = [108.442055, 11.951744]
-
 export const roads_config = {
     secondary: 12.2
 }

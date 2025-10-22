@@ -9,8 +9,6 @@ export const intro_zoom = 12.8
 
 export const max_zoom = 18
 
-export const city_title_coords = [102.252908, 2.214269]
-
 export const roads_config = {}
 
 export const is_building_historic = f => !!f.properties?.historic

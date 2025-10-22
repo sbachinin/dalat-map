@@ -17,7 +17,7 @@ import {
     water_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { historic_polygons } from "../js/common_drawing_layers/historic_polygons.mjs";
-import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
+import { river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { AREA_TYPES, MAJOR_BUILDINGS_POLYGONS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { all_handmade_data as hmd } from "../dalat/static_data/handmade_data.mjs";
 import { constants as c } from './constants.mjs'
@@ -54,11 +54,6 @@ export const zoom_order = {
                 hmd[64737684], // bigger lake near ankroet
             ),
             drawing_layers: [non_historic_titles]
-        },
-
-        {
-            drawing_layers: [city_title],
-            maxzoom: 12
         },
     ],
 

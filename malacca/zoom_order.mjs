@@ -13,7 +13,7 @@ import {
     island_fill,
     bridge_areas_fill
 } from "../js/common_drawing_layers/drawing_layers.mjs";
-import { city_title, river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
+import { river_lines } from "../js/common_drawing_layers/drawing_layers.mjs";
 import { AREA_TYPES, MAJOR_BUILDINGS_POLYGONS_MINZOOM } from "../js/common_drawing_layers/constants.mjs";
 import { constants as c } from './constants.mjs'
 import { SOURCES_NAMES } from "../js/constants.mjs";
@@ -60,11 +60,6 @@ export const zoom_order = {
 
         {
             drawing_layers: [{ ...water_areas_fill, 'source-layer': 'river_areas' }],
-        },
-
-        {
-            drawing_layers: [city_title],
-            maxzoom: 12
         },
     ],
 

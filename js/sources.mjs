@@ -18,19 +18,6 @@ export const get_main_sources = () => {
         }
     }
 
-    if (current_city.city_title_coords) {
-        sources[SOURCES_NAMES.CITY_TITLE] = get_geojson_source(
-            [{
-                type: "Feature",
-                properties: { title: current_city.name.charAt(0).toUpperCase() + current_city.name.slice(1) },
-                geometry: {
-                    type: "Point",
-                    coordinates: current_city.city_title_coords
-                },
-            }]
-        )
-    }
-
     const features_from_renderables = current_city.renderables?.flatMap(r => {
         return r.get_features().map(f => {
             if (typeof f.id === 'undefined') {
