@@ -19,7 +19,7 @@ export const initialize_panel = () => {
                 should_expand_panel
             })
         } else if (should_expand_panel) {
-            display_highlights()
+            display_highlights({ should_push_history: false })
         }
 
         if (should_expand_panel) {
@@ -30,7 +30,11 @@ export const initialize_panel = () => {
             resolve()
         }
 
-        panel.on('content is missing', 'app', display_highlights)
+        panel.on(
+            'content is missing',
+            'fuck',
+            () => display_highlights({ should_push_history: false })
+        )
         panel.expand_button_el.classList.remove('hidden')
     })
 }

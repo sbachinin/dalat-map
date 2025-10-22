@@ -166,7 +166,7 @@ export const initialize_city = async (name) => {
                 should_try_to_fly: true,
             })
         } else {
-            display_highlights(false)
+            display_highlights({ should_push_history: false })
         }
     })
 

@@ -17,7 +17,9 @@ const update_size_variables = () => {
 
 const scroll_pos = [0, 0]
 
-export const display_highlights = (should_push_history = false) => {
+export const display_highlights = ({
+    should_push_history
+}) => {
 
     select_building(null)
 
