@@ -11,6 +11,7 @@ import { interpolate } from "../js/utils/isomorphic_utils.mjs"
 import { constants as c } from "./constants.mjs"
 import { markets_titles } from "./static_data/handmade_data.mjs"
 import { DR_IM } from "../js/common_drawing_layers/drawing_importance.mjs"
+import { non_historic_titles } from "../js/common_drawing_layers/drawing_layers.mjs"
 
 export const renderables = [
     {
@@ -216,17 +217,13 @@ export const renderables = [
                 }
             })
         },
-        style_layers: [{
-            type: 'symbol',
-            layout: {
-                "text-field": ['get', 'title'],
-                'text-size': 12,
-                'text-font': ['Noto Sans Regular'],
+        style_layers: [
+            {
+                type: 'symbol',
+                layout: non_historic_titles.layout,
+                paint: non_historic_titles.paint,
+                minzoom: 13.5
             },
-            paint: {
-                "text-color": PALE_TITLES_COLOR,
-            },
-            minzoom: 14.3
-        }]
+        ]
     }
 ]
