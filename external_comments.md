@@ -136,3 +136,5 @@
             such as "title" and "title_side", and they will be processed just as same props from handmade data.
     2. Draw these features from a dedicated tile layer using dedicated style layers,
         pushed into style.layers by for example including them into zoom_order
+
+

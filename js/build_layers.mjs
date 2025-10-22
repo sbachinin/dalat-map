@@ -61,6 +61,7 @@ export const build_layers = () => {
         .flatMap(([zoom_level, zoom_level_layers]) => {
             return zoom_level_layers.flatMap(zoom_level_layer => {
                 return zoom_level_layer.drawing_layers.map(drawing_layer => {
+                    drawing_layer = structuredClone(drawing_layer)
                     if (!drawing_layer.name) {
                         throw new Error('no "name" for drawing layer!', drawing_layer)
                     }
@@ -93,25 +94,27 @@ export const build_layers = () => {
         })
 
     const layers_from_renderables = current_city.renderables.flatMap(r => {
-        return r.style_layers.map(sl => {
-            const result = {
-                ...sl,
-                id: r.id + " " + sl.type,
-                source: SOURCES_NAMES.RENDERABLES,
-                filter: join_style_filters(sl.filter, ["==", ["get", "renderable_id"], r.id]),
-            }
+        return r.style_layers
+            .map(sl => structuredClone(sl))
+            .map(sl => {
+                const result = {
+                    ...sl,
+                    id: r.id + " " + sl.type,
+                    source: SOURCES_NAMES.RENDERABLES,
+                    filter: join_style_filters(sl.filter, ["==", ["get", "renderable_id"], r.id]),
+                }
 
-            if (
-                sl.type === 'symbol'
-                && sl.layout['text-field']
-                && !sl.paint['text-opacity']
-            ) {
-                // Renderable should be dumb and non-selectable, therefore bleak,
-                // Unless text-opacity is explicitly set in particular renderable
-                result.paint['text-opacity'] = NON_SELECTABLE_TITLE_OPACITY
-            }
-            return result
-        })
+                if (
+                    sl.type === 'symbol'
+                    && sl.layout['text-field']
+                    && !sl.paint['text-opacity']
+                ) {
+                    // Renderable should be dumb and non-selectable, therefore bleak,
+                    // Unless text-opacity is explicitly set in particular renderable
+                    result.paint['text-opacity'] = NON_SELECTABLE_TITLE_OPACITY
+                }
+                return result
+            })
     })
 
     const get_drawing_importance = l => {
