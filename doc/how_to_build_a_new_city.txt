@@ -17,11 +17,6 @@ Add dead_buildings
         * is_dead prop in handmade data will do nothing
             (bldg is considered dead if it's in static.../dead_... file)
 
-Display city title (at early zoom)
-    add city_title_coords to [city]/isomorphic_utils
-    add [city_title] layer in [city]/zoom_order. (With maxzoom)
-
-
 Add some singular city-specific features that are not from OSM
     (or from OSM but require some modifications maybe):
     Example: "cable car label" in Dalat.

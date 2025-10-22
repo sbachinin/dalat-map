@@ -138,3 +138,14 @@
         pushed into style.layers by for example including them into zoom_order
 
 
+###7 Why "allow_different_title_source"
+    If a title-rendering style layer (from zoom order) wants to utilize source-layer other than the "shared" one
+    , it needs to ask for permission, by specifying a prop "allow_different_title_source".
+    This limitation is introduced because it's very desirable to use a single source-layer for all titles.
+        (and the limitation makes it difficult to forget about this stuff).
+        Keeping all titles in a single layer allows to apply some shared rules to all titles.
+        (Such as "use reduced opacity for non-selectable titles")
+    Currently, this restriction on source-layer applies only to style layers introduced via zoom_order.
+    Potentially there can be other sources of style layers and thus possibility of mess.
+    So allow_different_title_source restriction reduces the risks but not to 0.
+

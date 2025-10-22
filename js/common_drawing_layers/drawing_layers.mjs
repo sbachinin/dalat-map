@@ -118,6 +118,7 @@ export const peaks_triangles_with_titles = {
     type: 'symbol',
     source: SOURCES_NAMES.CITY_TILES,
     'source-layer': 'peaks',
+    allow_different_title_source: true,
     layout: {
         "text-anchor": "top",
         "text-offset": [0, 0.4],

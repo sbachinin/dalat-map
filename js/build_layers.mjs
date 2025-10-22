@@ -65,6 +65,16 @@ export const build_layers = () => {
                     if (!drawing_layer.name) {
                         throw new Error('no "name" for drawing layer!', drawing_layer)
                     }
+
+                    if (
+                        drawing_layer.type === 'symbol'
+                        && drawing_layer.layout['text-field']
+                        && drawing_layer['source-layer'] !== 'polygons_titles_points'
+                        && !drawing_layer.allow_different_title_source // ###7
+                    ) {
+                        throw new Error(`Trying to render titles from a source-layer other than polygons_titles_points: ${drawing_layer.name}. To override this limitation, set allow_different_title_source property on a style layer`)
+                    }
+
                     if (drawing_layer.id) {
                         console.warn('drawing layer has an id, this is suspicious because drawing layer must have "name" instead of id')
                     }

@@ -209,8 +209,8 @@ export const features_generated_props_for_frontend = {
   },
   "173151286": {
     "centroid": [
-      107.577178,
-      16.480239
+      107.577184,
+      16.480235
     ]
   },
   "173793327": {
@@ -267,8 +267,8 @@ export const features_generated_props_for_frontend = {
   },
   "211038385": {
     "centroid": [
-      107.539218,
-      16.455566
+      107.539217,
+      16.455564
     ]
   },
   "217466613": {
@@ -1674,6 +1674,12 @@ export const features_generated_props_for_frontend = {
     "centroid": [
       107.575616,
       16.438323
+    ]
+  },
+  "1443636347": {
+    "centroid": [
+      107.540522,
+      16.459776
     ]
   },
   "1433243405346257": {
