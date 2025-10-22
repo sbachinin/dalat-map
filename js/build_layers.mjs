@@ -126,8 +126,8 @@ export const build_layers = () => {
 
     const all_layers = ([
         ...make_roads_layers(),
-        ...layers_from_zoom_order,
         ...layers_from_renderables,
+        ...layers_from_zoom_order,
     ])
 
     if (Object.values(current_city.features_generated_props_for_frontend).find(v => v.is_dead)) {
