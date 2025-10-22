@@ -103,7 +103,16 @@ export const panel = {
     is_rather_expanded() {
         return get_panel_shown_breadth() > panel.content_breadth / 2
     },
-    content: null,
+
+    /*
+        {
+            type: PANEL_CONTENT_TYPES
+            element: HTMLElement,
+            update_size: () => void    // function that adjusts the CSS styles of the content, and after it's done, the content's actual size can be measured to decide how much the panel should be expanded
+        }
+    */
+    content: null, 
+
     async set_content(
         _content,
         { should_resize_immediately = true } = {}
