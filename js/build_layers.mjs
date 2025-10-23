@@ -1,7 +1,7 @@
 import { pick } from "./utils/isomorphic_utils.mjs"
 import { zoom_order as common_zoom_order } from "./common_zoom_order.mjs"
 import { current_city } from "./load_city.mjs"
-import { SOURCES_NAMES, TTTLES_MAIN_TILE_LAYER } from "./constants.mjs"
+import { SOURCES_NAMES, TITLES_MAIN_TILE_LAYER } from "./constants.mjs"
 import { make_roads_layers } from "./common_drawing_layers/make_roads_layers.mjs"
 import { layers_for_selected_feature } from "./common_drawing_layers/layers_for_selected_feature.mjs"
 import { dead_buildings_layers } from "./common_drawing_layers/dead_buildings.mjs"
@@ -69,7 +69,7 @@ export const build_layers = () => {
                     if (
                         drawing_layer.type === 'symbol'
                         && drawing_layer.layout['text-field']
-                        && drawing_layer['source-layer'] !== TTTLES_MAIN_TILE_LAYER
+                        && drawing_layer['source-layer'] !== TITLES_MAIN_TILE_LAYER
                         && !drawing_layer.allow_different_title_source // ###7
                     ) {
                         throw new Error(`Trying to render titles from a source-layer other than TTTLES_MAIN_TILE_LAYER: ${drawing_layer.name}. To override this limitation, set allow_different_title_source property on a style layer`)
@@ -177,7 +177,7 @@ function add_selected_halo_props_for_texts(l) {
 
 function add_text_opacity(l) {
     if (
-        l['source-layer'] === TTTLES_MAIN_TILE_LAYER
+        l['source-layer'] === TITLES_MAIN_TILE_LAYER
         && l.type === 'symbol'
         && l.layout['text-field']
     ) {
