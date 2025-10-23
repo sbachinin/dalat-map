@@ -60,7 +60,7 @@ export const add_mouse_stuff = () => {
 
 
     document.querySelector('#non-panel #highlights-opener').addEventListener('click', () => {
-        display_highlights(true)
+        display_highlights({ should_push_history: true })
     })
 
 
