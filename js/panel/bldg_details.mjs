@@ -102,7 +102,9 @@ export const try_open_building = async (
         should_try_to_fly = false,
     } = {}
 ) => {
-    if (id === get_bldg_id_from_url(window.location.href)) {
+    if (panel.content
+        && id === get_bldg_id_from_url(window.location.href)
+    ) {
         panel.resize_to_content() // meaning, expand the panel if it was collapsed
         return
     }
