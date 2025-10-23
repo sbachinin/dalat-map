@@ -70,6 +70,8 @@ export const panel = {
         panel.body_element.style.opacity = (size > panel.content_breadth * 0.2) ? 1 : 0
         tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
         update_expand_button()
+
+        localStorage.setItem('panel_was_expanded', size > 0)
     },
 
     is_pristine() {
