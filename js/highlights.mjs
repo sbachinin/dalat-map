@@ -2,7 +2,7 @@ import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
 import { debounce, push_to_history } from './utils/frontend_utils.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
-import { select_building } from './select_building.mjs'
+import { update_selected_features } from './update_selected_feaures.mjs'
 import { current_city } from './load_city.mjs'
 
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
@@ -21,7 +21,7 @@ export const display_highlights = ({
     should_push_history
 }) => {
 
-    select_building(null)
+    update_selected_features(null)
 
     highlights_el = highlights_el || create_panel_thumbs_list({
         images_basenames: current_city.highlights_order,

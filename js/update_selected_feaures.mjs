@@ -3,7 +3,7 @@ import { SOURCES_NAMES, TTTLES_MAIN_TILE_LAYER } from "./constants.mjs"
 import { get_bldg_id_from_url } from "./utils/frontend_utils.mjs"
 
 // ###2
-export const select_building = (new_id) => { // update_selected_style
+export const update_selected_features = (new_id) => { // update_selected_style
     const curr_id = get_bldg_id_from_url(window.location.href)
 
     // If no building is selected, hide the pin right away

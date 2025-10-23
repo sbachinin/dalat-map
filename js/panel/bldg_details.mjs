@@ -1,5 +1,5 @@
 import { panel } from './panel.mjs'
-import { select_building } from '../select_building.mjs'
+import { update_selected_features } from '../update_selected_feaures.mjs'
 import { create_panel_thumbs_list } from './panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel_thumbs_list_size_manager.mjs'
 import {
@@ -108,7 +108,7 @@ export const try_open_building = async (
 
     if (is_feature_selectable(id)) {
 
-        select_building(id)
+        update_selected_features(id)
 
         update_flyto_button()
 
