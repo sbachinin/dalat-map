@@ -1,11 +1,11 @@
 import { layers_for_selected_feature, pin_style_layer_id } from "./common_drawing_layers/layers_for_selected_feature.mjs"
 import { SOURCES_NAMES, TTTLES_MAIN_TILE_LAYER } from "./constants.mjs"
-import { get_selected_building_id, set_selected_building_id } from "./selected_building_id.mjs"
+import { get_bldg_id_from_url } from "./utils/frontend_utils.mjs"
 
 // ###2
-export const select_building = (new_id) => {
-    const sel_id = get_selected_building_id()
-    if (new_id !== sel_id) {
+export const select_building = (new_id) => { // update_selected_style
+    const curr_id = get_bldg_id_from_url(window.location.href)
+    if (new_id !== curr_id) {
 
         // If no building is selected, hide the pin right away
         // If a building is selected, do nothing about a pin within this function
@@ -21,14 +21,12 @@ export const select_building = (new_id) => {
 
 
         window.dalatmap.setFeatureState(
-            { source: SOURCES_NAMES.CITY_TILES, sourceLayer: TTTLES_MAIN_TILE_LAYER, id: sel_id },
+            { source: SOURCES_NAMES.CITY_TILES, sourceLayer: TTTLES_MAIN_TILE_LAYER, id: curr_id },
             { selected: false }
         )
         window.dalatmap.setFeatureState(
             { source: SOURCES_NAMES.CITY_TILES, sourceLayer: TTTLES_MAIN_TILE_LAYER, id: new_id },
             { selected: true }
         )
-
-        set_selected_building_id(new_id)
     }
 }

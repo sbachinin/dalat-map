@@ -5,12 +5,12 @@ import {
     is_mouse_device,
     throttle,
     get_link_to_selected_bldg,
+    get_bldg_id_from_url,
 } from '../utils/frontend_utils.mjs'
 import { current_city } from '../load_city.mjs'
 import { panel } from './panel.mjs'
 import { show_tooltip } from '../tooltip.mjs'
 import { try_fly_to_building } from './bldg_details.mjs'
-import { get_selected_building_id } from '../selected_building_id.mjs'
 import { onclick_share } from './onclick_share.mjs'
 
 function get_topmost_id(html_string) {
@@ -84,7 +84,10 @@ const buttons_icons = [
             position: 'bottom'
         },
         onclick: (e) => {
-            try_fly_to_building(get_selected_building_id(), { force: true })
+            try_fly_to_building(
+                get_bldg_id_from_url(window.location.href),
+                { force: true }
+            )
         }
     },
 
@@ -198,7 +201,9 @@ export const update_flyto_button = () => {
     const but_el = document.querySelector('#building-info__flyto')
     if (!but_el) return
 
-    const mzobs = get_minimal_zoom_on_building_select(get_selected_building_id())
+    const mzobs = get_minimal_zoom_on_building_select(
+        get_bldg_id_from_url(window.location.href)
+    )
     if (dalatmap.getZoom() < (mzobs - 1)) {
         but_el.classList.remove('disabled')
         return
@@ -209,7 +214,8 @@ export const update_flyto_button = () => {
     // So I switched to comparing centoid with map viewport's lngLat bounds, and this doesn't depend on network or anything.
     // TODO: this doesn't consider the panel. So, when feature is covered by panel, it won't enable the button
     const { _ne: { lng: e_bound, lat: n_bound }, _sw: { lng: w_bound, lat: s_bound } } = dalatmap.getBounds()
-    const cntrd = current_city.features_generated_props_for_frontend[get_selected_building_id()]?.centroid
+    const bldg_id = get_bldg_id_from_url(window.location.href)
+    const cntrd = current_city.features_generated_props_for_frontend[bldg_id]?.centroid
     if (!cntrd) {
         return
     }

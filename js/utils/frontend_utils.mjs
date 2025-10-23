@@ -324,7 +324,7 @@ export const get_link_to_bldg = (id) => {
     return window.location.origin + window.location.pathname + `?id=` + id
 }
 export const get_link_to_selected_bldg = () => {
-    return get_link_to_bldg(get_selected_building_id())
+    return get_link_to_bldg(get_bldg_id_from_url(window.location.href))
 }
 
 
