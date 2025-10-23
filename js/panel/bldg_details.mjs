@@ -14,7 +14,7 @@ import {
 } from '../utils/frontend_utils.mjs'
 import { is_feature_selectable } from '../utils/does_feature_have_details.mjs'
 import { current_city } from '../load_city.mjs'
-import { make_icons } from './bldg_details_icons.mjs'
+import { make_icons, update_flyto_button } from './bldg_details_icons.mjs'
 import { get_icon_as_ctx } from '../load_icons.mjs'
 import { activate_image } from '../lazy-image.mjs'
 import { pin_style_layer_id } from '../common_drawing_layers/layers_for_selected_feature.mjs'
@@ -112,6 +112,8 @@ export const try_open_building = async (
     if (is_feature_selectable(id)) {
 
         select_building(id)
+
+        update_flyto_button()
 
         if (document.fonts && !document.fonts.check('italic normal 400 1em Merriweather')) {
             const merriweather = new FontFaceObserver('Merriweather', { weight: 'normal', style: 'italic' })
