@@ -1,4 +1,4 @@
-import { panel, PANEL_CONTENT_TYPES } from "./panel/panel.mjs"
+import { panel } from "./panel/panel.mjs"
 import { create_element_from_Html, debounce, is_mouse_device, observe_dom_mutations } from "./utils/frontend_utils.mjs"
 
 const bldg_svg = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
@@ -8,7 +8,7 @@ const bldg_svg = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width=
 export const bldg_link_html = `<div class="bldg-link">${bldg_svg}</div>`
 
 observe_dom_mutations('body', mutations => {
-    if (panel.content?.type !== PANEL_CONTENT_TYPES.HIGHLIGHTS) return
+    if (panel.content?.id !== 'highlights') return
 
     const all_added_nodes = mutations.flatMap(m => [...m.addedNodes])
 

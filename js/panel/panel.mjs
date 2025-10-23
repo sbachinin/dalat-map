@@ -109,7 +109,7 @@ export const panel = {
 
     /*
         {
-            type: PANEL_CONTENT_TYPES
+            id: 'higlights' | number(bldg id),
             element: HTMLElement,
             update_size: () => void    // function that adjusts the CSS styles of the content, and after it's done, the content's actual size can be measured to decide how much the panel should be expanded
         }

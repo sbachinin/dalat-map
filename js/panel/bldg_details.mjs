@@ -1,11 +1,10 @@
-import { panel, PANEL_CONTENT_TYPES } from './panel.mjs'
+import { panel } from './panel.mjs'
 import { select_building } from '../select_building.mjs'
 import { create_panel_thumbs_list } from './panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel_thumbs_list_size_manager.mjs'
 import {
     create_element_from_Html,
     div,
-    get_bldg_id_from_url,
     get_map_center_shift_px,
     get_minimal_zoom_on_building_select,
     panel_is_vertical,
@@ -86,7 +85,7 @@ const set_panel_content = (id) => {
         {
             update_size: update_size_variables,
             element: details_el,
-            type: PANEL_CONTENT_TYPES.BUILDING
+            id
         },
         {
             should_resize_immediately: panel.is_rather_expanded()
@@ -102,9 +101,7 @@ export const try_open_building = async (
         should_try_to_fly = false,
     } = {}
 ) => {
-    if (panel.content
-        && id === get_bldg_id_from_url(window.location.href)
-    ) {
+    if (id === panel.content?.id) {
         panel.resize_to_content() // meaning, expand the panel if it was collapsed
         return
     }

@@ -31,7 +31,7 @@ export const display_highlights = ({
     panel.set_content({
         update_size: update_size_variables,
         element: highlights_el,
-        type: PANEL_CONTENT_TYPES.HIGHLIGHTS
+        id: 'highlights'
     })
 
     if (should_push_history) {
@@ -39,14 +39,14 @@ export const display_highlights = ({
     }
 
     panel.on('scroll', 'highlights list', debounce(e => {
-        if (panel.content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
+        if (panel.content.id === 'highlights') {
             scroll_pos[0] = e.target.scrollLeft
             scroll_pos[1] = e.target.scrollTop
         }
     }))
 
     panel.on('content was just set', 'highlights list', new_content => {
-        if (new_content.type === PANEL_CONTENT_TYPES.HIGHLIGHTS) {
+        if (new_content.id === 'highlights') {
             panel.body_element.scrollLeft = scroll_pos[0]
             panel.body_element.scrollTop = scroll_pos[1]
         }
