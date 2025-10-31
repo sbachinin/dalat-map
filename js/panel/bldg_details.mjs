@@ -94,7 +94,6 @@ const set_panel_content = (id) => {
 export const try_open_building = async (
     id,
     {
-        should_expand_panel = true,
         should_try_to_fly = false,
     } = {}
 ) => {
@@ -122,11 +121,11 @@ export const try_open_building = async (
                 'fly to newly opened building',
                 async () => {
                     if (should_try_to_fly) {
-                        await try_fly_to_building(id, { should_expand_panel })
+                        await try_fly_to_building(id)
                     }
                     resolve()
 
-                    if (should_expand_panel) {
+                    if (panel.is_about_to_expand) {
                         panel.resize_to_content()
                     }
                 }
@@ -166,8 +165,7 @@ const coords_will_be_in_view = (
 export const try_fly_to_building = (
     id,
     {
-        force = false,
-        should_expand_panel
+        force = false
     } = {}
 ) => {
     return new Promise((resolve) => {
@@ -182,7 +180,7 @@ export const try_fly_to_building = (
 
         const target_zoom = Math.max(get_minimal_zoom_on_building_select(id), map_zoom)
 
-        const panel_will_be_expanded = should_expand_panel
+        const panel_will_be_expanded = panel.is_about_to_expand
             || panel.is_rather_expanded()
 
         if (

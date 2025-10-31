@@ -22,8 +22,9 @@ export const handle_id_change = () => {
             should_expand_panel = false
         }
 
+        panel.is_about_to_expand = should_expand_panel
+
         try_open_building(id, {
-            should_expand_panel,
             should_try_to_fly: true,
         })
     } else if (id === 'menu') {

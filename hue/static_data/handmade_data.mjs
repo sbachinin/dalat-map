@@ -260,13 +260,12 @@ export const buildings_handmade_data = {
     1174028275: {
         title: 'Redemptorist\nmonastery',
         year: 1925,
-        title_side: 'north',
         google: 'https://maps.app.goo.gl/HWdR8iUjqZ6HZ69cA',
 
     },
 
     1172894102: {
-        title: 'Redemptorist\nchurch',
+        title_for_panel_only: 'Redemptorist\nchurch',
         year: '1959-1962',
         subtitle: `Honestly, it's one of the most ridiculous pieces of architecture I've ever seen`,
         google: 'https://maps.app.goo.gl/zKjuh1W3cfKTbU1r9'

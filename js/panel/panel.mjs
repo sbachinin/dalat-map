@@ -89,6 +89,7 @@ export const panel = {
         } else {
             await wait(EXPAND_TRANSITION_DURATION)
         }
+        panel.is_about_to_expand = false
     },
     async toggle() {
         if (panel.is_pristine()) return
@@ -106,6 +107,8 @@ export const panel = {
     is_rather_expanded() {
         return get_panel_shown_breadth() > panel.content_breadth / 2
     },
+
+    is_about_to_expand: false,
 
     /*
         {
