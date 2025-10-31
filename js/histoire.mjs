@@ -1,7 +1,12 @@
 import { get_id_from_current_url } from "./utils/frontend_utils.mjs"
 
+export const CAUSE = {
+    INITIALIZE_CITY: 'initialize_city',
+    PUSHSTATE: 'pushstate',
+    POPSTATE: 'popstate'
+}
 
-window.addEventListener("popstate", () => update(get_id_from_current_url(), 'popstate'))
+window.addEventListener("popstate", () => update(get_id_from_current_url(), CAUSE.POPSTATE))
 
 let subscriber = null
 
@@ -19,7 +24,7 @@ let subscriber = null
     and so I want the 'pushstate' case to follow the same scheme.
     []{
         id: string,
-        cause: 'popstate' | 'pushstate'
+        cause: CAUSE
     }
 */
 const entries = []
@@ -28,7 +33,7 @@ export const histoire = {
     initialize: () => {
         entries.push({
             id: get_id_from_current_url(),
-            cause: 'initialize_city'
+            cause: CAUSE.INITIALIZE_CITY
         })
     },
 
@@ -39,7 +44,7 @@ export const histoire = {
             const url = new URL(window.location)
             url.searchParams.set('id', id)
             history.pushState({}, "", url)
-            update(id, 'pushstate')
+            update(id, CAUSE.PUSHSTATE)
         }
     },
 

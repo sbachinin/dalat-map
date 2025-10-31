@@ -1,5 +1,5 @@
 import { display_highlights } from "./highlights.mjs"
-import { histoire } from "./histoire.mjs"
+import { CAUSE, histoire } from "./histoire.mjs"
 import { try_open_building } from "./panel/bldg_details.mjs"
 import { panel } from "./panel/panel.mjs"
 import { update_selected_map_features } from "./update_selected_feaures.mjs"
@@ -16,7 +16,7 @@ export const handle_id_change = () => {
         && is_feature_selectable(id)
     ) {
         let should_expand_panel = true
-        if (cause === 'initialze_city') {
+        if (cause === CAUSE.INITIALIZE_CITY) {
             should_expand_panel = panel_was_expanded()
         } else if (cause === 'popstate') {
             should_expand_panel = false
