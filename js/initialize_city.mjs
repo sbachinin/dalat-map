@@ -7,9 +7,13 @@ import { distance } from 'https://esm.sh/@turf/distance'
 import { create_scale, update_scale } from './manage_scale.mjs'
 import { add_mouse_stuff } from './mouse_stuff.mjs'
 import { get_style } from './style.mjs'
-import { display_highlights, /* preload_some_images */ } from './highlights.mjs'
-import { try_open_building } from './panel/bldg_details.mjs'
-import { get_bldg_id_from_url, get_center_for_bldg_with_offset, get_minimal_zoom_on_building_select } from './utils/frontend_utils.mjs'
+import {
+    get_id_from_current_url,
+    get_center_for_bldg_with_offset,
+    get_minimal_zoom_on_building_select,
+    panel_was_expanded
+} from './utils/frontend_utils.mjs'
+
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
 import { load_icons } from './load_icons.mjs'
 import {
@@ -25,6 +29,9 @@ import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './load_city.mjs'
 import { DEFAULT_MAX_ZOOM } from './constants.mjs'
 import { throttled_update_flyto_button } from './panel/bldg_details_icons.mjs'
+import { handle_id_change } from './handle_id_change.mjs'
+import { histoire } from './histoire.mjs'
+import { panel } from './panel/panel.mjs'
 
 globalThis.turf = { // because the following turf functions are used on build too, and build can't import turf from https, imports it from node_modules instead
     centerOfMass,
@@ -46,13 +53,11 @@ export const initialize_city = async (name) => {
         localStorage.removeItem('map_zoom')
     }
 
-    const initial_bldg_id = get_bldg_id_from_url(window.location.href)
+    const bldg_id_to_select = is_feature_selectable(get_id_from_current_url())
+        ? get_id_from_current_url()
+        : null
 
-    if (initial_bldg_id && !is_feature_selectable(initial_bldg_id)) {
-        console.warn(`"id" parameter in the URL is not a selectable building id`)
-    }
-
-    const zoom = (is_feature_selectable(initial_bldg_id) && get_minimal_zoom_on_building_select(initial_bldg_id))
+    const zoom = (bldg_id_to_select && get_minimal_zoom_on_building_select(bldg_id_to_select))
         || localStorage.getItem('map_zoom')
         || current_city.intro_zoom
 
@@ -88,16 +93,27 @@ export const initialize_city = async (name) => {
     // TODO 'idle' is used here in false expectation that it will allow to open panel only when map has finished drawing all tiles
     // This is half-cured by increasing the delay of 1st panel expand
     map.once('idle', async () => {
-        await initialize_panel()
+        histoire.initialize()
+
+        initialize_panel()
+
+        handle_id_change()
+
+        if (panel_was_expanded()) {
+            // therefore need to re-expand
+            await new Promise(resolve => {
+                panel.once('begin transition to new size', 'app', resolve)
+            })
+        }
 
         initialize_highlights_button()
 
         let center = initial_center
 
-        if (is_feature_selectable(initial_bldg_id)) {
+        if (bldg_id_to_select) {
             // get_center can return null, perhaps when centroid isn't generated yet,
             // It means some fuckup in the code but still it's better to show a sensible center
-            center = get_center_for_bldg_with_offset(initial_bldg_id) || initial_center
+            center = get_center_for_bldg_with_offset(bldg_id_to_select) || initial_center
         }
 
         map.setCenter(center)
@@ -135,6 +151,14 @@ export const initialize_city = async (name) => {
     window.addEventListener('resize', onresize)
     window.addEventListener('orientationchange', onresize)
 
+    histoire.onchange(handle_id_change)
+
+    map.on('moveend', () => {
+        const { lng, lat } = map.getCenter()
+        localStorage.setItem('map_center', JSON.stringify([lng, lat]))
+        localStorage.setItem('map_zoom', map.getZoom())
+    })
+
     if (
         window.location.hostname.endsWith('localhost')
         || window.location.hostname.match('192.168')
@@ -156,22 +180,4 @@ export const initialize_city = async (name) => {
         )
     }
 
-    window.addEventListener("popstate", (event) => {
-        const id = Number(new URLSearchParams(window.location.search).get('id'))
-        if (id && is_feature_selectable(id)) {
-            try_open_building(id, {
-                should_push_history: false,
-                should_expand_panel: false,
-                should_try_to_fly: true,
-            })
-        } else {
-            display_highlights({ should_push_history: false })
-        }
-    })
-
-    map.on('moveend', () => {
-        const { lng, lat } = map.getCenter()
-        localStorage.setItem('map_center', JSON.stringify([lng, lat]))
-        localStorage.setItem('map_zoom', map.getZoom())
-    })
 }

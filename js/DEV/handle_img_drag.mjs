@@ -72,7 +72,7 @@ document.querySelector('#maplibregl-map').addEventListener("drop", e => {
     // open & refresh the panel with this building details
     // (-> make sure the image was added to the right building,
     // because detection of what feature was the "drop target" is not completely reliable)
-    display_highlights({ should_push_history: false })
+    display_highlights()
     try_open_building(feat_id)
 
     // add "save to file" warning-button

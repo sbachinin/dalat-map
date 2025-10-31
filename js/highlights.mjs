@@ -1,8 +1,7 @@
 import { panel, PANEL_CONTENT_TYPES } from './panel/panel.mjs'
-import { debounce, push_to_history } from './utils/frontend_utils.mjs'
+import { debounce } from './utils/frontend_utils.mjs'
 import { create_panel_thumbs_list } from './panel/panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel/panel_thumbs_list_size_manager.mjs'
-import { update_selected_features } from './update_selected_feaures.mjs'
 import { current_city } from './load_city.mjs'
 
 const MAX_HIGHLIGHTS_WIDTH_RATIO = 40
@@ -17,11 +16,7 @@ const update_size_variables = () => {
 
 const scroll_pos = [0, 0]
 
-export const display_highlights = ({
-    should_push_history
-}) => {
-
-    update_selected_features(null)
+export const display_highlights = () => {
 
     highlights_el = highlights_el || create_panel_thumbs_list({
         images_basenames: current_city.highlights_order,
@@ -33,10 +28,6 @@ export const display_highlights = ({
         element: highlights_el,
         id: 'highlights'
     })
-
-    if (should_push_history) {
-        push_to_history('')
-    }
 
     panel.on('scroll', 'highlights list', debounce(e => {
         if (panel.content.id === 'highlights') {

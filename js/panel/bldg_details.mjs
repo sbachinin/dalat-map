@@ -1,5 +1,4 @@
 import { panel } from './panel.mjs'
-import { update_selected_features } from '../update_selected_feaures.mjs'
 import { create_panel_thumbs_list } from './panel_thumbs_list.mjs'
 import { update_panel_thumbs_list_size_variables } from './panel_thumbs_list_size_manager.mjs'
 import {
@@ -9,7 +8,6 @@ import {
     get_minimal_zoom_on_building_select,
     panel_is_vertical,
     parse_markdown_links,
-    push_to_history,
 } from '../utils/frontend_utils.mjs'
 import { is_feature_selectable } from '../utils/does_feature_have_details.mjs'
 import { current_city } from '../load_city.mjs'
@@ -96,7 +94,6 @@ const set_panel_content = (id) => {
 export const try_open_building = async (
     id,
     {
-        should_push_history = false,
         should_expand_panel = true,
         should_try_to_fly = false,
     } = {}
@@ -107,9 +104,6 @@ export const try_open_building = async (
     }
 
     if (is_feature_selectable(id)) {
-
-        update_selected_features(id)
-
         update_flyto_button()
 
         if (document.fonts && !document.fonts.check('italic normal 400 1em Merriweather')) {
@@ -117,10 +111,6 @@ export const try_open_building = async (
             await merriweather.load()
         }
         set_panel_content(id)
-
-        if (should_push_history) {
-            push_to_history(`?id=${id}${window.location.hash}`)
-        }
 
         // wait for flight to end or to be cancelled right away
         await new Promise(resolve => {

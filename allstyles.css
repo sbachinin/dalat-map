@@ -198,3 +198,7 @@ body {
     /* prevent built-in ugly blue outline */
     box-shadow: 0 0 5px 2px #adadad;
 }
+
+[data-href-id] * {
+    pointer-events: none;
+}

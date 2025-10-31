@@ -1,13 +1,13 @@
 import { current_city } from "../load_city.mjs"
 import { 
     can_share_files, 
-    get_bldg_id_from_url, 
+    get_id_from_current_url, 
     get_image_file_from_element,
     get_link_to_selected_bldg,
  } from "../utils/frontend_utils.mjs"
 
 export const onclick_share = async () => {
-    const bldg_data = current_city.all_handmade_data[get_bldg_id_from_url(window.location.href)]
+    const bldg_data = current_city.all_handmade_data[get_id_from_current_url()]
 
     let files = undefined // shouldn't pass files if sharing of files is not supported
 

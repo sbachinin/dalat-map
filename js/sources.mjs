@@ -49,6 +49,7 @@ export const get_main_sources = () => {
     function get_centroids_as_features() {
         return Object.entries(current_city.features_generated_props_for_frontend)
             .map(([feat_id, props]) => {
+                feat_id = Number(feat_id)
                 return {
                     "type": "Feature",
                     id: feat_id,

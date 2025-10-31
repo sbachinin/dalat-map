@@ -1,20 +1,17 @@
 import { panel } from './panel/panel.mjs'
-import { display_highlights } from './highlights.mjs'
-import { try_open_building } from './panel/bldg_details.mjs'
 import { CURSOR_POINTER_MINZOOM } from './common_drawing_layers/constants.mjs'
 import {
     debounce,
     find_bldg_id_by_image_filename,
-    get_bldg_id_from_url,
-    get_cityname_from_url,
-    is_mouse_device
+    is_mouse_device,
+    is_only_digits
 } from './utils/frontend_utils.mjs'
 import { lightbox, PSWP_HIDE_ANIMATION_DURATION } from './panel/init_photoswipe.mjs'
 import { initialize_custom_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { show_tooltip } from './tooltip.mjs'
 import { find_clickable_feat } from './find_clickable_feat.mjs'
-import { current_city } from './load_city.mjs'
+import { histoire } from './histoire.mjs'
 
 
 
@@ -32,10 +29,7 @@ export const add_mouse_stuff = () => {
         )
         const clickable_feat = find_clickable_feat(e.point)
         if (clickable_feat) {
-            try_open_building(clickable_feat.id, {
-                should_push_history: true,
-                should_try_to_fly: true
-            })
+            histoire.push(clickable_feat.id)
         } else if (!panel.is_pristine()) {
             panel.set_size(0)
         }
@@ -54,14 +48,6 @@ export const add_mouse_stuff = () => {
         }
     })
 
-
-
-
-
-
-    document.querySelector('#non-panel #highlights-opener').addEventListener('click', () => {
-        display_highlights({ should_push_history: true })
-    })
 
 
     is_mouse_device && document.body.addEventListener('mouseover', debounce((e) => {
@@ -102,10 +88,7 @@ export const add_mouse_stuff = () => {
                 ? 0 // because pswp has no closing animation on desktop
                 : PSWP_HIDE_ANIMATION_DURATION + 200
             setTimeout(
-                () => try_open_building(bldg_id, {
-                    should_push_history: true,
-                    should_try_to_fly: true
-                }),
+                () => histoire.push(bldg_id),
                 open_building_delay
             )
             lightbox?.pswp?.close()
@@ -126,24 +109,13 @@ export const add_mouse_stuff = () => {
             window.open(url, '_blank')
         }
 
-        if (e.target.closest('a[href]')) {
-
-            // if it's a link to a building in the current city, just select this building
-            if (
-                get_cityname_from_url(e.target.href) === current_city.name
-                && e.target.id !== 'port-switcher'
-                && get_bldg_id_from_url(e.target.href) !== null
-            ) {
-                e.preventDefault()
-                try_open_building(get_bldg_id_from_url(e.target.href), {
-                    should_push_history: true,
-                    should_try_to_fly: true
-                })
+        if (e.target.dataset.hrefId) {
+            e.preventDefault()
+            let id = e.target.dataset.hrefId
+            if (is_only_digits(id)) {
+                id = Number(id)
             }
-
-            // it can be a link to highlights in the current city => open highlights
-
-            // it can be a link to smth in another city => do what?
+            histoire.push(id)
         }
     })
 

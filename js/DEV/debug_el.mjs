@@ -20,6 +20,12 @@ if (window.location.hostname.endsWith('localhost')
 
     const port_switcher = debugel.querySelector('a#port-switcher')
     port_switcher.addEventListener('click', () => {
+        // increment subdomain, if localhost
+        if (!window.location.href.match('localhost')) {
+            // if not localhost, then it's probably a bare ip address, when visiting from mobile
+            // in such case, incrementing ip address leads to a puzzling blank screen
+            return
+        }
         const parsedUrl = new URL(window.location.href)
         const subdomains = parsedUrl.hostname.split('.')
         if (!isNaN(Number(subdomains[0]))) {

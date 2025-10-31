@@ -1,4 +1,8 @@
 export const bldgs_handmade_data = {
+    1445966941: {
+        title: `Bishop's
+        mission`
+    },
     "17877171": {
         "title": "Railway\nstation",
         subtitle: 'Designed in the Art Deco style with influences from traditional Cao Nguyen communal houses.\nIt currently operates a 7-km tourist railway line connecting to the nearby village of Trai Mat',

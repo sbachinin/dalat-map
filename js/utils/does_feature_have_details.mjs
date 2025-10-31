@@ -6,9 +6,15 @@ export const is_feature_selectable = (
     if (!hmdata) {
         throw new Error('hmdata is undefined')
     }
+
+    if (id === null || typeof id !== 'number') {
+        return
+    }
+
     if (id === undefined) {
         console.warn('Trying to get building details but id is undefined. Hmm')
     }
+
     const feat_hm_data = hmdata[id]
 
     if (fids_to_img_names[id]?.length) {

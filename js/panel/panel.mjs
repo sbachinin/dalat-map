@@ -133,6 +133,7 @@ export const panel = {
             wait_for_sizeless_images_load(_content.element.querySelectorAll('img:not(#panel-thumbs-list img)'))
         ])
 
+        _content.update_size = _content.update_size || (() => {})
         panel.content = _content
         panel.body_element.innerHTML = ''
         panel.body_element.appendChild(_content.element)

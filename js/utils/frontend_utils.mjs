@@ -154,17 +154,9 @@ export const create_element_from_Html = htmlString => {
     return div.firstElementChild
 }
 
-/* search_params: '' or '?id=123' */
-export const push_to_history = (search_params) => {
-    if (search_params === window.location.search) {
-        console.log('Trying to write the same url to history! This will be ignored.')
-    } else if (search_params === '') {
-        // highlights
-        history.pushState({}, "", `/${current_city.name}`)
-    } else {
-        history.pushState({}, "", search_params)
-    }
-}
+// this defaults to true, if such item wasn't set (fresh user).
+// !! This works but is semantically muddy. It's not really so that the panel was expanded if you never visited the page before
+export const panel_was_expanded = () => localStorage.getItem('panel_was_expanded') !== 'false'
 
 export const get_panel_shown_breadth = () => {
     return get_css_var_num('--panel-breadth')
@@ -324,24 +316,24 @@ export const get_link_to_bldg = (id) => {
     return window.location.origin + window.location.pathname + `?id=` + id
 }
 export const get_link_to_selected_bldg = () => {
-    return get_link_to_bldg(get_bldg_id_from_url(window.location.href))
+    return get_link_to_bldg(get_id_from_current_url())
 }
 
 
-function is_only_digits(str) {
+export function is_only_digits(str) {
     return /^\d+$/.test(str)
 }
 
 export function parse_markdown_links(text) {
-    // Regular expression to match markdown links: [text](url)
+    // Regular expression to match markdown links: [linkText](addr)
     const reg = /\[([^\]]+)\]\(([^)]+)\)/g
 
     // Replace all matches with HTML anchor tags
-    return text.replace(reg, (match, linkText, url) => {
-        if (is_only_digits(url)) { // instead of url there can be a bldg id -> should convert it to url
-            url = get_link_to_bldg(url)
+    return text.replace(reg, (match, linkText, addr) => {
+        if (is_only_digits(addr)) { // instead of url there can be a bldg id -> prepend 'id=' to it
+            return `<a href='#' data-href-id='${addr}'>${linkText}</a>`
         }
-        return `<a target='_blank' href='${url}'>${linkText}</a>`
+        return `<a target='_blank' href='${addr}'>${linkText}</a>`
     });
 }
 
@@ -366,11 +358,27 @@ export const get_minimal_zoom_on_building_select = (id) => {
 }
 
 
-
-export const get_bldg_id_from_url = (url) => {
+/*
+    returns
+    number(if id is only digits - building id)
+    string(if id is not only digits - 'menu' or 'some_highlights_list')
+    null(if there was no id param or it was empty (had only "?id="))
+*/
+export const get_id_from_url = (url) => {
     const id = new URL(url).searchParams.get('id')
-    return id ? Number(id) : null
+    if (is_only_digits(id)) { // is a building id
+        return Number(id)
+    } else if (id?.length) {
+        return id // 'menu' or 'some_highlights_list'
+    } else {
+        // here: can be null, in case of no param, or '', in case of no value
+        // For now, I can imagine only valid use case for this: sharing -> visiting a "city root" url, where id part would be pointless
+        // Otherwise, in the process of using the map, id will normally always be present
+        return null
+    }
 }
+
+export const get_id_from_current_url = () => get_id_from_url(window.location.href)
 
 export const get_cityname_from_url = (url) => {
     const pathname_parts = new URL(url).pathname.split('/').filter(s => s.length > 0)

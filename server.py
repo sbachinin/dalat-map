@@ -2,10 +2,15 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 # this server is meant to provide immediate cache expiration
 # to test changes on mobile.
-# For now, it's not clear if it really works
+# It works (but it might be that simple http-server provides the same).
 
-# visit it from mobile: 192.168.110.64:8080
+# visit it from mobile: [ip address]:8080
+# how to get ip address:
+    # "ipconfig" in powershell
+    # Look for "IPv4 Address" in the section "Wireless LAN adapter Wi-Fi"
 # other ports won't work (8080 is made available by "port forwarding" btw windows and wsl)
+# comp and mobile must be connected to same wifi
+# after both connect to a new wifi, ip needs to be changed
 
 class NoCacheHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
