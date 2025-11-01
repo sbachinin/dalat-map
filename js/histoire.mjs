@@ -1,4 +1,4 @@
-import { get_id_from_current_url } from "./utils/frontend_utils.mjs"
+import { get_id_from_current_url, throttle } from "./utils/frontend_utils.mjs"
 
 export const CAUSE = {
     INITIALIZE_CITY: 'initialize_city',
@@ -6,7 +6,10 @@ export const CAUSE = {
     POPSTATE: 'popstate'
 }
 
-window.addEventListener("popstate", () => update(get_id_from_current_url(), CAUSE.POPSTATE))
+window.addEventListener(
+    "popstate", 
+    throttle(() => update(get_id_from_current_url(), CAUSE.POPSTATE), 500, true)
+)
 
 let subscriber = null
 
