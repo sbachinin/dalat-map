@@ -92,12 +92,7 @@ const set_panel_content = (id) => {
     )
 }
 
-export const try_open_building = async (
-    id,
-    {
-        should_try_to_fly = false,
-    } = {}
-) => {
+export const try_open_building = async (id) => {
     if (id === panel.content?.id) {
         panel.resize_to_content() // meaning, expand the panel if it was collapsed
         return
@@ -114,18 +109,12 @@ export const try_open_building = async (
 
         // wait for flight to end or to be cancelled right away
         await new Promise(resolve => {
-            if (!should_try_to_fly) {
-                resolve()
-            }
             panel.once(
                 'new content breadth',
                 'fly to newly opened building',
                 async () => {
-                    if (should_try_to_fly) {
-                        await try_fly_to_building(id)
-                    }
+                    await try_fly_to_building(id)
                     resolve()
-
                     if (panel.is_about_to_expand) {
                         panel.resize_to_content()
                     }

@@ -18,10 +18,7 @@ export const handle_id_change = () => {
     if (typeof id === 'number'
         && is_feature_selectable(id)
     ) {
-
-        try_open_building(id, {
-            should_try_to_fly: true,
-        })
+        try_open_building(id)
     } else if (id === 'menu') {
         // 1. links to other cities
         // 2. link to world map
