@@ -121,7 +121,7 @@ export const panel = {
 
     async set_content(
         _content,
-        { should_resize_immediately = true } = {}
+        { postpone_panel_expand = false } = {} // may need to expand only after a flight to a building has finished
     ) {
         if (panel.content?.element === _content?.element) {
             panel.resize_to_content()
@@ -150,7 +150,7 @@ export const panel = {
 
         panel.fire('new content breadth')
 
-        if (panel.is_about_to_expand && should_resize_immediately) {
+        if (panel.is_about_to_expand && !postpone_panel_expand) {
             panel.resize_to_content()
         }
 

@@ -85,9 +85,10 @@ const set_panel_content = (id) => {
             element: details_el,
             id
         },
-        {
-            should_resize_immediately: panel.is_rather_expanded()
-        }
+
+        // if need to expand, do it only after the map flight.
+        // Otherwise, if flight and expand happen sim-ly, it's a bit too much fuss
+        { postpone_panel_expand: true }
     )
 }
 
