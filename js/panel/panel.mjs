@@ -78,7 +78,14 @@ export const panel = {
         return panel.wrapper_element.classList.contains('pristine')
     },
 
-    // word "resize" instead of "expand" because it's not always expand: if new content is smaller than old, it's a partial collapse
+    /* 
+        This can mean 2 things really:
+        1) expand to content from 0
+        2) resize from the previous content size to new content size, if panel was already expanded
+            (therefore it can obtain a smaller size, thus calling this "expand to content" would be slightly wrong).
+        I'm not sure if this function is clear enough in its purpose.
+            Possibly, "expand" and "resize_the_already_expanded_panel_to_different_content" should be 2 different things, IDK
+    */
     async resize_to_content() {
         panel.set_size(panel.content_breadth)
 
@@ -117,7 +124,7 @@ export const panel = {
             update_size: () => void    // function that adjusts the CSS styles of the content, and after it's done, the content's actual size can be measured to decide how much the panel should be expanded
         }
     */
-    content: null, 
+    content: null,
 
     async set_content(
         _content,
@@ -136,7 +143,7 @@ export const panel = {
             wait_for_sizeless_images_load(_content.element.querySelectorAll('img:not(#panel-thumbs-list img)'))
         ])
 
-        _content.update_size = _content.update_size || (() => {})
+        _content.update_size = _content.update_size || (() => { })
         panel.content = _content
         panel.body_element.innerHTML = ''
         panel.body_element.appendChild(_content.element)
@@ -150,7 +157,16 @@ export const panel = {
 
         panel.fire('new content breadth')
 
-        if (panel.is_about_to_expand && !postpone_panel_expand) {
+        /*
+            If panel is already expanded, resize to a new breadth immediately
+                (waiting for a flight to end looks awkward in this case).
+            If panel is being expanded from 0,
+                delay it if necessary (if a flight is about to begin, and thus expanding the panel now will cause too much action on the screen)
+        */
+        if (
+            panel.is_rather_expanded()
+            || (panel.is_about_to_expand && !postpone_panel_expand)
+        ) {
             panel.resize_to_content()
         }
 
