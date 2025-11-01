@@ -115,6 +115,10 @@ export const panel = {
         return get_panel_shown_breadth() <= panel.content_breadth / 2
     },
 
+    is_collapsed() {
+        return get_panel_shown_breadth() === 0
+    },
+
     is_about_to_expand: false,
 
     /*
