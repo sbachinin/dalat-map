@@ -466,6 +466,11 @@ export const lakes_handmade_data = {
 }
 
 export const land_areas_handmade_data = {
+
+    631871434: {
+        title: `Quốc Ân
+        pagoda`
+    },
     531031515: {
         title: `Primary
         school`
