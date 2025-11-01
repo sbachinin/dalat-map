@@ -8,7 +8,7 @@ export const is_feature_selectable = (
     }
 
     if (id === null || typeof id !== 'number') {
-        return
+        return false
     }
 
     if (id === undefined) {

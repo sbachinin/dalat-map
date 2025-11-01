@@ -150,7 +150,7 @@ export const panel = {
 
         panel.fire('new content breadth')
 
-        if (should_resize_immediately) {
+        if (panel.is_about_to_expand && should_resize_immediately) {
             panel.resize_to_content()
         }
 

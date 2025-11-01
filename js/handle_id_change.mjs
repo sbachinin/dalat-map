@@ -12,17 +12,12 @@ export const handle_id_change = () => {
 
     const { id, cause } = histoire.entries[histoire.entries.length - 1]
 
+    panel.is_about_to_expand = should_expand_panel(id, cause)
+
+
     if (typeof id === 'number'
         && is_feature_selectable(id)
     ) {
-        let should_expand_panel = true
-        if (cause === CAUSE.INITIALIZE_CITY) {
-            should_expand_panel = panel_was_expanded()
-        } else if (cause === 'popstate') {
-            should_expand_panel = false
-        }
-
-        panel.is_about_to_expand = should_expand_panel
 
         try_open_building(id, {
             should_try_to_fly: true,
@@ -68,5 +63,39 @@ export const handle_id_change = () => {
         // perhaps better be defined for a city: if there are many lists, show a list of lists; otherwise "the best"
     } else {
         console.error('id is of invalid type')
+    }
+}
+
+
+
+
+/* 
+    When panel must be expanded and when not:
+    When city is opened for the first time, expand with intro
+        For simplicity, "1st time" is just when city's root url is opened (no ?id=)
+        (it can happen many times really, due to navigation from world map, or due to hitting a link, but it looks unessential)
+    When city is opened (initialized) again, expand/not according to what was last time
+        (last time in any city?)
+    When opening some content via pushState (something NEW is opened), always expand
+    When opening due to back/forward,
+        1) leave the panel expanded/collapsed if it's a navigation to a building
+            (and therefore a user has a clue about what's going on, looking at the changing map, even if panel is closed)
+        2) expand on any non-building content
+           (otherwise, if panel is collapsed and not expanded, it will look as if nothing happened on B/F)
+
+    This logic doesn't guarantee sensible behaviour when switching between cities; I haven't given much thought to it yet. But in general, I think nothing critical is going to happen
+*/
+const should_expand_panel = (id, cause) => {
+    if (id === null) { // "1st visit to a city"
+        return true
+    }
+    if (cause === CAUSE.INITIALIZE_CITY) { // secondary visit begins
+        return panel_was_expanded()
+    }
+    if (cause === CAUSE.PUSHSTATE) {
+        return true
+    }
+    if (cause === CAUSE.POPSTATE) {
+        return !is_feature_selectable(id)
     }
 }
