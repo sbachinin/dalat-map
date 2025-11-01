@@ -44,7 +44,7 @@ const get_panel_body_breadth = _ => { // height/width with scrollbar
 }
 
 const update_expand_button = debounce(async () => {
-    const was_expanded = !panel.is_rather_collapsed()
+    const was_expanded = !panel.is_collapsed()
     expand_button_el.classList[was_expanded ? 'add' : 'remove']('inward')
 })
 
@@ -98,10 +98,10 @@ export const panel = {
         }
         panel.is_about_to_expand = false
     },
-    async toggle() {
+    toggle() {
         if (panel.is_pristine()) return
 
-        const was_expanded = !panel.is_rather_collapsed()
+        const was_expanded = !panel.is_collapsed()
 
         if (was_expanded) {
             panel.set_size(0)
@@ -111,7 +111,7 @@ export const panel = {
             panel.fire('content is missing')
         }
     },
-    is_rather_collapsed() {
+    UNUSED_is_rather_collapsed() {
         return get_panel_shown_breadth() <= panel.content_breadth / 2
     },
 
@@ -168,7 +168,7 @@ export const panel = {
                 delay it if necessary (if a flight is about to begin, and thus expanding the panel now will cause too much action on the screen)
         */
         if (
-            !panel.is_rather_collapsed()
+            !panel.is_collapsed()
             || (panel.is_about_to_expand && !postpone_panel_expand)
         ) {
             panel.resize_to_content()

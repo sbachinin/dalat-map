@@ -182,7 +182,7 @@ export const try_fly_to_building = (
         const target_zoom = Math.max(get_minimal_zoom_on_building_select(id), map_zoom)
 
         const panel_will_be_expanded = panel.is_about_to_expand
-            || !panel.is_rather_collapsed()
+            || !panel.is_collapsed()
 
         if (
             coords_will_be_in_view(feature_screen_xy, panel_will_be_expanded)
