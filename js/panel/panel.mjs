@@ -35,7 +35,6 @@ const subscribers = {
     'content was just set': {},
     'begin transition to new size': {}, // to be fired only when panel is toggled, not on drag
     'scroll': {},
-    'content is missing': {},
     'new content breadth': {},
 }
 
@@ -108,7 +107,7 @@ export const panel = {
         } else if (panel.content) {
             panel.resize_to_content()
         } else {
-            panel.fire('content is missing')
+            console.error(`content is missing, this can't be right`)
         }
     },
     UNUSED_is_rather_collapsed() {
