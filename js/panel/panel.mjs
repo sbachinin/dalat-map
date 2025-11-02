@@ -20,14 +20,13 @@ const CONTENT_FADE_DURATION = 200
 
 const expand_button_el = document.querySelector(`#panel-expand-button`)
 const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
-const panel_expand_button_el = document.querySelector('#panel-expand-button')
 
 
 set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's')
 set_css_num_var('--panel-first-expand-transition-duration', FIRST_EXPAND_TRANSITION_DURATION / 1000, 's')
 set_css_num_var('--panel-first-expand-transition-delay', FIRST_EXPAND_TRANSITION_DELAY / 1000, 's')
 set_css_num_var('--panel-breadth', 0, 'px')
-set_css_num_var('--panel-expand-button-size', panel_expand_button_el.offsetWidth, 'px')
+set_css_num_var('--panel-expand-button-size', expand_button_el.offsetWidth, 'px')
 set_css_num_var('--panel-content-fade-duration', CONTENT_FADE_DURATION / 1000, 's')
 
 const subscribers = {
@@ -50,7 +49,7 @@ const update_expand_button = debounce(async () => {
 export const panel = {
     wrapper_element: document.querySelector(`#panel-expander`),
     body_element: document.querySelector(`#panel`),
-    expand_button_el: panel_expand_button_el,
+    expand_button_el,
 
     content_breadth: null,
     cache_content_breadth() {
