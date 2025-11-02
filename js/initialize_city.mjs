@@ -24,14 +24,13 @@ import './photoswipe_mutations_observer.mjs'
 import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
 import { initialize_highlights_button } from './panel/highlights_button.mjs'
-import { initialize_panel } from './panel/initialize_panel.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './load_city.mjs'
 import { DEFAULT_MAX_ZOOM } from './constants.mjs'
 import { throttled_update_flyto_button } from './panel/bldg_details_icons.mjs'
 import { handle_id_change } from './handle_id_change.mjs'
 import { histoire } from './histoire.mjs'
-import { panel } from './panel/panel.mjs'
+import { panel, update_panel_expand_button } from './panel/panel.mjs'
 
 globalThis.turf = { // because the following turf functions are used on build too, and build can't import turf from https, imports it from node_modules instead
     centerOfMass,
@@ -93,10 +92,13 @@ export const initialize_city = async (name) => {
     // TODO 'idle' is used here in false expectation that it will allow to open panel only when map has finished drawing all tiles
     // This is half-cured by increasing the delay of 1st panel expand
     map.once('idle', async () => {
-        
-        initialize_panel()
 
         histoire.initialize(handle_id_change)
+
+        requestAnimationFrame(() => { // just in case
+            // This is to reveal the button (remove its hidden class) in case panel is collapsed on pageload
+            update_panel_expand_button()
+        })
 
         if (panel_was_expanded()) {
             // therefore need to re-expand

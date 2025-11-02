@@ -12,7 +12,7 @@ export const handle_id_change = () => {
 
     const { id } = histoire.entries[histoire.entries.length - 1]
 
-    panel.is_about_to_expand = should_expand_panel(id, histoire.last_cause)
+    panel.must_expand = should_expand_panel(id, histoire.last_cause)
 
 
     if (typeof id === 'number'

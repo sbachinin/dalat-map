@@ -41,9 +41,10 @@ const get_panel_body_breadth = _ => { // height/width with scrollbar
     return panel.body_element[panel_is_vertical() ? 'offsetWidth' : 'offsetHeight']
 }
 
-const update_expand_button = debounce(async () => {
-    const was_expanded = !panel.is_collapsed()
-    expand_button_el.classList[was_expanded ? 'add' : 'remove']('inward')
+export const update_panel_expand_button = debounce(() => {
+    const will_be_expanded = panel.must_expand || !panel.is_collapsed()
+    expand_button_el.classList[will_be_expanded ? 'add' : 'remove']('inward')
+    panel.expand_button_el.classList.remove('hidden') // to avoid visual noise, show button only after the direction of the arrow is defined
 })
 
 export const panel = {
@@ -55,7 +56,7 @@ export const panel = {
     cache_content_breadth() {
         panel.content_breadth = get_panel_body_breadth()
     },
-    async set_size(size, is_dragged = false) {
+    set_size(size, is_dragged = false) {
         if (size === undefined) return
 
         set_css_num_var('--panel-breadth', size, 'px')
@@ -67,7 +68,7 @@ export const panel = {
 
         panel.body_element.style.opacity = (size > panel.content_breadth * 0.2) ? 1 : 0
         tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
-        update_expand_button()
+        update_panel_expand_button()
 
         localStorage.setItem('panel_was_expanded', size > 0)
     },
@@ -94,7 +95,7 @@ export const panel = {
         } else {
             await wait(EXPAND_TRANSITION_DURATION)
         }
-        panel.is_about_to_expand = false
+        panel.must_expand = false
     },
     toggle() {
         if (panel.is_pristine()) return
@@ -117,7 +118,7 @@ export const panel = {
         return get_panel_shown_breadth() === 0
     },
 
-    is_about_to_expand: false,
+    must_expand: false,
 
     /*
         {
@@ -167,7 +168,7 @@ export const panel = {
         */
         if (
             !panel.is_collapsed()
-            || (panel.is_about_to_expand && !postpone_panel_expand)
+            || (panel.must_expand && !postpone_panel_expand)
         ) {
             panel.resize_to_content()
         }

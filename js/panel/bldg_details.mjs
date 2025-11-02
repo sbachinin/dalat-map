@@ -115,7 +115,7 @@ export const try_open_building = async (id) => {
                 async () => {
                     await try_fly_to_building(id)
                     resolve()
-                    if (panel.is_about_to_expand) {
+                    if (panel.must_expand) {
                         panel.resize_to_content()
                     }
                 }
@@ -170,7 +170,7 @@ export const try_fly_to_building = (
 
         const target_zoom = Math.max(get_minimal_zoom_on_building_select(id), map_zoom)
 
-        const panel_will_be_expanded = panel.is_about_to_expand
+        const panel_will_be_expanded = panel.must_expand
             || !panel.is_collapsed()
 
         if (
