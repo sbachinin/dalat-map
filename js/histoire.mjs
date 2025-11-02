@@ -7,7 +7,7 @@ export const CAUSE = {
 }
 
 window.addEventListener(
-    "popstate", 
+    "popstate",
     throttle(() => update(get_id_from_current_url(), CAUSE.POPSTATE), 500, true)
 )
 
@@ -47,15 +47,12 @@ export const histoire = {
     },
 
     push: (id) => {
-        if (id === get_id_from_current_url()) {
-            // don't push the same id to history
-            subscriber()
-        } else {
+        if (id !== get_id_from_current_url()) {
             const url = new URL(window.location)
             url.searchParams.set('id', id)
             history.pushState({}, "", url)
-            update(id, CAUSE.PUSHSTATE)
         }
+        update(id, CAUSE.PUSHSTATE)
     },
 
 
@@ -73,6 +70,12 @@ export const histoire = {
 }
 
 function update(id, last_cause) {
-    histoire.entries.push({ id, last_cause })
+    // don't create a new entry for same id, only update last_cause
+    const last_entry = entries[entries.length - 1]
+    if (id === last_entry.id) {
+        last_entry.last_cause = last_cause
+    } else {
+        entries.push({ id, last_cause })
+    }
     subscriber()
 }
