@@ -202,3 +202,7 @@ body {
 [data-href-id] * {
     pointer-events: none;
 }
+
+[data-href-id=menu] svg * {
+    fill: #737373;
+}

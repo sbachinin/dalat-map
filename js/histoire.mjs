@@ -42,7 +42,8 @@ export const histoire = {
 
     push: (id) => {
         if (id === get_id_from_current_url()) {
-            console.log('Trying to push the same id to history! This will be ignored.')
+            // don't push the same id to history
+            subscriber()
         } else {
             const url = new URL(window.location)
             url.searchParams.set('id', id)
