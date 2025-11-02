@@ -25,9 +25,15 @@ let subscriber = null
     WHY everything must begin with a new url:
     because it necessarily begins with a new url in the 'popstate' case (it's fired with new url already in the address bar),
     and so I want the 'pushstate' case to follow the same scheme.
+
+    "Last" cause, and not just "cause", because:
+        Only 1 entry is kept when same id is pushed repeatedly.
+        In this entry, cause must be updated each time in order to ensure proper effects of this last entry.
+        Therefore, it's important to stress that this value is something that needs to be kept up to date.
+
     []{
         id: string,
-        cause: CAUSE
+        last_cause: CAUSE
     }
 */
 const entries = []
@@ -36,7 +42,7 @@ export const histoire = {
     initialize: () => {
         entries.push({
             id: get_id_from_current_url(),
-            cause: CAUSE.INITIALIZE_CITY
+            last_cause: CAUSE.INITIALIZE_CITY
         })
     },
 
@@ -66,7 +72,7 @@ export const histoire = {
     }
 }
 
-function update(id, cause) {
-    histoire.entries.push({ id, cause })
+function update(id, last_cause) {
+    histoire.entries.push({ id, last_cause })
     subscriber()
 }
