@@ -10,9 +10,9 @@ export const handle_id_change = () => {
 
     update_selected_map_features()
 
-    const { id, last_cause } = histoire.entries[histoire.entries.length - 1]
+    const { id } = histoire.entries[histoire.entries.length - 1]
 
-    panel.is_about_to_expand = should_expand_panel(id, last_cause)
+    panel.is_about_to_expand = should_expand_panel(id, histoire.last_cause)
 
 
     if (typeof id === 'number'

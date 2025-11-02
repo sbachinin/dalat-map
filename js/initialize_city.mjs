@@ -93,11 +93,10 @@ export const initialize_city = async (name) => {
     // TODO 'idle' is used here in false expectation that it will allow to open panel only when map has finished drawing all tiles
     // This is half-cured by increasing the delay of 1st panel expand
     map.once('idle', async () => {
-        histoire.initialize()
-
+        
         initialize_panel()
 
-        handle_id_change()
+        histoire.initialize(handle_id_change)
 
         if (panel_was_expanded()) {
             // therefore need to re-expand
@@ -150,8 +149,6 @@ export const initialize_city = async (name) => {
     }
     window.addEventListener('resize', onresize)
     window.addEventListener('orientationchange', onresize)
-
-    histoire.onchange(handle_id_change)
 
     map.on('moveend', () => {
         const { lng, lat } = map.getCenter()
