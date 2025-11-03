@@ -158,9 +158,8 @@ export const initialize_city = async (name) => {
         localStorage.setItem('map_zoom', map.getZoom())
     })
 
-    if (
-        window.location.hostname.endsWith('localhost')
-        || window.location.hostname.match('192.168')
+    if (location.hostname.endsWith('localhost')
+        || /^[\d.]+$/.test(location.hostname) // in numeric host => ip address visited from mobile
     ) {
         const make_script = (src) => {
             const script = document.createElement('script')

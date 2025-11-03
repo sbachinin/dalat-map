@@ -452,6 +452,7 @@ export const buildings_handmade_data = {
     3231165: {
         title: 'Saigon Hotel',
         title_side: 'north',
+        title_coords: [107.590573, 16.467156],
         subtitle: `This hotel, according to many sources, is a very old one, having celebrated its 120+ birthday. That may be true in some sense, but as a piece of architecture, it's difficult to regard it as colonial — based on how it looks today and also on its history (which is a bit obscure). In the early 20th century, it was a rather small building that had nothing in common with the current one, except its main spatial layout with a chamfered corner — i.e., the original hotel also made this double 45° turn at the street corner, instead of a right angle.
 
 Before the end of the French protectorate period, it was extended several times, by 1953 having (supposedly) 72 rooms. Unfortunately, I failed to find any imagery depicting these intermediate stages of its development, so it's hard to say how it looked by the end of French rule.
