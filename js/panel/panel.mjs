@@ -139,7 +139,10 @@ export const panel = {
         _content,
         { postpone_panel_expand = false } = {} // may need to expand only after a flight to a building has finished
     ) {
-        if (panel.content?.element === _content?.element) {
+        if (!_content.id) {
+            throw new Error('panel content has to have id')
+        }
+        if (panel.content?.id === _content?.id) {
             panel.resize_to_content()
             return
         }

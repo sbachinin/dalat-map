@@ -29,11 +29,13 @@ export const handle_id_change = () => {
         panel.set_content({
             element: create_element_from_Html(`<div>Menu
                 <a data-href-id="about">About</a>
-                </div>`)
+                </div>`),
+            id: 'menu'
         })
     } else if (id === 'about') {
         panel.set_content({
             element: create_element_from_Html(`<div>About (legend and textual summary)</div>`),
+            id: 'about'
         })
     } else if (typeof id === 'string') {
         // it must be ONE OF lists of highlights images
@@ -47,6 +49,7 @@ export const handle_id_change = () => {
     } else if (id === null) {
         panel.set_content({
             element: create_element_from_Html(`<div>intro</div>`),
+            id: 'intro'
         })
         // intro:
         // A one-off piece of content that is shown for a user who visits a city for the first time.
