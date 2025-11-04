@@ -71,6 +71,7 @@ export const panel = {
 
         // "panel_was_expanded" means "at least partially expanded"
         localStorage.setItem('panel_was_expanded', size > 0)
+        document.documentElement.setAttribute('panel-is-expanded', size > 0)
 
         if (!is_dragged &&
             (size === 0 || size === panel.content_breadth)
@@ -160,6 +161,7 @@ export const panel = {
         panel.body_element.innerHTML = ''
         panel.body_element.appendChild(_content.element)
         panel.body_element.style.opacity = 0
+        document.documentElement.setAttribute('panel-content-id', _content.id)
 
         await wait_1frame()
 

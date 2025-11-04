@@ -206,3 +206,8 @@ body {
 [data-href-id=menu] svg * {
     fill: #737373;
 }
+
+:root[panel-content-id=menu][panel-is-expanded=true] [data-href-id=menu] {
+    pointer-events: none;
+    opacity: 0.3;
+}
