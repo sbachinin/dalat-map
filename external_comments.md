@@ -149,3 +149,11 @@
     Potentially there can be other sources of style layers and thus possibility of mess.
     So allow_different_title_source restriction reduces the risks but not to 0.
 
+###8 First SLOW panel exand for a new user (pristine panel)
+    If a user never visited ANY city before,
+    no matter if he visits a city's root url, or a building id, or whatever,
+    expand the panel slowly (and with a slight delay) the first time.
+    (For a new user, it certainly will be expanded).
+    'pristine' means that special CSS duration and delay are applied to panel expander element.
+    Until 'pristine' is unset, certain actions (such as swipe) are disabled to avoid ugliness.
+        

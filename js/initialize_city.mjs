@@ -11,7 +11,6 @@ import {
     get_id_from_current_url,
     get_center_for_bldg_with_offset,
     get_minimal_zoom_on_building_select,
-    panel_was_expanded
 } from './utils/frontend_utils.mjs'
 
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
@@ -100,8 +99,7 @@ export const initialize_city = async (name) => {
             update_panel_expand_button()
         })
 
-        if (panel_was_expanded()) {
-            // therefore need to re-expand
+        if (panel.must_expand) {
             await new Promise(resolve => {
                 panel.once('begin transition to new size', 'app', resolve)
             })

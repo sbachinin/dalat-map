@@ -154,10 +154,6 @@ export const create_element_from_Html = htmlString => {
     return div.firstElementChild
 }
 
-// this defaults to true, if such item wasn't set (fresh user).
-// !! This works but is semantically muddy. It's not really so that the panel was expanded if you never visited the page before
-export const panel_was_expanded = () => localStorage.getItem('panel_was_expanded') !== 'false'
-
 export const get_panel_shown_breadth = () => {
     return get_css_var_num('--panel-breadth')
 }

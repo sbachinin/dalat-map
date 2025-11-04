@@ -11,7 +11,7 @@ const debugel = create_element_from_Html(`
                 +
                 </a>
                 <br>
-                <button id="clear-ls">clear ls</button>
+                <button id="clear-ls" style="margin-left: 5px; width: 45px; height: 45px; font-size: 10px;" >clear ls</button>
             </div>`)
 document.body.append(debugel)
 

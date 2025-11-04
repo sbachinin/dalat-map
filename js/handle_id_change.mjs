@@ -4,7 +4,7 @@ import { try_open_building } from "./panel/bldg_details.mjs"
 import { panel } from "./panel/panel.mjs"
 import { update_selected_map_features } from "./update_selected_feaures.mjs"
 import { is_feature_selectable } from "./utils/does_feature_have_details.mjs"
-import { create_element_from_Html, panel_was_expanded } from "./utils/frontend_utils.mjs"
+import { create_element_from_Html } from "./utils/frontend_utils.mjs"
 
 export const handle_id_change = () => {
 
@@ -68,9 +68,8 @@ export const handle_id_change = () => {
 
 /* 
     When panel must be expanded and when not:
-    When city is opened for the first time, expand with intro
-        For simplicity, "1st time" is just when city's root url is opened (no ?id=)
-        (it can happen many times really, due to navigation from world map, or due to hitting a link, but it looks unessential)
+    When app (any city) is opened for the first time, expand (most likely, with intro, but can be different, e.g. if someone follows a link to a building)
+        'First time' is detected by whether panel was ever expanded
     When city is opened (initialized) again, expand/not according to what was last time
         (last time in any city?)
     When opening some content via pushState (something NEW is opened), always expand
@@ -83,11 +82,11 @@ export const handle_id_change = () => {
     This logic doesn't guarantee sensible behaviour when switching between cities; I haven't given much thought to it yet. But in general, I think nothing critical is going to happen
 */
 const should_expand_panel = (id, cause) => {
-    if (id === null) { // "1st visit to a city"
+    if (panel.was_never_expanded()) {
         return true
     }
     if (cause === CAUSE.INITIALIZE_CITY) { // secondary visit begins
-        return panel_was_expanded()
+        return localStorage.getItem('panel_was_expanded') !== 'false'
     }
     if (cause === CAUSE.PUSHSTATE) {
         return true
@@ -95,4 +94,6 @@ const should_expand_panel = (id, cause) => {
     if (cause === CAUSE.POPSTATE) {
         return !is_feature_selectable(id)
     }
+
+    return false // just in case
 }

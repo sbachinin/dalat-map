@@ -15,6 +15,7 @@ import { make_icons, update_flyto_button } from './bldg_details_icons.mjs'
 import { get_icon_as_ctx } from '../load_icons.mjs'
 import { activate_image } from '../lazy-image.mjs'
 import { pin_style_layer_id } from '../common_drawing_layers/layers_for_selected_feature.mjs'
+import { CAUSE, histoire } from '../histoire.mjs'
 
 const update_size_variables = () => {
     update_panel_thumbs_list_size_variables({
@@ -23,7 +24,7 @@ const update_size_variables = () => {
 }
 
 
-const set_panel_content = (id) => {
+const set_panel_content = (id, must_try_to_fly) => {
     const feat_hmd = current_city.all_handmade_data[id]
     const feat_img_names = current_city.fids_to_img_names[id]
 
@@ -88,7 +89,7 @@ const set_panel_content = (id) => {
 
         // if need to expand, do it only after the map flight.
         // Otherwise, if flight and expand happen sim-ly, it's a bit too much fuss
-        { postpone_panel_expand: true }
+        { postpone_panel_expand: must_try_to_fly }
     )
 }
 
@@ -105,7 +106,9 @@ export const try_open_building = async (id) => {
             const merriweather = new FontFaceObserver('Merriweather', { weight: 'normal', style: 'italic' })
             await merriweather.load()
         }
-        set_panel_content(id)
+
+        const must_try_to_fly = histoire.last_cause !== CAUSE.INITIALIZE_CITY // on init, no flight
+        set_panel_content(id, must_try_to_fly)
 
         // wait for flight to end or to be cancelled right away
         await new Promise(resolve => {
@@ -113,7 +116,9 @@ export const try_open_building = async (id) => {
                 'new content breadth',
                 'fly to newly opened building',
                 async () => {
-                    await try_fly_to_building(id)
+                    if (must_try_to_fly) {
+                        await try_fly_to_building(id)
+                    }
                     resolve()
                     if (panel.must_expand) {
                         panel.resize_to_content()

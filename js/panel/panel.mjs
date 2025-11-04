@@ -56,10 +56,20 @@ export const panel = {
     cache_content_breadth() {
         panel.content_breadth = get_panel_body_breadth()
     },
-    set_size(size, is_dragged = false) {
+    async set_size(size, is_dragged = false) {
         if (size === undefined) return
 
+        // ###8 about "pristine" and slow first expand
+        if (panel.was_never_expanded()) {
+            panel.wrapper_element.classList.add('pristine')
+            setTimeout(() => {
+                panel.wrapper_element.classList.remove('pristine')
+            }, FIRST_EXPAND_TRANSITION_DELAY + FIRST_EXPAND_TRANSITION_DURATION)
+        }
+
         set_css_num_var('--panel-breadth', size, 'px')
+        localStorage.setItem('panel_was_expanded', size > 0)
+
         if (!is_dragged &&
             (size === 0 || size === panel.content_breadth)
         ) {
@@ -69,8 +79,6 @@ export const panel = {
         panel.body_element.style.opacity = (size > panel.content_breadth * 0.2) ? 1 : 0
         tappable_margin.style.display = (size === 0 && !is_mouse_device) ? 'block' : 'none'
         update_panel_expand_button()
-
-        localStorage.setItem('panel_was_expanded', size > 0)
     },
 
     is_pristine() {
@@ -88,13 +96,7 @@ export const panel = {
     async resize_to_content() {
         panel.set_size(panel.content_breadth)
 
-        if (panel.is_pristine()) {
-            // used transitionend here but it didn't work on iphone, 1st expand was quick
-            await wait(FIRST_EXPAND_TRANSITION_DURATION + FIRST_EXPAND_TRANSITION_DELAY)
-            panel.wrapper_element.classList.remove('pristine')
-        } else {
-            await wait(EXPAND_TRANSITION_DURATION)
-        }
+        await wait(EXPAND_TRANSITION_DURATION)
         panel.must_expand = false
     },
     toggle() {
@@ -120,6 +122,8 @@ export const panel = {
 
     must_expand: false,
 
+    was_never_expanded: () => localStorage.getItem('panel_was_expanded') === null,
+
     /*
         {
             id: 'higlights' | number(bldg id),
@@ -140,7 +144,7 @@ export const panel = {
 
         panel.fire('content will be set', _content)
 
-        await await Promise.all([
+        await Promise.all([
             fade_out_content_if_present(),
             // wait for "other images", not lazy thumbs!
             wait_for_sizeless_images_load(_content.element.querySelectorAll('img:not(#panel-thumbs-list img)'))
