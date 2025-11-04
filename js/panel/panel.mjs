@@ -42,7 +42,7 @@ const get_panel_body_breadth = _ => { // height/width with scrollbar
 }
 
 export const update_panel_expand_button = debounce(() => {
-    const will_be_expanded = panel.must_expand || !panel.is_collapsed()
+    const will_be_expanded = panel.must_expand || panel.is_at_least_partially_expanded()
     expand_button_el.classList[will_be_expanded ? 'add' : 'remove']('inward')
     panel.expand_button_el.classList.remove('hidden') // to avoid visual noise, show button only after the direction of the arrow is defined
 })
@@ -68,6 +68,8 @@ export const panel = {
         }
 
         set_css_num_var('--panel-breadth', size, 'px')
+
+        // "panel_was_expanded" means "at least partially expanded"
         localStorage.setItem('panel_was_expanded', size > 0)
 
         if (!is_dragged &&
@@ -102,7 +104,7 @@ export const panel = {
     toggle() {
         if (panel.is_pristine()) return
 
-        const was_expanded = !panel.is_collapsed()
+        const was_expanded = panel.is_at_least_partially_expanded()
 
         if (was_expanded) {
             panel.set_size(0)
@@ -116,8 +118,8 @@ export const panel = {
         return get_panel_shown_breadth() <= panel.content_breadth / 2
     },
 
-    is_collapsed() {
-        return get_panel_shown_breadth() === 0
+    is_at_least_partially_expanded() {
+        return localStorage.getItem('panel_was_expanded') === 'true'
     },
 
     must_expand: false,
@@ -171,7 +173,7 @@ export const panel = {
                 delay it if necessary (if a flight is about to begin, and thus expanding the panel now will cause too much action on the screen)
         */
         if (
-            !panel.is_collapsed()
+            panel.is_at_least_partially_expanded()
             || (panel.must_expand && !postpone_panel_expand)
         ) {
             panel.resize_to_content()

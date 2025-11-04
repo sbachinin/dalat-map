@@ -7,6 +7,6 @@ export const adjust_panel_on_resize = () => {
     panel.wrapper_element.scrollLeft = 0
     panel.cache_content_breadth()
 
-    panel.set_size(!panel.is_collapsed() ? panel.content_breadth : 0)
+    panel.set_size(panel.is_at_least_partially_expanded() ? panel.content_breadth : 0)
     panel.wrapper_element.classList.remove('notransition')
 }

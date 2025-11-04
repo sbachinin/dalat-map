@@ -60,5 +60,14 @@ function update(id, last_cause) {
         entries.push({ id })
     }
     histoire.last_cause = last_cause
+
+    /*
+        Subscriber is called anyway (even if cause and/or id hasn't changed). Here's why:
+        Click on building
+        -> panel expanded with its details
+        -> panel collapsed
+        -> click on building again
+        -> same id and cause, but need to update the panel (expand it)
+    */
     subscriber()
 }
