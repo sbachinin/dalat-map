@@ -122,16 +122,10 @@ export const initialize_city = async (name) => {
         requestAnimationFrame(
             () => document.querySelector('#maplibregl-map').classList.remove('hidden')
         )
-
-        document.querySelector(`#custom-attribution [title]`)?.removeAttribute('title')
     })
 
     map.on('move', () => {
         throttled_update_flyto_button()
-
-        if (window.innerWidth < 768) {
-            document.querySelector(`#custom-attribution details`).removeAttribute('open')
-        }
     })
 
     map.on('zoom', () => {

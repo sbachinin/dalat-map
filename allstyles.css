@@ -203,6 +203,17 @@ body {
     pointer-events: none;
 }
 
+
+[data-href-id=menu] {
+    border: 1px solid;
+    display: flex;
+    padding: 6px;
+    border-radius: 40px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, .4);
+    transition: opacity 0.5s ease-out;
+}
+
 [data-href-id=menu] svg * {
     fill: #737373;
 }
@@ -210,4 +221,9 @@ body {
 :root[panel-content-id=menu][panel-is-expanded=true] [data-href-id=menu] {
     pointer-events: none;
     opacity: 0.3;
+}
+
+#maplibregl-map .maplibregl-ctrl-attrib {
+    visibility: hidden;
+    pointer-events: none;
 }

@@ -14,7 +14,6 @@
     <link href="../css/non-map.css" rel="stylesheet">
     <link href="../css/panel.css" rel="stylesheet">
     <link href="../css/highlights-stuff.css" rel="stylesheet">
-    <link href="../css/attribution.css" rel="stylesheet">
     <link href="../css/scale.css" rel="stylesheet">
     <link href="../css/panel-thumbs-list.css" rel="stylesheet">
     <link href="../css/building-details.css" rel="stylesheet">
@@ -54,13 +53,26 @@
             <div class="fullwidth-scale-wrapper">
                 <div class="fullwidth-scale"></div>
             </div>
-            <div id="custom-attribution">
-                <details class="maplibregl-ctrl maplibregl-ctrl-attrib maplibregl-compact maplibregl-compact-show">
-                    <summary class="maplibregl-ctrl-attrib-button" title="Toggle attribution"
-                        aria-label="Toggle attribution"></summary>
-                    <div class="maplibregl-ctrl-attrib-inner"><a href="https://maplibre.org/"
-                            target="_blank">MapLibre</a></div>
-                </details>
+            <div id="bottom-right-button-slot">
+                <div data-href-id="menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" role="img"
+                        aria-label="Menu">
+                        <title>Menu</title>
+                        <!-- smaller 12x12 squares -->
+                        <rect x="6" y="6" width="12" height="12" rx="2" />
+                        <rect x="26" y="6" width="12" height="12" rx="2" />
+                        <rect x="46" y="6" width="12" height="12" rx="2" />
+
+                        <rect x="6" y="26" width="12" height="12" rx="2" />
+                        <rect x="26" y="26" width="12" height="12" rx="2" />
+                        <rect x="46" y="26" width="12" height="12" rx="2" />
+
+                        <rect x="6" y="46" width="12" height="12" rx="2" />
+                        <rect x="26" y="46" width="12" height="12" rx="2" />
+                        <rect x="46" y="46" width="12" height="12" rx="2" />
+                    </svg>
+
+                </div>
             </div>
             <div id="button-slot-1">
                 <div id="highlights-opener" data-href-id="highlights">
@@ -95,25 +107,6 @@
             </svg>
         </div>
         <div id="gotogoogle">G</div>
-        <div data-href-id="menu">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" role="img"
-                aria-label="Menu">
-                <title>Menu</title>
-                <!-- smaller 12x12 squares -->
-                <rect x="6" y="6" width="12" height="12" rx="2" />
-                <rect x="26" y="6" width="12" height="12" rx="2" />
-                <rect x="46" y="6" width="12" height="12" rx="2" />
-
-                <rect x="6" y="26" width="12" height="12" rx="2" />
-                <rect x="26" y="26" width="12" height="12" rx="2" />
-                <rect x="46" y="26" width="12" height="12" rx="2" />
-
-                <rect x="6" y="46" width="12" height="12" rx="2" />
-                <rect x="26" y="46" width="12" height="12" rx="2" />
-                <rect x="46" y="46" width="12" height="12" rx="2" />
-            </svg>
-
-        </div>
     </div>
 
 
