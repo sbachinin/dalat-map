@@ -208,20 +208,25 @@ body {
     border: 1px solid;
     display: flex;
     padding: 6px;
-    border-radius: 40px;
-    cursor: pointer;
-    background: rgba(255, 255, 255, .4);
+    margin-top: 11px;
+}
+
+[data-href-id=menu] svg {
     transition: opacity 0.5s ease-out;
 }
 
 [data-href-id=menu] svg * {
-    fill: #737373;
+    fill: #bd793a;
 }
 
 :root[panel-content-id=menu][panel-is-expanded=true] [data-href-id=menu] {
     pointer-events: none;
+}
+
+:root[panel-content-id=menu][panel-is-expanded=true] [data-href-id=menu] svg {
     opacity: 0.3;
 }
+
 
 #maplibregl-map .maplibregl-ctrl-attrib {
     visibility: hidden;
@@ -243,7 +248,8 @@ body {
     min-width: 250px;
     min-height: 250px;
 }
-#panel-menu > * {
+
+#panel-menu>* {
     display: flex;
     align-items: center;
     margin: 10px 0;

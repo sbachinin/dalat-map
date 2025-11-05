@@ -80,8 +80,24 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin-right: 5px;
     height: 100%;
+    gap: 10px;
 }
+
+#button-slot-1>* {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, .7);
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+}
+
 
 #non-panel {
     overflow: hidden;
@@ -121,4 +137,42 @@
 
 .maplibregl-ctrl-group:not(:empty) {
     box-shadow: 0 0px 4px 1px rgba(60, 64, 67, 0.3) !important;
+}
+
+
+
+
+
+
+.zoom-button {
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.2s;
+}
+
+.zoom-button svg {
+    width: 16px;
+}
+
+.zoom-button:active {
+    background-color: #e0e0e0;
+}
+
+.zoom-in {
+    border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 600px) {
+    .zoom-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.zoom-button.disabled {
+    pointer-events: none;
+}
+
+.zoom-button.disabled>* {
+    opacity: 0.4;
 }
