@@ -1,10 +1,10 @@
 import { create_lazy_image } from "../lazy-image.mjs";
 import { current_city } from "../load_city.mjs";
 import { bldg_link_html } from "../photoswipe_mutations_observer.mjs";
+import { medal } from "../svg_icons.mjs";
 import { create_element_from_Html, get_image_url, is_mouse_device } from "../utils/frontend_utils.mjs";
 import { THUMB_INTRINSIC_HEIGHT } from "../utils/isomorphic_utils.mjs";
 import { PANEL_CONTENT_TYPES } from "./panel.mjs";
-import { svg_medal } from "./svg_medal.mjs";
 
 const imageFadingDuration = 160
 document.documentElement.style.setProperty('--image-fading-duration', `${imageFadingDuration / 1000}s`);
@@ -14,7 +14,7 @@ export const panel_thumbs_list_id = 'panel-thumbs-list'
 const create_highlights_title = () => {
     return create_element_from_Html(
         `<div id="highlights-title">
-            ${svg_medal}
+            ${medal}
             <div id="higlights-title-letters">
                 <div>Hi</div>
                 <div>g</div>

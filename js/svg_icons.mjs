@@ -51,3 +51,14 @@ export const share = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height=
                 <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
                 <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
             </svg>`
+
+
+export const medal = `<svg class="svg-medal" width="40px" height="40px" viewBox="-2.4 -2.4 28.80 28.80" fill="none"
+        xmlns="http://www.w3.org/2000/svg" transform="rotate(0)">
+        <g id="SVGRepo_iconCarrier">
+            <path
+                d="M12 11L8 3H4L8.5058 12.4622M12 11L16 3H20L15.4942 12.4622M12 11C13.344 11 14.5848 11.5635 15.4942 12.4622M12 11C10.656 11 9.41518 11.5635 8.5058 12.4622M15.4942 12.4622C16.4182 13.3753 17 14.6344 17 16C17 18.7614 14.7614 21 12 21C9.23858 21 7 18.7614 7 16C7 14.6344 7.58179 13.3753 8.5058 12.4622"
+                stroke="#000000" stroke-width="1.9440000000000002" stroke-linejoin="round" fill="white">
+            </path>
+        </g>
+    </svg>`

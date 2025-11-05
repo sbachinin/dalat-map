@@ -49,9 +49,3 @@
 .zoom-button.disabled>* {
     opacity: 0.4;
 }
-
-#gotogoogle {
-    line-height: 40px;
-    text-align: center;
-    margin-top: 5px;
-}

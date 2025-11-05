@@ -243,10 +243,10 @@ body {
     min-width: 250px;
     min-height: 250px;
 }
-#panel-menu > a {
-    display: block;
+#panel-menu > * {
     display: flex;
     align-items: center;
+    margin: 10px 0;
 }
 
 #osm-attr {
