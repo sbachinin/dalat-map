@@ -30,7 +30,6 @@ set_css_num_var('--panel-expand-button-size', expand_button_el.offsetWidth, 'px'
 set_css_num_var('--panel-content-fade-duration', CONTENT_FADE_DURATION / 1000, 's')
 
 const subscribers = {
-    'content will be set': {},
     'content was just set': {},
     'begin transition to new size': {}, // to be fired only when panel is toggled, not on drag
     'scroll': {},
@@ -147,8 +146,6 @@ export const panel = {
             panel.resize_to_content()
             return
         }
-
-        panel.fire('content will be set', _content)
 
         await Promise.all([
             fade_out_content_if_present(),

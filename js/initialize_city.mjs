@@ -22,7 +22,6 @@ import {
 import './photoswipe_mutations_observer.mjs'
 import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
-import { initialize_highlights_button } from './panel/highlights_button.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './load_city.mjs'
 import { DEFAULT_MAX_ZOOM } from './constants.mjs'
@@ -104,8 +103,6 @@ export const initialize_city = async (name) => {
                 panel.once('begin transition to new size', 'app', resolve)
             })
         }
-
-        initialize_highlights_button()
 
         let center = initial_center
 

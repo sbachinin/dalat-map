@@ -130,7 +130,8 @@
 
 
 
-@media (orientation: landscape), (pointer: fine) {
+@media (orientation: landscape),
+(pointer: fine) {
     #bottom-right-button-slot {
         justify-self: flex-end;
     }

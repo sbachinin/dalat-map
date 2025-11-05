@@ -4,6 +4,7 @@ import { bldg_link_html } from "../photoswipe_mutations_observer.mjs";
 import { create_element_from_Html, get_image_url, is_mouse_device } from "../utils/frontend_utils.mjs";
 import { THUMB_INTRINSIC_HEIGHT } from "../utils/isomorphic_utils.mjs";
 import { PANEL_CONTENT_TYPES } from "./panel.mjs";
+import { svg_medal } from "./svg_medal.mjs";
 
 const imageFadingDuration = 160
 document.documentElement.style.setProperty('--image-fading-duration', `${imageFadingDuration / 1000}s`);
@@ -11,12 +12,9 @@ document.documentElement.style.setProperty('--image-fading-duration', `${imageFa
 export const panel_thumbs_list_id = 'panel-thumbs-list'
 
 const create_highlights_title = () => {
-    const svg = document.querySelector('#non-panel #highlights-opener svg').cloneNode(true)
-    svg.classList.remove('invisible')
-
     return create_element_from_Html(
         `<div id="highlights-title">
-            ${svg.outerHTML}
+            ${svg_medal}
             <div id="higlights-title-letters">
                 <div>Hi</div>
                 <div>g</div>

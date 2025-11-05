@@ -5,6 +5,8 @@ import { panel } from "./panel/panel.mjs"
 import { update_selected_map_features } from "./update_selected_feaures.mjs"
 import { is_feature_selectable } from "./utils/does_feature_have_details.mjs"
 import { create_element_from_Html } from "./utils/frontend_utils.mjs"
+import { svg_medal } from "./panel/svg_medal.mjs"
+
 
 export const handle_id_change = () => {
 
@@ -32,6 +34,7 @@ export const handle_id_change = () => {
                     This map was built using <a target="_blank" href="https://openstreetmap.org/copyright">OpenStreetMap data</a>
                 </div>
                 <a data-href-id="about" href="#">About this map</a>
+                <a data-href-id="highlights" href="#">${svg_medal}Highlights</a>
                 </div>`),
             id: 'menu'
         })

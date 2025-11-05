@@ -240,6 +240,13 @@ body {
 
 #panel-menu {
     padding: 7px;
+    min-width: 250px;
+    min-height: 250px;
+}
+#panel-menu > a {
+    display: block;
+    display: flex;
+    align-items: center;
 }
 
 #osm-attr {

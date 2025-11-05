@@ -51,16 +51,6 @@ export const add_mouse_stuff = () => {
 
 
     is_mouse_device && document.body.addEventListener('mouseover', debounce((e) => {
-
-        if (e.target.closest('#highlights-opener')) {
-            show_tooltip({
-                triggerEl: e.target.closest('#highlights-opener'),
-                text: `Open highlights`,
-                position: 'left',
-                textNoWrap: true
-            })
-        }
-
         if (e.target.closest('.bldg-link')) {
             show_tooltip({
                 triggerEl: e.target.closest('.bldg-link'),
