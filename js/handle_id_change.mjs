@@ -27,8 +27,11 @@ export const handle_id_change = () => {
         // 5. ?? lists of highlights (if they don't belong to legend)
         // 6. about the map (pictograms, text)
         panel.set_content({
-            element: create_element_from_Html(`<div>Menu
-                <a data-href-id="about">About</a>
+            element: create_element_from_Html(`<div id="panel-menu">
+                <div id="osm-attr">
+                    This map was built using <a target="_blank" href="https://openstreetmap.org/copyright">OpenStreetMap data</a>
+                </div>
+                <a data-href-id="about" href="#">About this map</a>
                 </div>`),
             id: 'menu'
         })

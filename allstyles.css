@@ -227,3 +227,27 @@ body {
     visibility: hidden;
     pointer-events: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+#panel-menu {
+    padding: 7px;
+}
+
+#osm-attr {
+    background: #eaeaea;
+    padding: 10px;
+}
+
+#osm-attr a {
+    font-weight: bold;
+    color: #354d61;
+}
