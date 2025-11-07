@@ -193,6 +193,9 @@
 .zoom-button svg {
     width: 16px;
 }
+.zoom-button svg * {
+    stroke: var(--icon-color);
+}
 
 .zoom-button:active {
     background-color: #e0e0e0;

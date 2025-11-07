@@ -14,7 +14,7 @@ import {
 } from './utils/frontend_utils.mjs'
 
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
-import { load_icons } from './load_icons.mjs'
+import { load_map_icons } from './load_map_icons.mjs'
 import {
     DEV_skip_map_rendering,
     DEV_map_mock,
@@ -83,7 +83,7 @@ export const initialize_city = async (name) => {
     // preload_some_images()
 
 
-    load_icons()
+    load_map_icons()
 
 
 

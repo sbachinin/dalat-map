@@ -169,12 +169,13 @@
 
 #building-info__flyto path,
 #building-info__flyto circle {
+    stroke: var(--icon-color);
     transition: stroke ease-out 0.4s;
 }
 
 #building-info__flyto.disabled path,
 #building-info__flyto.disabled circle {
-    stroke: rgba(0, 0, 0, 0.2);
+    stroke: var(--disabled-icon-color);
 }
 
 #building-info__copylink #copylink-message {
@@ -200,8 +201,15 @@
     box-sizing: border-box;
 }
 
+#building-info__copylink svg path {
+    fill: var(--icon-color);
+}
+
 #building-info__share svg {
     height: 27px;
     width: 27px;
     padding: 2px;
+}
+#building-info__share svg * {
+    stroke: var(--icon-color);
 }

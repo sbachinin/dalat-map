@@ -1,6 +1,8 @@
 :root {
     --image-fading-duration: 0.16s;
     --panel-bg-color: hsl(35, 100%, 96%);
+    --icon-color: hsl(0, 0%, 25%);
+    --disabled-icon-color: hsl(0, 0%, 77%);
 }
 
 :root,
@@ -209,20 +211,20 @@ body {
     background: var(--panel-bg-color);
 }
 
-[data-href-id=menu] svg {
-    transition: opacity 0.5s ease-out;
+[data-href-id=menu] svg * {
+    transition: fill 0.5s ease-out;
 }
 
 [data-href-id=menu] svg * {
-    fill: #bd793a;
+    fill: var(--icon-color);
 }
 
 :root[panel-content-id=menu][panel-is-expanded=true] [data-href-id=menu] {
     pointer-events: none;
 }
 
-:root[panel-content-id=menu][panel-is-expanded=true] [data-href-id=menu] svg {
-    opacity: 0.3;
+:root[panel-content-id=menu][panel-is-expanded=true] [data-href-id=menu] svg * {
+    fill: var(--disabled-icon-color);
 }
 
 

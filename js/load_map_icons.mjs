@@ -102,7 +102,7 @@ export const get_icon_as_ctx = (id, xy = [64, 64]) => {
 }
 
 
-export const load_icons = () => {
+export const load_map_icons = () => {
 
     window.dalatmap.on("styleimagemissing", (e) => {
         const id = e.id

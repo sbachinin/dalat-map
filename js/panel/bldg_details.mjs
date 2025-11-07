@@ -12,7 +12,7 @@ import {
 import { is_feature_selectable } from '../utils/does_feature_have_details.mjs'
 import { current_city } from '../load_city.mjs'
 import { make_icons, update_flyto_button } from './bldg_details_icons.mjs'
-import { get_icon_as_ctx } from '../load_icons.mjs'
+import { get_icon_as_ctx } from '../load_map_icons.mjs'
 import { activate_image } from '../lazy-image.mjs'
 import { pin_style_layer_id } from '../common_drawing_layers/layers_for_selected_feature.mjs'
 import { CAUSE, histoire } from '../histoire.mjs'
