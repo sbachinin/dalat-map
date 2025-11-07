@@ -101,6 +101,7 @@
     user-select: none;
     cursor: pointer;
     transition: opacity ease-out 1s;
+    background-color: var(--panel-bg-color);
 }
 
 #panel-expand-button.hidden {
@@ -177,13 +178,13 @@
     align-items: center;
     border-radius: 40px;
     border: 1px solid rgba(0, 0, 0, 0.5);
-    background: rgba(255, 255, 255, .7);
     overflow: hidden;
     cursor: pointer;
     user-select: none;
 }
 
 .zoom-button {
+    background: rgb(255, 255, 255);
     width: 40px;
     height: 40px;
     transition: background-color 0.2s;

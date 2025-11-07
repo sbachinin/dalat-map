@@ -1,5 +1,6 @@
 :root {
     --image-fading-duration: 0.16s;
+    --panel-bg-color: hsl(35, 100%, 96%);
 }
 
 :root,
@@ -205,6 +206,7 @@ body {
     display: flex;
     padding: 6px;
     margin-top: 11px;
+    background: var(--panel-bg-color);
 }
 
 [data-href-id=menu] svg {
