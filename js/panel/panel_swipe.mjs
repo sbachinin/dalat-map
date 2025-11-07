@@ -159,6 +159,7 @@ export const make_expandable_on_swipe = (panel) => {
             current_swipe.panel_full_size
         )
 
+        document.documentElement.setAttribute('panel-is-dragged', true)
         panel.set_size(new_size, true);
     }
 
@@ -167,6 +168,7 @@ export const make_expandable_on_swipe = (panel) => {
         requestAnimationFrame(() => { current_swipe = null })
 
         panel.wrapper_element.classList.remove('notransition')
+        document.documentElement.setAttribute('panel-is-dragged', false)
 
         if (!current_swipe) return
 

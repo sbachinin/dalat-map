@@ -53,44 +53,57 @@
                 <div class="fullwidth-scale"></div>
             </div>
 
-            <div id="button-slot-1">
-
-                <div class="zoom-button zoom-in" id="zoom-in">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <line x1="2" y1="12" x2="22" y2="12" stroke="black" stroke-width="4" />
-                        <line x1="12" y1="2" x2="12" y2="22" stroke="black" stroke-width="4" />
-                    </svg>
-                </div>
-                <div class="zoom-button zoom-out" id="zoom-out">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <line x1="2" y1="12" x2="22" y2="12" stroke="black" stroke-width="4" />
-                    </svg>
-                </div>
-
-                <div data-href-id="menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" role="img"
-                        aria-label="Menu">
-                        <title>Menu</title>
-                        <!-- smaller 12x12 squares -->
-                        <rect x="6" y="6" width="12" height="12" rx="2" />
-                        <rect x="26" y="6" width="12" height="12" rx="2" />
-                        <rect x="46" y="6" width="12" height="12" rx="2" />
-
-                        <rect x="6" y="26" width="12" height="12" rx="2" />
-                        <rect x="26" y="26" width="12" height="12" rx="2" />
-                        <rect x="46" y="26" width="12" height="12" rx="2" />
-
-                        <rect x="6" y="46" width="12" height="12" rx="2" />
-                        <rect x="26" y="46" width="12" height="12" rx="2" />
-                        <rect x="46" y="46" width="12" height="12" rx="2" />
-                    </svg>
-
-                </div>
+            <!-- Basically, bottom-right-button-slot is pointless now -->
+            <!-- This bottom-right position is taken by the "right buttons" (zoom, menu) -->
+            <div id="bottom-right-button-slot">
             </div>
         </div>
         <div id="panel-expander">
             <div id="panel"></div>
             <div id="panel-expand-tappable-margin"></div>
+        </div>
+    </div>
+
+
+    <!-- Why this stuff is outside the general non-map stuff.
+    Because, trying to reconcile panel & the right buttons position
+    (i.e. make the panel gracefully push the buttons upwards, when panel is quite high),
+    I couldn't find any good css solution via grid or flex
+    and ended up setting (in js) a css variable to position the buttons.
+    Having this variable, there was no point in keeping these buttons inside the shared non-map grid -
+        anyway these buttons need to disobey the rules inside this grid.
+    So, to make their independence clear, I moved them outside.
+    -->
+    <div id="right-button-group">
+        <div class="zoom-button zoom-in" id="zoom-in">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <line x1="2" y1="12" x2="22" y2="12" stroke="black" stroke-width="4" />
+                <line x1="12" y1="2" x2="12" y2="22" stroke="black" stroke-width="4" />
+            </svg>
+        </div>
+        <div class="zoom-button zoom-out" id="zoom-out">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <line x1="2" y1="12" x2="22" y2="12" stroke="black" stroke-width="4" />
+            </svg>
+        </div>
+
+        <div data-href-id="menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" role="img"
+                aria-label="Menu">
+                <title>Menu</title>
+                <!-- smaller 12x12 squares -->
+                <rect x="6" y="6" width="12" height="12" rx="2" />
+                <rect x="26" y="6" width="12" height="12" rx="2" />
+                <rect x="46" y="6" width="12" height="12" rx="2" />
+
+                <rect x="6" y="26" width="12" height="12" rx="2" />
+                <rect x="26" y="26" width="12" height="12" rx="2" />
+                <rect x="46" y="26" width="12" height="12" rx="2" />
+
+                <rect x="6" y="46" width="12" height="12" rx="2" />
+                <rect x="26" y="46" width="12" height="12" rx="2" />
+                <rect x="46" y="46" width="12" height="12" rx="2" />
+            </svg>
         </div>
     </div>
 

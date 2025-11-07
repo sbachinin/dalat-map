@@ -20,7 +20,7 @@ const CONTENT_FADE_DURATION = 200
 
 const expand_button_el = document.querySelector(`#panel-expand-button`)
 const tappable_margin = document.querySelector(`#panel-expand-tappable-margin`)
-
+const right_button_group_height = document.querySelector('#right-button-group').clientHeight
 
 set_css_num_var('--panel-expand-transition-duration', EXPAND_TRANSITION_DURATION / 1000, 's')
 set_css_num_var('--panel-first-expand-transition-duration', FIRST_EXPAND_TRANSITION_DURATION / 1000, 's')
@@ -67,6 +67,13 @@ export const panel = {
         }
 
         set_css_num_var('--panel-breadth', size, 'px')
+
+        let right_button_group_offset = 0
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            const thresh = (window.innerHeight - right_button_group_height) / 2 // at which point panel starts pushing the buttons
+            right_button_group_offset = Math.max(0, size - thresh)
+            set_css_num_var('--right-buttons-vert-offset', right_button_group_offset, 'px')
+        }
 
         // "panel_was_expanded" means "at least partially expanded"
         localStorage.setItem('panel_was_expanded', size > 0)
