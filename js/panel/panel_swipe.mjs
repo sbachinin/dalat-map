@@ -160,7 +160,7 @@ export const make_expandable_on_swipe = (panel) => {
         )
 
         document.documentElement.setAttribute('panel-is-dragged', true)
-        panel.set_size(new_size, true);
+        panel.set_size(new_size)
     }
 
 

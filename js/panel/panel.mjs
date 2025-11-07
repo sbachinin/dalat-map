@@ -8,6 +8,7 @@ import {
     wait,
     get_panel_shown_breadth,
     panel_is_vertical,
+    get_root_html_attribute,
 } from '../utils/frontend_utils.mjs'
 import { init_photoswipe } from './init_photoswipe.mjs'
 import { wait_for_sizeless_images_load } from './wait_for_sizeless_images_load.mjs'
@@ -55,7 +56,7 @@ export const panel = {
     cache_content_breadth() {
         panel.content_breadth = get_panel_body_breadth()
     },
-    async set_size(size, is_dragged = false) {
+    async set_size(size) {
         if (size === undefined) return
 
         // ###8 about "pristine" and slow first expand
@@ -79,8 +80,8 @@ export const panel = {
         localStorage.setItem('panel_was_expanded', size > 0)
         document.documentElement.setAttribute('panel-is-expanded', size > 0)
 
-        if (!is_dragged &&
-            (size === 0 || size === panel.content_breadth)
+        if (!get_root_html_attribute('panel-is-dragged')
+            && (size === 0 || size === panel.content_breadth)
         ) {
             panel.fire('begin transition to new size', size, panel.content_breadth)
         }

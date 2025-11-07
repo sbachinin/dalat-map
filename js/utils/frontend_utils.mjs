@@ -163,6 +163,23 @@ export const panel_is_vertical = _ => {
         || window.matchMedia("(orientation: landscape)").matches
 }
 
+export const get_root_html_attribute = name => {
+    const val = document.documentElement.getAttribute(name)
+    if (val === 'true') {
+        return true
+    }
+    if (val === 'false') {
+        return false
+    }
+    if (val === '') { // attribute has no value (only name without "=...") or is =""
+        return null
+    }
+    if (val === null) { // attr is absent at all
+        return null
+    }
+    return val // string which is not empty/"true"/"false"
+}
+
 // half-panel-breadth shift
 // By passing certain "breadth", user decides
 // if he's interested in "max breadth" (that of content), or an "actual breadth" (that of panel-expander element)
