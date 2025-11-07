@@ -60,12 +60,11 @@
         grid-row: 1;
         height: 100%;
         display: flex;
-        align-items: center;
     }
 
     #panel-expand-button {
-        transform: rotate(90deg);
-        transform-origin: 0 100%;
+        margin-top: 50svh;
+        transform: rotate(90deg) translateX(-50%);
     }
 
     #bottom-right-button-slot {
