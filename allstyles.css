@@ -22,10 +22,6 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
-.notransition {
-    transition: none !important;
-}
-
 #maplibregl-map {
     position: absolute;
     top: 0;

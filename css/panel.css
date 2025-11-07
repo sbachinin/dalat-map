@@ -65,7 +65,8 @@
     transition-delay: var(--panel-first-expand-transition-delay);
 }
 
-:root[panel-is-dragged=true] #panel-expander {
+:root[panel-is-dragged=true] #panel-expander,
+:root[window-was-just-resized=true] #panel-expander {
     transition: none !important;
 }
 
