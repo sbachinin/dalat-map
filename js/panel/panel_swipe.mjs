@@ -141,8 +141,6 @@ export const make_expandable_on_swipe = (panel) => {
 
         current_swipe.had_touchmove = true
 
-        panel.wrapper_element.classList.add('notransition')
-
         const drag_has_begun = try_start_dragging(e)
         if (!drag_has_begun) return
 
@@ -167,7 +165,6 @@ export const make_expandable_on_swipe = (panel) => {
     const on_touchend = e => {
         requestAnimationFrame(() => { current_swipe = null })
 
-        panel.wrapper_element.classList.remove('notransition')
         document.documentElement.setAttribute('panel-is-dragged', false)
 
         if (!current_swipe) return
