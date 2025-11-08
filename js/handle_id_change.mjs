@@ -4,7 +4,7 @@ import { try_open_building } from "./panel/bldg_details.mjs"
 import { panel } from "./panel/panel.mjs"
 import { update_selected_map_features } from "./update_selected_feaures.mjs"
 import { is_feature_selectable } from "./utils/does_feature_have_details.mjs"
-import { create_element_from_Html } from "./utils/frontend_utils.mjs"
+import { create_element_from_Html, get_cityname_from_url } from "./utils/frontend_utils.mjs"
 import * as svg_icons from './svg_icons.mjs'
 
 
@@ -28,14 +28,15 @@ export const handle_id_change = () => {
         // 4. maybe, a show user location button (if it's not shown outside the panel)
         // 5. ?? lists of highlights (if they don't belong to legend)
         // 6. about the map (pictograms, text)
+        const cityname = get_cityname_from_url(location.href)
         panel.set_content({
             element: create_element_from_Html(`<div id="panel-menu">
                 <div id="osm-attr">
-                    This map was built using <a target="_blank" href="https://openstreetmap.org/copyright">OpenStreetMap data</a>
+                    This map uses <a target="_blank" href="https://openstreetmap.org/copyright">OpenStreetMap</a> data
                 </div>
-                <a data-href-id="about" href="#">About this map</a>
-                <div id="gotogoogle">${svg_icons.gmaps}Open current map location in Google maps</div>
-                <a data-href-id="highlights" href="#">${svg_icons.medal}Highlights</a>
+                <a data-href-id="about" href="#">Read about this map of ${cityname.charAt(0).toUpperCase() + cityname.slice(1)}</a>
+                <div id="gotogoogle" class="icon-with-title">${svg_icons.gmaps}Open current map location in Google maps</div>
+                <a data-href-id="highlights" class="icon-with-title" href="#">${svg_icons.medal}Highlights</a>
                 </div>`),
             id: 'menu'
         })

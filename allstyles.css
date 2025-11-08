@@ -245,19 +245,26 @@ body {
 
 
 #panel-menu {
-    padding: 7px;
+    padding: 12px;
     min-width: 250px;
     min-height: 250px;
 }
 
-#panel-menu>* {
+#panel-menu .icon-with-title {
     display: flex;
     align-items: center;
     margin: 10px 0;
+    border: 1px solid var(--button-border-color);
+    padding: 2px 4px;
+}
+
+#panel-menu #gotogoogle svg {
+    flex-basis: 38px;
+    flex-shrink: 0;
 }
 
 #osm-attr {
-    background: #eaeaea;
+    background: #ffffff;
     padding: 10px;
 }
 
