@@ -3,6 +3,7 @@
     --menu-bg-color: hsl(35, 0%, 92%);
     --icon-color: hsl(0, 0%, 25%);
     --disabled-icon-color: hsl(0, 0%, 77%);
+    --icon-disable-transition-duration: 0.4s;
     --button-border-color: hsl(0, 0%, 50%);
 }
 
@@ -213,7 +214,7 @@ body {
 }
 
 [data-href-id=menu] svg * {
-    transition: fill 0.5s ease-out;
+    transition: fill var(--icon-disable-transition-duration) ease-out;
 }
 
 [data-href-id=menu] svg * {

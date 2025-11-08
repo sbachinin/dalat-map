@@ -127,9 +127,11 @@
     transition-property: transform;
     transition-duration: 0.3s;
 }
+
 #panel-expand-button svg.hidden {
     transform: scale(0);
 }
+
 #panel-expand-button.inward svg {
     transform: scale(-1);
 }
@@ -213,7 +215,6 @@
     background: rgb(255, 255, 255);
     width: 40px;
     height: 40px;
-    transition: background-color 0.2s;
 }
 
 .zoom-button svg {
@@ -222,14 +223,7 @@
 
 .zoom-button svg * {
     stroke: var(--icon-color);
-}
-
-.zoom-button:active {
-    background-color: #e0e0e0;
-}
-
-.zoom-in {
-    border-bottom: 1px solid #ddd;
+    transition: stroke var(--icon-disable-transition-duration) ease-out;
 }
 
 @media (max-width: 600px) {
@@ -243,6 +237,6 @@
     pointer-events: none;
 }
 
-.zoom-button.disabled>* {
-    opacity: 0.4;
+.zoom-button.disabled svg>* {
+    stroke: var(--disabled-icon-color);
 }
