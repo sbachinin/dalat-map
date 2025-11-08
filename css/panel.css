@@ -61,7 +61,7 @@
 }
 
 :root[panel-content-id=menu] #panel-expander {
-    background-color: var(--panel-bg-color);
+    background-color: var(--menu-bg-color);
 }
 
 #panel-expander.pristine {
