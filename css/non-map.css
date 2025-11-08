@@ -124,14 +124,14 @@
 
 
 #panel-expand-button svg {
-    transition-property: opacity;
+    transition-property: transform;
     transition-duration: 0.3s;
 }
 #panel-expand-button svg.hidden {
-    opacity: 0;
+    transform: scale(0);
 }
 #panel-expand-button.inward svg {
-    transform: rotate(180deg);
+    transform: scale(-1);
 }
 
 
