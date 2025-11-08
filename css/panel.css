@@ -52,12 +52,16 @@
 
 
 #panel-expander {
-    background: var(--panel-bg-color);
+    background-color: white;
     transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition-duration: var(--panel-expand-transition-duration);
-    transition-property: opacity, width, height;
+    transition-property: background-color, opacity, width, height;
     position: relative;
     outline: 1px solid var(--button-border-color);
+}
+
+:root[panel-content-id=menu] #panel-expander {
+    background-color: var(--panel-bg-color);
 }
 
 #panel-expander.pristine {
