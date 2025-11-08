@@ -110,7 +110,7 @@
     pointer-events: auto;
     user-select: none;
     cursor: pointer;
-    transition-property: opacity, background-color;
+    transition-property: background-color;
     background-color: white;
 }
 
@@ -118,13 +118,24 @@
     background-color: var(--menu-bg-color);
 }
 
-#panel-expand-button.hidden {
+
+
+
+
+
+#panel-expand-button svg {
+    transition-property: opacity;
+    transition-duration: 0.3s;
+}
+#panel-expand-button svg.hidden {
     opacity: 0;
 }
-
 #panel-expand-button.inward svg {
     transform: rotate(180deg);
 }
+
+
+
 
 .maplibregl-ctrl-group:not(:empty) {
     box-shadow: 0 0px 4px 1px rgba(60, 64, 67, 0.3) !important;

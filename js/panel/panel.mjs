@@ -44,7 +44,7 @@ const get_panel_body_breadth = _ => { // height/width with scrollbar
 export const update_panel_expand_button = debounce(() => {
     const will_be_expanded = panel.must_expand || panel.is_at_least_partially_expanded()
     expand_button_el.classList[will_be_expanded ? 'add' : 'remove']('inward')
-    panel.expand_button_el.classList.remove('hidden') // to avoid visual noise, show button only after the direction of the arrow is defined
+    panel.expand_button_el.querySelector('svg').classList.remove('hidden') // to avoid visual noise, show button arrow only after the direction of the arrow is defined
 })
 
 export const panel = {
