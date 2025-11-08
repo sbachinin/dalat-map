@@ -54,6 +54,34 @@ export const debounce = (func, delay = 100) => {
     }
 }
 
+
+export const are_max_bounds_reached = () => {
+    const map = window.dalatmap
+
+    const current_west = map.getBounds().getWest()
+    const current_east = map.getBounds().getEast()
+    const current_north = map.getBounds().getNorth()
+    const current_south = map.getBounds().getSouth()
+
+    const max_west = map.getMaxBounds().getWest()
+    const max_east = map.getMaxBounds().getEast()
+    const max_north = map.getMaxBounds().getNorth()
+    const max_south = map.getMaxBounds().getSouth()
+
+    // either all available map lat is visible in viewport,
+    // or all available lng
+    // stuff from getBounds can contain a little mistake, not actually reaching the bounds, therefore 0.0001 check
+    return (
+        (
+            (current_west - max_west) < 0.0001 &&
+            (current_east - max_east) > -0.0001
+        ) || (
+            (current_south - max_south) < 0.0001 &&
+            (current_north - max_north) > -0.0001
+        )
+    )
+}
+
 export function throttle(func, wait, trailing = false) {
     let lastArgs = null;
     let lastThis = null;
