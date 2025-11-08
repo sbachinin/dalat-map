@@ -103,14 +103,18 @@
     border-top: 1px solid var(--button-border-color);
     border-left: 1px solid var(--button-border-color);
     border-right: 1px solid var(--button-border-color);
-    
+
     /* this is to push the button by 1px in order to fix blinking of the panel's outline under the button caused by some subpixel mistake */
-    position:relative;
+    position: relative;
 
     pointer-events: auto;
     user-select: none;
     cursor: pointer;
-    transition: opacity ease-out 1s;
+    transition-property: opacity, background-color;
+    background-color: white;
+}
+
+:root[panel-content-id=menu] #panel-expand-button {
     background-color: var(--menu-bg-color);
 }
 
@@ -166,6 +170,7 @@
 }
 
 @media (orientation: landscape) and (pointer: coarse) {
+
     /*
         in mobile browsers, vertical position of right-button-group was fucked for no obvious reason, it appeared too high, and it varied btw browsers
     */
@@ -203,6 +208,7 @@
 .zoom-button svg {
     width: 16px;
 }
+
 .zoom-button svg * {
     stroke: var(--icon-color);
 }
