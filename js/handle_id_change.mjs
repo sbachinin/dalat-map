@@ -70,7 +70,11 @@ export const handle_id_change = () => {
         // 3. "meta highlights lists" or links to highlights lists
         // perhaps better be defined for a city: if there are many lists, show a list of lists; otherwise "the best"
     } else {
-        console.error('id is of invalid type')
+        panel.set_content({
+            element: create_element_from_Html(`<div id="wrong-id">Invalid "id" parameter in URL.
+                <br>Perhaps you are trying to view a building that was removed from the map.</div>`),
+            id: 'wrong_id'
+        })
     }
 }
 

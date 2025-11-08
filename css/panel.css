@@ -104,3 +104,11 @@
         display: none !important;
     }
 }
+
+
+
+#wrong-id {
+    min-width: 250px;
+    padding: 10px;
+    color: red;
+}
