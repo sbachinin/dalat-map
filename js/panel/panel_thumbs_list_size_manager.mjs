@@ -2,7 +2,7 @@ import { set_css_num_var } from '../utils/frontend_utils.mjs'
 import { THUMB_INTRINSIC_HEIGHT } from '../utils/isomorphic_utils.mjs'
 import { panel_thumbs_list_id } from './panel_thumbs_list.mjs'
 
-export const THUMB_GAP = 7
+export const THUMB_GAP = 5
 set_css_num_var('--thumb-gap', THUMB_GAP, 'px')
 
 const THUMB_IDEAL_RATIO = 3 / 4

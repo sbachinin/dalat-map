@@ -35,6 +35,10 @@
         order: 3;
         justify-self: end;
     }
+
+    #panel-expand-button {
+        top: 1px;
+    }
 }
 
 @media (orientation: landscape),
@@ -65,6 +69,7 @@
     #panel-expand-button {
         margin-top: 50svh;
         transform: rotate(90deg) translateX(-50%);
+        left: -1px;
     }
 
     #bottom-right-button-slot {
@@ -95,8 +100,13 @@
     width: 40px;
     background: white;
     border-radius: 8px 8px 0 0;
-    border-bottom: 1px solid #dadce0;
-    box-shadow: 0 0px 4px 1px rgba(60, 64, 67, 0.3);
+    border-top: 1px solid var(--button-border-color);
+    border-left: 1px solid var(--button-border-color);
+    border-right: 1px solid var(--button-border-color);
+    
+    /* this is to push the button by 1px in order to fix blinking of the panel's outline under the button caused by some subpixel mistake */
+    position:relative;
+
     pointer-events: auto;
     user-select: none;
     cursor: pointer;

@@ -53,11 +53,11 @@
 
 #panel-expander {
     background: white;
-    box-shadow: 0 0px 4px 1px rgba(60, 64, 67, 0.3), -500px 500px 0px 500px #fff;
     transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition-duration: var(--panel-expand-transition-duration);
     transition-property: opacity, width, height;
     position: relative;
+    outline: 1px solid var(--button-border-color);
 }
 
 #panel-expander.pristine {

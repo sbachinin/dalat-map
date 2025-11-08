@@ -1,8 +1,9 @@
 :root {
     --image-fading-duration: 0.16s;
-    --panel-bg-color: hsl(35, 100%, 96%);
+    --panel-bg-color: hsl(35, 0%, 92%);
     --icon-color: hsl(0, 0%, 25%);
     --disabled-icon-color: hsl(0, 0%, 77%);
+    --button-border-color: hsl(0, 0%, 50%);
 }
 
 :root,
