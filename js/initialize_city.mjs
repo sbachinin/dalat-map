@@ -11,6 +11,7 @@ import {
     get_id_from_current_url,
     get_center_for_bldg_with_offset,
     get_minimal_zoom_on_building_select,
+    are_max_bounds_reached,
 } from './utils/frontend_utils.mjs'
 
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
@@ -123,6 +124,17 @@ export const initialize_city = async (name) => {
 
     map.on('move', () => {
         throttled_update_flyto_button()
+    })
+
+    map.on('wheel', e => {
+        // this is a solution for:
+        // "First n mousewheel forwards (intended to zoom in) get stolen,
+        // if previously maxbounds were reached and mousewheel backwards continued for a while".
+        // Solution is obtained by trial and error and I've no idea how it really works
+        if (e.originalEvent.deltaY > 0 && are_max_bounds_reached()) {
+            const prev_z = map.getZoom()
+            requestAnimationFrame(() => { map.setZoom(prev_z) })
+        }
     })
 
     map.on('zoom', () => {
