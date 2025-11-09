@@ -261,7 +261,6 @@
     grid-row: 1;
     grid-column: 1 / -1;
     display: flex;
-    gap: 7px;
     padding: 10px;
     align-items: center;
     width: max-content;
@@ -301,4 +300,8 @@
 #gotoworld span {
     width: max-content;
     font-family: sans-serif;
+    background: #c3ffad;
+    padding: 2px 4px 3px 30px;
+    transform: translateX(-25px);
+    z-index: -1;
 }
