@@ -256,7 +256,7 @@
 
 
 
-#gotoworld {
+.gotoworld {
     cursor: pointer;
     grid-row: 1;
     grid-column: 1 / -1;
@@ -271,27 +271,27 @@
     user-select: none;
 }
 
-#panel #gotoworld {
+#panel .gotoworld {
     opacity: 1;
     padding: 0;
 }
 
-#panel #gotoworld-icon {
+#panel .gotoworld-icon {
     width: 35px;
     height: 35px;
 }
 
-#panel #gotoworld svg {
+#panel .gotoworld svg {
     width: 76%;
     height: 71%;
 }
 
-:root[min-zoom-reached=true] #gotoworld {
+:root[min-zoom-reached=true] .gotoworld {
     opacity: 1;
     pointer-events: auto;
 }
 
-#gotoworld-icon {
+.gotoworld-icon {
     width: 50px;
     height: 50px;
     border-radius: 40px;
@@ -302,17 +302,17 @@
     box-shadow: -5px -3px 12px 2px inset #37638b;
 }
 
-#gotoworld svg {
+.gotoworld svg {
     width: 65%;
     height: 70%;
 }
 
-#gotoworld svg * {
+.gotoworld svg * {
     fill: #ffffff;
     stroke: #ffffff;
 }
 
-#gotoworld span {
+.gotoworld span {
     width: max-content;
     font-family: sans-serif;
     background: #c3ffad;

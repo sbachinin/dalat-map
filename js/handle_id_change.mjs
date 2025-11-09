@@ -36,7 +36,7 @@ export const handle_id_change = () => {
                 </div>
                 <a data-href-id="about" href="#">Read about this map of ${cityname.charAt(0).toUpperCase() + cityname.slice(1)}</a>
                 <div id="gotogoogle" class="icon-with-title">${svg_icons.gmaps}Open current map location in Google maps</div>
-                ${document.querySelector('#non-panel #gotoworld')?.outerHTML || ''}
+                ${document.querySelector('#non-panel .gotoworld')?.outerHTML || ''}
                 <a data-href-id="highlights" class="icon-with-title" href="#">${svg_icons.medal}Highlights</a>
                 </div>`),
             id: 'menu'
