@@ -151,9 +151,11 @@ export const initialize_city = async (name) => {
     const { adjust_scale_on_resize } = create_scale()
 
     const onresize = () => {
-        onzoom()
-        adjust_panel_on_resize()
-        adjust_scale_on_resize()
+        map.once('idle', () => {
+            onzoom()
+            adjust_panel_on_resize()
+            adjust_scale_on_resize()
+        })
     }
     window.addEventListener('resize', onresize)
     window.addEventListener('orientationchange', onresize)
