@@ -271,6 +271,21 @@
     user-select: none;
 }
 
+#panel #gotoworld {
+    opacity: 1;
+    padding: 0;
+}
+
+#panel #gotoworld-icon {
+    width: 35px;
+    height: 35px;
+}
+
+#panel #gotoworld svg {
+    width: 76%;
+    height: 71%;
+}
+
 :root[min-zoom-reached=true] #gotoworld {
     opacity: 1;
     pointer-events: auto;
@@ -302,7 +317,7 @@
     font-family: sans-serif;
     background: #c3ffad;
     padding: 2px 6px 3px 30px;
-    transform: translateX(-25px);
+    margin-left: -25px;
     z-index: -1;
     border: 1px solid #3e709e;
 }
