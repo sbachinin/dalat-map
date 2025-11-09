@@ -258,6 +258,15 @@
     align-items: center;
     width: max-content;
     text-decoration: none;
+    opacity: 0;
+    transition: opacity var(--icon-disable-transition-duration) ease-out;
+    pointer-events: none;
+    user-select: none;
+}
+
+:root[min-zoom-reached=true] #gotoworld {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #gotoworld-icon {

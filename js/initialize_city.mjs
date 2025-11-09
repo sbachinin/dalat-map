@@ -131,17 +131,20 @@ export const initialize_city = async (name) => {
         // "First n mousewheel forwards (intended to zoom in) get stolen,
         // if previously maxbounds were reached and mousewheel backwards continued for a while".
         // Solution is obtained by trial and error and I've no idea how it really works
-        if (e.originalEvent.deltaY > 0 && are_max_bounds_reached()) {
+        if (e.originalEvent.deltaY > 0 && get_root_html_attribute('min-zoom-reached')) {
             const prev_z = map.getZoom()
             requestAnimationFrame(() => { map.setZoom(prev_z) })
         }
     })
 
     map.on('zoom', () => {
+        document.documentElement.setAttribute('min-zoom-reached', are_max_bounds_reached())
         throttled_update_flyto_button()
         update_scale()
         update_zoom_buttons()
     })
+
+    document.documentElement.setAttribute('min-zoom-reached', are_max_bounds_reached())
 
     const { adjust_scale_on_resize } = create_scale()
 
