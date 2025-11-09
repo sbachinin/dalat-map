@@ -284,7 +284,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: -5px -3px 12px 1px inset #3e709e;
+    box-shadow: -5px -3px 12px 2px inset #37638b;
 }
 
 #gotoworld svg {
@@ -301,7 +301,8 @@
     width: max-content;
     font-family: sans-serif;
     background: #c3ffad;
-    padding: 2px 4px 3px 30px;
+    padding: 2px 6px 3px 30px;
     transform: translateX(-25px);
     z-index: -1;
+    border: 1px solid #3e709e;
 }

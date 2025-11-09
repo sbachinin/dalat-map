@@ -65,10 +65,10 @@ export const update_scale = () => {
         const num = value >= 1000 ? value / 1000 : value
         const units = value >= 1000 ? 'km' : 'm'
 
-        let text = String(num) + `&#8201;` + units
+        let text = String(num) + `\u2009` + units
 
         if (text !== l.innerText) {
-            l.innerHTML = text
+            l.textContent = text
         }
     })
 }
