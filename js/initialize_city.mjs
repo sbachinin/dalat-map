@@ -22,7 +22,6 @@ import {
     DEV_map_mock,
 } from './DEV/constants.mjs'
 import './photoswipe_mutations_observer.mjs'
-import { update_zoom_buttons } from './custom_zoom_buttons.mjs'
 import { adjust_panel_on_resize } from './panel/panel_resize.mjs'
 import { is_feature_selectable } from './utils/does_feature_have_details.mjs'
 import { current_city, load_city } from './load_city.mjs'
@@ -138,21 +137,23 @@ export const initialize_city = async (name) => {
         }
     })
 
-    map.on('zoom', () => {
+    map.on('zoom', onzoom)
+
+    function onzoom() {
         document.documentElement.setAttribute('min-zoom-reached', are_max_bounds_reached())
+        document.documentElement.setAttribute('max-zoom-reached', map.getZoom() === map.getMaxZoom())
         throttled_update_flyto_button()
         update_scale()
-        update_zoom_buttons()
-    })
+    }
 
-    document.documentElement.setAttribute('min-zoom-reached', are_max_bounds_reached())
+    onzoom()
 
     const { adjust_scale_on_resize } = create_scale()
 
     const onresize = () => {
+        onzoom()
         adjust_panel_on_resize()
         adjust_scale_on_resize()
-        update_zoom_buttons()
     }
     window.addEventListener('resize', onresize)
     window.addEventListener('orientationchange', onresize)

@@ -232,11 +232,19 @@
     }
 }
 
-.zoom-button.disabled {
+:root[min-zoom-reached=true] .zoom-button.zoom-out {
     pointer-events: none;
 }
 
-.zoom-button.disabled svg>* {
+:root[min-zoom-reached=true] .zoom-button.zoom-out svg>* {
+    stroke: var(--disabled-icon-color);
+}
+
+:root[max-zoom-reached=true] .zoom-button.zoom-in {
+    pointer-events: none;
+}
+
+:root[max-zoom-reached=true] .zoom-button.zoom-in svg>* {
     stroke: var(--disabled-icon-color);
 }
 
