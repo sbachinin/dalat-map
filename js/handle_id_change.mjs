@@ -4,7 +4,7 @@ import { try_open_building } from "./panel/bldg_details.mjs"
 import { panel } from "./panel/panel.mjs"
 import { update_selected_map_features } from "./update_selected_feaures.mjs"
 import { is_feature_selectable } from "./utils/does_feature_have_details.mjs"
-import { create_element_from_Html, get_cityname_from_url } from "./utils/frontend_utils.mjs"
+import { capitalize_1st_letter, create_element_from_Html, get_cityname_from_url } from "./utils/frontend_utils.mjs"
 import * as svg_icons from './svg_icons.mjs'
 
 
@@ -34,7 +34,7 @@ export const handle_id_change = () => {
                 <div id="osm-attr">
                     This map uses <a target="_blank" href="https://openstreetmap.org/copyright">OpenStreetMap</a> data
                 </div>
-                <a data-href-id="about" href="#">Read about this map of ${cityname.charAt(0).toUpperCase() + cityname.slice(1)}</a>
+                <a data-href-id="about" href="#">Read about this map of ${capitalize_1st_letter(cityname)}</a>
                 <div id="gotogoogle" class="icon-with-title">${svg_icons.gmaps}Open current map location in Google maps</div>
                 ${document.querySelector('#non-panel .gotoworld')?.outerHTML || ''}
                 <a data-href-id="highlights" class="icon-with-title" href="#">${svg_icons.medal}Highlights</a>

@@ -39,7 +39,7 @@
         width: calc(100% - 20px);
         margin: 0 10px 10px 10px;
         grid-column: 1 / 2;
-        grid-row: 3;
+        grid-row: 4;
     }
 }
 

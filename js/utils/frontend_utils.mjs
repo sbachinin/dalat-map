@@ -82,6 +82,10 @@ export const are_max_bounds_reached = () => {
     )
 }
 
+export const capitalize_1st_letter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 export function throttle(func, wait, trailing = false) {
     let lastArgs = null;
     let lastThis = null;

@@ -13,6 +13,7 @@ import {
     get_minimal_zoom_on_building_select,
     are_max_bounds_reached,
     get_root_html_attribute,
+    capitalize_1st_letter
 } from './utils/frontend_utils.mjs'
 
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
@@ -40,6 +41,8 @@ globalThis.turf = { // because the following turf functions are used on build to
 }
 
 export const initialize_city = async (name) => {
+    document.querySelector('#cityname').textContent = capitalize_1st_letter(name)
+
     await load_city(name)
 
     let initial_center = JSON.parse(localStorage.getItem('map_center'))
