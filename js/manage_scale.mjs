@@ -1,4 +1,4 @@
-import { create_element_from_Html, debounce } from "./utils/frontend_utils.mjs";
+import { create_element_from_Html, debounce, throttle } from "./utils/frontend_utils.mjs";
 
 let root = document.documentElement
 
@@ -25,7 +25,7 @@ const measure_base_values = () => {
 
 measure_base_values()
 
-export const update_scale = () => {
+export const update_scale = throttle(() => {
     if (fullwidth_scale_wr.style.visibility !== 'visible') {
         fullwidth_scale_wr.style.visibility = 'visible'
     }
@@ -71,7 +71,7 @@ export const update_scale = () => {
             l.textContent = text
         }
     })
-}
+}, 40, true)
 
 
 const create_scale_item = _ => {
