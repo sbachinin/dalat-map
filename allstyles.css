@@ -3,7 +3,7 @@
     --menu-bg-color: hsl(35, 0%, 92%);
     --icon-color: hsl(0, 0%, 25%);
     --disabled-icon-color: hsl(0, 0%, 77%);
-    --icon-disable-transition-duration: 0.4s;
+    --icon-disable-transition-duration: 0.2s;
     --button-border-color: hsl(0, 0%, 50%);
 }
 

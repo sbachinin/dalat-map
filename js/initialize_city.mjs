@@ -12,6 +12,7 @@ import {
     get_center_for_bldg_with_offset,
     get_minimal_zoom_on_building_select,
     are_max_bounds_reached,
+    get_root_html_attribute,
 } from './utils/frontend_utils.mjs'
 
 import { get_map_bounds_center, lnglat_is_within_bounds } from './utils/isomorphic_utils.mjs'
